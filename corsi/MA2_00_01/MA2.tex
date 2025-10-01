@@ -1,0 +1,131 @@
+\input programma.sty \def\abbrcorso{MA2}
+\def\titolocorso{Matematica Applicata: Laboratorio 2}
+\def\sottotitolo{Crittografia a chiave pubblica}
+\def\docente{Prof. Francesco Pappalardi} \def\crediti{7.5}
+\def\semestre{II} \def\esoneri{1} \def\scrittofinale{1}
+\def\oralefinale{1} \def\altreprove{0}
+
+\Intestazione
+
+\titoloparagr{Argomenti di Teoria dei numeri elementare.}
+
+Il concetto di operazione bit tipo somma o sottrazione. Stima del
+numero di operazioni bit (tempo macchina) per eseguire le
+operazioni fondamentali. Algoritmi che convergono in tempo
+esponenziale o polinomiale. Divisibilit\`a. Algoritmo di Euclide
+(identit\'a di Bezout) e suo tempo di esecuzione. Congruenze.
+Teorema cinese dei resti. Esempi di fattorizzazione.
+
+\titoloparagr{RSA. L'algoritmo di Adleman, Shamir e Rivest.}
+
+Formulazione dell'algoritmo e analisi del suo tempo di esecuzione.
+Esempi concreti non realistici. Costruzione di numeri primi
+(grandi): Simboli di Legendre e simboli di Jacobi. Legge di
+reciprocit\`{a} quadratica generale (senza dimostrazione) --
+algoritmo polinomiale per il calcolo del simbolo di Jacobi. Numeri
+di Carmichael. Pseudo--primi, pseudo--primi di Eulero e
+pseudo--primi forti. Algoritmi montecarlo. Il test di
+Solovay--Strassen. il test di Miller--Rabin. Certificazione di
+primalità. Teorema di Pocklington. Accortezza nell'implementazione
+di RSA: Modulo RSA con un fattore troppo piccolo, Modulo RSA con
+fattori troppo vicini, Pubblicazione del'esponente di decodifica
+-- Algoritmi Las--Vegas per fattorizzazione del Modulo RSA. Firme
+digitali. Il crittosistema di Rabin. Il metodo di fattorizzazione
+$p-1$. Crivello quadratico.
+
+\titoloparagr{DES.}
+
+L'algoritmo a chiave privata Data Encryption Standard. Modalit\`a
+di uso del DES (triplo DES, ECB, CBC, CFB): cenni.
+
+\titoloparagr{Campi finiti.}
+
+Fatti fondamentali di teoria dei campi. Teorema dell'elemento
+primitivo in un campo finito. Esistenza e unicit\`a dei campi
+finiti (campi di spezzamento). Esempi. Polinomi irriducibili e
+primitivi. Enumerazione dei polinomi irriducibili e primitivi.
+ Aritmetica in tempo polinomiale sui campi finiti.
+
+
+\titoloparagr{Logaritmi discreti.}
+
+Il problema del logaritmo discreto in un gruppo ciclico astratto.
+Metodo di Diffie Hellman per lo scambio delle chiavi. Metodo di
+Massey Omura per la trasmissione dei messaggi. Il crittositema di
+ElGamal. Firma digitale con Massey Omura. Esempi. Algoritmi per il
+calcolo dei logaritmi discreti nei campi finiti: L' algoritmo di
+Shanks.
+
+\titoloparagr{Altri Algoritmi.}
+
+Crittosistemi Ellittici: Generalit\`{a} sulle curve ellittiche,
+definizione di addizione sui punti razionali di una curva
+ellittica, Il gruppo di Mordell--Weil, Teorema di Struttura del
+gruppo di Mordell Weil di una curva ellittica su un campo campo
+finito (solo enunciato), Teorema di Hasse (solo enunciato),
+esempio. Il crittosistema di ElGamal su $E(\bf{F}_p)$. Il
+crittosistema di Menezes--Vanstone.
+
+
+\titoloparagr{Sistema Pari GP.} Rudimenti del Sistema Pari per
+calcolare con numeri a precisione arbitraria.\bigskip
+
+\testi
+
+\bib
+\autore{Neal Koblitz}
+\titolo{A Course in Number Theory and Cryptography}
+\editore{Springer}
+\annopub{1994}
+\altro{Graduate Texts in Mathematics, No 114}
+\endbib
+
+\bib
+\autore{Douglas R. Stinson}
+\titolo{Cryptography: Theory and Practice}
+\editore{CRC Pr}
+\annopub{1995}
+\endbib
+
+\bib
+\autore{Rudolf Lidl, Harald Niederreiter}
+\titolo{Finite Fields}
+\editore{Cambridge University Press}
+\annopub{1997}
+\endbib
+
+\bib
+\autore{C. Batut, K. Belabas, D. Bernardi, H. Cohen, M. Olivier}
+\titolo{Pari--GP (2.014)}\par \hskip 6mm
+\editore{{http://pari.home.ml.org}}
+\annopub{1998}
+\endbib
+
+%\altritesti
+%
+%\bib
+%\autore{Jan C. A. van der Lubbe}
+%\titolo{Basic Mathods of Cryptography}
+%\editore{Cambridge University Press}
+%\annopub{1988}
+%\endbib
+%
+%\bib
+%\autore{Neal Koblitz}
+%\titolo{Algebraic Aspects of Cryptography}
+%\editore{Springer}
+%\annopub{1998}
+%\altro{Algorithms and Computation in Mathematics, Vol 3}
+%\endbib
+
+%
+%\bib
+%\autore{Bruce Schneier}
+%\titolo{Applied Cryptography}
+%\editore{John Wiley \& Sons, Inc.}
+%\annopub{1996}
+%\altro{seconda edizione}
+%\endbib
+
+\esami
+\bye

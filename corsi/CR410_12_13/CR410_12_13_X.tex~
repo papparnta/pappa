@@ -1,0 +1,85 @@
+\nopagenumbers \font\title=cmti12
+\def\ve{\vfill\eject}
+\def\vv{\vfill}
+\def\vs{\vskip-2cm}
+\def\vss{\vskip10cm}
+\def\vst{\vskip13.3cm}
+
+% \def\ve{\bigskip\bigskip}
+% \def\vv{\bigskip\bigskip}
+% \def\vs{}
+% \def\vss{}
+% \def\vst{\bigskip\bigskip}
+
+\hsize=19.5cm
+\vsize=27.58cm
+\hoffset=-1.6cm
+\voffset=0.5cm
+\parskip=-.1cm
+\ \vs \hskip -6mm CR410 AA12/13\ (Crittografia 1)\hfill APPELLO A \hfill Roma, 7 GIUGNO 2013. \hrule
+\bigskip\noindent
+{\title COGNOME}\  \dotfill\ {\title NOME}\ \dotfill {\title
+MATRICOLA}\ \dotfill\
+\smallskip  \noindent
+Risolvere il massimo numero di esercizi accompagnando le risposte
+con spiegazioni chiare ed essenziali. \it Inserire le risposte
+negli spazi predisposti. NON SI ACCETTANO RISPOSTE SCRITTE SU
+ALTRI FOGLI. Scrivere il proprio nome anche nell'ultima pagina.
+\rm 1 Esercizio = 3 punti. Tempo previsto: 2 ore. Nessuna domanda
+durante la prima ora e durante gli ultimi 20 minuti.
+\smallskip
+\hrule\smallskip
+\centerline{\hskip 6pt\vbox{\tabskip=0pt \offinterlineskip
+\def \trl{\noalign{\hrule}}
+\halign to560pt{\strut#& \vrule#\tabskip=0.7em plus 2em& \hfil#&
+\vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil&
+\vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#&
+\hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfil#&
+\vrule#\tabskip=0pt\cr\trl && FIRMA && 1 && 2 && 3 && 4 &&
+5 && 6 && 7 && 8 && 9 &&  10 &\cr\trl && &&   &&
+&&     &&   &&   &&   &&   &&   &&    && &\cr &&
+\dotfill &&     &&   &&   &&   &&     &&   && && && &&
+&\cr\trl }}}
+\medskip
+
+
+%\item{1.}
+%Se $n\in{\bf N}$, sia $\varphi(n)$ la funzione di Eulero. Supponiamo che sia nota
+%la fattorizzazione (unica) di $n=p_1^{\alpha_1}\cdots p_s^{\alpha_s}$. Stimare il
+%numero di operazioni bit necessarie per calcolare $\varphi(n)$.
+%\vv
+%\item{2.} Stimare in termini di $k$ il numero di operazioni bit necessarie per calcolare $\left[\sqrt{2^{k^k}\bmod 3^k}
+%\right]$.
+%\vv
+
+\item{1.} Si descrivano:
+\itemitem{-a-} L'algoritmo dei quadrati successivi;\vv
+
+\itemitem{-b-} L'algoritmo MCD--binario;\vv
+
+\itemitem{-c-} L'algoritmo di Pollard per la fattorizzazione degli interi;
+ \ve\vs
+ 
+\itemitem{-d-} L'algorimo di Pholig--Hellman per il calcolo dei logaritmi discreti; 
+\vv
+
+\itemitem{-e-} Dopo aver descritto la nozione di algoritmo probabilistico di tipo Montecarlo, l'algoritmo di Miller--Rabin.  
+\ve\vs
+
+\item{2.} Si descrivano i principali algoritmi di cifratura e decifratura.\vv
+
+\item{3.} Dopo aver descritto quali sono i fattori irriducibili in ${\bf F}_p[x]$ di $x^{p^6}-x$ ($p$ primo), nel caso in cui $p=2$, li
+si elenchino tutti specificando quali tra questi sono primitivi.\vv
+
+\item{4.} Siano $n$ e $m$ interi tali che $m\equiv3\bmod4$, $m\equiv2\bmod n$ e $n\equiv1\bmod8$. Si calcoli il simbolo di Jacobi
+$\left({(5m+n)^7\over m}\right)$.\ve \vs
+
+\item{5.} Dimostrare che se ${\bf F}_q$ \`e un campo finito di caratteristica dispari,
+allor esiste sempre una curva ellittica su ${\bf F}_q$ con gruppo dei punti razionali non ciclico.
+\vv\vv
+
+\item{6.} Determinare ordine e struttura di $E({\bf F}_5)$ dove $E: y^2=x^3+2$.
+\ \vst
+
+ \bye

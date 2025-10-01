@@ -1,0 +1,282 @@
+\documentclass{amsart}
+\DeclareMathSymbol{\nmid}{\mathrel}{AMSb}{"2D}
+\def\Z{{\mathbb Z}}
+\def\F{{\mathbb F}}
+\newtheorem*{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\title[On the exponent of elliptic curves]{On the exponents of the group of points of an Elliptic curve over a finite field}
+\author{Francesco Pappalardi}
+\address{Dipartimento di Matematica\\ Universit\`a Roma Tre\\ Largo San Leonardo Murialdo 1\\ I--00146\\ Roma\\ ITALY}
+\email{pappa@mat.uniroma3.it}
+\date{December 23, 2009}
+\keywords{keywords: elliptic curves, finite fields}
+\subjclass[2000]{Primary: 11G20; Secondary: 11G5}
+\begin{document}
+\begin{abstract} We present a lower bound for the exponent of the group
+of rational points of an elliptic curve over a finite field. Earlier results 
+considered finite fields $\F_{q^m}$ where either $q$ is fixed or $m=1$ and
+$q$ is prime. Here we let both $q$ and $m$ vary and our estimate is explicit
+and does not depend on the elliptic curve.\end{abstract}
+\maketitle
+\section{introduction}
+Let $\F_q$ be a finite fields with $q=p^m$ elements and let $E$ be an elliptic 
+curve defined over $\F_q$. It is well known (see for example the book of Washington \cite{washington})
+that the group of rational point of $E$ over $\F_q$ satisfies
+$$E(\F_q)\cong \Z_n\times\Z_{nk}$$
+where $n,k\in\mathbb N$ are such that $n\mid q-1$. The exponent of $E(\F_q)$ is
+$$\exp(E(\F_q))=nk.$$
+In 1989 Schoof \cite{schoof} proved that if $E$ is an elliptic curve over $\mathbb Q$ without complex multiplication, then
+for every prime $p>2$ of good reduction for $E$, one has the estimate 
+$$\exp(E(\F_p))> C_E \sqrt{p}\frac{\log p}{(\log\log p)^2}$$
+where $C_E>0$ is a constant depending only on $E$.
+
+In 2005 Luca and Shparlinski \cite{lucashparlinski} consider the case when $q$ is fixed and they prove that if $E/\F_q$
+is ordinary, the there exists an effectively computable constant $\vartheta(q)$ depending only on $q$
+such that
+\begin{equation}\label{eq:florianigor}
+\exp(E(\F_{q^m}))> q^{m/2+\vartheta(q)m/\log m}
+\end{equation}
+holds for all positive integers $m$.
+
+Other lower bounds that hold for families of primes (resp. for families of powers of fixed primes) with density one were
+proven by Duke in \cite{duke} (resp. by Luca and Shparlinski in \cite{lucashparlinski}).
+
+Here we let both $p$ and $m$ vary and we prove the following
+\begin{theorem} Let $E$ be any elliptic curve over $\F_{p^m}$ where $m\ge3$ then either $m=2r$ is even and 
+$$E(\F_{p^{2r}})\cong \Z_{p^r\pm1}\times\Z_{p^r\pm1}$$
+or
+$$\exp(E(\F_{p^m}))\ge 2^{-46}p^{m/2}\frac{m^{1/3}}{(\log m)^{7/3}(\log\log m)^{1/3}}.$$
+\end{theorem}
+
+In the above we assume that $\log$ denotes the logarithm in base $2$. 
+
+Note that the result also applies to supersingular elliptic curves and that it improves on that in (\ref{eq:florianigor})
+only for values of $m$ which are small with respect to $p$.  
+
+\section{lemmata}
+The proof is based on estimates for the distance between perfect powers due to Bugeaud. More
+precisely, we will apply the following result from \cite{bugeaud}:
+\begin{lemma}\label{lem:bug}
+Let $f\in\Z[X]$ be a monic polynomial of degree $d\ge 2$ without multiple roots. 
+Let $H$ be the maximum of absolute values of its coefficients and $D$ its discriminant. 
+Let $a$, $x$, $y$, $m$ be rational integers satisfying 
+$a\not=0$, $|y|\ge 2$, $m\ge 2$, $f(x)=ay\sp{m}$. 
+Denote by $\log\sb{2}$ the logarithm in base $2$ and 
+write $\log\sb{*}x$ for $\max\{\log x,1\}$. 
+The inequality $m\le\max\{U,V\}$ holds with $U=d\log\sb{2}(2H+3)$ and 
+$$V=2\sp{15(d+6)}d\sp{7d}|D|\sp{3/2} (\log|D|)\sp{3d}(\log\sb{*}|a|)\sp{2}\log\sb{*}\log\sb{*}|a|.$$
+\end{lemma}
+
+We need the following elementary lemma:
+\begin{lemma}
+\label{lem:sydney} If $q$ is a prime power and $E$ is an elliptic
+curve defined over $\F_q$ such that $E(\F_q)\cong\Z_n\times\Z_{nk}$,
+then $q=n^2k+n\ell+1$ for some integer $\ell$ that satisfies
+$|\ell|\le 2\sqrt{k}$.
+\end{lemma}
+\begin{proof}
+By the Hasse bound, we can write $n^2k=q+1-a_q$ for some integer
+$a_q$ that satisfies $a_q^2\le 4q$. Using the Weil pairing
+one also sees that $q\equiv 1\pmod{n}$. Hence $a_q=2+n\ell$ for some
+integer $\ell$ and $q=n^2k+n\ell+1$. Finally
+$$
+n^2\ell^2+4n\ell+4=a_q^2\le 4q=4n^2k+4n\ell+4
+$$
+and the result follows.
+\end{proof}
+
+We will also need the classical characterizations of the group structures due 
+to Waterhouse (see \cite[Theorem~4.3, page~98]{washington}) which describes 
+possible cardinalities $\#E(\F_q)$ of the set of $\F_q$-rational 
+points of elliptic curves over $\F_q$. 
+
+\begin{lemma} 
+\label{lem:Water}                          
+ Let $q=p^m$ be a power of a prime $p$ and let $N = q + 1-a$. There is an elliptic 
+curve $E$ defined over $\F_q$ such that $\#E(\F_q) = N$ if and only if $|a|\le 2\sqrt q$ 
+and $a$ satisfies one of the following:
+\begin{itemize} 
+\item[(i)] $\gcd(a, p) = 1$;
+\item[(ii)] $m$ even and $a=\pm 2\sqrt q$;
+\item[(iii)] $m$ is even, $p\not\equiv 1 \pmod 3$, and $a = \pm\sqrt q$;
+\item[(iv)] $m$ is odd, $p = 2$ or $3$, and $a = \pm p^{(n+1)/2}$;
+\item[(v)] $m$ is even, $p\not\equiv 1 \pmod 4$, and $a = 0$;
+\item[(vi)] $m$ is odd and $a = 0$.
+\end{itemize}
+\end{lemma}
+
+For each admissible cardinality, R\"uck (see Washington \cite[Theorem~4.4, page~98]{washington})
+describes possible group structures. 
+
+\begin{lemma}
+\label{lem:Ruck}
+Let $N$ be an integer that occurs as the  order  of an elliptic curve 
+over a finite field $\F_q$ where  $q=p^m$
+is a power of a prime $p$.  Write 
+$N = p^e n_1 n_2$ with $p\nmid n_1 n_2$ and $n_1\mid n_2$.
+(possibly $n_1 = 1$). There is an elliptic curve $E$ over $\F_q$ such 
+that
+$$E(\F_q)\cong \Z_{p^e}\times\Z_{n_1}\times\Z_{n_2}$$
+if and only if
+\begin{enumerate}
+\item $n_1 = n_2$ in the case~(ii) of Lemma~\ref{lem:Water};
+\item $n_1 |q - 1$ in all other cases of Lemma~\ref{lem:Water}.
+\end{enumerate}
+\end{lemma}
+
+Finally we need the following numerical statement:
+
+\begin{lemma}\label{lem:numerical} Assume that $\alpha$ and $\beta$ are real numbers with $\alpha>4$ and $\beta\ge4$.
+If 
+$$\alpha\le \beta^{3/2}\cdot(\log\beta)^7\cdot\log\log\beta,$$
+then
+$$
+\beta\ge\frac{\alpha^{2/3}}{(\log\alpha)^{14/3}(\log\log\alpha)^{2/3}}.$$
+\end{lemma}
+
+\begin{proof} If $\alpha\ge\beta\ge4$, then
+$$\beta\ge\left(\frac\alpha{(\log\beta)^7\log\log\beta}\right)^{2/3}
+\ge\left(\frac\alpha{(\log\alpha)^7\log\log\alpha}\right)^{2/3}.$$
+If $\alpha\le\beta$, 
+$$\beta\ge \alpha\ge\frac{\alpha^{2/3}}{(\log\alpha)^{14/3}(\log\log\alpha)^{2/3}}.$$
+\end{proof}
+
+\section{Proof of the Theorem}
+Assume that 
+$E(\F_{p^m})\cong\Z_n\times\Z_{nk}.$ Then, by Lemma~\ref{lem:sydney}, we have that
+$$p^m=kn^2+\ell n+1\qquad\text{for some }\ell\text{ with }|\ell|\le2\sqrt{k}.$$
+
+If $\ell=\pm2\sqrt{k}$, then $k$ must be a perfect square and we write $k=M^2$ so that
+$\ell=\pm2M$. Therefore in the
+above identity we have
+$$p^m=(Mn\pm1)^2$$
+which implies that $m=2r$ is even and that $Mn=p^r\mp1$. Furthermore in this case
+$$p^m+1-\#E(\F_{p^m})=\ell n+2=\pm2Mn+2=\pm2p^{m/2}.$$
+This happens precisely in the case (ii) of Lemma~\ref{lem:Water}. Note also that
+in this case $p\nmid\#E(\F_{p^m})$. Hence, by Case (1) in Lemma~\ref{lem:Ruck}, we
+have that $n=nk$ so that $k=1$.
+
+We conclude that if $l=\pm2\sqrt{k}$, then $k=1$, $n=p^{r}\mp1$ and finally
+$$E(\F_{p^{2r}})\cong\Z_{p^r\pm1}\times\Z_{p^r\pm1}.$$
+
+From now on we can assume that $|\ell|<2\sqrt{k}.$ 
+We apply Lemma~\ref{lem:bug} with the following data:
+$$f(X)=X^2+\ell X+k,\quad d=2,\quad |D|=4k-\ell^2,\quad H=k,$$
+$$ x=kn,\quad y=p\quad\text{ and }\quad a=k.$$ 
+Note that since $|\ell|<2\sqrt{k}$, we have that $D\neq0$ so that $f$ has
+two distinct roots.
+
+From the identity $kp^m=(kn)^2+\ell(kn)+k$ and from Lemma~\ref{lem:bug}, 
+it follows that
+$$m\le\min\{2\log_{2}2k+3,2^{134}(4k)^{3/2}(\log4k)^6\log_*k\log_*\log_*k\}.$$
+Since we can assume that $k\ge2$, it follows that
+$$m\le2^{134}(4k)^{3/2}(\log4k)^{7}\log\log4k.$$
+
+If $4\le m\le 2^{136}$, then 
+$m^{1/3}/(2^{46}(\log m)^{7/3}(\log\log m)^{1/3}) <1/4$ and the statement of the Theorem is vacuous 
+since $\exp(E(\F_q))\ge\sqrt{q}-1$ for every $q$.
+ 
+If $m>2^{136}$, we apply Lemma~\ref{lem:numerical} with $\alpha=m/2^{134}>4$ and $\beta=4k$ and we obtain:
+$$k\ge\frac14\cdot\frac{(m/2^{134})^{2/3}}{(\log_* \frac m{2^{134}})^{\frac{14}3}(\log_*\log_* \frac m{2^{134}})^{\frac23}}
+\ge
+\frac1{2^{\frac{274}3}}\cdot\frac{m^{2/3}}{(\log m)^{14/3}(\log\log m)^{2/3}}.
+$$
+and so
+$$\exp(E(\F_{p^m})=nk\ge (\sqrt{p^m}-1)\sqrt{k}\ge p^{m/2}\frac{m^{1/3}}{2^{46}(\log m)^{7/3}(\log\log m)^{1/3}}.$$
+This concludes the proof of the Theorem.\hfill$\square$\bigskip
+
+The constant $2^{-46}$ can be slightly improved with a more careful analysis but this
+is not too important.
+
+\section{Conclusion}
+
+In the opposite direction a recent result of Matom\"aki in \cite{kaisa} states that, for any $\epsilon>0$, 
+there exists infinitely many primes $p$ of the form $p=an^2+1$ with $a<p^{1/2+\epsilon}$.
+By Lemma~\ref{lem:Ruck} and Lemma~\ref{lem:sydney}, it follows that for infinitely many primes $p$ there exists an
+elliptic curve over $\F_{p}$ such that
+$$E(\F_{p})\cong \Z_{n}\times\Z_{na}.$$
+This implies that there exists a infinite sequence of distinct $p$ with an ordinary elliptic curve $E/\F_p$ such that
+$$\exp(E(\F_p))=p^{3/4+\epsilon}(1+o(1)).$$
+
+One can also consider the polynomial
+identity
+$$X^3=(X+2)(X-1)^2+3(X-1)+1.$$
+By Lemma~\ref{lem:Ruck} and Lemma~\ref{lem:sydney}, it follows that for every prime $p$ there exists an ordinary
+elliptic curve over $\F_{p^3}$ such that
+$$E(\F_{p^3})\cong \Z_{p-1}\times\Z_{(p+2)(p-1)}.$$
+
+We immediately conclude that there exists a infinite sequence of distinct
+$q$ with an elliptic curve $E/\F_q$ such that
+\begin{equation}\label{eq:twothirds}
+\exp(E(\F_q))=q^{2/3}(1+o(1)).\end{equation}
+
+This should be compared on one side with Schoof result in \cite{schoof} that (Assuming 
+GRH), if $E$ is an elliptic curve over $\mathbb Q$, there exists a constant $c_E$
+such that $\exp(E(\F_p))<c_Ep^{7/8}\log p$ for infinitely many primes $p$ and on another side
+with Luca, McKee and Shparlinski's results in \cite{lms} that there exists an absolute
+constant $\rho>0$ such that if $E/\F_q$ is a fixed
+elliptic curve, the inequality
+$$\exp(E(\F_{q^m}))< q^m\exp\left(-m^{\rho/\log\log m}\right)$$
+holds for infinitely many positive integers $m$.  
+
+We wonder if for every $\epsilon>0$ one can construct an infinite family of
+prime powers $q$ each with an elliptic curve $E/\F_q$ such that
+$$E(\F_q)\not\cong\Z_{\sqrt{q}\pm1}\times\Z_{\sqrt{q}\pm1}$$
+and
+$$\exp(E(\F_q))\ll_\epsilon q^{1/2+\epsilon}$$
+or if the $2/3$ in (\ref{eq:twothirds}) can be improved.
+
+More generally, the polynomial identity
+$$X^n=(X-1)^2\cdot\left(X^{n-2}+2X^{n-3}+\cdot+(n-2)X+n-1\right)+n(X-1)+1$$
+leads, for any fixed $n\ge2$ to an infinite sequence  of distinct
+primes $p$ with an elliptic curve $E/\F_{p^n}$ such that
+$$
+\exp(E(\F_{p^n}))=p^{n-1}(1+o(1)).
+$$
+Furthermore, if $n\ge3$ each $E/F_{p^n}$ is ordinary.
+\bigskip
+
+
+\noindent\textbf{Acknowledgement:} The author would like to thank Bill Banks and Igor Shparlinski
+for some useful conversations. 
+
+\begin{thebibliography}{99}
+\bibitem{duke}
+\textsc{Duke, William}
+\textit{Almost all reductions modulo $p$ of an elliptic curve have a large exponent.}  C. R. Math. Acad. Sci. Paris.  
+\textbf{337}  (2003),  no. 11, 689--692.
+
+\bibitem{bugeaud}
+\textsc{Bugeaud,Yann}
+\textit{Sur la distance entre deux puissances pures}
+C. R. Acad. Sci. Paris S\'er. I Math. \textbf{322} (1996), no. 12, 1119--1121
+
+\bibitem{lms}
+\textsc{Luca, Florian; McKee, James; Shparlinski, Igor E.} 
+\textit{Small exponent point groups on elliptic curves.}
+J. Th\'eor. Nombres Bordeaux  \textbf{18}  (2006),  no. 2, 471--476.
+
+\bibitem{lucashparlinski}
+\textsc{Luca, Florian; Shparlinski, Igor E.} 
+\textit{On the exponent of the group of points on elliptic curves in extension fields.} Int. Math. Res. Not. 2005, no. 23, 1391--1409.
+
+\bibitem{kaisa}
+\textsc{Matom\"aki, Kaisa}
+\textit{A note on primes of the form $p=aq^2+1$.}
+Acta Arith. \textbf{137} (2009), 133--137
+
+\bibitem{schoof} 
+\textsc{Schoof, Ren\'e}
+\textit{The exponents of the groups of points on the reductions of an elliptic curve.}
+Arithmetic algebraic geometry (Texel, 1989), 325--335, Progr. Math., \textbf{89}, Birkh\"auser Boston,
+Boston, MA, 1991.
+
+\bibitem{washington}
+\textsc{Washington, Lawrence C.} 
+Elliptic curves. Number theory and cryptography. Second edition. 
+\textit{Discrete Mathematics and its Applications (Boca Raton)}. 
+Chapman \& Hall/CRC, Boca Raton, FL, 2008.
+\end{thebibliography}
+\end{document}
+

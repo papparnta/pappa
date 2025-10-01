@@ -1,0 +1,105 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{times}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\nopagenumbers
+\def\Q{{\mathbb Q}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\F{{\mathbb F}}
+\def\C{{\mathbb C}}
+\def\QQ{{\rm Q}}
+
+\title{Teoria di Galois 1 - Tutorato II}
+\author{\Large{Estensioni, campi di spezzamento, omomorfismi di campi}}
+\date{Venerdì 11 Marzo 2005}
+
+\begin{document}
+\maketitle
+
+\theoremstyle{definition}
+
+\newtheorem{es}{Esercizio}
+
+
+
+
+\begin{es}
+In ciascuno dei seguenti casi, determinare la dimensione
+del campo di spezzamento del polinomio sul campo assegnato $F$:
+\item{a.} $f(x)=x^3$                                                    \hfill $F=\Q$; 
+\item{b.} $f(x)=(x^2-3)(x^2-27)(x^2-12) $                 \hfill $F=\Q( 3^{\frac{1}{3} })$;
+\item{c.} $f(x)=x^8-4$                                                  \hfill $F=\Q$;
+\item{d.}  $f(x)=x^h-3$                                                 \hfill $F=\Q(e^{ \frac{ 2\pi i}{h} })$;
+\item{f.}  $f(x)=x^3+30x+1$                                           \hfill $F=\Q$;
+\item{g.}  $f(x)=x^{15}+3x^5+1$                                    \hfill $F=\F_5$;
+\item{h.}  $f(x)=x^4-x^3-4x^2+1$                                \hfill $F=\Q$;
+\item{i.} $f(x)=x^{10}+x+1$                                             \hfill $F=\F_2$.
+\end{es}
+\medskip
+
+
+\begin{es}
+In ciascuno dei seguenti numeri algebrici, si calcoli il polinomio minimo
+
+\item{a.} $e^{ \frac{2\pi i }{33}}  $; \ \ \ \ \ \ \ \ {b.} $\cos \frac{2\pi}{9} $;   \ \ \ \ \  {c.} $\cos\frac{ 2\pi}{11} $;
+\medskip\item{d.} $\cos \frac{2\pi}{13} $;   \ \ \ \ \ {e.} $\cos \frac{\pi}{5}  $;   \ \ \ \ \ {f.} $\sin \frac{\pi}{7} $.
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Descrivere gli $F$--omomorfismi di $E$ in $ \C $ in ciascuno dei seguenti casi:
+\item{a.} $E=\Q(e^{\frac{\pi i}{8}} )$                                   \hfill $F=\Q(e^{\frac{\pi i}{2} })$;
+\item{b.} $E=\Q(\sqrt{2},\sqrt{3},\sqrt{5})$                    \hfill $F=\Q(\sqrt{6})$;
+\item{c.} $E=\Q(\zeta_7)$                                               \hfill $F=\Q(\cos \frac{2\pi}{7} )$;
+\item{d.} $E=\Q(\sqrt{\sqrt{3}+1})$                                   \hfill $F=\Q(\sqrt{3})$;
+\item{e.} Sostituire ora $\C$ con $\F_{7}(\beta)$, dove $\beta^4+\beta+1=0$
+\medskip
+\newline $E=\F_{7}(\alpha)$ \,\, con \,\, $ \alpha^4+5\alpha^2+3\alpha+1=0 $                  \hfill $F=\F_7(\sqrt{-2})$.
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Si mostri che $\Q(\sqrt{-7}) \subseteq \Q(\zeta_{7})$.
+\newline {\it Suggerimento: Considerare il numero
+$\zeta_{7}+\zeta_{7}^2-\zeta_{7}^3+\zeta_{7}^4-\zeta_{7}^{5}+\zeta_{7}^6.$}
+\end{es}
+\medskip
+
+
+\begin{es}
+Mostrare che se $n$ divide $m$, allora $\Q(\zeta_n)\subset
+\Q(\zeta_m).$
+\end{es}
+\medskip
+
+
+\begin{es}
+Dimostrare che se $q\in\Q$, allora $\cos(q\pi)$ \`{e} un numero algebrico.
+Calcolare anche la dimensione
+$$\left[\Q(\cos(q\pi)):\Q\right].$$
+Si pu\`{o} dire la stessa cosa di $\sin(q\pi)$? \newline
+{\it Suggerimento: Utilizzare (senza mostrarlo) il  fatto
+che $\left[\Q(\zeta_m):\Q\right]=\varphi(m).$}
+\end{es}
+\medskip
+
+
+\begin{es}
+Mostrare che se $f\in F[x]$ \`{e} un polinomio irriducibile e char$F=p$,
+allora il campo di spezzamento di $f$ ha grado $\partial f$.
+\end{es}
+\medskip
+
+
+\clearpage
+\nocite{*}
+\end{document}

@@ -1,0 +1,867 @@
+\documentclass[10pt,handout]{beamer}% ,draft,final,,handout
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{colortbl}
+\let\Tiny=\tiny
+
+ \newcommand{\Q}{\mathbb Q}
+ \newcommand{\Z}{\mathbb Z}
+ \newcommand{\N}{\mathbb N}
+ \newcommand{\F}{\mathbb F}
+ \newcommand{\C}{\mathbb C}
+ \newcommand{\R}{\mathbb R}
+
+
+\author[F.~Pappalardi]{Francesco Pappalardi}
+\institute{Dipartimento di Matematica e Fisica\\
+  Universit\`a Roma Tre}
+\setbeamertemplate{title page}
+{
+  \vbox{}
+  \vskip1em
+  {\huge Lecture \insertshortlecture\par}
+  {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par}%
+  \ifx\insertsubtitle\@empty%
+  \else%
+    \vskip0.25em%
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+  \fi%
+  \vskip1em\par
+   \textbf{College of Sciences\\ Department of Mathematics}\\ University of Salahaddin, \\
+   \emph{Erbil, Kurdistan}   
+   \insertdate\par
+  \vskip0pt plus1filll
+  \leftskip=0pt plus1fill\insertauthor\par
+  \insertinstitute\vskip1em
+}
+
+\logo{\includegraphics[width=1cm]{images/roma3.pdf}}
+\lecture[4]{Elliptic curves over finite fields}{First Steps}
+\date{December 7$^{\textrm{th}}$, 2014}
+\title[Elliptic curves over $\F_{q}$]{\insertlecture}
+\subtitle{First steps}
+
+% Beamer version theme settings
+
+\useoutertheme[height=0pt,width=2cm,right]{sidebar}
+\usecolortheme{rose,sidebartab}
+\useinnertheme{circles}
+\usefonttheme[only large]{structurebold}
+\setbeamercolor{formul}{fg=black,bg=pink}
+\setbeamercolor{sidebar right}{bg=black!15}
+\setbeamercolor{structure}{fg=blue}
+\setbeamercolor{author}{parent=structure}
+ \setbeamercolor{postit}{fg=black,bg=yellow}
+ \setbeamercolor{greys}{fg=black,bg==black!25}
+
+\setbeamerfont{title}{series=\normalfont,size=\LARGE}
+\setbeamerfont{title in sidebar}{series=\bfseries}
+\setbeamerfont{author in sidebar}{series=\bfseries}
+ \setbeamerfont*{item}{series=}
+\setbeamerfont{frametitle}{size=}
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[book]
+\setbeamertemplate{sidebar right}
+{
+  {\usebeamerfont{title in sidebar}%
+    \vskip1.5em%
+    \hskip3pt%
+    \usebeamercolor[fg]{title in sidebar}%
+    \insertshorttitle[width=2.1cm,respectlinebreaks]\par%   left,
+    \vskip1.25em%
+  }%
+  {%
+    \hskip3pt%
+    \usebeamercolor[fg]{author in sidebar}%
+    \usebeamerfont{author in sidebar}%
+    \insertshortauthor[width=2cm,center,respectlinebreaks]\par%
+    \vskip1.25em%
+  }%
+  \hbox to2cm{\hss\insertlogo\hss}
+  \vskip1.25em%
+  \insertverticalnavigation{2cm}%
+  \vfill
+  \hbox to 2cm{\hfill\usebeamerfont{subsection in
+      sidebar}\strut\usebeamercolor[fg]{subsection in
+      sidebar}\insertshortlecture.\insertframenumber\hskip5pt}%
+  \vskip3pt%
+}%
+
+
+
+% Article version layout settings
+
+\mode<article>
+\makeatletter
+\def\@listI{\leftmargin\leftmargini
+  \parsep 0pt
+  \topsep 5\p@   \@plus3\p@ \@minus5\p@
+  \itemsep0pt}
+\let\@listi=\@listI
+
+
+\setbeamertemplate{frametitle}{\paragraph*{\insertframetitle\
+    \ \small\insertframesubtitle}\ \par
+}
+\setbeamertemplate{frame end}{%
+  \marginpar{\scriptsize\hbox to 1cm{\sffamily%
+      \hfill\strut\insertshortlecture.\insertframenumber}\hrule height .2pt}}
+\setlength{\marginparwidth}{1cm}
+\setlength{\marginparsep}{4.5cm}
+
+\def\@maketitle{\makechapter}
+
+
+\let\origstartsection=\@startsection
+\def\@startsection#1#2#3#4#5#6{%
+  \origstartsection{#1}{#2}{#3}{#4}{#5}{#6\normalfont\sffamily\color{blue!50!black}\selectfont}}
+
+\makeatother
+
+\mode
+<all>
+
+% Typesetting Listings
+
+\lstset{language=Java}
+
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{\translate{Fact:}}
+\newtheorem{Note}[theorem]{\translate{Note}}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Reminder from Thursday}
+
+\begin{frame}\frametitle{Elliptic curves over $\F_q$}
+
+\begin{definition}[Elliptic curve] An elliptic curve over a field $K$ is the data of a non
+singular Weierstra\ss\ equation
+$E: y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6, a_i\in K$
+\end{definition}
+
+If $p=\operatorname{char}K>3$,
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{formul}
+\begin{align*}
+\Delta_E&:=\frac{1}{2^4}\left(-a_1^5 a_3 a_4 - 8 a_1^3 a_2 a_3 a_4 - 16 a_1 a_2^2 a_3 a_4 + 36 a_1^2 a_3^2 a_4 \right. \\
+  &-a_1^4 a_4^2 - 8 a_1^2 a_2 a_4^2 - 16 a_2^2 a_4^2 + 96 a_1 a_3 a_4^2 +64 a_4^3 + \\
+  & a_1^6 a_6 + 12 a_1^4 a_2 a_6 + 48 a_1^2 a_2^2 a_6 + 64 a_2^3 a_6 -36 a_1^3 a_3 a_6\\
+  &\left. - 144 a_1 a_2 a_3 a_6 - 72 a_1^2 a_4 a_6 - 288 a_2 a_4 a_6 +
+  432 a_6^2  \right)\ne0
+ \end{align*}
+\end{beamercolorbox}}
+\end{frame}
+
+
+\begin{frame}\frametitle{Elliptic curves over $K$}
+
+
+After applying a suitable affine transformation we can always assume that $E/K$
+has a Weierstra\ss\ equation of the following form
+
+\begin{small}
+ \begin{example}[Classification ($p=\operatorname{char}K$)]
+\centerline{\begin{tabular}{|l|c|l|}
+\hline
+ $E$ & $p$ & $\Delta_E$\\
+\hline
+&&\\
+ $y^2=x^3+Ax+B$ & $\ge5$ & $4A^3+27B^2$\\
+&&\\
+$y^2+xy=x^3+a_2x^2+a_6$ & $2$ & $a_6^2$\\
+&&\\
+ $y^2+a_3y=x^3+a_4x+a_6$  & $2$ & $a_3^4$\\
+&&\\
+ $y^2=x^3+Ax^2+Bx+C$ & $3$ & $\!\begin{array}{l}
+                               4A^3C-A^2B^2-18ABC\\+4B^3+27C^2
+                              \end{array}$\\
+&&\\\hline
+\end{tabular}}
+\end{example}
+\end{small}\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=\textwidth]{formul}
+Let $E/\F_q$ elliptic curve, set $\infty:=[0,1,0]$. Set\\
+\centerline{$E(\F_q)=\{(x,y)\in \F_q^2:\ y^2=x^3+Ax+B\}\cup\{\infty\}$}
+\end{beamercolorbox}}
+\end{frame}
+
+% \begin{frame}
+% \frametitle{Projective lines}
+% \framesubtitle{tangent lines to projective curves}
+% 
+% \begin{Definition}
+% If $P=[x_1,y_1,z_1], Q=[x_2,y_2,z_2]\in\mathbb P_2(\F_q)$, \emph{the projective
+% line} through $P$, $Q$ is\\
+% \centerline{$r_{P,Q}: \det\left|\begin{matrix}
+%                       X & Y & Z \\ x_1&y_1&z_1\\ x_2&y_2&z_2
+%                      \end{matrix}\right|=0$}
+% \end{Definition}\pause
+% 
+% \begin{Definition}
+% The \emph{tangent line} to a projective curve $F(X,Y,Z)=0$ at a non singular point $P=[X_0,Y_0,Z_0]$
+% ($F(X_0,Y_0,Z_0)=0$) is
+% \scriptsize{{\color[cmyk]{1,0,1,0.5}$\frac{\partial F}{\partial X}(X_0,Y_0,Z_0)X+\frac{\partial F}{\partial Y}(X_0,Y_0,Z_0)Y+
+% \frac{\partial F}{\partial Z}(X_0,Y_0,Z_0)Z=0$}}
+% \end{Definition}\pause
+% 
+% \begin{exercise}[Properties:]
+% \begin{enumerate}[<+-| alert@+>]
+%  \item $P$ belongs to its (projective) tangent line
+%  \item $P$ affine $\Rightarrow$ its tangent line is the homogenized of the affine tangent line
+%  \item the tangent line to $E/\F_q$ at $\infty=[0,1,0]$ is $Z=0$ (line at infinity)\vspace*{-5.2pt}
+% \end{enumerate}
+% \end{exercise}
+% \end{frame}
+
+
+\section{The sum of points}
+\begin{frame}
+\frametitle{The definition of $E(\F_q)$}
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=\textwidth]{formul}
+Let $E/\F_q$ elliptic curve. Set
+$$\!\!\!E(\F_q)=\{(x,y)\in \F_q^2: y^2+a_1xy+a_3y\!=\!x^3+a_2x^2+a_4x+a_6\}\cup\{\infty\}\!$$
+\end{beamercolorbox}}\pause
+
+\ \hfill \begin{beamercolorbox}[shadow=true,left,rounded=true,wd=9cm]{postit}
+ Hence\pause
+$$E(\F_q)\subset\F_q^2\cup\{\infty\}$$\pause
+\ \hfill$\infty$ might be though as the ``vertical direction''
+\end{beamercolorbox}\pause
+
+\begin{Definition}[line through points $P,Q\in E(\F_q)$]
+$r_{P,Q}:\begin{cases}
+                     \text{line through $P$ and }Q &\text{if }P\neq Q\\
+                     \text{tangent line to $E$ at }P &\text{if }P=Q
+                    \end{cases}$
+\end{Definition}\pause
+
+\begin{itemize}[<+-| alert@+>]
+\item if $\#(r_{P,Q}\cap E(\F_q))\ge2\ \Rightarrow\ \#(r_{P,Q}\cap E(\F_q))=3$\\
+\hfill\scriptsize{\alert{if tangent line, contact point is counted with multiplicity}}  
+\item $r_{\infty,\infty}\cap E(\F_q)=\{\infty,\infty,\infty\}$%\vspace*{-4.4pt}
+ % $\#(r_{P_1,P_1}\cap E(\F_q))=2$
+ \item $r_{P,Q}: aX+b=0$ (vertical) $\Rightarrow \infty=\in r_{P,Q}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{History (from \textsc{Wikipedia})}
+
+\begin{columns}[c]
+\begin{column}{4.5cm}
+\begin{small}
+\textbf{Carl Gustav Jacob Jacobi} (10/12/1804 -- 18/02/1851) was a German mathematician,
+who made fundamental contributions to elliptic functions, dynamics, differential equations,
+and number theory.
+\end{small}\\
+\centerline{\includegraphics[width=1.8cm]{images/Jacobi.jpg}}
+%\centerline{\scriptsize{Carl Gustav Jacob Jacobi}}\\
+\begin{scriptsize}\begin{block}{Some of His Achievements:}
+\begin{itemize}
+ \item Theta and elliptic function
+ \item Hamilton Jacobi Theory
+ \item Inventor of determinants
+ \item Jacobi Identity\\
+ \tiny{ $[A,[B,C]]+[B,[C,A]]+[C,[A,B]]=0$}
+\end{itemize}
+\end{block}\end{scriptsize}
+\end{column}\pause
+\begin{column}{5.5cm}\vspace*{-16.3pt}
+\begin{center}
+\includegraphics[width=5.5cm]{images/add1.pdf}\pause
+\llap{\includegraphics[width=5.5cm]{images/add2.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add3.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add5.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add6.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add7.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add1.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add8.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add9.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad10.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad11.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad12.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add1.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad13.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad14.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad15.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add7.pdf}}\pause
+\end{center}
+\small{
+$r_{P,Q}\cap E(\F_q)=\{P,Q,R\}$\\
+$r_{R,\infty}\cap E(\F_q)=\{\infty,R,R'\}$}
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2cm]{formul}
+$P+_E Q:=R'$\pause
+            \end{beamercolorbox}}\smallskip
+
+ \small{$r_{P,\infty}\cap E(\F_q)=\{P,\infty,P'\}$}\\
+ \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2cm]{formul}
+             $-P:=P'$
+            \end{beamercolorbox}}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Properties of the operation ``$+_E$''}
+
+\begin{Theorem}
+ The addition law on $E(\F_q)$ has the following
+properties:
+\begin{enumerate}[<+-| alert@+>][(a)]
+ \item $P+_EQ\in E(\F_q)\hfill\forall P,Q\in E(\F_q)$
+ \item  $P+_E\infty=\infty+_E P=P\hfill\forall P\in E(\F_q)$
+ \item  $P+_E(-P)=\infty\hfill\forall P\in E(\F_q)$
+ \item  $P+_E(Q +_E R)=(P+_E Q)+_E R\hfill\forall P,Q,R\in E(\F_q)$
+ \item  $P+_E Q=Q +_E P\hfill\forall P,Q\in E(\F_q)$
+\end{enumerate}
+ \end{Theorem}\pause
+
+\begin{itemize}[<+-| alert@+>]
+%  \item By ``a point of $E/\F_q$ ($P\in E$)'' we mean $P\in E(\bar{\F}_q)$
+%  in analogy for $E/\Q$ where ``a point of $E$'' means  $P\in E(\C)$
+ \item $\left(E(\F_q),+_E\right)$  \alert{commutative group}
+ \item All group properties are easy except \alert{associative law (d)}
+ \item Geometric proof of associativity uses \emph{Pappo's Theorem}
+ %\item We shall comment on how to do it by explicit computation
+ \item can substitute $\F_q$ with any field $K$; Theorem holds for $\left(E(K),+_E\right)$
+\item In particular, if $E/\F_q$, can consider the groups $E(\overline{\F}_q)$ or $E(\F_{q^n})$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Computing the inverse $-P$}
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7cm]{formul}
+$E: y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$\end{beamercolorbox}}\pause
+
+If $P=(x_1,y_1)\in E(\F_q)$
+
+\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=\textwidth]{formul}
+           \textbf{\color[rgb]{1,0.3,1}Definition:}  $-P:=P'$ where $r_{P,\infty}\cap E(\F_q)=\{P,\infty,P'\}$\hfill\
+            \end{beamercolorbox}\hfill\pause
+
+Write $P'=(x_1',y_1')$. Since $r_{P,\infty}: x=x_1\ \Rightarrow x_1'=x_1$ and $y_1$ satisfies
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=8.8cm]{postit}
+$y^2+a_1x_1y+a_3y-(x_1^3+a_2x_1^2+a_4x_1+a_6)=(y-y_1)(y-y_1')$
+\end{beamercolorbox}}\pause
+
+So $y_1+y_1'=-a_1x_1-a_3$ (\alert{both coefficients of $y$}) and
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{postit}
+$-P=-(x_1,y_1)=(x_1,-a_1x_1-a_3-y_1)$
+ \end{beamercolorbox}}\pause
+
+
+So, if $P_1=(x_1,y_1), P_2=(x_2,y_2)\in E(\F_q)$,
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{formul}
+           \textbf{\color[rgb]{1,0.3,1}Definition:} $P_1+_EP_2=-P_3$ where $r_{P_1,P_2}\cap E(\F_q)=\{P_1,P_2,P_3\}\!$
+            \end{beamercolorbox}\hfill\pause
+
+Finally, if $P_3=(x_3,y_3)$, then
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{postit}
+$P_1+_EP_2=-P_3=(x_3,-a_1x_3-a_3-y_3)$
+\end{beamercolorbox}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lines through points of $E$}
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{formul}
+$E: y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$\end{beamercolorbox}}
+where $a_1, a_3, a_2, a_4 ,a_6\in\F_q,$ \pause
+
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]
+{$P_1=(x_1,y_1), P_2=(x_2,y_2)\in E(\F_q)$}
+\begin{enumerate}[<+-| alert@+>]
+ \item $P_1\neq P_2$ and $x_1\neq x_2\hfil \Longrightarrow\hfil r_{P_1,P_2}: y=\lambda x+\nu$
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{postit}
+$$\lambda= \frac{y_2-y_1}{x_2-x_1},\qquad \nu=\frac{y_1x_2-x_1y_2}{x_2-x_1}$$
+\end{beamercolorbox}
+ \item $P_1\neq P_2$ and $x_1=x_2\hfil \Longrightarrow\hfil r_{P_1,P_2}: x=x_1$
+ \item  $P_1=P_2$ and $2y_1+a_1x_1+a_3\neq0\ \Longrightarrow\ r_{P_1,P_2}: y=\lambda x+\nu$
+\hspace*{-0.5cm}\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=9.3cm]{postit}
+$$\lambda=\frac{3x_1^2+2a_2x_1+a_4-a_1y_1}{2y_1+a_1x_1+a_3},
+ \nu=-\frac{a_3y_1+x_1^3-a_4x_1-2a_6}{2y_1+a_1x_1+a_3}$$
+\end{beamercolorbox}
+\item $P_1=P_2$ and $2y_1+a_1x_1+a_3=0\hfil \Longrightarrow\hfil r_{P_1,P_2}: x=x_1$
+\item $r_{P_1,\infty}: x=x_1\hfill r_{\infty,\infty}: Z=0$
+\end{enumerate}
+\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}
+\frametitle{Intersection between a line and $E$}
+We want to compute $P_3= (x_3,y_3)$ where $r_{P_1,P_2}: y=\lambda x +\nu$,
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=5cm]{postit}
+$r_{P_1,P_2}\cap E(\F_q)=\{P_1,P_2,P_3\}$
+\end{beamercolorbox}}
+\pause
+
+We find the intersection:
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{formul}
+$r_{P_1,P_2}\cap E(\F_q)=$ \scriptsize{\ $\begin{cases}
+ E:y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6\\ r_{P_1,P_2}: y=\lambda x +\nu
+ \end{cases}$}
+\end{beamercolorbox}}
+ \pause
+Substituting\\
+\centerline{\begin{beamercolorbox}[center,wd=\textwidth]{postit}
+$(\lambda x +\nu)^2+a_1x(\lambda x +\nu)+a_3(\lambda x +\nu)=x^3+a_2x^2+a_4x+a_6$
+            \end{beamercolorbox}}\pause
+Since $x_1$ and $x_2$ are solutions, we can
+find $x_3$ by comparing
+\begin{scriptsize}
+
+\centerline{\begin{beamercolorbox}[center,wd=9cm]{postit}
+    \begin{align*}
+&x^3+a_2x^2+a_4x+a_6-((\lambda x +\nu)^2+a_1x(\lambda x +\nu)+a_3(\lambda x +\nu))&=\\
+\uncover<5->{&x^3+(\alert{a_2-\lambda^2-a_1\lambda})x^2+\cdots&=\\ }
+\uncover<6->{&(x - x_1)(x - x_2)(x - x_3) = x^3 - ({\color[rgb]{0,0,1}x_1 + x_2 + x_3})x^2 + \cdots&\\ } %(x_1x_2 + x_1x_3 + x_2x_3)x - x_1x_2x_3
+\notag
+\end{align*}\vskip-1.5em
+\end{beamercolorbox}}
+\end{scriptsize}\pause\pause\pause
+
+Equating coeffcients of $x^2$,
+\centerline{\begin{beamercolorbox}[center,wd=8cm]{postit}
+$x_3 = \lambda^2-a_1\lambda-a_2- x_1-x_2,\qquad y_3 = \lambda x_3 + \nu$
+            \end{beamercolorbox}}
+\pause
+Finally\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{formul}
+\small{$P_3 =({\color[cmyk]{0,1,1,0.5}\lambda^2-a_1\lambda-a_2-x_1-x_2},{\color[cmyk]{1,0,1,0.5}\lambda^3-a_1\lambda^2-\lambda(a_2+x_1+x_2)+\nu})$}
+            \end{beamercolorbox}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Formulas for Addition on $E$ (Summary)}
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{formul}
+$E: y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$\end{beamercolorbox}}\pause
+$P_1 = (x_1, y_1), P_2 = (x_2, y_2)\in E(\F_q)\setminus\{\infty\}$,
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Addition Laws for the sum of affine points}
+\begin{itemize}[<+-| alert@+>]
+ \item If $P_1\neq P_2$
+\begin{itemize}
+ \item $x_1 = x_2\ \hfill\Rightarrow\hfil$\ \ \
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2cm]{formul}$P_1 +_E P_2 = \infty$
+\end{beamercolorbox}
+ \item $x_1 \neq x_2$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,wd=4cm]{postit}
+             $\lambda=\frac{y_2-y_1}{x_2-x_1}\qquad \nu=\frac{y_1x_2-y_2x_1}{x_2-x_1}$
+            \end{beamercolorbox}}
+ \end{itemize}
+\item If $P_1 = P_2$
+\begin{itemize}
+ \item $2y_1+a_1x+a_3 = 0\ \hfill\Rightarrow\hfil$\ \ \
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=3cm]{formul}$P_1 +_E P_2 = 2P_1 = \infty$\end{beamercolorbox}
+\item $2y_1+a_1x+a_3\neq 0$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,wd=7cm]{postit}
+$\lambda=\frac{3x_1^2+2a_2x_1+a_4-a_1y_1}{2y_1+a_1x+a_3}, \nu=-\frac{a_3y_1+x_1^3-a_4x_1-2a_6}{2y_1+a_1x_1+a_3}$
+            \end{beamercolorbox}}
+\end{itemize}
+\end{itemize}\pause
+
+Then\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=10cm]{formul}
+\scriptsize{$P_1 +_E P_2 = ({\color[cmyk]{0,1,1,0.5}\lambda^2-a_1\lambda-a_2-x_1-x_2},
+{\color[cmyk]{1,0,1,0.5}-\lambda^3-a_1^2\lambda+(\lambda+a_1)(a_2+x_1+x_2)-a_3-\nu})$}
+            \end{beamercolorbox}}
+\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}
+\frametitle{Formulas for Addition on $E$ (Summary for special equation)}
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{formul}
+$E: y^2=x^3+Ax+B$\end{beamercolorbox}}
+$P_1 = (x_1, y_1), P_2 = (x_2, y_2)\in E(\F_q)\setminus\{\infty\}$,
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Addition Laws for  the sum of affine points}
+\begin{itemize}
+ \item If $P_1\neq P_2$
+\begin{itemize}
+ \item $x_1 = x_2\ \hfill\Rightarrow\hfil$\ \ \
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2cm]{formul}$P_1 +_E P_2 = \infty$
+\end{beamercolorbox}
+ \item $x_1 \neq x_2$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,wd=4cm]{postit}
+             $\lambda=\frac{y_2-y_1}{x_2-x_1}\qquad \nu=\frac{y_1x_2-y_2x_1}{x_2-x_1}$
+            \end{beamercolorbox}}
+ \end{itemize}
+\item If $P_1 = P_2$
+\begin{itemize}
+ \item $y_1 = 0\ \hfill\Rightarrow\hfil$\ \ \
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=3cm]{formul}$P_1 +_E P_2 = 2P_1 = \infty$\end{beamercolorbox}
+\item $y_1\neq 0$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,wd=7cm]{postit}
+$\lambda=\frac{3x_1^2+A}{2y_1}, \nu=-\frac{x_1^3-Ax_1-2B}{2y_1}$
+            \end{beamercolorbox}}
+\end{itemize}
+\end{itemize}
+
+Then\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7cm]{formul}
+\small{$P_1 +_E P_2 = ({\color[cmyk]{0,1,1,0.5}\lambda^2-x_1-x_2},
+{\color[cmyk]{1,0,1,0.5}-\lambda^3+\lambda(x_1+x_2)-\nu})$}
+            \end{beamercolorbox}}
+\end{beamerboxesrounded}
+
+\end{frame}
+
+\begin{frame}
+ \begin{Theorem}
+ The addition law on $E/K$ ($K$ field) has the following
+properties:
+\begin{enumerate}[(a)]
+ \item  $P+_EQ\in E \hfill\forall P,Q\in E$
+ \item  $P+_E\infty=\infty+_E P=P\hfill\forall P\in E$
+ \item  $P+_E(-P)=\infty\hfill\forall P\in E$
+ \item  $P+_E(Q +_E R)=(P+_E Q)+_E R\hfill\forall P,Q,R\in E$
+ \item  $P+_E Q=Q +_E P\hfill\forall P,Q\in E$
+\end{enumerate}
+So $(E(\bar{K}),+_E)$ is an abelian group.
+ \end{Theorem}\pause
+
+ \begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Remark:}
+If $E/K \ \Rightarrow\ \forall L, K\subseteq L\subseteq\bar{K}, E(L)$ is an abelian group.
+\end{beamerboxesrounded}\medskip\pause
+
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{postit}
+$$-P=-(x_1,y_1)=(x_1,-a_1x_1-a_3-y_1)$$
+\end{beamercolorbox}}
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{A Finite Field Example}
+
+Over $\F_p$ geometric pictures don't make sense.
+
+ \begin{example}
+Let
+$E: y^2 = x^3 - 5x + 8 /\F_{37}$,\pause\hfill $P = (6, 3) , Q = (9, 10)\in E(\F_{37})$\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7.3cm]{formul}
+$r_{P,Q}: y=27x+26\quad r_{P,P}: y=11x+11 $
+            \end{beamercolorbox}}\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{postit}
+$r_{P,Q}\cap E(\F_{37})=\begin{cases}
+                          y^2 = x^3 - 5x + 8 \\ y = 27 x + 26
+                         \end{cases}\!\!=\{(6,3), (9,10), (11,27)\}$
+                                     \end{beamercolorbox}}\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{postit}
+$r_{P,P}\cap E(\F_{37})=\begin{cases}
+                          y^2 = x^3 - 5x + 8 \\ y =11 x + 11
+                         \end{cases}\!\!=\{(6,3), (6,3), (35,26)\}$\end{beamercolorbox}}\pause
+
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7.3cm]{formul}
+$P+_EQ=(11,10)\qquad 2P=(35,11)$
+            \end{beamercolorbox}}\pause
+
+\ \hfill\scriptsize{$3P=(34,25), 4P=(8,6), 5P=(16,19),\ldots 3P+4Q=(31,28),\ldots$}
+ \end{example}
+
+%  \begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Exercise}
+%  Compute the order and the {\color[rgb]{0.1,0.3,1}{Group Structure}} of $E(\F_{37})$
+%   \end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}%[label=current]
+ \frametitle{Group Structure}
+
+\begin{theorem}[Classification of finite abelian groups]
+ If $G$ is {\color[rgb]{0.9,0.3,0.2}{abelian and finite}},  $\exists n_1,\ldots,n_k\in\N^{>1}$ such that
+ \begin{enumerate}[<+-| alert@+>]
+\item $n_1\mid n_2\mid\cdots\mid n_k$
+\item $G\cong C_{n_1}\oplus\cdots\oplus C_{n_k}$
+\end{enumerate}
+Furthermore $n_1,\ldots,n_k$ ({\color[rgb]{0.9,0.3,0.2} Group Structure}) are unique
+ \end{theorem}\pause
+
+\begin{example}[One can verify that:]
+ $$C_{2400}\oplus C_{72} \oplus C_{1440}\cong C_{12}\oplus C_{60}\oplus C_{15200}$$
+\end{example}\pause
+
+Shall show that
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+$$E(\F_q)\cong C_n\oplus C_{nk}\qquad\exists n,k\in\N^{>0}$$
+            \end{beamercolorbox}}\pause
+
+            (i.e. $E(\F_q)$ is either cyclic ($n=1$) or the product of $2$ cyclic groups)
+\end{frame}
+
+% \begin{frame}%[label=current2]
+%  \frametitle{Proof of the associativity}
+%  \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7.3cm]{formul}
+%              $P+_E(Q+_ER)=(P+_EQ)+_ER\quad\forall P,Q,R\in E$
+%             \end{beamercolorbox}}\pause
+%  We should verify the above in many different cases according if $Q=R$, $P=Q$, $P=Q+_ER,\ldots$\pause
+% 
+% Here we deal with the \emph{generic case}. i.e. All the points
+% \alert{$\pm P, \pm R,\pm Q,\pm(Q+_ER),\pm(P+_EQ),\infty$} all different
+% 
+% {\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=9.6cm]{postit}
+%  \scriptsize{{\color[rgb]{1,0.1,0.1}\texttt{Mathematica code}}\\
+% \texttt{L[x\_,y\_,r\_,s\_]:=(s-y)/(r-x);\\
+% M[x\_,y\_,r\_,s\_]:=(yr-sx)/(r-x);\\
+% A[\{x\_,y\_\},\{r\_,s\_\}]:=\{(L[x,y,r,s])$^2$-(x+r),\\
+% \ \hfill -(L[x,y,r,s])$^3$+L[x,y,r,s](x+r)-M[x,y,r,s]\}\\
+% Together[A[A[\{x,y\},\{u,v\}],\{h,k\}]-A[\{x,y\},A[\{u,v\},\{h,k\}]]]\\
+% det = Det[(\{\{1,x$_1$,x$_1^3$-y$_1^2$\},\{1,x$_2$,x$_2^3$-y$_2^2$\},\{1,x$_3$,x$_3^3$-y$_3^2$\}\})]\\
+% PolynomialQ[Together[Numerator[Factor[res[[1]]]]/det],\\
+% \ \hfill\{x$_1$,x$_2$,x$_3$,y$_1$,y$_2$,y$_3$\}]
+% PolynomialQ[Together[Numerator[Factor[res[[2]]]]/det],\\ \ \hfill\{x$_1$,x$_2$,x$_3$,y$_1$,y$_2$,y$_3$\}]}}
+%              \end{beamercolorbox}}\pause
+% 
+% 
+% % {\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=9.6cm]{postit}
+% %  \scriptsize{{\color[rgb]{1,0.1,0.1}\texttt{Pari code}}\\
+% % \texttt{L(a,b,c,d)=(d-b)/(c-a);\\
+% % M(a,b,c,d)=(b*c-a*d)/(c-a);\\
+% % AX(a,b,c,d)=L(a,b,c,d)\^{}2-(a+c);\\
+% % AY(a,b,c,d)=-L(a,b,c,d)\^{}3+L(a,b,c,d)*(a+c)-M(a,b,c,d);\\
+% % simplify(AX(x1,y1,AX(x2,y2,x3,y3),AY(x2,y2,x3,y3))-\\ \ \hfill AX(AX(x1,y1,x2,y2),AY(x1,y1,x2,y2),x3,y3));\\
+% % simplify(AY(x1,y1,AX(x2,y2,x3,y3),AY(x2,y2,x3,y3))-\\ \ \hfill AY(AX(x1,y1,x2,y2),AY(x1,y1,x2,y2),x3,y3))}}
+% % \end{beamercolorbox}}\pause
+% 
+% \begin{scriptsize}
+% \begin{itemize}[<+-| alert@+>]
+%  \item runs in 2 seconds on a PC
+%  %\item Complete proof requires several cases (e.g. $(P+_EP)+_ER=P+_E(P+_ER)$)
+%  \item For an elementary proof:
+%  ``\text{An Elementary Proof of the Group Law for Elliptic Curves.}''
+% Department of Mathematics: Rice
+% University. Web. 20 Nov. 2009.\\ \ \hfill\texttt{http://math.rice.edu/\~{}friedl/papers/AAELLIPTIC.PDF}
+% \item More cases to check. e.g  \alert{$P+_E2Q=(P+_EQ)+_EQ$}
+% \end{itemize}
+% \end{scriptsize}
+% \end{frame}
+
+
+
+\section{Examples}
+\subsection{Structure of \texorpdfstring{$E(\F_2)$}{E(F2)}}
+\begin{frame}
+\frametitle{EXAMPLE: Elliptic curves over $\F_2$}
+
+From our previous list:
+\begin{block}{Groups of points}
+\begin{tabular}{|l|c|l|}
+\hline
+ $E$ & $E(\F_2)$ & $|E(\F_2)|$\\
+\hline
+&&\\
+ $y^2+xy=x^3+x^2+1$ & $\{\infty,(0,1)\}$& $2$\\
+&&\\
+$y^2+xy=x^3+1$ & $\{\infty,(0,1),(1,0),(1,1)\}$ & $4$\\
+&&\\
+$y^2+y=x^3+x$&$\{\infty,(0,0),(0,1),$ &\\ &$(1,0),(1,1)\}$&$5$\\
+&&\\
+ $y^2+y=x^3+x+1$ &$\{\infty\}$&$1$\\
+&&\\
+$y^2+y=x^3$ & $\{\infty,(0,0), (0,1)\}$ & $3$ \\
+&&\\\hline
+\end{tabular}
+\end{block}
+\pause
+So for each curve $E(\F_2)$ is cyclic except possibly for the second for which we need to distinguish between
+$C_4$ and $C_2\oplus C_2$.\pause
+
+\ \hfill \begin{beamercolorbox}[center,wd=9cm]{postit}
+Note: each $C_i, i=1,\ldots,5$ is represented by a curve $/\F_2$
+            \end{beamercolorbox}
+\end{frame}
+
+
+\subsection{Structure of \texorpdfstring{$E(\F_3)$}{E(F3)}}
+\begin{frame}
+\frametitle{EXAMPLE: Elliptic curves over $\F_3$}
+From our previous list:
+
+\begin{block}{Groups of points}%\begin{center}
+\begin{tabular}{|l|r|c|c|}
+\hline
+$i$ & $E_i$ & $E_i(\F_3)$ &$|E_i(\F_3)|\!$\\
+\hline
+$1$& $y^2=x^3+x$ & \scriptsize{$\{\infty,(0,0),(2,1),(2,2)\}$}& $4$\\
+\hline
+$2$&$y^2=x^3 - x$ & \scriptsize{$\{\infty,(1,0),(2,0),(0,0)\}$} & $4$\\
+\hline
+$3$&$y^2=x^3 - x +1$&\tiny{$\{\infty,(0,1),(0,2),(1,1),(1,2),(2,1),(2,2)\}$} & $7$\\
+\hline
+$4$&$y^2=x^3 - x -1$  &\scriptsize{$\{\infty\}$}&$1$\\
+\hline
+$5$&$y^2=x^3 + x^2 - 1$ & \scriptsize{$\{\infty,(1,1), (1,2)\}$} & $3$ \\
+\hline
+$6$&$y^2=x^3 + x^2 + 1$ & \Tiny{$\{\infty,(0,1), (0,2), (1,0),(2,1), (2,2)\}$} & $6$ \\
+\hline
+$7$&$y^2=x^3 - x^2 + 1$ & \scriptsize{$\{\infty,(0,1), (0,2), (1,1), (1,2),\}$} & $5$ \\
+\hline
+$8$&$y^2=x^3 - x^2 - 1$ & \scriptsize{$\{\infty,(2,0))\}$} & $2$ \\
+\hline
+\end{tabular}
+%\end{center}
+\end{block}
+\pause
+Each $E_i(\F_3)$ is cyclic except possibly for $E_1(\F_3)$ and $E_2(\F_3)$ that could be either
+$C_4$ or $C_2\oplus C_2$. We shall see that:\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7cm]{formul}
+$E_1(\F_3)\cong C_4\qquad\text{and}\qquad E_2(\F_3)\cong C_2\oplus C_2$
+\end{beamercolorbox}}\pause
+
+\ \hfill \begin{beamercolorbox}[center,wd=9cm]{postit}
+Note: each $C_i, i=1,\ldots,7$ is represented by a curve $/\F_3$
+            \end{beamercolorbox}
+
+
+\end{frame}
+
+
+\subsection{Further Examples}
+\begin{frame}
+\frametitle{EXAMPLE: Elliptic curves over $\F_5$}
+
+\begin{example}[Elliptic curves over $\F_5$]
+\begin{itemize}[<+-| alert@+>]
+ \item $\forall E/\F_5$ (12 elliptic curves)
+ \item $\#E(\F_5)\in \{2,3,4,5,6,7,8,9,10\}.$ 
+ \item $\forall n, 2\le n\le10, \exists!\ E/\F_5: \#E(\F_5)=n$
+%each number corresponds to a unique curve
+\item[] with three exceptions:
+
+\item \alert{$E_1: y^2=x^3+1$} and \alert{$E_2: y^2=x^3+2$}\hfill both order $6$
+$$E_1(\F_5)\cong E_2(\F_5)\cong C_6$$
+\item \alert{$E_3: y^2=x^3+x$} and \alert{$E_4: y^2=x^3+x+2$}
+\hfill both order $4$
+$$E_3(\F_5)\cong C_2\oplus C_2\qquad E_4(\F_5)\cong C_4$$
+\item \alert{$E_5: y^2=x^3+4x$} and \alert{$E_6: y^2=x^3+4x+1$}
+\hfill both order $8$
+$$E_5(\F_5)\cong C_2\oplus C_4\qquad E_6(\F_5)\cong C_8$$
+\item \alert{$E_7: y^2=x^3+x+1$}\hfill  order $9$ and $E_7(\F_5)\cong C_9$
+\end{itemize}
+\end{example}
+\end{frame}
+
+
+\section{Points of finite order}
+
+\subsection{Points of order 2}
+\begin{frame}\frametitle{Determining points of order $2$}
+Let $P=(x_1,y_1)\in E(\F_q)\setminus\{\infty\},$\\ \pause
+\centerline{
+ \begin{beamercolorbox}[rounded=true,shadow=true,wd=9cm,center]{formul}
+$P$ has order $2\ \Longleftrightarrow\ 2P=\infty\ \Longleftrightarrow\ P=-P$
+\end{beamercolorbox}}\pause
+So
+\centerline{\small{
+ \begin{beamercolorbox}[rounded=true,shadow=true,wd=10cm,center]{formul}
+$-P=(x_1,-a_1x_1-a_3-y_1)=(x_1,y_1)=P\ \pause \Longrightarrow\ 2y_1=-a_1x_1-a_3$\end{beamercolorbox}}}\pause\medskip
+
+If $p\neq2$, can assume $E: y^2=x^3+Ax^2+Bx+C$\pause
+
+\centerline{\small{
+ \begin{beamercolorbox}[rounded=true,shadow=true,wd=10cm,center]{formul}
+$-P=(x_1,-y_1)=(x_1,y_1)=P\ \pause \Longrightarrow\ y_1=0,
+x_1^3+Ax_1^2+Bx_1+C=0$\hfill
+\end{beamercolorbox}}}\pause\medskip
+
+\begin{Note}
+\begin{itemize}[<+-| alert@+>]
+ \item the number of points of order $2$ in $E(\F_q)$ equals the number of roots of $X^3+Ax^2+Bx+C$ in $\F_q$
+ \item roots are distinct since discriminant $\Delta_E\neq0$
+ \item $E(\F_{q^6})$ has always $3$ points of order $2$ if $E/\F_q$
+ \item $E[2]:=\{P\in E(\bar{\F}_q): 2P=\infty\}\cong C_2\oplus C_2$
+\end{itemize}
+\end{Note}
+
+\end{frame}
+
+\begin{frame}\frametitle{Determining points of order $2$ (continues)}
+
+\begin{itemize}[<+-| alert@+>]
+\item If $p=2$ and $E: y^2+a_3y=x^3+a_2x^2+a_6$\pause
+
+ \begin{beamercolorbox}[rounded=true,shadow=true,wd=10cm,center]{formul}
+$-P=(x_1,a_3+y_1)=(x_1,y_1)=P\ \pause \Longrightarrow\ a_3=0$\end{beamercolorbox}\pause\medskip
+
+Absurd ($a_3=0$) and there are no points of order $2$.
+%$\begin{cases}
+ %  x=a_3/a_1\\
+  % y^2+a_1xy+a_3y+x^3+a_2x^2+a_4x+a_6=0
+  %\end{cases}\longrightarrow$,
+\item If $p=2$ and $E: y^2+xy=x^3+a_4x+a_6$\pause
+
+ \begin{beamercolorbox}[rounded=true,shadow=true,wd=10cm,center]{formul}
+$-P=(x_1,x_1+y_1)=(x_1,y_1)=P\ \pause \Longrightarrow\ x_1=0,y_1^2=a_6$\end{beamercolorbox}\pause\medskip
+
+So there is exactly one point of order $2$ namely $(0,\sqrt{a_6})$
+\end{itemize}\pause
+
+\begin{Definition}{$2$--torsion points}
+$$E[2]=\{P\in E: 2P=\infty\}.$$
+\end{Definition}
+In conclusion
+$$E[2]\cong \begin{cases}
+C_2\oplus C_2 &\text{if }p>2\\
+C_2           &\text{if }p=2, E: y^2+xy=x^3+a_4x+a_6\\
+\{\infty\}    &\text{if }p=2, E: y^2+a_3y=x^3+a_2x^2+a_6
+\end{cases}
+$$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Elliptic curves over $\F_2, \F_3$ and $\F_5$}
+\begin{small}
+\begin{block}{Each curve $/\F_2$ has cyclic $E(\F_2)$.}
+\begin{tabular}{|l|c|l|}
+\hline
+ $E$ & $E(\F_2)$ & $|E(\F_2)|$\\
+\hline
+ $y^2+xy=x^3+x^2+1$ & $\{\infty,(0,1)\}$& $2$\\
+\hline
+$y^2+xy=x^3+1$ & $\{\infty,(0,1),(1,0),(1,1)\}$ & $4$\\
+\hline
+$y^2+y=x^3+x$&$\{\infty,(0,0),(0,1),(1,0),(1,1)\}$&$5$\\
+\hline
+$y^2+y=x^3+x+1$ &$\{\infty\}$&$1$\\
+\hline
+$y^2+y=x^3$ & $\{\infty,(0,0), (0,1)\}$ & $3$ \\
+\hline
+\end{tabular}
+\end{block}\end{small}
+\pause
+\begin{itemize}
+ \item $E_1: y^2=x^3+x\qquad\qquad E_2:  y^2=x^3-x$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7.5cm]{formul}
+$E_1(\F_3)\cong C_4\qquad\text{and}\qquad E_2(\F_3)\cong C_2\oplus C_2$
+\end{beamercolorbox}}
+\item $E_3: y^2=x^3+x\qquad\qquad E_4: y^2=x^3+x+2$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7.5cm]{formul}
+$E_3(\F_5)\cong C_2\oplus C_2\qquad\text{and}\qquad E_4(\F_5)\cong C_4$
+\end{beamercolorbox}}
+\item $E_5: y^2=x^3+4x\qquad\qquad E_6: y^2=x^3+4x+1$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7.5cm]{formul}
+$E_5(\F_5)\cong C_2\oplus C_4\qquad\text{and}\qquad E_6(\F_5)\cong C_8$
+\end{beamercolorbox}}
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+

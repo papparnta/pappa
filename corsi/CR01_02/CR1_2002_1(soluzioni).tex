@@ -1,0 +1,284 @@
+\documentclass{article}
+\usepackage[italian]{babel}
+\textwidth=6.5in
+\oddsidemargin=0.1cm
+\evensidemargin=-0.9cm
+\textheight=9.8in
+\topmargin=-2cm
+\hfuzz=6pt
+
+\begin{document}
+
+\centerline{{\Large Soluzioni del compito di Crittografia a chiave
+pubblica (CR1) }}
+
+\centerline{{\large 5 Aprile 2001 (2 ore)}}
+
+\begin{itemize}
+\item[1.] \textbf{
+Se $n\in{\bf N}$, sia $\sigma(n)$ la somma dei divisori di $n$.
+Supponiamo che sia nota la fattorizzazione (unica) di
+$n=p_1^{\alpha_1}\cdots p_s^{\alpha_s}$. Calcolare il numero di
+operazioni bit necessarie per calcolare $\sigma(n)$. (\it
+Suggerimento: Usare il fatto che $\sigma$ \`{e} una funzione
+moltiplicativa e calcolare una formula per $\sigma(p^\alpha)$
+\rm)}
+\medskip
+
+\noindent\emph{Soluzione.} Dalla moltiplicativit\`{a} di $\sigma$
+segue che
+$\sigma(n)=\sigma(p_1^{\alpha_1})\cdots\sigma(p_1^{\alpha_1})$.
+Inoltre $\sigma(p^a)=\sum_{i\leq a}p^i=\frac{p^{a+1}-1}{p-1}$.
+Notare che {\bf Time}$(\sigma(p^a))=O(a^2\log^2 p)$ infatti
+l'operazione che richiede il maggior numero di operazioni bit
+\`{e} il calcolo di $p^{a+1}$. Questo implica che per calcolare
+$\sigma(p_1^{\alpha_1}),\ldots, \sigma(p_s^{\alpha_s})$ sono
+necessarie $O(\sum_{i\leq s}\alpha_i^2\log^2p_i)= O(\log^2 n)$
+operazioni bit. Quindi, calcolando $\sigma(n)$ moltiplicando gli
+$s$ numeri $\sigma(p_1^{\alpha_1}),\ldots, \sigma(p_s^{\alpha_s})$
+che sono tutti minori di $n^2$, otteniamo (usando la formula
+standard) \textbf{Time}$(\sigma(n))=O(s^2\log^2 n)$. Infine da
+$s=O(\log s)$ si ha \textbf{Time}$(\sigma(n))=O(\log^4 n)$. Con un
+p\`{o} di lavoro in pi\`{u} si pu\`{o} anche mostrare che
+\textbf{Time}$(\sigma(n))=O(\log^3 n)$.
+\bigskip
+
+\item[2.] \textbf{Mostrare che le moltiplicazioni nell'anello
+quoziente ${\bf Z}/n{\bf Z}[x]/(x^d)$ si possono calcolare in
+$O(\log^2 n^d$) operazioni bit mentre le addizioni in $O(\log
+n^d$) operazioni bit.}\medskip
+
+
+\noindent\emph{Soluzione.} Scriviamo
+$$f_1=\sum_{j=0}^{d-1}a_jx^j,\ f_2=\sum_{j=0}^{d-1}b_jx^j\in
+{\bf Z}/n{\bf Z}[x]/(x^d).$$ Allora
+$f_1+f_2=\displaystyle\sum_{j=0}^{d-1}(a_j+b_j)x^j.$ Pertanto
+\textbf{Time}$(f_1+f_2)$=\textbf{Time}$(a_0+b_0,\ldots,a_{d-1}+b_{d-1})=O(d\log
+n)$. Invece se scriviamo $f_1f_2=\sum_{k=0}^{d-1}c_kx^k$, allora
+$c_k=\sum_{i+j=k}a_ib_j$. Inoltre per ogni $k=0,\ldots,d-1$,
+\textbf{Time}($c_k))=O(d\log^2n)$ (infatti si tratta di $k$
+moltiplicazioni e $k-1$ somme in ${\bf Z}/n{\bf Z}$. Infine
+$$\textbf{Time}(f_1f_2)=\textbf{Time}(c_0,\ldots,c_{d-1}))=O(d^2\log^2n).$$
+\bigskip
+
+
+\item[3.] \textbf{Dato il numero binario $n=(10011100101)_2$,
+calcolare $[\sqrt{n}]$ usando l'algoritmo delle approssimazioni
+successive (Non passare a base 10 e  non usare la
+calcolatrice!)}\medskip
+
+
+\noindent\emph{Soluzione.} Applicando l'algoritmo delle approssimazioni successive
+otteniamo:
+\begin{center}
+\begin{tabular}{ll}
+$x_0=(100000)=2^5$ & \\
+$x_1=(100000)$     & $x_0+2^4>n$;\\
+$x_2=(100000)$    & $x_1+2^3>n$;\\
+$x_3=(100000)$    & $x_2+2^2>n$;\\
+$x_4=(100010)$    & $x_3+2<n$;\\
+$x_5=(100011)$    & $x_4+1<n$;\\
+\end{tabular}\end{center}
+
+Quindi $[\sqrt{n}]=100011$.
+\bigskip
+
+\item[4.] \textbf{Calcolare il massimo comun divisore tra $240$ e
+$180$ utilizzando sia l'algoritmo euclideo che quello binario.
+Calcolare anche l'identit\`{a} di Bezout.}\medskip
+
+
+\noindent\emph{Soluzione.} L'esecuzione dell'algoritmo di Euclide per calcolare $(240,180)$ \`{e}
+$$240=180+60;\ \ 180=3\cdot60+0;\ \ (240,180)=60.$$
+mentre quella di quello binario \`{e}
+$$(240,180)=4(60,45)=4(15,45)=4((45-15)/2,15)=4(15,15)=4(0,15)=4\cdot15=60.$$
+L'identit\`{a} di Bezout \`{e} $60=240-180.$
+\bigskip
+
+\item[5.] \textbf{Dimostrare che se $n=p_1\cdots p_{20}$ \`{e} un
+intero privo di fattori quadratici, e $f(x)\in{\bf Z}/n{\bf Z}[x]$
+ha grado 10, allora la congruenza $f(x)\equiv0\bmod n$ \`{e}
+risolvibile se e solo se lo sono le $20$ congruenze
+$\cases{f(x)\equiv0\bmod p_1\cr \vdots \cr f(x)\equiv0\bmod
+p_{20}.}$ Dedurre che la prima congruenza $f(x)\equiv0\bmod n$ ha
+al pi\`{u} $10^{20}$ soluzioni. Sapreste dare un esempio in cui le
+soluzioni sono esattamente $10^{20}$?}\medskip
+
+
+\noindent\emph{Soluzione.} \emph{(Se)} Per ogni $i=1,\ldots,20$,
+sia $\alpha_i$ una soluzione di $f(x)\equiv0\bmod p_i$ e sia
+$\alpha\in{\bf Z}/n{\bf Z}$ una soluzione del sistema di
+congruenze
+$$\left\{
+\begin{array}{l}
+X\equiv \alpha_1\bmod p_1\\
+\vdots\\
+X\equiv \alpha_{20}\bmod p_{20}
+\end{array}
+\right..$$ Si ha che $f(\alpha)\equiv f(\alpha_i)\equiv 0\bmod
+p_i$. Quindi $f(\alpha)$ \`{e} divisibile per  $p_1,\ldots,
+p_{20}$ e quindi per $n$.\\
+\emph{(Solo se)} Se $\alpha\in{\bf Z}/n{\bf Z}$ \`{e} una
+soluzione di $f(x)\equiv 0\bmod n$, allora $\alpha\bmod{p_i}$
+\`{e} una soluzione di $f(x)\equiv 0\bmod p_i.$ per ogni
+$i=1,\ldots,20$.
+
+Se $f(x)=x(x-1)(x-2)\ldots(x-9)$ e $n=11\cdot13\cdots 89$ (il
+prodotto dei 20 primi tra 11 e 89). Allora  $f$ ha esattamente
+$10^{20}$ soluzioni modulo $n$. Infatti per ciascuna delle
+$10^{20}$ scelte $i_1,\ldots,i_{20}\in\{0,\ldots,9\}$, il sistema
+di congruenza
+$$\left\{\begin{array}{l}
+X\equiv i_1\bmod p_1\\
+\vdots\\
+X\equiv  i_{20}\bmod p_{20}
+\end{array}\right.$$
+da luogo (per il Teorema cinese dei resti) a esattamente una
+soluzione modulo $n$.
+\bigskip
+
+\item[6.] \textbf{Illustrare l'algoritmo dei quadrati successivi
+in un gruppo analizzandone la complessit\`{a}. Fare anche un
+esempio.}\medskip
+
+
+\noindent\emph{Soluzione.} Sia $G$ un gruppo (o anche un monoide)
+abeliano indicato moltiplicativamente e sia $g\in G$. Per ogni
+$k\in{\mathbf{N}}$, idichiamo con ${\texttt{QS}(g,k)}$ l'elemento
+$g^k\in G$. Allora scriviamo l'espansione binaria
+$k=\sum_{j=0}^t\epsilon_j2^j$ e
+
+\begin{center}
+\texttt{
+\begin{tabular}{rcl}
+QS$(a,k)$ & $=$ & $A=g, B=1$\\
+ && for $j=0$ to $t$ do \\
+ && if $\epsilon_j=1$ then $B=B\cdot A$ fi\\
+ && $A=A^2$\\
+ && rof\\
+ && Print($B$).
+\end{tabular}
+}\end{center}
+
+Se $T_G$ \`{e} il massimo numero di operazioni bit necessarie per
+moltiplicare due elementi di $G$, allora
+\textbf{Time}(${\texttt{QS}(g,k)}$)=$O(tT_G)$.
+
+\emph{Esempio:} $G={\bf Z}/5{\bf Z}$, allora $2^5\bmod
+5=2\cdot(2^2)^2\bmod 5=2$ ($2^2=-1, (2^2)^2=-1$).
+\bigskip
+
+\item[7.] \textbf{Mettere in ordine di priorit\`{a} e spiegare il significato di ciascuna delle
+seguenti operazioni:
+$$x\!\sim,\ \  x\wedge y,\ \  x\& y,\ \  x\!+\!+,\ \  x\backslash y,\ \
+ x=y,\ \  x\% y,\ \  x|y,\ \  x\ll n.$$}\medskip
+
+
+\noindent\emph{Soluzione.} Ordine di priorit\`a: 1 massima, 5
+minima.
+\begin{enumerate}
+\item $x++$: $x=x+1$;
+\item $x=y$: assegna il valore dell'espressione $y$ ad $x$;
+\item $x\;\tilde{ }\;$: trasposta di $x$, vettore o matrice;\\
+$x\;\hat{}\;y$: $x$ elevato ad $y$;
+\item $x\backslash y$: restituisce $q$ t.c. $x=q * y+r$ (quoziente euclideo);\\
+$x\%y$: restituisce $r$ t.c. $x=q* y+r$ (resto euclideo);\\
+$x<<n$: shift sinistro di $x$ di $n$ bits, pari a $x*2^n$;
+\item $x\&y$: $x$ AND $y$;\\
+$x|y$: $x$ OR $y$;
+\end{enumerate}
+\bigskip
+
+\item{8.} \textbf{Si dia la definizione di pseudo primo forte in
+base $2$ e si mostri che se $n=2^\alpha+1$ \`{e} pseudo primo
+forte in base $2$, allora $2^{2^\beta}\equiv -1\bmod n$ per
+qualche $\beta<\alpha$.}\medskip
+
+
+\noindent\emph{Soluzione.} $n\in{\bf N}$ si dice
+\emph{pseudo--primo forte in base $2$} se, posto
+$n-1=2^\alpha\cdot t$ con $t$ dispari, si ha che
+$$(2^t,2^{2t},\ldots,2^{2^\alpha t})\equiv_n\left\{
+\begin{array}{l}
+(1,1,\ldots,1)\\
+(2^t,2^{2t},\ldots,2^{2^\beta t},-1,1,\ldots,1)\end{array}
+\right.$$ Nel caso in cui $n=2^\alpha+1$, allora $t=1$ e quindi la
+prima possibilit\`{a} non si presenta e quindi $\exists\beta<1$
+t.c. $2^{2^\beta}\equiv -1\bmod n.$
+\bigskip
+
+\item{9.} \textbf{Scrivere un programma in Pari che produca due
+vettori $v$ e $w$. In cui $v$ contiene i primi $100$ {\it
+pseudo-primi composti} in base $2$ e il secondo i primi $100$ {\it
+pseudo primi di Eulero composti} in base $2$.}\medskip
+
+\noindent\emph{Soluzione.}
+\begin{center}
+\texttt{
+\begin{tabular}{lll}
+n=1;\\
+v=VECTOR(100,i,&UNTIL(k!=1 \& & QUADSUCC(2,n-1,n)==1,\\
+                              & &n+=2;\\
+                              & &k=MATSIZE(FACTOR(n))[1]);\\
+         &n);\\
+\\
+n=1;\\
+w=VECTOR(100,i,&UNTIL(k!=1 \& &(Mod(QUADSUCC(2,(n-1)$>>$1,n),n)== Mod(JAC(2,n),n)),\\
+                              & &n+=2;\\
+                              & &k=MATSIZE(FACTOR(n))[1]);\\
+         &n);\\
+\end{tabular}
+}
+\end{center}
+\bigskip
+
+\item{10.} \textbf{Implementare RSA utilizzando il sistema Pari e
+creando tre funzioni distinte (una per generare le chiavi, una per
+cifrare e una per decifrare).}\medskip
+
+
+\noindent\emph{Soluzione.}
+
+\texttt{KEYGEN} $(n)$
+\begin{itemize}
+\item INPUT: $n=$numero di bits del modulo pubblico; \item OUTPUT:
+stampa le chiavi pubbliche $(e,m)$, ritorna la chiave privata $d$;
+\end{itemize}
+\texttt{CIFRA} $(P,e,M)$
+\begin{itemize}
+\item INPUT: $P=$messaggio in chiaro (formato numerico), $(e,M)$
+chiave pubblica; \item OUTPUT: $C=$messaggio cifrato (formato
+numerico);
+\end{itemize}
+\texttt{DECIFRA} $(C,d,M)$
+\begin{itemize}
+\item INPUT: $C=$messaggio cifrato (formato numerico), $(d,M)$
+chiave privata; \item OUTPUT: $P=$messaggio in chiaro (formato
+numerico);
+\end{itemize}
+
+%\begin{center}
+\texttt{
+\begin{tabular}{lll}
+KEYGEN(n,p,q,M,e,d,phi\_M) &=\\
+&p=NEXTPRIME(RANDOM(1$<<$(n$>>$1)));\\
+&q=NEXTPRIME(RANDOM(1$<<$(n$>>$1)));\\
+&M=p*q;\\
+&phi\_M=EULERPHI(M);\\
+&UNTIL(GCDBINARIO(e,phi\_M)==1,e=RANDOM(phi\_M));\\
+&d=LIFT(Mod(e,phi\_M)$\;\hat{}\;$(-1));\\
+&PRINT(e,M);\\
+&RETURN(d);\\
+\\
+CIFRA(P,e,M)=\\
+&RETURN(QUADSUCC(P,e,M));\\
+\\
+DECIFRA(C,d,M)=\\
+&RETURN(QUADSUCC(C,d,M));\\
+\end{tabular}
+}
+
+\bigskip
+
+\end{itemize}
+\end{document}

@@ -1,0 +1,368 @@
+
+%librerie 
+\documentclass[a4paper,12pt]{report}
+\usepackage[italian]{babel} 
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+ 
+
+\usepackage{showkeys} %da togliere nella versione definitiva (serve per le etichette(?))
+
+%librerie per le funzioni matematiche
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{latexsym}
+\usepackage{amsthm} 
+\usepackage{eucal} 
+\usepackage{latexsym} 
+\usepackage{amsfonts}
+%fine
+
+%teoremi, def etc
+\usepackage{amsthm}
+
+\theoremstyle{plain} 
+\newtheorem{thm}{Teorema}[section] 
+\newtheorem{cor}[thm]{Corollario} 
+\newtheorem{lem}[thm]{Lemma} 
+\newtheorem{prop}[thm]{Proposizione} 
+\newtheorem{ese}{Esempio}
+
+\theoremstyle{definition} 
+\newtheorem{defn}{Definizione}[chapter] 
+
+\theoremstyle{remark} 
+\newtheorem{oss}{Osservazione} 
+
+
+%impaginazione
+\pagestyle{fancy}\addtolength{\headwidth}{20pt} 
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}} 
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}} 
+\cfoot{} 
+
+\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}} 
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}} 
+%fine
+
+%interlinea
+\linespread{1}
+
+\begin{document}
+
+
+\begin{titlepage}
+\begin{center}
+
+{\small{\bf UNIVERSIT\`A DEGLI STUDI DI ROMA TRE \\ FACOLT\`A DI SCIENZE M.F.N.\\
+Corso di Laurea Magistrale in Matematica}}
+
+\end{center}
+
+
+\vspace{40 mm}
+
+
+
+
+\centerline{\vspace{5mm} {\large{\bf Sintesi della tesi di Laurea}}}
+\begin{center}
+\vspace{5mm}
+
+
+{\Large{\bf 	CRITTOGRAFIA A CHIAVE PUBBLICA BASATA SU RETICOLI: IL SISTEMA NTRU.}} \\
+\vspace{5mm}
+
+\vspace{3mm}
+
+
+\end{center}
+\vspace{35mm}
+\par
+\noindent
+\begin{minipage}[t]{0.47\textwidth}
+{\large{\bf Relatore:\\
+Prof.\\
+FRANCESCO PAPPALARDI}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\textwidth}\raggedleft
+{\large{\bf Candidato:\\
+RICCARDO CARBONE}
+}
+\end{minipage}
+\vspace{20 mm}
+\begin{center}
+{\large{Anno Accademico 2016-2017}\\
+Dipartimento di Matematica}
+
+\end{center}
+
+\end{titlepage}
+
+
+\pagenumbering{roman} % numeri romani per le pagine dell'introduzione
+
+
+\chapter*{Sintesi}% capitolo \`  \` dell'introduzione prima dell'indice. * serve per non numerarlo
+NTRU \`e un crittosistema presentato dai tre matematici J. Hoffstein, J. Pipher e J.H. Silverman nell'articolo ''NTRU: A Ring-Based Public Key Cryptosystem'', nel 1996. Non risultano spiegazioni ufficiali da parte degli autori riguardo il significato dell'acronimo NTRU. Secondo alcune interpretazioni, sembra che sia un'abbreviazione di \textit{\textbf{N}-th \textbf{TRU}ncated Polinomial Ring}, cio\` e \textit{Anello dei polinomi troncati di grado n}, in notazione matematica $R[x]/(x^N-1)$, ossia l'anello sottostante in cui lavora il sistema. Altre interpretazioni sono \textit{\textbf{N}umber \textbf{T}heorist '\textbf{R} \textbf{U}s} e \textit{\textbf{N}umber \textbf{T}heory  \textbf{R}esearch \textbf{U}nited}.\\
+Esso fa parte della categoria dei crittosistemi a chiave pubblica ed \` e stato profondamente studiato dalla crittografia teorica, dopo la sua pubblicazione, per via dei suoi innegabili vantaggi: il basso costo computazionale delle operazioni di cifratura e decifratura dei messaggi; la lunghezza della chiave, decisamente inferiore a quella dei crittosistemi pi\` u comuni; l'assenza in letteratura di attacchi quantistici, che lo fanno appartenere a tutti gli effetti ai cosiddetti Post Quantum Cryptosystems, l'insieme degli algoritmi resistenti agli attacchi di un computer quantistico.\\
+Attualmente RSA \` e l'algoritmo a chiave pubblica pi\` u conosciuto e usato nell'ambito della sicurezza informatica; tuttavia l'algoritmo di Shor, proposto nel 1994, risolve il problema della fattorizzazione dei numeri interi in tempo polinomiale, se implementato in un computer quantistico. Rappresenta quindi una minaccia piuttosto vicina per la sicurezza di RSA e di ogni altro algoritmo basato sulla fattorizzazione dei numeri interi. 
+\\
+Dopo aver fornito una panoramica generale della crittografia, dagli albori fino agli anni '60, abbiamo esposto gli aspetti matematici di NTRU e valutato poi la vulnerabilit\` a. Descritti i principali attacchi conosciuti, il primo dei quali l'algoritmo LLL, abbiamo visto come sia possibile renderlo inviolabile con un'adeguata scelta dei parametri, facendo di esso uno dei migliori candidati a sostituire RSA.
+\\ \\ \\
+  Nel \underline{Capitolo uno}, dopo aver presentato la crittografia classica attraverso una breve introduzione storica, abbiamo definito il concetto di crittografia a chiave pubblica. Ne abbiamo illustrato i concetti principali, e abbiamo mostrato i pi\` u comuni esempi, dando maggiore rilevanza all'algoritmo RSA. 
+\\ \\ 
+  Nel \underline {Capitolo due} abbiamo introdotto la teoria dei reticoli. 
+\\Nel primo paragrafo abbiamo descritto un semplice crittosistema, la cui struttura matematica \`e basata su un reticolo di dimensione 2. Poi abbiamo richiamato alcuni concetti fondamentali della geometria e dell'algebra lineare. Infine abbiamo esposto e dimostrato l'algoritmo di Gram-Schmidt, necessario per la dimostrazione e la comprensione dell'algoritmo LLL, descritto nel Capitolo quattro.
+Abbiamo successivamente descritto le nozioni principali che ci sono servite per vedere il crittosistema NTRU come un reticolo e evidenziato come la sua sicurezza sia fondata sulla "ricerca del vettore minimo su un reticolo", analogamente alla fattorizzazione degli interi in RSA.
+Queste nozioni ci sono servite inoltre per descrivere l'algoritmo LLL (Lenstra-Lenstra-Lovasz) che, concepito inizialmente per fattorizzare polinomi a coefficienti razionali in tempo polinomiale, trova applicazioni in teoria dei numeri e in crittoanalisi, e rappresenta attualmente, sotto certe condizioni, il principale attacco a NTRU. 
+
+Abbiamo quindi dato le seguenti definizioni:\\
+
+\begin{defn}
+Dati i vettori $v_1,\cdots,v_n \in \mathbb{R}^n$ linearmente indipendenti, si dice $\mathbf {reticolo}$ generato da $v_1,\cdots,v_n$ l'insieme dei vettori della forma $a_1v_1+\cdots+a_nv_n$, con $a_1,\cdots,a_n \in \mathbb{Z}$. I vettori costituiscono una $\mathbf{base}$ del reticolo.
+\end{defn}
+\begin {defn}
+Sia $v=(x_1,\cdots,x_n)\in \mathbb{R}^n$; si definisce lunghezza di $v$ la quantit\` a $\left\|v \right\|=\sqrt{x_1^2+\cdots+x_n^2}$.
+Si definisce $\mathbf{determinante}$ di un reticolo di base $v_1,\cdots,v_n$ la quantit\` a $D=\left|\det(v_1,\cdots,v_n) \right|$.
+
+\end{defn}
+
+
+
+\begin{defn}
+Sia L un reticolo di dimensione $n$, e sia $\textbf v_1,\cdots,\textbf v_n$ una base di L. Il \textit{dominio fondamentale} di L \` e l'insieme
+\\ \\ \centerline{\textit{F}$(\textbf v_1,\cdots,\textbf v_n)=\{\ t_1\textbf v_1+\cdots+t_n\textbf v_n: 0\le t_i<1\}\ $.} 
+\end{defn}
+
+Abbiamo successivamente dimostrato i seguenti teoremi:
+
+
+
+
+
+\begin{prop}{(Disuguaglianza di Hadamard)}
+Sia L un reticolo, sia $\textbf v_1,\cdots,\textbf v_n$ una base di L e sia \textit{F} un dominio fondamentale di L. Allora \\ \\
+\centerline{det(L)=Vol(\textit{F})$\le\rVert\textbf v_1\rVert\cdots\rVert\textbf v_n\rVert$.}
+\end{prop}
+
+
+
+
+
+\begin{prop}
+Sia $L\subset\mathbb{R}^n$ un reticolo di dimensione $n$, $\textbf v_1,\cdots,\textbf v_n$ una base di L e sia \textit{F}$=\textit{F}(\textbf v_1,\cdots,\textbf v_n)$ il dominio fondamentale associato. Scriviamo le coordinate dell'i-mo vettore della base come \\ \\ \centerline{$\textbf v_i=(r_{i1},\cdots,r_{in}$)} \\ \\ e usiamo le coordinate dei $\textbf v_i$ come le righe di una matrice,
+\\ 
+
+
+\centerline{ $ F=F(\textbf v_1,\cdots,\textbf v_n)=\left(
+\begin{array} {ccc} 
+r_{11} &\cdots & r_{1n}\\ 
+\vdots & \ddots & \vdots\\
+r_{n1} & \cdots & r_{nn}
+ \end{array}\right)
+$}
+Allora il volume di F \` e dato dalla formula \\ \\ \centerline{$Vol(F(\textbf v_1,\cdots,\textbf v_n))=\left |det (F(\textbf v_1,\cdots,\textbf v_n) \right |$.}
+
+
+\end{prop}
+
+
+
+
+\begin{thm}{(Teorema di Minkowski)}
+
+Sia $L\subset\mathbb{R}^n$ un reticolo di dimensione $n$ e sia $S\subset\mathbb{R}^n$ un insieme convesso e simmetrico tale che
+\\ \\ \centerline{$vol(S)>2^n det(L)$.}\\ \\
+Allora S contiene un vettore non nullo del reticolo.\\ Se S \` e chiuso, allora \` e sufficiente prendere $vol(S)\ge 2^n det(L)$.
+
+
+\end{thm}
+
+\begin{thm}{(Teorema di Hermite)}
+Sia L un reticolo di dimensione n. Allora esiste $\textbf{v}\in L$ tale che \\ \\ \centerline{$\rVert\textbf{v}\rVert\le\sqrt{n}$ $det(L)^{1/n}$.}
+
+
+
+\end{thm}
+I reticoli sono stati ampiamente studiati gi\` a a partire dal diciottesimo secolo da Gauss e Lagrange. Come gi\` a accennato, si \` e scoperto negli ultimi venti anni una loro applicazione in crittoanalisi e in crittografia. Il problema computazionale sotteso ai sistemi crittografici basato sui reticoli \` e il cosiddetto SVP (Shortest Vector Problem), cio\` e la ricerca di un vettore di lunghezza minima nel reticolo. Quando la dimensione $n$ \` e piccola si pu\`o ricorrere a un algoritmo di riduzione attraverso cui non \`e difficile trovare un vettore di lunghezza minima.
+Abbiamo esposto e dimostrato un algoritmo dovuto a Gauss che fornisce un vettore di lunghezza minima nel caso $n=2$; poi siamo passati al caso multidimensionale, richiamando il processo di ortogonalizzazione di Gram-Schmidt, la cui idea \`e necessaria per la comprensione dell'algoritmo LLL.\\ \\
+Nel \underline {Capitolo tre} abbiamo descritto il crittosistema NTRU. In questo caso il problema computazionalmente difficile da affrontare \`e dato dalla difficolt\` a di fattorizzare certi polinomi in un anello di polinomi troncati, analogamente alla fattorizzazione degli interi nel caso di RSA.\\
+Gli elementi di partenza del crittosistema NTRU sono quindi polinomi appartenenti all'anello ($R$+,$\ast$), dove:  \\ \\ \centerline{ R=$\mathbb{Z}$[x]/$(x^{N}$-1)}\\ \\e $\ast$ indica la convoluzione, ossia: dati F,G $\in$ $R$, con F=$	\sum_{ \\ i=0}^{N-1} F_{i}x^i$, G=$	\sum_{i=0}^{N-1} G_{i}x^i$, allora:\\ \centerline{
+F$\ast$G:=$	\sum_{i+j \equiv k (\bmod N)} F_{i}G_{j}$}.\\ \\  I coefficienti dei polinomi sono ridotti modulo $q\in \mathbb{Z}$, e si indica con:\\ \\ \centerline{ $R_{q,N}=(\mathbb{Z}/q\mathbb{Z})$[x]/($(x^{(N)}$-1)}\\ \\
+Vengono in seguito scelti due moduli $p,q \in \mathbb{Z}$, tali che $q>p$, e g.c.d ($p,q$) = 1.
+Poi vengono scelti quattro sottoinsiemi di $R$: $\mathcal{L}_{m}$ (messaggi in chiaro costituiti dai polinomi i cui coefficienti sono compresi tra $-p/2 $ e $p/2$), $\mathcal{L}_{f}$ (chiavi private), $\mathcal{L}_{g}$,
+$\mathcal{L}_{r}$.
+Si prende poi l'insieme $\mathcal{L}(d_1,d_2)$, costituito dai polinomi che hanno $d_1$ coefficienti uguali a $1$, $d_2$ coefficienti uguali a $-1$ e i restanti coefficienti nulli. Si scelgono $d_f, d_g, d_r \in \mathbb{Z}$ e si pone: $\mathcal{L}_f=\mathcal{L}(d_f,d_f-1)$,
+$\mathcal{L}_g=\mathcal{L}(d_g,d_g)$, $\mathcal{L}_r=\mathcal{L}(d_r,d_r)$. Una volta scelti tutti questi parametri, il crittosistema NTRU viene rappresentanto dalla sestupla $(N, q, p, d_f, d_g, d_r)$. Vedremo nei capitoli successivi i valori tipici di questi parametri attualmente in uso in ambito crittografico e commerciale e le loro scelte ottimali.\\
+Una volta definito il crittosistema, descriveremo i processi di cifratura e decifratura, che riportiamo in sintesi:\\
+\\ 
+\begin{enumerate}
+\item \underline{Generazione della chiave pubblica}:
+\begin{enumerate}
+\item Bernardo sceglie $f\in \mathcal{L}_f, g\in \mathcal{L}_g$.
+\item Calcola $f_q$ di $f$ in $R_{q,N}$ e l'inverso di $f_p$ in $R_{p,N}$.
+\item Genera la chiave pubblica: $h=pq\ast g \in R_{q,N}$.
+\end{enumerate}
+\item \underline{Cifratura}
+\begin {enumerate}
+\item Alice traduce il messaggio da inviare a Bernardo in un polinomio $m\in \mathcal{L}_m$
+\item Alice sceglie $r\in \mathcal{L}_r$.
+\item Calcola $e=r\ast h+m \in R_{q,N}$.
+\item Invia $e$ a Bernardo.
+\end {enumerate}
+\item \underline{Decifratura}
+\begin{enumerate}
+\item Bernardo riceve $e$.
+\item Calcola $a=f\ast e\in R_{q,N}$; i coefficienti di $a$ sono rappresentati come interi in [$-q/2,q/2$].
+\item Riduce i coefficienti di $a$ modulo $p$, ottenendo un polinomio $b$.
+\item Calcola $c=f_p\ast b\in R_{p,N}$; i coefficienti di $c$ sono rappresentati come interi in [$-p/2,p/2$].
+\item $c$ rappresenta il messaggio $m$ di Alice.
+\end {enumerate}
+\end {enumerate}
+Abbiamo analizzato in dettaglio i vari parametri del sistema e mostrato perch\'e $c$ rappresenta il messaggio originale inviato da Alice.
+\\  
+
+Abbiamo visto infine la correlazione apparentemente lontana tra il crittosistema NTRU, definito attraverso polinomi, e la Teoria dei reticoli, mostrando quindi perch\'e la sicurezza di NTRU si fonda su SVP. Di seguito una breve sintesi:\\ \\ 
+dato $h=h_{N-1}x^{N-1}+\cdots+h_0$, consideriamo la seguente matrice:
+\\ \\ \\ \centerline {\nolinebreak \\
+H=$
+\left(\begin{matrix} h_0 & h_1 \cdots & h_{N-1} \\ 
+h_{N-1} & h_0 \cdots & h_{N-2} \\ \vdots &
+\ddots & \vdots \\ h_1 & h_2 \cdots &
+h_0\end{matrix}\right )
+$.}\\ \\ \\
+Consideriamo i due polinomi segreti di NTRU, $f=f_{N-1}x^{N-1}+...+f_0$ e $g=g_{N-1}x^{N-1}+...g_0$. Rappresentandoli come vettori riga, otteniamo i due vettori $\overline{f}=(f_0,\cdots,f_{N-1})$ e $\overline{g}=(g_0,\cdots,g_{N-1})$, e si ha: $\overline{f}H=\overline{g}$ (mod $q$).\\
+Consideriamo ora la matrice: \\ \\ \centerline{M=$
+\left(\begin{matrix} I& H \\ 
+0&
+qI\end{matrix}\right )
+$},\\ \\ dove $I$ rappresenta la matrice identica con $N$ righe e $N$ colonne. Adesso possiamo generare un reticolo $L$ attraverso le righe di $M$.
+\\ \\
+Il \underline{Capitolo quattro} \`e  dedicato ai possibili attacchi al sistema NTRU.\\Prima abbiamo visto l'algoritmo di Gauss, che rappresenta la via pi\` u efficace per trovare un vettore minimo in dimensione 2. In seguito abbiamo esposto l'algoritmo LLL, adatto per dimensioni superiori. Riportiamo entrambi di seguito:\\ \\ 
+
+\centerline{\textbf{RIDUZIONE GAUSSIANA DEL RETICOLO}}
+
+\begin{itemize}
+\item{[1]} Input: una base $\{\textbf{v}_1,\textbf{v}_2\}$
+\item{[2]} Loop: se $\|\textbf v_1\|<\|\textbf v_2\|$, scambia $\textbf v_1$ e $\textbf v_2$.
+\item{[3]} Calcola  $m=\lfloor (\textbf{v}_1\cdot\textbf{v}_2/\|\textbf{v}_1\|^2)\rceil.$
+\item{[4]} Continua il loop.
+\end{itemize}
+
+\centerline{\textbf{ALGORITMO LLL}}
+\begin{itemize}
+\item{[1]} Input: una base $\{\textbf{v}_1,\cdots,\textbf{v}_n\}$
+\item{[2]} Poni $k=2$
+\item{[3]} Poni $\textbf{v}_1^*=\textbf{v}_1$
+\item{[4]} Loop while $k\le n$
+\item{[5]}\hspace{0.5cm}Loop $j=1,\cdots,k-1$
+\item{[6]}\hspace{1cm}Poni $\textbf{v}_k=\textbf{v}_k-\lfloor\mu_{k,j}\rceil\textbf{v}_j^*$\hspace{1cm}[Size condition]
+\item{[7]}\hspace{0.5cm}End $j$ loop 
+\item{[8]}\hspace{0.5cm}If $\|\textbf{v}_k^*\|^2\ge(\frac{3}{4}-\mu_{k,k-1}^2)\|\textbf{v}_{k-1}^*\|^2$  [Lovasz Condition]
+\item{[9]}\hspace{1cm}Poni $k=k+1$
+\item{[10]}\hspace{0.3cm}Else 
+\item{[11]}\hspace{1cm}Scambia $\textbf{v}_k-1$ con $\textbf{v}_k$ \hspace{1.5cm}[Swap test]
+\item{[12]}\hspace{1cm}Poni $k=$max$(k-1,2)$
+\item{[13]}\hspace{0.5cm}End if
+\item{[14]}End $k$ loop
+\item{[15]}Return: base LLL-ridotta $\{\textbf{v}_1,\cdots,\textbf{v}_n\}$
+
+
+\end{itemize}
+ Infine abbiamo mostrato come sia possibile vanificare l'attacco attraverso una modifica dei parametri iniziali.
+\\ \\ Nel \underline {Capitolo cinque} abbiamo illustrato un esempio numerico: a partire da un crittosistema NTRU, abbiamo generato il relativo reticolo e mostrato il funzionamento dell'algoritmo LLL.
+
+
+
+
+
+Abbiamo considerato un sistema NTRU con parametri pubblici \\\\ \centerline{$(N, p, q, d)=(7, 3, 41, 2)$.}\\ \\ Abbiamo che\\ \\ \centerline{$41=q>(6d+1)p=39$,}\\ \\ quindi i parametri sono scelti bene. Alice sceglie \\ \\ \centerline{$\textbf{f}(x)=x^6-x^4+x^3+x^2-1\in\textit{T}(3,2)$}\\ \\ \centerline{$\textbf g(x)=x^6+x^4-x^2-x\in\textit{T}(2,2)$.} \\ \\Calcola gli inversi \\ \\ $\textbf F_	q(x)=\textbf f(x)^{-1} $ (mod $q)=8x^6+26x^5+31x^4+21x^3+40x^2+2x+37\in R_q$
+\\ \\ e \\ \\ $\textbf F_	p(x)=\textbf f(x)^{-1} $ (mod $p)=x^6+2x^5+x^3+x^2+x+1\in R_p$. \\ \\Sceglie $(\textbf f(x), \textbf F_p(x))$ come chiave privata ed espone la chiave pubblica \\ \\ \centerline{$\textbf h(x)=\textbf F_q*\textbf g(x)=20x^6+40x^5+2x^4+38x^3+8x^2+26x+30 \in R_q$.} \\ \\ Bernardo invia ad Alice il messaggio \\ \\ \centerline{$\textbf m(x)=-5+x^3+x^2-x+1$} \\ \\ usando la chiave effimera \\ \\ \centerline{$\textbf r(x)=x^6-x^5+x-1$.}\\ \\Bernardo calcola e manda ad Alice il testo cifrato \\ \\ $\textbf e(x)\equiv p\textbf r(x)*\textbf h(x)+\textbf m(x)\equiv31x^6+19x^5+4x^4+2x^3+40x^2+3x+25$ (mod $q)$. \\ \\Ora Alice decifra il messaggio, calcolando prima \\ \\ $\textbf f(x)*\textbf e(x)\equiv x^6+10x^5+33x^4+40x^3+40x^2+x+40 $ (mod $q)$\\ \\ e poi sollevando modulo $q$, ottenendo \\ \\ $\textbf a(x)=x^6+10x^5-8x^4-x^3-x^2+x-1 \in R$. \\ \\Infine riduce $\textbf a(x)$ modulo $q$ e calcola \\ \\ $\textbf F_p(x)*\textbf a(x)\equiv 2x^5+x^3+x^2+2x+1 $ (mod $p)$. \\ \\ Sollevando l'ultima uguaglianza modulo $p$, ritroviamo il testo in chiaro $\textbf m(x)=-x^5+x^3+x^2-x+1$.\\ \\ 
+Il reticolo associato \` e generato dalle righe della matrice \\ \\ \centerline{
+$     M_{\textbf h}^{NTRU}=                             
+\left(
+\begin{array} {rrrrrrrrrrrrrr} 
+1&0&0&0&0&0&0&30&26&8&38&2&40&20 \\
+0&1&0&0&0&0&0&20&30&26&8&38&2&40 \\
+0&0&1&0&0&0&0&40&20&30&26&8&38&2 \\
+0&0&0&1&0&0&0&2&40&20&30&26&8&38 \\
+0&0&0&0&1&0&0&38&2&40&20&30&26&8 \\ 
+0&0&0&0&0&1&0&8&38&2&40&20&30&26 \\
+0&0&0&0&0&0&1&26&8&38&2&40&20&30 \\
+0&0&0&0&0&0&0&41&0&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&41&0&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&41&0&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&41&0&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&41&0&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&41&0\\
+0&0&0&0&0&0&0&0&0&0&0&0&0&41\\
+ \end{array}\right).
+$}
+\\ \\  
+Eva applica la riduzione LLL a $     M_{\textbf h}^{NTRU}$. L'algoritmo esegue 96 cambi e restituisce la matrice LLL-ridotta\\ \\ \centerline{
+$     M_{rid}^{NTRU}=                             
+\left(
+\begin{array} {rrrrrrrrrrrrrr} 
+1&0&-1&1&0&-1&-1&-1&0&-1&0&1&0&1\\ 
+0&1&1&-1&0&1&-1&-1&-1&0&1&0&1&0 \\
+-1&1&0&-1&-1&1&0&-1&0&1&1&0&-1&0 \\
+-1&-1&1&0&-1&1&0&1&0&-1&0&-1&0&1 \\
+-1&1&0&-1&1&0&-1&0&-1&0&-1&0&1&1 \\
+-1&-1&-1&-1&-1&-1&-1&0&0&0&0&0&0&0 \\
+0&1&0&1&0&-1&1&-1&-1&0&0&2&0&0\\
+-8&-1&0&9&0&-1&0&-4&2&6&0&-4&7&-7\\
+8&1&0&0&-8&-1&2&0&-5&8&-7&-3&1&6 \\
+0&-9&-2&1&9&-1&0&-6&-3&2&5&0&-5&7\\
+0&8&0&-9&-1&-8&8&2&7&-11&3&-5&2&2\\
+1&0&0&9&2&-1&-9&5&-7&6&3&-2&-5&0\\ 
+-2&1&9&-1&0&0&-9&2&5&0&-5&7&-6&-3\\
+3&2&3&3&-6&2&-6&11&6&8&-9&5&2\\
+\end{array}\right).
+$}
+\\ \\
+Il vettore minimo nella base ridotta \` e la prima riga della matrice ridotta, cio\` e \\ \\ \centerline{$(1,0,-1,1,0,-1,-1,-1,0,-1,0,1,1,0)$.}\\ \\Spezzando questo vettore in due pezzi, otteniamo i due polinomi \\ \\ \centerline{$\textbf f^{'}(x)=1-x^2+x^3-x^5-x^6$\hspace{1cm}$\textbf g^{'}(x)=-1-x^2+x^4+x^5$.}\\ \\ Notiamo che $\textbf f^{'}(x)$ e $\textbf g^{'}(x)$ non sono gli stessi polinomi $\textbf f(x)$ e $\textbf g(x)$ della chiave privata di Alice. Essi, per\` o, sono loro semplici rotazioni; infatti \\ \\ \centerline{$\textbf f^{'}(x)=-x^3*\textbf f(x)$\hspace{1cm} e \hspace{1cm} $\textbf g^{'}(x)=-x^3*\textbf g(x)$.}\\ \\Allora Eva pu\` o usare $\textbf f^{'}(x)$ e  $\textbf g^{'}(x)$ per decifrare il messaggio.
+
+
+
+\rhead[\fancyplain{}{\bfseries
+INTRODUZIONE}]{\fancyplain{}{\bfseries\thepage}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
+INTRODUZIONE}}
+\addcontentsline{toc}{chapter}{Introduzione}% inserire nell'indiche l'introduzione
+
+%Sar\'a l'ultima cosa che scriveremo.
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\tableofcontents                        %crea l'indice
+
+\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
+INDICE}}
+
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+
+
+
+
+
+\begin{thebibliography}{Bibliografia}
+\bibitem {-}J. Hoffstein, J. Pipher, J. H. Silverman, \textit{An introduction to mathematical cryptography,} Springer Science, New York, 2008.
+
+\bibitem {-}J. Hoffstein, J. Pipher, J. H. Silverman, \textit{Ntru: A ring based public key cryptosystem,} Proceedings of the third International Symposium on Algorithmic Number theory, 267-268, 1998.
+
+\bibitem{-}W. Diffie, M. E. Hellman, \textit{New direction in cryptography,} IEEE Transaction on Information Theory, 22,1999.
+\bibitem{-} D. Khan, \textit{The code-breakers,} Mcmillan, 1973.
+\bibitem{-} National Boureau of Standards, \textit{Data encryption standard,} FIPS, 1977.
+\bibitem{-} R.A. Mollin, \textit{RSA and public-key cryptography,} CRC Press, 2003.
+\bibitem {-} W. M. Boldoni, C. Ciriberto, G. M. Piacentini Cattaneo, \textit{Aritmetica, crittografia e codici,} Springer, 2006.
+\bibitem{-} P. W. Shor, \textit{Algorithms for quantum computation: discrete logarithms and factoring,} IEEE Comp. Soc. Press., 1994.
+\bibitem{-} J. Hoffstein, J. Pipher, J. H. Silverman, \textit{NTRU: A new speed public-key cryptosystem,}Lecture notes in Computer Science, 1995.
+\bibitem {-} E. Sernesi, \textit{Geometria 1,} Bollati Boringhieri, 2000.
+\bibitem{-} M. Kaib, C. P. Schnorr, \textit{The generalized Gauss reduction algorithm,} Journal of algorithms, 1996.
+\bibitem {-} O. Regev, \textit{Lattice-based cryptography,}, Lecture notes in Computer Science, 2006.
+\bibitem {-} A. K. Lenstra, J. W. Lenstra, L. Lovasz, \textit{Factoring polinomials with rationals coefficients,} Math. Ann., 1982.
+\bibitem {-} D. Coppersmith, A. Shamir, \textit{Lattice attacks on NTRU,} Lecture notes in Computer Science, 1997.
+\end{thebibliography}
+\end{document}

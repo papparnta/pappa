@@ -1,0 +1,130 @@
+\documentstyle{article}
+\begin{document}
+\centerline{\Large ESERCIZI SULLE FUNZIONI IMPLICITE, INVERSE E FORMULA DI TAYLOR.}
+\bigskip\bigskip
+
+\begin{enumerate}
+\item Per ciascuna delle seguenti funzioni, si determini il polinomio di Taylor
+ di grado $k$ intorno al punto $\underline{x}_0$ utilizzando il polinomio
+di Taylor di una funzione di una variabile reale opportuna. Si verifichi
+anche che il resto $R_k((\underline{x}-\underline{x}_0))=
+O(||\underline{x}-\underline{x}_0||^{k+1})$.
+\begin{center}
+\begin{tabular}{|r||l|c|c|}
+\hline
+ & $f(\underline{x})$ & $\underline{x}_0$ & $k$\\
+\hline
+\hline
+{\it i} &$\sqrt{1+x_1^3x_2} $ & $(0,0)$ & $11$\\
+\hline
+{\it ii} &$\arctan(x_1x_2x_3^2)$ & $(0,0,0)$ & $13$\\
+\hline
+{\it iii} &$\sqrt{1+x_1x_2}\ln{(1+\sqrt{xy})}$ & $(0,0)$ & $8$\\
+\hline
+{\it iv} &$(x_1^3+x_2^2)\sin{(x_1^2x_2)}$ & $(0,0)$ & $10$ \\
+\hline
+{\it v} & $e^{x^2}\cos{y^4}$ & $(0,0)$ & $10$\\
+\hline
+\end{tabular}
+\end{center}
+\item Per ciascuna delle seguenti funzioni, si determini
+\begin{enumerate}
+\item la matrice Jacobiana nel generico punto $\underline{x}$;
+\item Il luogo dei punti in cui non \`e possibile applicare
+il teorema della funzione inversa;
+\item Il differenziale e lo spazio affine tangente a $f^{-1}$ 
+nel punto $\underline{x}_0$.
+\item verificare anche che $J(f)_{\underline{x}_0}^{-1}=
+J(f^{-1})_{f(\underline{x}_0)}$.
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|r||l|c|}
+\hline
+ & $f(\underline{x})$ & $\underline{x}_0$ \\
+\hline
+\hline
+{\it i} &$\underline{f}(x,y)=\left(\begin{array}{l}\sqrt{x^2+y} \\
+\cos xy +x +3y \end{array}\right)$ & $(0,0)$ \\
+\hline
+{\it ii} &$\underline{f}(x,y)=\left(\begin{array}{l} 2x+y^2e^{xy} \\
+\ln(1+xy) \end{array}\right) $ & $(0,1)$ \\
+\hline
+{\it iii} &$\underline{f}(x,y,z)=\left(\begin{array}{l} e^{x+y+z} \\
+2y^2+x+\cos(z\pi)\\
+\ln(1+xz) \end{array}\right) $ & $(1,1,0)$ \\
+\hline
+{\it iv}& $\underline{f}(x,y,z,t)=\left(\begin{array}{l} t^2 \\
+x^3+y\\
+y^2+tz\\
+z+\ln x \end{array}\right) $ & $(1,1,1,1)$\\
+\hline
+\end{tabular}
+\end{center}
+
+\item Per ciascuna delle seguenti funzioni di una variabile reale 
+$y=g(x)$, definite in modo implicito da $f(x,y)=0$, dopo aver verficato 
+che \`e possibile applicare il Teorema della funzione implicita, si calcoli 
+\begin{enumerate}
+\item la derivata nel punto $x_0$;
+\item l'equazione della retta tangente nel punto $(x_0,g(x_0))$;
+\item il polinomio di Taylor di grado due intorno al punto $x_0$.
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|r||l|c|}
+\hline
+ & $f(x,y)$ & $(x_0,g(x_0))$ \\
+\hline
+\hline
+{\it i} &$x^4+y^4-17$ & $(2,1)$ \\
+\hline
+{\it ii} &$\arctan(x^3+y-7)+xy^3+2$ & $(2,-1)$ \\
+\hline
+{\it iii} &$\ln(1+\cosh(yx^2+1))+y^3-\ln(2x)+1$ & $(1,-1)$ \\
+\hline
+{\it iv} &$\sqrt{x^2+y^3}-\sqrt{5}e^{xy-2} $ & $(2,1)$ \\
+\hline
+\end{tabular}
+\end{center}
+\item Per ciascuna delle seguenti funzioni di due variabili reali $z=g(x,y)$
+definite in modo implicito da $f(z,y,z)=0$, si calcoli (se esiste) nel punto $(x_0,y_0)$:
+\begin{enumerate}
+\item Il gradiente $\nabla g(x_0,y_0)$;
+\item Il differenziale $dg_{(x_0,y_0)}$;
+\item La derivata direzionale ${\partial g\over \partial (v_1,v_2)}$ nel 
+generico punto $(x,y)$;
+\item L'equazione del piano tangente alla superficie $z=f(x,y)$ nel punto 
+$(x_0,y_0,g(x_0,y_0))$.
+\end{enumerate}
+\begin{center}
+\begin{tabular}{|r||l|c|c|}
+\hline
+ & $f(x,y,z)$ & $(x_0,y_0,g(x_0,y_0))$ & $(v_1,v_2)$\\
+\hline
+\hline
+{\it i} &$x^4+y^4+z^4-16$ & $(0,0,2)$ & $(1,1)$\\
+\hline
+{\it ii} &$x^2\cos z+e^{yz}$ & $(1,0,1)$ & $(1,2)$\\
+\hline
+{\it iii} &$\ln(1+x^2z^3\arctan y)$ & $(2,0,1)$ & $(-1,1)$\\
+\hline
+{\it iv} &$\cosh(x^3-z^2+y)$ & $(1,0,-1)$ & $(-1,-1)$ \\
+\hline
+\end{tabular}
+\end{center}
+\item Per ciascuna delle seguenti funzioni da ${\bf R}^3$ a ${\bf R}^2$,
+si verifichi se si pu\`o
+applicare il Teorema della funzione implicita nel punto $({x}_0,
+\underline{y}_0)$
+e si calcoli la matrice Jacobiana e l'equazione dello spazio
+affine tangente nel punto ${x}_0$ della funzione $\underline{g}(x)$
+definita implicitamente da $\underline{y}_0=\underline{g}({x}_0)$
+e $F({x},\underline{g}({x}))=\underline{0}$.
+
+\begin{enumerate}
+\item $f(x,y_1,y_2)=(xy_1^2+y_2^3,y_2^2+x)\hspace{2cm}(x_0,\underline{y}_0)=(1,2,2)$
+\item $f(x,y_1,y_2)=(\ln(x+y_1),y_1\ln(x+y_2))\hspace{1cm}(x_0,\underline{y}_0)=(1,1,1)$
+\item $f(x,y_1,y_2)=(\cos{xy_1}+y_2,\sin(xy_2)+y_1)\hspace{1cm}(x_0,\underline{y}_0)=(1,0,\pi)$
+\item $f(x,y_1,y_3)=(\sqrt{x+y_1},y_1y_2+x^2)\hspace{1cm}(x_0,\underline{y}_0)=(1,1,1)$
+\end{enumerate}
+\end{enumerate}
+\end{document}

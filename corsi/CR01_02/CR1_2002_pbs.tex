@@ -1,0 +1,306 @@
+\font\title=cmr12 at 14pt
+\bigskip
+
+\noindent{\title {Universit\`{a} Roma Tre}, AA01/02\hfill Crittografia a chiave
+pubblica CR1}\hrule\bigskip\bigskip
+
+\noindent {\bf ESAME DI MET\`{A} SEMESTRE \hfill  5 Aprile
+2002} \hrule
+\bigskip\medskip
+
+\item{1.}
+Se $n\in{\bf N}$, sia $\sigma(n)$ la somma dei divisori di $n$. Supponiamo che sia nota
+la fattorizzazione (unica) di $n=p_1^{\alpha_1}\cdots p_s^{\alpha_s}$. Calcolare il
+numero di operazioni bit necessarie per calcolare $\sigma(n)$. (\it Suggerimento: Usare il
+fatto che $\sigma$ \`{e} una funzione moltiplicativa e calcolare una formula per $\sigma(p^\alpha)$ \rm)
+\bigskip
+
+\item{2.} Mostrare che le moltiplicazioni nell'anello
+quoziente ${\bf Z}/n{\bf Z}[x]/(x^d)$ si possono calcolare in
+O($\log^2 n^d$) operazioni bit mentre le addizioni in O($\log
+n^d$) operazioni bit. \bigskip
+
+\item{3.} Dato il numero binario
+$n=(10011100101)_2$, calcolare $[\sqrt{n}]$ usando l'algoritmo
+delle approssimazioni successive (Non passare a base 10 e  non
+usare la calcolatrice!) \bigskip
+
+\item{4.} Calcolare il massimo comun divisore tra $240$ e $180$ utilizzando
+sia l'algoritmo euclideo che quello binario. Calcolare anche
+l'identit\`{a} di Bezout. \bigskip
+
+\item{5.} Dimostrare che se $n=p_1\cdots p_{20}$ \`{e} un intero privo di fattori quadratici, e $f(x)
+\in{\bf Z}/n{\bf Z}[x]$ ha grado 10, allora la congruenza $f(x)\equiv0\bmod n$ \`{e} risolvibile
+se e solo se lo sono le $20$ congruenze
+$\cases{f(x)\equiv0\bmod p_1\cr \vdots \cr f(x)\equiv0\bmod p_{20}.}$
+Dedurre che la prima congruenza $f(x)\equiv0\bmod n$ ha al pi\`{u} $10^{20}$ soluzioni. Sapreste dare
+un esempio in cui le soluzioni sono esattamente $10^{20}$?
+\bigskip
+
+\item{6.} Illustrare l'algoritmo dei quadrati successivi in un gruppo analizzandone la complessit\`{a}. Fare anche
+un esempio.
+\bigskip
+
+\item{7.} Mettere in ordine di priorit\`{a} e spiegare il significato di ciascuna delle
+seguenti operazioni:
+$$x\!\sim\hskip1cm x\wedge y\hskip1cm x\& y\hskip1cm x\!+\!+\hskip1cm x\backslash y\hskip1cm
+ x=y\hskip1cm x\% y\hskip1cm x|y\hskip1cm x\ll n$$
+
+\item{8.} Si dia la definizione di pseudo primo forte in base $2$ e si mostri che
+se $n=2^\alpha+1$ \`{e} pseudo primo forte in base $2$, allora
+$2^{2^\beta}\equiv -1\bmod n$ per qualche $\beta<\alpha$. \bigskip
+
+\item{9.} Scrivere un programma in Pari che produca due vettori $v$ e $w$. In cui
+$v$ contiene i primi $100$ {\it pseudo-primi composti} in base $2$ e il secondo i primi $100$
+{\it pseudo primi di Eulero composti} in base $2$.
+\bigskip
+
+\item{10.} Implementare RSA utilizzando il sistema Pari e creando tre funzioni distinte (una per
+generare le chiavi, una per cifrare e una per decifrare).\bigskip\bigskip
+
+\noindent {\bf ESAME DI FINE SEMESTRE\hfill  5 Giugno 2002} \hrule
+\bigskip\medskip
+\item{1.} Quale \`{e} la probabilit\`{a} che un polinomio
+irriducibile $f$ di grado $8$ su ${\bf F}_{7}$ risulti primitivo?
+\bigskip
+
+\item{2.} Spiegare il metodo di fattorizzazione $p-1$.
+\bigskip
+
+\item{3.} Fissare una radice primitiva di ${\bf F}_{5^2}$ ed
+utilizzarla per simulare un scambio chiavi alla Diffie--Hellmann
+\bigskip
+
+\item{4.} Fattorizzare $f(x)=(x^{10}+3x^5+1)(x^2+2)(x^2+1)$ su ${\bf
+F}_5$ e dopo averne fissato un campo di spezzamento ${\bf F}$,
+si scrivano tutte le radici di $f(x)$ in ${\bf F}$.
+\bigskip
+
+\item{5.} Spiegare il funzionamento del crittosistema
+Massey--Omura sul gruppo dei punti razionali di una curva
+ellittica.
+
+\bigskip \item{6.} Dopo aver verificato che si tratta di una curva
+ellittica, determinare (giustificando la risposta) l'ordine e la
+struttura del gruppo dei punti razionali della curva ellittica su
+${\bf F}_7$
+$$y^2=x^3-x+5.$$
+
+\item{7.} Spiegare l'algoritmo di Berlekamp.
+\bigskip
+
+\item{8.} Spiegare il significato delle seguenti funzioni
+di Pari:
+
+ispseudoprimes$(n)$;\ \ znprimroot$(n)$;\ \ znstar$(n)$;\ \
+znorder$(x)$;\ \ ffinit$(p, n, x)$.
+\bigskip
+
+\item{9.} Implementare in pari il crittosistema di El Gamal.
+\bigskip
+
+\item{10.} Dato un gruppo ciclico $G$,
+sia $g$ un suo generatore e $p$ un primo tale che $p^4\| \#G$.
+Supponiamo che $X$ denoti il logaritmo discreto di $\alpha\in G$.
+Si scriva uno pseudo codice per calcolare $X\bmod p^4$.
+\bigskip\bigskip
+
+\noindent {\bf ESAME FINALE \hfill  5 Giugno 2002}\hrule
+\bigskip\medskip
+
+\item{1.} Si stimi il numero di operazioni bit necessarie a
+calcolare la derivata di un polinomio di grado $n^2$ in cui tutti
+i coefficienti sono minori di $n$. \bigskip
+
+\item{2.} Si risolva il seguente sistema di equazioni di
+congruenze $$\cases{x^3\equiv 1\bmod 7 \cr x^2\equiv 1\bmod
+5}.$$
+
+\item{3.} Quale \`{e} la probabilit\`{a} che un polinomio
+irriducibile $f$ di grado $8$ su ${\bf F}_{7}$ risulti primitivo?
+\bigskip
+
+\item{4.} Si illustri la nozione di pseudo primo di eulero e si
+indichi la sua applicazione in crittografia.
+\bigskip
+
+\item{5.} Fattorizzare $f(x)=(x^{10}+3x^5+1)(x^2+2)(x^2+1)$ su ${\bf
+  F}_5$ e dopo aver fissato un campo di spezzamento ${\bf F}$ per $f$,
+  si scrivano tutte le radici di $f(x)$ in ${\bf F}$.
+\bigskip
+
+\item{6.} Spiegare il funzionamento del metodo dello scambio delle
+chiavi Diffie--Hellman  sul gruppo dei punti razionali di una
+curva ellittica.
+\bigskip
+
+\item{7.} Dopo aver verificato che si tratta di una curva
+ellittica, determinare l'ordine e la struttura del gruppo dei
+punti razionali della curva ellittica su ${\bf F}_7$
+$$y^2=x^3-x+5.$$
+
+\item{8.} Si calcoli il seguente simbolo di Jacobi:
+$\left({234564 \atop 134431}\right)$.
+\bigskip
+
+\item{9.}Scrivere in una sola riga il codice (in PARI) per
+ottenere: \itemitem{a}Numero di cifre binarie di $x$; \itemitem{b}
+L' inverso aritmetico di $a\in({\bf Z}/{n\bf Z})$*; \itemitem{c}
+Un primo con al massimo $m$ cifre binarie. \bigskip
+
+\item{10.} Scrivere un programma in PARI per ottenere
+un vettore contenente i numeri minori di $10^{20}$ che sono
+pseudoprimi forti, per almeno una base random.\bigskip\bigskip
+
+
+\noindent {\bf ESAME FINALE \hfill  9 Luglio 2002}\hrule
+\bigskip\medskip
+
+\item{(1)} Sia $m$ un intero dispari. Dopo aver dimostrato che
+ammette soluzione, si stimi il numero di operazioni bit necessarie
+a risolvere il seguente sistema
+$$\cases{X\equiv 1\bmod m\cr X\equiv 2\bmod m+1\cr X\equiv 3 \bmod m+2.}$$
+
+\item{(2)} Si descriva un'algoritmo per calcolare $[\sqrt{m}]$,
+dove $m\in{\bf N}$ in tempo polinomiale\bigskip
+
+\item{(3)} Si descrivano i valori di $a\in{\bf F}_p$ per cui
+$x^2+a\in{\bf F}_p[x]$ \`{e} irriducibile e si dimostri che non
+\`{e} mai primitivo.\bigskip
+
+\item{(4)} Si dimostri che se $m$ \`{e} un intero dispari
+composto, allora esiste sempre un base $a\in U({\bf Z}/m{\bf Z})$
+rispetto a cui $m$ non \`{e} pseudo primo di Eulero. Quale \`{e}
+l'applicazione di questa propriet\`{a} nei test di primalit\`{a}?
+\bigskip
+
+\item{(5)} Fattorizzare
+$f(x)=(x^{12}+3x^{4}+1)(x^2+x+2)(x^{10}+x^2+1)$ su ${\bf
+  F}_2$ e determinare il numero di elementi del campo di spezzamento di $f$.
+\bigskip
+
+\item{(6)} Spiegare il funzionamento del crittosistema RSA e
+simularne un'applicazione con un modulo RSA di esattamente tre
+cifre.
+\bigskip
+
+\item{(7)} Dopo aver verificato che si tratta di una curva
+ellittica, determinare l'ordine e la struttura del gruppo dei
+punti razionali della curva ellittica su ${\bf F}_{11}$
+$$E: y^2=x^3-1.$$
+Quale \`{e} l'ordine del punto $(5,5)$ in $E({\bf F}_{11})?$
+\bigskip
+
+\item{(8)} Siano $m,n$ interi tali che $m\equiv3\bmod4$,
+che $m\equiv2\bmod n$ e che $n\equiv1\bmod8$. Si calcoli il
+seguente simbolo di Jacobi: $\left({(5m+n)^3 \over m}\right)$.
+\bigskip
+
+\item{(9)} Si scriva un programma Pari che implementi il metodo di
+fattorizzazione di Pollard. \bigskip
+
+\item{(10)} Scrivere un programma in pari che
+verifichi se un numero $n$ di cui \`{e} nota la fattorizzazione in
+primi ($n=p_1\cdots p_t$) \`{e} o meno un numero di Carmichael.\bigskip
+\bigskip
+
+\noindent{\bf ESAME FINALE \hfill  9 Settembre 2002}\hrule
+\bigskip\medskip
+
+\item{(1)} Si dia una stima (in funzione del parametro $t$) per il
+numero di operazioni bit necessarie al calcolo del determinante di
+una matrice $3\times3$ a coefficienti interi in cui gli elementi
+della prima colonna sono in valore assoluto minori di $t$, quelli
+della seconda colonna sono in valore assoluto minori di $e^t$ e
+quelli della terza sono in valore assoluto minori di $t^t$.\bigskip
+
+\item{(2)} Si descriva un'algoritmo per calcolare in tempo
+polinomiale $2^m(\bmod\ m+1)$. Si stimi anche il numero di
+operazioni bit necessarie.\bigskip
+
+\item{(3)} Si enunci e dimostri la formula per il numero di
+polinomi irriducibili di grado $8$ su ${\bf F}_p$. Quale \`{e} la
+probabilit\`{a} che un polinomio di grado 4 monico su ${\bf F}_3$
+e che non ammette zeri in ${\bf F}_3$ risulti irriducubile su
+${\bf F}_3$? \bigskip
+
+\item{(4)} Descrivere il test di primalit\`{a} di Miller Rabin
+spiegandone gli aspetti probabilistici.
+  \bigskip
+
+\item{(5)} Si descrivano gli ordini degli elementi del campo di
+spezzamento del polinomio $x^4+x+1$ su ${\bf F}_2$.
+  \bigskip
+
+\item{(6)} Spiegare il funzionamento del crittosistema
+Massey--Omura e simularne un'applicazione in un campo con 32
+elementi.
+\bigskip
+
+\item{(7)} Dopo aver verificato che si tratta di una curva
+ellittica, determinare l'ordine e la struttura del gruppo dei
+punti razionali della curva ellittica su ${\bf F}_{7}$
+$$E: y^2=x^3-x+1.$$
+determinando l'ordine di ciascun punto.\bigskip
+
+\item{(8)} Sia $m$ un intero tale che $m\equiv17\bmod28$.
+Si calcoli (se \`{e} ben definito) il seguente simbolo di Jacobi:
+$\left({5m+7 \over m^5}\right)$.
+\bigskip
+
+\item{(9)} Si scriva un programma Pari che verifichi se un
+polinomio di grado $3$ a coefficienti in ${\bf F}_5$ \`{e} o meno
+primitivo.\bigskip
+
+\item{(10)} Scrivere un programma in pari che implementi il metodo
+di fattorizzazione $\rho$ di Pollard.\bigskip
+\bigskip
+
+\noindent{\bf ESAME FINALE \hfill  19 Febbraio 2003}\hrule
+\bigskip\medskip
+
+\item{1.} Si stimi il numero di operazioni bit necessarie a
+calcolare l'integrale a di un polinomio di grado $n$ in cui tutti
+i coefficienti sono minori di $e^n$. \bigskip
+
+\item{2.} Si risolva il seguente sistema di equazioni di
+congruenze $$\cases{x^2\equiv 4\bmod 11 \cr x^3\equiv 2\bmod
+5}.$$\bigskip
+
+\item{3.} Quale \`{e} la probabilit\`{a} che un polinomio
+irriducibile $f$ di grado $6$ su ${\bf F}_{11}$ risulti primitivo?
+\bigskip
+
+\item{4.} Si illustri la nozione di pseudo primo forte e se ne
+indichi l' applicazione in crittografia.
+\bigskip
+
+\item{5.} Fattorizzare $f(x)=(x^{14}+3x^7+1)(x^2+2)(x^2+1)$ su ${\bf
+F}_7$ e dopo aver fissato un campo di spezzamento ${\bf F}$ per $f$,
+si scrivano tutte le radici di $f(x)$ in ${\bf F}$.
+\bigskip
+
+\item{6.} Spiegare il funzionamento del metodo dello scambio delle
+chiavi Diffie--Hellman e simularne un applicazione in un campo
+finito con $19$ elementi.
+\bigskip
+
+\item{7.} Dopo aver verificato che si tratta di una curva
+ellittica, determinare l'ordine e la struttura del gruppo dei
+punti razionali della curva ellittica su ${\bf F}_5$
+$$y^2=x^3-x+1.$$
+
+\item{8.} Si calcoli il seguente simbolo di Jacobi:
+$\left({983932 \atop 72637}\right)$.
+\bigskip
+
+\item{9.}Scrivere in una sola riga il codice (in PARI) per
+ottenere: \itemitem{a} Numero di cifre decimali di $x$;
+\itemitem{b} Il resto della divisione euclidea di $a$ per $b$;
+\itemitem{c} Un pi\`{u} piccolo numero primo con $100$ cifre
+binarie. \bigskip
+
+\item{10.} Scrivere un programma in PARI per ottenere
+un vettore contenente i numeri minori di $10^{20}$ che sono
+pseudoprimi di Eulero, per almeno una base random.
+ \bye

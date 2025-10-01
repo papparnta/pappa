@@ -1,0 +1,1026 @@
+\documentclass[landscape,handout]{powersem} %,display
+
+\usepackage{fancybox,marvosym,graphicx,amsmath,amssymb,pifont}
+\usepackage[bookmarksopen,colorlinks,urlcolor=red]{hyperref} %,pdfpagemode=FullScreen
+\usepackage{fixseminar}
+\usepackage{color}
+\usepackage[latin1]{inputenc}
+\usepackage[coloremph,colormath,colorhighlight,lightbackground]{texpower}
+\hfuzz=30pt \vfuzz=30pt \setlength{\slidewidth}{25cm}
+\setlength{\slideheight}{17.5cm} \slideframe{}
+\def\slideitemsep{.5ex plus .3ex minus .2ex}
+\renewcommand{\slidetopmargin}{10mm}
+\renewcommand{\slidebottommargin}{15mm}
+\renewcommand{\slideleftmargin}{5mm}
+\renewcommand{\sliderightmargin}{5mm}
+\newcommand{\heading}[1]{%
+ \begin{center}
+  \large\bf
+  \shadowbox{{\textcolor{conceptcolor}{#1}}}%
+ \end{center}
+ \vspace{1ex minus 1ex}}
+\backgroundstyle[startcolor=white,
+                   endcolor=grey,%firstgradprogression=3,
+            rightpanelwidth=-7\semcm,,rightpanelcolor=pagecolor]{hgradient}%
+%%%%%%%%%%%%% DATI DEL SEMINARIO IN QUESTIONE %%%%%%%%%%%%
+
+\newpagestyle{327}%
+ {\textcolor{codecolor}{\tiny{\textit{Factoring integers,..., RSA}}} \hspace{\fill}\rightmark
+Erbil, Kurdistan\hspace{0.3cm}\thepage}
+ {\includegraphics[width=4mm]{images/dipmat.pdf}\hspace{\fill}\tiny{\textcolor{codecolor}{\sc Universit\`a Roma Tre}}
+ \hspace{\fill}\includegraphics[width=5mm]{images/roma3.pdf}}%%
+\pagestyle{327}
+
+\begin{document}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\addtocounter{slide}{-1}
+\includegraphics[width=1.3cm]{images/crypto.jpg}\ \hfill \includegraphics[width=1.3cm]{images/crypto.jpg}
+\vfil
+
+\begin{sc}\begin{center}
+\vfil
+\small{
+\textbf{Lecture in Number Theory}\\ \emph{
+College of Sciences\\ Department of Mathematics\\ University of Salahaddin}}
+
+Debember 1, 2014
+\vspace*{1cm}
+
+\begin{Large}
+\textcolor{underlcolor}{Factoring integers, Producing primes and the RSA cryptosystem}
+\end{Large}
+\vfill
+Francesco Pappalardi
+\end{center}
+\end{sc}
+
+\vfill
+
+\includegraphics[width=1.3cm]{images/crypto.jpg}\ \hfill \includegraphics[width=1.3cm]{images/crypto.jpg}
+\end{slide}
+
+
+\begin{slide}%\pageTransitionWipe{30}
+\heading{How large are large numbers?}\pause
+
+\parstepwise{\begin{itemize}
+  \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{number of cells in a human body:}\hspace*{2.4cm}$10^{15}$}
+\bigskip\bigskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{number of atoms in the universe:}\hspace*{3.685cm}$10^{80}$}
+\bigskip\bigskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{number of subatomic particles in the universe:}\hspace*{2.04cm}$10^{120}$}
+\bigskip\bigskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{number of atoms in a Human Brain:}\hspace*{2.5cm}$10^{27}$}
+\bigskip\bigskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{number of atoms in a cat:}\hspace*{3.95cm}$10^{26}$}
+\end{itemize}}
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+
+\begin{center}
+\begin{small}
+\ $RSA_{2048}$ = 25195908475657893494027183240048398571429282126204
+032027777137836043662020707595556264018525880784406918290641249
+515082189298559149176184502808489120072844992687392807287776735
+971418347270261896375014971824691165077613379859095700097330459
+748808428401797429100642458691817195118746121515172654632282216
+869987549182422433637259085141865462043576798423387184774447920
+739934236584823824281198163815010674810451660377306056201619676
+256133844143603833904414952634432190114657544454178424020924616
+515723350778707749817125772467962926386356373289912154831438167
+899885040445364023527381951378636564391212010397122822120720357
+\end{small}\end{center}\pause
+\bigskip
+
+\centerline{$RSA_{2048}$ is a 617 (decimal) digit number}\pause
+
+\bigskip
+
+\heading{\begin{small}\texttt{http://www.rsa.com/rsalabs/challenges/factoring/numbers.html/}\end{small}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+
+\centerline{$RSA_{2048}$=$p\cdot q$,\ \ \ \   $p,q\approx
+10^{308}$}\pause
+
+
+\heading{{\bf PROBLEM:} {\it Compute $p$ and $q$}}\pause
+
+\centerline{\textcolor{black}{\textsc{Price offered on MArch 18, 1991:}}
+ 200.000 US\$ ($\sim
+232.700.000$ Iraq Dinars)!!}
+\bigskip\pause
+
+\begin{center}
+\begin{tabular}{|c|}
+\hline \textbf{\textcolor{red}{Theorem.}} If $a\in{\mathbb N}$ \ \ $ \exists!\  p_1<p_2<\cdots<p_k$\ \textit{primes}\\
+$ \ \ \textrm{s.t.} \ \ a=p_1^{\alpha_1}\cdots
+p_k^{\alpha_k}$\\\hline\end{tabular}
+\end{center}\pause
+\bigskip
+
+\textbf{Regrettably:} RSAlabs believes that factoring in one year
+requires: \center{\begin{tabular}{|c|c|c|}\hline
+number & computers & memory \\
+$RSA_{1620}$ & $1.6\times10^{15}$&  $120$ Tb\\
+$RSA_{1024}$ & $342,000,000$ &  $170$ Gb\\
+$RSA_{760}$  & 215,000  & $4$Gb.\\ \hline
+\end{tabular}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+
+
+\heading{\small{http://www.rsa.com/rsalabs/challenges/factoring/numbers.html}}\pause
+
+
+\begin{center}
+\begin{tabular}{|c|c|}\hline
+ \textcolor{blue}{Challenge Number} & \textcolor{blue}{Prize (\$US)}  \\
+$RSA_{576}$ &  \$10,000   \\
+$RSA_{640}$ &  \$20,000    \\
+$RSA_{704}$ &     \$30,000 \\
+$RSA_{768}$ &     \$50,000 \\
+$RSA_{896}$ &     \$75,000 \\
+$RSA_{1024}$ &     \$100,000 \\
+$RSA_{1536}$ &  \$150,000 \\
+$RSA_{2048}$ &     \$200,000   \\
+\hline
+\end{tabular}
+\end{center}\vfill
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\addtocounter{slide}{-1}
+
+\heading{\small{http://www.rsa.com/rsalabs/challenges/factoring/numbers.html}}
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+ \textcolor{blue}{Numero} & \textcolor{blue}{Premio (\$US)} & \textcolor{blue}{Status} \\
+$RSA_{576}$ &  \$10,000  & Factored December 2003\\
+$RSA_{640}$ &  \$20,000   & Factored November 2005\\
+$RSA_{704}$ &     \$30,000&  Factored July, 2 2012\\
+$RSA_{768}$ &     \$50,000&   Factored  December, 12 2009\\
+$RSA_{896}$ &     \$75,000& Not factored\\
+$RSA_{1024}$ &     \$100,000&  Not factored\\
+$RSA_{1536}$ &  \$150,000 & Not factored\\
+$RSA_{2048}$ &     \$200,000 &  Not factored\\
+\hline
+\end{tabular}
+\end{center}\pause\bigskip
+
+\scriptsize{
+The RSA challenges ended in 2007.  RSA Laboratories stated:\\
+{\small ``\textit{Now that the industry has a considerably more advanced understanding of the 
+cryptanalytic strength of common symmetric-key and public-key algorithms, these challenges are no longer active.}''}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Famous citation!!!}\bigskip
+
+\centerline{\includegraphics[width=4cm]{images/borel1.jpg}}
+
+\textit{A phenomenon whose probability is  $10^{-50}$ never happens, and it will never observed.}\bigskip
+
+\textsc{- \'Emil Borel (Les probabilit\'es et sa vie)}
+\end{slide}
+
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{History of the ``\emph{Art of Factoring}''}\pause
+
+\begin{itemize}
+\item[\textcolor{black}{\ding{243}}] 220 BC Greeks (Eratosthenes of Cyrene )\pause
+\item[\textcolor{black}{\ding{243}}] 1730 Euler $2^{2^5}+1=641\cdot 6700417 $\pause
+\item[\textcolor{black}{\ding{243}}] 1750--1800 Fermat, Gauss (Sieves - Tables)\pause
+\item[\textcolor{black}{\ding{243}}] 1880 Landry \& Le Lasseur:
+$$2^{2^6}+1= 274177 \times 67280421310721$$\pause
+\item[\textcolor{black}{\ding{243}}] 1919 Pierre and Eug\`ene Carissan (Factoring Machine)\pause
+\item[\textcolor{black}{\ding{243}}] 1970 Morrison \& Brillhart
+$$2^{2^7}+1=
+59649589127497217 \times 5704689200685129054721 $$\pause
+\item[\textcolor{black}{\ding{243}}] 1982 Quadratic Sieve \textbf{QS}
+(Pomerance)\hfil $\rightsquigarrow$\hfil Number Fields Sieve \textbf{NFS}\pause
+\item[\textcolor{black}{\ding{243}}] 1987 Elliptic curves factoring \textbf{ECF} (Lenstra)
+\end{itemize}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{History of the ``\emph{Art of Factoring}''}
+\bigskip\bigskip
+
+\begin{center}
+\includegraphics{images/eratostene.jpg}
+
+220 BC Greeks (Eratosthenes of Cyrene)
+\end{center}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{History of the ``\emph{Art of Factoring}''}
+\bigskip\bigskip
+
+\begin{center}
+\includegraphics[width=5cm]{images/Euler_9.jpeg}
+
+1730 Euler $2^{2^5}+1=641\cdot 6700417 $
+\end{center}
+\end{slide}
+
+ \begin{slide}
+\heading {How did Euler factor $2^{2^5}+1$?}\pause 
+
+\noindent\textsc{Proposition} \textit{Suppose $p$ is a prime factor of $b^n+1$. Then
+\begin{enumerate}
+ \item $p$ is a divisor of $b^{d}+1$ for some proper divisor $d$ of $n$ such that $n/d$ is odd or 
+ \item $p-1$ is divisible by $2n$.
+\end{enumerate}}\medskip
+\medskip\pause
+
+\noindent\textcolor{red}{\textit{Application:}} Let $b=2$ and $n=2^5=64$. Then $2^{2^5}+1$ is prime or it is divisible by
+a prime $p$ such that $p-1$ is divisible by $128$. \pause
+
+Note that \\
+$1+1\times128=3\times43$, $1+2\times128=257$ is prime,\\ 
+$1+3\times128=5\times7\times11$, $1+4\times 128=3^3\times19$ and $1+5\cdot 128=641$
+is prime.
+
+Finally
+$$\frac{2^{2^5}+1}{641}=\frac{4294967297}{641}=6700417$$
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{History of the ``\emph{Art of Factoring}''}
+\bigskip\bigskip
+
+\begin{center}
+\includegraphics[width=7cm]{images/euler1.jpg}
+
+1730 Euler $2^{2^5}+1=641\cdot 6700417 $
+\end{center} 
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{History of the ``\emph{Art of Factoring}''}
+
+\begin{center}
+\includegraphics[width=4.5cm]{images/fermat.jpg}
+\includegraphics[width=4.5cm]{images/Gauss_1803.jpeg}
+
+1750--1800 Fermat, Gauss (Sieves - Tables)
+\end{center} 
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{History of the ``\emph{Art of Factoring}''}
+
+\begin{center}
+\includegraphics[width=5cm]{images/fermatstamp.jpg}
+\includegraphics[width=5cm]{images/Gauss_banknote.jpeg}
+
+1750--1800 Fermat, Gauss (Sieves - Tables)\pause
+
+Factoring with sieves
+$N=x^2-y^2=(x-y)(x+y)$
+\end{center} 
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Carissan's ancient Factoring Machine}\pause
+
+
+\begin{figure}
+  \centering
+\includegraphics[width=5cm]{images/cari.jpg}
+  \caption{Conservatoire Nationale des Arts et M\'etiers in Paris}
+\end{figure}\pause
+
+\heading{\begin{small}\texttt{http://www.math.uwaterloo.ca/~shallit/Papers/carissan.html
+}\end{small}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\begin{figure}
+  \centering \includegraphics[width=3cm]{images/caris2.jpg}
+  \caption{Lieutenant Eug\`ene Carissan}\end{figure}\pause
+\centerline{\begin{tabular}{rcl}
+$225058681=229\times982789$ & &{2 minutes}\\
+$3450315521=1409\times 2418769$ & & {3 minutes}\\
+$3570537526921=841249\times4244329$ & & {18 minutes}\\
+\end{tabular}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{State of the ``\emph{Art of Factoring}''}
+\bigskip
+
+\begin{center}
+\includegraphics[width=5cm]{images/brillhart.JPG}
+
+1970 - John Brillhart \&  Michael A. Morrison  $2^{2^7}+1=
+59649589127497217 \times 5704689200685129054721 $
+\end{center}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{State of the ``\emph{Art of Factoring}''}
+\bigskip
+
+$$   F_{n} = 2^{(2^n)} + 1$$
+ is called the $n$--th Fermat number 
+
+\begin{center}\hspace*{-.7cm}
+\includegraphics[width=13cm]{images/f11.png}
+\end{center}\pause
+
+Up to today only from $F_0$ to $F_{11}$ are factores.\\ It is not known the factorization of  
+$$F_{12}=2^{2^{12}}+1$$\pause
+
+
+
+
+
+\end{slide}
+
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{State of the ``\emph{Art of Factoring}''}
+\bigskip\bigskip
+
+\begin{center}
+\includegraphics[width=3cm]{images/smallcarl1.jpg}
+
+1982 - Carl Pomerance - Quadratic Sieve
+\end{center}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{State of the ``\emph{Art of Factoring}''}
+\bigskip\bigskip
+
+\begin{center}
+\includegraphics[width=4cm]{images/Lenstra.jpg}
+
+1987 - Hendrik Lenstra - Elliptic curves factoring
+\end{center}
+\end{slide}
+
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Contemporary Factoring}\vspace{-3mm}\pause
+
+\begin{itemize}
+  \item[\textcolor{blue}{\ding{182}}] 1994, Quadratic Sieve (QS): (8 months, 600 volunteers, 20 nations)\\
+  D.Atkins, M. Graff, A. Lenstra, P. Leyland
+\begin{tiny}\begin{tabular}{l}
+$  RSA_{129} = 114381625757888867669235779976146612010218296721242362562561842935706$\\
+\hspace*{5mm}$935245733897830597123563958705058989075147599290026879543541=$\\
+$        = 3490529510847650949147849619903898133417764638493387843990820577 \times$\\
+$
+32769132993266709549961988190834461413177642967992942539798288533
+$\end{tabular}\end{tiny}\pause
+
+  \item[\textcolor{blue}{\ding{183}}] (February 2 1999), Number Field Sieve (NFS): (160 Sun, 4 months)
+ \begin{tiny}\begin{tabular}{c}
+\hspace*{-1cm}$ RSA_{155} = 109417386415705274218097073220403576120037329454492059909138421314763499842$\\
+$88934784717997257891267332497625752899781833797076537244027146743531593354333897=$\\
+$=102639592829741105772054196573991675900716567808038066803341933521790711307779
+\times$\\
+$106603488380168454820927220360012878679207958575989291522270608237193062808643
+$\end{tabular}\end{tiny}\pause
+
+  \item[\textcolor{blue}{\ding{184}}] (December 3, 2003) (NFS): J. Franke et al. (174 decimal digits)
+ \begin{tiny}\begin{tabular}{c}
+\hspace*{-1cm}$ RSA_{576} = 1881988129206079638386972394616504398071635633794173827007633564229888597152346$\\
+$65485319060606504743045317388011303396716199692321205734031879550656996221305168759307650257059=$\\
+$=398075086424064937397125500550386491199064362342526708406385189575946388957261768583317\times$\\
+$472772146107435302536223071973048224632914695302097116459852171130520711256363590397527
+$\end{tabular}\end{tiny}\pause
+
+\item[\textcolor{blue}{\ding{185}}]
+  Elliptic curves factoring: introduced by  H. Lenstra.
+  suitable to detect small factors (50 digits)\pause
+
+\end{itemize}
+
+\centerline{\textcolor{red}{all have "\emph{sub--exponential complexity}"}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{The factorization of $RSA_{200}$}
+
+\begin{tiny}
+
+$RSA_{200}=2799783391122132787082946763872260162107044678695542853756000992932612840010$
+          $7609345671052955360856061822351910951365788637105954482006576775098580557613$
+          $579098734950144178863178946295187237869221823983$\pause
+
+
+Date: Mon, 9 May 2005 18:05:10 +0200 (CEST) 
+From: "Thorsten Kleinjung"
+Subject: rsa200 
+
+We have factored RSA200 by GNFS. The factors are
+
+35324619344027701212726049781984643686711974001976\
+25023649303468776121253679423200058547956528088349
+
+and
+
+79258699544783330333470858414800596877379758573642\
+19960734330341455767872818152135381409304740185467
+
+
+We did lattice sieving for most special q between 3e8 and 11e8
+using mainly factor base bounds of 3e8 on the algebraic side and 18e7 
+on
+the rational side. The bounds for large primes were $2^{35}$. This produced
+26e8 relations. Together with 5e7 relations from line sieving the total
+yield was 27e8 relations. After removing duplicates 226e7 relations
+remained. A filter job produced a matrix with 64e6 rows and columns,
+having 11e9 non-zero entries. This was solved by Block-Wiedemann.
+
+Sieving has been done on a variety of machines. We estimate that
+lattice sieving would have taken 55 years on a single 2.2 GHz Opteron 
+CPU.
+Note that this number could have been improved if instead of the PIII-
+binary which we used for sieving, we had used a version of the
+lattice-siever optimized for Opteron CPU's which we developed in the 
+meantime.
+The matrix step was performed on a cluster of 80 2.2 GHz Opterons 
+connected via a Gigabit network and took about 3 months.
+
+We started sieving shortly before Christmas 2003 and continued until
+October 2004. The matrix step began in December 2004.
+Line sieving was done by P. Montgomery and H. te Riele at the CWI, by
+F. Bahr and his family.
+
+More details will be given later.
+
+F. Bahr, M. Boehm, J. Franke, T. Kleinjung
+\end{tiny}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Factorization of $RSA_{768}$}
+
+\centerline{\includegraphics[width=12cm]{images/RSA-768.png}}
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+
+\centerline{\Large{\textcolor{blue}{RSA}}}
+
+\centerline{\includegraphics[width=9cm]{images/rsa-photo.jpg}}
+
+\centerline{Adi Shamir, Ron L. Rivest, Leonard Adleman (1978)}
+\end{slide}
+
+\begin{slide}
+
+\centerline{\Large{\textcolor{blue}{RSA}}}
+
+\centerline{\includegraphics[width=9cm]{images/RSA-2003.jpg}}
+
+\centerline{Ron L. Rivest, Adi Shamir, Leonard Adleman (2003)}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{The RSA cryptosystem}\pause
+
+1978 R. L. Rivest, A. Shamir, L. Adleman (Patent expired in
+1998)\pause
+
+\textbf{\textcolor{black}{Problem:}} \emph{Alice wants to send the
+message $\mathcal P$ to Bob so that Charles cannot read it}\pause
+
+\begin{center}\begin{large}
+\begin{tabular}{|lcr|}\hline
+  $A$ (\textsl{Alice}) & $-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!\rightarrow$ & $B$ (\textsl{Bob})\\
+   & $\uparrow$ &  \\
+   & $C$ (\textsl{Charles}) &  \\ \hline\end{tabular}
+\end{large}\end{center}\pause
+
+\parstepwise{\begin{itemize}
+  \item[\textcolor{blue}{\ding{182}}] \step{\textsc{Key generation} \hspace{3cm} Bob has to do it}
+  \item[\textcolor{blue}{\ding{183}}]  \step{\textsc{Encryption}\ \ \  \hspace{3cm} Alice has to do it}
+  \item[\textcolor{blue}{\ding{184}}]  \step{\textsc{Decryption}\ \ \  \hspace{3cm} Bob has to do it}
+  \item[\textcolor{blue}{\ding{185}}]  \step{\textsc{Attack}\ \ \ \ \ \ \hspace{3cm}
+  Charles would like to do it}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{\textsc{Bob: Key generation}}\pause
+
+\parstepwise{\begin{itemize}
+  \item[\textcolor{blue}{\ding{45}}] \step{\underline{He chooses} \emph{\textcolor{red}{randomly}}  $p$ and $q$ primes \ \ \ \ \ \ \ ($p,q\approx 10^{100}$)}
+  \item[\textcolor{blue}{\ding{45}}] \step{\underline{He computes} \ \ $M=p\times q$, $\varphi(M)=(p-1)\times(q-1)$}
+  \item[\textcolor{blue}{\ding{45}}] \step{\underline{He chooses} an integer $e$  s.t.}
+\item[\ ]\step{\ \ \ \ \ \ $0\leq e\leq \varphi(M)\ \
+\textrm{and}\ \  \gcd(e,\varphi(M))=1$} \item[\ ]\step{\ \ \ \ \ \
+\scriptsize\textsc{Note.} One could take  $e=3$ and $p\equiv
+q\equiv 2\bmod 3$} \item[\ ]\step{\ \ \ \ \ \ \hspace{4cm}\ \ \
+Experts recommend $e=2^{16}+1$}
+  \item[\textcolor{blue}{\ding{45}}] \step{\underline{He computes} arithmetic inverse $d$ of  $e$ modulo $\varphi(M)$}
+\item[\ ] \step{\ \ \ \ \ \ {(i.e. $d\in\mathbb N$ (unique $\leq \varphi(M)$) s.t. $e\times d\equiv 1 \pmod{\varphi(M)}$)}}
+  \item[\textcolor{blue}{\ding{45}}] \step{\underline{Publishes} $(M,e)$ \textbf{\textcolor{blue}{public key}} and hides
+  \textbf{\textcolor{red}{secret key}} $d$}
+\end{itemize}}\pause\bigskip
+\center{\textbf{\textcolor{black}{Problem:}} \emph{How does Bob do
+all this?}- We will go came back to it!}
+
+\end{slide}
+
+
+
+%%%%%%%%%%%%%%%
+\begin{slide}\pageTransitionWipe{30}
+\heading{Alice: Encryption}\pause
+
+Represent the message ${\mathcal P}$ as an element of  ${\mathbb Z}/M{\mathbb Z}$\pause
+
+(\textcolor{blue}{for example})\fbox{ $A\leftrightarrow 1\ \ \
+B\leftrightarrow2\ \ \ C\leftrightarrow3\ \ \ldots\ \
+Z\leftrightarrow26\ \ \ AA\leftrightarrow 27 \ldots$}\pause
+\begin{scriptsize}
+$$\texttt{\textcolor{red}{Sukumar}}\leftrightarrow
+19\cdot26^6+21\cdot26^5+11\cdot26^4+21\cdot26^3+12\cdot26^2+1\cdot26+18=
+                          6124312628$$ Note. Better if texts are not too short. Otherwise one performs
+some  \textsl{padding}
+\end{scriptsize}\pause
+
+\begin{Large}
+\begin{center}\begin{tabular}{|c|}\hline
+${\mathcal C}=E({\mathcal P})={\mathcal P}^e\pmod M$\\\hline\end{tabular}\end{center}
+\end{Large}\pause
+
+\scriptsize{ \textcolor{blue}{Example}: $p=9049465727$,
+$q=8789181607$, $M=79537397720925283289 $, $e=2^{16}+1=65537$,
+${\mathcal P}=\texttt{\textcolor{red}{Sukumar}}$:\pause
+$$E(\texttt{\textcolor{red}{Sukumar}})=6124312628^{65537}\,(\bmod 79537397720925283289)$$
+$$=25439695120356558116={\mathcal C}=\texttt{\textcolor{black}{JGEBNBAUYTCOFJ}}\hfill$$}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Bob: Decryption}\pause
+
+\begin{Large}
+\begin{center}\begin{tabular}{|c|}\hline
+${\mathcal P}=D({\mathcal C})={\mathcal C}^d\pmod M$\\\hline\end{tabular}\end{center}
+\end{Large}\pause
+
+\textbf{\textcolor{blue}{Note.}} Bob decrypts because he is the
+only one that knows $d$.\pause
+
+\centerline{\begin{tabular}{|c|}\hline
+\textbf{\textcolor{red}{Theorem. (Euler)}} If $a,m\in {\mathbb N}$, $\gcd(a,m)=1$, \\
+$a^{\varphi(m)}\equiv 1\pmod m.$\\
+If $n_1\equiv n_2\bmod\varphi(m)$ then $a^{n_1}\equiv a^{n_2}\bmod m$.\\
+\hline
+\end{tabular}}\pause
+
+Therefore ($ed\equiv1\bmod\varphi(M)$)\medskip
+
+\centerline{
+\begin{tabular}{|c|}\hline
+{\Large $D(E({\mathcal P}))={\mathcal P}^{ed}\equiv {\mathcal P}\bmod M$}\\
+\hline
+\end{tabular}}\pause
+
+\scriptsize{\textcolor{blue}{Example}(cont.):$d=65537^{-1}\bmod \varphi(9049465727\cdot8789181607)=57173914060643780153$\\
+\hspace*{2mm}$D(\texttt{\textcolor{black}{JGEBNBAUYTCOFJ}})=$\\
+\hspace*{2mm}$25439695120356558116
+^{57173914060643780153}(\bmod79537397720925283289)=\texttt{\textcolor{red}{Sukumar}}$}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+
+\centerline{\Large{\textcolor{blue}{RSA at work}}}\bigskip\bigskip
+
+\centerline{\includegraphics[width=7cm]{images/rsa.jpg}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}%1/Mod(65537,9049465726*8789181606)
+\heading{Repeated squaring algorithm}\pause
+
+\textbf{\textcolor{black}{Problem:}} How does one compute $a^b\bmod
+c$?\pause \centerline{$25439695120356558116^{57173914060643780153
+}(\bmod 79537397720925283289)$}\pause
+
+\parstepwise{\begin{itemize}
+\item[\textcolor{blue}{\ding{45}}]
+\step{\underline{Compute the binary expansion}  $b=\displaystyle{\sum_{j=0}^{[\log_2b]}\epsilon_j2^j}$}
+\item[\ ]
+\step{\scriptsize{$57173914060643780153$}=\tiny{$1100011001011100101000101111101010111100110110001001
+00011000111001$}}
+\item[\textcolor{blue}{\ding{45}}] \step{\underline{Compute recursively}  $a^{2^j}\bmod c, j=1,\ldots,[\log_2b]$:}
+\item[\ ]\step{\ \ \ \ \ $\displaystyle{a^{2^j}\bmod c=\left(a^{2^{j-1}}\bmod c\right)^2\bmod c}$}
+\item[\textcolor{blue}{\ding{45}}] \step{\underline{Multiply} the $a^{2^j}\bmod c$ with $\epsilon_j=1$}%\vspace{-2mm}
+\item[\ ]\step{\ \ \ \ \ ${a^b\bmod c=\left(\prod_{j=0,\epsilon_j=1}^{[\log_2b]}a^{2^j}\bmod c\right)\bmod c}$}
+\end{itemize}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{$\#\{\textrm{oper. in\ }  {\mathbb Z}/c{\mathbb Z}\
+\textrm{to compute } a^b\bmod c\} \leq 2\log_2b$}\pause
+
+\texttt{\textcolor{black}{JGEBNBAUYTCOFJ}} is decrypted with $131$
+operations in {\small$${\mathbb Z}/79537397720925283289\mathbb Z$$}
+\medskip\pause
+
+\textsc{\textcolor{blue}{Pseudo code:}} $e_c(a,b)=a^b\bmod c$\pause
+
+\begin{center}
+\texttt{\begin{tabular}{|lclcll|}\hline
+$e_c(a,b)$ &= &  if   & $b=1$  & then   & $a \bmod c$\\
+              &  &  if   &   $2|b$  & then       & $e_c(a,\frac{b}{2})^2 \bmod c$\\
+              &  &   else   &        &            & $a*e_c(a,\frac{b-1}{2})^2 \bmod c$\\
+              \hline
+\end{tabular}}
+\end{center}\pause\bigskip
+
+To encrypt with $e=2^{16}+1$, only $17$ operations  in ${\mathbb Z}/M{\mathbb Z}$ are enough
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Key generation}\pause\bigskip
+
+\textcolor{black}{\textbf{Problem.}} Produce a random prime
+$p\approx 10^{100}$
+
+\begin{center}\texttt{
+\begin{tabular}{|cl|}\hline
+&\textbf{\textcolor{blue}{Probabilistic algorithm (type Las Vegas)}}\\
+\hline
+  1.& Let $p=\textsc{Random}(10^{100})$\\
+  2.& If \textsc{isprime}($p$)=1 then \textsc{Output}=$p$ else goto 1\\
+\hline
+\end{tabular}
+}\end{center}\pause\medskip
+
+\textcolor{black}{\textbf{subproblems:}}\pause
+
+\textsl{\textcolor{red}{A.}} How many iterations are necessary?
+\centerline{(i.e. how are primes distributes?)}\pause
+
+\noindent\textsl{\textcolor{red}{B.}} How does one check if $p$ is
+prime? \centerline{(i.e. how does one compute
+${{\texttt{\textsc{isprime}}(p)}}$?) $\rightsquigarrow$ Primality test}\pause
+\bigskip
+
+\centerline{\fbox{\scriptsize{\textit{\textcolor{red}{False Metropolitan Legend:}
+ \textcolor{blue}{Check primality is equivalent to factoring}}}}}
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{\textsl{A.} Distribution of prime numbers}\pause
+
+$$\pi(x)=\#\{p\leq x\ \textrm{t. c. } p \textrm{ is prime}\}$$\pause
+
+\begin{center}
+\begin{tabular}{|c|}\hline
+\textbf{\textcolor{red}{Theorem.}} (Hadamard - de la vallee Pussen - 1897)\\
+ $\displaystyle{\pi(x)\sim \frac{x}{\log x}}$\\
+\hline\end{tabular}
+\end{center}\pause
+
+Quantitative version:
+
+\small{
+\begin{center}
+\begin{tabular}{|c|}\hline
+\textbf{\textcolor{red}{Theorem.}} (Rosser - Schoenfeld) if $x\geq 67$\\
+ $\displaystyle{\frac{x}{\log x-1/2}< \pi(x)< \frac{x}{\log x-3/2}}$\\
+\hline\end{tabular}
+\end{center}}\pause
+
+Therefore
+
+$$ 0.0043523959267
+ < Prob\left((\texttt{\textsc{Random}}(10^{100})=\texttt{prime}\right)< 0.004371422086
+$$\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+If $P_{k}$ is the probability that among $k$ random numbers$\leq
+10^{100}$ there is a prime one, then\pause
+$$P_k=1-\left(1-\frac{\pi(10^{100})}{10^{100}}\right)^k$$\pause
+
+Therefore
+$$0.663942
+<P_{250}<
+ 0.66554440
+$$
+\bigskip\pause
+
+\textcolor{red}{To speed up the process}: One can
+consider only odd random numbers not divisible by
+$3$ nor by $5$.\pause
+
+Let
+$$\Psi(x,30)=\#\left\{n\leq x\ \textrm{s.t.} \gcd(n,30)=1\right\}$$
+
+%1-(1-1/(100*log(10)-3/2))^50
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\textcolor{red}{To speed up the process}: One can
+consider only odd random numbers not divisible by
+$3$ nor by $5$.\pause
+
+Let
+$$\Psi(x,30)=\#\left\{n\leq x\ \textrm{s.t.} \gcd(n,30)=1\right\}$$
+then\pause
+$$\frac{4}{15}x-4<\Psi(x,30)<\frac{4}{15}x+4$$\pause
+
+Hence, if $P_k'$ is the probability that among $k$ random numbers $\leq 10^{100}$
+coprime with 30, there is a prime one, then\pause
+$$P'_k=1-\left(1-\frac{\pi(10^{100})}{\Psi(10^{100},30)}\right)^k$$\pause
+and
+$$0.98365832
+<P'_{250}<
+ 0.98395199$$
+\end{slide}
+
+%1-(1-10^100/(100*log(10)-3/2)/(4*10^100/15+4))^250
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{\textsl{B.} Primality test}\pause
+
+%\hspace*{2.5cm}$\rightsquigarrow$ \textsc{\textcolor{blue}{Pseudo
+%Primi and Pseudo Primi Forti}}
+
+\begin{center}
+\begin{tabular}{|c|}
+\hline \textbf{\textcolor{red}{Fermat Little Theorem.}} If $p$ is prime, $p\nmid a\in{\mathbb N}$\\
+$a^{p-1}\equiv1\bmod p$
+\\\hline\end{tabular}
+\end{center}\pause
+\bigskip
+
+\textbf{\textcolor{blue}{NON-primality test}}
+$$M\in{\mathbb Z},\ \ 2^{M-1}\not\equiv 1\bmod M =\!\!\!=\!\!\!>\ \  M \textrm{composite!}$$\pause
+
+\textsc{\textcolor{blue}{Example}:} $2^{RSA_{2048}-1}\not\equiv1\bmod RSA_{2048}$\\
+\centerline{Therefore $RSA_{2048}$ is composite!}\pause
+
+Fermat little Theorem does not invert. Infact\pause
+
+$$2^{93960}\equiv 1\pmod{93961}\ \ \ \ \textrm{but}\ \ \ \ 93961
+=7\times31\times433$$
+ \end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Strong pseudo primes}\pause
+
+From now on $m\equiv3\bmod4$ (just to simplify the notation)\pause
+
+{\textbf{\textcolor{red}{Definition.}}} $m\in\mathbb N$,
+$m\equiv3\bmod4$, composite is said \emph{\textcolor{black}{strong pseudo prime} (SPSP)} in base $a$ if
+$$a^{(m-1)/2}\equiv \pm1\pmod{m}.$$\pause
+
+\textbf{\textcolor{blue}{Note.}} If $p>2$ prime $=\!\!\!=\!\!\!>\ \ a^{(p-1)/2}\equiv \pm1\pmod{p}$\\
+%\ \ \ ($x=a^{(p-1)/2}$ is root of the polynomial $x^2-1$ $=\!\!\!=\!\!\!>\ \ x=\pm1$).
+Let \fbox{${\mathcal S}=\{a\in {\mathbb Z}/m{\mathbb Z}\ \textrm{s.t.}\ \gcd(m,a)=1, a^{(m-1)/2}\equiv \pm1\pmod{m}\}$}%\\
+\pause %$=\!\!\!=\!\!\!>$
+\parstepwise{\begin{itemize}
+  \item[\textcolor{blue}{\ding{192}}] \step{${\mathcal S}\subseteq ({\mathbb Z}/m{\mathbb Z})^*$ subgroup}
+  \item[\textcolor{blue}{\ding{193}}] \step{If $m$ is composite $=\!\!\!=\!\!\!>$ proper subgroup}
+  \item[\textcolor{blue}{\ding{194}}] \step{If $m$ is composite $=\!\!\!=\!\!\!>\ \ \ \#{\mathcal S}\leq \frac{\varphi(m)}{4}$}
+  \item[\textcolor{blue}{\ding{195}}] \step{If $m$ is composite $=\!\!\!=\!\!\!>\ \ \ Prob(m\ \textrm{PSPF in base }a)\leq 0,25$}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Miller--Rabin primality test}\pause
+
+Let $m\equiv 3\bmod 4$\pause
+
+\center{\texttt{\begin{tabular}{|l|}\hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  \textsc{\textcolor{blue}{Miller Rabin algorithm with $k$ iterations}} \\
+\hline
+$N=(m-1)/2$\\
+for $j=0$ to $k$ do\ \
+  $a=$Random$(m)$ \\
+if $a^N\not\equiv\pm1\bmod m$ then OUPUT=($m$ composite): END \\
+endfor OUTPUT=($m$ prime) \\\hline
+\end{tabular}}}\pause
+
+\emph{\textcolor{red}{Monte Carlo primality test}}\pause
+
+$Prob($Miller Rabin says \texttt{$m$ prime} and $m$ is composite)
+$\lessapprox\frac{1}{4^k}$\pause
+
+In the real world, software uses Miller Rabin with $k=10$
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Deterministic primality tests}\pause
+
+\textbf{\textcolor{blue}{Theorem. (Miller, Bach)}} If $m$ is
+composite, then \centerline{\textbf{{GRH}} $=\!\!\!=\!\!\!>\
+\exists a\leq 2\log^2 m$ s.t.\ \ $a^{(m-1)/2}\not\equiv
+\pm1\pmod{m}$.}\\ \ \hfill\textcolor{red}{(i.e. $m \textit{
+is not SPSP in base } a.$)}\pause
+
+\small{\textbf{\textcolor{blue}{Consequence:}} ``Miller--Rabin
+\emph{de--randomizes on GRH}'' ($m\equiv3\bmod4$)}\pause
+
+\center{\texttt{\begin{tabular}{|lll|}\hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  %\textsc{\textcolor{blue}{Miller Rabin algorithm with $k$ iterations}} \\
+%\hline
+for & $a=2$ to $2\log^2 m$ & do\ \ \\
+    & if $a^{(m-1)/2}\not\equiv\pm1\bmod m$ & then \\ & & OUPUT=($m$ composite): END \\
+endfor & & OUTPUT=($m$ prime) \\\hline
+\end{tabular}}}\pause
+
+\emph{\textcolor{red}{Deterministic Polynomial time algorithm}}\pause
+
+\textcolor{blue}{It runs in $O(\log^5m)$ operations in ${\mathbb
+Z}/m\mathbb Z$.}
+
+%\textcolor{rossoscu}{(i.e. $m\equiv3\bmod4$ is prime if and
+%only if: \fbox{$a^{(m-1)/2}\equiv \pm1 \bmod m\ \ \ \forall a\leq
+%2\log^2 m$})}}
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Certified prime records}\pause
+
+
+
+\begin{itemize}
+\item[\textcolor{red}{\ding{46}}] {\ $2^{57885161}-1$,\hspace{2cm}  $17425170$ digits (discovered in  01/2014 )}
+\item[\textcolor{red}{\ding{46}}] {\ $2^{43112609}-1$,\hspace{2cm}  $12978189$ digits (discovered in  2008)}
+\item[\textcolor{red}{\ding{46}}] {\ $2^{42643801}-1$,\hspace{2cm}  $12837064$ digits (discovered in  2009)}
+\item[\textcolor{red}{\ding{46}}] {\ $2^{37156667}-1$,\hspace{2cm}  $11185272$ digits (discovered in  2008)}
+\item[\textcolor{red}{\ding{46}}] {\ $2^{32582657}-1$,\hspace{2cm}  $9808358$ digits (discovered in  2006)}
+\item[\textcolor{red}{\ding{46}}] {\ $2^{30402457}-1$,\hspace{2cm}  $9152052$ digits (discovered in  2005)}
+\item[\textcolor{red}{\ding{46}}] {\ $2^{25964951}-1$,\hspace{2cm}  $7816230$ digits (discovered in  2005)}
+\item[\textcolor{red}{\ding{46}}] {\ $2^{24036583}-1$,\hspace{2cm}  $6320430$ digits (discovered in  2004)}
+ \item[\textcolor{red}{\ding{46}}] {\ $2^{20996011}-1$,\hspace{2cm}  $6320430$ digits (discovered in  2003)}
+ \item[\textcolor{red}{\ding{46}}] {\ $2^{13466917}-1$,\hspace{2cm}    $4053946$ digits  (discovered in 2001)}
+ \item[\textcolor{red}{\ding{46}}] {\ $2^{6972593}-1$,\hspace{2cm} $2098960$ digits (discovered in  1999)}
+ \item[\textcolor{red}{\ding{46}}] {\ $5359\times2^{5054502}+1$,\hspace{2cm} $1521561$ digits (discovered in  2003)}
+% \item[\textcolor{red}{\ding{46}}] {\ $2^{3021377}-1$,\hspace{2cm} $909526$ digits (discovered in  1998)}
+% \item[\textcolor{red}{\ding{46}}] \step{\ $2^{2976221}-1$,\hspace{2cm} $895932$ digits (discovered in  1997)}
+% \item[\textcolor{red}{\ding{46}}] \step{\ $1372930^{131072}+1$,\hspace{2cm} $804474$ digits (discovered in  2003)}
+% \item[\textcolor{red}{\ding{46}}] \step{\ $1176694^{131072}+1$,\hspace{2cm} $795695$ digits (discovered in  2003)}
+%572186131072+1 754652 g0 2004 Generalized Fermat
+%3.22478785+1 746190 g245 2003 Divides Fermat F(2478782), GF(2478782,3), GF(2478776,6), GF(2478782,12)
+\end{itemize}
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Great Internet Mersenne Prime Search (GIMPS)}\pause
+
+\includegraphics[width=3cm]{images/GIMPS_logo.png}
+The \emph{Great Internet Mersenne Prime Search (GIMPS)} 
+is a collaborative project of volunteers who use freely available software to search for Mersenne prime numbers
+(i.e. prime numbers of the form $2^p-1$ ($p$ prime)). \pause
+
+The project was founded by George Woltman in January 1996.
+
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{The AKS deterministic primality test}\pause
+
+\centerline{Department of Computer Science \& Engineering,}
+\centerline{I.I.T. Kanpur, Agost 8, 2002.}\pause
+
+\centerline{\includegraphics[width=4cm]{images/primality-group.jpg}}
+
+\centerline{Nitin Saxena, Neeraj Kayal and Manindra Agarwal}\pause
+
+\centerline{\textcolor{blue}{\emph{New deterministic,
+polynomial--time, primality test.}}}\pause
+
+Solves $\# 1$ open question in computational number theory\pause
+
+
+\heading{http://www.cse.iitk.ac.in/news/primality.html}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{How does the AKS work?}\pause
+
+\noindent\textcolor{blue}{\textbf{Theorem. (AKS)}} \emph{Let
+$n\in{\mathbb N}$. Assume $q, r$ primes, $S\subseteq {\mathbb N}$
+finite:
+\begin{itemize}
+    \item $q|r-1$;
+    \item $n^{(r-1)/q}\bmod r\not\in\{0,1\}$;
+    \item $\gcd(n,b-b')=1,\ \ \forall b,b'\in S$ (distinct);
+    \item $\binom{q+\#S-1}{\#S}\geq n^{2\lfloor\sqrt{r}\rfloor}$;
+    \item $(x+b)^n=x^n+b$ in ${\mathbb Z}/n{\mathbb Z}[x]/(x^r-1),\ \ \forall b\in
+    S$;
+\end{itemize}
+Then $n$ is a power of a prime} \ \hfill \textcolor{black}{{\tiny
+Bernstein formulation}}\pause
+
+ \textcolor{red}{Fouvry Theorem (1985)} $=\!\!\!=\!\!\!>\ \ \ \exists
+r\approx\log^6n, s\approx\log^4n$\pause
+
+\hspace*{3.65cm} $=\!\!\!=\!\!\!>\ \ \ $ \textcolor{blue}{AKS runs
+in $O(\log^{15}n)$\\  \hspace*{4.7cm}operations in ${\mathbb
+Z}/n{\mathbb Z}$.}\pause
+
+Many simplifications and improvements: \textcolor{red}{Bernstein,
+Lenstra, Pomerance.....}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Why is RSA safe?}\pause
+
+\parstepwise{\begin{itemize}
+
+\item[\textcolor{black}{\ding{43}}] \step{It is clear that if
+Charles can factor $M$,} \step{then he can also compute
+$\varphi(M)$ and then also $d$ so to decrypt messages}
+
+\item[\textcolor{black}{\ding{43}}] \step{Computing $\varphi(M)$ is
+equivalent to completely factor $M$. In fact}
+\item[\ ] \step{\ \ \ \ \ \ $\displaystyle{p,q=\frac{M-\varphi(M)+1\pm\sqrt{(M-\varphi(M)+1)^2-4M}}{2}}$}
+\item[\textcolor{black}{\ding{43}}] \step{\textbf{\textcolor{blue}{RSA
+Hypothesis.}} The only way to compute efficiently}
+\item[\ ] \step{\ \ \ \ \ \ $\displaystyle{x^{1/e}\bmod M,\ \ \ \forall x\in{\mathbb Z}/M\mathbb Z}$}
+\item[\ ] \step{\ \ \ \ \ \ (i.e. decrypt messages) is to factor $M$}
+\item[\ ] \step{\ \ \ \ \ \ In other words}
+\item[\ ] \step{\ \ \ \ \ \ \ \emph{\textcolor{black}{The two problems are
+polynomially equivalent}}}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+
+\heading{Two kinds of Cryptography}\pause
+
+\begin{itemize}
+  \item[\textcolor{blue}{\ding{43}}] {\bf Private key (or symmetric)}
+\begin{itemize}
+  \item[\textcolor{red}{\ding{46}}] Lucifer
+  \item[\textcolor{red}{\ding{46}}] DES
+  \item[\textcolor{red}{\ding{46}}] AES
+\end{itemize}\pause
+
+  \item[\textcolor{blue}{\ding{43}}] {\bf Public key}
+\begin{itemize}
+  \item[\textcolor{red}{\ding{46}}] RSA
+  \item[\textcolor{red}{\ding{46}}] Diffie--Hellmann
+  \item[\textcolor{red}{\ding{46}}] Knapsack
+  \item[\textcolor{red}{\ding{46}}] NTRU
+\end{itemize}
+\end{itemize}
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Another quotation!!!}\bigskip\bigskip\bigskip
+
+\textit{
+Have you ever noticed that there's no attempt being made to find really
+large numbers that aren't prime. I mean, wouldn't you like to see a 
+news report that says ``Today the Department of Computer Sciences at the
+University of Washington annouced that $2^{58,111,625,031}+8$ is even''.
+This is the largest non-prime yet reported.}\bigskip
+
+\textsc{- University of Washington (Bathroom Graffiti)
+}
+\end{slide}
+
+\end{document}

@@ -1,0 +1,121 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2010/2011}\\
+
+\textbf{AL210 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 6 - 29	 Ottobre 2010}\\
+
+\textbf{Tutore: Matteo Acclavio}\\
+
+www.matematica3.com\\
+\end{center}
+
+\vspace{0.1cm}
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Sia $G$ gruppo allora:
+\begin{itemize}
+\item se $a^2b^2=(ab)^2 \Rightarrow ab=ba$
+\item se $a^nb^n=(ab)^n $ per tre interi successivi ($n,n+1,n+2$) $\Rightarrow ab=ba$
+\item $o(ab)=o(ba) \forall a,b\in G$
+\end{itemize}
+\end{Ex}
+
+
+\vspace{0.1cm}
+\noindent
+\begin{Ex}\textbf{ 2. (Equazione delle classi)}\\
+Sia $(G,\cdot )$ gruppo, $\sim_\gamma$ la relazione cos\acc i definita:
+$g \sim _\gamma h \Leftrightarrow g=x^{-1}hx\;\exists x \in G$.\\
+Sia $cl(x):=\{y |\; y\sim_\gamma x\}$ la classe di coniugio di $x$ e $U:=\{ x\in G | \forall x,y\in U \; y\not\sim_\gamma x\}$ massimale (nessun altro insieme con queste propiet\acc a lo contiene propriamente). Dimostrare che:
+\begin{itemize}
+\item $U$ contiente uno e un solo elemento per ogni classe di coniugio
+\item $\alpha: \{$ classi laterali di $C_G(x)\} \rightarrow cl(x) $ definita da $\alpha (gC_G(x))=gxg^{-1} $ \acc e ben definita e iniettiva ($C_G(x)$:=$\{ g\in G | xg=gx \}$ il centralizzante di $x$ in $G$)
+\item $|cl(x)|=[G:C_G(x)]$ (sugg: dimostrare che $\alpha$ \acc e anche suriettiva)
+\item $z\in Z(G) \Leftrightarrow cl(z)=\{ z\}$
+\item $|G|=\sum_{x_i \in U} |cl(x_i)|$.  (sugg: $G=\bigcup_{x\in G} cl(x)$)
+\item $|G|=|Z(G)|+\sum_{x \in U\setminus Z(G)} |cl(x)|=|Z(G)|+\sum_{x_i} [G:C_G(x_i)]$ \\dove $x_i$ rappresentante di una classe di coniugio non banale ($cl(x_i)\neq \{ x_i\}\forall \;i$)
+\end{itemize}
+\end{Ex}
+
+\vspace{0.1cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Sia $G$ $p$-gruppo allora:
+\begin{itemize}
+\item $Z(G)$ \acc e non banale
+\item $|G|=p^2 \Rightarrow G$ \acc e commutativo
+\end{itemize}
+(sugg: usare l'equazione delle classi)
+\end{Ex}
+\newpage
+\vspace{0.1cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Sia $Hom(\Z_n,\Z_m)$. Dimostrare che:
+\begin{itemize}
+\item $\forall a\in Z \; o([a]_m)=mcm(a,m)$.
+\item $o(\frac{m}{MCD(m,n)})|n$
+\item $\forall k= 1, \dots ,d-1$, $ \varphi_k: \Z_n \rightarrow \Z_m $ t.c. $\varphi([1]_n)=[\frac{km} d]_m $ \acc e un omomorfismo.
+\item $Hom(\Z_n,\Z_m)=\{\varphi_k |k = 1,\dots ,d-1\}$
+\end{itemize}
+\end{Ex}
+
+
+\end{document}

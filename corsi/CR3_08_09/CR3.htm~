@@ -1,0 +1,357 @@
+<HTML><head>
+<link REL="STYLESHEET" TYPE="text/css" HREF="../../style.css">
+<title>CR3 - Curve Ellittiche in Crittografia</title></head>
+<BODY style="BACKGROUND: lightblue">
+<CENTER>
+<H1>CR3 - Curve Ellittiche in Crittografia</H1>
+<H2>A.A. 2004/2005 - I Semestre - Crediti 6.</H2>
+<A name=1></A>
+<HR>
+<TABLE style="BACKGROUND: yellow" border=5 width="896">
+  <TR>
+    <TD width="156"><A href="#1">Informazioni Generali</A>
+    <TD width="40"><A href="#2">Avvisi</A>
+    <TD width="154"><A href="#3">Diario delle Lezioni</A>
+    <TD width="119"><A href="#4">Testi Consigliati</A>
+    <td width="75"><u><font color="#0000FF"><a href="CR3.pdf">Programma</a></font></u><td width="287"><a href="#5">Elenco degli esercizi da consegnare</a>
+    <td width="202"><a href="#6">Elenco proposte seminari</a>
+       </TABLE><HR>
+<H2><B>Informazioni Generali</B></H2></CENTER>
+
+<table align="center" bordercolor="red" border="5" style="BACKGROUND: white" cellpadding="5">
+<tr><td bordercolor="white"><B>Docenti</B><td bordercolor="white"> <a href="http://www.mat.uniroma3.it/dipartimento/membri/tartarone_homepage.html">Francesca Tartarone</a> <td bordercolor="white"> <A href="http://www.mat.uniroma3.it/users/pappa/">Francesco Pappalardi</A>
+<tr><td bordercolor="white"><b>Ricevimento</b><td bordercolor="white"> martedì 
+  11-12 <td
+bordercolor="white">martedì 16-17
+<tr><td bordercolor="white"><b>Ufficio</b><td bordercolor="white">309<td bordercolor="white"> 209
+<tr><td bordercolor="white"><b>Telefono</b><td bordercolor="white"> 06 54888228<td bordercolor="white"> 06 54888243
+<tr><td bordercolor="white"><b>E-mail</b><td bordercolor="white"><A href="mailto:tfrance@mat.uniroma3.it">tfrance@mat.uniroma3.it</A>
+<td bordercolor="white"><A href="mailto:pappa@mat.uniroma3.it">pappa@mat.uniroma3.it</A>
+<tr><td style="BACKGROUND: lightgreen" bordercolor="green"
+colspan="2"><B>Lezioni:</B><dd>Martedì 14-16 (Aula C)<dd> Giovedì 11-13 (Aula
+100)<dd>Venerdì 16-18 (Aula C)
+<td style="BACKGROUND: lightyellow" border="yellow"><a class="menu" target="_blank" href="http://www.mat.uniroma3.it/didatticacds/corsi/programmi_corsi_ita/programmi_corsi_04_05/ma/CR3.html"><b>DESCRIZIONE DEL CORSO</b></a></table><BR>
+<HR align=center width="50%" SIZE=7>
+
+<A name=2></A>
+<HR><CENTER>
+<TABLE style="BACKGROUND: yellow" border=5 width="896">
+  <TR>
+    <TD width="156"><A href="#1">Informazioni Generali</A>
+    <TD width="40"><A href="#2">Avvisi</A>
+    <TD width="154"><A href="#3">Diario delle Lezioni</A>
+    <TD width="119"><A href="#4">Testi Consigliati</A>
+    <td width="75"><u><font color="#0000FF"><a href="CR3.pdf">Programma</a></font></u><td width="287"><a href="#5">Elenco degli esercizi da consegnare</a>
+    <td width="202"><a href="#6">Elenco proposte seminari</a>
+       </TABLE>
+<HR>
+<H2><B>Avvisi:</B></H2></CENTER>
+<li> Il corso è stato attivato come corso regolare e non di letture come originariamente previsto
+<li> Ai fini della valutazione gli studenti dovranno presentare un seminario su un argomento inerente
+al programma del corso e consegnare la soluzione di esercizi che saranno proposti durante le lezioni (vedi <a href="#5">elenco</a>)
+<li> Giovedì 14 Ottobre alle 16:00 in aula 100 si terrà la prima serie 
+di seminari. 
+<li> Durante la settimana che inizia il 18 Ottobre, le lezioni 
+verranno interrotte e riprenderanno regolarmente la settimana 
+successiva.
+<li> La lezione del giorno Giovedì 4 Novembre è stata rimandata.
+<li> L'ultima lezione di Francesco Pappalardi (interrotta a metà giovedì 
+2 dicembre) è stata recuperata 
+giovedì 9 dicembre alle 11:00. 
+<li> programma dei prossimi seminari:<dd>
+- Giovedì 16 Dicembre ore 11:00 (Aula 100) <dd>
+Angela Pesce, <i>Divisori e l'accoppiamento di Weil</i><dd>
+- Venerdì 17 Dicembre ore 14:00 (Aula 100 - da confermare)<dd>
+Fabrizio Araimo - Filomena Di Berardo, <i>
+Calcolo del numero di punti delle curve del tipo: E: y<sup>2</sup> = x<sup>3</sup> - kx</i>.
+</ul>
+<HR> <A name=3></A>
+<CENTER>
+<TABLE style="BACKGROUND: yellow" border=5 width="896">
+  <TR>
+    <TD width="156"><A href="#1">Informazioni Generali</A>
+    <TD width="40"><A href="#2">Avvisi</A>
+    <TD width="154"><A href="#3">Diario delle Lezioni</A>
+    <TD width="119"><A href="#4">Testi Consigliati</A>
+    <td width="75"><u><font color="#0000FF"><a href="CR3.pdf">Programma</a></font></u><td width="287"><a href="#5">Elenco degli esercizi da consegnare</a>
+    <td width="202"><a href="#6">Elenco proposte seminari</a>
+       </TABLE>
+<HR>
+<H2><B>Diario delle Lezioni:</B></CENTER></H2>
+<OL>
+  <LI>Martedì 21 Settembre 2004: (P) Introduzione al corso, Il problema delle palle di cannone, il problema
+ dei numeri congruenti, Soluzione dell'Ultimo Teorema di Fermat nel caso
+<i>n=3,4</i> usando curve ellittiche. <LI>Giovedì 23 Settembre: (P)
+L'equazione di Weierstrass, L'equazione di Weierstrass generalizzata, La
+deifinizione della somma di punti su una curva ellittica, Formule per la
+somma di punti, Enunciato del Teorema di Mordell-Weil. <li>Martedì 28
+Settembre: (P) La struttura del gruppo <i>E</i>(<b>R</b>) e
+<i>E</i>(<b>C</b>), enunciato del Teorema di struttura di
+<i>E</i>(<b>F</b><sub>q</sub>) e del Teorema di Hasse, Pseudo codice per
+l'algoritmo dei quadrati successivi, Richiami sullo spazio proiettivo e
+sui polinomi omogenei, Il punto all'infinito di un'equazione di
+Weierstrass, definizione di invariate <i>j</i> di una curva ellittica,
+curve ellittiche con invariante <i>j</i> = 0,1728, proprietà 
+dell'invariante
+<i>j</i>. <li>Giovedì 30 Settembre: (P) L'invariante <i>j</i> e le classi
+di isomorfismo di curve ellittiche su campi algebricamente chiusi, curve
+ellittiche in caratteristica 2, l'equazione di Weierstrass è singolare in
+caratteristica 2, i due tipi di equazioni di Weierstrass in caratteristica
+2 (<b>caso 1:</b>
+<i>y<sup>2</sup>+xy=x<sup>3</sup>+b<sub>2</sub>x<sup>2</sup>+b<sub>6</sub></i>,
+<i>b<sub>6</sub><font face="symbol">¹</font> 0</i> e <b>caso 2:</b>
+<i>y<sup>2</sup>+b<sub>3</sub>y=x<sup>3</sup>+b<sub>4</sub>x+b<sub>6</sub></i>,
+ <i>b<sub>3</sub><font face="symbol">¹</font> 0</i>), operazione sui 
+punti di una curva definita da un'equazione di Weierstrass generalizzata,
+inversione di punti su un equazione di Weierstrass generalizzata, formule
+per la duplicazione di punti per le curve ellettiche in caratteristica
+due, Definizione di endomorfismo, prime proprietà degli endomorfismi.
+<li>Venerdì 1 Ottobre: (P) Proprietà degli endomorfismi, esempi, la 
+moltiplicazione per 2 ([2]:
+E(<b style="text-decoration:overline">F</b><sub>q</sub>)
+<font face="symbol">®</font
+> E(<b style="text-decoration:overline">F</b><sub>q</sub>),
+P<font face="symbol">®</font>2P), grado di 
+un endomorfismo, endomorfismi separabili e inseparabili, l'endomorfismo di 
+Frobenius 
+(<font face="symbol">F</font><sub>q</sub>: 
+E(<b style="text-decoration:overline">F</b><sub>q</sub>) 
+<font face="symbol">®</font
+> E(<b style="text-decoration:overline">F</b><sub>q</sub>),<font 
+face="symbol">¥</font
+><font face="symbol">®</font
+><font face="symbol">¥</font
+>, (x,y)<font face="symbol">®</font
+> (x<sup>q</sup>,y<sup>q</sup>)), proprietà dell'endomorfismo di Frobenius 
+(inseparabilità)
+<li>Martedì 5 Ottobre: (P) <b>Teorema:</b> Il nucleo di un endomorfismo separabile di una curva ellittica ha tanti 
+elementi quanto è il suo grado mentre quello di un endomorfismo non separabile ha (strettamente) meno elementi
+del suo grado (in ogni caso il nugleo è finito). Dimostrazione del Teorema, Gli endomorfismi sono suriettivi, La 
+moltiplicazione per <i>n</i> è un endomorfismo, se 
+[<i>n</i>]:E(<i style="text-decoration:overline">K</i>)
+<font face="symbol">®</font>
+E(<i style="text-decoration:overline">K</i>), <i>P</i>  
+<font face="symbol">®</font>
+<i>nP</i> ( (<i>x</i>,<i>y</i>)
+<font face="symbol">®</font>
+(R<sub>n</sub>(<i>x</i>),S<sub>n</sub>(<i>x</i>)<i>y</i>) ), allora
+R'<sub>n</sub>/S<sub>n</sub> = n; dunque la moltiplicazione per <i>n</i> è separabile solo se la caratteristica del 
+campo non divide <i>n</i>, 
+ <li>Giovedì 7 Ottobre: LEZIONE RIMANDATA
+<li>Venerdì 8 Ottobre: (P) Dimostrazione del criterio di separabilità di [<i>n</i>]. La nozione di gruppo dei punti 
+razionali per una curva ellittica definita su un anello, esempi vari, spazio proiettivo su un anello (sequenze 
+primitive).
+<li>Martedì 12 Ottobre: (P) La nozione di Anello ACE (Adatto alle Curve 
+Ellittiche), <b>Z</b> è ACE, I campi sono ACE, le formule di somma di 
+punti per curve ellittiche definite su anelli ACE (solo cenni), esempio 
+<i>y<sup>2</sup>=x<sup>3</sup>-x+1</i> su <b>Z</b>/25<b>Z</b>, 
+E(<b>Z</b>/n<sub>1</sub>n<sub>2</sub><b>Z</b>) <font face="symbol">@</font
+> E(<b>Z</b>/n<sub>1</sub><b>Z</b>)<font face="symbol">Å
+</font>E(<b>Z</b>/n<sub>2</sub><b>Z</b>), la mappa di riduzione, Il 
+sottogruppo di torsione di una curva E[<i>n</i>], enunciato del Teorema di
+classificazione dei sottogruppi di torsione, determinazione di E[2] in 
+tutte le caratteristiche.
+<li>Giovedì 14 Ottobre: (P) Determinazione di E[3] in caratteristica 
+diversa da due, Enunciato del Teorema di clasificazione dei gruppi 
+abeliani finiti, dimostrazione dell' enunciato: Data una curva ellittica 
+<i>E</i>/<b>K</b>, se <i>#E[n]=n<sup>2</sup></i> per ogni <i>n</i> coprimo
+con la caratteristica, allora 
+<i>E[n]<font face="symbol">@</font> 
+<b>Z</b>/n<b>Z</b><font face="symbol">Å
+</font><b>Z</b>/n<b>Z</b></I>. La definizione dei polinomi di divisione <font face="symbol">y</font
+><sub>m</sub>(x,y), <font face="symbol">f</font
+><sub>m</sub>(x,y) e <font face="symbol">w</font
+><sub>m</sub>(x,y),
+proprietà dei polinomi di divisione, enunciato del <b>Teorema:</b>[n](x,y)=(<font face="symbol">f</font
+><sub>n</sub>(x)/<font face="symbol">y</font
+><sub>n</sub><sup>2</sup>(x),<font face="symbol">w</font
+><sub>n</sub>(x,y)/<font face="symbol">y</font
+><sub>n</sub>(x,y)<sup>3</sup>).
+<li>Giovedì 14 Ottobre ore 16: SEMINARI
+<li>Venerdì 15 Ottobre: (T) Generalità sulle intersezioni fra rette e curve in <b>P</b><sub><font
+size="1">K</font></sub><font size="1"><sup>2</sup> </font>. Risultati preparatori alla dimostrazione
+dell'associatività dei punti sulle curve ellittiche.
+<li>Martedì 19 Ottobre: LEZIONE RIMANDATA
+<li>Giovedì 21 Ottobre: LEZIONE RIMANDATA
+<li>Venerdì 22 Ottobre: LEZIONE RIMANDATA
+<li>Martedì 26 Ottobre: (T) Dimostrazione dell'associatività della somma per i punti di una curva ellittica.
+<li>Giovedì 28 Ottobre: (T) Il problema del Logaritmo Discreto. Algoritmi per il calcolo del logaritmo discreto:&nbsp;
+metodo dell'Indice e Rho di Pollard.<li>Venerdì 29 Ottobre: LEZIONE RIMANDATA
+<li>Martedì 2 Novembre: LEZIONE RIMANDATA
+<li>Giovedì 4 Novembre: LEZIONE RIMANDATA
+<li>Venerdì 5 Novembre: LEZIONE RIMANDATA
+<li>Martedì 9 Novembre: (P) Riepilogo sulle proprietà dei polinomi di divisione (da utilizzare per la dimostrazione
+del teorema di struttura dei gruppi di <i>n</i>-torsione), calcolo del grado e dei coefficienti dei termini di grado
+massimo di <font face="symbol">f</font ><sub>n</sub>(x) e <font face="symbol">y</font ><sub>n</sub><sup>2</sup>(x),
+Enunciato del TCGAF, dimostrazione del Teorema di struttura (3.2) per <i>E</i>[<i>n</i>] nel caso in cui la
+caratteristica del campo non divide <i>n</i> (i.e. l'endomorfismo [<i>n</i>] è separabile).
+<li>Giovedì 11 Novembre: (P) fine dimostrazione dimostrazione del Teorema di struttura (3.2) per <i>E</i>[<i>n</i>]
+nel caso in cui la caratteristica del campo divide <i>n</i> (i.e. l'endomorfismo [<i>n</i>] non è separabile), curve 
+su campi finiti, esempi di curve: <i>E: y<sup>2</sup> = x<sup>3</sup>+x+1</i> su <b>F</b><sub>7</sub>, <i>E: 
+y<sup>2</sup> = x<sup>3</sup>+2</i> su <b>F</b><sub>7</sub>, <i>E: y<sup>2</sup> + xy + x<sup>3</sup> +1</i> su 
+<b>F</b><sub>2</sub> e su <b>F</b><sub>4</sub>, Teorema di struttura per <i>E</i>(<b>F</b><sub>q</sub>), enunciato del
+Teorema di Hasse, proprietà dell'endomorfismo di Frobenius ( 
+<i>E</i>(<b>F</b><sub>q<sup>r</sup></sub>)=Ker(<font 
+face="symbol">F</font><sub>q</sub><sup>r</sup> - 1)=deg( <font
+face="symbol">F</font><sub>q</sub><sup>r</sup> - 1 ) ).
+<li>Venerdì 12 Novembre: (T) Attacco MOV.
+<li>Martedì 16 Novembre: (P) Enunciato dei Teoremi di 
+Waterhouse e di Ruck . Proprietà dell'endomorfismo 
+di Frobenius, Dimostrazione del Teorema di Hasse 
+( |#<i>E</i>(<b>F</b><sub>q</sub>)-(q+1)|  <font face="symbol">£</font
+> 2  <font face="symbol">Ö</font
+>q )
+<li>Giovedì 18 Novembre: (P) Il polinomio caratteristico di Frobenius 
+(<i>X<sup>2</sup>-a <sub>q</sub>(E) X + q</i>) e le 
+sue radici (<font face="symbol">a</font> e <font face="symbol">b</font> ), ancora proprietà del Frobenius ( <font 
+face="symbol">F</font><sub>q</sub> 
+soddisfa il suo polinomio caratteristico ), Calcolo del numero dei 
+punti razionali di una curva ellittica su un campo finito, il metodo del 
+sottocampo ( #<i>E</i>(<b>F</b><sub>q<sup>n</sup></sub>) = q<sup>n</sup>  + 1 + <font 
+face="symbol">a</font><sup>n</sup> 
++ <font face="symbol">b</font><sup>n</sup> ), il metodo dei simboli di Legendre
+<li>Venerdì 19 Novembre: (T) Metodi Baby-Step&nbsp; Giant-Step e di Polig-Hellman.
+<li>Martedì 23 Novembre: (P) Ordine dei punti di <i>E</i>(<b>F</b><sub>q<sup>n</sup></sub>), esempi di calolo 
+di #<i>E</i>(<b>F</b><sub>q<sup>n</sup></sub>), possibili campi finiti <b>F</b><sub>q</sub> per 
+cui E(<b>F</b><sub>q</sub>) <font face="symbol">@</font
+> <b>Z</b>/n<b>Z</b><font face="symbol">Å</font><b>Z</b>/n<b>Z</b>, Introduzione dell'algoritmo Baby step Giant Step.
+<li>Giovedì 25 Novembre: (P) L'algoritmo Baby step Giant Step, Analisi e Complessità, Esempi, Introduzione 
+all'algoritmo di Schoof, come verificare se un polinomio ha radici in un campo finito.
+<li>Giovedì 25 Novembre: SEMINARIO   
+<li>Venerdì 26 Novembre: (T) Attacco sulle curve anomale. Schema di Firma di El 
+Gamal.<li>Martedì 30 Novembre: LEZIONE RINVIATA CAUSA DIFFICOLTA' NEI TRASPORTI
+<li>Giovedì  2 Dicembre: (P) L'algoritmo di Schoof (prima parte) - riduzione del problema del calcolo del
+numero dei punti al problema di calcolare <i>a<sub>q</sub>(E)</i> mod <i>l</i> dove <i>l</i> varia in
+un isieme <i>S</i> che non contiene la caratteristica del campo con cardinalità maggiore si <i>4q<sup>1/2</sup></i>.
+Caso <i>l=2</i>. LEZIONE INTERROTTA A META'
+<li>Venerdì 3 Dicembre:&nbsp; (T) Crittosistemi&nbsp; sulle curve ellittiche basati 
+sul problema della fattorizzazione. Un crittosistema basato sull'accoppiamento 
+di Weil.<li>Martedi 7 Dicembre: (T) SEMINARIO + esercitazione al computer su 
+  Pari<li>Giovedì 9 Dicembre: (P) Pesudo codice per l'algoritmo di 
+Schoof, esempio esplicito di un applicazione dell'algoritmo di 
+Schoof, Discussione teorica dell'algoritmo. FINE CORSO</ol> <A name=4></A>
+<HR>
+<CENTER>
+<TABLE style="BACKGROUND: yellow" border=5 width="896">
+  <TR>
+    <TD width="156"><A href="#1">Informazioni Generali</A>
+    <TD width="40"><A href="#2">Avvisi</A>
+    <TD width="154"><A href="#3">Diario delle Lezioni</A>
+    <TD width="119"><A href="#4">Testi Consigliati</A>
+    <td width="75"><u><font color="#0000FF"><a href="CR3.pdf">Programma</a></font></u><td width="287"><a href="#5">Elenco degli esercizi da consegnare</a>
+    <td width="202"><a href="#6">Elenco proposte seminari</a>
+       </TABLE>
+<HR>
+<H2><B>Testi consigliati:</B></CENTER></H2><BR>
+<h3><b><i>Testi specifici</b></i></h3><DD>
+<LI>Lawrence C. Washington, <a href="http://www.math.umd.edu/~lcw/ec.html"><i>Elliptic Curves: Number Theory and 
+Crptography.</i></a> Chapman & Hall (CRC) 2003.<DD>
+<li>Alfred J. Menezes, <a href="http://www.springeronline.com/sgw/cda/frontpage/0,11855,5-40109-22-33358649-0,00.html"><i>Elliptic Curve Public Key Cryptosystems.</i></a>
+The Kluwer International Series in Engineering and Computer Science, Vol. 234 Kluwer 1993.<dd>
+<LI>Darrel Hankerson, Alfred J. Menezes and Scott Vanstone,
+<a href="http://www.cacr.math.uwaterloo.ca/ecc/"><i>Guide to Elliptic Curve Cryptography.</i></a> Springer 
+Professional Computing 2004.<DD>
+<LI>Andreas Enge, <a href="www.springeronline.com/isbn/0-7923-8589-6"></i>Elliptic Curves and Their Applications to Cryptography.
+An Introduction.</i></a> Springer Verlag 1999.<DD>
+<LI>Ian Blake, Gadiel Seroussi and Nigel Smart, <a 
+href="http://titles.cambridge.org/catalogue.asp?isbn=0521653746"><i>Elliptic Curves in Cryptography.</i></a> Cambridge University Press 1999.<DD>
+<LI>Michael Rosing, <a href="http://www.manning.com/rosing"><i>Implementing Elliptic Curve Cryptography</i></a>. 
+Manning Greenwich 1998.
+<br>
+<h3><b><i>Testi generali</b></i></h3><DD>
+<li>Alfred J. Menezes, Paul C. van Oorshot e Scott A. Vanstone, <i>Handbook of Applied Cryptography</i>. CRC Press 1997<DD>
+<li>Neal Koblitz, <i>A Course in Number Theory and Cryptography</i>. GTM 114, Springer Verlag 1994<DD>
+<li>Neal Koblitz, <i>Algebraic Aspects of Cryptography</i>. Algorithms and Computation in Mathematics Vol. 3,
+Springer Verlag 1998<DD>
+<li>Douglas R. Stinson, <i>Cryptography: Theory and Practice.</i> CRC Press 1995 (seconda edizione).<br><br><br><br>
+<HR>
+<A name=5></A>
+<CENTER>
+<TABLE style="BACKGROUND: yellow" border=5 width="896">
+  <TR>
+    <TD width="156"><A href="#1">Informazioni Generali</A>
+    <TD width="40"><A href="#2">Avvisi</A>
+    <TD width="154"><A href="#3">Diario delle Lezioni</A>
+    <TD width="119"><A href="#4">Testi Consigliati</A>
+    <td width="75"><u><font color="#0000FF"><a href="CR3.pdf">Programma</a></font></u><td width="287"><a href="#5">Elenco degli esercizi da consegnare</a>
+    <td width="202"><a href="#6">Elenco proposte seminari</a>
+       </TABLE>   
+<HR>
+<H2><B>Elenco degli esercizi da consegnare:</B></CENTER></H2>
+<OL>
+  <li>Esercizio 2.4 (pagina 67 del libro di Washington) <dd><i>(28/09)</i>
+  <LI>Esercizio 2.12 (pagina 68 del libro di Washington) <dd><i>(28/09)</i>
+  <li>Esercizio (facoltativo) Usare un pacchetto per la manipolazione 
+formale (Maple, Mathematica, ....) per calcolare le formule per la somma 
+dei punti su una curva ellittica definita da una equazione di Weierstrass
+generalizzata<dd> <i>(30/09)</i>
+  <li>Esercizio 2.14 (pagina 68 del libro di Washington)<dd>  <i>(1/10)</i>
+  <li>Esercizio <i>Dimostrare che se alpha è un ensomorfismo di una curva ellittica E/<i>K</i> e
+se scriviamo <font face="symbol">a</font> (x,y) = (p(x)/q(x),yp<sub>1</sub>(x)/q<sub>1</sub>(x)), con 
+(p(x),q(x)) = 1 e (p<sub>1</sub>(x),q<sub>1</sub>(x)) = 1, allora i polinomi p, q, p<sub>1</sub>, q<sub>1</sub> sono
+univocamente determinati da <font face="symbol">a</font><dd> (5/10)</i>
+  <li>Esercizio <i>Dimostrare che End<sub><i style="text-decoration:overline">K</i></sub>(E) è un anello con
+unità<dd> (8/10)</i> 
+<li>Esercizio <i>Sia E<sub>D</sub> y<sup>2</sup></i>=<i>x<sup>3</sup>+Dx, D <font face="symbol">¹</font>
+ 0. Dimostrare che End<sub><b style="text-decoration:overline">Q</b></sub>(E) contiene un sottoanello isomorfo a
+<b>Z</b>[e<sup>2<font face="symbol">p</font >i/3</sup>] <dd>(8/10)</i>  
+<li>Esercizio <i>Sia E<sub>D</sub> y<sup>2</sup></i>=<i>x<sup>3</sup>+D, D <font face="symbol">¹</font>
+ 0. Dimostrare che End<sub><b style="text-decoration:overline">Q</b></sub>(E) contiene un sottoanello isomorfo a
+<b>Z</b>[i]<dd>  (8/10)</i>
+<li>Esercizio <i>Determinare tutti i punti "all'infinito" di una curve 
+ellittica definita da un'equazione di Weierstrass su <b>Z</b>/n<b>Z</b><dd>
+(12/10)</i>
+<li>Esercizio (facoltativo) <i>Dimostrare che <b>Z</b>/n<b>Z</b> è ACE<dd>
+(12/10)</i>
+<li>Esercizio 3.1 (pagina 86 del libro di Washington) <dd><i>(14/10)</i>
+<li>Dimostrare il Teorema 3.6 (pagina 79 del libro di Washington) nel caso <i>n</i>=2 e 
+<i>n</i>=3 <dd><i>(9/11)</i>
+<li> Sia <i>E: y<sup>2</sup> = x<sup>3</sup> + 2</i>. Determinare la struttura di <i>E</i>(<b>F</b><sub>7</sub>)
+e di <i>E</i>(<b>F</b><sub>25</sub>) determinando in ciascun caso la decomposizione come prodotto di gruppi 
+ciclici<dd><i>(11/11)</i>
+<li> Determinare tutti i possibili ordini dei gruppi <i>E(<b>F</b><sub>q</sub>)</i> per tutte le curve
+<i>E</i>/<b>F</b><sub>q</sub> e per <i>q</i> = 2, 3, 5, 7, 9.<dd><i>(16/11)</i>
+<li>Determinare una coppia di valori <i>(a,q)</i> tali che il Teorema 4.4 del libro di Washington valga per
+due diverse coppie <i>(n<sub>1</sub>,n<sub>2</sub>)</i>.<dd><i>(16/11)</i></ol> 
+<A name=6></A><CENTER> 
+<TABLE style="BACKGROUND: yellow" border=5 width="896">
+  <TR>
+    <TD width="156"><A href="#1">Informazioni Generali</A>
+    <TD width="40"><A href="#2">Avvisi</A>
+    <TD width="154"><A href="#3">Diario delle Lezioni</A>
+    <TD width="119"><A href="#4">Testi Consigliati</A>
+    <td width="75"><u><font color="#0000FF"><a href="CR3.pdf">Programma</a></font></u><td width="287"><a href="#5">Elenco degli esercizi da consegnare</a>
+    <td width="202"><a href="#6">Elenco proposte seminari</a>
+       </TABLE>
+<HR>
+<H2><B>Elenco proposte seminari:</B></CENTER></H2>
+<OL>
+<li>Classificazione della curve singolari definite da equazione di Weierstrass. 
+(paragrafo 2.9 del libro di Washington)<dd>
+(Filippo Morabito, 14/10)
+<li>Altre Equazione per curve ellittiche. (paragrafo 2.5 del libro di 
+Washington)<dd> (Angela Pesce, 14/10)
+<li> Formule per la somma di punti per curve ellittiche su anelli ACE. (paragrafo 2.10 del libro di Washington e
+referenze) <dd>
+(non assegnato)
+<li> Tate-Lichtenbaum Pairing. (paragrafo 5.5 del libro di Washington)<dd> 
+(Stefano Mazzia, 19/11)
+<li> Dimostrazione del Teorema  2.6 del libro di Washington.<dd>
+(non assegnato)
+<li> Congettura di Goldbach e firme digitali. <dd>
+  (Davide Liberti, 25/11)
+<li> Calcolo del numero di punti delle curve del tipo:
+  <i>E : y<sup>2</sup> = x<sup>3</sup> - kx </i>. (paragrafo 4.4 del libro di Washington)<dd>
+(Fabrizio Araimo - Filomena Di Berardo, 17/12)
+<li> Scambio di Chiavi di Diffie-Hellman. Crittosistemi di Massey Omura e El 
+Gamal.<dd> (Silvia Roverato, 2/12)
+<li> Fattorizzare gli interi utilizzando le curve ellittiche. 
+(paragrafo 7.1 del libro di Washington) 
+<dd> (Alessandro Russo, 7/12)
+<li> Divisori e l'accoppiamento di Weil.  (paragrafi 11.1 e 11.2 del libro di Washington)<dd>
+(Angela Pesce, 16/12)
+<li> Curve Supersingolari. (paragrafo 4.6 del libro di Washington)<dd>
+(Filippo Morabito, 14/12)
+<li> L'agoritmo di Satoh e derivati
+<dd> (Paolo Tranquilli, TBA)</OL>
+</BODY></HTML>

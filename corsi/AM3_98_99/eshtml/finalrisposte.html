@@ -1,0 +1,1504 @@
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd"><HTML>
+<META NAME="GENERATOR" CONTENT="TtH 1.94">
+                                                                
+<center><b>
+<title>COMPITO FINALE</title>
+COMPITO FINALE</b><br>
+<b>Analisi due (Primo modulo) - Corso di Laurea in FISICA</b><br>
+<b>Sabato 23 Dicembre, 1998</b>
+</center>
+<p>
+
+<OL type="1">
+<li> Si calcoli il polinomio di Taylor intorno a (0,0) di grado 20
+della seguente funzione:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+f(x,y) = ln(1+x<sup>4</sup>y<sup>3</sup>)+arctan(x<sup>6</sup>y<sup>4</sup>).</td></Table>
+</td></table></centEr>
+
+
+<p><br><p><br> 
+<p>
+<b>SOLUZIONE:</b> <i>Sia g(t) = ln(1+t) e h(t) = arctant. Calcolando
+i polinomi di Taylor di grado due intorno a t = 0 in una variabile, 
+otteniamo:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+g(t) = t-</td><td nowrap align=center>
+t<sup>2</sup><hr NOSHADE>
+2<Br></td><td nowrap align=center>
++O(t<sup>3</sup>)&nbsp;&nbsp;e&nbsp;&nbsp;h(t) = t+O(t<sup>3</sup>).</td></Table>
+</td></table></centEr>
+
+
+Adesso notiamo che
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+f(x,y) = g(x<sup>4</sup>y<sup>3</sup>)+h(x<sup>6</sup>y<sup>4</sup>) = x<sup>4</sup>y<sup>3</sup>-</td><td nowrap align=center>
+x<sup>8</sup>y<sup>6</sup><hr NOSHADE>
+2<Br></td><td nowrap align=center>
++x<sup>6</sup>y<sup>4</sup>+O(x<sup>12</sup>y<sup>9</sup>)+O(x<sup>18</sup>y<sup>12</sup>),</td></Table>
+</td></table></centEr>
+
+
+Osservando che poich&#233; x <font face=symbol>£</font
+> <font face=symbol>|</font
+><font face=symbol>|</font
+>(x,y)<font face=symbol>|</font
+><font face=symbol>|</font
+> e y <font face=symbol>£</font
+> <font face=symbol>|</font
+><font face=symbol>|</font
+>(x,y)<font face=symbol>|</font
+><font face=symbol>|</font
+>, si ha che
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+O(x<sup>12</sup>y<sup>9</sup>)+O(x<sup>18</sup>y<sup>12</sup>) = O(<font face=symbol>|</font
+><font face=symbol>|</font
+>(x,y)<font face=symbol>|</font
+><font face=symbol>|</font
+><sup>21</sup>)+O(<font face=symbol>|</font
+><font face=symbol>|</font
+>(x,y)<font face=symbol>|</font
+><font face=symbol>|</font
+><sup>30</sup>) = O(<font face=symbol>|</font
+><font face=symbol>|</font
+>(x,y)<font face=symbol>|</font
+><font face=symbol>|</font
+><sup>21</sup>)</td></Table>
+</td></table></centEr>
+
+
+e quindi x<sup>4</sup>y<sup>3</sup>-[(x<sup>8</sup>y<sup>6</sup>)/2]+x<sup>6</sup>y<sup>4</sup> &#232; il polinomio di Taylor
+di grado 20.</i><p><br><p><br>
+
+<p>
+
+<li> Si scriva il polinomio di Taylor di grado due intorno al punto 0
+della funzione y = f(x) definita implicitamente da
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ì<br>í<br>
+î
+</font></td><td align=center>
+</td><td nowrap><TablE border=0 align=left><tr><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+x<sup>3</sup>y+y<sup>3</sup>-cosx = 0</td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+f(0) = 1</td></tabLe></TD></TR></TablE>
+</td><td nowrap></td></Table>
+</td></table></centEr>
+
+
+
+<p>
+<b>SOLUZIONE:</b> <i>Sia F(x,y) = x<sup>3</sup>y+y<sup>3</sup>-cosx. Osservando che
+poich&#233; F(0,1) = 0 e F<sub>y</sub>(0,1) = (x<sup>3</sup>+3y<sup>2</sup>)<sub>(0,1)</sub> = 3 <font face=symbol>¹</font
+> 0,
+la funzione implicita y = f(x) &#232; ben definita e dal Teorema della
+Funzione Implicita (TFI), otteniamo 
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+f<font face=symbol>¢</font
+>(0) = -</td><td nowrap align=center>
+F<sub>x</sub>(0,1)<hr NOSHADE>
+ F<sub>y</sub>(0,1)<Br></td><td nowrap align=center>
+ = </td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+-</td><td nowrap align=center>
+3x<sup>2</sup>y+sinx<hr NOSHADE>
+ x<sup>3</sup>+3y<sup>2</sup><Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+<font size="-1"></font> <Br><br>
+<font size="-1">(0,1)</font>&nbsp;<br></td><td nowrap>
+ = 0.</td></Table>
+</td></table></centEr>
+
+
+Per calcolare f<font face=symbol>¢</font
+><font face=symbol>¢</font
+>(0), osserviamo che
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+f<font face=symbol>¢</font
+><font face=symbol>¢</font
+>(x) = </td><td nowrap align=center>
+d<hr NOSHADE>
+ dx<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+-</td><td nowrap align=center>
+F<sub>x</sub>(x,f(x))<hr NOSHADE>
+ F<sub>y</sub>(x,f(x))<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+ = </td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+</td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+-</td><td nowrap align=center>
+(F<sub>xx</sub>+F<sub>yx</sub>f<font face=symbol>¢</font
+>(x))F<sub>y</sub>-F<sub>x</sub>(F<sub>xy</sub>+F<sub>yy</sub>f<font face=symbol>¢</font
+>(x))<hr NOSHADE>
+ (F<sub>y</sub>)<sup>2</sup><Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+.</td></Table>
+</td></table></centEr>
+
+
+e quindi, poich&#233; 
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+f<font face=symbol>¢</font
+>(0) = F<sub>x</sub>(0,1) = 0, F<sub>y</sub>(0,1) = 3&nbsp;&nbsp;e&nbsp;&nbsp;F<sub>xx</sub>(0,1) = (6xy+cosx)<sub>(0,1)</sub> = 1</td></Table>
+</td></table></centEr>
+
+
+otteniamo f<font face=symbol>¢</font
+><font face=symbol>¢</font
+>(0) = -<sup>1</sup>/<sub>3</sub>. Infine il polinomio di Taylor P<sub>2</sub>(x) 
+di grado 2 intorno a 0 &#232;:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+P<sub>2</sub>(x) = f(0)+f<font face=symbol>¢</font
+>(0)x+</td><td nowrap align=center>
+1<hr NOSHADE>
+2<Br></td><td nowrap align=center>
+f<font face=symbol>¢</font
+><font face=symbol>¢</font
+>(0)x<sup>2</sup> = 1-</td><td nowrap align=center>
+1<hr NOSHADE>
+6<Br></td><td nowrap align=center>
+x<sup>2</sup>.</td></Table>
+</td></table></centEr>
+
+</i>
+
+<p>
+
+<li>  Sia
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<u>f</u>(x,y,z) = </td><td align=left><font face=symbol>
+æ<br>ç<br>ç<br>
+ç<br>ç<br>è
+</font></td><td align=center>
+</td><td nowrap><TablE border=0 align=left><tr><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+xz</td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+y<sup>2</sup>+x+1</td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+xyz+1</td></tabLe></TD></TR></TablE>
+</td><td nowrap></td><td align=left><font face=symbol>
+ö<br>÷<br>÷<br>
+÷<br>÷<br>ø
+</font></td><td align=center>
+.</td></Table>
+</td></table></centEr>
+
+ 
+Dopo aver verificato che <u>f</u> &#232; invertibile in (1,0,1),
+si scriva la matrice Jacobiana nel punto (1,2,1) della
+funzione inversa.<br>
+(<i>Suggerimento:</i> (1,2,1) = f(1,0,1).)
+<p><br><p><br> 
+<p>
+<b>SOLUZIONE:</b> <i>La matrice Jacobiana di <u>f</u> in (1,0,1)
+&#232;:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+J(<u>f</u>)<sub>(1,0,1)</sub> = </td><td align=left><font face=symbol>
+æ<br>ç<br>ç<br>
+ç<br>ç<br>è
+</font></td><td align=center>
+</td><td nowrap><TablE border=0 align=left><tr><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ z</td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ x </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+1</td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+2y </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0 </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+yz</td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ xz </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ xy</td></tabLe></TD></TR></TablE>
+</td><td nowrap></td><td align=left><font face=symbol>
+ö<br>÷<br>÷<br>
+÷<br>÷<br>ø
+</font></td><td align=center>
+<font size="-1"></font> <Br><br>
+<br>
+<font size="-1">(1,0,1)</font>&nbsp;<br></td><td nowrap>
+ = </td><td align=left><font face=symbol>
+æ<br>ç<br>ç<br>
+ç<br>ç<br>è
+</font></td><td align=center>
+</td><td nowrap><TablE border=0 align=left><tr><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+1 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 1 </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+1 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+0 </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+0</td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 1 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0</td></tabLe></TD></TR></TablE>
+</td><td nowrap></td><td align=left><font face=symbol>
+ö<br>÷<br>÷<br>
+÷<br>÷<br>ø
+</font></td><td align=center>
+.</td></Table>
+</td></table></centEr>
+
+
+Dal teorema della funzione inversa otteniamo che 
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+J(<u>f</u><sup>-1</sup>)<sub>f(1,0,1)</sub> = (J(<u>f</u>)<sub>(1,0,1)</sub>)<sup>-1</sup> = </td><td align=left><font face=symbol>
+æ<br>ç<br>ç<br>
+ç<br>ç<br>è
+</font></td><td align=center>
+</td><td nowrap><TablE border=0 align=left><tr><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+1 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 1 </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+1 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+0 </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+0</td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 1 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0</td></tabLe></TD></TR></TablE>
+</td><td nowrap></td><td align=left><font face=symbol>
+ö<br>÷<br>÷<br>
+÷<br>÷<br>ø
+</font></td><td align=center>
+<font size="-1">-1</font> <Br><br>
+<br>
+<font size="-1"></font>&nbsp;<br></td><td nowrap>
+.</td></Table>
+</td></table></centEr>
+
+
+Facendo i calcoli (dell'inversa di una matrice 3&times;3) troviamo
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+J(<u>f</u><sup>-1</sup>)<sub>(1,2,1)</sub> = </td><td align=left><font face=symbol>
+æ<br>ç<br>ç<br>
+ç<br>ç<br>è
+</font></td><td align=center>
+</td><td nowrap><TablE border=0 align=left><tr><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0</td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 1 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0 </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+0 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 0 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ 1 </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+1</td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+-1 </td></tabLe></td><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+0</td></tabLe></TD></TR></TablE>
+</td><td nowrap></td><td align=left><font face=symbol>
+ö<br>÷<br>÷<br>
+÷<br>÷<br>ø
+</font></td><td align=center>
+.</td></Table>
+</td></table></centEr>
+
+</i>
+
+<p>
+
+<li> Si calcoli la lunghezza della curva associata alla seguente rappresentazione 
+parametrica:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<u>x</u>(t) = (2t,lnt,t<sup>2</sup>), t <font face=symbol>Î</font
+> [1,10].</td></Table>
+</td></table></centEr>
+
+
+<p><br><p><br> 
+<p>
+<b>SOLUZIONE:</b> <i>Utilizzando la formula
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+L = </td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">t<sub>2</sub></font> <Br><br>
+<font size="-1">t<sub>1</sub></font>&nbsp;<br></td><td nowrap>
+<font face=symbol>|</font
+><font face=symbol>|</font
+><u>x</u><font face=symbol>¢</font
+>(t)<font face=symbol>|</font
+><font face=symbol>|</font
+>dt</td></Table>
+</td></table></centEr>
+
+
+si trova che <u>x</u><font face=symbol>¢</font
+>(t) = (2,<sup>1</sup>/<sub>t</sub>,2t) e quindi
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+L = </td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">10</font> <Br><br>
+<font size="-1">1</font>&nbsp;<br></td><td nowrap>
+</td><td align=left>
+<font face=symbol size="+2">&nbsp;&nbsp;æ<br>Ö<br>
+</font></td>
+<td align=center></td><td nowrap align=center>
+<hr NOSHADE>
+<tabLe border=0><tr><td nowrap align=center>
+4+</td><td nowrap align=center>
+1<hr NOSHADE>
+ t<sup>2</sup><Br></td><td nowrap align=center>
++4t<sup>2</sup></td></tabLe>&nbsp;<br></td><td nowrap align=center>
+dt = </td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">10</font> <Br><br>
+<font size="-1">1</font>&nbsp;<br></td><td nowrap>
+</td><td align=left>
+<font face=symbol size="+2">&nbsp;&nbsp;æ<br>Ö<br>
+</font></td>
+<td align=center></td><td nowrap align=center>
+<hr NOSHADE>
+<tabLe border=0><tr><td nowrap align=center>
+(2t+</td><td nowrap align=center>
+1<hr NOSHADE>
+ t<Br></td><td nowrap align=center>
+)<sup>2</sup></td></tabLe>&nbsp;<br></td><td nowrap align=center>
+dt = </td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">10</font> <Br><br>
+<font size="-1">1</font>&nbsp;<br></td><td nowrap>
+(2t+</td><td nowrap align=center>
+1<hr NOSHADE>
+ t<Br></td><td nowrap align=center>
+)dt = </td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+[t<sup>2</sup>+lnt]<sup>10</sup><sub>1</sub> = 99+ln10.</td></Table>
+</td></table></centEr>
+
+</i>
+
+<p>
+
+<li> Si calcoli l'equazione del piano tangente e quella della retta normale alla
+superficie:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+x<sup>4</sup>+3y<sup>3</sup>-4z<sup>6</sup> = 0</td></Table>
+</td></table></centEr>
+
+
+nel punto P = (1,1,1). Si dica inoltre rispetto a quale delle tre variabili
+si pu&#242; applicare il teorema della funzione implicita nel punto P e si calcoli
+il gradiente delle funzioni cos&#236;&nbsp;definite.
+<p><br><p><br> 
+<p>
+<b>SOLUZIONE:</b> <i>Sia F(x,y,z) = x<sup>4</sup>+3y<sup>3</sup>-4z<sup>6</sup>. Osserviamo che il
+gradiente 
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<font face=symbol>Ñ</font
+>(F)(1,1,1) = (4x<sup>3</sup>,9y<sup>2</sup>,-24z<sup>5</sup>)<sub>(1,1,1)</sub> = (4,9,-24)</td></Table>
+</td></table></centEr>
+
+
+&#232; normale alla superficie F(x,y,z) = 0 nel punto (1,1,1).
+Quindi l'equazione del piano tangente <font face=symbol>p</font
+> in (1,1,1)
+&#232; data da:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+(x-1,y-1,z-1)&#183;<font face=symbol>Ñ</font
+>(F)(1,1,1) = 0</td></Table>
+</td></table></centEr>
+
+
+e l'equazione parametrica
+della retta <b>r</b> normale &#232; data da 
+(x,y,z) = (1,1,1)+t<font face=symbol>Ñ</font
+>(F)(1,1,1). Facendo i calcoli arriviamo a
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<font face=symbol>p</font
+>: 4x+9y-24z+11 = 0&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;<b>r</b>:</td><td align=left><font face=symbol>
+ì<br>ï<br>ï<br>í<br>
+ï<br>ï<br>î
+</font></td><td align=center>
+ </td><td nowrap><TablE border=0 align=left><tr><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+x = 1+4t </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+y = 1+9t </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+z = 1-24t</td></tabLe></TD></TR></TablE>
+</td><td nowrap></td></Table>
+</td></table></centEr>
+
+
+Poich&#233; tutte e tre le derivate parziali sono non nulle nel punto (1,1,1),
+possiamo applicare il TFI rispetto a tutte le variabili e si ha
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<font face=symbol>Ñ</font
+>(f(x,y))(1,1) = -</td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+</td><td nowrap align=center>
+F<sub>x</sub>(1,1,1)<hr NOSHADE>
+ F<sub>z</sub>(1,1,1)<Br></td><td nowrap align=center>
+,</td><td nowrap align=center>
+F<sub>y</sub>(1,1,1)<hr NOSHADE>
+ F<sub>z</sub>(1,1,1)<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+ = </td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+</td><td nowrap align=center>
+1<hr NOSHADE>
+ 6<Br></td><td nowrap align=center>
+,</td><td nowrap align=center>
+3<hr NOSHADE>
+8<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+.</td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<font face=symbol>Ñ</font
+>(h(x,z))(1,1) = -</td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+</td><td nowrap align=center>
+F<sub>x</sub>(1,1,1)<hr NOSHADE>
+ F<sub>y</sub>(1,1,1)<Br></td><td nowrap align=center>
+,</td><td nowrap align=center>
+F<sub>z</sub>(1,1,1)<hr NOSHADE>
+ F<sub>y</sub>(1,1,1)<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+ = </td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+-</td><td nowrap align=center>
+4<hr NOSHADE>
+ 9<Br></td><td nowrap align=center>
+,</td><td nowrap align=center>
+8<hr NOSHADE>
+3<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+.</td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<font face=symbol>Ñ</font
+>(g(y,z))(1,1) = -</td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+</td><td nowrap align=center>
+F<sub>y</sub>(1,1,1)<hr NOSHADE>
+ F<sub>x</sub>(1,1,1)<Br></td><td nowrap align=center>
+,</td><td nowrap align=center>
+F<sub>z</sub>(1,1,1)<hr NOSHADE>
+ F<sub>x</sub>(1,1,1)<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+ = </td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+-</td><td nowrap align=center>
+9<hr NOSHADE>
+ 4<Br></td><td nowrap align=center>
+,6</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+.</td></Table>
+</td></table></centEr>
+
+
+dove f, h e g sono definite da
+F(x,y,f(x,y)) = F(x,h(x,z),z) = F(g(y,z),y,z) = 0.</i><p><br><p><br>
+
+<p>
+
+<li> Si calcoli il seguente integrale:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1"></font> <Br><br>
+<font size="-1">D</font>&nbsp;<br></td><td nowrap>
+x<sup>2</sup>+y<sup>2</sup></td></Table>
+</td></table></centEr>
+
+
+dove D &#232; il dominio limitato dalle parabole y = x<sup>2</sup> e x = y<sup>2</sup>.
+
+<p>
+<p><br><p><br> <b>SOLUZIONE:</b> <i>Osserviamo che D &#232; un x-dominio
+infatti:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+D = {(x,y)&nbsp;<font face=symbol>|</font
+>&nbsp;0 <font face=symbol>£</font
+> x <font face=symbol>£</font
+> 1, x<sup>2</sup> <font face=symbol>£</font
+> y <font face=symbol>£</font
+> <font face=symbol>Ö</font
+>x}</td></Table>
+</td></table></centEr>
+
+
+applicando la relativa formula per gli integrali doppi si ha
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1"></font> <Br><br>
+<font size="-1">D</font>&nbsp;<br></td><td nowrap>
+x<sup>2</sup>+y<sup>2</sup> = </td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">1</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+dx&nbsp;</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1"><font face=symbol>Ö</font
+>x</font> <Br><br>
+<font size="-1">x<sup>2</sup></font>&nbsp;<br></td><td nowrap>
+dy&nbsp;(x<sup>2</sup>+y<sup>2</sup>) = </td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">1</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+</td><td align=left><font face=symbol>
+é<br>ê<br>
+ë
+</font></td><td align=center>
+x<sup>2</sup>y+</td><td nowrap align=center>
+y<sup>3</sup><hr NOSHADE>
+3<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ù<br>ú<br>
+û
+</font></td><td align=center>
+<font size="-1"><font face=symbol>Ö</font
+>x</font> <Br><br>
+<font size="-1">x<sup>2</sup></font>&nbsp;<br></td><td nowrap>
+dx = </td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+ = </td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">1</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+</td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+x<sup>5/2</sup>+</td><td nowrap align=center>
+x<sup>3/2</sup><hr NOSHADE>
+3<Br></td><td nowrap align=center>
+-x<sup>4</sup>-</td><td nowrap align=center>
+x<sup>6</sup><hr NOSHADE>
+3<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+dx = </td><td align=left><font face=symbol>
+é<br>ê<br>
+ë
+</font></td><td align=center>
+</td><td nowrap align=center>
+2<hr NOSHADE>
+7<Br></td><td nowrap align=center>
+x<sup>7/2</sup>+</td><td nowrap align=center>
+2<hr NOSHADE>
+15<Br></td><td nowrap align=center>
+x<sup>5/2</sup>-</td><td nowrap align=center>
+x<sup>5</sup><hr NOSHADE>
+5<Br></td><td nowrap align=center>
+-</td><td nowrap align=center>
+x<sup>7</sup><hr NOSHADE>
+21<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ù<br>ú<br>
+û
+</font></td><td align=center>
+<font size="-1">1</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+ = </td><td nowrap align=center>
+6<hr NOSHADE>
+35<Br></td><td nowrap align=center>
+.</td></Table>
+</td></table></centEr>
+
+</i>
+
+<p>
+
+<li> Si calcoli il seguente integrale 
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1"></font> <Br><br>
+<font size="-1"><font face=symbol>W</font
+></font>&nbsp;<br></td><td nowrap>
+</td><td nowrap align=center>
+1<hr NOSHADE>
+<tabLe border=0><tr><td nowrap align=center>
+ </td><td nowrap align=center>
+</td><td nowrap align=left>&nbsp;&nbsp;___________<br><font size="+1"><font face=symbol>Ö</font></font>x<sup>2</sup>+y<sup>2</sup>+(z-2)<sup>2</sup><Br>&nbsp;<br></td><td nowrap align=center>
+</td></tabLe></td><td nowrap align=center>
+</td></Table>
+</td></table></centEr>
+
+
+dove <font face=symbol>W</font
+> &#232; la sfera x<sup>2</sup>+y<sup>2</sup>+z<sup>2</sup> <font face=symbol>£</font
+> 1.
+
+<p>
+<p><br><p><br> <b>SOLUZIONE:</b> <i>Utilizzando la trasformazione in coordinate
+sferiche
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ì<br>ï<br>ï<br>í<br>
+ï<br>ï<br>î
+</font></td><td align=center>
+</td><td nowrap><TablE border=0 align=left><tr><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+ x = <font face=symbol>r</font
+>cos<font face=symbol>q</font
+>sin<font face=symbol>w</font
+></td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+ y = <font face=symbol>r</font
+>sin<font face=symbol>q</font
+>sin<font face=symbol>w</font
+></td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+ z = <font face=symbol>r</font
+>cos<font face=symbol>w</font
+></td></tabLe></TD></TR></TablE>
+</td><td nowrap>  &nbsp;&nbsp;<font face=symbol>|</font
+></td><td nowrap align=center>
+det<BR>
+</td><td noWrap>(J(x,y,z))<font face=symbol>|</font
+> = <font face=symbol>r</font
+><sup>2</sup>sin<font face=symbol>w</font
+>,</td></Table>
+</td></table></centEr>
+
+
+osservando che si sta integrando su una sfera unitaria e che
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+x<sup>2</sup>+y<sup>2</sup>+(z-2)<sup>2</sup> = <font face=symbol>r</font
+><sup>2</sup>-4<font face=symbol>r</font
+>cos<font face=symbol>w</font
+>+4,</td></Table>
+</td></table></centEr>
+
+
+otteniamo 
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1"></font> <Br><br>
+<font size="-1"><font face=symbol>W</font
+></font>&nbsp;<br></td><td nowrap>
+</td><td nowrap align=center>
+1<hr NOSHADE>
+<tabLe border=0><tr><td nowrap align=center>
+ </td><td nowrap align=center>
+</td><td nowrap align=left>&nbsp;&nbsp;___________<br><font size="+1"><font face=symbol>Ö</font></font>x<sup>2</sup>+y<sup>2</sup>+(z-2)<sup>2</sup><Br>&nbsp;<br></td><td nowrap align=center>
+</td></tabLe></td><td nowrap align=center>
+ = </td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">2<font face=symbol>p</font
+></font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+d<font face=symbol>q</font
+>&nbsp;</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">1</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+d<font face=symbol>r</font
+>&nbsp;</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1"><font face=symbol>p</font
+></font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+d<font face=symbol>w</font
+></td><td nowrap align=center>
+<font face=symbol>r</font
+><sup>2</sup>sin<font face=symbol>w</font
+><hr NOSHADE>
+<tabLe border=0><tr><td nowrap align=center>
+ </td><td align=left>
+<font face=symbol size="+2">&nbsp;&nbsp;æ<br>Ö<br>
+</font></td>
+<td align=center></td><td nowrap align=center>
+<hr NOSHADE>
+<font face=symbol>r</font
+><sup>2</sup>-4<font face=symbol>r</font
+>cos<font face=symbol>w</font
+>+4<Br>&nbsp;<br></td><td nowrap align=center>
+</td></tabLe></td><td nowrap align=center>
+.</td></Table>
+</td></table></centEr>
+
+
+Mentre la variabile <font face=symbol>q</font
+> &#232; gi&#224; separata, &#232; opportuno
+integrare prima rispetto a <font face=symbol>w</font
+> e poi rispetto a <font face=symbol>r</font
+>:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1"></font> <Br><br>
+<font size="-1"><font face=symbol>W</font
+></font>&nbsp;<br></td><td nowrap>
+</td><td nowrap align=center>
+1<hr NOSHADE>
+<tabLe border=0><tr><td nowrap align=center>
+ </td><td nowrap align=center>
+</td><td nowrap align=left>&nbsp;&nbsp;___________<br><font size="+1"><font face=symbol>Ö</font></font>x<sup>2</sup>+y<sup>2</sup>+(z-2)<sup>2</sup><Br>&nbsp;<br></td><td nowrap align=center>
+</td></tabLe></td><td nowrap align=center>
+ = 2<font face=symbol>p</font
+></td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">1</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+<font face=symbol>r</font
+><sup>2</sup>d<font face=symbol>r</font
+>&nbsp;</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1"><font face=symbol>p</font
+></font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+</td><td nowrap align=center>
+-dcos<font face=symbol>w</font
+><hr NOSHADE>
+<tabLe border=0><tr><td nowrap align=center>
+ </td><td align=left>
+<font face=symbol size="+2">&nbsp;&nbsp;æ<br>Ö<br>
+</font></td>
+<td align=center></td><td nowrap align=center>
+<hr NOSHADE>
+<font face=symbol>r</font
+><sup>2</sup>-4<font face=symbol>r</font
+>cos<font face=symbol>w</font
+>+4<Br>&nbsp;<br></td><td nowrap align=center>
+</td></tabLe></td><td nowrap align=center>
+ = </td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+2<font face=symbol>p</font
+></td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">1</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+<font face=symbol>r</font
+><sup>2</sup>d<font face=symbol>r</font
+></td><td align=left><font face=symbol>
+é<br>ê<br>
+ë
+</font></td><td align=center>
+</td><td nowrap align=center>
+1<hr NOSHADE>
+ 2<font face=symbol>r</font
+><Br></td><td nowrap align=center>
+</td><td align=left>
+<font face=symbol size="+2">&nbsp;&nbsp;æ<br>Ö<br>
+</font></td>
+<td align=center></td><td nowrap align=center>
+<hr NOSHADE>
+<font face=symbol>r</font
+><sup>2</sup>-4<font face=symbol>r</font
+>cos<font face=symbol>w</font
+>+4<Br>&nbsp;<br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ù<br>ú<br>
+û
+</font></td><td align=center>
+<font size="-1"><font face=symbol>p</font
+></font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+ = </td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<font face=symbol>p</font
+></td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">1</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+<font face=symbol>r</font
+></td><td align=left><font face=symbol>
+é<br>ë
+</font></td><td align=center>
+</td><td align=left>
+<font face=symbol size="+2">&nbsp;&nbsp;æ<br>Ö<br>
+</font></td>
+<td align=center></td><td nowrap align=center>
+<hr NOSHADE>
+<font face=symbol>r</font
+><sup>2</sup>+4<font face=symbol>r</font
+>+4<Br>&nbsp;<br></td><td nowrap align=center>
+-</td><td align=left>
+<font face=symbol size="+2">&nbsp;&nbsp;æ<br>Ö<br>
+</font></td>
+<td align=center></td><td nowrap align=center>
+<hr NOSHADE>
+<font face=symbol>r</font
+><sup>2</sup>-4<font face=symbol>r</font
+>+4<Br>&nbsp;<br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ù<br>û
+</font></td><td align=center>
+d<font face=symbol>r</font
+> = </td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+ = <font face=symbol>p</font
+></td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">1</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+<font face=symbol>r</font
+></td><td align=left><font face=symbol>
+é<br>ë
+</font></td><td align=center>
+</td><td align=left>
+<font face=symbol size="+2">&nbsp;&nbsp;æ<br>Ö<br>
+</font></td>
+<td align=center></td><td nowrap align=center>
+<hr NOSHADE>
+(<font face=symbol>r</font
+>+2)<sup>2</sup><Br>&nbsp;<br></td><td nowrap align=center>
+-</td><td align=left>
+<font face=symbol size="+2">&nbsp;&nbsp;æ<br>Ö<br>
+</font></td>
+<td align=center></td><td nowrap align=center>
+<hr NOSHADE>
+(<font face=symbol>r</font
+>-2)<sup>2</sup><Br>&nbsp;<br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ù<br>û
+</font></td><td align=center>
+d<font face=symbol>r</font
+> = 4<font face=symbol>p</font
+></td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">1</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+<font face=symbol>r</font
+>d<font face=symbol>r</font
+> = 2<font face=symbol>p</font
+>.</td></Table>
+</td></table></centEr>
+
+</i>
+
+<p>
+
+<li> Si calcoli l'area della superficie del solido ottenuto ruotando
+intorno all'asse y la curva associata alla rappresentazione 
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+(x(t),y(t)) = (t+1,</td><td nowrap align=center>
+t<sup>2</sup><hr NOSHADE>
+2<Br></td><td nowrap align=center>
++t)&nbsp;&nbsp;&nbsp;con&nbsp;&nbsp;&nbsp;t <font face=symbol>Î</font
+> [0,4].</td></Table>
+</td></table></centEr>
+
+
+<p><br><p><br> 
+<p>
+<b>SOLUZIONE:</b> <i>L'area della superficie ottenuta dalla rotazione
+intorno all asse y
+di una rappresentazione parametrica (x(t),y(t)) &#232; data da:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+A = 2<font face=symbol>p</font
+></td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">t<sub>2</sub></font> <Br><br>
+<font size="-1">t<sub>1</sub></font>&nbsp;<br></td><td nowrap>
+x(t)&#183;<font face=symbol>|</font
+><font face=symbol>|</font
+>(x<font face=symbol>¢</font
+>(t),y<font face=symbol>¢</font
+>(t))<font face=symbol>|</font
+><font face=symbol>|</font
+>dt.</td></Table>
+</td></table></centEr>
+
+
+Nel nostro caso <font face=symbol>|</font
+><font face=symbol>|</font
+>(x<font face=symbol>¢</font
+>(t),y<font face=symbol>¢</font
+>(t))<font face=symbol>|</font
+><font face=symbol>|</font
+> = [<font face=symbol>Ö</font>(1+(t+1)<sup>2</sup>)] e quindi
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+A = 2<font face=symbol>p</font
+></td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">4</font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+(t+1)</td><td nowrap align=center>
+</td><td nowrap align=left>&nbsp;&nbsp;_______<br><font size="+1"><font face=symbol>Ö</font></font>1+(t+1)<sup>2</sup><Br>&nbsp;<br></td><td nowrap align=center>
+dt = 2<font face=symbol>p</font
+></td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">25</font> <Br><br>
+<font size="-1">1</font>&nbsp;<br></td><td nowrap>
+</td><td nowrap align=center>
+</td><td nowrap align=left>&nbsp;&nbsp;___<br><font size="+1"><font face=symbol>Ö</font></font>1+u<Br>&nbsp;<br></td><td nowrap align=center>
+</td><td nowrap align=center>
+1<hr NOSHADE>
+2<Br></td><td nowrap align=center>
+du</td></Table>
+</td></table></centEr>
+
+
+dopo aver posto u = (t+1)<sup>2</sup>, du = 2(t+1)dt. Risolvendo l'integrale
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+A = <font face=symbol>p</font
+></td><td align=left><font face=symbol>
+é<br>ê<br>
+ë
+</font></td><td align=center>
+</td><td nowrap align=center>
+2<hr NOSHADE>
+3<Br></td><td nowrap align=center>
+(1+u)<sup>3/2</sup></td><td align=left><font face=symbol>
+ù<br>ú<br>
+û
+</font></td><td align=center>
+<font size="-1">25</font> <Br><br>
+<font size="-1">1</font>&nbsp;<br></td><td nowrap>
+ = </td><td nowrap align=center>
+2<font face=symbol>p</font
+><hr NOSHADE>
+3<Br></td><td nowrap align=center>
+(26<sup>3/2</sup>-2<sup>3/2</sup>).</td></Table>
+</td></table></centEr>
+
+</i>
+
+<p>
+
+<li> Si verifichi se il seguente campo &#232; conservativo e si calcoli
+il lavoro compiuto dal campo lungo la traiettoria <font face="helvetica"><i>C</i></font>
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<u>f</u>(x,y,z) = </td><td align=left><font face=symbol>
+æ<br>ç<br>
+è
+</font></td><td align=center>
+</td><td nowrap align=center>
+1<hr NOSHADE>
+ z<Br></td><td nowrap align=center>
+,</td><td nowrap align=center>
+-3<hr NOSHADE>
+ z<Br></td><td nowrap align=center>
+,</td><td nowrap align=center>
+3y-x+z<sup>3</sup><hr NOSHADE>
+ z<sup>2</sup><Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ö<br>÷<br>
+ø
+</font></td><td align=center>
+</td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<font face="helvetica"><i>C</i></font> = </td><td align=left><font face=symbol>
+ì<br>ï<br>ï<br>í<br>
+ï<br>ï<br>î
+</font></td><td align=center>
+</td><td nowrap><TablE border=0 align=left><tr><td nowrap align=center>
+<tabLe border=0><tr><td nowrap Align=center>
+x(t) = t</td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+y(t) = t<sup>2</sup> </td></tabLe></TD></TR><TR><TD NOWRAP align="center" colspan=0><tabLe border=0><tr><td nowrap Align=center>
+z(t) = t-1</td></tabLe></TD></TR></TablE>
+</td><td nowrap> t <font face=symbol>Î</font
+> [2,4]</td></Table>
+</td></table></centEr>
+
+
+<i>(Suggerimento: Provare a calcolare un potenziale)</i>
+<p><br><p><br> 
+<p>
+<b>SOLUZIONE:</b> <i>Il campo <u>f</u> = (f<sub>1</sub>,f<sub>2</sub>,f<sub>3</sub>) 
+soddisfa le equazioni di compatibilit&#224;
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+</td><td nowrap align=center>
+<font face=symbol>¶</font
+>f<sub>1</sub><hr NOSHADE>
+<font face=symbol>¶</font
+>y<Br></td><td nowrap align=center>
+ = 0 = </td><td nowrap align=center>
+<font face=symbol>¶</font
+>f<sub>2</sub><hr NOSHADE>
+<font face=symbol>¶</font
+>x<Br></td><td nowrap align=center>
+,&nbsp;&nbsp;&nbsp;&nbsp;</td><td nowrap align=center>
+<font face=symbol>¶</font
+>f<sub>1</sub><hr NOSHADE>
+<font face=symbol>¶</font
+>z<Br></td><td nowrap align=center>
+ = -</td><td nowrap align=center>
+1<hr NOSHADE>
+ z<sup>2</sup><Br></td><td nowrap align=center>
+ = </td><td nowrap align=center>
+<font face=symbol>¶</font
+>f<sub>3</sub><hr NOSHADE>
+<font face=symbol>¶</font
+>x<Br></td><td nowrap align=center>
+,&nbsp;&nbsp;&nbsp;&nbsp;</td><td nowrap align=center>
+<font face=symbol>¶</font
+>f<sub>2</sub><hr NOSHADE>
+<font face=symbol>¶</font
+>z<Br></td><td nowrap align=center>
+ = </td><td nowrap align=center>
+3<hr NOSHADE>
+ z<sup>2</sup><Br></td><td nowrap align=center>
+ = </td><td nowrap align=center>
+<font face=symbol>¶</font
+>f<sub>3</sub><hr NOSHADE>
+<font face=symbol>¶</font
+>y<Br></td><td nowrap align=center>
+</td></Table>
+</td></table></centEr>
+
+
+quindi <u>f</u> &#232; un campo conservativo in una regione 
+semplicemente connessa di <b>R</b><sup>3</sup> non contenente il piano z = 0. 
+Ora calcoliamo il potenziale di <u>f</u>:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+U = -</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+f<sub>1</sub> dx+g(y,z) = -</td><td nowrap align=center>
+x<hr NOSHADE>
+ z<Br></td><td nowrap align=center>
++g(y,z).</td></Table>
+</td></table></centEr>
+
+
+Adesso, da
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+f<sub>2</sub> = -</td><td nowrap align=center>
+<font face=symbol>¶</font
+>U<hr NOSHADE>
+<font face=symbol>¶</font
+>y<Br></td><td nowrap align=center>
+ = </td><td nowrap align=center>
+<font face=symbol>¶</font
+>g<hr NOSHADE>
+<font face=symbol>¶</font
+>y<Br></td><td nowrap align=center>
+ = -</td><td nowrap align=center>
+3<hr NOSHADE>
+ z<Br></td><td nowrap align=center>
+</td></Table>
+</td></table></centEr>
+
+
+si ottiene
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+g(y,z) = -</td><td nowrap align=center>
+3y<hr NOSHADE>
+ z<Br></td><td nowrap align=center>
++h(z)&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;U(x,y,z) = -</td><td nowrap align=center>
+x<hr NOSHADE>
+ z<Br></td><td nowrap align=center>
++</td><td nowrap align=center>
+3y<hr NOSHADE>
+ z<Br></td><td nowrap align=center>
++h(z).</td></Table>
+</td></table></centEr>
+
+
+Inoltre, da
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+f<sub>3</sub> = -</td><td nowrap align=center>
+<font face=symbol>¶</font
+>U<hr NOSHADE>
+<font face=symbol>¶</font
+>z<Br></td><td nowrap align=center>
+ = </td><td nowrap align=center>
+3y-x<hr NOSHADE>
+ z<sup>2</sup><Br></td><td nowrap align=center>
++</td><td nowrap align=center>
+<font face=symbol>¶</font
+>h<hr NOSHADE>
+<font face=symbol>¶</font
+>z<Br></td><td nowrap align=center>
+ = </td><td nowrap align=center>
+3y-x+z<sup>3</sup><hr NOSHADE>
+ z<sup>2</sup><Br></td><td nowrap align=center>
+</td></Table>
+</td></table></centEr>
+
+
+si ottiene h(z) = [(z<sup>2</sup>)/2]. Quindi 
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+U = -</td><td nowrap align=center>
+x-3y<hr NOSHADE>
+ z<Br></td><td nowrap align=center>
+-</td><td nowrap align=center>
+z<sup>2</sup><hr NOSHADE>
+2<Br></td><td nowrap align=center>
++C</td></Table>
+</td></table></centEr>
+
+
+e il campo &#232; conservativo su tutto il suo dominio. Alla luce
+di questa deduzione, per calcolare il lavoro &#232; sufficiente calcolare
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+L = U(x(2),y(2),z(2))-U(x(4),y(4),z(4)) = U(2,4,1)-U(4,16,3) = </td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+ = -(-10)-</td><td nowrap align=center>
+1<hr NOSHADE>
+ 2<Br></td><td nowrap align=center>
++</td><td nowrap align=center>
+-44<hr NOSHADE>
+3<Br></td><td nowrap align=center>
++</td><td nowrap align=center>
+9<hr NOSHADE>
+2<Br></td><td nowrap align=center>
+ = -</td><td nowrap align=center>
+2<hr NOSHADE>
+3<Br></td><td nowrap align=center>
+.</td></Table>
+</td></table></centEr>
+
+</i>
+
+<p>
+
+<li> Si utilizzi il Teorema di Green per calcolare l'area racchiusa all'interno
+della curva piana associata alla rappresentazione parametrica
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+<u>x</u>(t) = (acos<sup>3</sup> t ,asin<sup>3</sup> t),&nbsp;&nbsp;&nbsp;t <font face=symbol>Î</font
+> [0,2<font face=symbol>p</font
+>]</td></Table>
+</td></table></centEr>
+
+
+mediante un integrale curvilineo.
+<p><br><p><br> 
+<p>
+<b>SOLUZIONE:</b> <i>In un Corollario del Teorema di Green si afferma che
+l'area racchiusa all'interno di una curva piana chiusa <font face="helvetica"><i>C</i></font> &#232; data 
+dall'integrale curvilineo di seconda specie:
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+A = </td><td nowrap align=center>
+1<hr NOSHADE>
+2<Br></td><td nowrap align=center>
+</td><td align=center><font face=symbol>ó<br>(ç)<br>õ</font><br></td><td><font size="-1"></font> <Br><br>
+<font size="-1"><font face="helvetica"><i>C</i></font></font>&nbsp;<br></td><td nowrap>
+xdy-ydx.</td></Table>
+</td></table></centEr>
+
+
+Nel nostro caso abbiamo
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+A = </td><td nowrap align=center>
+1<hr NOSHADE>
+2<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">2<font face=symbol>p</font
+></font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+(acos<sup>3</sup> t)d(asin<sup>3</sup> t)-(asin<sup>3</sup> t)d(acos<sup>3</sup> t) = </td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+ = </td><td nowrap align=center>
+a<sup>2</sup><hr NOSHADE>
+2<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">2<font face=symbol>p</font
+></font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+3(cos<sup>4</sup>tsin<sup>2</sup>t+ cos<sup>2</sup>tsin<sup>4</sup>t)dt =  = </td><td nowrap align=center>
+3a<sup>2</sup><hr NOSHADE>
+2<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">2<font face=symbol>p</font
+></font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+(costsint)<sup>2</sup>dt = </td></Table>
+</td></table></centEr>
+
+
+
+<centEr><table border=0 align=center><tr><td>
+<Table align=left><tr><td nowrap align=center>
+ = </td><td nowrap align=center>
+3a<sup>2</sup><hr NOSHADE>
+2<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">2<font face=symbol>p</font
+></font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+</td><td nowrap align=center>
+1<hr NOSHADE>
+4<Br></td><td nowrap align=center>
+sin<sup>2</sup>tdt = </td><td nowrap align=center>
+3a<sup>2</sup><hr NOSHADE>
+2<Br></td><td nowrap align=center>
+</td><td align=left><font face=symbol>
+ó<br>õ
+</font></td><td align=center>
+<font size="-1">2<font face=symbol>p</font
+></font> <Br><br>
+<font size="-1">0</font>&nbsp;<br></td><td nowrap>
+</td><td nowrap align=center>
+1-cos4t<hr NOSHADE>
+8<Br></td><td nowrap align=center>
+dt = </td><td nowrap align=center>
+3a<sup>2</sup><font face=symbol>p</font
+><hr NOSHADE>
+8<Br></td><td nowrap align=center>
+.</td></Table>
+</td></table></centEr>
+
+
+</i>
+<p>
+</OL>
+<p><hr><small>File translated from T<sub><font size="-1">E</font></sub>X by <a href="http://hutchinson.belmont.ma.us/tth/">T<sub><font size="-1">T</font></sub>H</a>, version 1.94.<br>On 29 Dec 1998, 12:36.</small>
+</HTML>

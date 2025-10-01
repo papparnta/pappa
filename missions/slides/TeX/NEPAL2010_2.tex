@@ -1,0 +1,683 @@
+\documentclass[landscape]{powersem} %display
+\usepackage{fancybox,marvosym,graphicx,amsmath,amssymb,pifont,textcomp}
+\usepackage[bookmarksopen,colorlinks,urlcolor=red,pdfpagemode=FullScreen]{hyperref}
+\usepackage{fixseminar}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[latin1]{inputenc}
+\usepackage{eurosans}
+\usepackage[%coloremph
+,colormath%,colorhighlight
+,whitebackground]{texpower}
+\hfuzz=30pt
+\vfuzz=30pt
+\setlength{\slidewidth}{25cm} \setlength{\slideheight}{17cm}
+\slideframe{}%shadow
+\def\slideitemsep{.5ex plus .3ex minus .2ex}
+\renewcommand{\slidetopmargin}{10mm}
+\renewcommand{\slidebottommargin}{15mm}
+\renewcommand{\slideleftmargin}{5mm}
+\renewcommand{\sliderightmargin}{5mm}
+\newcommand{\psd}{\pause}%\addtocounter{slide}{-1}}
+\newcommand{\Ccal}{{\mathcal{C}}}
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\Q}{{{\mathbb Q}}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\manorossa}{\textcolor{conceptcolor}{\ding{43}}}
+\newcommand{\matitablu}{\textcolor{altemcolor}{\ding{46}}}
+\newcommand{\verde}{\textcolor{black}}
+\newcommand{\heading}[1]{%
+ \begin{center}
+  %\large\bf
+  \Ovalbox{{#1}}%\textcolor{conceptcolor}{
+ \end{center}
+ \vspace{1ex minus 1ex}}
+\definecolor{verdescu}{rgb}{0,0.6,0.6}
+\definecolor{rossoscu}{rgb}{1,0,0.2}
+
+%\backgroundstyle[startcolor=white,
+ %                  endcolor=inactivecolor,%firstgradprogression=3,
+  %          rightpanelwidth=-7\semcm,,rightpanelcolor=pagecolor]{hgradient}%
+%%%%%%%%%%%%% DATI DEL SEMINARIO IN QUESTIONE %%%%%%%%%%%%
+
+\newpagestyle{327}%
+ {\textcolor{codecolor}{\textit{Basic Algorithms in Number Theory}} \hspace{\fill}\rightmark
+\hspace{0.5cm}\thepage}
+ {}%{\includegraphics[width=4mm]{images/dipmat.pdf}\hspace{\fill}\textcolor{codecolor}{\sc Universit\`a Roma Tre}
+ %\hspace{\fill}\includegraphics[width=5mm]{images/roma3.pdf}}%%
+\pagestyle{327} \markright{\textcolor{conceptcolor}{Algorithmic Complexity ...}}
+
+\begin{document}
+
+%\begin{slide}\pageTransitionWipe{30}
+%\maketitle
+%\end{slide}
+
+\begin{slide}\ \vfill
+
+\begin{sc}\begin{center}
+\begin{Large}
+
+\textcolor{underlcolor}{Basic Algorithms in Number Theory}
+\end{Large}\bigskip
+
+\ {Francesco Pappalardi}\bigskip\bigskip
+
+\begin{large}\begin{bf}Discrete Logs, Modular Square Roots \& Euclidean Algorithm.
+\end{bf}\end{large}\medskip
+
+July $20^{\textrm{th}}$ 2010\medskip
+\vfil
+
+\end{center}
+\end{sc}
+\vfill
+
+\end{slide}
+
+\begin{slide}
+\heading{\textsc{Yesterday's Problems}}
+\begin{enumerate}
+	\item \textsc{Multiplication:} for $x,y\in\Z$, find $x\cdot y$
+	\item \textsc{Exponentiation:} for $x\in G$ (group) and $n\in\N$, find $x^n$ (Complexity of operations in $\Z/m\Z$)
+	\item \textsc{GCD:} Given $a,b\in\N$ find $\gcd(a,b)$
+	\item  \textsc{Primality:} Given $n\in\N$ odd, determine if it is prime (Legendre/Jacobi Symbols - Probabilistic Algorithms with probability of error)
+	\item \textsc{Quadratic Nonresidues:} given an odd prime $p$, find
+a quadratic non residue mod $p$.
+	\item \textsc{Power Test:} Given $n\in\N$ determine if $n=b^k (\exists k>1)$
+	\item \textsc{Factoring:} Given $n\in\N$, find a proper divisor of $n$
+\end{enumerate}
+\end{slide}
+
+\begin{slide}
+\heading{\textsc{Contemporary Factoring}}
+
+Contemporary records in factoring are obtained by the \emph{Number Field Sieve} (NFS) which is an evolution of the \emph{Quadratic Sieve} (QS). 
+These (together with the ECM-factoring) have sub-exponential heuristic complexity.\pause%\vspace*{-3mm}
+
+More precisely let:
+$$L_n[a;c]=\exp\left(((c+o(1)(\log n)^a(\log\log n)^{1-a})\right).$$
+which is a quantity that oscillates between exponential $(a=1)$ and polynomial $(a=0)$ as
+a function of $\log n$. Then the complexities are respectively\pause
+
+\begin{itemize}
+ \item[\textbf{ECM}] algorithm with heuristic complexity $L_n[1/2,1]$ \hfill (Lenstra 1987) 
+\item[\textbf{NFS}] algorithm with heuristic complexity $L_n[1/3;4/3^{3/2}]$ \hfill (Pollard) 
+\item[\textbf{QS}] algorithm with heuristic complexity $L_n[1/2,1]$ \hfill (Dickson, Pomerance) 
+\end{itemize}
+ 
+
+\end{slide}
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textbf{PROBLEM 8.}} \textsc{Discrete Logarithms:}} 
+ Given $x$ in a cyclic group $G=\langle g\rangle$, find $n$ such that $x=g^n$.
+
+\parstepwise{\begin{itemize}
+ \item \step{to make sense one has to specify how to make the operations in $G$}
+\item \step{If $G=\left(\Z/n\Z,+\right)$ then discrete logs are very easy.}
+\item \step{If $G=((\Z/n\Z)^*,\times)$ then we know that $G$ is cyclic iff $n=2,4,p^\alpha,2\cdot p^\alpha$}\\
+\step{ where
+$p$ is an odd prime. This is a famous theorem of Gau\ss.}
+\item \step{Already in $(\Z/p\Z)^*$ there is no efficient algorithm to compute DL.}
+\item \step{It is already an interesting problem, given $p$, to compute a primitive root}\\ \step{ $g$ modulo $p$ (i.e. to determine $g\in(\Z/p\Z)^*$
+such that $\langle g\rangle=(\Z/p\Z)^*$)}
+\item \step{The famous \emph{Artin Conjecture for primitive roots} stated that any $g$}\\\step{ (except $0,\pm1$ and perfect squares)
+is a primitive root for a positive}\\\step{ proportion of primes}
+\item \step{Known to be true assuming the GRH. It is also known that one out of}\\ \step{$2, 3$  and $5$ is a primitive root for infinitely many primes.} 
+\end{itemize}}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textsc{Discrete Logarithms:}} continues}\vspace*{-2mm} 
+\parstepwise{\begin{itemize}
+ \item \step{Primordial public key cryptography is based on the difficulty of the }\\ \step{Discrete Log problem\hfill \textit{(Cryptography course from Kalyan Chakraborty)}}
+\item \step{Several algorithms to compute discrete logarithms are known.}\\ \step{One for all is the \textbf{Shanks Baby Step Giant Step algorithm}.}\end{itemize}}\vspace*{-3mm}
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{11cm}
+\texttt{\noindent 
+\noindent 
+\textcolor{red}{Input:}  A group $G=\langle g\rangle$ and $a\in G$\\
+\textcolor{blue}{Output:}  $k\in\Z/|G|\Z$ such that $a=g^k$\\
+1. $M:= \lceil \sqrt{|G|}\rceil$\\
+2. For $j=0,1,2,\ldots,M$.\\
+\hspace*{1cm} \qquad Compute $g^j$ and store the pair $(j, g^j)$ in a table\\
+3. $A:=g^{-M}$, $B:=a$\\
+5. For $i=0,1,2,\ldots,M-1$.\\
+\hspace*{5mm} \qquad -1- Check if $B$ is the second component $(g^j)$ of any\\ \hspace*{1.3cm} \qquad pair in the table\\
+\hspace*{5mm} \qquad -2- If so, return $iM + j$ and halt.\\  
+\hspace*{5mm} \qquad -3- If not $B=B\cdot A$}
+\end{minipage}}}
+\end{center}
+% Input: A cyclic group G of order n, having a generator α and an element β.
+% 
+% Output: A value x satisfying αx = β.
+% 
+%    1. m ← Ceiling(√n)
+%    2. For all j where 0 ≤ j < m:
+%          1. Compute αj and store the pair (j, αj) in a table. (See section "In practice")
+%    3. Compute α−m.
+%    4. γ ← β. (set γ = β)
+%    5. For i = 0 to (m − 1):
+%          1. Check to see if γ is the second component (αj) of any pair in the table.
+%          2. If so, return im + j.
+%          3. If not, γ ← γ • α−m.
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textsc{Discrete Logarithms:}} continues} 
+
+\parstepwise{\begin{itemize}
+ \item \step{The BSGS algorithm is a generic algorithm.}\\ \step{It works for every finite cyclic group.}
+\item \step{It is based on the fact that any $x\in\Z/n\Z$ can be written as $x=j+ i m$}\\
+\step{with $m=\lceil\sqrt{n}\rceil$, $0\le j<m$ and $0\le i<m-1$}
+ \item  \step{It is not necessary to know the order of the group $G$ in advance.}\\ 
+\step{The algorithm still works if an upper bound on the group order is known.}
+\item \step{Usually the BSGS algorithm is used for groups whose order is prime.}
+\item \step{The running time of the algorithm and the space complexity is $O(\sqrt{|G|})$,}\\ \step{much better than the $O(|G|)$ 
+running time of the naive brute force}
+\item \step{The algorithm was originally developed by Daniel Shanks.}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textsc{Discrete Logarithms:}} continues} 
+
+ In some groups Discrete logs are easy. For example if $G$ is a cyclic group and $\#G=2^m$ then we know
+that there are subgroups:\pause\vspace*{-7mm}
+$$\langle1\rangle=G_0\subset G_1\subset\cdots\subset G_m=G$$\pause\vspace*{-3mm}
+such that $G_i$ is cyclic and $\#G_i=2^i$. Furthermore\vspace*{-2mm}
+$$G_i=\left\{y\in G\text{ such that } y^{2^i}=1\right\}.$$\pause\vspace*{-3mm}
+Hence if $G=\langle g\rangle$, for any $a\in G$, either $a^{2^{m-1}}=1$
+or $(ga)^{2^{m-1}}=1$\pause
+From this property we deduce the algorithm:\vspace*{-2mm}
+\begin{center}\fbox
+{\textcolor{black}{
+\begin{minipage}[c]{9cm}
+\texttt{\noindent 
+\textcolor{red}{Input:}  A group $G=\langle g\rangle$, $|G|=2^m$ and $a\in G$\\
+\textcolor{blue}{Output:}  $k\in\Z/|G|\Z$ such that $a=g^k$\\
+1. $A:=a$, $K=2^m$\\
+2. For $j=1,2,\ldots, m$.\\
+\hspace*{1cm} \qquad If $A^{2^{m-j}}\neq 1$, $A:=g^{2^{j-1}}\cdot A; K:=K-2^{j-1}$\\
+3 Output $K$}
+\end{minipage}}}
+\end{center}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textsc{Discrete Logarithms:}} continues} 
+\parstepwise{
+\begin{itemize}
+\item \step{The above is a special case of the Pohlig-Hellman Algorithm which works}\\ \step{when $|G|$ has only small prime divisors}
+\item \step{To avoid this situation one crucial requirement for a DL-resistent group}\\ \step{in cryptography is that $\#G$ has a large prime divisor.}
+\item \step{If $p=2^k+1$ is a Fermat prime, then DL in $(\Z/p\Z)^*$ are easy.}
+\item \step{Classical algorithm for factoring have often analogues for computing}\\ \step{discrete logs. A very important one  is the \emph{index calculus algorithm}.}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textbf{PROBLEM 9.}} \textsc{Square Roots Modulo a prime:}} 
+
+\fbox{Given an odd prime $p$ and a quadratic residue $a$, find $x$
+s. t. $x^2\equiv a\bmod p$}\pause
+
+It can be solved efficiently if we are given a quadratic nonresidue $g\in(\Z/p\Z)^*$\pause
+
+\parstepwise{\begin{enumerate}
+\item \step{We write $p-1=2^k\cdot q$ and we know that $(\Z/p\Z)^*$ has a (cyclic)}\\ \step{subgroup $G$ with $2^k$ elements.}
+\item \step{ Note that $b=g^q$ is a generator of $G$
+(in fact if it was $b^{2^j}\equiv1\bmod p$}\\ \step{for $j<k$, then $g^{(p-1)/2}\equiv1\bmod p$) and that $a^q\in G$}
+\item \step{Use the last algorithm to compute $t$ such that $a^q=b^t$. Note that $t$ is}\\ \step{even since
+$a^{(p-1)/2}\equiv1\bmod p$.}
+\item \step{Finally set $x=a^{(p-q)/2}b^{t/2}$ and observe that}\\
+\step{$\hspace*{3cm}\displaystyle{x^2=a^{(p-q)}b^{t}=a^p\equiv a\bmod p.}$}
+\end{enumerate}}\pause
+
+The above is not deterministic. However Schoof in 1985 discovered a polynomial time algorithm which is
+however not efficient.
+\end{slide}
+
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textbf{PROBLEM 10.}} \textsc{Modular Square Roots:}}
+
+\centerline{\fbox{Given $n,a\in\N$, find $x$ such that $x^2\equiv a\bmod n$}}\pause
+
+If the factorization of $n$ is known, then this problem (efficiently) can be solved in 3 steps:
+\parstepwise{\begin{enumerate}
+ \item \step{For each prime divisor $p$ of $n$ find $x_p$ such that $x_p^2\equiv a \bmod p$}
+\item \step{Use the Hensel's Lemma to lift $x_p$ to $y_p$ where $y_p^2\equiv a\bmod p^{v_p(n)}$}
+\item \step{Use the Chinese remainder Theorem to find $x\in\Z/n\Z$ such that}\\ \step{$x\equiv y_p\bmod p^{v_p(n)} \ \forall p\mid n$.}
+\item \step{Finally $x^2\equiv a\bmod n$.}
+\end{enumerate}}\pause
+
+The last two tools (Hensel's Lemma and Chinese Remainder Theorem) will be covered either later or in Lecture 3.
+ \end{slide}
+
+
+\begin{slide}
+
+\heading{ \textsc{Modular Square Roots:}\quad (continues)}  
+
+On the opposite direction, suppose that for each $a\in\Z/n\Z$ we can solve $X^2\equiv a\bmod n$.
+We want to use this hypothetical algorithm to find a factor of $n$.\pause
+
+Choose $y$ at random in $\Z/n\Z$ and find $x$ such that $x^2\equiv y^2\bmod n$.\pause
+
+Any common divisor of $x$ and $y$ also divides $n$. So we can assume that $x$ and $y$ are coprime.\pause
+
+If $p>1$ is a prime factor of $n$, then $p$ divides $(x+y)(x-y)$. In addition $p$ divides exactly one
+of the factors $(x+y)$ or $(x-y)$.\pause
+
+If $y$ is random, then any of the primes that divides $x^2-y^2$ has $50\%$ chances of $x+y$ of $x-y$.\pause
+
+Finally $\gcd(x-y,n)$ is a proper divisor of $n$. \pause
+
+If the above fails, then try again choosing a different random $y$. After $k$ choices, the probability
+that $n$ is not factored is $O(2^{-k})$.
+ \end{slide}
+
+
+\begin{slide}
+
+\heading{ \textsc{Modular Square Roots:}\quad (continues)}  
+
+The \textsc{Factoring} and \textsc{Modular square roots} are in practice equivalent in difficulty.\pause\bigskip\bigskip
+
+The difficulty of solving the analogue problem for $e$--th roots modulo $n$ 
+$$\textbf{i.e. Given $e, C, n$, find $x\in\Z/n\Z$ such that }x^e\equiv C\bmod n$$ \pause
+
+is the base of the security of RSA\hfill\textit{(see K. Chakraborty course)}
+
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textbf{PROBLEM 11.}} \textsc{Diophantine Equations:}}
+\pause
+  
+\textbf{PROBLEM 11.} \textsc{Diophantine Equations:} \textit{Given $f(X_1,\ldots,X_n)\in\Z[X_1,\ldots,X_n]$, find $x=(x_1,\ldots,x_n)\in\Z^n$
+such that $f(x)=0$.}
+
+For a general $f$ this is an \text{undecidable problem} (Matijasevic, Robinson, Davis, Putnam).
+\pause
+
+Although the problem might be easy for some specific $f$, there is no algorithm (efficient or otherwise) that
+takes $f$ as input and always determines whether $f(x)=0$ has a solution in integers.\pause
+
+Hilbert's tenth problem is the tenth on the list of Hilbert's problems of 1900.
+
+\begin{quote}\textit{Given a Diophantine equation with any number of unknown quantities and with rational integral numerical coefficients: 
+To devise a process according to which it can be determined in a finite number of operations whether the equation is solvable in rational integers.}\end{quote}
+
+\end{slide}
+
+
+
+\begin{slide}
+\centerline{\includegraphics[width=11cm]{images/School_of_Athens.jpeg}}\vspace*{-8cm}
+\parstepwise{
+\step{
+      \hspace*{-1mm}\colorbox{white}{\shadowbox{La Scuola di Atene (Raffaello Sanzio)}}
+      }
+\bigskip\bigskip\bigskip\bigskip\\ %\vspace*{1cm}\hspace*{2cm}
+\step{\hspace*{3cm}
+      \begin{minipage}{5cm}
+                      \shadowbox{\includegraphics[width=3.5cm]{images/Euclid_7.jpeg}}\\
+                      \colorbox{white}{\begin{minipage}[c]{4cm}
+                               \ \ \ Euclide di Alessandria\vspace*{-2mm}\\
+                                 {\tiny Birth: 325 A.C. (approximately)}\vspace*{-2.5mm}\\
+                                 {\tiny Death: 265 A.C. (approximately)}
+                                \end{minipage}}\\
+       \end{minipage}
+       }\\ \bigskip\medskip% \bigskip\\
+\step{\hspace*{1.5cm}
+      \colorbox{white}{\shadowbox{The Euclidean Algorithm}}
+      }
+            }
+\end{slide}
+
+\begin{slide}
+\heading{Extended Euclidean Algorithm}
+
+Let $a,b\in\N$ (not both zero), we will also assume that $a\geq b$. The $\gcd(a,b)$ is greatest common divisor of $a$ and $b$.\pause
+Clearly $\gcd(a,0)=a$. If the factorization of $a$ and $b$ is known the it is easy to compute $\gcd(a,b)$. In fact
+$$\gcd(a,b)=\prod_{p\ \text{prime}}p^{\min\{v_p(a),v_p(b)\}}.$$\pause
+The $p$--adic valuation $v_p(n)$ of an integer $n$ is
+$$v_p(n)=\max\{\alpha\ge0\text{ such that $p^\alpha$ divides $n$}\}$$
+so that the product above is indeed finite.\pause
+
+Furthermore
+$$\gcd(a,b)=\min\{|xa+yb|>0\text{ such that }x,y\in\Z\}.$$
+\end{slide}
+
+\begin{slide}
+\heading{Extended Euclidean Algorithm}\pause
+
+From the above identity it follows immediately that $\gcd(a,b)$ exists and that $\gcd(a,b)=xa+by$ for appropriate
+$x,y\in\Z$. In many applications it is crucial to compute $x,y$ that realize the above identity and they
+are called the \emph{Bezout coefficients}. \pause
+
+\noindent \textbf{Theorem.} \textit{Given $a,b\in\N$, $0<b\le a$, then there exists $x,y,z$ such that $z=\gcd(a,b)$ and $z=ax+by$.
+Furthermore they can be computed with an algorithm (EEA) with bit complexity $O(\log^2a)$.}
+\end{slide}
+
+
+
+\begin{slide}
+\heading{Extended Euclidean Algorithm}
+
+It is based on successive divisions:
+$$
+\begin{array}{rclcr}
+       a &    =     & b       \cdot     q_0 & +        & r_1 \\
+       b &    =     & r_1     \cdot     q_1 & +        & r_2 \\
+     r_1 &    =     & r_2     \cdot     q_2 & +        & r_3 \\
+     r_2 &    =     & r_3     \cdot     q_3 & +        & r_4 \\
+%     r_3 &    =     & r_4     \cdot     q_4 & +        & r_5 \\
+         &  \vdots  &                  &      \vdots    &     \\
+ r_{k-2} &    =     & r_{k-1} \cdot q_{k-1} & +        & r_k \\
+ r_{k-1} &    =     & r_k     \cdot   q_{k} &          &     
+\end{array}
+$$\pause
+Note that
+$$
+\begin{array}{rl}
+    a=bq_0+r_1\geq bq_0\geq (r_1q_1+r_2)q_0 &\geq r_1q_1q_0\geq\cdots \\
+   \cdots & \geq r_kq_kq_{k-1}\cdots q_0
+\geq q_kq_{k-1}\cdots q_0,
+  \end{array}
+$$
+\end{slide}
+
+\begin{slide}
+\heading{Extended Euclidean Algorithm}
+
+The $j+1$--th division requires time $O(\log r_{j}\log q_j)$ and using the fact that $\log r_i\leq \log b$,
+we obtain that the total time for running the EEA is\vspace*{-3mm}
+$$O(\log b\sum_{j=0}^{k}\log q_k)=O(\log b\log (q_0\cdots q_k))=O(\log b\log a).$$\vspace*{-3mm}\pause
+A variation of the EEC with the same complexity but other advantages is
+\begin{center}\textsc{Binary gcd-algorithm (J. Stein -- 1967)}
+\begin{tt}
+\fbox{
+\begin{tabular}{|rcclcr|}
+\hline
+$(a,b)$ & $=$ & if & $a<b$ & then & $(b,a)$\\
+        &     & if &  $b=0$   & then &  $a$      \\
+        &     & if &  $2\mid a, 2\mid b$   & then & $2(a/2,b/2)$       \\
+        &     & if &  $2\mid a, 2\nmid b$   & then & $(a/2,b)$  \\
+        &     & if &  $2\nmid a, 2\mid b$   & then & $(a,b/2)$     \\
+        &     &   &      & else &  $((a-b)/2,b)$ \\
+\hline
+\end{tabular}
+}
+\end{tt}
+\end{center}
+\end{slide}
+
+
+
+\begin{slide}
+\heading{Binary GCD Algorithm}
+$$\begin{array}{rrcl}
+ 1.  & (1547,560)&=&(1547,280) \\
+ 2.  & (1547,280)&=&(1547,140) \\
+ 3.  & (1547,140)&=&(1547,70)  \\
+ 4.  &  (1547,70)&=&(1547,35)   \\
+ 5.  &  (1547,35)&=&(756,35)   \\
+ 6.  &   (756,35)&=&(378,35)   \\
+ 7.  &   (378,35)&=&(189,35)   \\
+ 8.  &   (189,35)&=&(77,35)    \\
+ 9.  &    (77,35)&=&(35,21)    \\
+ 10. &    (35,21)&=&(7,21)     \\
+ 11. &     (21,7)&=&(7,7)      \\
+ 12. &      (7,7)&=&(7,0)=7      \\
+ %13. &        (7,0)&=&7        \\
+\end{array}$$
+\end{slide}
+
+
+
+\begin{slide}
+\heading{Extended Euclidean Algorithm}
+
+The EEA \fbox{\begin{tiny}$
+\begin{array}{rclcr}
+       a &    =     & b       \cdot     q_0 & +        & r_1 \\
+       b &    =     & r_1     \cdot     q_1 & +        & r_2 \\
+     r_1 &    =     & r_2     \cdot     q_2 & +        & r_3 \\
+     r_2 &    =     & r_3     \cdot     q_3 & +        & r_4 \\
+%     r_3 &    =     & r_4     \cdot     q_4 & +        & r_5 \\
+         &  \vdots  &                  &      \vdots    &     \\
+ r_{k-2} &    =     & r_{k-1} \cdot q_{k-1} & +        & r_k \\
+ r_{k-1} &    =     & r_k     \cdot   q_{k} &          &     
+\end{array}
+$\end{tiny}} \\ produces quotients $q_0,\cdots,q_k$ and remainders $r_1,\ldots,r_k$. It is easy to check that
+$\exists$ integers $\alpha_1,\ldots,\alpha_k$ and $\beta_1,\ldots,\beta_k$ such that $\forall i=1,\ldots,k$
+$$r_i= \alpha_i\cdot a+ \beta_i \cdot b.$$
+Since $(a,b)=r_k$, this shows the existence of the Bezout coefficients. The integers $(\alpha_i,\beta_i)$,
+$i=0,\ldots,k$
+are called \emph{partial Bezout coefficients}.
+Furthermore the following recursive formulas hold:
+\begin{equation*}\left\{
+  \begin{array}{l}
+    \alpha_0=0,
+    \alpha_1=1\\
+    \alpha_i=\alpha_{i-2}-q_{i-1}\cdot\alpha_{i-1}
+  \end{array}\right.\hfill
+\left\{
+  \begin{array}{l}
+    \beta_0=1,
+    \beta_1=-q_0\\
+    \beta_i=\beta_{i-2}-q_{i-1}\cdot\beta_{i-1}
+  \end{array}\right.
+\end{equation*}
+that can be written in matrix form as:\pause
+$$
+\begin{pmatrix}
+\alpha_0 &\alpha_1 \\
+\beta_0 & \beta_1
+\end{pmatrix}=
+\begin{pmatrix}
+0 & 1 \\
+1 & -q_0
+\end{pmatrix},\hspace{1cm}
+\begin{pmatrix}
+\alpha_i \\
+\beta_i
+\end{pmatrix}=
+\begin{pmatrix}
+\alpha_{i-2} &\alpha_{i-1} \\
+\beta_{i-2} & \beta_{i-1}
+\end{pmatrix}\begin{pmatrix}
+1 \\
+-q_{i-1}
+\end{pmatrix}.
+$$
+
+\end{slide}
+
+\begin{slide}
+\noindent\textbf{Example.}  $(1547,560)=7$\\
+\noindent EEC:
+$$
+\begin{array}{rclr}
+ 1547&=&2\cdot560+427 \\
+ 560&=&1\cdot427+133  \\
+ 427&=&3\cdot133+28   \\
+ 133&=&4\cdot28+21    \\
+ 28&=&1\cdot21+7 & \leftarrow \text{GCD}      \\
+ 21&=&3\cdot7             \\
+\end{array}$$
+
+So that $(q_0,q_1,q_2,q_3,q_4,q_5)=(2,1,3,4,1,3)$.
+
+\end{slide}
+
+\begin{slide}
+\heading{Example: $(1547,560)=7$ continues.}
+\begin{equation*}\left\{
+  \begin{array}{l}
+    \alpha_0=0,
+    \alpha_1=1\\
+    \alpha_i=\alpha_{i-2}-q_{i-1}\cdot\alpha_{i-1}
+  \end{array}\right.\hfill
+\left\{
+  \begin{array}{l}
+    \beta_0=1,
+    \beta_1=-q_0\\
+    \beta_i=\beta_{i-2}-q_{i-1}\cdot\beta_{i-1}
+  \end{array}\right.
+\end{equation*}
+
+$$
+\begin{array}{|c|crr|}
+\hline
+ i & q_i & \alpha_i & \beta_i \\
+\hline
+ 0 &  2  &    0     &    1    \\
+ 1 &  1  &    1     &   -2    \\
+ 2 &  3  &    -1    &    3    \\
+ 3 &  4  &    4     &   -11   \\
+ 4 &  1  &   -17    &   47    \\
+ 5 &  3   &    21    &   -58   \\
+\hline
+\end{array}
+\ \ \ \text{In fact:}\ 7=21\cdot1547-58\cdot 560.
+$$
+\end{slide}
+
+\begin{slide}
+\heading{Analysis of EEC on $a,b\in\N$}
+
+Assume that $a>b$. We want to show that the number of iterations (i.e. the number of divisions needed) 
+during the EEA is (in the worst case) $O(\log a)$.\pause
+
+\textbf{Fibonacci Numbers:} $F_1=F_2=1$ and $F_n=F_{n-1}+F_{n-2}$.\pause
+In the very special case when $a=F_n$ and $b=F_{n-1}$ then $r_1=F_{n-2}$, $r_2=F_{n-3}$,$\ldots$
+$r_{n-2}=F_{1}=1$ and $r_{n-1}=0$.\vspace*{-3mm}\pause
+From this we deduce that 
+\begin{enumerate}
+	\item $\gcd(F_n,F_{n-1})=1$
+        \item The number of divisions required by EEA is $O(n)$.
+\end{enumerate}
+
+\textbf{Proposition.} \textit{Let $\theta=(\sqrt{5}+1)/2$. Then 
+$$F_n=\frac{\theta^n+(1-\theta)^n}{\sqrt{5}}.$$
+Hence $\log F_n\sim n\theta$ (so that $n=O(\log F_n)$).}\vspace*{-3mm}\pause
+\textsc{Proof.} By induction.$\qquad\square$
+\end{slide}
+
+
+\begin{slide}
+\heading{Analysis of EEC on $a,b\in\N$}
+
+\textbf{Consequence.}\textit{ If  $a=F_n$ and $b=F_{n-1}$, then EEA requires $O(\log a)$ divisions!} 
+
+\textbf{Proposition.} \textit{Assume that $a>b\ge1$. If the EEA to compute $\gcd(a,b)$ requires $k$ divisions, Then
+$a\geq F_{k+2}$ and $b\ge F_{k+1}$.}\pause
+\textsc{Proof.} Let us first show that $r_{k-j}\ge F_{j+1}$. 
+Indeed by induction or $j$:\begin{itemize}
+	\item $r_k=\gcd(a,b)\ge 1=F_1$, $r_{k-1}\ge 1=F_2$
+\item  $r_{k-j}=q_{k-(j-1)}r_{k-(j-1)}+r_{k-(j-2)}\ge F_{j}+F_{j-1}=F_{j+1}.$
+\end{itemize}\pause
+
+Hence $b=r_0\geq F_{k+1}$ and $a=q_0b+r_1\ge F_{k+1}+F_{k}=F_{k+2}.\qquad\square$\pause
+
+\textbf{Consequence.} \textit{The number of divisions $k=O(\log F_{k+2})=O(\log a) \forall a,b$.}\pause
+
+A more careful analysis (the fact that the size of the integers decreases exponentially)
+of EEA shows that the bit complexity is $O(\log^2a)$.
+\end{slide}
+
+\begin{slide}
+\heading{Geometric GCD algorithm (probably the original one)}
+\stepwise{\begin{itemize}
+	\item \step{To compute $(a,b)$ with $a\ge b>0$, consider the rectangle with base $a$ and height $b$.}
+        \item  \step{Remove from it a square of maximal area obtaining a rectangle of sizes $a$ and $a-b$.}
+        \item \step{Reorder them (if needed) and then repeat the process of removing a square.}
+        \item  \step{Keep on removing squares till it is left a square.}
+        \item \step{The edge of the final square is the gcd.}
+\end{itemize}}\pause
+
+\textbf{Example. } $(1547,560)=(987,560)=(427,560)=(427,133)=(294,133)=(161,133)=(28,133)=(105,28)
+=(77,28)=(49,28)=(21,28)=(21,7)=(14,7)=(7,7)=7$
+
+\end{slide}
+
+\begin{slide}
+\heading{Extended GCD algorithm (EEA)}
+
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{9cm}
+\texttt{\noindent 
+\textcolor{red}{Input:} $a,b\in\N$, $a>b$\\
+\textcolor{blue}{Output:} $x,y,z$ where $z=\gcd(a,b)$ and $z=ax+by$\\
+1. $(X,Y,Z)=(1,0,a)$\\
+2. $(x,y,z)=(0,1,b)$\\
+\hspace*{5mm} \quad While $Z>0$\\
+\hspace*{10mm} \quad $q:=\lfloor Z/z\rfloor$\\
+\hspace*{10mm} \quad $(X,Y,Z)=(x,y,z)$\\
+\hspace*{10mm} \quad $(x,y,z)=(X-qx,Y-qy,Z-qz)$\\
+\hspace*{5mm} \quad Output $X,Y,Z$}
+\end{minipage}}}
+\end{center}\pause
+
+To show that it is correct it is enough to check that after one iteration
+$(X_1,Y_1,Z_1)=(1,-q_0,r_1)$ and after $k$ iterations 
+$$(X_k,Y_k,Z_k)=(X_{k-2}-q_{k-1}X_{k-1},Y_{k-2}-q_{k-2}Y_{k-2},Z_{k-2}-q_{k-1}Z_{k-1})=(\alpha_{k},\beta_{k},r_k).$$
+\end{slide}
+
+\begin{slide}
+\heading{The Euler $\varphi$--function}
+
+A first important application of EEA is to determine the inverses in $\Z/m\Z$ \pause
+\textbf{Theorem.} \textit{Let $a\in\Z$ and $m\in\N$ with $m>1$. Then $a\mod m$ is invertible 
+(i.e. $\exists b\in\Z/m\Z$ with $ab\equiv 1\bmod m$) iff $\gcd(a,m)=1$. Furthermore
+the ``\emph{arithmetic inverse}'' $b$ can be computed with time $O(\log m^2)$.} \pause
+\textbf{Proof.} If $\gcd(a,m)=1$ then in time $O(\log m^2)$ we can compute $x,y\in\Z$ such that
+$1=xa+ym$. Hence $b=x\mod m$ has the required property. \\
+Conversely if $ab\equiv 1\bmod m$, then $1=ab+km$ for an appropriate $k\in\Z$. This implies that
+$\gcd(a,m)$ divides $1$ and finally $\gcd(a,m)=1\quad\square$.\pause
+\textbf{Corollary.} \textit{The set $U(\Z/m\Z)$ of invertible elements of $\Z/m\Z$ coincides with
+$$\{a\in\N\text{ s.t. }1\le a\le m,\gcd(a,m)=1\}.$$}\pause
+We define the Euler $\varphi$ function as
+$$\varphi(n)=\#U(\Z/m\Z)=\#\{a\in\N\text{ s.t. }1\le a\le m,\gcd(a,m)=1\}.$$
+
+\end{slide}
+
+
+\begin{slide}
+\heading{The Euler $\varphi$--function continues}
+
+\parstepwise
+{
+\begin{itemize}
+\item \step
+{$\varphi(1)=1,\quad\varphi(p)=p-1,\quad\varphi(p^\alpha)=p^{\alpha-1}(p-1)$}
+\item \step
+{$\varphi(mn)=\varphi(m)\varphi(n)$ if $\gcd(m,n)=1$.}\\
+\step
+{This is a consequence of the Chinese Remainder Theorem}\\ \step{(we shall meet it later).}
+\item \step
+{Hence if we can factor $n=p_1^{\alpha_1}\cdots p_r^{\alpha_r}$, then $\varphi(n)$ is easy to compute.} \\ 
+\step
+{it is enough to compute $n\prod_{p\mid n}1-1/p$.}
+\item \step
+{If we know that $k=\varphi(n)$ and that $n=q\times p$ then we can factor $n$}\\
+\step
+{ In fact $\{p,q\}=\left\{\frac{\varphi(n)-n-1\pm\sqrt{(\varphi(n)-n-1)^2-4n}}2\right\}.$}
+\item \step
+{An important \textbf{Theorem of Euler:}}\\ \step{\textit{ If $a\in U(\Z/m\Z)$ then $a^{\varphi(n)}\equiv1\bmod n$.}}
+\end{itemize}}
+
+The latter is crucial in RSA encryption and decryption \emph{See. K. Chakrabory course}
+\end{slide}
+
+
+\end{document}

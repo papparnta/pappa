@@ -1,0 +1,80 @@
+\nopagenumbers \font\title=cmti12
+\def\ve{\vfill\eject}
+\def\vv{\vfill}
+\def\vs{\vskip-2cm}
+\def\vss{\vskip10cm}
+\def\vst{\vskip13.3cm}
+
+%\def\ve{\bigskip\bigskip}
+%\def\vv{\bigskip\bigskip}
+%\def\vs{}
+%\def\vss{}
+%\def\vst{\bigskip\bigskip}
+
+\hsize=19.5cm
+\vsize=27.58cm
+\hoffset=-1.6cm
+\voffset=0.5cm
+\parskip=-.1cm
+\ \vs \hskip -6mm CR410 AA11/2 (Crittografia a chiave pubblica)\hfill APPELLO A \hfill Roma, 7 Gennaio, 2013. \hrule
+\bigskip\noindent
+{\title Cognome}\  \dotfill\ {\title Nome}\ \dotfill {\title
+Matricola}\ \dotfill\
+\smallskip  \noindent
+Risolvere il massimo numero di esercizi fornendo spiegazioni chiare e sintetiche. \ it Inserire le risposte negli spazi
+predisposti. NON SI ACCETTANO RISPOSTE SCRITTE SU ALTRI FOGLI.
+\rm 1 Eesrcizio = 4 punti. Tempo previsto: 2 ore. Nessuna domanda durante le prima ora e durante gli ultimi 20 minuti.
+\smallskip
+\hrule\smallskip
+\centerline{\hskip 6pt\vbox{\tabskip=0pt \offinterlineskip
+\def \trl{\noalign{\hrule}}
+\halign to247.5pt{\strut#& \vrule#\tabskip=0.7em plus 1em& \hfil#&
+\vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil&
+\vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#&
+\hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfil#&
+\vrule#\tabskip=0pt\cr\trl && 1 && 2 && 3 && 4 &&
+5 && 6 && 7 && 8  && 9 && TOT. &\cr\trl  &&   &&
+&&     &&   &&     &&   &&   &&    &&  && &\cr &&       &&   &&   &&     &&   && && && &&
+ && &\cr\trl }}}
+\medskip
+
+\item{1.} Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:\bigskip\bigskip\bigskip
+
+\itemitem{a.} Determinate due fattori propri di $10000000000000000000400000000000000000003$?\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{b.} \E' vero che $x^{97}-X+3$ non ha radici monulo $97$?\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{c.} Quanti sono i polinomi primitivi di grado $7$ su ${\bf F}_7$?\medskip\bigskip\bigskip
+ 
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{d.} Perch\`e, se $M=p\cdot q$ \`e un modulo RSA, l'esponente
+di cifratura $e$ deve essere scelto in modo tale che $\gcd(e,\varphi(M))=1$?\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil\eject
+
+\item{2.} Descrivere due algoritmi per il calcolo del massimo comun divisore di interi, determinarne la complessit\`a e sfruttarli
+per calcolare con entrambi MCD$(36,63)$.\vv
+
+\item{3.} Determinare una stima per il numero di operazioni bit necessarie a moltiplicare due matrici $n^2\times n^2$ 
+i cui coefficienti sono minori di $2^n$.\vv
+
+\item{4.} Calcolare il seguente simbolo di Jacobi senza fattorizzare
+$\left({325893\over983832}\right)$.\ve\ \vs
+
+\item{5.} Si illustri il funzionamento del metodo di fattorizzazione $\rho$ di  Pollard.\vv
+
+\item{6.} Dopo aver descritto il crittosistema ElGamal su ${\bf F}_p$, se ne illustri il funzionamento con un esempio con $p = 29$.\vv
+
+\item{7.} Realizzare il campo ${\bf F}_{25}$ e determinare l'ordine di tutti i suoi elementi.\ve\ \vs
+
+\item{8.} Data una curva ellittica $E$, definita su ${\bf F}_p$, si spieghi il metodo per calcolare l'ordine
+del gruppo $E({\bf F}_{p^{100}})$.\vv
+
+\item{9.} Dopo aver dimostrato che \`e una curva ellittica su ${\bf F}_7$, 
+calcolare la struttura del gruppo dei punti razionali di $y^2 = x^3 + x + 1$.\ \vst\bye

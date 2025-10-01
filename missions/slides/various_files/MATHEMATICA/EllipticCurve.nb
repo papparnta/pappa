@@ -1,0 +1,2337 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     71623,       2328]
+NotebookOptionsPosition[     70178,       2274]
+NotebookOutlinePosition[     70539,       2290]
+CellTagsIndexPosition[     70496,       2287]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Elliptic Curve", "Title"],
+
+Cell[CellGroupData[{
+
+Cell["Author", "Subsection"],
+
+Cell["\<\
+Eric W. Weisstein
+January 25, 2009\
+\>", "Text"],
+
+Cell[TextData[{
+ "This notebook downloaded from ",
+ ButtonBox["http://mathworld.wolfram.com/notebooks/NumberTheory/EllipticCurve.\
+nb",
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://mathworld.wolfram.com/notebooks/NumberTheory/EllipticCurve.\
+nb"], None}],
+ "."
+}], "Text"],
+
+Cell[TextData[{
+ "For more information, see Eric's ",
+ StyleBox["MathWorld",
+  FontSlant->"Italic"],
+ " entry ",
+ ButtonBox["http://mathworld.wolfram.com/EllipticCurve.html",
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://mathworld.wolfram.com/EllipticCurve.html"], None}],
+ "."
+}], "Text"],
+
+Cell[TextData[{
+ "For a list of Eric's math packages that may be needed to evaluate this \
+notebook, see ",
+ StyleBox["Mathematica Information Center",
+  FontSlant->Italic],
+ "'s ",
+ ButtonBox["MathSource item 4775",
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://library.wolfram.com/infocenter/MathSource/4775/"], None}],
+ ".  A list of Eric's utility packages that may be needed to evaluate this \
+notebook may be downloaded from ",
+ ButtonBox["MathSource item 5087",
+  BaseStyle->"Hyperlink",
+  ButtonData:>{
+    URL["http://library.wolfram.com/infocenter/MathSource/5087/"], None}],
+ "."
+}], "Text"],
+
+Cell["\<\
+\[Copyright]2009 Wolfram Research, Inc. except for portions noted otherwise\
+\>", "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["V5", "Subsubsection"],
+
+Cell[BoxData[{
+ RowBox[{"<<", "Graphics`ImplicitPlot`"}], "\n", 
+ RowBox[{"<<", "Graphics`Colors`"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"curves", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "-", "1"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "+", "1"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "-", 
+      RowBox[{"3", "x"}], "+", "3"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "-", 
+      RowBox[{"4", "x"}]}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "-", "x"}]}], "}"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Factor", "/@", "curves"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", "x"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "+", "x", "+", 
+      SuperscriptBox["x", "2"]}], ")"}]}], ",", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "+", "x"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", "x", "+", 
+      SuperscriptBox["x", "2"]}], ")"}]}], ",", 
+   RowBox[{"3", "-", 
+    RowBox[{"3", " ", "x"}], "+", 
+    SuperscriptBox["x", "3"]}], ",", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "2"}], "+", "x"}], ")"}], " ", "x", " ", 
+    RowBox[{"(", 
+     RowBox[{"2", "+", "x"}], ")"}]}], ",", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", "x"}], ")"}], " ", "x", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "+", "x"}], ")"}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"GraphicsArray", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ImplicitPlot", "[", 
+      RowBox[{"#", ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", 
+         RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"DisplayFunction", "\[Rule]", "Identity"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"PlotLabel", "->", 
+        RowBox[{"TraditionalForm", "[", "#", "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", 
+       RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+       RowBox[{"Ticks", "\[Rule]", "None"}]}], "]"}], "&"}], "/@", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"y", "^", "2"}], "\[Equal]", "#"}], "&"}], "/@", "curves"}], 
+     ")"}]}], "\[IndentingNewLine]", "]"}], "]"}]], "Input"],
+
+Cell[GraphicsData["PostScript", "\<\
+%!
+%%Creator: Mathematica
+%%AspectRatio: .18519 
+MathPictureStart
+/Mabs {
+Mgmatrix idtransform
+Mtmatrix dtransform
+} bind def
+/Mabsadd { Mabs
+3 -1 roll add
+3 1 roll add
+exch } bind def
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0238095 0.190476 0.00440917 0.190476 [
+[ 0 0 0 0 ]
+[ 1 .18519 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 0 m
+1 0 L
+1 .18519 L
+0 .18519 L
+closepath
+clip
+newpath
+% Start of sub-graphic
+p
+0.0238095 0.00440917 0.200176 0.180776 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+-0.452381 0.476191 0.5 0.0933886 [
+[.5 1.0125 -24.625 0 ]
+[.5 1.0125 24.625 12.8125 ]
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 g
+.25 Mabswid
+[ ] 0 setdash
+0 .5 m
+1 .5 L
+s
+.02381 0 m
+.02381 1 L
+s
+gsave
+.5 1.0125 -85.625 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 20.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+/MISOfy
+{
+    /newfontname exch def
+    /oldfontname exch def
+
+    oldfontname findfont
+    dup length dict begin
+        {1 index /FID ne {def} {pop pop} ifelse} forall
+        /Encoding MacintoshRomanEncoding def
+        currentdict
+    end
+
+    newfontname exch definefont pop
+} def
+63.250 13.750 moveto
+%%IncludeResource: font Times-Italic
+%%IncludeFont: Times-Italic
+%%BeginResource: font Times-Italic-MISO
+%%BeginFont: Times-Italic-MISO
+/Times-Italic /Times-Italic-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(y) show
+67.688 9.750 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+%%BeginResource: font Times-Roman-MISO
+%%BeginFont: Times-Roman-MISO
+/Times-Roman /Times-Roman-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 7.125 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(2) show
+74.688 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(=) show
+83.812 13.750 moveto
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(x) show
+88.250 9.750 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 7.125 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(3) show
+94.812 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(-) show
+103.250 13.750 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(1) show
+1.000 setlinewidth
+grestore
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+1 0 0 r
+.5 Mabswid
+.02381 .49996 m
+.02544 .49053 L
+.0303 .48098 L
+.03838 .47127 L
+.04961 .46132 L
+.06392 .45107 L
+.0812 .44043 L
+.10135 .42935 L
+.12422 .41777 L
+.14966 .40564 L
+.17748 .39294 L
+.20752 .37963 L
+.23955 .3657 L
+.27336 .35116 L
+.30872 .33602 L
+.34538 .32032 L
+.3831 .30408 L
+.42162 .28739 L
+.46068 .27031 L
+.5 .25292 L
+.53932 .23532 L
+.57838 .21763 L
+.6169 .19996 L
+.65462 .18243 L
+.69128 .16519 L
+.72664 .14835 L
+.76045 .13207 L
+.79248 .11647 L
+.82252 .1017 L
+.85034 .08787 L
+.87578 .07513 L
+.89865 .06359 L
+.9188 .05334 L
+.93608 .04451 L
+.95039 .03715 L
+.96162 .03136 L
+.9697 .02718 L
+.97456 .02465 L
+.97619 .02381 L
+s
+.02381 .50004 m
+.02544 .50947 L
+.0303 .51902 L
+.03838 .52873 L
+.04961 .53868 L
+.06392 .54893 L
+.0812 .55957 L
+.10135 .57065 L
+.12422 .58223 L
+.14966 .59436 L
+.17748 .60706 L
+.20752 .62037 L
+.23955 .6343 L
+.27336 .64884 L
+.30872 .66398 L
+.34538 .67968 L
+.3831 .69592 L
+.42162 .71261 L
+.46068 .72969 L
+.5 .74708 L
+.53932 .76468 L
+.57838 .78237 L
+.6169 .80004 L
+.65462 .81757 L
+.69128 .83481 L
+.72664 .85165 L
+.76045 .86793 L
+.79248 .88353 L
+.82252 .8983 L
+.85034 .91213 L
+.87578 .92487 L
+.89865 .93641 L
+.9188 .94666 L
+.93608 .95549 L
+.95039 .96285 L
+.96162 .96864 L
+.9697 .97282 L
+.97456 .97535 L
+.97619 .97619 L
+s
+MathSubEnd
+P
+% End of sub-graphic
+% Start of sub-graphic
+p
+0.217813 0.00440917 0.39418 0.180776 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.261905 0.238095 0.5 0.0899915 [
+[.5 1.0125 -24.625 0 ]
+[.5 1.0125 24.625 12.8125 ]
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 g
+.25 Mabswid
+[ ] 0 setdash
+0 .5 m
+1 .5 L
+s
+.2619 0 m
+.2619 1 L
+s
+gsave
+.5 1.0125 -85.625 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 20.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+/MISOfy
+{
+    /newfontname exch def
+    /oldfontname exch def
+
+    oldfontname findfont
+    dup length dict begin
+        {1 index /FID ne {def} {pop pop} ifelse} forall
+        /Encoding MacintoshRomanEncoding def
+        currentdict
+    end
+
+    newfontname exch definefont pop
+} def
+63.250 13.750 moveto
+%%IncludeResource: font Times-Italic
+%%IncludeFont: Times-Italic
+%%BeginResource: font Times-Italic-MISO
+%%BeginFont: Times-Italic-MISO
+/Times-Italic /Times-Italic-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(y) show
+67.688 9.750 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+%%BeginResource: font Times-Roman-MISO
+%%BeginFont: Times-Roman-MISO
+/Times-Roman /Times-Roman-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 7.125 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(2) show
+74.688 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(=) show
+83.812 13.750 moveto
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(x) show
+88.250 9.750 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 7.125 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(3) show
+94.812 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(+) show
+103.250 13.750 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(1) show
+1.000 setlinewidth
+grestore
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+1 0 0 r
+.5 Mabswid
+.02381 .49996 m
+.02544 .48716 L
+.0303 .47461 L
+.03838 .46261 L
+.04961 .45144 L
+.06392 .44133 L
+.0812 .43249 L
+.10135 .42507 L
+.12422 .41918 L
+.14966 .41485 L
+.17748 .41204 L
+.20752 .41055 L
+.23955 .41005 L
+.27336 .41 L
+.30872 .40967 L
+.34538 .40809 L
+.3831 .40426 L
+.42162 .39732 L
+.46068 .38682 L
+.5 .37273 L
+.53932 .3554 L
+.57838 .33533 L
+.6169 .31308 L
+.65462 .2892 L
+.69128 .26421 L
+.72664 .23861 L
+.76045 .21287 L
+.79248 .1874 L
+.82252 .16264 L
+.85034 .13896 L
+.87578 .11672 L
+.89865 .09627 L
+.9188 .0779 L
+.93608 .06188 L
+.95039 .04844 L
+.96162 .03778 L
+.9697 .03006 L
+.97456 .02538 L
+.97619 .02381 L
+s
+.02381 .50004 m
+.02544 .51284 L
+.0303 .52539 L
+.03838 .53739 L
+.04961 .54856 L
+.06392 .55867 L
+.0812 .56751 L
+.10135 .57493 L
+.12422 .58082 L
+.14966 .58515 L
+.17748 .58796 L
+.20752 .58945 L
+.23955 .58995 L
+.27336 .59 L
+.30872 .59033 L
+.34538 .59191 L
+.3831 .59574 L
+.42162 .60268 L
+.46068 .61318 L
+.5 .62727 L
+.53932 .6446 L
+.57838 .66467 L
+.6169 .68692 L
+.65462 .7108 L
+.69128 .73579 L
+.72664 .76139 L
+.76045 .78713 L
+.79248 .8126 L
+.82252 .83736 L
+.85034 .86104 L
+.87578 .88328 L
+.89865 .90373 L
+.9188 .9221 L
+.93608 .93812 L
+.95039 .95156 L
+.96162 .96222 L
+.9697 .96994 L
+.97456 .97462 L
+.97619 .97619 L
+s
+MathSubEnd
+P
+% End of sub-graphic
+% Start of sub-graphic
+p
+0.411817 0.00440917 0.588183 0.180776 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.416384 0.186602 0.5 0.103913 [
+[.5 1.0125 -35.625 0 ]
+[.5 1.0125 35.625 12.8125 ]
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 g
+.25 Mabswid
+[ ] 0 setdash
+0 .5 m
+1 .5 L
+s
+.41638 0 m
+.41638 1 L
+s
+gsave
+.5 1.0125 -96.625 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 20.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+/MISOfy
+{
+    /newfontname exch def
+    /oldfontname exch def
+
+    oldfontname findfont
+    dup length dict begin
+        {1 index /FID ne {def} {pop pop} ifelse} forall
+        /Encoding MacintoshRomanEncoding def
+        currentdict
+    end
+
+    newfontname exch definefont pop
+} def
+63.250 13.750 moveto
+%%IncludeResource: font Times-Italic
+%%IncludeFont: Times-Italic
+%%BeginResource: font Times-Italic-MISO
+%%BeginFont: Times-Italic-MISO
+/Times-Italic /Times-Italic-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(y) show
+67.688 9.750 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+%%BeginResource: font Times-Roman-MISO
+%%BeginFont: Times-Roman-MISO
+/Times-Roman /Times-Roman-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 7.125 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(2) show
+74.688 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(=) show
+83.812 13.750 moveto
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(x) show
+88.250 9.750 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 7.125 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(3) show
+94.812 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(-) show
+103.250 13.750 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(3) show
+110.375 13.750 moveto
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(x) show
+116.812 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(+) show
+125.250 13.750 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(3) show
+1.000 setlinewidth
+grestore
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+1 0 0 r
+.5 Mabswid
+.02381 .49992 m
+.02544 .46898 L
+.0303 .43851 L
+.03838 .40914 L
+.04961 .38138 L
+.06392 .35573 L
+.0812 .33266 L
+.10135 .31259 L
+.12422 .29587 L
+.14966 .28283 L
+.17748 .27371 L
+.20752 .26868 L
+.23955 .26783 L
+.27336 .27118 L
+.30872 .27862 L
+.34538 .28994 L
+.3831 .30478 L
+.42162 .32256 L
+.46068 .34236 L
+.5 .36271 L
+.53932 .38109 L
+.57838 .39353 L
+.6169 .3952 L
+.65462 .38378 L
+.69128 .36145 L
+.72664 .33217 L
+.76045 .29912 L
+.79248 .26439 L
+.82252 .22942 L
+.85034 .19525 L
+.87578 .16271 L
+.89865 .13247 L
+.9188 .10512 L
+.93608 .08115 L
+.95039 .06096 L
+.96162 .04491 L
+.9697 .03325 L
+.97456 .02618 L
+.97619 .02381 L
+s
+.02381 .50008 m
+.02544 .53102 L
+.0303 .56149 L
+.03838 .59086 L
+.04961 .61862 L
+.06392 .64427 L
+.0812 .66734 L
+.10135 .68741 L
+.12422 .70413 L
+.14966 .71717 L
+.17748 .72629 L
+.20752 .73132 L
+.23955 .73217 L
+.27336 .72882 L
+.30872 .72138 L
+.34538 .71006 L
+.3831 .69522 L
+.42162 .67744 L
+.46068 .65764 L
+.5 .63729 L
+.53932 .61891 L
+.57838 .60647 L
+.6169 .6048 L
+.65462 .61622 L
+.69128 .63855 L
+.72664 .66783 L
+.76045 .70088 L
+.79248 .73561 L
+.82252 .77058 L
+.85034 .80475 L
+.87578 .83729 L
+.89865 .86753 L
+.9188 .89488 L
+.93608 .91885 L
+.95039 .93904 L
+.96162 .95509 L
+.9697 .96675 L
+.97456 .97382 L
+.97619 .97619 L
+s
+MathSubEnd
+P
+% End of sub-graphic
+% Start of sub-graphic
+p
+0.60582 0.00440917 0.782187 0.180776 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.404762 0.190476 0.5 0.122952 [
+[.5 1.0125 -27.9062 0 ]
+[.5 1.0125 27.9062 12.8125 ]
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 g
+.25 Mabswid
+[ ] 0 setdash
+0 .5 m
+1 .5 L
+s
+.40476 0 m
+.40476 1 L
+s
+gsave
+.5 1.0125 -88.9062 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 20.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+/MISOfy
+{
+    /newfontname exch def
+    /oldfontname exch def
+
+    oldfontname findfont
+    dup length dict begin
+        {1 index /FID ne {def} {pop pop} ifelse} forall
+        /Encoding MacintoshRomanEncoding def
+        currentdict
+    end
+
+    newfontname exch definefont pop
+} def
+63.250 13.750 moveto
+%%IncludeResource: font Times-Italic
+%%IncludeFont: Times-Italic
+%%BeginResource: font Times-Italic-MISO
+%%BeginFont: Times-Italic-MISO
+/Times-Italic /Times-Italic-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(y) show
+67.688 9.750 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+%%BeginResource: font Times-Roman-MISO
+%%BeginFont: Times-Roman-MISO
+/Times-Roman /Times-Roman-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 7.125 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(2) show
+74.688 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(=) show
+83.812 13.750 moveto
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(x) show
+88.250 9.750 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 7.125 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(3) show
+94.812 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(-) show
+103.250 13.750 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(4) show
+110.375 13.750 moveto
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(x) show
+1.000 setlinewidth
+grestore
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+1 0 0 r
+.5 Mabswid
+.02381 .49991 m
+.02446 .4797 L
+.02641 .45959 L
+.02964 .43987 L
+.03413 .4207 L
+.03985 .40227 L
+.04677 .38474 L
+.05483 .36827 L
+.06397 .353 L
+.07415 .33905 L
+.08528 .32653 L
+.09729 .31554 L
+.11011 .30615 L
+.12363 .2984 L
+.13777 .29233 L
+.15244 .28796 L
+.16753 .28528 L
+.18293 .28426 L
+.19856 .28487 L
+.21429 .28704 L
+.23002 .29071 L
+.24564 .29579 L
+.26104 .30218 L
+.27613 .30979 L
+.2908 .3185 L
+.30494 .32821 L
+.31847 .33879 L
+.33128 .35013 L
+.34329 .36214 L
+.35442 .37469 L
+.3646 .38771 L
+.37375 .4011 L
+.3818 .41479 L
+.38872 .4287 L
+.39444 .44278 L
+.39893 .45699 L
+.40216 .47128 L
+.40411 .48563 L
+.40476 .49994 L
+s
+.02381 .50009 m
+.02446 .5203 L
+.02641 .54041 L
+.02964 .56013 L
+.03413 .5793 L
+.03985 .59773 L
+.04677 .61526 L
+.05483 .63173 L
+.06397 .647 L
+.07415 .66095 L
+.08528 .67347 L
+.09729 .68446 L
+.11011 .69385 L
+.12363 .7016 L
+.13777 .70767 L
+.15244 .71204 L
+.16753 .71472 L
+.18293 .71574 L
+.19856 .71513 L
+.21429 .71296 L
+.23002 .70929 L
+.24564 .70421 L
+.26104 .69782 L
+.27613 .69021 L
+.2908 .6815 L
+.30494 .67179 L
+.31847 .66121 L
+.33128 .64987 L
+.34329 .63786 L
+.35442 .62531 L
+.3646 .61229 L
+.37375 .5989 L
+.3818 .58521 L
+.38872 .5713 L
+.39444 .55722 L
+.39893 .54301 L
+.40216 .52872 L
+.40411 .51437 L
+.40476 .50006 L
+s
+.78571 .49991 m
+.78604 .48562 L
+.78701 .47121 L
+.78863 .45674 L
+.79087 .44218 L
+.79374 .42751 L
+.79719 .4127 L
+.80122 .39775 L
+.8058 .38263 L
+.81088 .36734 L
+.81645 .35188 L
+.82246 .33626 L
+.82886 .32049 L
+.83562 .30458 L
+.8427 .28857 L
+.85003 .2725 L
+.85757 .25639 L
+.86528 .2403 L
+.87309 .22428 L
+.88095 .20839 L
+.88882 .1927 L
+.89663 .17726 L
+.90433 .16216 L
+.91188 .14746 L
+.91921 .13324 L
+.92628 .11958 L
+.93304 .10655 L
+.93945 .09424 L
+.94546 .08271 L
+.95102 .07203 L
+.95611 .06228 L
+.96068 .05352 L
+.96471 .0458 L
+.96817 .03918 L
+.97103 .0337 L
+.97328 .02939 L
+.97489 .0263 L
+.97587 .02443 L
+.97619 .02381 L
+s
+.78571 .50009 m
+.78604 .51438 L
+.78701 .52879 L
+.78863 .54326 L
+.79087 .55782 L
+.79374 .57249 L
+.79719 .5873 L
+.80122 .60225 L
+.8058 .61737 L
+.81088 .63266 L
+.81645 .64812 L
+.82246 .66374 L
+.82886 .67951 L
+.83562 .69542 L
+.8427 .71143 L
+.85003 .7275 L
+.85757 .74361 L
+.86528 .7597 L
+.87309 .77572 L
+.88095 .79161 L
+.88882 .8073 L
+.89663 .82274 L
+.90433 .83784 L
+.91188 .85254 L
+.91921 .86676 L
+.92628 .88042 L
+.93304 .89345 L
+.93945 .90576 L
+.94546 .91729 L
+.95102 .92797 L
+.95611 .93772 L
+.96068 .94648 L
+.96471 .9542 L
+.96817 .96082 L
+.97103 .9663 L
+.97328 .97061 L
+.97489 .9737 L
+.97587 .97557 L
+.97619 .97619 L
+s
+MathSubEnd
+P
+% End of sub-graphic
+% Start of sub-graphic
+p
+0.799824 0.00440917 0.97619 0.180776 MathSubStart
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.261905 0.238095 0.5 0.097202 [
+[.5 1.0125 -24.4688 0 ]
+[.5 1.0125 24.4688 12.8125 ]
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 g
+.25 Mabswid
+[ ] 0 setdash
+0 .5 m
+1 .5 L
+s
+.2619 0 m
+.2619 1 L
+s
+gsave
+.5 1.0125 -85.4688 -4 Mabsadd m
+1 1 Mabs scale
+currentpoint translate
+0 20.8125 translate 1 -1 scale
+/g { setgray} bind def
+/k { setcmykcolor} bind def
+/p { gsave} bind def
+/r { setrgbcolor} bind def
+/w { setlinewidth} bind def
+/C { curveto} bind def
+/F { fill} bind def
+/L { lineto} bind def
+/rL { rlineto} bind def
+/P { grestore} bind def
+/s { stroke} bind def
+/S { show} bind def
+/N {currentpoint 3 -1 roll show moveto} bind def
+/Msf { findfont exch scalefont [1 0 0 -1 0 0 ] makefont setfont} bind def
+/m { moveto} bind def
+/Mr { rmoveto} bind def
+/Mx {currentpoint exch pop moveto} bind def
+/My {currentpoint pop exch moveto} bind def
+/X {0 rmoveto} bind def
+/Y {0 exch rmoveto} bind def
+/MISOfy
+{
+    /newfontname exch def
+    /oldfontname exch def
+
+    oldfontname findfont
+    dup length dict begin
+        {1 index /FID ne {def} {pop pop} ifelse} forall
+        /Encoding MacintoshRomanEncoding def
+        currentdict
+    end
+
+    newfontname exch definefont pop
+} def
+63.250 13.750 moveto
+%%IncludeResource: font Times-Italic
+%%IncludeFont: Times-Italic
+%%BeginResource: font Times-Italic-MISO
+%%BeginFont: Times-Italic-MISO
+/Times-Italic /Times-Italic-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(y) show
+67.688 9.750 moveto
+%%IncludeResource: font Times-Roman
+%%IncludeFont: Times-Roman
+%%BeginResource: font Times-Roman-MISO
+%%BeginFont: Times-Roman-MISO
+/Times-Roman /Times-Roman-MISO MISOfy
+%%EndFont
+%%EndResource
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 7.125 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(2) show
+74.688 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(=) show
+83.812 13.750 moveto
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(x) show
+88.250 9.750 moveto
+%%IncludeResource: font Times-Roman-MISO
+%%IncludeFont: Times-Roman-MISO
+/Times-Roman-MISO findfont 7.125 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(3) show
+94.812 13.750 moveto
+%%IncludeResource: font Mathematica1
+%%IncludeFont: Mathematica1
+/Mathematica1 findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(-) show
+103.500 13.750 moveto
+%%IncludeResource: font Times-Italic-MISO
+%%IncludeFont: Times-Italic-MISO
+/Times-Italic-MISO findfont 10.000 scalefont
+[1 0 0 -1 0 0 ] makefont setfont
+0.000 0.000 0.000 setrgbcolor
+(x) show
+1.000 setlinewidth
+grestore
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+1 0 0 r
+.5 Mabswid
+.02381 .49997 m
+.02422 .49433 L
+.02543 .48871 L
+.02745 .48319 L
+.03026 .47783 L
+.03384 .47268 L
+.03816 .46778 L
+.04319 .46318 L
+.04891 .45891 L
+.05527 .45501 L
+.06223 .45151 L
+.06974 .44844 L
+.07774 .44582 L
+.0862 .44365 L
+.09504 .44195 L
+.1042 .44073 L
+.11363 .43998 L
+.12326 .4397 L
+.13303 .43987 L
+.14286 .44048 L
+.15269 .4415 L
+.16245 .44292 L
+.17208 .44471 L
+.18151 .44684 L
+.19068 .44927 L
+.19952 .45198 L
+.20797 .45494 L
+.21598 .45811 L
+.22349 .46147 L
+.23044 .46498 L
+.2368 .46861 L
+.24252 .47236 L
+.24756 .47618 L
+.25188 .48007 L
+.25545 .48401 L
+.25826 .48798 L
+.26028 .49197 L
+.2615 .49598 L
+.2619 .49998 L
+s
+.02381 .50003 m
+.02422 .50567 L
+.02543 .51129 L
+.02745 .51681 L
+.03026 .52217 L
+.03384 .52732 L
+.03816 .53222 L
+.04319 .53682 L
+.04891 .54109 L
+.05527 .54499 L
+.06223 .54849 L
+.06974 .55156 L
+.07774 .55418 L
+.0862 .55635 L
+.09504 .55805 L
+.1042 .55927 L
+.11363 .56002 L
+.12326 .5603 L
+.13303 .56013 L
+.14286 .55952 L
+.15269 .5585 L
+.16245 .55708 L
+.17208 .55529 L
+.18151 .55316 L
+.19068 .55073 L
+.19952 .54802 L
+.20797 .54506 L
+.21598 .54189 L
+.22349 .53853 L
+.23044 .53502 L
+.2368 .53139 L
+.24252 .52764 L
+.24756 .52382 L
+.25188 .51993 L
+.25545 .51599 L
+.25826 .51202 L
+.26028 .50803 L
+.2615 .50402 L
+.2619 .50002 L
+s
+.5 .49997 m
+.50081 .49195 L
+.50325 .48378 L
+.50729 .4754 L
+.5129 .4667 L
+.52005 .45759 L
+.5287 .44798 L
+.53877 .4378 L
+.5502 .42697 L
+.56292 .41545 L
+.57684 .40321 L
+.59185 .39022 L
+.60787 .37648 L
+.62477 .36199 L
+.64245 .34678 L
+.66079 .3309 L
+.67965 .31439 L
+.69891 .29733 L
+.71843 .2798 L
+.7381 .2619 L
+.75776 .24375 L
+.77728 .22546 L
+.79654 .20715 L
+.8154 .18898 L
+.83374 .17107 L
+.85142 .15357 L
+.86832 .13663 L
+.88434 .12039 L
+.89935 .10501 L
+.91327 .09061 L
+.92599 .07733 L
+.93742 .06529 L
+.94749 .05461 L
+.95614 .0454 L
+.96329 .03773 L
+.9689 .03168 L
+.97294 .02732 L
+.97538 .02469 L
+.97619 .02381 L
+s
+.5 .50003 m
+.50081 .50805 L
+.50325 .51622 L
+.50729 .5246 L
+.5129 .5333 L
+.52005 .54241 L
+.5287 .55202 L
+.53877 .5622 L
+.5502 .57303 L
+.56292 .58455 L
+.57684 .59679 L
+.59185 .60978 L
+.60787 .62352 L
+.62477 .63801 L
+.64245 .65322 L
+.66079 .6691 L
+.67965 .68561 L
+.69891 .70267 L
+.71843 .7202 L
+.7381 .7381 L
+.75776 .75625 L
+.77728 .77454 L
+.79654 .79285 L
+.8154 .81102 L
+.83374 .82893 L
+.85142 .84643 L
+.86832 .86337 L
+.88434 .87961 L
+.89935 .89499 L
+.91327 .90939 L
+.92599 .92267 L
+.93742 .93471 L
+.94749 .94539 L
+.95614 .9546 L
+.96329 .96227 L
+.9689 .96832 L
+.97294 .97268 L
+.97538 .97531 L
+.97619 .97619 L
+s
+MathSubEnd
+P
+% End of sub-graphic
+% End of Graphics
+MathPictureEnd
+\
+\>"], "Graphics",
+ ImageSize->{499.812, 92.5},
+ ImageMargins->{{43, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ ImageCache->GraphicsData["CompressedBitmap", "\<\
+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\
+\>"],
+ ImageRangeCache->{{{0, 498.812}, {91.5, 0}} -> {0, 0, 0, 0}, {{14.125, \
+101.25}, {89.3125, 2.125}} -> {0, -5, 0, 0}, {{109.938, 197.062}, {89.3125, \
+2.125}} -> {-7, -5, 0, 0}, {{205.812, 292.938}, {89.3125, 2.125}} -> {-17, \
+-5, 0, 0}, {{301.688, 388.812}, {89.3125, 2.125}} -> {-24, -4, 0, 0}, \
+{{397.5, 484.625}, {89.3125, 2.125}} -> {-24, -5, 0, 0}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"\[SkeletonIndicator]", "GraphicsArray", "\[SkeletonIndicator]"}],
+  False,
+  Editable->False]], "Output"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["V7", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"curves", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "-", "1"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "+", "1"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "-", 
+      RowBox[{"3", "x"}], "+", "3"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "-", 
+      RowBox[{"4", "x"}]}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "-", "x"}]}], "}"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Factor", "/@", "curves"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", "x"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "+", "x", "+", 
+      SuperscriptBox["x", "2"]}], ")"}]}], ",", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "+", "x"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", "x", "+", 
+      SuperscriptBox["x", "2"]}], ")"}]}], ",", 
+   RowBox[{"3", "-", 
+    RowBox[{"3", " ", "x"}], "+", 
+    SuperscriptBox["x", "3"]}], ",", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "2"}], "+", "x"}], ")"}], " ", "x", " ", 
+    RowBox[{"(", 
+     RowBox[{"2", "+", "x"}], ")"}]}], ",", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"-", "1"}], "+", "x"}], ")"}], " ", "x", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "+", "x"}], ")"}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"ContourPlot", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"y", ",", 
+          RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
+        RowBox[{"PlotLabel", "->", "#"}], ",", 
+        RowBox[{"ContourStyle", "\[Rule]", "Red"}], ",", 
+        RowBox[{"BaseStyle", "\[Rule]", "9"}], ",", 
+        RowBox[{"FrameTicks", "\[Rule]", "None"}], ",", 
+        RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}], "&"}], "/@", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"y", "^", "2"}], "\[Equal]", "#"}], "&"}], "/@", "curves"}], 
+      ")"}]}], "}"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "400"}], ",", 
+   RowBox[{"Spacings", "\[Rule]", 
+    RowBox[{"-", "15"}]}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {InsetBox[
+     GraphicsBox[GraphicsComplexBox[CompressedData["
+1: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
+Vn+D/gcb/6cm
+       "], {{}, {}, 
+        TagBox[
+         TooltipBox[
+          {RGBColor[1, 0, 0], 
+           LineBox[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+             18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 
+            34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 
+            50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 
+            66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 
+            82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 
+            98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 
+            111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 
+            124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 
+            137, 138, 139, 140, 141, 142, 143}]},
+          RowBox[{
+            SuperscriptBox["y", "2"], "\[Equal]", 
+            RowBox[{
+              RowBox[{"-", "1"}], "+", 
+              SuperscriptBox["x", "3"]}]}]],
+         Annotation[#, $CellContext`y^2 == -1 + $CellContext`x^3, 
+          "Tooltip"]& ]}],
+      AspectRatio->1,
+      Axes->True,
+      BaseStyle->9,
+      Frame->True,
+      FrameTicks->None,
+      PlotLabel->FormBox[
+        RowBox[{
+          SuperscriptBox["y", "2"], "\[LongEqual]", 
+          RowBox[{
+            SuperscriptBox["x", "3"], "-", "1"}]}], TraditionalForm],
+      PlotRange->{{-3, 3}, {-3, 3}},
+      PlotRangeClipping->True,
+      PlotRangePadding->{
+        Scaled[0.02], 
+        Scaled[0.02]}], NCache[{Rational[345, 2], -172.5}, {172.5, -172.5}], 
+     ImageScaled[{0.5, 0.5}], {360, 360.}], InsetBox[
+     GraphicsBox[GraphicsComplexBox[CompressedData["
+1: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
+       "], {{}, {}, 
+        TagBox[
+         TooltipBox[
+          {RGBColor[1, 0, 0], LineBox[CompressedData["
+1:eJwl1FV4EAQUBeCNbbCgS6S7Q1RCujtHpzJEJEdII0qn0t3d3Y3S0qmE0qV0
+GyD/Ph7+c5/O47kZoqIjOwYGBATEEzE3FkEEE0Js4hBKGOFEEDemQ3wSkJBE
+JCYJSUlGcj4gBR+SklSkJg1pSUd6MpCRTGQmC1nJRnZykJNc5CYPecnHR+Tn
+Yz7hUwpQkEIU5jOKUJRiFKcEJSlFacpQlnKUpwIVqURlqlCValSnBjWpRW0i
+qUNd6lGfBjSkEY1pQlOa0ZzP+YIWRNGSL2nFV7Tma9rQlna0pwMdiaYTnelC
+V76hG93pQU960Zs+9OVb+vEd39OfAQxkEIMZwlCGMZwRjGQUP/AjoxnDWMYx
+nglMZBKTmcJUpjGdGcxkFrOZw1zmMZ8FLGQRi1nCUpaxnBWsZBWrWcNa1rGe
+DWxkE5vZwla2sZ0d7GQXu9nDT/zMXvaxnwMc5BCH+YUjHOUYxznBSU5xmjOc
+5Rzn+ZXfuMBFLnGZ3/mDK1zlGte5wU1ucZs73OUef/IX93nAQx7xmCc85RnP
+ecFLXvGav/mHf/mPN7zlf2LGH0gsgggmhNjEIZQwwokgbuD7n/EOGJSBqw==
+
+            "]]},
+          RowBox[{
+            SuperscriptBox["y", "2"], "\[Equal]", 
+            RowBox[{"1", "+", 
+              SuperscriptBox["x", "3"]}]}]],
+         Annotation[#, $CellContext`y^2 == 1 + $CellContext`x^3, 
+          "Tooltip"]& ]}],
+      AspectRatio->1,
+      Axes->True,
+      BaseStyle->9,
+      Frame->True,
+      FrameTicks->None,
+      PlotLabel->FormBox[
+        RowBox[{
+          SuperscriptBox["y", "2"], "\[LongEqual]", 
+          RowBox[{
+            SuperscriptBox["x", "3"], "+", "1"}]}], TraditionalForm],
+      PlotRange->{{-3, 3}, {-3, 3}},
+      PlotRangeClipping->True,
+      PlotRangePadding->{
+        Scaled[0.02], 
+        Scaled[0.02]}], NCache[{Rational[1035, 2], -172.5}, {517.5, -172.5}], 
+     ImageScaled[{0.5, 0.5}], {360, 360.}], InsetBox[
+     GraphicsBox[GraphicsComplexBox[CompressedData["
+1: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
+J9chi8udszxk69LqUNqv67IZQVV6Py7JnrqtxcwqfN2q67hw23pkefJ30usZ
+pWvq8dOvhZ0rJ0pxzvjmARkH6rHA1aG1+kMl3twaHC6/WY8sbxeUqXc9ya/H
+rUMPxrT0lWDbuO/uqzT1WDGr9d9HtPU756ySe9mC0+PCQX/rYZ/bcWJ06v6J
+dh2+Y5ZU1XLecE68vTWiXBJfhhuvDoifMIrT4w6LQ6tr99q59SnF1mGyiA6L
+OVH1IHr8x6nFuHbhjb5dnDg9rkmyjL3Oa3HzYIeaY4YnirBLhzLb5Vs5PS6K
+p9SnNbs50dv9ibzgRD4+KpOFLTzMiU3iXs31nJCH47aPX1D/FydOI3USjdTm
+oS3OcyLnkRdSsCkHLf448fFsFCd6hla3PL4gG9MO3vGUXf4Pt6dfj+g14I7W
+vqtLU44af8TlTl0cnLX3zl8TXzyTZWDKhOl+cJ8T+5I6h64T465yyZzYvLRo
+1v2jbzDXtc2B3U85MWGYMGPkxdc46DwXlJ/CiayuOFwvSVS91O7vIjaZYfgU
+Zwncb+tecaK5SjUzu2kSNr/0NjjnH06U6Z5PxGmTjpzLf8uJ4zdalOQOv469
+3/omb0znxOdN15adnRiJDg5Je4e80e6P1j32fw/yf2DvtyHvA/t+Evk+sPU1
+tbr1gdnnR+yDwdR+VqeH93w58cZjTlTbrgvMTH4NzB+s7o98FipMidfimGvR
+X75lGcD8y3hHb1P7zcPPcGLpqwVzDhzLAXZejNeEjlk/58ufnGgnfTHZe3Qe
+dKXnz3gUi489JD6AxQ/jZWY0vhQkvqBB/IEfjU/GE1n8XiXxCyy+L5D4Bhb/
+jMey/Cgl+QEsf/xJ/gDLL8arWf7lkfyDYzQ/P5D8BJa/jNc3yG9g+f+D5D/k
+UHxgfUYOxQ/1aB1+gAXFF0+CL3CS4g/r0xg+jSf4BBMpfrkT/AILim+sr5xJ
+8c+d4B+8ofj4B8FH+IXiJ+trt1Fc9SdXPU9LIvgLDJ8tCT6Da028MupZrb4P
+n0fxfgDBe2hE6wGxX6Pnhe6kXsCmwWJ5RHgNPnxSYG2dVAcutN4w3aBBPYLN
+M2NjLLX1yvLBnmUnY+vBpvC36s6prI+u1/NU+XJQLAdOCEu7eexvbf1caHx+
+qcSWE3bGKsfFlVQj00FYve44ItqzxWlOKKb1/B6p58IQWu/J9zkhJMvufc0e
+BRYlDDV9+kH7/Z/5gdD6Z/4guFB+wXSbk6oznNEWOV6Mf5B5tx8vMD7Sv1za
+PXMgL9hTvhJK+IqgoHzGivAZoQHfEVqvPHbB2bEK2y80//Z+PS/EUX5kQfiR
+sHHAE/8vWv50SXrscqr2nvGrI8MCPNTa+3Yhow0ytPxrZuXMhVNDeYHVoTmW
+rayD43khdpp58SMnKW7+capd38e80ID/CQU91mSM9KvEwQmfR/T/wAsN+KTQ
+8me+KbSifLSE8FGB1SW3C+GL2mvvo3/ms0IA5bvzCd8VGvBhIfFnvix0+5lP
+Cw34ttCB8vFdhI8LDfi6sJvyeQnh88I/lO+z87P9uR8QGvQLQuHP/YRgQfsN
+Fs/OtB8xIv0INOhX4BntZyaQfgY60X7nG+l3QDGc9EMs3xr0S9C/DemnDEg/
+BfNakX6L5Xcv2o91J/0YsLogRt71MTuqhNyh6X0ilC9BjLvisWS2Enxp/8fw
+p0F/CE1p/ziF9I8Q8Wak+4CnGcB0H1Y3zvcNy7d3l8MI2s9uIf0sNGlF+l2G
+h6yO7OmdHeGYK4ObtJ/2Iv002NF+m+EtqyulpD+Hq7R/P0j6d9hN+/tGpL+H
+Bv0/uKwJC8seWQya1NWh220qYRvVDxj+N9AXwPhn/QEKqD7RnOgT0EC/gG1U
+3ygg+gZ8ovoH02EO/LAffVddDtbpC5uPsJYA009ajXB7c26ABHoFl7r4ulRA
+t76FO270kQCrY3bzH77YZqRd32WKd4jBf1f23YGW4s3LnAS6Ok+0e7FHAgZF
+U79uaSaBBnoROFI9ib23/2e9CRZSfaqc6FN6v1P9CuZQfesy0beghupfbJ0G
++hiEUP0sl+hn4En1NaZ7sTgIJPobHKH63Gqiz4El1e8uE/0OmN63Y3t3r8Hp
+UthB9cCWRA+EJ8Wbthr4yPV295XHd2qbKYeOp9f02zJZpo/TNb94Tu2fKIP1
+Qd9t3C4pQCgr32A0pAqcGocHPy9V6O1yOlxWn7WyGh4nRFms7CXX5wXaBfS+
+/E0OflRfbUv0VXhiIoqp45T6dQSq194nei0soXruD6LnQkU7O58qjxr9d79Q
+PfhPogdDA70YkqiezHTfxVRv3kL0ZnC5cPzet121+vfIPmphYH8vn0+pNZBN
+9Wt3ol+DesXTJmubqvTPMdz44fQ+6/wIFWymevgooodDS6qXs+eMqZ7Ormep
+3h5E9Hb4g+rxDL/+onp9LdHrYbrJpuYVGjUwvsCeKzb79NcN2zpQU/2fJ/o/
+XDd5bzJogwYYvo6n84NrZH4AYXS+8IHMF6Cazh9Y/Wfv5ZD5hFBM5xcDyfxC
++I3ONxj+/0PnH45k/iEU0PlIMZmPCPfo/ITNfTrR+cp6Ml8RGsxfhJt0PkPi
+00BYSec3R8j8RthA5zvk/BoJDeY/gmzNkKJdY3nBb+WO3Y6bDAU2PyLnZyiM
+ovMlczJfEhbR+dM2Mn/S20nnU0KD+ZXQYL4lNJiHCaO7RPp7/zcvE/4PCPJL
+GA==
+       "], {{}, {}, 
+        TagBox[
+         TooltipBox[
+          {RGBColor[1, 0, 0], LineBox[CompressedData["
+1:eJwl1fOfEAYYBvC7bNuXbdvmZddlXrZt27btGmoIW8ZQW3Zbxlbf+/TD93n/
+gud5g0JCg7sHBgQE7BFhNxzhiUBEIhGZKEQlGtGJQUxiEZs4xCUe8UlAQhKR
+mCQkJRnJSUFKUpGaNASRlnSkJwMZyURmspCVbGQnBznJRW7ykJd85KcABSlE
+YYpQlGIUpwQlKUVpylCWcpSnAhWpRGWqUJVqVKcGNalFbeoQTF3qUZ8GNKQR
+jWlCU5rRnBa0pBWtCaENbWlHezrQkU50pgtd6UZ3QulBT3rRmz70pR/9GcBA
+BjGYIQxlGMMZwUhGMZoxjGUc45nARCYxmSlMZRrTmcFMZjGbOcxlHvNZwEIW
+sZglLGUZy1nBSlaxmjWsZR3r2cBGNrGZLWxlG9vZwU52sZs97GUf+znAQQ5x
+mCMc5RjHOcE3fMt3fM9JTvEDP/ITP3OaM5zlHL/wK+e5wEUucZkrXOUa17nB
+b/zOH/zJTW7xF39zmzvc5R73ecBDHvGYJzzlGc95wT/8y0te8Zo3vOUd7/nA
+Rz7xH//zmbDyBxKO8EQgIpGITBSiEo3oxCAmsYhNHOISj/gkICGJSEwSkpKM
+5KQgJalITRqCSEs60pOBjGQiM1nISjayk4Oc5CI3echLPvJTgIIUojBFKEox
+ilOCkpSiNGUoSznKU4GKVKIyVahKNapTg5rUojZ1CKYu9ahPAxrSiMY0oSnN
+aE4LWtKK1oTQhra0oz0d6EgnOtOFrnQjbLxD6UFPetGbPvSlH/0ZwEAGMZgh
+DGUYwxnBSEYxmjGMZRzjmcBEJjGZKUxlGtOZwUxmMZs5zGUe81nAQhaxmCUs
+ZRnLWcFKVrGaNaxlHevZwEY2sZktbGUb29nBTnaxO/DrP/sCNjrCQA==
+            "]]},
+          RowBox[{
+            SuperscriptBox["y", "2"], "\[Equal]", 
+            RowBox[{"3", "-", 
+              RowBox[{"3", " ", "x"}], "+", 
+              SuperscriptBox["x", "3"]}]}]],
+         Annotation[#, $CellContext`y^2 == 
+          3 - 3 $CellContext`x + $CellContext`x^3, "Tooltip"]& ]}],
+      AspectRatio->1,
+      Axes->True,
+      BaseStyle->9,
+      Frame->True,
+      FrameTicks->None,
+      PlotLabel->FormBox[
+        RowBox[{
+          SuperscriptBox["y", "2"], "\[LongEqual]", 
+          RowBox[{
+            SuperscriptBox["x", "3"], "-", 
+            RowBox[{"3", " ", "x"}], "+", "3"}]}], TraditionalForm],
+      PlotRange->{{-3, 3}, {-3, 3}},
+      PlotRangeClipping->True,
+      PlotRangePadding->{
+        Scaled[0.02], 
+        Scaled[0.02]}], NCache[{Rational[1725, 2], -172.5}, {862.5, -172.5}], 
+     ImageScaled[{0.5, 0.5}], {360, 360.}], InsetBox[
+     GraphicsBox[GraphicsComplexBox[CompressedData["
+1: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
+ORm+pWZeK2ieh/8PVTZXOA==
+       "], {{}, {}, 
+        TagBox[
+         TooltipBox[
+          {RGBColor[1, 0, 0], 
+           LineBox[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+             18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 
+            34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 
+            50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 
+            66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 
+            82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 
+            98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 
+            111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 
+            124, 125, 126, 127, 128, 129}], LineBox[CompressedData["
+1:eJwt0+N6FgAAhuFv2baXbbuW3bJrmQtnkLVcy7Zt27Zt23V3Xf24j+B53+Cw
+8NA+QYFA4D0DGcRghjCUYQxnBCMZxWgiGMNYxjGeCUxkEpOZQiRTmcZ0ZjCT
+WcxmDnOZx3wWsJBFLGYJS1nGclawklWsZg1rWcd6NrCRTWxmC1vZxnZ2sJNd
+7GYPe9nHfg5wkEMc5ghHOcZxTnCSU5zmDGc5x3kucJFLXOYKV7nGdW5wk1vc
+5g53ucd9HvCQRzzmCU95xnNe8JJXvOYNb3n3v+EHPvKJz3zhK9/4zg9+8ovf
+/CFgAEFEISrRiE4MYhKL2MQhLvGITwISkojEJCEpyUhOClKSitSkIS3pSE8G
+MpKJYDKThaxkIzs5yEkucpOHvOQjPwUoSCEKU4SiFKM4JShJKUpThrKUozwV
+qEglKhNCFapSjerUoCa1qE0d6lKP+jSgIaE0ojFNaEozmtOClrSiNW1oSzva
+04EwOtKJznShK93oTg960ove/DtuOH3pR38G8BcDf3vn
+            "]]},
+          RowBox[{
+            SuperscriptBox["y", "2"], "\[Equal]", 
+            RowBox[{
+              RowBox[{
+                RowBox[{"-", "4"}], " ", "x"}], "+", 
+              SuperscriptBox["x", "3"]}]}]],
+         Annotation[#, $CellContext`y^2 == (-4) $CellContext`x + \
+$CellContext`x^3, "Tooltip"]& ]}],
+      AspectRatio->1,
+      Axes->True,
+      BaseStyle->9,
+      Frame->True,
+      FrameTicks->None,
+      PlotLabel->FormBox[
+        RowBox[{
+          SuperscriptBox["y", "2"], "\[LongEqual]", 
+          RowBox[{
+            SuperscriptBox["x", "3"], "-", 
+            RowBox[{"4", " ", "x"}]}]}], TraditionalForm],
+      PlotRange->{{-3, 3}, {-3, 3}},
+      PlotRangeClipping->True,
+      PlotRangePadding->{
+        Scaled[0.02], 
+        Scaled[0.02]}], NCache[{Rational[2415, 2], -172.5}, {1207.5, -172.5}],
+      ImageScaled[{0.5, 0.5}], {360, 360.}], InsetBox[
+     GraphicsBox[GraphicsComplexBox[CompressedData["
+1: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
+3v/wFJ9hXz9Zg1HKf4xSPmS07Te8GnYhDbtib1m07ixBB/a5dLwUosvPKinB
+RSYWsiVHMjDz9RWfp76lGBBvnSnwy0LOX1oCPZdND8zCqj0J8ROMJcj5Qnyg
+qQrOkGDNvbeb7oiz8OEipgbnD/gTW3cO8vSc7ByFEhxazWSaROWgrf5xt56P
+EgxI9t3Vs/FfVGHrK0N19pqLH64Jwx9OK8P92k7b+2W5yNs8W9DgUYbGYwc/
+BfiM7V8ZWt0JNjnmVICafh/OalSXIedryY4RM2LryrDb/3Sfz+2B/9M8rX9s
+K0ODvnObXtYUYaAh393KSYqJ7NeLUe5UuUXLW4qZI4Rf95uVYvTr8a1xt6RY
+Mm8mBriU4pTX6cyhCKkCh2i1ox1z/5ZitmNj1PE6Cf51MhlXv5Mq6tqrlps6
+LEuKdZuufv322f+unM+/kdvmbw+T4vBjdiGpJRW4eGSu6G9LKXK5Ydo+czXT
+qVIMK39s2uRfiSkzljrNGylF6bK+n5vrKhXv4XLIxZMmRWNXlOEZYYn6AVE1
+/mupumJ4gQRJLqrGXPN3Y4qSJGjgueik+a0axTmqPvqm8qNq8NXx8gcJehIk
+ubIGfzU7EuqvI0FX89FvIoM+YyhbVymCULTD+8xnjDrjlWdvWYrtKfm1HUtr
+FThyOcoAdVR8jxSjloGdU9IXdQjBxh/fPy3EH2adnG+wr07RJ1JHPV5/6qMT
+Oj0PfdRrOoatrkeX6iC3Fo9cnL/3m6CaO/U41WJUgGN/DrYFeBd1GTUoeCcI
+2nl4zpoGfHEoIS4nOBO5HHhTKAna7pCGdXO/tBBObsQnBWtkKSEfcG7zryKx
+aSNy+eR+XXNOmF0jGj4f+VNZxFv8prhtzZrgRpzF7v8Pfms5ImBSZCO6fRdw
+TSgXY6lo57a45Ebk8klw12OPtsJG3LDivv/ujY9RTWi2Z6OsEfssj8fNd7jF
+5RPk8ok6Xb9F1uE0fd6YPA9bwoK1t8Q1IpdPzOj7bcn7IZLWq0Hqhe/pebg8
+onR+UKX4PCH4QCfFj8sjDMVXh+ALvhR/B4I/cP25RvoDFrR/XD4ZRfv7A+mv
+IkdPJP2HFS1XDyeurcXQSrP+fY+LoYfyJYbwBRZTPj0gfAKOf9lbGlCgI4Fa
+ys8kwk+4lrSKOXejBrm8c4HyPZvwHZTmAWR0XkheKIOuv4wKjxyuRL3qZ7x3
+2lJFTs+59Ht3kZEUIkYlJlplV+DNo9tO2zlIYeLCPRL+3Ap85PHce8phqSKn
+i06PLsgOl4LBtlpdjenl6MnWPfD8urLZk98MzC25wq6Vkyvqb0vRc5NNW8pb
+KSjpA6ikWImPTShDz9s9M9z+lcIZYYRQKpFgqdGI5+0D60p6A/lUjwyJHkEB
+1asYolegpGfwNdW7E0TvQOsQ0cN3RA9BSS/BguqpOtFTGEn1lsNvN9Xjvk2s
+HgOn17XFR77dbVgGAqrv1kTfQSOC+EEc8QNQ8guoo35SQfwEMh513x/rm6Xo
+LzlPBr6Pu1vfd7kU5lF/SiP+BPaxIns3lQw8R/QJOD+zdx4dU1RZAkOp38mJ
+38GdkesPnX6TquDfe6/k9Q27PuLCkGh5el6R4nfLjic+i3ZIC2GLas+9M7Vv
+ccz5KT7vZxaC9YsFc6bvTVHwX6ETY89eabPMgz36G7IebX2Fa8foRdiF5kLG
+/ctGVdv/xi42n/yr+F2Td+xrcEvNApslKY/NNJ+jZvjBhvuRWZBTLtw3QvxM
+MZ8Lr17OGf3sKcYmrbvtbpgFHXuGeL48IsQl5Jyg7Sl0P1gXgzejN9sZu6TB
+sPjB/SOxBSZ6bdrxEdZlBds1Xryn0AdhzLOyVRNvYfRQLDMwTIZt+x227NE/
+j2qhfJ9VPgjW7PcDFfpj5D7aUd/+OOYYL9dukSbABHZ9K0ay65GK311ug5cj
+XRbMi5gtKsd+TuSuPNWIBWZ3tS247014Se5rLtjc3BKbnMjd/2MQnsO9iWK6
+P3eOTfT9feT9eIXWx+EYQeu3IvXjOIdxc71OXFPo9wd6XjE5L56geHB95t7T
+SvDCiRTPCIInnqb4pxH8MV1P9+GFpGcK/1lH+zeK9E9RVz7pL1bQ/nNz4k/5
+4U74gUr8QTfKL24uG5qm+gW0vsX1V89rORoXohI/MZfydwnhL4opvzkdUM57
+/wVWO6Gc
+       "], {{}, {}, 
+        TagBox[
+         TooltipBox[
+          {RGBColor[1, 0, 0], 
+           LineBox[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+             18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 
+            34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 
+            50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 
+            66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 
+            82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 
+            98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 
+            111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 
+            124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 
+            137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 
+            150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 
+            163}], LineBox[CompressedData["
+1:eJwN0GciFgAAANBP0VAaCplFaFCIjCThBo7gAFzJj6QdKcoolRVNSkIiFKWy
+KqL0frwLvMSKqvLKoEAgUM0FarhILZe4zBWuco3r3OAmddRziwZuc4dGmrjL
+PZppoZU27vOAdh7yiMd00EkX3fTwhF76eMoznvOCl7yinwFe84ZB3jLEO4YZ
+YZT3jPGBcSb4yCRTTPOJz8wwyxe+Msc3vvODeRZYZIllfvKL36ywyh/WWOcv
+/9ggID6ITWwmmBC2sJVtbCeUHewkjF3sZg97CWcf+4kgkigOEE0MscQRTwIH
+OUQiSRwmmRRSOcJRjnGcNNI5wUkyyCSLU2STw2lyySOfAs5QyFmKOEcx5ymh
+lDL+AwKJVsg=
+            "]]},
+          RowBox[{
+            SuperscriptBox["y", "2"], "\[Equal]", 
+            RowBox[{
+              RowBox[{"-", "x"}], "+", 
+              SuperscriptBox["x", "3"]}]}]],
+         Annotation[#, $CellContext`y^2 == -$CellContext`x + $CellContext`x^3,
+           "Tooltip"]& ]}],
+      AspectRatio->1,
+      Axes->True,
+      BaseStyle->9,
+      Frame->True,
+      FrameTicks->None,
+      PlotLabel->FormBox[
+        RowBox[{
+          SuperscriptBox["y", "2"], "\[LongEqual]", 
+          RowBox[{
+            SuperscriptBox["x", "3"], "-", "x"}]}], TraditionalForm],
+      PlotRange->{{-3, 3}, {-3, 3}},
+      PlotRangeClipping->True,
+      PlotRangePadding->{
+        Scaled[0.02], 
+        Scaled[0.02]}], NCache[{Rational[3105, 2], -172.5}, {1552.5, -172.5}],
+      ImageScaled[{0.5, 0.5}], {360, 360.}]}, {}},
+  ContentSelectable->True,
+  ImageSize->400,
+  PlotRangePadding->{6, 5}]], "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{824, 821},
+WindowMargins->{{121, Automatic}, {Automatic, 64}},
+ShowSelection->True,
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (January 19, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 31, 0, 76, "Title"],
+Cell[CellGroupData[{
+Cell[623, 26, 28, 0, 34, "Subsection"],
+Cell[654, 28, 58, 3, 41, "Text"],
+Cell[715, 33, 285, 9, 26, "Text"],
+Cell[1003, 44, 301, 10, 26, "Text"],
+Cell[1307, 56, 614, 17, 41, "Text"],
+Cell[1924, 75, 99, 2, 26, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2060, 82, 27, 0, 67, "Section"],
+Cell[CellGroupData[{
+Cell[2112, 86, 27, 0, 24, "Subsubsection"],
+Cell[2142, 88, 112, 2, 43, "Input"],
+Cell[2257, 92, 470, 16, 27, "Input"],
+Cell[CellGroupData[{
+Cell[2752, 112, 60, 1, 27, "Input"],
+Cell[2815, 115, 854, 30, 33, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3706, 150, 879, 23, 88, "Input"],
+Cell[4588, 175, 30624, 1399, 101, 27074, 1339, "GraphicsData", "PostScript", \
+"Graphics"],
+Cell[35215, 1576, 139, 4, 27, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[35403, 1586, 27, 0, 18, "Subsubsection"],
+Cell[35433, 1588, 470, 16, 27, "Input"],
+Cell[CellGroupData[{
+Cell[35928, 1608, 60, 1, 27, "Input"],
+Cell[35991, 1611, 854, 30, 33, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36882, 1646, 1014, 28, 73, "Input"],
+Cell[37899, 1676, 32227, 592, 99, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

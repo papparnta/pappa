@@ -1,0 +1,23 @@
+body {
+  font-family: 'Times New Roman';
+  color: black;
+  font-size: 0.9em;
+}
+ 
+section {
+  max-width: 750px;
+}
+ 
+details {
+  background: #2D6174;
+  color: white;
+  padding: 15px;
+  margin-bottom: 2px;
+  border-radius: 25px;
+}
+ 
+summary {
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 1.2em;
+}

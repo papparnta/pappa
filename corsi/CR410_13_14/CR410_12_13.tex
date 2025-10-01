@@ -1,0 +1,155 @@
+\magnification=1200
+\centerline{CR410 AA12/13\ (Crittografia 1)}\bigskip
+\centerline{\bf Raccolta dei Testi d'Esame}
+\bigskip
+
+\bigskip\hrule\bigskip
+\centerline{{\bf ESAME DI MET\`{A} SEMESTRE \hfill Roma, 3 Aprile 2013.}} \bigskip\hrule\bigskip
+
+\item{1.} Dato il numero binario 
+$n=(101010110)_2$, calcolare  $[\sqrt{n}]$  usando l'algoritmo  
+delle approssimazioni successive (Non passare a base 10 e  non
+usare la calcolatrice!) 
+\item{2.} Determinare una stima per il numero di operazioni bit necessarie per cal\-co\-la\-re\break $[\sqrt{a}]^{b^a}\bmod~b$ dove
+$b\leq a^a$. \footnote{*}{ESERCIZIO RELATIVO AL PROGRAMMA NON SVOLTO NELL'AA 2013/2014} 
+\item{3.} Trovare le soluzioni $X\in{\bf Z}$ della congruenza $X^3\equiv 1\bmod 91$?
+\item{4.} Mostrare che se $f(X)=aX^2+bX+c\in{\bf Z}/k{\bf Z}[X]$, le moltiplicazioni nell'anello quoziente ${\bf Z}/k{\bf Z}[x]/(f(X))$ 
+si possono calcolare in $O(\log^2 k)$ operazioni bit. Vale la stessa conclusione se $\deg f>2$?
+\item{5.} Si illustri il funzionamento dell'algoritmo di Stein (algoritmo binario) per calcolare il massimo comune divisore
+di $72$ e $90$.
+\item{6.} Supponiamo $a, m\in{\bf Z}$, e $(a,m)=1$. Dimostrare che l'inverso moltiplicativo $a^*(\bmod m)$ \`e una potenza 
+di $a$. Spiegare perch\`e se $m$ ha al pi\`u due fattori primi allora conoscere tale potenza \`e computazionalmente equivalente
+a fattorizzare $m$.
+\item{7.} Dopo aver enunciato il criterio di Korselt per i numeri di Carmichael lo si applichi per mostrare che
+$2821=7\times 13\times 31$ \`e un numero di Carmichael.
+\item{8.} Quale è la probabilità che un numero minore di $100$ coprimo con $14$ risulti primo?
+\item{9.} Calcolare la successione di Miller Rabin di $3$ modulo $49$.
+\item{10.} Spiegare nei dettagli il funzionamento del crittosistema RSA.
+
+\bigskip
+
+\bigskip\hrule\bigskip
+\centerline{{\bf ESAME DI FINE SEMESTRE \hfill Roma, 28 Maggio, 2013.}}\bigskip\hrule\bigskip
+  
+\item{1.} Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:
+\itemitem{a.} Fornire un esempio di un'equazione di Weierstrass singolare.
+\itemitem{b.} E' vero che in alcuni gruppi ciclici il logaritmo discreto \`e particolarmente
+facile da calcolare?
+\itemitem{c.} Fornire due esempi di campi finiti ${\bf F}_q$ in cui tutti gli elementi di ${\bf F}_q^*\setminus\{1\}$
+sono generatori.
+\itemitem{d.} Fornire un esempio di un polinomio primitivo in un campo con $9$ elementi.
+
+\item{2.} Enunciare e dimostrare il Teorema di struttura dei sottocampi di ${\bf F}_{p^n}$. Lo si utilizzi per costruire
+un esempio di campo finito con esattamente $5$ sottocampi.
+\item{3.} Supponiamo che $n,m$ siano interi, che $m\equiv 5\bmod 4n$, che $n\equiv7\bmod10$. Calcolare il simbolo di
+Jacobi $\left({n\atop m}\right)$.
+\item{4.} Spiegare il funzionamento di alcuni sistemi crittografici che basano la propria sicurezza sul problema del 
+logaritmo discreto.
+\item{5.} Spiegare la rilevanza del metodo Baby-Steps-Giant-Steps nella teoria delle curve ellittiche su campi finiti.
+\item{6.} Sia $E: y^2=x^3-x$. Determinare la struttura del gruppo $E({\bf F}_5)$  e calcolare $\#E({\bf F}_{125})$. E' possibile
+determinare anche la struttura di $E({\bf F}_{125})$?
+\item{7.} Dimostrare che se $E$ \`e una curva ellittica definita su un campo finito ${\bf F}_q$
+con caratteristica dispari da un'equazione $y^2=x^3+a_2x^2+a_4x+a_6$, allora i punti di ordine $2$ hanno la forma $(\alpha,0)$
+dove $\alpha^3+a_2\alpha^2+a_4\alpha+a_6=0$. Si forniscano esempi di curve ellittiche con $0$, $1$ e $3$ punti di ordine $2$ e
+si spieghi perc\`e non \`e possibilie che ve ne siano $2$.
+\item{8.} Scrivere e dimostrare le formula per l'inverso $-P$ e per il punto $2P$ del punto $P(x,y)\in E({\bf F}_q)$ dove
+$E$ \`e una curva ellittica definita da una equazione di Weierstrass generale.
+\bigskip
+\bigskip\hrule\bigskip
+\centerline{{\bf APPELLO A \hfill Roma, 7 Giugno, 2013.}}\bigskip\hrule\bigskip
+
+\item{1.} Si descriva un algoritmo per calcolare in tempo polinomiale la parte intera di $m^{1/5}$ per ogni intero positivo $m$.
+\item{2.} Descrivere l'algoritmo di moltiplicazione di Karatsuba. \footnote{*}{RELATIVO AL PROGRAMMA NON SVOLTO NELL'AA 2013/2014}
+\item{3.} Dimostrare che se $p$ \`e primo, allora $x^4\equiv1\bmod p$ ammette $\gcd(p-1,4)$ soluzioni.
+Determinare un velore di $m$ tale che $X^4\equiv 1\bmod m$ ammette esattamente $32$ soluzioni. 
+\item{4.} Calcolare il simbolo di Legendre $\left({97543\over 21345}\right)$ utilizzando le propritet\`a dei simboli di Jacobi.  
+\item{5.} Si illustri l'algoritmo di Euclide esteso con particolare riguardo alle relazioni ricorsive per il calcolo dell'identit\`a di
+Bezout. Lo si abblichi per calcolare l'identit\`a di Bezout tra $54$ e $98$.
+\item{6.} Si determini la probabilit\`a che un polinomio irriducibile su ${\bf F}_5$ di grado $6$ risulti primitivo.
+\item{7.} Determinare i polinomi minimi e gli ordini degli elementi di ${\bf F}_{16}$.
+\item{8.} Considerare una curva ellittica $E$ definita su un campo con $2^{10}$ elementi. Supponiamo che $P\in E({\bf F}_{2^{10}})$
+abbia ordine $7$ e che $Q\in E({\bf F}_{2^{10}})$ abbia ordine $19$. Se sappiamo che $E({\bf F}_{2^{10}})$ non \`e ciclico, cosa possiamo
+dire della sua struttura?
+\item{9.} Sia $E: y^2=x^3+x$,  Dimostrare che se $p\equiv1\bmod4$ allora il gruppo $E({\bf F}_p)$ non \`e ciclico.
+Determinare tale gruppo nel caso in cui $p=3$.
+\item{10.} Spiegare il funzionamento di tutti i protocolli crittografici incontrati nel corso.
+\bigskip\vfill\eject
+
+
+\bigskip\hrule\bigskip
+\centerline{{\bf APPELLO B \hfill Roma, 1 Luglio 2013.}} \bigskip\hrule\bigskip
+
+\item{1.} Si descrivano le complessit\`a delle operazioni elementari tra interi.
+\item{2.} Descrivere l'algoritmo dei quadrati successivi in un qualsiasi monoide moltiplicativo discutendone
+la complessit\`a.
+\item{3.} Dimostrare che il gruppo moltiplicativo di un campo finito \`e ciclico. 
+\item{4.} Dopo aver descritto la nozione di base forte, si dimostri che tutte le basi modulo un primo sono forti e si fornisca
+un esempio di un numero composto e di una sua base forte (non banale cio\`e diversa da $-1$).  
+\item{5.} Si descriva e si dimostri il Teorema Cinese dei resti discutendo in particolare l'analisi della complessit\`a
+per determinare le soluzioni di un sistema di congruenze.
+\item{6.} Si descriva il reticolo dei sottocampi di ${\bf F}_{2^6}$ e per ciascun sottocampo proprio, si elenchino i polinomi
+irriducibili e quelli primitivi.
+\item{7.} Determinare i polinomi minimi e gli ordini degli elementi di ${\bf F}_{9}$.
+\item{8.} Fornite un esempio di curva ellittica definita su un campo con $25$ elementi per cui $E({\bf F}_{25}$ non \`e
+ciclico.
+\item{9.} Sia $E : y^2 = x^3 − 5x + 8$ e siano $P = (6, 3),Q = (9, 10) \in E({\bf F}_{37})$. Calcolare $2P$ e $P+Q$.
+\item{10.} Spiegare il funzionamento di tutti i protocolli crittografici incontrati nel corso.
+\bigskip
+
+\bigskip\hrule\bigskip
+\centerline{{\bf APPELLO C \hfill Roma, 3 Febbraio 2014.}}\bigskip\hrule\bigskip
+
+\item{1.} Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:
+\itemitem{a.} E' vero che se $E$ \`e una curva ellittica definita su ${\bf F}_{2^n}$, allora
+non ha mai un equazione della forma $y^2=x^3+ax+b$?
+
+\itemitem{b.} E' vero che se tutti i fattori primi di $n-1$ sono pi\`u piccoli di $\log n$, allora \`e
+possibile determinare un fattore non banale di $n$ in modo rapido? come?
+\itemitem{c.} E' vero che se $p>3$, il polinomio $X^2+2\in{\bf F}_p$ \`e irriducibile per alcuni valori di $p$ ma non tutti?
+\itemitem{d.} E' vero che esistono modi per moltiplicare interi con complessit\`a 
+inferiore a quella quadratica?\footnote{*}{ESERCIZIO RELATIVO AL PROGRAMMA NON SVOLTO NELL'AA 2013/2014}
+\item{2} Se $n\in{\bf N}$, sia $\tau(n)$ il numero dei divisori di $n$. Supponiamo che sia nota
+la fattorizzazione (unica) di $n=p_1^{\alpha_1}\cdots p_s^{\alpha_s}$. Fornire una stima per il
+numero di operazioni bit necessarie per calcolare $\tau(n)$. (\it Suggerimento: Usare il
+fatto che $\tau$ \`{e} una funzione moltiplicativa e calcolare una formula per $\tau(p^\alpha)$ \rm).
+\item{3.} Siano $m,n$ interi tali che $m\equiv3\bmod4$,
+che $m\equiv2\bmod n$ e che $n\equiv1\bmod8$. Si calcoli il
+seguente simbolo di Jacobi: $\left({(11m+n)^7 \over m}\right)$.
+\item{4.}  Illustrare l'algoritmo dei quadrati successivi in un gruppo analizzandone la complessit\`{a}. Considerare
+la curva ellittica $E: y^2=x^3-x.$ Illustrare l'algoritmo appena descritto calcolando $[5](1,0)$ dove $(1,0)\in E({\bf F}_{7})$. 
+\item{5.}  Si dia la definizione di pseudo primo forte in base $2$ e si mostri che
+se $n=2^\alpha+1$ \`{e} pseudo primo forte in base $2$, allora
+$2^{2^\beta}\equiv -1\bmod n$ per qualche $\beta<\alpha$.
+\item{6.} Fissare una radice primitiva di ${\bf F}_{2^4}$ ed
+ utilizzarla per simulare un scambio chiavi alla Diffie--Hellmann.
+\item{7.} Dopo aver definito la nozione di polinomio primitivo su un campo finito, si calcoli la probabilit\`{a} che un polinomio
+irriducibile $f$ di grado $8$ su ${\bf F}_{5}$ risulti primitivo?.
+\item{8.}  Fattorizzare
+$f(x)=(x^{12}+5x^{2}+1)(x^2+x+2)(x^{10}+x^2+1)$ su ${\bf
+  F}_2$ e determinare il numero di elementi del campo di spezzamento di $f$.
+\item{9.}  Dopo aver verificato che si tratta di una curva ellittica, determinare (giustificando la risposta)
+l'ordine e la struttura del gruppo dei punti razionali della curva ellittica su
+${\bf F}_7$
+$$y^2=x^3-x+5.$$
+\bigskip
+\bigskip\hrule\bigskip
+\centerline{{\bf APPELLO X \hfill Roma, 13 Settembre 2013.}}\bigskip\hrule\bigskip
+
+\item{1.} Si descrivano:
+\itemitem{-a-} L'algoritmo dei quadrati successivi;
+\itemitem{-b-} L'algoritmo MCD--binario;
+\itemitem{-c-} L'algoritmo di Pollard per la fattorizzazione degli interi;
+\itemitem{-d-} L'algorimo di Pholig--Hellman per il calcolo dei logaritmi discreti; 
+\itemitem{-e-} Dopo aver descritto la nozione di algoritmo probabilistico di tipo Montecarlo, l'algoritmo di Miller--Rabin.  
+
+\item{2.} Determinare ordine e struttura di $E({\bf F}_5)$ dove $E: y^2=x^3+2$.
+\item{3.} Dopo aver descritto quali sono i fattori irriducibili in ${\bf F}_p[x]$ di $x^{p^6}-x$ ($p$ primo), nel caso in cui $p=2$, li
+si elenchino tutti specificando quali tra questi sono primitivi.
+\item{4.} Siano $n$ e $m$ interi tali che $m\equiv3\bmod4$, $m\equiv2\bmod n$ e $n\equiv1\bmod8$. Si calcoli il simbolo di Jacobi
+$\left({(5m+n)^7\over m}\right)$.
+\item{5.} Dimostrare che se ${\bf F}_q$ \`e un campo finito di caratteristica dispari,
+allor esiste sempre una curva ellittica su ${\bf F}_q$ con gruppo dei punti razionali non ciclico.
+\item{6.} Si descrivano i principali algoritmi di cifratura e decifratura.
+\vfill
+
+\bye

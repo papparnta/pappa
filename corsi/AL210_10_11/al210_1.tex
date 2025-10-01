@@ -1,0 +1,132 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2010/2011}\\
+
+\textbf{AL210 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 1 - 27 Settembre 2010}\\
+
+\textbf{Tutore: Matteo Acclavio}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\vspace{0.4cm}
+
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Stabilire se i seguenti sottoinsiemi di $\R$ sono gruppi rispetto alla somma e al prodotto usuali (specificando eventuali propriet\'a mancanti)
+\begin{itemize}
+\item $A=\{n^3 \mid n\in \N\}$
+\item $B=\{\frac{n^2}{m^2}\mid n,m\in \N ,m\neq 0,\ \ MCD(n,m)=1\}$
+\item $C=\{\frac{n^3}{m^3}\mid n,m\in \N,m\neq 0 ,\  \ MCD(n,m)=1\}$
+\end{itemize}
+\end{Ex}
+\vspace{0.4cm}
+
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Dato $(\Z_{15}, +)$ calcolare $o(x)$  $\forall x \in \Z_{12}$
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Determinare se $(\Z, \heartsuit)$ \acc e un gruppo, dove:
+\begin{itemize}
+\item $x\heartsuit y= x-y$
+\item $x\heartsuit y= xy-y$
+\item $x\heartsuit y= xy-yx$
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Si considerino in $\Z_{18}$, $<\bar 3>$ e $<\bar 2>$. Dimostrare che $<\bar 3>\cap <\bar 2>=<\bar 6>$ e dimostrare che $<\bar2>$ \acc e il pi\acc u piccolo sottogruppo contenete sia $\bar 4$ e $\bar 6$
+\end{Ex}
+\vspace{0.4cm}
+
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Sia $S=\R \setminus \{-1\}$ e $\star : S \longrightarrow S$ t.c. $x\star y= xy+x+y$:
+\begin{itemize}
+\item Provare che $\star$ definisce un'operazione binaria su $S$
+\item Dimostrare che $(S,\star)$'e un gruppo. (individuando elemento neurto e inverso del generico elemento $x$)
+\item Mostrare perch\acc  e se definisco $\star$ in modo analogo su tutto $\R$, $(\R,\star)$ non \acc e un gruppo
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 7.}\\
+Determinare l'ordine di tutti gli elementi di $S_5$.
+\end{Ex}
+
+\noindent
+\begin{Ex}\textbf{ 6.}\\
+Date le seguenti permutazioni $\sigma$ e $\tau \in S_{10}$, calcolare i prodotti dove necessario, decomporre in cicli disgiunti e calcolare la parit\acc a di $\sigma$, $\tau$, $\sigma\tau$, $\tau\sigma$, $\sigma^2$, $\sigma^2\tau$, $\tau^2$, $\tau^2\sigma$.
+$$\sigma=\left(\begin{array}{cccccccccc} 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ 2 & 4 & 5 & 7 & 9 & 10 & 8 & 6 & 3 & 1 \end{array} \right )$$
+$$\tau=\left(\begin{array}{cccccccccc} 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ 2 & 5 & 7 & 9 & 3 & 1 & 4 & 6 & 10 & 8 \end{array} \right )$$
+\end{Ex}
+
+
+
+\end{document}

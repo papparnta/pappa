@@ -1,0 +1,168 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2009/2010}\\
+
+\textbf{AL2 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 11 - 4 Gennaio 2010}\\
+
+\textbf{Matteo Acclavio, Luca Dell'Anna}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\vspace{0.4cm}
+
+
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Nell'anello dei polinomi $K[X]$ si consideri il polinomio $f(X) = X^2 + X + 1$
+\begin{itemize}
+\item Decomporre il polinomio nei casi in cui $K = \Z_2, \Z_3,\C,\R.$
+\item Detto $I$ l'ideale generato da $f(X)$, si dica quando $K[X]/I$ \acc e un campo.
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Effettuare la divisione euclidea tra $13 + 18i$ e $5 + 3i$ in $\Z[i]$.\\ Mostrare che i possibili
+quozienti (ed i rispettivi resti) sono quattro.
+\end{Ex}
+
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Dimostrare che se $x$ \acc e irriducibile (primo) allora anche tutti i suoi elementi
+associati sono irriducibili (primi).
+\end{Ex}
+
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Sia $R$ un anello commutativo ed unitario. Siano $I,J$ due suoi ideali.\\
+Sia $I + J := \{x + y$ con $x \in I, y \in J\}$. Sia $\phi : R\longrightarrow R/I \times R/J$, l'applicazione definita come $\phi(r):= (r + I, r + J)$ per ogni $r\in R$.
+\begin{itemize}
+\item Si dimostri che $I + J$ \acc e un ideale di $R$.
+\item Si dimostri che $\phi$ \acc e un omomorfismo unitario di anelli.
+\item Si dimostri che $\phi$ \acc e suriettivo se e solo se $I + J = R$.
+\item Si dimostri che il nucleo di $\phi$ \acc e $I\cap J$.
+\item Nel caso $R = \Z$, $I = 5\Z, J = 12\Z$, si dimostri che\\ $\Z/60\Z = \Z/5\Z \times \Z/12\Z$.
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+
+Si consideri il polinomio $f(X) = X^3 + X + 1 \in \Q[X]$.
+\begin{itemize}
+\item Verificare che $f(X)$ \acc e irriducibile in $\Q[X]$.
+\item Sia $\theta$ una radice reale di $f(X)$ (dire perch\'e esiste); \\ si consideri
+l'estensione $\Q(\theta)$ di $\Q$; esprimere ciascuno dei seguenti elementi
+attraverso la base $\{1, \theta, \theta ^2\}$:\\
+$\theta ^4,\ \ \ \  \theta ^5,\ \ \ \  3\theta ^5 - \theta ^4 + 2,\ \ \ \  (\theta ^2 + 2\theta + 2)^{-1}$.
+\end{itemize}
+
+\end{Ex}
+
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 6.}\\
+Sia $f(X) := 2X^3 + X^2 + 1$ e $A := \Z_3[X]/(f(X))$ .
+\begin{itemize}
+\item Mostrare che $A$ ha zero divisori;
+\item Mostrare che $\alpha := X^3 + (f(X))$ \acc e invertibile in $A$ e determinare il
+suo inverso.
+\end{itemize}
+\end{Ex}
+
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 7.}\\
+Siano $f_a(X) = X^3 + X^2 + X + a \in  \Z_3[X]$ ed $I_a = (f_a(X))$.
+\begin{itemize}
+\item Determinare per quali valori di $a $ in $\ \Z_3$ l'anello quoziente\\ 
+$R_a = \Z_3[X]/I_a$ \acc e un campo.
+\item Mostrare che $(X^5 - X^4) + I_2 \ $ \acc e invertibile in $R_2$ e calcolare il suo
+inverso.
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 8.}\\
+Sia $K$ un campo e consideriamo l'anello $A = K[X;Y]/(X^2;Y^2)$.
+\begin{itemize}
+\item Dette $x$ e $y$ le classi di $A$ determinate da $X$ e $Y$ , provare che ogni
+elemento di $A$ si pu\acc o esprimere in un unico modo nella forma:\\ $axy + bx + cy + d$ con $a, b, c, d \in K$
+\item Calcolare il prodotto tra due elementi di $A$ generici.
+\item Determinare gli zero divisori di $A$.
+\item Determinare gli invertibili di $A$.
+\end{itemize}
+\end{Ex}
+
+\end{document}

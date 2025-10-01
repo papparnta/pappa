@@ -1,0 +1,278 @@
+<html><body>
+<div><center>
+<h1>TN1 - Introduzione alla teoria dei numeri</h1>
+<h2>A.A. 2003/2004 - II Semestre - Crediti 7,5.</h2>
+<hr><table border=5 style="background:lightgreen"><tr>
+<td><a href="#1">Informazioni Generali</a></td>
+<td><a href="#2">Avvisi</a></td>
+<td><a href="#3">Diario delle Lezioni</a></td>
+<td><a href="#4">Tutorato</a></td>
+<td><a href="#5">Testi Consigliati</a></td>
+<td><a href="#6">Esoneri/Esami</a></td>
+<td><a href="#7">Voti Esami</a></td></tr>
+</table>
+</center>
+<hr>
+<a name="1"></a><center><h2><b>Informazioni Generali</b></h2></center>
+ <b>Docente:</b> <a href="/users/pappa/">Francesco Pappalardi</a><br>
+Ricevimento: giovedì 11-12,<br>
+Ufficio: 209,<br>
+Tel: 06 54888243,<br>
+E-mail: <a href="mailto:pappa@mat.uniroma3.it">pappa@mat.uniroma3.it</a>.<br><hr size=7 width=50% align=center> <b>Lezioni/Lavoro guidato: </b>Lunedì e Giovedì 9-11, Martedì 11-13 (Aula 100).<br>
+<hr size=7 width=50% align=center>
+<b>Collaborazione:</b> MAURIZIO LAPORTA<br><hr size=7 width=50% align=center>
+<b>Tutorato:</b> ANDREA COVA<br>
+Mercoledì 16-18 (Aula 009) tutte le settimane.<br>
+<hr><center><table border=5 style="background:lightgreen"><tr>
+<td><a href="#1">Informazioni Generali</a></td>
+<td><a href="#2">Avvisi</a></td>
+<td><a href="#3">Diario delle Lezioni</a></td>
+<td><a href="#4">Tutorato</a></td>
+<td><a href="#5">Testi Consigliati</a></td>
+<td><a href="#6">Esoneri/Esami</a></td>
+<td><a href="#7">Voti Esami</a></td></tr>
+</table>
+</center>
+<hr>
+<a name="2"></a><center><h2><b>Avvisi:</b></h2></center>
+<li><a href="Note_laporta.pdf">Note del Professor Laporta</a>
+<li> A partire dal 3 Maggio 2004 tutte le lezioni si terranno in
+<b>Aula 009</b> mentre tutti i tutorati in <b>Aula F</b>.
+<li> <B> NOTA BENE CAMBIAMENTO:</B> L'esame di fine semestre si terrà
+lunedì 31 Maggio in Aula 009 alle 9:00.
+<li> Il giorno 19 Maggio non si è tenuto il tutorato.
+<li> <a href="TN1.pdf">Programma finale del corso.</a> 
+<hr><center><table border=5 style="background:lightgreen"><tr>
+<td><a href="#1">Informazioni Generali</a></td>
+<td><a href="#2">Avvisi</a></td>
+<td><a href="#3">Diario delle Lezioni</a></td>
+<td><a href="#4">Tutorato</a></td>
+<td><a href="#5">Testi Consigliati</a></td>
+<td><a href="#6">Esoneri/Esami</a></td>
+<td><a href="#7">Voti Esami</a></td></tr>
+</table>
+</center>
+<hr>
+<a name="3"></a><center><h2><b>Diario delle Lezioni:</b></center></h2><ol>
+  <li>Lunedì 23 Febbraio: proprietà elementari delle congruenze.
+  <li>Martedì 24 Febbraio: congruenze lineari e equazioni diofantee lineari a due incognite.
+  <li>Giovedì 26 Febbraio: <dd>
+  <i>esercizi sulle congruenze lineari e le equazioni diofantee lineari.</i> 
+  <li>Martedì 2 Marzo: (lezione tenuta da Marco Fontana) Teorema di Euler - Fermat, Teorema
+  di Wilson.
+  <li>Giovedì 4 Marzo: (lezione tenuta da Marco Fontana) il Teorema cinese dei Resti, la radice
+         di -1 modulo un primo, metodo per il calcolo dell'esponenziale modulare.
+  <li>Lunedì 8 Marzo: <dd>
+  <i>esercizi su equazioni lineari diofantee a tre incognite, congruenze 
+lineari a due incognite, 
+  esercizi sul Capitolo 3 (numeri dispari).</i>
+  <li>Martedì 9 Marzo: generalità sulle congruenze polinomiali, riduzione al caso di
+  congruenze modulo <i>p<sup>s</sup></i>, polinomio di Taylor di un polinomio.
+  <li>Giovedì 11 Marzo: Teorema del sollevamento delle soluzioni, la congruenza <i>X</i><sup>(<i>p</i>-1)/2</sup> <font face="symbol">±</font> 1<font face="symbol">º</font> 0 (mod <i>p</i>).
+  <li>Martedì 16 Marzo: Teorema di Lagrange, Teorema di Chevalley (senza dimostrazione).
+  <li>Giovedì 18 Marzo: definizione di Radici primitive, prime proprietà, esistena di radici primitive
+  modulo primi
+  <li>Lunedì  22 Marzo:<dd>
+  <i>esercizi per il Capitolo 4</i>
+  <li>Martedì 23 Marzo: (lezione tenuta da Maurizio Laporta) l'algoritmo di Gauss per il calcolo di una
+  radice primitiva modulo un primo. Teorema di Gauss sull'esistenza di radici primitive modulo n (solo
+  enunciato), Teorema di risolubilità delle congruenze lineari, criterio di Eulero
+  <li>Giovedì 25 Marzo: (lezione tenuta da Maurizio Laporta) esempio di
+applicazione dell'algoritmo di Gauss per il calcolo di una radice
+primitiva modulo <i>p</i>, dimostrazione del fatto che una radice
+primitiva dispari modulo <i>p<sup>k</sup></i> e' tale anche modulo
+2<i>p<sup>k</sup></i>, dimostrazione del fatto che se esiste una radice
+primitiva modulo <i>p<sup>k</sup></i> allora ne esiste una dispari,
+definizione e proprietà dell'indice di un elemento relativamente ad una
+radice primitiva modulo <i>n</i> (Definizione 5.21 e Proposizione 5.22),
+Risoluzione di congruenze binomiali modulo <i>n</i> per il quale esiste una
+radice primitiva (Teorema 5.23), Generalizzazione del criterio di Eulero
+(criterio di Gauss, Corollario 5.24).
+  <li>Martedì 30 Marzo: (esercitazione tenuta da Maurizio Laporta)<dd>
+<i> Risoluzione di esercizi dal 5.6 al 5.9 inclusi.</i>
+  <li>Giovedì 1 Aprile: (lezione tenuta da Maurizio Laporta)
+Riduzione di una congruenza quadratica a quella di
+una binomiale di secondo grado (completamento dei
+quadrati), Sul numero di soluzioni di una congruenza binomiali di
+secondo grado (Proposizione 6.1), Definizione di residuo quadratico,
+ Caratterizzazione dei residui quadratici (Proposizione 6.3), Simbolo di 
+Legendre: definizione e proprietà (Proposizione 6.6, Corollari 6.7, 6.8, 
+6.9, 6.10)
+  <li>Lunedì  5 Aprile: (lezione tenuta da Maurizio Laporta)<dd>
+<i>Esercizi di ricapitolazione</i> 
+  <li>Lunedì 19 Aprile:<dd>
+  <i>Correzione del compito tenuto il 15 Aprile</i> 
+  <li>Martedì 20 Aprile: Simboli di Legendre, Richiami delle definizioni, Lemmi preparatori alla
+  dimostrazione delle <i>Legge di reciprocità quadratica</i>, Lamma di Gauss (Teorema 6.12),
+  Corollario 6.14, Teorema 6.21 (dimostrazione della reciprocità quadratica), Proposizione 6.19
+  <li>Giovedì 22 Aprile: Fine dimostrazione della reciprocità quadratica (di nuovo la Proposizione 6.19), applicazioni: Corollari 6.22/23, Algoritmo per il calcolo del simbolo di Legendre (fattorizzando), Esempi 6.24,25,26,27,28.
+Problema generale delle congruenze quadratiche, Enunciato dei Teoremi 6.29,32 e Corollari 6.30,34,36
+  <li>Martedì 27 Aprile: dimostrazione Teoremi 6.29,32 e Corollari 6.30,34,36. Simboli di Jacobi e 
+  lgoritmo per il calcolo del simbolo di Jacobi/Legendre (senza fattorizzare)
+  <li>Giovedì 29 Aprile:<b> Lezione rinviata</b>
+  <li>Lunedì  3 Maggio:<dd> <i>Esercizi sul Capitolo 6: Svolti 6.1, 
+6.2, 6.3, 6.4abc, 6.5, 6.6, 6.8, 6.14, 6.17a, 6.18, 6.19(1)</i>
+  <li>Martedì 4 Maggio: Generalità sulle funzioni aritmetiche, esempi 
+fondamentali, Proposizione 1.4, 1.6, 2.4 e corollari, Teorema 2.4 e 2.5 
+  <li>Giovedì 6 Maggio: Funzioni artimetiche. Inversa rispetto alla 
+convoluzione di una funzione aritmetica. Formula di inversione Moebius. 
+Proposizioni 2.8, 2.10, 2.13 e 3.1 con tutti i corollari e Toerema 3.2.  
+  <li>Martedì 11 Maggio:<dd>
+<i> Esercizi sulle funzioni aritmetiche: Svolti 1.2, 1.4, 1.6, 1.10, 
+1.12, 1.14, 2.2, 2.5, 3.1</i>
+  <li>Giovedì 13 Maggio: Terne Pitagoriche, tp primitive, tp positive, 
+Teorema 1.8 di caratterizzazione delle terne pitagoriche, enumerazione
+delle terne pitagoriche, l'equazione di Fermat, il metodo delle discesa di 
+Fermat, Teorema 2.2, L'equazione <i>X<sup>4</sup>+Y<sup>4</sup>=
+Z<sup>2</sup></i> non ammette soluzioni non banali. 
+  <li>Lunedì  17 Maggio: Interi somma di due quadrati, Teorema di Fermat 
+(3.3) sui primi che sono somma di due quadrati, Lemma di Thue (3.5), 
+Principio della gabbie di piccioni, Corollario di Eulero (3.6). 
+  <li>Martedì 18 Maggio: Ancora sugli interi che sono somma di due 
+quadrati, Teorema di caratterizzazione (3.7), Corollario 3.9. Teorema dei
+tre quadrati (4.1 - Legendre, Gauss) (dimostrazione del solo se), 
+Preparazione al Teorema dei 4 quadrati di Lagrange, Proposizioni 4.3 e 
+4.6. Inizio della dimostrazione del Teorema 4.7.
+  <li>Giovedì 20 Maggio: Fine dimostrazione del Teorema 4.7,<dd>
+<i> Esercizi sulle terne pitagoriche e sugli interi somme di quadrati:</i>
+  <li>Martedì 26 Maggio: La formula enumerativa per il numero di 
+espressioni di un intero come somma di due quadrati<dd>
+<i> Esercizi vari di ricapitolazione</i>
+  <li>Giovedì 28 Maggio:<dd>
+<i> Esercizi di ricapitolazione - svolti scritti Appello A AA02/03 e
+Valutazione in Itinere II prova AA02/03.</i>
+</ol>
+<hr><center><table border=5 style="background:lightgreen"><tr>
+<td><a href="#1">Informazioni Generali</a></td>
+<td><a href="#2">Avvisi</a></td>
+<td><a href="#3">Diario delle Lezioni</a></td>
+<td><a href="#4">Tutorato</a></td>
+<td><a href="#5">Testi Consigliati</a></td>
+<td><a href="#6">Esoneri/Esami</a></td>
+<td><a href="#7">Voti Esami</a></td></tr>
+</table>
+</center>
+  <hr>
+<a name="4"></a><center><h2><b>Tutorato:</b></center></h2>
+ <br>
+<li>Mercoledì 25 Febbraio:<dd>
+ - dal  Capitolo 0: pagine 13-17 ma tutto sommato anche pagine 5-7.<dd>
+<i>(Pensati per quelli che hanno bisogno di una rinfrescata di AL1)</i><dd>
+  - dal Capitolo 1: pagine 10 e 11 Tutti gli esercizi<br>
+<li>Mercoledì 3 Marzo:<dd>
+- Esercizi sulle congruenze lineari.<dd>
+- <a href="TUTORATO_2_3_marzo_2004.doc">Esercizi proposti dal tutore</a>
+<li>Mercoledì 10 Marzo:<dd>
+- Ancora esercizi sulle congruenze e equazioni lineari<dd> 
+- Capitolo 3: Tutti gli esercizi pari 
+<li>Mercoledì 17 Marzo:<dd>
+- dal Capitolo 4<dd>
+- <a href="TUTORATO_4_17_marzo_2004.doc">Esercizi proposti dal 
+tutore</a>
+<li>Mercoledì 24 Marzo:<dd> - Capitolo 5<dd>
+- <a href="TUTORATO_5_24_marzo_2004.doc">Esercizi proposti dal
+tutore</a>
+<li>Mercoledì 31 Marzo:<dd> - Capitolo 5 <dd> 
+- <a href="TUTORATO_6_31_marzo_2004.doc">Esercizi di ricapitolazione 
+proposti dal tutore</a>
+<li>Mercoledì 28 Aprile:<dd>
+- <a href="TUTORATO_7_28_aprile_2004.doc">Esercizi sui simboli di
+Legendre proposti dal tutore</a>
+<li>Mercoledì 5 Maggio:<dd>
+- <a href="TUTORATO_8_5_maggio_2004.doc">Esercizi sulle funzioni aritmetiche proposti dal tutore</a>
+<li>Mercoledì 12 Maggio:<dd>
+- Esercizi sulle funzioni aritmetiche
+<li>Mercoledì 26 Maggio:<dd> 
+- <a href="TUTORATO_10_26_maggio_2004.doc">
+Esercizi di ricapitolazione proposti dal tutore</a>   
+<br><br>
+<b>N.B.</b> Il tutorato non è un esercitazione. Il tutore presente in aula risponde alle domande degli
+ studenti ma non risolve esercizi alla lavagna.
+<hr><center><table border=5 style="background:lightgreen"><tr>
+<td><a href="#1">Informazioni Generali</a></td>
+<td><a href="#2">Avvisi</a></td>
+<td><a href="#3">Diario delle Lezioni</a></td>
+<td><a href="#4">Tutorato</a></td>
+<td><a href="#5">Testi Consigliati</a></td>
+<td><a href="#6">Esoneri/Esami</a></td>
+<td><a href="#7">Voti Esami</a></td></tr>
+</table>
+</center>
+<hr>
+<a name="5"></a><center><h2><b>Testi consigliati:</b></center></h2>
+  <br>
+     <li><b>Note di Teoria dei Numeri di Marco Fontana</b>
+        <dd><a href="/users/fontana/tn1/Cap_0.pdf">Capitolo 0</a>
+        <dd><a href="/users/fontana/tn1/Cap_1.pdf">Capitolo 1</a>
+        <dd><a href="/users/fontana/tn1/Cap_2.pdf">Capitolo 2</a>
+        <dd><a href="/users/fontana/tn1/Cap_3.pdf">Capitolo 3</a>
+     <li><i>Hardy, G. H.; Wright, E. M.</i> An introduction to the theory of numbers. Fifth edition. The Clarendon Press, Oxford University Press, New York, 1979. xvi+426 pp. ISBN: 0-19-853170-2; 0-19-853171-0
+     <li><i>Davenport, H.</i> Aritmetica superiore. Un'introduzione alla teoria dei numeri. Editore:
+ Zanichelli, 1994. 199 pp. ISBN: 8808091546
+     <li><i>Gioia, A. A.</i> The theory of numbers. An introduction. Reprint of the 1970 original. Dover Publications, Inc., Mineola, NY, 2001. xii+207 pp. ISBN: 0-486-41449-3 
+     <li><i>Rosen, K. H.</i> Elementary number theory and its applications. Fourth edition. Addison-Wesley, Reading, MA, 2000. xviii+638 pp. ISBN: 0-201-87073-8
+     <li><i>Tattersall, J. J.</i> Elementary number theory in nine chapters. Cambridge University Press, Cambridge, 1999. viii+407 pp. ISBN: 0-521-58531-7
+     <li><b><a href="http://www.mat.uniroma3.it/ntheory/lecture_notes.html">Altre Dispense Online</a></b>
+  Online number theory lecture notes (Number Theory Web)
+<hr><center><table border=5 style="background:lightgreen"><tr>
+<td><a href="#1">Informazioni Generali</a></td>
+<td><a href="#2">Avvisi</a></td>
+<td><a href="#3">Diario delle Lezioni</a></td>
+<td><a href="#4">Tutorato</a></td>
+<td><a href="#5">Testi Consigliati</a></td>
+<td><a href="#6">Esoneri/Esami</a></td>
+<td><a href="#7">Voti Esami</a></td></tr>
+</table>
+</center>
+ <hr>
+<a name="6"></a><center><h2><b>Esoneri/Esami:</b></center></h2>
+<br>
+ <i> L'esame di metà semestre si è tenuto giovedì 15 aprile alle 9:00</i><dd>
+<li><a href="TN1_2004_1.pdf">Testo esame</a><dd>
+<li><a href="TN1_2004_1a.pdf">Soluzioni</a><dd>
+<hr><center><table border=5 style="background:lightgreen"><tr>
+<td><a href="#1">Informazioni Generali</a></td>
+<td><a href="#2">Avvisi</a></td>
+<td><a href="#3">Diario delle Lezioni</a></td>
+<td><a href="#4">Tutorato</a></td>
+<td><a href="#5">Testi Consigliati</a></td>
+<td><a href="#6">Esoneri/Esami</a></td>
+<td><a href="#7">Voti Esami</a></td></tr>
+</table>
+</center>
+<hr>
+<a name="7"></a><center><h2><b>VOTI degli esoneri/esami:</b></center></h2>
+<table border=1>
+<tr><td colspan="14"><b>RISULTATI ESAME DI META' SEMESTRE</b></td></tr>
+ <tr><td>MATRICOLA</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+<td>9</td><td>10</td><td>11</td><td>12</td><td>TOT</td></tr>
+ <tr><td>220743</td><td>2</td><td>2</td><td>0</td><td>3</td><td>3</td><td>3</td>
+<td>3</td><td>3</td><td>2</td><td>3</td><td>0</td><td>0</td><td>24</td></tr>
+ <tr><td>220577</td><td>2</td><td>3</td><td>0</td><td>0</td><td>3</td><td>3</td>
+<td>3</td><td>0</td><td>2</td><td>2</td><td>3</td><td>0</td><td>21</td></tr>
+ <tr><td>118521</td><td>3</td><td>3</td><td>3</td><td>3</td><td>3</td><td>2</td>
+<td>3</td><td>3</td><td>0</td><td>3</td><td>3</td><td>3</td><td>32</td></tr>
+ <tr><td>207947/86</td><td>3</td><td>3</td><td>3</td><td>3</td><td>2</td><td>3</td>
+<td>3</td><td>0</td><td>3</td><td>3</td><td>3</td><td>0</td><td>29</td></tr>
+<tr><td>220312</td><td>0</td><td>3</td><td>3</td><td>2</td><td>3</td><td>2</td><td>2</td>
+<td>3</td><td>0</td><td>3</td><td>3</td><td>0</td><td>24</td></tr>
+<tr><td>36026</td><td>1</td><td>2</td><td>0</td><td>0</td><td>3</td><td>0</td><td>0</td>
+<td>0</td><td>0</td><td>3</td><td>0</td><td>0</td><td>9</td></tr>
+<tr><td>221915</td><td>3</td><td>2</td><td>0</td><td>0</td><td>2</td><td>3</td><td>0</td>
+<td>0</td><td>1</td><td>3</td><td>0</td><td>0</td><td>14</td></tr>
+ <tr><td>232971</td><td>3</td><td>3</td><td>0</td><td>3</td><td>3</td><td>3</td><td>1</td>
+<td>2</td><td>3</td><td>3</td><td>3</td><td>2</td><td>29</td></tr>
+ <tr><td colspan=13 align="right">MEDIA</td><td>22,8</td></tr>
+</table>
+<hr><center><table border=5 style="background:lightgreen"><tr>
+<td><a href="#1">Informazioni Generali</a></td>
+<td><a href="#2">Avvisi</a></td>
+<td><a href="#3">Diario delle Lezioni</a></td>
+<td><a href="#4">Tutorato</a></td>
+<td><a href="#5">Testi Consigliati</a></td>
+<td><a href="#6">Esoneri/Esami</a></td>
+<td><a href="#7">Voti Esami</a></td></tr>
+</table>
+</center>
+<hr>
+  </div></body></html>

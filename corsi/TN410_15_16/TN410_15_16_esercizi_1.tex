@@ -1,0 +1,61 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[cm]{fullpage}
+%opening
+\title{Elementary Number Theory (TN410)}
+\author{Exercises: Sheet \#1}
+\date{March 4, 2016}
+
+\begin{document}
+
+\maketitle
+
+% \noindent\textsc{Gli studenti volontari che, durante le esercitazioni del corso, 
+% presenteranno la soluzione di uno (o più) esercizi (tra il numero $4$ e il numero $10$ sotto),
+% otterranno un bonus di un punto sul voto finale per ciascun esercizio svolto alla lavagna.}
+
+% \noindent\textsc{Volunteer students who, during problem sessions, will
+% present the solution of one (or more) exercises (between number $4$ and number $10$ below),
+% will get a bonus of one point on the final grade for each exercise solved at the blackboard.}
+
+\thispagestyle{empty}
+\begin{enumerate}
+ \item Compute $\gcd(5520,3135)$, $\gcd(8736,3135)$;
+ \item Compute  $v_2(70!)$, $v_5(125!)$ and $v_7(130!)$;
+\item Let $a,b,c,n\in \mathbb N$. Show that
+\begin{enumerate}
+ \item  If $a\mid n$, $b\mid n$ and $\gcd(a,b)=1$, then $ab\mid n$
+ \item If $a\mid bc$ and $\gcd(a,b)=1$, then $a\mid c$.
+\end{enumerate}
+ \item Show that there exist infinitely many primes $p$ of the form $p=4k-1$;\\
+\small{(\textit{\textbf{hint:} Assume that $p_1,\ldots,p_s$ are the only primes of this form and consider $N=4p_1\cdots p_s-1$})}
+ \item Let $\pi(x)=\#\{p\le x\}$.
+ \begin{enumerate}
+  \item  Compute (by hand or with a computer) $\pi(10)$, $\pi(100)$, $\pi(1000)$ and $\pi(10000)$;
+  \item  Compare, in each case, the obtained value both with  $X/\log X$ and with $\operatorname{li}(X)$.
+ \end{enumerate}
+\item Let, for $k>1$, $\zeta(k)=\sum_{n=1}^\infty\frac1{n^k}$. Show that
+$$\sum_{n\le X}\frac1{n^k}=\zeta(k)+O\left(\frac1{X^{k-1}}\right)\qquad
+\text{and that}
+\qquad\sum_{n\le X}\frac{\mu(n)}{n^k}=\frac{1}{\zeta(k)}+O\left(\frac1{X^{k-1}}\right);$$
+\item We say that $n\in\mathbb N$ is $k$--free if, for each prime $p$, $p^k\nmid n$. Let $\mu_k$ 
+be the characteristic function of $k$--free integers. that is:
+$$\mu_k(n)=\begin{cases}1&\text{if }n\text{ is $k$--free;}\\ 0& \text{otherwise.}\end{cases}$$
+\begin{enumerate}
+ \item Show that $\mu_k$ is multiplicative;
+ \item Prove the identity: 
+ $$\mu_k(n)=\sum_{\substack{d\in\mathbb N\\ d^k\mid n}}\mu(d);$$
+ \item Show that $$\sum_{n\le X}\mu_k(n)=\frac1{\zeta(k)}X+O(X^{1/k}).$$
+ \end{enumerate}
+ \item Show that the probability that two positive integers are coprime, is $6/\pi^2$;
+ \item Let $N$ be an ipothetical odd perfect number. Show that the unique factorization of $N$ has the form:
+ $$N=p_1^k\cdot p_2^{2j_2}\cdots p_r^{2j_r}$$
+ where $k\ge1$, $j_1,\ldots,j_r\ge1$ and $p_1\equiv k\equiv 1\bmod 4$;\\
+ \small{(\textit{\textbf{hint:} 
+ note that it must be $\sigma(N)=2N\equiv2\bmod4$ and deduce from it some properties of $\sigma(p^\alpha)$
+ for $p^\alpha\|N$
+ })}
+ \item Show that an odd perfect number $N$ cannot be of the form $6m-1$. 
+  \end{enumerate}
+\end{document}

@@ -1,0 +1,128 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{times}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\nopagenumbers
+\def\Q{{\mathbb Q}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\F{{\mathbb F}}
+\def\C{{\mathbb C}}
+\def\QQ{{\rm Q}}
+
+\title{Teoria di Galois 1 - Tutorato III}
+\author{\Large{Estensioni, reticoli di sottocampi, gruppi di Galois}}
+\date{Venerdì 1 Aprile 2005}
+
+\begin{document}
+\maketitle
+
+\theoremstyle{definition}
+
+\newtheorem{es}{Esercizio}
+
+
+\begin{es}
+Descrivere gli elementi del gruppo di Galois, determinando anche tutti i sottocampi
+del campo di spezzamento, del polinomio $(x^2-2)(x^2+3)$
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Descrivere gli elementi del gruppo di Galois del campo di spezzamento di $x^n-1$.
+\end{es}
+\medskip
+
+
+\begin{es}
+In cisacuno dei seguenti casi si dica se si tratta di estensioni separabili,
+normali o di Galois (nel qual caso descrivere il gruppo di Galois):
+\item{{\it i.}} $\F_7(T)/\F_7(T^7)$;\hfill {\it ii.} $\Q(3^{1/5})/\Q$;
+\item{{\it iii.}} $\F_{11}(T)/\F_{11}$;\hfill {\it iv.} $\Q(3^{1/5},\zeta_{30})/\Q(\zeta_{30})$;
+\item{{\it v.}} $\Q(\sqrt{-1},5^{1/4})/\Q$;\hfill {\it vi.} $\Q(\pi,\sqrt{\pi})/\Q(\pi)$.
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Si descrivano tutti i campi intermedi tra $E$ e $\Q$ in ciascuno dei seguenti casi:
+\item{a.} $E=\Q(\zeta_{n}) \,\,$  con  $ \,\,n= 16,  24, 13 $
+\item{b.} $E=\Q_f$ il campo di spezzamento di $x^4-2$
+\item{c.} $E=\Q_f$ il campo di spezzamento di $(x^2-2)(x^2-3)(x^2-5)$.
+
+\  \hfill{\it Suggerimento: Usare la corrispondenza di Galois.}
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Per ciascuno dei punti dell'esercizio precedente si descrivano gli
+elementi del gruppo di Galois Gal$(E/F)$.
+\end{es}
+\medskip
+
+
+
+
+
+
+\begin{es}
+Sia $E=\Q(\zeta_{13})$. Dimostrare che se $\eta=\zeta_{13}+\zeta_{13}^3+\zeta_{13}^9$,
+allora il polinomio minimo $f_\eta$ di $\eta$ su $\Q$ ha grado $4$.
+Dopo averne evidenziato le radici, mostrare (calcolando) che
+$$f_\eta(x)=x^4+x^3+2x^2-4x+3.$$
+Qual'\`{e} la dimensione del campo di spezzamento di $f_\eta$ su $\Q$?
+
+{\it Suggerimento: Usare il gruppo {\rm Gal}$(\Q(\zeta_{13})/\Q)$ e la corrispondenza
+di Galois.}
+\bigskip
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Dimostrare $\Q(\zeta_p)$ (dove $p>2$ \`{e} primo) ha sempre esattamente un sottocampo
+quadratico. Dedurre che ogni campo ciclotomico ammette sempre un sottocampo che \`{e}
+un estensione quadratica di $\Q$.
+
+\  \hfill {\it Suggerimento: Usare il gruppo {\rm Gal}$(\Q(\zeta_{p})/\Q)$ e la corrispondenza
+di Galois.}
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Mostrare che, ${\rm Gal}(\Q(\zeta_{n^2})/\Q(\zeta_{n}))\cong \Z/n\Z$ esibendo un isomorfismo esplicito.
+
+\hfill {\it Sugg: considerare $\sigma_j:\zeta_{n^2}\mapsto \zeta_{n^2}^{nj+1}.$}
+\end{es}
+\medskip
+
+
+
+
+\begin{es}[per che soffre di insonnia]
+Mostrare la seguente identit\`{a}:
+$$\sum_{j=1}^p\left({\frac{j}{p}}\right)\zeta_{p}^j=\pm\sqrt{(-1)^{(p-1)/2}p}$$
+(N.B. $\left({ \frac{j}{p}  }\right)$ \`{e} il classico simbolo di Legendre).
+Dedurre che ogni campo quadratico \`{e} sempre contenuto in un campo ciclotomico.
+\end{es}
+\medskip
+
+
+
+\clearpage
+\nocite{*}
+\end{document}
+
+

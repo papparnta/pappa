@@ -1,0 +1,538 @@
+\documentclass[landscape]{powersem} %display
+\usepackage{fancybox,marvosym,graphicx,amsmath,amssymb,pifont,textcomp}
+\usepackage[bookmarksopen,colorlinks,urlcolor=red,pdfpagemode=FullScreen]{hyperref}
+\usepackage{fixseminar}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[latin1]{inputenc}
+%\usepackage{eurosans}
+\usepackage[%coloremph
+,colormath%,colorhighlight
+,whitebackground]{texpower}
+\hfuzz=30pt
+\vfuzz=30pt
+\setlength{\slidewidth}{25cm} \setlength{\slideheight}{17cm}
+\slideframe{}%shadow
+\def\slideitemsep{.5ex plus .3ex minus .2ex}
+\renewcommand{\slidetopmargin}{10mm}
+\renewcommand{\slidebottommargin}{15mm}
+\renewcommand{\slideleftmargin}{5mm}
+\renewcommand{\sliderightmargin}{5mm}
+\newcommand{\psd}{\pause}%\addtocounter{slide}{-1}}
+\newcommand{\Ccal}{{\mathcal{C}}}
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\Q}{{{\mathbb Q}}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\manorossa}{\textcolor{conceptcolor}{\ding{43}}}
+\newcommand{\matitablu}{\textcolor{altemcolor}{\ding{46}}}
+\newcommand{\verde}{\textcolor{black}}
+\newcommand{\heading}[1]{%
+ \begin{center}
+  %\large\bf
+  \Ovalbox{{#1}}%\textcolor{conceptcolor}{
+ \end{center}
+ \vspace{1ex minus 1ex}}
+\definecolor{verdescu}{rgb}{0,0.6,0.6}
+\definecolor{rossoscu}{rgb}{1,0,0.2}
+
+%\backgroundstyle[startcolor=white,
+ %                  endcolor=inactivecolor,%firstgradprogression=3,
+  %          rightpanelwidth=-7\semcm,,rightpanelcolor=pagecolor]{hgradient}%
+%%%%%%%%%%%%% DATI DEL SEMINARIO IN QUESTIONE %%%%%%%%%%%%
+
+\newpagestyle{327}%
+ {\textcolor{codecolor}{\textit{Basic Algorithms in Number Theory}} \hspace{\fill}\rightmark
+\hspace{0.5cm}\thepage}
+ {}%{\includegraphics[width=4mm]{images/dipmat.pdf}\hspace{\fill}\textcolor{codecolor}{\sc Universit\`a Roma Tre}
+ %\hspace{\fill}\includegraphics[width=5mm]{images/roma3.pdf}}%%
+\pagestyle{327} \markright{\textcolor{conceptcolor}{Algorithmic Complexity ...}}
+
+\begin{document}
+
+%\begin{slide}\pageTransitionWipe{30}
+%\maketitle
+%\end{slide}
+
+\begin{slide}
+\includegraphics[width=1.6cm]{images/roma3.pdf}\hfill\includegraphics[width=1.9cm]{images/HCMCUS.jpeg}
+\vfill
+
+\begin{center}\begin{sc}
+\begin{Large}
+
+\textcolor{underlcolor}{Basic Algorithms in Number Theory}
+\end{Large}\bigskip
+
+\ {Francesco Pappalardi}\bigskip\bigskip
+
+\begin{large}\begin{bf}\#2 - Discrete Logs, Modular Square Roots, Polynomials, Hensel's Lemma \& Chinese Remainder Theorem
+\end{bf}\end{large}\medskip
+
+September $2^{\textrm{nd}}$ 2015\medskip
+\vfill
+\vfil\end{sc}\end{center}
+\begin{scriptsize}
+ \includegraphics[width=1.6cm]{images/cimpalogo.pdf}\hfill
+\begin{minipage}[b]{7cm}
+\textbf{SEAMS School 2015}\\
+\textit{Number Theory and Applications in Cryptography and Coding Theory}\\
+University of Science, Ho Chi Minh, Vietnam\\
+August 31 - September 08, 2015
+\end{minipage}\hfill
+\includegraphics[width=1.9cm]{images/seams.png}
+\end{scriptsize}
+\end{slide}
+
+
+\begin{slide}
+\heading{\textsc{Monday's Problems}}
+\begin{enumerate}
+	\item \textsc{Multiplication:} for $x,y\in\Z$, find $x\cdot y$
+	\item \textsc{Exponentiation:} for $x\in G$ (group) and $n\in\N$, find $x^n$ (Complexity of operations in $\Z/m\Z$)
+	\item \textsc{GCD:} Given $a,b\in\N$ find $\gcd(a,b)$
+	\item  \textsc{Primality:} Given $n\in\N$ odd, determine if it is prime (Legendre/Jacobi Symbols - Probabilistic Algorithms with probability of error)
+	\item \textsc{Quadratic Nonresidues:} given an odd prime $p$, find
+a quadratic non residue mod $p$.
+	\item \textsc{Power Test:} Given $n\in\N$ determine if $n=b^k (\exists k>1)$
+	\item \textsc{Factoring:} Given $n\in\N$, find a proper divisor of $n$
+\end{enumerate}
+\end{slide}
+
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textbf{PROBLEM 8.}} \textsc{Discrete Logarithms:}} 
+ Given $x$ in a cyclic group $G=\langle g\rangle$, find $n$ such that $x=g^n$.
+
+\parstepwise{\begin{itemize}
+ \item \step{Need to specify how to make the operations in $G$}
+\item \step{If $G=\left(\Z/n\Z,+\right)$ then discrete logs are very easy.}
+\item \step{If $G=((\Z/n\Z)^*,\times)$ then $G$ is cyclic iff $n=2,4,p^\alpha,2\cdot p^\alpha$}\\
+\step{ where
+$p$ is an odd prime: famous theorem of Gau\ss.}
+\item \step{In $(\Z/p\Z)^*$ there is no efficient algorithm to compute DL.}
+\item \step{Interesting problem: given $p$, to compute a primitive root}\\ \step{ $g$ modulo $p$ (i.e. to determine $g\in(\Z/p\Z)^*$
+such that $\langle g\rangle=(\Z/p\Z)^*$)}
+\item \step{\emph{Artin Conjecture for primitive roots:} any $g$}\\\step{ (except $0,\pm1$ and perfect squares)
+is a primitive root for a positive}\\\step{ proportion of primes}
+\item \step{Known to be true assuming the GRH. It is also known that one out of}\\ \step{$2, 3$  and $5$ is a primitive root for infinitely many primes.} 
+\end{itemize}}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textsc{Discrete Logarithms:}} continues}\vspace*{-2mm} 
+\parstepwise{\begin{itemize}
+ \item \step{Primordial public key cryptography is based on the difficulty of the }\\ \step{Discrete Log problem}
+\item \step{Several algorithms to compute discrete logarithms are known.}\\ \step{One for all is the \textbf{Shanks Baby Step Giant Step algorithm}.}\end{itemize}}\vspace*{-2mm}
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{11cm}
+\texttt{\noindent 
+\noindent 
+\textcolor{red}{Input:}  A group $G=\langle g\rangle$ and $a\in G$\\
+\textcolor{blue}{Output:}  $k\in\Z/|G|\Z$ such that $a=g^k$\\
+1. $M:= \lceil \sqrt{|G|}\rceil$\\
+2. For $j=0,1,2,\ldots,M$.\\
+\hspace*{1cm} \qquad Compute $g^j$ and store the pair $(j, g^j)$ in a table\\
+3. $A:=g^{-M}$, $B:=a$\\
+5. For $i=0,1,2,\ldots,M-1$.\\
+\hspace*{5mm} \qquad -1- Check if $B$ is the second component $(g^j)$ of any\\ \hspace*{1.3cm} \qquad pair in the table\\
+\hspace*{5mm} \qquad -2- If so, return $iM + j$ and halt.\\  
+\hspace*{5mm} \qquad -3- If not $B=B\cdot A$}
+\end{minipage}}}
+\end{center}
+% Input: A cyclic group G of order n, having a generator α and an element β.
+% 
+% Output: A value x satisfying αx = β.
+% 
+%    1. m ← Ceiling(√n)
+%    2. For all j where 0 ≤ j < m:
+%          1. Compute αj and store the pair (j, αj) in a table. (See section "In practice")
+%    3. Compute α−m.
+%    4. γ ← β. (set γ = β)
+%    5. For i = 0 to (m − 1):
+%          1. Check to see if γ is the second component (αj) of any pair in the table.
+%          2. If so, return im + j.
+%          3. If not, γ ← γ • α−m.
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textsc{Discrete Logarithms:}} continues} 
+
+\parstepwise{\begin{itemize}
+ \item \step{The BSGS algorithm is a generic algorithm.}\\ \step{It works for every finite cyclic group.}
+\item \step{It is based on the fact that any $x\in\Z/n\Z$ can be written as $x=j+ i m$}\\
+\step{with $m=\lceil\sqrt{n}\rceil$, $0\le j<m$ and $0\le i<m$}
+ \item  \step{Not necessary to know the order of the group $G$ in advance.}\\ 
+\step{The algorithm still works if an upper bound on the group order is known.}
+\item \step{Usually the BSGS algorithm is used for groups whose order is prime.}
+\item \step{The running time of the algorithm and the space complexity is $O(\sqrt{|G|})$,}\\ \step{much better than the $O(|G|)$ 
+running time of the naive brute force}
+\item \step{The algorithm was originally developed by Daniel Shanks.}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textsc{Discrete Logarithms:}} continues} 
+
+ In some groups Discrete logs are easy. For example if $G$ is a cyclic group and $\#G=2^m$ then we know
+that there are subgroups:\pause\vspace*{-7mm}
+$$\langle1\rangle=G_0\subset G_1\subset\cdots\subset G_m=G$$\pause\vspace*{-3mm}
+such that $G_i$ is cyclic and $\#G_i=2^i$. Furthermore\vspace*{-2mm}
+$$G_i=\left\{y\in G\text{ such that } y^{2^i}=1\right\}.$$\pause\vspace*{-3mm}
+If $G=\langle g\rangle$, for any $a\in G$, either $a^{2^{m-1}}=1$
+or $a^{2^{m-1}}=g^{2^{m-1}}$\pause
+From this property we deduce the algorithm:\vspace*{-2mm}
+\begin{center}\fbox
+{\textcolor{black}{
+\begin{minipage}[c]{9cm}
+\texttt{\noindent 
+\textcolor{red}{Input:}  A group $G=\langle g\rangle$, $|G|=2^m$ and $a\in G$\\
+\textcolor{blue}{Output:}  $k\in\Z/|G|\Z$ such that $a=g^k$\\
+1. $A:=a$, $K=0$\\
+2. For $j=1,2,\ldots, m$.\\
+\hspace*{.7cm} \qquad If $A^{2^{m-j}}\neq 1$, $A:=g^{-2^{j-1}}\cdot A; K:=K+2^{j-1}$\\
+3. Output $K$}
+\end{minipage}}}
+\end{center}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textsc{Discrete Logarithms:}} continues} 
+\parstepwise{
+\begin{itemize}
+\item \step{The above is a special case of the Pohlig-Hellman Algorithm which works}\\ \step{when $|G|$ has only small prime divisors}
+\item \step{To avoid this situation one crucial requirement for a DL-resistent group}\\ \step{in cryptography is that $\#G$ has a large prime divisor.}
+\item \step{If $p=2^k+1$ is a Fermat prime, then DL in $(\Z/p\Z)^*$ are easy.}
+\item \step{Classical algorithm for factoring have often analogues for computing}\\ \step{discrete logs. A very important one  is the \emph{Pollard $\rho$--method}.}
+\item \step{One of the strongest algorithms is the \emph{index calculus algorithm.}}\\ \step{NOT generic. It works only in ${\mathbb F}_q^*$.}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textbf{PROBLEM 9.}} \textsc{Square Roots Modulo a prime:}} 
+
+\fbox{Given an odd prime $p$ and a quadratic residue $a$, find $x$
+s. t. $x^2\equiv a\bmod p$}\pause
+
+It can be solved efficiently if we are given a quadratic nonresidue $g\in(\Z/p\Z)^*$\pause
+
+\parstepwise{\begin{enumerate}
+\item \step{We write $p-1=2^k\cdot q$ and we know that $(\Z/p\Z)^*$ has a (cyclic)}\\ \step{subgroup $G$ with $2^k$ elements.}
+\item \step{ Note that $b=g^q$ is a generator of $G$
+(in fact if it was $b^{2^j}\equiv1\bmod p$}\\ \step{for $j<k$, then $g^{(p-1)/2}\equiv1\bmod p$) and that $a^q\in G$}
+\item \step{Use the last algorithm to compute $t$ such that $a^q=b^t$. Note that $t$ is}\\ \step{even since
+$a^{(p-1)/2}\equiv1\bmod p$.}
+\item \step{Finally set $x=a^{(p-q)/2}b^{t/2}$ and observe that}\\
+\step{$\hspace*{3cm}\displaystyle{x^2=a^{(p-q)}b^{t}=a^p\equiv a\bmod p.}$}
+\end{enumerate}}\pause
+
+The above is not deterministic. However Schoof in 1985 discovered a polynomial time algorithm which is
+however not efficient.
+\end{slide}
+
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textbf{PROBLEM 10.}} \textsc{Modular Square Roots:}}
+
+\centerline{\fbox{Given $n,a\in\N$, find $x$ such that $x^2\equiv a\bmod n$}}\pause
+
+If the factorization of $n$ is known, then this problem (efficiently) can be solved in 3 steps:
+\parstepwise{\begin{enumerate}
+ \item \step{For each prime divisor $p$ of $n$ find $x_p$ such that $x_p^2\equiv a \bmod p$}
+\item \step{Use the Hensel's Lemma to lift $x_p$ to $y_p$ where $y_p^2\equiv a\bmod p^{v_p(n)}$}
+\item \step{Use the Chinese remainder Theorem to find $x\in\Z/n\Z$ such that}\\ \step{$x\equiv y_p\bmod p^{v_p(n)} \ \forall p\mid n$.}
+\item \step{Finally $x^2\equiv a\bmod n$.}
+\end{enumerate}}\pause
+
+The last two tools (Hensel's Lemma and Chinese Remainder Theorem) will be covered later
+ \end{slide}
+
+
+% \begin{slide}
+% 
+% \heading{ \textsc{Modular Square Roots:}\quad (continues)}  
+% 
+% On the opposite direction, suppose that for each $a\in\Z/n\Z$ we can solve $X^2\equiv a\bmod n$.
+% We want to use this hypothetical algorithm to find a factor of $n$.\pause
+% 
+% Choose $y$ at random in $\Z/n\Z$ and find $x$ such that $x^2\equiv y^2\bmod n$.\pause
+% 
+% Any common divisor of $x$ and $y$ also divides $n$. So we can assume that $x$ and $y$ are coprime.\pause
+% 
+% If $p>1$ is a prime factor of $n$, then $p$ divides $(x+y)(x-y)$. In addition $p$ divides exactly one
+% of the factors $(x+y)$ or $(x-y)$.\pause
+% 
+% If $y$ is random, then any of the primes that divides $x^2-y^2$ has $50\%$ chances of $x+y$ of $x-y$.\pause
+% 
+% Finally $\gcd(x-y,n)$ is a proper divisor of $n$. \pause
+% 
+% If the above fails, then try again choosing a different random $y$. After $k$ choices, the probability
+% that $n$ is not factored is $O(2^{-k})$.
+%  \end{slide}
+% 
+% 
+% \begin{slide}
+% 
+% \heading{ \textsc{Modular Square Roots:}\quad (continues)}  
+% 
+% The \textsc{Factoring} and \textsc{Modular square roots} are in practice equivalent in difficulty.\pause\bigskip\bigskip
+% 
+% The difficulty of solving the analogue problem for $e$--th roots modulo $n$ 
+% $$\textbf{i.e. Given $e, C, n$, find $x\in\Z/n\Z$ such that }x^e\equiv C\bmod n$$ \pause
+% 
+% is the base of the security of RSA
+% \end{slide}
+\begin{slide}
+\heading{Polynomials in $(\Z/n\Z)[X]$}
+
+A polynomial $f\in(\Z/n\Z)[X]$ is 
+$$f(X)=a_0+a_1X+\cdots+a_kX^k\quad\textbf{where}\quad a_0,\ldots,a_k\in\Z/n\Z$$\pause
+The degree of $f$ is $\deg f=k$ when $a_k\neq0$.\pause
+\noindent\textbf{Example:} If $f(X)=5+10X+21X^3\in\Z[x]$, then we can ``reduce'' it modulo
+$n$. So\vspace*{-3mm}
+$$f(X)\equiv X^3\bmod 5\quad\text{ which is the same as saying:} f(X)=X^3\in\Z/5\Z[X].$$ 
+$$f(X)\equiv 2+X\bmod 3\quad\text{ which is the same as saying:} f(X)=2+X\in\Z/3\Z[X].$$ 
+$$f(X)\equiv 5+3X\bmod 7\quad\text{ which is the same as saying:} f(X)=5+3X\in\Z/7\Z[X].$$\pause
+For the time being we restrict ourselves to the case of $f\in\Z/p\Z[X]$. The fact that
+$\Z/p\Z$ is a field is important. (Notation $\F_p=\Z/p\Z$ to remind us this)\pause
+We can add, subtract and multiply polynomials in $\F_p[X]$.
+\end{slide}
+
+\begin{slide}
+\heading{Polynomials in $\F_p[X]$}
+
+We can also divide them!! for $f, g\in\F_p[X]$ there exists $q$, $r\in\F_p[X]$ such that
+$$f=qg+r\quad\text{and}\quad \deg r<\deg g.$$
+\pause
+
+\textbf{Example:} Let $f=X^3+X+1, g=X^2+1\in\F_3[X]$. Then
+$$X^3+X+1=(X^2+X+2)(X+1)+2\quad\text{ so that }q=X^2+X+2, r=2$$
+% \pause
+% 
+% In Mathematica:\\
+%  \begin{tt}PolynomialQuotientRemainder[x\^\ 3 + x + 1, x + 1, x, Modulus -> 3]\end{tt} finds
+% $p$ and $r$.
+
+\end{slide}
+
+\begin{slide}
+\heading{Polynomials in $\F_p[X]$}
+
+The complexity for summing or subtracting $f,g\in\F_p[X]$ with $\max\{\deg f,\deg g\}<n$,
+is $O(\log p^n)$. Why?\pause
+
+The complexity of multiplying or dividing $f,g\in\F_p[X]$ with $\max\{\deg f,\deg g\}<n$,
+can be shown to be $O(\log^2(p^n))$. \pause
+
+\textcolor{red}{Important difference:} Polynomials in $\F_p[X]$ are not invertible except when they
+are constant but not zero. So $\F_p[X]$ looks much more like $\Z$ than like $\Z/m\Z$.
+
+But if $f,g\in\F_p[X]$, the $\gcd(f,g)$ exists and it is fast to calculate!!! % why?\pause
+
+%YES! The EEA also applies to $\F_p[X]$ (Indeed it applies when there is a true division)
+
+\end{slide}
+
+% \begin{slide}
+% \heading{Polynomials in $\F_p[X]$}
+% 
+% \textbf{Example} Let $f=X^3+X^2+X+1$, $g=X^3+X+1\in\F_2[X]$, Then
+% \begin{itemize}
+% 	\item $f=1(g)+ X^2$;
+%         \item $g=X(X^2)+X+1$;
+%         \item $X^2=(X+1)(X+1)+1$;
+%         \item $X+1=(X+1)1+0$.
+% \end{itemize}
+% 
+% So the sequence of quotients are $1, X, X+1, X+1\in\F_2[X]$ and we can apply the recursions to compute
+% the Bezout Identity.
+% 
+% % However in Mathematica:\\
+% %  \begin{tt}PolynomialGCD[(x+1)\^~3,x\^~3+x, Modulus -> 2] \\
+% % PolynomialExtendedGCD[1+X+X\^~2+X\^~3,1+X+X\^~3, Modulus -> 2]\end{tt}
+% \end{slide}
+
+\begin{slide}
+\heading{Polynomials in $\F_p[X]$}
+
+As in $\Z$ every $f\in\F_p[X]$ can be written as the product of irreducible polinomials.\pause
+
+% Mathematica Knows how to do it:\\
+% \begin{tt}Factor[x\^~3-3x\^~2-2x+6,Modulus -> 3]\end{tt}\pause
+
+The polynomial $X^p-X\in\F_p[X]$ is very special. What is its factorization?\pause
+ 
+$$X^p-X=\prod_{a\in\F_p}(X-a)\in\F_p[X].$$
+
+Why is it true?\pause
+
+FLT says that $a^p=a, \forall a\in\F_p$. Let's Look at one example.
+\end{slide}
+
+
+
+\begin{slide}
+\heading{\textcolor{red}{\textbf{PROBLEM 12.}} \textsc{Irreducibility Test for Polynomials in $\F_p$:}} 
+Given $f\in\F_p[X]$, determine if $f$ is irreducible:\pause
+\textbf{Theorem.} \textit{Let $X^{p^n}-X\in\F_p[X]$. Then
+$$X^{p^n}-X =\prod_{\substack{f\in\F_p[X]\\ f\text{irreducible}\\
+f\text{ monic} \\ \deg f\text{ divides }n}}f$$}\pause\vspace*{-3mm}
+We cannot prove it here but we deduce an algorithm:\vspace*{-3mm}
+\begin{center}
+\fbox{
+\textcolor{black}{
+\begin{minipage}[c]{11cm}
+\texttt{\noindent 
+\textcolor{red}{Input:} $f\in \F_p[X]$ monic\\
+\textcolor{blue}{Output:} ``\textcolor{Brown}{Irreducible}'' or ``\textcolor{Brown}{Composite}''\\
+1. $n:=\deg f$\\
+2. For $j = 1,\ldots, \lceil n/2\rceil$\\
+\hspace*{2cm} \qquad if $\gcd(X^{p^j}-X,f)\neq1$ then\\
+\hspace*{2cm} \qquad\qquad Output ``\textcolor{Brown}{Composite}'' and halt.\\
+3. Output ``\textcolor{Brown}{Irreducible}''.} 
+\end{minipage}}}
+\end{center}\vspace*{-5mm}
+\end{slide}
+
+
+
+\begin{slide}
+\heading{Polynomial equations modulo prime and prime powers}
+
+Often one considers the problem of finding roots of polynomial $f\in\Z/n\Z[X]$.\pause
+When $n=p$ is prime then one can exploit the extra properties coming from the identity
+$$X^p-X=\prod_{a\in\F_p}(X-a)\in\F_p[X].$$\pause
+From this identity it follows that $\gcd(f,X^p-X)$ is the product of liner factor $(X-a)$ where
+$a$ is a root of $f$.\pause
+Similarly we have that
+$$X^{(p-1)/2}-1=\prod_{\substack{a\in\F_p\\ \left(\frac ap\right)=1}}(X-a)\in\F_p[X].$$\pause
+
+This identity suggests the Cantor Zassenhaus Algorithm 
+\end{slide}
+
+
+\begin{slide}
+\heading{Cantor--Zassenhaus Algorithm}
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{11cm}
+\texttt{\noindent 
+\textcolor{black}{CZ$(p)$}\\
+\textcolor{red}{Input:} a prime $p$ and a polynomial $f\in\F_p[X]$\\
+\textcolor{blue}{Output:} a list of the roots of $f$\\
+1. $f:=\gcd(f(X),X^p-X)\in\F_p[X]$\\
+2. If $\deg(f)=0$ Output ``NO ROOTS''\\
+3. If $\deg(f)=1$,\\
+\hspace*{5mm} \quad Output the root of $f$ and halt\\
+4. Choose $b$ at random in $\F_p$\\
+\hspace*{5mm} \quad $g:=\gcd(f(X),(X+b)^{(p-1)/2})$\\
+\hspace*{5mm} \quad If $0<\deg(g)<\deg(f)$\\
+\hspace*{5mm} \quad Output $CZ(g)\cap CZ(f/g)$\\
+\hspace*{5mm} \quad Else goto step 3}
+\end{minipage}}}
+\end{center}\pause\vspace*{-3mm}
+The algorithm is correct since $f$ in (\begin{tt}Step 4\end{tt}) is the product of $(X-a)$ ($a$ root of $f$). So $g$ is
+the product of $X-a$ with $a+b$ quadratic residue.
+CZ$(p)$ has polynomial (probabilistic) complexity in $\log p^n$.\vspace*{-4mm} %($f$ has size $O(\log p^n)$).
+\end{slide}
+
+\begin{slide}
+\heading{Polynomial equations modulo prime powers}
+
+There is an explicit contruction due to Kurt Hensel that allows to ``lift'' a solution of
+$f(X)\equiv 0\bmod p^n$ to a solution of $f(X)\equiv0\bmod p^{2n}$.\pause
+
+\textcolor{blue}{Example: (Square Roots modulo Odd Prime Powers.} Suppose $x\in\F_p$ is a square root of $a\in\F_p$ .
+\pause
+Let $y= (x^2+a)/2x\bmod p^2$ ($y$ is well defined since $\gcd(2x,p^2)=1$). Then
+$$y^2 -a= \frac{(x^2-a)^2}{4x^2}\equiv0\bmod p^2$$
+since $p^2$ divides $(x^2-a)^2$.\pause
+
+The general story if the famous Hensel's Lemma.
+\end{slide}
+
+\begin{slide}
+\heading{Polynomial equations modulo prime powers}
+
+\noindent\textbf{Theorem} (\textsc{Hensel's Lemma}). \textit{Let $p$ be a prime, $f(X)\in\Z[X]$ and $a\in\Z$ such that
+$$f(a)\equiv0\bmod p^k,\qquad f'(a)\not\equiv0\bmod p.$$
+Then $b:= a-f(a)/f'(a)\bmod p^{2k}$ is the unique integer modulo $p^{2k}$ that satisfies
+$$f(b)\equiv0\bmod p^{2k},\qquad b\equiv a\bmod p^k.$$}\pause
+\textsc{Proof.} Replacing $f(x)$ by $f(x+a)$ we can restric to $a=0$. Then
+$$f(X)=f(0)+f'(0)X+ h(X)X^2\quad \text{where }h(X)\in\Z[X].$$
+Hence if $b\equiv 0\bmod p^k$, then $f(b)\equiv f(0)+bf'(0)\bmod p^{2k}$. Finally $b=-f(0)/f'(0)$ is the
+unique lift of $0$ modulo $p^{2k}$ that satisfies $f(b)\equiv0\bmod p^{2k}.\square$
+
+\end{slide}
+
+\begin{slide}
+\heading{Chinese Remainder Theorem}
+
+ \textsc{Chinese Remainder Theorem.} \textit{Let $m_1,\ldots,m_s\in\mathbb N$
+pairwise coprime and let $a_1,\ldots,a_s\in\mathbb Z$. Set $M=m_1\cdots m_s$. There exists 
+a unique $x\in\mathbb Z/M\mathbb Z$ such that
+$$
+\begin{cases}
+x\equiv a_1\bmod m_1\\
+x\equiv a_2\bmod m_2\\
+\ \ \ \vdots\\
+x\equiv a_s\bmod m_s.
+\end{cases}
+$$
+Furthermore if $a_1,\ldots,a_s\in\mathbb Z/M\mathbb Z$, then $x$ can be computed in time $O(s\log^2 M).$}
+\end{slide}
+
+\begin{slide}
+\heading{Chinese Remainder Theorem continues}
+
+\noindent\textsc{Proof.} Let us first assume that $s=2$. Then from EEA we can write
+$1=m_1x+m_2y$ for  appropriate $x, y\in\Z$. Consider the integer
+$$c=a_1m_2y+a_2m_1x.$$
+Then $c\equiv a_1\bmod m_1$ and $a\equiv a_2\bmod m_2$. Furthermore if $c'$ has the same 
+property, then $d=c-c'$ is divisible by $m_1$ and $m_2$. Since $\gcd(m_1,m_2)=1$ we have that
+$m_1m_2$ divides $d$ so that $c\equiv c'\bmod m_1m_2.$\\
+If $s>2$ then we can iterate the same process and consider the system:
+$$
+\begin{cases}
+x\equiv c\bmod m_1m_2\\
+x\equiv a_3\bmod m_3\\
+\ \ \ \vdots\\
+x\equiv a_s\bmod m_s.
+\end{cases}.\quad\square
+$$
+% In Mathematica,
+% \texttt{ChineseRemainder[$\{3, 4\}, \{4, 5\}$]} coincides with
+% $
+% \begin{cases}
+% x\equiv 3\bmod 4\\
+% x\equiv 4\bmod 5
+% \end{cases}
+% $
+
+\end{slide}
+
+\begin{slide}
+\heading{Chinese Remainder Theorem (applications)}
+
+It can be used to prove the multiplicativity of the Euler $\varphi$ function. More precisely,
+it implies that, if $\gcd(m,n)=1$, then the map:
+$$(\Z/mn\Z)^*\rightarrow (\Z/m\Z)^*\times(\Z/n\Z)^*, a\mapsto (a\bmod m,a\bmod n)$$
+is surjective. 
+\pause
+It can be used to glue solutions of congruence equations.\pause
+Let $f\in\Z[X]$ and suppose that $a, b\in\Z$ are such that
+$$f(a)\equiv(\bmod n),\quad f(b)\equiv(\bmod m).$$
+If $\gcd(m,n)=1$, then a solution $c$ of 
+$$
+\begin{cases}
+x\equiv a\bmod n\\
+x\equiv b\bmod m\\
+\end{cases}
+$$
+has the property that $f(c)\equiv0(\bmod nm)$.
+\end{slide}
+
+\end{document}

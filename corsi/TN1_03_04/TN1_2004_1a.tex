@@ -1,0 +1,138 @@
+\magnification 1200
+\ \hskip -6mm TN1 AA03/04\ (Teoria dei Numeri)\hfill
+\hfill Roma, 15 Aprile 2004. \hrule
+\bigskip
+\ \hskip -6mm \hfill
+SOLUZIONI DELL' ESAME DI MET\`{A} SEMESTRE \hfill \ \
+\medskip\hrule
+\bigskip
+
+
+\item{1.} Si determinino tutte le soluzioni intere della seguente equazione:
+$2X+3Y+5Z=100.$
+
+\bigskip\noindent{\bf SOLUZIONE.} \it Dalla Teoria sappiamo che se $(x_1,x_2)$ \`{e}
+una particolare soluzione di $2X_1+(3,5)X_2=100$ e $(y_1,y_2)$ \`{e} una particolare
+soluzione di $3Y_1+5Y_2=(3,5)$. Allora tutte e sole le soluzioni
+di questa equazioni si scrivono nel seguente modo:
+$$\matrix{x =&x_1+t\ \ \ \ \ \  \ \ \ \ \ \cr y=&y_1x_2-2y_1t+5s \cr z=&y_2x_2-2y_2t-3s}$$
+al variare di $s,t\in{\bf Z}$. Nel nostro caso possiamo prendere $(x_1,x_2)=(40,20)$
+e $(y_1,y_2)=(2,-1)$ e otteniamo le soluzioni:
+$$\matrix{x =&40+t\ \ \ \ \ \  \ \ \  \cr y=&40-4t+5s \cr z=&-20+2t-3s.}$$\rm
+\bigskip\bigskip
+
+ \item{2.} Per quali valori del parametro $\lambda$ il seguente sistema di
+congruenze ammette un unica soluzione?
+$\cases{2x-4y\equiv 0 \bmod 7\cr 3x+\lambda^2 y \equiv 1 \bmod 7.}$
+
+\bigskip\noindent{\bf SOLUZIONE.} \it Dalla teoria segue che il sistema di congruenze in
+questione ammette un unica soluzione se e solo se il determinante della matrice $\pmatrix{2&-4\cr 3&\lambda^2}$
+non \`{e} congruente a $0$ modulo $7$. Quindi se e solo se $2\lambda^2+12\not\equiv0\bmod7$ o analogamente
+se e solo se $\lambda^2\not\equiv 1\bmod 7$ il che vuol dire $\lambda\not\equiv\pm1\bmod7$.\rm
+\bigskip\bigskip
+
+\item{3.} Dimostrare il piccolo Teorema di Fermat.
+
+\bigskip\noindent{\bf SOLUZIONE.} \it Vedere le note a pagina 28\rm
+\bigskip\bigskip
+
+\item{4.} Dimostrare che per ogni primo $p$ la seguente congruenza \`{e} verificata:
+$(p-4)!\equiv 6^* \bmod p$ dove $6^*$ \`{e} l'inverso aritmetico modulo $p$.
+
+\bigskip\noindent{\bf SOLUZIONE.} \it Dal Teorema di Wilson che afferma che $(p-1)!\equiv-1\bmod p$, deduciamo che
+$-1\equiv (p-1)(p-2)(p-3)\cdot (p-4)!\equiv -6(p-4)!\bmod p$. Moltiplicando entrambi i membri della congruenza
+per $-6^*$, otteniamo $6^*\equiv 6^*\cdot 6(p-4)!\equiv (p-4)!\bmod p$.\rm\bigskip\bigskip
+
+\item{5.} Calcolare il numero delle soluzioni modulo $125$ della seguente congruenza polinomiale:
+${X^{3} - {11}X^{2} + {24}X - {14}}
+\equiv0\bmod 125. $
+
+\bigskip\noindent{\bf SOLUZIONE.} \it Cominciamo osservando che la congruenza $f(X):=X^{3} - {11}X^{2} +{24}X - {14}
+\equiv0\bmod 5$ ha come soluzioni $x=1,4$. Inoltre $f'(1)=5$ e $f'(4)=-16\not\equiv0\bmod5$. Dal
+Teorema del sollevamento otteniamo subito che $x=4$ da luogo ad un unica soluzione $x_1=24$ modulo $25$ e $x_1$
+da luogo ad un unica soluzione $y_1=74$ modulo $125$. Per quanto riguarda la soluzione $x=1$, osserviamo che
+$f(1)=0$ e pertanto $x=1$ da luogo a $5$ soluzioni modulo $25$ che sono $1,6,11,16,21$. Adesso osserviamo
+che $f(1)=0,f(6)=-50,f(11)=250,f(16)=1650,f(21)=4900$ e $f(6),f(16),f(21)\not\equiv0\bmod 125$.
+Pertanto $1$ e $11$ sono le uniche soluzioni modulo $25$
+che danno luogo a (cinque ciascuna) soluzioni modulo $125$. In conclusione la congruenza ammette $1+5+5=11$ soluzioni.
+\rm\bigskip\bigskip
+
+ \item{6.} Calcolare le soluzioni del sistema
+$\cases{X\equiv 4 \bmod 5\cr X\equiv 3\bmod 7}$
+nell'intervallo $[100,250].$
+
+\bigskip\noindent{\bf SOLUZIONE.} \it Si tratta di un applicazione del Teorema Cinese dei resti dal quale si
+deduce che l'equazione in questione ammette un unica soluzione modulo $35$. Usando la formula di risoluzione
+si calcola subito che la soluzione \`{e} $x=24$. Gli interi $y\equiv 24\bmod 35$ nell'intervallo $[100,250]$
+sono $129, 164, 199, 234$.\rm\bigskip\bigskip
+
+\item{7.} Si enunci il Teorema del sollevamento per soluzioni di congruenze polinomiali.
+
+\bigskip\noindent{\bf SOLUZIONE.} \it Sia $f\in{\bf Z}[X]$, $f\neq0$; sia $p$ un numero primo
+e $n\in{\bf N}$. Ogni soluzione $y$ della congruenza
+$$f(X)\equiv 0\bmod p^{n+1}\leqno(1)$$
+ha la forma $y=x+tp^{n}$ dove $0\leq t<p$ e $x$ \`{e} una soluzione di $f(X)\equiv0\bmod p^n$. Inoltre
+Inoltre
+\itemitem{-} Se $f'(x)\not\equiv0\bmod p$, allora $x+tp^n$ risolve (1) se e solo se $t\equiv {-f(x)\over(p^nf'(x))} \bmod p$;
+\itemitem{-} Se $f'(x)\equiv0\bmod p$ e $f(x)\not\equiv0\bmod p^{n+1}$, allora $x+tp^n$ non \`{e} mai una soluzione di (1);
+\itemitem{-} Se $f'(x)\equiv0\bmod p$ e $f(x)\equiv0\bmod p^{n+1}$, allora $x+tp^n$ \`{e} una soluzione di (1) per
+ogni $0\leq t<p$.\rm\bigskip\bigskip
+
+ \item{8.} Sia $p$ un primo dispari tale che $q=2p+1$ \`{e} anche primo. Mostrare che se un intero $a$, $2\leq a\leq p-2$
+\`{e} tale che $a^p\equiv-1\bmod q$ se e solo se $a$ \`{e} una radice primitiva modulo $q$.
+
+\bigskip\noindent{\bf SOLUZIONE.} $a^p$ \`{e} una soluzione della congruenza $X^2-1\equiv0\bmod q$. Quindi in
+ogni caso $a^p\equiv\pm1\bmod q$.
+Chiaramente se $a$ \`{e} una radice primitiva modulo $q$, allora non si pu\`{o} avere $a^p\equiv1\bmod q$
+(altrimenti si avrebbe ord$_q(a)|p$) e quindi deve essere $a^p\equiv-1\bmod q$. Viceversa se $a$ non fosse
+una radice primitiva allora ord$_q(a)<2p$ implicherebbe ord$_q(a)\in\{1,2,p\}$. Ma ord$_q(a)\neq1,2$ perch\`{e}
+$a\neq 1,p-1$. Infine ord$_q(a)\neq p$ perch\`{e} altrimenti si avrebbe $a^p\equiv1\bmod q$.\it
+
+\bigskip\bigskip
+
+\item{9.} Quante e quali soluzioni ha la congruenza
+$X^{15}\equiv 5 \bmod 93?$
+\hfill {\it Suggerimento: lavorare modulo primi}
+
+\bigskip\noindent{\bf SOLUZIONE.} \it La congruenza ha soluzione se e solo se le
+due congruenze: $X^{15}\equiv 5\bmod31$ e $X^{15}\equiv 5\bmod3$ sono entrambe risolubili.
+Per il Criterio di Eulero la prima congruenza non \`{e} risolubile infatti $5^{(31-1)/(30,15)}
+=25\not\equiv1\bmod 31$. Pertanto nemmeno la congruenza modulo $93$ \`{e} risolubile.\rm
+\bigskip\bigskip
+
+\item{10.} Mostrare direttamente che non esiste una radice primitiva modulo $24$.
+
+\bigskip\noindent{\bf SOLUZIONE.} \it Gli elementi di ${\bf Z}/24{\bf Z}$ coprimi con
+$24$ sono $1,5,7,11,13,17,19$ e $23$ che tutti
+hanno ordine $2$ tranne il primo che ha ordine $1$. Pertanto nessuno ha ordine $\varphi(24)=8$.
+\rm\bigskip\bigskip
+
+
+\item{11.} Illustrare l'algoritmo di Gauss per il calcolo di una radice primitiva.
+
+
+\bigskip\noindent{\bf SOLUZIONE.} \it ALGORITMO DI GAUSS\medskip
+\tt \itemitem{passo 1} Scegliere $a\in{\bf Z}/p{\bf Z}^*$ con $a\neq 1$ e calcolare $d:=$ord$_p(a)$.\hfill\break Se
+$d=p-1$, allora {\bf OUTPUT:} $a$ \`{e} una radice primitiva, {\bf END}.\medskip
+
+\itemitem{passo 2} Scegliere $b\in{\bf Z}/p{\bf Z}^*$ con $b\neq 1$ tale che $b\not\equiv a^i\bmod p, \forall i=1,\ldots,d$
+e calcolare $t:=$ord$_p(b)$.\hfill\break
+Se $t=p-1$, allora {\bf OUTPUT:} $a$ \`{e} una radice primitiva, {\bf END}.\medskip
+
+\itemitem{passo 3} Sia $d_1=$mcm$(t,d)$ e sia $a_1\equiv a^{d/(d,t)}b\bmod p$.\hfill {\rm (Nota che ord$_p(a_1)=d_1$)}\break Se
+$d_1=p-1$, allora {\bf OUTPUT:} $a_1$ \`{e} una radice primitiva, {\bf END}.\medskip
+
+\itemitem{passo 4} Vai al passo 2.
+\rm\bigskip\bigskip
+
+\item{12.} Usare una radice primitiva per mostrare che se $p$ \`{e} primo e $m$ \`{e}
+un intero, allora
+$$1^m+2^m+\cdots+ (p-1)^m\equiv \cases{0 \bmod p & se $(p-1)\not| m$\cr -1 \bmod p & se $p-1| m$.}$$
+
+\bigskip\noindent{\bf SOLUZIONE.}\it Sia $g$ una radice primitiva modulo $p$. Si ha che
+$$\sum_{j=1}^{p-1}j^m\equiv \sum_{i=1}^{p-1}g^{im}\bmod p.$$
+Se $p-1|m$, allora $g^{m}\equiv 1\bmod p$. Dunque
+$$\sum_{i=1}^{p-1}g^{im}\equiv p-1\equiv -1\bmod p.$$
+Se invece $p-1\not| m$, allora $g^m\not\equiv1\bmod p$ e
+$$\sum_{i=1}^{p-1}g^{im}={g^{pm}-g^m\over g^m-1}\equiv {g^m-g^m\over g^m-1}\equiv 0\bmod p.$$
+ \bye

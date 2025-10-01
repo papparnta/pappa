@@ -1,0 +1,137 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2010/2011}\\
+
+\textbf{AL210 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 11 - 20 Dicembre 2010}\\
+
+\textbf{Tutore: Matteo Acclavio}\\
+
+www.matematica3.com\\
+\end{center}
+
+\vspace{0.2 cm}
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Sia $A$ un dominio a ideali principali e sia $p\in A$ un elemento
+irriducibile. Mostrare che ogni elemento $a \in A \setminus \{0\}$ si pu\acc o scrivere
+come $a = px + b$, dove $x\neq 0$ e $b = 0$ oppure $p$ non divide $b$.
+\end{Ex}
+
+\vspace{0.2 cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Nell'anello degli interi di gauss sia $\alpha=13+5i$ e $\beta=8+9i$. Sia $I=(\alpha)$ e $J=(\beta)$.
+\begin{itemize}
+ \item Determinare una fattorizzazione di $\alpha$ e $\beta$
+ \item Determinare $MCD(\alpha , \beta)$
+  \item Detminare $I\cup J$ e $I+J$
+\end{itemize}
+
+\end{Ex}
+
+\vspace{0.2 cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Effettuare la divisione euclidea tra $13 + 18i$ e $5 + 3i$ in $\Z[i]$.\\ Mostrare che i possibili
+quozienti (ed i rispettivi resti) sono quattro.
+\end{Ex}
+
+
+\vspace{0.2 cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Sia $f(X) := 2X^3 + X^2 + 1$ e $A := \Z_3[X]/(f(X))$ .
+\begin{itemize}
+\item Mostrare che $A$ ha zero divisori;
+\item Mostrare che $\alpha := X^3 + (f(X))$ \acc e invertibile in $A$ e determinare il
+suo inverso.
+\end{itemize}
+\end{Ex}
+
+\vspace{0.2 cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Si consideri l'insieme $I:=\{m+ni \ | \ m,n \ \ pari \}\subseteq \Z[i]$.
+\begin{itemize}
+ \item Dimostrare che $I$ \acc e un ideale di $\Z[i]$
+ \item Trovare un generatore di $I$
+ \item Determinare se $I$ \acc e primo
+ \item Determinare se $I$ \acc e massimale
+ \item Scrivere esplicitamente gli elementi di $\Z[i]/I$ e determinare quali sono invertibili e quali zero divisori
+\end{itemize}
+\end{Ex}
+
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 6.}\\
+Si considerino $A[X]$ e $f(x),g(x) \in A[X]$ come indicati in seguito. Per ogni coppia di polinomi nell'anello indicato determinare $d(x):=MCD(f(x),g(x))$ e due polinomi $a(x)$ e $b(x) \in A[X]$ tali che $d(x)=a(x)f(x)+b(x)g(x)$.
+\begin{itemize}
+ \item $A=\Q \ \ \ \ \ \ \ f(x)=x^8-1  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g(x)=x^6-1$
+ \item $A=\Q \ \ \ \ \ \ \ f(x)=x^4+x^3+2x^2+x+1  \ \ \ \ \ \ \ \ g(x)=2x^3-3x^2+2x+2$
+ \item $A=\Q \ \ \ \ \ \ \ f(x)=2x^4-x^3+x^2+3x+1  \ \ \ \ \ g(x)=x^3+2x^2+2x+1$
+ \item $A=\C \ \ \ \ \ \ \ f(x)=x^{10}+7x^5  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g(x)=2x^7+4x$
+ \item $A=\Z_2 \ \ \ \ \ \ \ f(x)=x^7+1  \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g(x)=x^3+x$
+ \item $A=\Q \ \ \ \ \ \ \ f(x)=x^5+2x^3+x^2+x+1  \ \ \ \ \ \ \ \ g(x)=x^4-1$
+ \item $A=\R \ \ \ \ \ \ \ f(x)=x^4+x^3-x^2+x+2  \ \ \ \ \ \ \ \ \ \ \ g(x)=x^3+2x^2+2x+1$
+\end{itemize}
+\end{Ex}
+
+\end{document}

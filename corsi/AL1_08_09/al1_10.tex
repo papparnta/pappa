@@ -1,0 +1,140 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+
+\begin{document}
+\begin{center}
+
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2008/2009}\\
+
+\textbf{AL1 - Algebra 1: Fondamenti}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 10 - 18 Dicembre 2008}\\
+
+\textbf{Elisa Di Gloria, Luca Dell'Anna}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\vspace{0.5cm}
+
+
+
+
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Si dimostri che $\varphi(m)=m-1 \Sse m$ \`e un numero primo.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Provare che se $p$ \`e un numero primo diverso da 2,3 e 5, allora $p$ divide il numero $u_p=111\dots 1$ \quad $p-1$ volte (i.e. il numero ha $p-1$ cifre uguali a 1). 
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Siano $p$ e $q$ due numeri primi distinti e sia $a\in \Z$ tale che
+$$a^q\equiv a \textrm{ (mod $p$)}$$ $$a^p\equiv a \textrm{ (mod $q$)}$$
+Dimostrare che $a^{pq}\equiv a$ (mod $pq$).
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Sia $a\in \Z$, dimostrare che $10\mid a^5-a$.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Dire se e quali dei seguenti sono anelli o campi:
+\begin{itemize}
+	\item $(\Z,+,\cdot)$
+	\item $(\Z_n,+,\cdot)$
+	\item $(m\Z,+,\cdot)$  $m\neq 1$
+	\item $(\N,+,\cdot)$
+	\item $(\R \times \Z,+,\cdot)$
+	\item $(\Z_4\times \Z_9,+,\cdot)$.
+\end{itemize}
+Per ciascuno dei casi precedenti, esplicitare lo zero e l'unit\`a delle operazioni.
+\end{Ex}
+
+
+\vspace{3cm}
+\noindent
+\begin{Ex}\textbf{ 6.}\\ 
+Sia $S$ un insieme fissato e $\mathcal{P}(S)$ l'insieme delle parti di $S$. Definiamo su $\mathcal{P}(S)$ le seguenti operazioni: per ogni $A,B \in \mathcal{P}(S)$
+$$A+B=A\triangle B$$
+$$A\cdot B=A\cap B$$
+Dove $A\triangle B=A\cup B \setminus A\cap B$.\\
+Stabilire se \`e un anello.\\
+Pu\`o essere mai un campo?
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 7.}\\ 
+Su $\Z$ si definiscano le seguenti operazioni:
+$$\begin{array}{cc}
+x\oplus y=&x+y-1\\
+x\otimes y=&xy-x-y+2\\
+x\star y=&x+y-xy
+\end{array}$$
+\begin{itemize}
+	\item Provare che $(\Z,\oplus,\otimes)$ \`e un anello.
+	\item Provare che $(\Z,\oplus,\star)$ \`e un dominio.
+\end{itemize}
+Si scrivano esplicitamente gli elementi neutri delle tre operazioni.
+\end{Ex}
+\end{document}

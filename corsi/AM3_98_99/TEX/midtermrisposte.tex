@@ -1,0 +1,203 @@
+\documentclass[12pt,a4paper]{report}\pagenumbering{roman}
+\input psfig
+\begin{document}
+\begin{center}
+{\bf COMPITO DI MET\`A SEMESTRE}\\
+{\bf Analisi due (Primo modulo) - Corso di Laurea in FISICA}\\
+{\bf Sabato 21 Novembre, 1998}
+\end{center}
+\begin{enumerate}
+\item Si trovi la soluzione generale della seguente equazione:
+$$(a) y'''-5y''+7y'-3y=0$$
+$$(b) y'''+5y''+7y'+3y=0$$
+{\bf SOLUZIONE:}(a) {\it Il polinomio caratteristico dell'equazione 
+$\lambda^3-5\lambda^2+7\lambda-3$
+si fattorizza in $(\lambda-3)(\lambda-1)^2$. 
+La soluzione associata alla radice $\lambda_1=3$ \`e $e^{3x}$ e le soluzioni
+associate alla radice doppia $\lambda_{2,3}=1$  sono $e^x$ e $xe^x$. La soluzione 
+generale quindi \`e $y(x)=c_1e^{3x}+(c_2+c_3x)e^x$.}\\
+(b) {\it Il polinomio caratteristico dell'equazione 
+$\lambda^3+5\lambda^2+7\lambda+3$
+si fattorizza in $(\lambda+3)(\lambda+1)^2$. 
+La soluzione associata alla radice $\lambda_1=-3$ \`e $e^{-3x}$ e le soluzioni
+associate alla radice doppia $\lambda_{2,3}=-1$ sono $e^{-x}$ e 
+$xe^{-x}$. La soluzione 
+generale quindi \`e $y(x)=c_1e^{-3x}+(c_2+c_3x)e^{-x}$.}
+
+\item Si risolva il seguente problema di Cauchy:
+$$(a)\left\{\begin{array}{l} y'={y\over x}+{x\over y} \\ y(1)=1\end{array}\right.$$
+$$(b)\left\{\begin{array}{l} y'={y\over x}-{x\over y} \\ y(1)=2\end{array}\right.$$
+{\bf SOLUZIONE:}(a) {\it Si tratta di un equazione omogenea. La trasformazione standard $u=y/x$
+(in modo che $y'=u+xu'$) porta all'equazione a variabili separabili $xu'=1/u$ che ha 
+soluzione generale $(u(x))^2=c+2\ln x$ e quindi $(y(x))^2=cx^2+2x^2\ln x$. Osservando
+che $1=y(1)>0$ si ottiene che $1=y(1)^2=c+2\ln 1$ e quindi la soluzione \`e $y(x)=
+x\sqrt{1+2\ln x}$.}\\
+(b) {\it Si tratta di un equazione omogenea. La trasformazione standard $u=y/x$
+(in modo che $y'=u+xu'$) porta all'equazione a variabili separabili $xu'=-1/u$ che ha 
+soluzione generale $(u(x))^2=c-2\ln x$ e quindi $(y(x))^2=cx^2-2x^2\ln x$. Osservando
+che $2=y(1)>0$ si ottiene che $4=y(1)^2=c+2\ln 1$ e quindi la soluzione \`e $y(x)=
+x\sqrt{4-2\ln x}$.}
+
+
+\item Si determini la soluzione generale del seguente sistema di 
+equazioni differenziali e si classifichi il flusso associato allo spazio 
+delle soluzioni:
+$$(a) \left\{\begin{array}{l}y_1'=y_1+3y_2\\ y_2'=-y_1-y_2\end{array}\right.$$
+$$(b) \left\{\begin{array}{l}y_1'=y_1+2y_2\\ y_2'=-y_1-y_2\end{array}\right.$$
+{\bf SOLUZIONE:}(a) {\it La matrice associata al sistema \`e $\left({1\ \ \ 3\atop -1\ -1}\right)$ e ha
+polinomio caratteristico $\lambda^2+2=(\lambda-\sqrt2i)(\lambda+\sqrt2i)$. Gli autovettori $(v_1,v_2)$
+associati a $\sqrt2i$ soddisfano $(1-\sqrt2i)v_1+3v_2=0$ e quindi possiamo prendere $(v_1,v_2)=(3,\sqrt2i-1)$.
+Infine, una base per lo spazio delle soluzioni del sistema si ottiene considerando
+la parte reale e la parte immaginaria di 
+$\left(3(\cos \sqrt2x+i\sin \sqrt2x)\atop (\sqrt2i-1)(\cos \sqrt2x+i\sin \sqrt2x)\right)$ e quindi la soluzione
+generale \`e 
+$$\left\{\begin{array}{l} y_1(x)=3c_1\cos \sqrt2x+3c_2\sin \sqrt2x\\
+y_2(x)=-c_1(\cos \sqrt2x+\sqrt2\sin 2x)+c_2(\sqrt2\cos\sqrt2x-\sin\sqrt2x)\end{array} \right..$$
+Il flusso associato allo spazio delle soluzioni 
+\`e un centro in quanto gli autovalori sono numeri complessi puramente immaginari.}\\
+(b) {\it La matrice associata al sistema \`e $\left({1\ \ \ 2\atop -1\ -1}\right)$ e ha
+polinomio caratteristico $\lambda^2+1=(\lambda-i)(\lambda+i)$. Gli autovettori $(v_1,v_2)$
+associati a $\lambda=i$ soddisfano $(1-i)v_1+2v_2=0$ e quindi possiamo prendere $(v_1,v_2)=(2,i-1)$.
+Infine, una base per lo spazio delle soluzioni del sistema si ottiene considerando
+la parte reale e la parte immaginaria di 
+$\left(2(\cos x+i\sin x)\atop (i-1)(\cos x+i\sin x)\right)$ e quindi la soluzione
+generale \`e 
+$$\left\{\begin{array}{l} y_1(x)=2c_1\cos x+2c_2\sin x\\
+y_2(x)=-c_1(\cos x+\sin x)+c_2(\cos x-\sin x)\end{array} \right..$$
+Il flusso associato allo spazio delle soluzioni 
+\`e un centro in quanto gli autovalori sono numeri complessi puramente immaginari.}
+
+\item Sia ${\bf Dom}(f)$ il dominio della funzione 
+$$(a) f(x,y)=\sqrt{e^{-xy}(y+2+x^2)}$$
+$$(b) f(x,y)=\sqrt{e^{xy}(y+2-x^2)}$$
+ Dopo aver tracciato la figura di ${\bf Dom}(f)$, se ne determini
+l'interno, la chiusura, la frontiera e il derivato.\\
+{\bf SOLUZIONE:}(a) {\it Il dominio della funzione si ottiene risolvendo la disequazione
+$y+2+x^2\geq0$ (l'esponenziale, in quanto sempre positivo \`e ininfluente ai fini
+dell'esistenza della funzione). Il grafico:
+\medskip
+
+\centerline{\psfig{figure=eser4a.eps,height=2in,width=2.3in}}
+
+
+Quindi\\
+${\bf Dom}(f)^0=\left\{(x,y)\in{\bf R}^2\ \mbox{t.c.}\ y>-2-x^2\right\}$,\\
+$\overline{{\bf Dom}(f)}={\bf Dom}(f),$\\
+$\partial({\bf Dom}(f))\left\{(x,y)\in{\bf R}^2\ \mbox{t.c.}\ y=-2-x^2\right\}$ e\\
+$D({\bf Dom}(f))={\bf Dom}(f)$.}\\
+(b) {\it Il dominio della funzione si ottiene risolvendo la disequazione
+$y+2-x^2\geq0$ (l'esponenziale, in quanto sempre positivo \`e ininfluente ai fini
+dell'esistenza della funzione). Il grafico:
+\medskip
+
+\centerline{\psfig{figure=eser4b.eps,height=2in,width=2.3in}}
+
+
+Quindi\\
+${\bf Dom}(f)^0=\left\{(x,y)\in{\bf R}^2\ \mbox{t.c.}\ y>-2+x^2\right\}$,\\
+$\overline{{\bf Dom}(f)}={\bf Dom}(f),$\\
+$\partial({\bf Dom}(f))\left\{(x,y)\in{\bf R}^2\ \mbox{t.c.}\ y=-2+x^2\right\}$ e\\
+$D({\bf Dom}(f))={\bf Dom}(f)$.}
+
+\item Dopo averne tracciato la figura, si dimostri che il seguente sottoinsieme
+di ${\bf R}^2$ non \`e compatto costruendo un ricoprimento di aperti che non
+ammette un sottoricoprimento finito.
+$$S=\left\{(x,y)\in{\bf R}^2\ \mbox{t.c.}\ y\in[0,2]\ \mbox{e}\ y>x^2\right\}$$
+{\bf SOLUZIONE:} {\it La figura \`e la seguente:\medskip
+
+\centerline{\psfig{figure=eser5bis.eps,height=2in,width=2.3in}}
+
+Si consideri la seguente famiglia: 
+$$\left\{D_{\sqrt{6}-{1\over n}}((0,0))\right\}_{n\in{\bf N}}.$$
+\`E necessario verificare che:\\
+1. La famiglia \`e un ricoprimento cio\`e che 
+$S\subset\cup_{n\in{\bf N}}D_{\sqrt{6}-{1\over n}}((0,0))$\\
+2 Il ricoprimento non ammette un sottoricoprimento finito cio\`e 
+(essendo il ricoprimento telescopico) che per ogni $n_0\in{\bf N}$, 
+$$S\not\subseteq D_{\sqrt{6}-{1\over n}}((0,0)).$$
+Per verificare 1. basta osservare che se $(\alpha,\beta)\in S$, allora esiste $\delta>0$ 
+tale che $\alpha^2+\beta^2=\sqrt{6}-\delta$ e quindi $(\alpha,\beta)\in 
+D_{\sqrt{6}-{1\over n}}((0,0))$ per tutti gli $n>{1\over \delta}$. \\
+Per verificare 2. basta osservare che il punto $(\sqrt{(\sqrt{6}-{1\over n_0})^2-4},2)\in S$ non appartiene a 
+$D_{\sqrt{6}-{1\over n_0}}((0,0))$ qualunque sia $n_0\in{\bf N}$.}
+
+\item Si discuta la continuit\`a della seguente funzione $f:{\bf R}^2\longrightarrow
+{\bf R}$:
+$$(a) f(x,y)=\left\{\begin{array}{ll} {xy\arctan{x}\over y^2+(\arctan{x})^2} & 
+\mbox{se}\ \ (x,y)\neq (0,0)\\ \\0&\mbox{se}\ \ (x,y)=(0,0)\end{array}\right.$$
+$$(b) g(x,y)=\left\{\begin{array}{ll} {xy\arctan{y}\over x^2+(\arctan{y})^2} & 
+\mbox{se}\ \ (x,y)\neq (0,0)\\ \\0&\mbox{se}\ \ (x,y)=(0,0)\end{array}\right.$$
+{\bf SOLUZIONE:} (a) {\it La funzione \`e sicuramente continua per tutti i valori di $(x,y)$
+per cui non si annulla il denominatore $y^2+(\arctan{x})^2$. Quest'ultimo si annulla esclusivamente
+per $(x,y)=(0,0)$. Adesso utilizzando la disuguaglianza $|ab|/(a^2+b^2)\leq1$, otteniamo che
+per $(x,y)\neq(0,0)$, $|f(x,y)|\leq |x|$. Con il metodo del confronto otteniamo che $f(x,y)$ \`e continua 
+anche in $(0,0)$.}\\
+(b) {\it La soluzione \`e la stessa di quella di (a) osservando che $g(x,y)=f(y,x).$}
+
+\item Si calcoli il differenziale e il piano tangente nel punto $(1,1,e\ln2)$
+della superficie di equazione $z=e^x\ln(y+1)$.\\
+{\bf SOLUZIONE:} {\it Il gradiente della funzione \`e $\nabla f=(e^x\ln(y+1),e^x/(y+1))$ e
+quindi $\nabla f(1,1)=(e\ln2,e/2)$. Quindi per ogni $\xi=(\xi_1,\xi_2)\in{\bf R}^2$, abbiamo
+$$df_{(1,1)}(\xi)=e(\ln2\cdot\xi_1+{1\over2}\xi_2).$$
+oppure usando la notazione che utilizza i differenziali delle proiezioni: $df_{(1,1)}=e\ln2dx
++e/2dy$. L'equazione del piano tangente in $(1,1)$ \`e $z=e\ln2+e\ln2(x-1)+e/2(y-1).$}
+
+\item Si calcoli il polinomio di Taylor di grado tre intorno al punto $(0,0)$
+della funzione 
+$$(a) f(x,y)=\ln(x+y+1).$$
+$$(b) f(x,y)=\ln(x+y+1).$$
+{\bf SOLUZIONE:}(a) {\it \`E facile vedere che $\partial_xf=\partial_yf=(x+y+1)^{-1}$
+e quindi $\partial_{x^2}f=\partial_{y^2}f=\partial_{xy}f=-(x+y+1)^{-2}$ e infine
+$\partial_{x^3}f=\partial_{y^3}f=\partial_{xy^2}f=\partial_{x^2y}f=2(x+y+1)^{-3}$
+Sostituendo $(x,y)=(0,0)$ otteniamo
+$$P_3(x,y)=x+y-{1\over2}(x^2+2xy+y^2)+{1\over3}(x^3+3x^2y+3xy^2+y^3).$$
+}\\
+(b) {\it \`E facile vedere che $\partial_xf=-\partial_yf=(x-y+1)^{-1}$
+e quindi $\partial_{x^2}f=\partial_{y^2}f=-\partial_{xy}f=-(x-y+1)^{-2}$ e infine
+$\partial_{x^3}f=-\partial_{y^3}f=\partial_{xy^2}f=-\partial_{x^2y}f=2(x+y+1)^{-3}$
+Sostituendo $(x,y)=(0,0)$ otteniamo
+$$P_3(x,y)=x-y-{1\over2}(x^2-2xy+y^2)+{1\over3}(x^3-3x^2y+3xy^2-y^3).$$
+}
+\item Sia 
+$$(a) f(x,y)=y^3-3y+x^3-12x.$$
+$$(b) f(x,y)=y^3-3y-x^3+12x.$$
+Determinare i punti critici di 
+$f$ e classificarli con il metodo della matrice Hessiania.\\
+{\bf SOLUZIONE:}(a) {\it Il gradiente della funzione \`e dato da
+$\nabla f=(3x^2-12,3y^2-3)$ che si annulla nei seguenti quattro punti:
+$$A(2,1)\ \ B(2,-1)\ \ C(-2,1)\ \ D(-2,-1).$$
+La matrice Hessiana \`e data da
+$$\left(\begin{array}{ll} 6x& 0\\ 0& 6y\end{array}\right).$$
+Quindi $A$ \`e un massimo, $D$ \`e un minimo e $B$ e $C$ non sono n\'e massimi
+n\'e minimi.}\\
+(b) {\it Il gradiente della funzione \`e dato da
+$\nabla f=(-3x^2+12,3y^2-3)$ che si annulla nei seguenti quattro punti:
+$$A(2,1)\ \ B(2,-1)\ \ C(-2,1)\ \ D(-2,-1).$$
+La matrice Hessiana \`e data da
+$$\left(\begin{array}{ll} -6x& 0\\ 0& 6y\end{array}\right).$$
+Quindi $B$ \`e un massimo, $C$ \`e un minimo e $A$ e $D$ non sono n\'e massimi
+n\'e minimi.}
+
+\item Si risolva la seguente equazione differenziale:
+$$(a) (\cos(x+y)+\cos x)dx+(\cos y+\cos(x+y))dy=0$$
+$$(b) (\cos(x-y)+\cos x)dx+(\cos y-\cos(x-y))dy=0$$
+{\bf SOLUZIONE}(a) {\it Si tratta di un equazione differenziale esatta in quanto
+$${\partial\over\partial y}(\cos(x+y)+\cos x)={\partial\over\partial x}(\cos y+\cos(x+y))
+=-\sin(x+y).$$
+Integrando il primo coefficiente rispetto a $x$, otteniamo
+$$\int(\cos(x+y)+\cos x)dx=\sin(x+y)+\sin x+g(y)$$
+e derivando rispetto a $y$ otteniamo
+$$\cos(x+y)+g'(y)=\cos(x+y)+\cos y.$$
+Quindi $g(y)=\sin y +c$ e la soluzione generale \`e
+$$\sin(x+y)+\sin x+\sin y=-c.$$}\\
+(b) {\it Si tratta di un equazione differenziale esatta in quanto
+$${\partial\over\partial y}(\cos(x-y)+\cos x)={\partial\over\partial x}(\cos y-\cos(x-y))
+=\sin(x-y).$$
+Integrando il primo coefficiente rispetto a $x$, otteniamo
+$$\int(\cos(x-y)+\cos x)dx=\sin(x-y)+\sin x+g(y)$$
+e derivando rispetto a $y$ otteniamo
+$$-\cos(x-y)+g'(y)=-\cos(x-y)+\cos y.$$
+Quindi $g(y)=\sin y +c$ e la soluzione generale \`e
+$$\sin(x-y)+\sin x+\sin y=-c.$$}
+\end{enumerate}
+\end{document}

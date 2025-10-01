@@ -1,0 +1,139 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+
+\begin{document}
+\begin{center}
+
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2008/2009}\\
+
+\textbf{AL1 - Algebra 1: Fondamenti}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 7 - 27 Novembre 2008}\\
+
+\textbf{Elisa Di Gloria, Luca Dell'Anna}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\vspace{0.5cm}
+
+
+
+
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Utilizzando l'algoritmo euclideo delle divisioni successive, calcolare il MCD delle seguenti coppie di numeri:
+\begin{itemize}
+	\item (22,14);
+	\item (54,77);
+	\item (117,99);
+	\item (2342, 1764);
+	\item (5577,7755);
+	\item (2008,2080);
+	\item (2178,1221).
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Se MCD$(a,b)=d$ e $\lambda$ e $\mu$ formano una coppia di interi soddisfacente l'identit\`a di B\'ezout $d=\lambda a + \mu b$, provare che MCD$(\lambda,\mu)=1$.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Dimostrare che se $a$ e $b$ sono due interi primi tra loro e tali che $ab$ \`e un quadrato, allora $a$ e $b$ sono quadrati.
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Calcolare MCD e la coppia $(\lambda,\mu)$ dell'identit\`a di B\'ezout tra le seguenti coppie di numeri:
+\begin{itemize}
+	\item (72,120);
+	\item (300,497);
+	\item (5865,4416);
+	\item (1215,510).
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Dimostrare che MCD$(a,b)=a$ $\Sse$ mcm$(a,b)=b$ $\Sse$ $a\mid b$.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 6.}\\
+Utilizzando l'algoritmo euclideo delle divisioni successive, stabilire che:
+\begin{description}
+	\item [(a)] ogni numero intero dispari \`e della forma $4k + 1$, $4k + 3$, con $k\in \Z$;
+	\item [(b)] il quadrato di ogni numero intero \`e della forma $3k$, $3k + 1$, con $k\in \Z$;
+	\item [(c)] il cubo di ogni numero intero \`e della forma $9k$ oppure $9k + 1$ oppure $9k + 8$, con $k\in \Z$.
+\end{description}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 7.}\\
+Utilizzando l'algoritmo euclideo delle divisioni successive:
+\begin {itemize}
+	\item Calcolare MCD$(2424,772)$ e un'identit\`a di B\'ezout;
+	\item Provare che MCD$(a,b)\mid (a-b)$;
+	\item Usando il punto precedente, trovare MCD$(1962,1965)$ e MCD$(1961,1965)$.
+\end{itemize}
+\end{Ex}
+
+\end{document}

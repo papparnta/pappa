@@ -1,0 +1,1092 @@
+\documentclass[landscape,display]{powersem}%
+\usepackage{fancybox,marvosym,graphicx,amsmath,amssymb,pifont}
+\usepackage[bookmarksopen,colorlinks,urlcolor=red,pdfpagemode=FullScreen]{hyperref}
+\usepackage{fixseminar}
+\usepackage{color}
+\usepackage[latin1]{inputenc}
+\usepackage[coloremph,colormath,colorhighlight,lightbackground]{texpower}
+
+\hfuzz=30pt \vfuzz=30pt \setlength{\slidewidth}{25cm}
+\setlength{\slideheight}{17.5cm} \slideframe{}
+\def\slideitemsep{.5ex plus .3ex minus .2ex}
+\renewcommand{\slidetopmargin}{10mm}
+\renewcommand{\slidebottommargin}{15mm}
+\renewcommand{\slideleftmargin}{5mm}
+\renewcommand{\sliderightmargin}{5mm}
+\newcommand{\heading}[1]{%
+ \begin{center}
+  \large\bf
+  \shadowbox{{\textcolor{conceptcolor}{#1}}}%
+ \end{center}
+ \vspace{1ex minus 1ex}}
+\backgroundstyle[startcolor=white,
+                   endcolor=grey,%firstgradprogression=3,
+            rightpanelwidth=-7\semcm,,rightpanelcolor=pagecolor]{hgradient}%
+%%%%%%%%%%%%% DATI DEL SEMINARIO IN QUESTIONE %%%%%%%%%%%%
+
+\newcommand{\Ccal}{{\mathcal C}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\Z}{{\mathbb Z}}
+\definecolor{verdescu}{rgb}{0,0.6,0.6}
+\definecolor{rossoscu}{rgb}{1,0,0.2}
+
+\newcommand{\manorossa}{\textcolor{conceptcolor}{\ding{43}}}
+\newcommand{\matitablu}{\textcolor{altemcolor}{\ding{46}}}
+\newcommand{\verde}{\textcolor{black}}
+\newpagestyle{327}%
+ {\textcolor{codecolor}{\textit{Public Key Cryptography}} \hspace{\fill}\rightmark
+\hspace{1cm}\thepage}
+ {\includegraphics[width=4mm]{images/dipmat.pdf}\hspace{\fill}\textcolor{codecolor}{\sc Universit\`a Roma Tre}
+ \hspace{\fill}\includegraphics[width=5mm]{images/roma3.pdf}}%%
+\pagestyle{327} \markright{\textcolor{conceptcolor}{College for Women, Baghdad University}}
+
+%\title{\textcolor{red}{Finite fields, Permutation Polynomials. Computational aspects with
+%applications to public key cryptography}}
+%\author{\textcolor{green}{Francesco Pappalardi}}
+%\date{ Dhahran, Saudi Arabia\\
+%Workshop on Industrial Mathematics\\
+%\textcolor{red}{Dhahran February 29, 2004}}
+
+
+\begin{document}
+\begin{slide}\pagestyle{empty}
+\addtocounter{slide}{-1}
+\includegraphics[width=1.3cm]{images/crypto.jpg}\ \hfill \includegraphics[width=1.3cm]{images/crypto.jpg}
+\vfil
+
+\begin{sc}\begin{center}
+\small{
+\textbf{Lecture in Advanced Number Theory}\\ \emph{College of Science for Women}\\ Baghdad University}
+
+April 1, 2014
+\vspace*{1cm}
+
+\begin{Large}
+\textcolor{underlcolor}{Finite fields, Permutation Polynomials.
+Computational aspects with applications to public key
+cryptography}
+\end{Large}
+\vfill
+Francesco Pappalardi
+\end{center}
+\end{sc}
+
+\vfill
+
+\includegraphics[width=1.3cm]{images/crypto.jpg}\ \hfill \includegraphics[width=1.3cm]{images/crypto.jpg}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+
+\heading{\verde{\textbf{Private key}} versus \textbf{Public Key}
+}\pause\medskip
+
+\centerline{\includegraphics[width=8cm]{images/figure2.pdf}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}\addtocounter{slide}{-1}
+
+\heading{\textbf{Private key} versus \verde{\textbf{Public
+Key}}}\medskip
+
+\centerline{\includegraphics[width=8cm]{images/figure3.pdf}}
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+
+\heading{Classical General Examples of PKC}\bigskip
+
+\parstepwise{\begin{itemize}
+  \item[\textcolor{blue}{\ding{182}}] \step{(1976) Diffie Hellmann Key exchange protocol}
+   \step{\emph{IEEE Trans. Information Theory IT-22 (1976)}}
+  \item[\textcolor{blue}{\ding{183}}]  \step{(1983) Massey Omura Cryptosystem}\\
+\step{\emph{Proc. $4^{th}$ Benelux Symposium on Information Theory (1983)}}
+  \item[\textcolor{blue}{\ding{184}}]  \step{(1984) ElGamal Cryptosystem}
+  \step{\emph{IEEE Trans. Information Theory IT-31 (1985)}}
+\end{itemize}}\pause
+
+\centerline{\includegraphics[width=6cm]{images/image033.jpg}}
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Diffie--Hellmann key exchange 1/5}
+
+\centerline{\includegraphics[width=9.4cm]{images/Satellite.jpg}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Diffie--Hellmann key exchange 2/5}\pause
+\parstepwise{
+\begin{itemize}
+\item[\textcolor{blue}{\ding{182}}] \step{\textbf{Alice} and
+\textbf{Bob} agree on a prime $p$ and a \textit{\underline{generator}} $g$ in
+$\Z/p\Z$}
+\item[\textcolor{blue}{\ding{183}}] \step{\textbf{Alice}
+picks a \textcolor{red}{secret} $a$,} \step{$0\leq a\leq p-1$}
+\item[\textcolor{blue}{\ding{184}}] \step{\textbf{Bob} picks
+a \textcolor{red}{secret} $b$, $0\leq b\leq p-1$}
+\item[\textcolor{blue}{\ding{185}}] \step{They compute and publish $g^a\bmod p$
+(\textbf{Alice}) and $g^b\bmod p$ (\textbf{Bob})}
+\item[\textcolor{blue}{\ding{186}}] \step{The common
+\textcolor{red}{secret} key is $g^{ab}\bmod p$}
+\end{itemize}}\pause
+
+{\parstepwise{\includegraphics[width=7cm]{images/dh.jpg} \step{\emph{what
+is a \underline{generator} of $\Z/p\Z$?}}}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Diffie--Hellmann key exchange 3/5}
+
+\parstepwise{
+\begin{itemize}
+\item[\textcolor{red}{\ding{43}}] \step{A generator (or primitive
+root) $g$ of a prime number $p$ is a number} \step{whose powers
+mod $p$, generate $1,\ldots, p - 1$}
+\item[\textcolor{red}{\ding{43}}] \step{So $g\bmod p,\ g^2\bmod p,
+\ldots,\ g^{p-1}\bmod p$ are all distinct,} \step{i.e., a
+permutation of $1$ through $p - 1$}
+\item[\textcolor{red}{\ding{43}}] \step{In other words: for all
+$b\in\Z/p\Z, b\neq0$,} \step{there exists an exponent
+$i\in\{0,1,\ldots,p-1\}$ such that $b=g^i\bmod p$}
+\item[\textcolor{red}{\ding{43}}] \step{Given $b\in\Z$, exponent
+$i$ above is} \step{the \emph{discrete logarithm} of $b$ for base
+$g$ $\bmod p$} \item[\textcolor{red}{\ding{43}}] \step{Computing
+discrete logs appears infeasible in general}
+\end{itemize}}
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Diffie--Hellmann key exchange 4/5}
+
+\centerline{\includegraphics[width=7cm]{images/dh.jpg}}\pause
+
+\parstepwise{
+\begin{itemize}
+\item[\textcolor{blue}{\ding{43}}]
+\step{\textbf{\textcolor{black}{Eve}}
+knows $g^a$, $g^b$ but would like to compute $g^{ab}$};
+\item[\textcolor{blue}{\ding{43}}]
+\step{\textbf{\textcolor{black}{Eve}}
+could compute a discrete logarithm to find $a$ and then $(g^b)^a$}
+\item[\textcolor{blue}{\ding{43}}] \step{for given $\alpha,g,p$,
+\textbf{\textcolor{black}{Eve}} should solve:}\end{itemize}}\pause
+$$g^X\equiv\alpha\bmod p$$
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Diffie--Hellmann key exchange 5/5}\pause
+
+A ``criptographically meaningful size'' example:\pause
+
+\begin{tiny}
+$p=370273307460967425842481081357528298315386585184169353328410050632472746552261503118421027658$
+  $\ \ \ \ \ 721711241508544733578984012456938357678209461867245573821426204444288523552318347549870943602$
+  $\ \ \ \ \ 1902398769259658537444365842890327$
+\pause $g=5$\pause
+
+$\textcolor{red}{a=230884090203989538822791747965302672267956566803890984719811170401834881423535241039556153839}$
+$\textcolor{red}{\ \ \ \ \
+50300790706016512170324186640960442741350790022942149093292104570603304669117473786798985}$
+$\textcolor{red}{\ \ \ \ \
+00024210343154844771162635809902530822}$\pause
+
+$\textcolor{red}{b=202628627712040976052737350793757540205242681192017941068774728007392912193775762330719406560}$
+$\textcolor{red}{\ \ \ \ \
+04093331116419046740605076855604279856790686813698840332610088778267557488150882421959663}$
+$\textcolor{red}{\ \ \ \ \
+70518057438047030854128879946541952289}$\pause
+
+$\textcolor{blue}{5^a=249451424107893262892484442575689156622349940771024747733612460962310329209496530481469732410}$
+$\textcolor{blue}{\ \ \ \ \ \ \
+95957576012477323952872295620523253758143768040422343030840568653423985771858393578141665}$
+$\textcolor{blue}{\ \ \ \ \ \ \
+18479146351026737882783508710913577680}$\pause
+
+$\textcolor{blue}{5^b=287293760357523957032946092556813694596882586743260552838382768832192594422702357607546631218}$
+$\textcolor{blue}{\ \ \ \ \ \ \
+64001485395789301444617793223201594706097398360331195161213836214741498824201098331045762}$
+$\textcolor{blue}{\ \ \ \ \ \ \
+16804562648795943563091024975401008295}$\pause\vspace{-2mm}
+
+$\textcolor{black}{5^{ab}=36674172125349300306071275329964633749875664216293811088694156172838197865927916343627669411}$\vspace{-2.5mm}
+$\textcolor{black}{\ \ \ \ \ \ \ \ \ 4396823489217444401038685650925971812733853762885262933444987558589066268362684366645128712}$\vspace{-2.5mm}
+$\textcolor{black}{\ \ \ \ \ \ \ \ \ 2395082920958736911545732951584464496}$
+\end{tiny}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Discrete Logarithms Computation}\pause
+
+Some classical algorithms:\pause
+
+\parstepwise{
+\begin{itemize}
+\item[\textcolor{red}{\ding{44}}] \step{Shanks \emph{baby-step,
+giant step}} \step{\textit{Proc. $2^{nd}$ Manitoba Conf. Numerical
+Mathematics (Winnipeg, 1972).}}
+
+\item[\textcolor{red}{\ding{44}}] \step{Pohlig--Hellmann
+Algorithm} \step{\textit{IEEE Trans. Information Theory IT-24
+(1978).}}
+
+\item[\textcolor{red}{\ding{44}}] \step{Index computation
+algorithm}
+
+
+\item[\textcolor{red}{\ding{44}}] \step{Sieving algorithms}
+\step{\emph{La Macchia \& Odlyzko, Designs Codes and Cryptography 1 (1991)}}
+\end{itemize}}\pause\bigskip
+
+
+\textbf{NOTE:} The last two are "very special" for $\Z/p\Z$
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+
+
+\heading{Discrete Logarithms computation Records 1/2}
+
+%Computing a discrete logarithm in $\Z/p\Z$, where $p$ a 90 digits prime ,
+
+A. Joux et R. Lercier, 1998.\pause
+
+\begin{tiny}
+$\begin{array}{rcl}  p &=& \lfloor 10^{89} \pi \rfloor+ 156137\\
+   &=& 314159265358979323846264338327950288419716939937510582097494459230781640628620899862959619,\\
+   & &g = 2,  \end{array}$\pause
+
+$\begin{array}{rcl}  y &=& \lfloor 10^{89} e \rfloor\\
+   &=& 271828182845904523536028747135266249775724709369995957496696762772407663035354759457138217
+   \end{array}$\pause
+$$2^X\equiv y\bmod p$$\pause
+
+$  y =
+g^{1767138072114216962732048234071620272302057952449914157493844716677918658538374188101093},$\pause
+$  y+1 =
+g^{31160419870582697488207880919786823820449120001421617617058468654271221802926927230033421},$\pause
+$  y+2 =
+g^{308988329335044525333827764914501407237168034577534227927033783999866774252739278678837301},$\pause
+$  y+3 =
+g^{65806888002788380103712986883663253187183505405451188935055113209887949364255134815297846},$\pause
+$  y+4 =
+g^{40696010882128699199753165934604918894868490454360617887844587935353795462185105078977093}$\pause
+\end{tiny}\medskip
+
+\centerline{\emph{It took $4.5$ months... on a Pentium PRO 180 MHz }}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+
+
+\heading{Discrete Logarithms computation Records 2/2}\pause
+
+\textbf{A. Joux et R. Lercier} (CNRS / Ecole Polytechnique)\pause
+
+\parstepwise{\begin{itemize}
+\item[\textcolor{black}{\ding{172}}] \step{1999 $p\cong 10^{100}$\\}
+\step{\texttt{500MHz
+quadri-processors Dec Alpha Server}}\step{ -- 8.5 months;}\medskip
+
+\item[\textcolor{black}{\ding{173}}] \step{2001 $p\cong 10^{110}$\\ }
+\step{\texttt{525MHz quadri-processors Digital
+Alpha Server 8400}}\step{ -- 20 days;}\medskip
+
+\item[\textcolor{black}{\ding{174}}] \step{2001 $p\cong 10^{120}$;}
+\step{\textbf{(Current Record!)}} \step{\texttt{2.5 months}}
+\end{itemize}}\pause
+
+$ p = \lfloor 10^{119} \pi \rfloor+ 207819$, $g=2$\pause
+
+$y = \lfloor 10^{119}\rfloor$\pause
+
+\begin{tiny}
+
+$y=g^{{262112280685811387636008622038191827370390768520656974243035\atop
+       380382193478767436018681449804940840373741641452864730765082}},$
+          \end{tiny}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{ElGamal Cryptosystem 1/2}
+
+\textbf{Alice} wants to sent a message $x\in\Z/p\Z$ to
+\textbf{Bob}\bigskip\pause
+
+\centerline{\textcolor{black}{\textsc{SETUP:}}}\pause
+\parstepwise{
+\begin{itemize}
+\item[\textcolor{blue}{\ding{182}}] \step{\textbf{Alice} and
+\textbf{Bob} agree on a prime $p$ and a \textit{\underline{generator}} $g$ in
+$\Z/p\Z$}\medskip
+\item[\textcolor{blue}{\ding{183}}] \step{\textbf{Bob} picks
+a \textcolor{red}{secret} $b$, $0< b\leq p-1$, }
+\step{he computes $\beta=g^b\bmod p$ and publishes $\beta$}
+\end{itemize}}\pause\bigskip
+
+\centerline{\textcolor{black}{\textsc{ENCRYPTION:}} (Alice)}\pause
+\parstepwise{
+\begin{itemize}
+\item[\textcolor{red}{\ding{172}}] \step{\textbf{Alice}
+picks a \textcolor{red}{secret} $k$,} \step{$0< k\leq p-1$}\medskip
+\item[\textcolor{red}{\ding{173}}] \step{She computes $\alpha=g^k\bmod p$
+and $\gamma=x\cdot \beta^a\bmod p$}\medskip
+\item[\textcolor{red}{\ding{174}}] \step{The encrypted message is}\\
+\step{{\hspace{4cm}$E(x)=(\alpha,\gamma)\in \Z/p\Z\times\Z/p\Z$}}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{ElGamal Cryptosystem 2/2}\pause\medskip
+
+\centerline{\textcolor{black}{\textsc{DECRYPTION:}} (Bob)}\pause
+\parstepwise{
+\begin{itemize}
+\item[\textcolor{blue}{\ding{172}}] \step{\textbf{Bob} computes}\\
+\step{\hspace{4cm}$D(\alpha,\gamma)=\gamma\cdot\alpha^{p-1-b}\bmod p$}
+\item[\textcolor{blue}{\ding{173}}] \step{It works because}\\
+\step{\hspace{4cm}$D(E(x))=D(\alpha,\gamma)=x\cdot g^{bk}\cdot g^{k(p-1-b)}=x$}\\
+\step{since $g^{k(p-1)}\bmod p =1$ by}
+\end{itemize}}\pause\smallskip
+
+\begin{center}
+\begin{tabular}{|c|}
+\hline \textbf{\textcolor{red}{Fermat Little Theorem}} If $p$ is prime, $p\nmid a\in{\mathbb N}$\\
+$a^{p-1}\equiv1\bmod p$
+\\\hline\end{tabular}
+\end{center}\pause
+
+\textbf{\textcolor{black}{Eve}} can decrypt the message if he can
+compute the discrete logarithm $X$,\pause
+$$\beta=g^X\bmod p$$
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Massey Omura 1/2}\pause
+
+\centerline{\textbf{Alice}\
+\includegraphics[width=5cm]{images/MasseyOmura.jpg}\ \textbf{Bob}}\pause
+
+\parstepwise{
+\begin{itemize}
+\item[\textcolor{red}{\ding{172}}]
+\step{\textbf{Alice} and \textbf{Bob} each picks a secret key $k_A,k_B\in\{1,\ldots,p-1\}$}
+\item[\textcolor{red}{\ding{173}}]
+\step{They compute $l_A,l_B\in\{1,\ldots,p-1\}$ such that}
+\item[\textcolor{red}{\ding{174}}]
+\step{$k_Al_A=1(\bmod p-1)$ and $k_Bl_B=1(\bmod p-1)$}
+\item[\textcolor{red}{\ding{175}}]
+\step{\textbf{Alice} key is $(k_A,l_A)$ ($k_A$ to lock and $l_A$ to unlock)}
+\item[\textcolor{red}{\ding{176}}]
+\step{\textbf{Bob} key is $(k_B,l_B)$ ($k_B$ to lock and $l_B$ to unlock)}
+\end{itemize}}
+
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Massey Omura 2/2}
+
+\centerline{\textbf{Alice} $(k_A,l_A)$\
+\includegraphics[width=4cm]{images/MasseyOmura.jpg}\ \textbf{Bob}
+$(k_B,l_B)$}\pause
+
+\parstepwise{
+\begin{itemize}
+\item[\textcolor{blue}{\ding{172}}] \step{To send the message $P$, \textbf{Alice} computes and sends
+$M=P^{k_A}\bmod p$}
+\item[\textcolor{blue}{\ding{173}}] \step{\textbf{Bob} computes and sends back $N=M^{k_B}\bmod p$}
+\item[\textcolor{blue}{\ding{174}}] \step{\textbf{Alice} computes $L=N^{l_A}\pmod p$ and sends
+it back to \textbf{Bob}}
+\item[\textcolor{blue}{\ding{175}}] \step{\textbf{Bob} decrypt the message computing $P=L^{l_B}\pmod p$}
+\end{itemize}}\pause
+
+It works: $P=L^{l_B}=N^{l_Al_B}=M^{k_Bl_Al_B}=P^{{k_Ak_Bl_Al_B}}$ by Fermat Little Theorem
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{From $\Z/p\Z$ to cyclic groups}\pause
+
+We can substitute $\Z/p\Z$ with a set $G$ where it is possible to
+compute powers $P^a$ and there is a generator (there is $g\in G$
+such that for each $\alpha\in G$, $\alpha=g^i$ for a suitable $i$);
+\emph{cyclic groups}\pause
+
+\centerline{\textbf{\textcolor{red}{Examples of cyclic
+groups}}}\pause
+
+\parstepwise{
+\begin{itemize}
+\item[\textcolor{black}{\ding{172}}] \step{Elliptic curves modulo $p$}
+\item[\textcolor{black}{\ding{173}}] \step{Multiplicative groups of Finite Fields}
+\item[\textcolor{black}{\ding{174}}] \step{Dickson Polynomials over finite fields}
+\end{itemize}}\pause
+
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+
+\heading{Finite Fields}\pause
+
+\parstepwise{\begin{itemize}
+\item[\textcolor{red}{\ding{43}}]\step{ Let
+$\F_p=\Z/p\Z=\{0,1,\ldots,p-1\}$\hspace*{3cm} (\textcolor{red}{field} if
+$p$ prime)}
+\item[\textcolor{red}{\ding{43}}] \step{Given $f\in \F_p[x]$
+\textcolor{red}{irreducible} ($m=\partial(f)$)}\\
+\step{{\hspace*{1cm}\fbox{$\F_p[x]/(f)=\{ a_0+a_1t+\cdots +
+a_{m-1}t^{m-1}\ |\ a_i\in\F_p\}$}}}
+\item[\textcolor{red}{\ding{43}}] \step{$\F_p[x]/(f)$ is a field}\\ %under componentwise addition and
+\step{\hspace*{1cm}($g_1\star g_2\in\F_p[x]/(f)$ is $g_1g_2\bmod f$)}
+\item[\textcolor{red}{\ding{43}}] \step{$\F_p[x]/(f)$ does not depend on $f$}\\
+\step{(i.e. if $h\in \F_p[x]$ irreducible, $\partial f=\partial
+h\ \ =\!\!\!=\!\!\!>\ \ \F_p[x]/(f)\cong \F_p[x]/(h)$ )}
+\item[\textcolor{red}{\ding{43}}] \step{{\hspace*{4cm}\fbox{$\F_{p^m}=\F_p[x]/(f)$}}}\\
+\step{\emph{any choice of $f$ with $m=\partial f$ is the same}}
+\item[\textcolor{red}{\ding{43}}] \step{$|\F_{p^m}|=p^m$}
+\item[\textcolor{red}{\ding{43}}] \step{$\F_{p^m}^*=\F_{p^m}\setminus\{0\}$ is a cyclic group under multiplication}
+\end{itemize}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Producing $\F_q$}\pause
+
+Set $q=p^m$\pause
+\parstepwise{\begin{itemize}
+\item[\textcolor{red}{\ding{43}}] \step{Produce $\F_q$ $<\!\!\!=\!\!\!=\!\!\!>$ find $f\in I_m(q)$}\\
+\step{\hspace*{1cm}{($I_m(q)=\{f\in\F_p[x], f \textrm{ irreducible},
+\partial f=m\}$)}}
+\item[\textcolor{red}{\ding{43}}]
+\step{$\displaystyle\sum_{d|m}d|I_d(q)|=q^m$}
+\item[\textcolor{red}{\ding{43}}] \step{$|I_m(q)|=\frac{q^m-q}{m}$\hspace{1cm}
+(if $m$ is prime)\hspace{1cm}$|I_m(q)|\sim \frac{q^m}{m}$}
+%\item[\textcolor{red}{\ding{43}}] \step{If $m\nmid p-1$ \& $m$ is prime
+%$=\!\!\!=\!\!\!>\ \ \frac{x^m-1}{x-1}\in I_{m-1}(q)$}
+\item[\textcolor{red}{\ding{43}}] \step{Some fields of cryptographic size:}\\
+\step{\begin{small}$\F_{2^{503}}=\F_2[x]/(x^{503} + x^3 +
+1),\F_{5323^{20}}=\F_{5323}[x]/(f)$\end{small}}\\
+\begin{tiny}\step{$f=x^{20} +
+{1451}x^{18} + {5202}x^{17} + {752}x^{16} + {3778}x^{15} +
+{4598}x^{14 } + {2563}x^{13} + {5275}x^{12} + {4260}x^{11} +\vspace{-3mm}$}\\
+\step{${862}x^{10} + {4659}x^{9} + {34 84}x^{8} + {1510}x^{7} +
+{4556}x^{6} + {2317}x^{5} + {2171}x^{4} + {3100}x^{3} +
+{4100}x^{2} + {682}x + {5110}$}\end{tiny}
+\item[\textcolor{red}{\ding{43}}] \step{Good to find $f$
+\textcolor{blue}{sparse}}
+\end{itemize}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Interpolation on $\F_q$}\pause Given $h: \F_q\rightarrow
+\F_q$ a function.\pause $h$ \textcolor{blue}{ can always be
+interpolated with a polynomial in }$\F_q[x]$ !\pause
+\textcolor{red}{\ding{43}} \textsc{Lagrange interpolation}\pause
+$$f_h(x)=\sum_{c\in \F_q}h(c)\prod_{\substack{d\in \F_q\\ d\neq c}}\frac{x-d}{c-d}\in\F_q[x]$$\pause
+\textcolor{red}{\ding{43}} \textsc{Finite fields
+interpolation}\pause
+$$f_h(x)=\sum_{c\in \F_q}h(c)\left(1-(x-c)^{q-1}\right)\in\F_q[x]$$\pause
+\vspace*{-4mm}\hspace*{5cm}$d^{q-1}=\begin{cases}1 & d\neq 0\\ 0 &
+d=0\end{cases}$
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{More on interpolation in $\F_q$}\pause\medskip
+
+\textcolor{red}{\ding{43}} If $f_1,f_2\in\F_q[x]$  with
+$f_1(c)=f_2(c) \forall c\in\F_q$,\pause
+\centerline{\fbox{$=\!\!\!=\!\!\!>\ \  x^{q}-x \mid
+f_1(x)-f_2(x)$}}\pause\medskip
+
+\textcolor{red}{\ding{43}} The interpolant polynomial is unique mod
+$x^q-x$\pause \centerline{\fbox{$=\!\!\!=\!\!\!>\ \ $ unique with
+degree $\leq q-1$}}\pause\medskip
+
+\textcolor{red}{\ding{43}} If $c_h=\#\{c\in\F_q\ |\ h(c)\neq c
+\}$,\pause \centerline{\fbox{$q-c_h\leq \partial f_h\leq
+q-2$}}\pause\medskip
+
+\textcolor{red}{\ding{43}} \textbf{Problem.} \emph{Find functions
+with sparse interpolation polynomial}\pause\medskip\medskip
+
+
+\centerline{\textcolor{blue}{Better if they are
+$\rightsquigarrow$}\textcolor{rossoscu}{\emph{Permutation
+polynomials}}}
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Permutation polynomials}\medskip\pause
+
+$${\mathcal S}(\F_q)=\{\sigma: \F_q\rightarrow\F_q\ |\ \sigma
+(1:1)\}$$\pause \ \hfill permutations of $\F_q$\pause
+
+\textcolor{red}{\ding{43}} $f\in\F_q[x]$ is called
+\textcolor{blue}{permutation polynomial} (\textcolor{blue}{PP})
+if\pause \centerline{``\emph{$f$ (as a funtion) is a
+permutation}''}\pause \centerline{(i.e. $\exists \sigma\in {\mathcal
+S}(\F_q), \sigma(c)=f(c)\ \forall c\in\F_q$)}\pause
+
+\textcolor{red}{\ding{43}} If $f_\sigma(x)=\sum_{c\in
+\F_q}\sigma(c)\left(1-(x-c)^{q-1}\right)\in\F_q[x]$
+$=\!\!\!=\!\!\!>\ \ $\pause \centerline{\fbox{$f\in\F_q[x]$ is PP
+$<\!\!\!=\!\!\!=\!\!\!>\ \ \exists \sigma \in{\mathcal S}(\F_q),
+f\equiv f_\sigma \bmod x^q-x$}}\pause
+
+\textcolor{red}{\ding{43}} \textbf{Examples:}\pause
+\parstepwise{\begin{itemize}
+\item[\textcolor{blue}{\ding{46}}] \step{$ax+b,\ \ \ \ \ \  a,b\in\F_q,
+a\neq 0$}
+\item[\textcolor{blue}{\ding{46}}] \step{$x^k,\hspace{1.5cm}
+(k,q-1)=1$}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{More examples of PP}\pause
+
+\textcolor{blue}{\ding{46}} \textcolor{blue}{\textsc{Composition.}}
+$f\circ g$ is PP \hfill if $ f,g$ are  PP\pause
+\textcolor{blue}{\ding{46}} $x^{(q+m-1)/m}+ax$ is a PP \hfill if
+$m|q-1$\pause \textcolor{blue}{\ding{46}}
+\textcolor{blue}{\textsc{Linearized Polynomials}} Let $q=p^m$,\pause
+\centerline{{$L(x)=\displaystyle\sum_{s=0}^{r-1}\alpha_sx^{q^s}$}\
+\ \ \ \ ($\alpha_s\in\F_{p^m}$)}\pause
+\parstepwise{\begin{itemize}
+\item[\textcolor{green}{\ding{243}}]\step{$L(c_1+c_2)=L(c_1)+L(c_2)$}
+\item[\textcolor{green}{\ding{243}}]\step{$L\in \operatorname{GL}_m(\F_p) \subset {\mathcal S}(\F_{p^m})$\ \ \
+$<\!\!\!=\!\!\!=\!\!\!>$\ \ \ $\det(\alpha_{i-j}^{q^j})\neq0$}\\
+\step{\hspace*{3.66cm} \ \
+$<\!\!\!=\!\!\!=\!\!\!>$\ \ \ $L(x)=0$ has 1 solution}
+\end{itemize}}
+\end{slide}
+
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{One more example of PP}\pause
+
+\textcolor{blue}{\ding{46}} \textcolor{blue}{\textsc{Dickson
+Polynomials.}} If $a\in\F_q$, $k\in\N$\medskip\pause
+
+\centerline{{$\displaystyle
+D_k(x,a)=\sum_{j=0}^{[k/2]}\frac{k}{k-j}\binom{k-j}{j}(-a)^jx^{k-2j}$}}
+\bigskip\pause
+
+\parstepwise{\begin{itemize}
+\item[\textcolor{green}{\ding{243}}] \step{if $a\neq0$, $D_k(x,a)$ is a PP $<\!\!\!=\!\!\!=\!\!\!>$\ \
+$(k,q^2-1)=1$}
+\item[\textcolor{green}{\ding{243}}] \step{$D_k(x,0)=x^k$ is a PP $<\!\!\!=\!\!\!=\!\!\!>$\ \ $(k,q-1)=1$}
+\item[\textcolor{green}{\ding{243}}] \step{\textcolor{yellow}{\textbf{Note:}} if $(mn,q^2-1)=1$,
+\medskip}\\
+\step{\hspace*{2cm}\fbox{$D_m(D_n(x,\pm 1),\pm1)=D_{mn}(x,\pm1)$}}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{\emph{Dickson} analogue of DH Key--exchange}\pause
+
+\parstepwise{\begin{itemize}
+\item[\textcolor{green}{\ding{172}}] \step{\textbf{Alice} and \textbf{Bob} agree on a finite field $\F_q$, and a generator
+$\gamma\in\F_q$}
+\item[\textcolor{green}{\ding{173}}] \step{\textbf{Alice} picks a \textcolor{red}{secret} $a\in[0,q^2-1]$, \textbf{Bob} picks a
+\textcolor{red}{secret}
+$b\in[0,q^2-1]$}
+\item[\textcolor{green}{\ding{174}}] \step{They compute and publish $D_a(\gamma,1)$
+(\textbf{Alice}) and $D_b(\gamma,1)$ (\textbf{Bob})}
+\item[\textcolor{green}{\ding{175}}] \step{The common \textcolor{red}{secret} key is}
+\end{itemize}}\pause
+\centerline{{$D_{ab}(\gamma,1)=D_a(D_b(\gamma,1,1))=D_b(D_a(\gamma,1,1))$}}
+\bigskip\pause
+
+\begin{small}\textcolor{blue}{\textbf{NOTE.}} There is a fast algorithm to compute the value of a Dickson polynomial at
+an element of $\F_q$\bigskip\pause
+
+\textcolor{blue}{\textbf{Problem.}} Find new classes of PP\end{small}
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Enumeration of PP by degree}\pause
+
+\centerline{\fbox{\textcolor{blue}{$N_d(q)=\{\sigma\in{\mathcal S
+}(\F_q)\ |\ \partial(f_\sigma)=d\}$}}}\pause
+
+\textbf{Problem.} \emph{Compute $N_d(q)$}\pause
+
+\parstepwise{\begin{itemize}
+\item[\textcolor{red}{\ding{43}}] \step{$\displaystyle\sum_{d\leq q-2}N_{d}(q)=q!$\hspace{3cm} $(\partial f_\sigma\leq q-2)$}
+\item[\textcolor{red}{\ding{43}}] \step{$N_1(q)=q(q-1)$}
+\item[\textcolor{red}{\ding{43}}] \step{$N_d(q)=0$ if $d|q-1$\hspace{3cm} (Hermite criterion)}
+\item[\textcolor{red}{\ding{43}}] \step{$N_d(q)$ is known for $d< 6$}
+\item[\textcolor{red}{\ding{43}}] \step{\emph{Almost all permutation polynomials have degree $q-2$}}
+\end{itemize}}\pause
+\begin{center}
+\begin{tabular}{|c|}\hline
+(S. Konyagin, FP -- 2002) $M_q=\{\sigma\in{\mathcal S}(\F_q)\ |\ \partial
+f_\sigma<q-2\}$\\ $|\#M_q-(q-1)!|\leq \sqrt{2e/\pi}q^{q/2}$\\
+\hline\end{tabular}\end{center}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{A recent result}\vspace{-1mm}\pause
+
+\centerline{\present{\fbox{${\mathcal
+N}_d=\#\left\{\sigma\in\mathcal S(\F_q)\ |\
+\partial(f_\sigma)< q-d-1\right\}$}}}\pause\bigskip
+
+\replacecolor{highlightcolor}{inactivecolor}
+\centerline{\shadowbox{\highlightboxed{\begin{minipage}{10cm}
+\verde{\textbf{Theorem}}
+{\it S. Konyagin, F\!P -- 2003}\\
+\textcolor{black}{\textit{Let $\alpha=(e-2)/3e=0.08808\cdots$ and
+$d< \alpha q$. Then
+$$\left|{\mathcal N}_d-\frac{q!}{q^d}\right|\leq
+2^ddq^{2+q-d}\binom{q}{d}\left(\frac{2d}{q-d}\right)^{(q-d)/2}.
+$$
+It follows that
+\\
+\centerline{$\displaystyle{\mathcal N_d\sim \frac{q!}{q^d}}$}
+\\
+if $d\leq\alpha q$ and $\alpha<0.03983$}}
+\end{minipage}}}}
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Other ways of counting} {If $\sigma\in{\mathcal
+S}(\F_q)$,\hspace{3cm}\fbox{\textcolor{blue}{$c_\sigma=\#\{a\in\F_q\
+|\ \sigma(a)\neq a\}$}}}
+$$\sigma\neq id=\!\!\!=\!\!\!>\ \  q-c_\sigma\leq\partial f_\sigma \leq q-2$$
+{\scriptsize{(since $f_\sigma(x)-x$ has at least $q-c_\sigma$ roots)}}
+
+\textbf{Consequences.}\begin{itemize}
+\item[\textcolor{green}{\ding{43}}]  $2$--cycles have degree $q-2$
+\item[\textcolor{green}{\ding{43}}]  $3$--cycles have degree $q-2$ or $q-3$
+\item[\textcolor{green}{\ding{43}}]  $k$--cycles have degree in $[q-k,q-2]$
+\end{itemize}
+(\textcolor{blue}{\emph{Wells}}) \fbox{$\displaystyle{\#\{\sigma\in 3\textrm{--cyle},\ \partial(f_\sigma)=q-3\}=
+\begin{cases}\frac{2}{3}q(q-1) & q\equiv1\bmod 3 \\ 0 & q\equiv 0 \bmod 3 \\ \frac13q(q-1)&q\equiv0\bmod3
+\end{cases}}$}
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{More enumeration functions}
+
+\begin{itemize}
+\item[\textcolor{red}{\ding{43}}]  $\sigma_1$, $\sigma_2$ conjugated $=\!\!\!=\!\!\!>\ \ $\ \ $c_{\sigma_1}=c_{\sigma_2}$
+
+\item[\textcolor{red}{\ding{43}}] $\Ccal$ \textcolor{green}{\emph{conjugation class of permutations}}
+
+\item[\textcolor{red}{\ding{43}}] $c_\Ccal = \#\{$ elements $\in\F_q$ moved by any $\sigma\in\Ccal\}$\\
+{\small (i.e. $c_\Ccal=c_\sigma$ for any $\sigma\in\Ccal$\ \ \ \ \ $q-c_\Ccal\leq f_\sigma$)}
+
+\item[\textcolor{red}{\ding{43}}] $\Ccal=[k]$=$k$--cycles\ \ \ $=\!\!\!=\!\!\!>\ \ \ \ \ c_{[k]}=k$
+
+
+\item[\textcolor{red}{\ding{43}}] \textcolor{blue}{Natural enumeration functions}:
+\begin{itemize}
+
+\item[\textcolor{red}{\ding{55}}] $m_{\Ccal}(q)=\#\{\sigma\in\Ccal,
+\partial f_{\sigma}=q-c_\Ccal\}$\hfill (\emph{minimal degree})
+
+
+\item[\textcolor{red}{\ding{55}}] $M_{\Ccal}(q)=\#\{\sigma\in\Ccal ,
+\partial f_{\sigma}<q-2\}$\hfill (\emph{non-maximal degree})
+
+\end{itemize}
+\end{itemize}
+
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Permutation  Classes with non maximal degree}
+
+Let $\Ccal=(m_1,\ldots,m_t)$ be the  class of permutations with
+$m_1$ 1-cycles, $\ldots$, $m_t$ $t$-cycles. The
+number $c_\Ccal$ of elements in $\F_q$ moved by any element of $\Ccal$ is
+$$c_\Ccal =2m_2+3m_3+\cdots+tm_t$$\medskip
+
+\centerline{\fbox{\textcolor{blue}{$M_{\Ccal}(q)=\#\{\sigma\ \in\Ccal,
+\partial f_{\sigma}<q-2\}$}}}
+
+\begin{center}\begin{tabular}{|l|}
+\hline
+\textcolor{green}{\textsc{Theorem 1}} (C. Malvenuto, FP - 2002). $\exists
+N=N_{\Ccal}\in\N$, $f_1,\cdots, f_N\in\Z[x]$,\\ $f_i$ monic,
+$\partial f_i=c_\Ccal-3$ such that if $q\equiv a\bmod N$, then\\
+\\
+\hspace{3cm}\textcolor{blue}{$\displaystyle M_{\Ccal}(q)=\frac{q(q-1)}{m_2!2^{m_2}\cdots m_t!t^{m_t}}f_a(q)$}\\
+\hline\end{tabular}\end{center}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{$k$--cycles with minimal degree}
+
+\centerline{\fbox{\textcolor{blue}{$m_{[k]}(q)=\#\{\sigma\ k{\textrm{--cycle},
+\partial f_{\sigma}=q-k}\}$}}}
+
+\textcolor{green}{\textsc{Theorem 2}} (C. Malvenuto, FP - 2003).
+\begin{itemize}
+\item[\textrm{\textcolor{blue}{\ding{42}}}]  If $q\equiv1\bmod k$\ \ \ $=\!\!\!=\!\!\!>\ \ $
+$$m_{[k]}(q)\geq \frac{\varphi(k)}{k}q(q-1).$$
+\item[\textrm{\textcolor{blue}{\ding{42}}}]  If $q=p^f$, $p\geq
+2\cdot3^{[k/3]-1}\ \ \ =\!\!\!=\!\!\!>\ \ $
+$$m_{[k]}(q)\leq\frac{(k-1)!}{k}q(q-1).$$
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Consequences of Theorem 1}
+\begin{itemize}
+\item[\textrm{\textcolor{blue}{\ding{41}}}]
+$\displaystyle{\frac{M_{\Ccal}(q)}{\#\Ccal}=\frac{1}{q}+O\left(\frac{1}{q^2}\right)}$
+
+\item[\textrm{\textcolor{blue}{\ding{41}}}] If $\Ccal$ is fixed,
+$$\operatorname{Prob}(\partial f_\sigma<q-2\ |\
+\sigma\in\Ccal)\sim\frac{1}{q}$$
+
+\item[\textrm{\textcolor{blue}{\ding{41}}}] If $q=2^r$, $\Ccal_r$ is the
+conjugation class of $r$ transposition,
+$$M_{\Ccal_r}(q)=\frac{q!}{r!2^r(q-2r+1)!}-\frac{q-2(r-1)(2r-1)}{2r}M_{\Ccal_{r-1}}(q)$$
+
+\item[\textrm{\textcolor{blue}{\ding{41}}}] One can compute
+$M_{\Ccal}(q)$ for $c_\Ccal\leq 6$
+\end{itemize}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Table 1. $\#c_\Ccal\leq 6$, ($q$ odd)}
+
+$$\begin{array}{rrl}
+\textrm{\textcolor{blue}{\ding{34}}}& M_{[4]}(q)=
+&\frac{1}{4}q(q-1)\left(q-5-2\eta(-1)-4\eta(-3)\right)\\\\
+\textrm{\textcolor{blue}{\ding{34}}}& M_{[2\ 2]}(q)=
+&\frac{1}{8}q(q-1)(q-4)\left\{1+\eta(-1)\right\}\\\\
+\textrm{\textcolor{blue}{\ding{34}}}& M_{[5]}(q)  = &
+\frac{1}{5}q(q-1)\left(q^2-\left(9-\eta(5)-5\eta(-1)+5\eta(-9)\right)q+
+\right.\\
+&&\left.\hspace{1cm} +26+ 5\eta(-7) +15\eta(-3)
++15\eta(-1)\right)\\\\
+\textrm{\textcolor{blue}{\ding{34}}} &  M_{[2\ 3]}(q)  = & \frac{1}{6}q(q-1)  \left(q^2-(9+\eta(-3)+3\eta(-1))q+ \right.\\
+&&\left.\hspace{1cm}+(24+6\eta(-3)+
+18\eta(-1)+6\eta(-7))\right)+ \\
+&&\hspace{1cm}\eta(-1)(1-\eta(9))q(q-5) .\end{array}$$
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Table 2. $\#c_\Ccal\leq 6$, ($q$ even)\ }
+
+$$\begin{array}{rrl}
+\textrm{\textcolor{blue}{\ding{34}}} &  M_{[4]}(2^n)=& \frac{1}{4}2^n(2^n-1)(2^{n}-4)(1+(-1)^n)\\
+\\
+\textrm{\textcolor{blue}{\ding{34}}} &  M_{[2\ 2]}(2^n)=& \frac{1}{8}2^{n}(2^n-1)(2^{n}-2)\\
+\\
+\textrm{\textcolor{blue}{\ding{34}}} &  M_{[5]}(2^n)= & \frac{1}{5}2^n(2^n-1)(2^n-3-(-1)^n)(2^n-6-3(-1)^n)\\
+\\
+\textrm{\textcolor{blue}{\ding{34}}} &  M_{[2\ 3]}(2^n)=&
+\frac{1}{6}2^n(2^n-1)(2^n-3-(-1)^n)(2^n-6).\end{array}$$
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Table 3. $\#c_\Ccal= 6$, ($q$ odd, $3\nmid q$)}
+\begin{small}
+$$ \begin{array}{|rcl|}
+\hline
+ M_{[6]}(q)&=&\frac{q(q-1)}{6}\{{q}^{3}-14\,{q}^{2}+[68-6\,\eta(5)-6\,
+\eta(50)]q-\\
+&& [154+66\,\eta(-3)+93\,\eta(-1)+12\,
+\eta(-2)+54\,\eta(-7)]\} \\
+ M_{[4\ 2]}(q)& =&\frac{q(q-1)}{8}(
+{q}^{3}-[14-\eta(2)]{q}^{2}+\\
+&& [71+12\,\eta(-1)+\eta(-2)+4\,\eta(-3)-8\,\eta
+(50)]q\\
+& &-[148+100\,\eta(-1)+24\,\eta(-2)+44\,\eta(-3)+40\,\eta(-7)])\\
+ M_{[3\ 3]}(q)& =&\frac{q(q-1)}{18}( q^3-13\,{q}^{2}+[62+9\,\eta(-1)+4\,\eta(-3)]q\\
+&& -[150+99\,\eta(-1)+42\,\eta(-3)+72\,\eta(-7)])\\
+ M_{[2\ 2\
+2]}(q)&=&\frac{q(q-1)}{48}(q^3-[14+3\,\eta(-1)]{q}^{2}+[70+36\,\eta(-1)+6\,\eta(-2)]q\\
+&&-[136+120\,\eta(-1)+48\,\eta(-2)+8\,\eta(-3)])\\
+ \hline \end{array}
+$$\end{small}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Table 4. $\#c_\Ccal= 6$}
+\begin{small}
+$$ \begin{array}{|rcl|}\hline
+M_{[6]}(3^n)&=&\frac{3^n(3^n-1)}{6}\{3^{3n}-[14+2(-1)^n]3^{2n}+[71+39(-1)^n]3^n-\\
+&& [162+147(-1)^n]\}
+\\
+&&\\
+M_{[4\ 2]}(3^n)&=& \frac{3^n(3^n-1)}{8}\{{3}^{3n}-[14+3\left (-1\right
+)^{n}]{3}^{2n}+[72+40\left (-1 \right )^{n}]{3}^{n}-\\
+&&[164+140\left(-1\right )^{n}]\}
+\\
+&& \\
+M_{[3\ 3]}(3^n)&=&\frac{3^n(3^n-1)}{18}\{\left (1+\left (-1\right )^{n}\right
+){3}^{3\,n}-[14+15\,\left (-1 \right
+)^{n}]{3}^{2\,n}+\\
+&&[71+81\,\left (-1\right )^{n}]{3}^{n}-[150+171\,\left (-1\right )^{n}]\}
+\\
+&& \\
+M_{[2\ 2\ 2]}(3^n)&=&\frac{3^n(3^n-1)}{48}\{3^{3n}-[14+3(-1)^n]{3}^{2n}+[76+36(-1)^n]3^n
+-\\
+&&+[168+120(-1)^n]\}\\
+\hline \end{array}$$
+\end{small}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Table 5. $\#c_\Ccal= 6$}
+\begin{small}
+$$ \begin{array}{|rcl|}
+\hline &&\\
+M_{[6]}(2^n)& = \frac{2^n(2^n-1)}{6}&\{(2^n-3-(-1)^n)(2^{2n}-(11-(-1)^n)2^n+\\ && (41+7(-1)^n))\}\\
+&&\\
+M_{[4\ 2]}(2^n)& =\frac{2^n(2^n-1)}{8}&\{(2^n-3-(-1)^n)(2^{2n}-11\cdot2^n+37+(-1)^n)\}\\
+&& \\
+M_{[3\ 3]}(2^n)& =\frac{2^n(2^n-1)}{18}&\{(2^n-3-(-1)^n)(2^{2n}-\\ && (10-(-1)^n)2^n+45-3(-1)^n))\}\\
+&&\\
+M_{[2\ 2\ 2]}(2^n)&= \frac{2^n(2^n-1)}{48}&\{(2^n-2)(2^n-4)(2^n-8)\}\\
+&&\\
+\hline
+ \end{array}
+$$
+    \end{small}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+
+\heading{Sketch of the Proof of Theorem 2. (1/3)}
+
+\textcolor{blue}{\textsc{Step 1.}} Translate the problem into one on counting points of an algebraic varieties
+$$m_{k}(q)=\frac{q(q-1)}{k}n_k(q)$$
+where $n_k(q)=\{\sigma\in[k]\ |\ \partial f_\sigma=q-k, \sigma(0)=1\}$.\\
+Need to show $|n_k(q)|\leq (k-1)!.$
+Now
+$$f_\sigma(x)=\sum_{c\in\F_q}\sigma(c)\left(1-(x-c)^{q-1}\right)=A_1x^{q-2}+A_2x^{q-3}+\cdots+A_{q-1}.$$
+with
+$\displaystyle {A_j=\sum_{c\in\F_q}\sigma(c)c^j=\sum_{c\in\F_q}\sigma(c)\left(c^{j}-c^{j-1}\right)=\sum_{\substack{c\in \F_q\\\sigma(c)
+\neq c}}(\sigma(c)-c)c^j.}$
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Sketch of the Proof of Theorem 2. (2/3)}
+If $\sigma=(0,\ 1,\ x_1,\ x_2,\ \ldots,\ x_{k-2})\in{\mathcal S}(\F_q)$,
+$$A_{j}(\sigma)=(1-x_1)+(x_1-x_2)x_1^j+\cdots (x_{k-2}-x_{k-2})x^j_{k-3}+x_{k-2}^{j+1}.$$
+\noindent\textbf{Def. (Affine $k$--th Silvia set)}
+\begin{scriptsize}
+${\mathcal A}_k:
+\left\{\begin{array}{rcl}
+(1-x_1)+x_1(x_1-x_2)+\cdots +x_{k-3}(x_{k-3}-x_{k-2})+x_{k-2}^{2}& = &0\\
+(1-x_1)+x_1^2(x_1-x_2)+\cdots +x_{k-3}^2(x_{k-3}-x_{k-2})+x_{k-2}^{3}& = &0\\
+& \vdots & \\
+(1-x_1)+x_1^{k-2}(x_1-x_2)+\cdots+
+x_{k-3}^{k-2}(x_{k-3}-x_{k-2})+x_{k-2}^{k-1}& = &0
+\end{array}\right.$
+\end{scriptsize}
+$$n_{k}(q)=\#\{\underline{x}=(x_1,\ldots,x_{k-2})\in\F_q^{k-2}\ |\ \underline{x}\in{\mathcal A}_k(\F_q), x_i\neq x_j\}
+\leq \#{\mathcal A}_k(\F_q)$$
+\centerline{\fbox{\textcolor{blue}{
+$\dim_{\overline{\F}_q}{\mathcal A}_k=0\ \ \ \substack{\textrm{Bezout Thm.}\\
+=\!\!\!=\!\!\!>\ \ }\ \ \  \#{\mathcal A}(\F_q)\leq (k-1)!$}}}
+
+%\noindent\textbf{Def. (Projective $k$--th Silvia set)}
+%
+%$${\mathcal V}_k:
+%\hspace*{-0.2cm}\!\left\{\!\!\begin{array}{rl}
+%X_0(X_0-X_1)+X_1(X_1-X_2)+\cdots +X_{k-3}(X_{k-3}-X_{k-2})+X_{k-2}^{2}&=0\\
+%X_0^2(X_0-X_1)+X_1^2(X_1-X_2)+\cdots +X_{k-3}^2(X_{k-3}-X_{k-2})+X_{k-2}^{3}&=0\\
+%& \vdots \\
+%X_0^{k-2}(X_0-X_1)+X_1^2(X_1-X_2)+\cdots+
+%X_{k-3}^{k-2}(X_{k-3}-X_{k-2})+X_{k-2}^{k-1}&=0
+%\end{array}\right.$$
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Sketch of the Proof of Theorem 2. (3/3)}
+
+\textcolor{blue}{\textsc{Step 2.}}
+\begin{center}\begin{tabular}{|l|}
+\hline
+\textcolor{green}{\textbf{Theorem.}} If $\textbf K$ is an algebrically closed field,\hspace{3cm}\ \\
+\multicolumn{1}{|c|}{
+$\displaystyle{\operatorname{char}({\textbf{K}})=\begin{cases}0 & \textrm{or} \\ > 2\cdot 3^{[k/3]-1}.\end{cases}}$}\\
+\\
+Then\\
+\multicolumn{1}{|c|}{\fbox{\textcolor{blue}{$\displaystyle\dim_{{\textbf{K}}}{\mathcal A}_k=0.$}}}\\
+\\\hline\end{tabular}\end{center}
+
+\textbf{NOTE.} \begin{itemize}
+\item[\textcolor{green}{\ding{45}}] Proof is based on finding projective hyperplanes disjoint from ${\mathcal A}_k$
+\item[\textcolor{green}{\ding{45}}] There are examples of small values of $q$ with $\dim_{{\textbf{K}}}{\mathcal A}_k>0$
+\end{itemize}
+\end{slide}
+
+\end{document}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Numerical Examples (4--cycles)}
+
+\begin{tabular}{|c|}
+\hline
+\\
+$m_{[4]}(\F_q)=\frac{1}{4}q(q-1)\cdot\left\{
+\begin{array}{rrll}
+6 & \textrm{if } q\equiv &1 &\pmod{20}\\
+4 & \textrm{if } q\equiv &11 &\pmod{20}\\
+2 & \textrm{if } q\equiv &9,13,17&\pmod{20}\\
+0 & \textrm{if } q\equiv & 3,7,19&\pmod{20},\\
+\end{array}\right.$\\
+$m_{[4]}(\F_{5^n})=\frac{1}{2}{5^n}({5^n-1}),$
+\ \ $m_{[4]}(\F_{2^n})=\left\{\begin{array}{rl}
+{2^n}({2^n-1}) & \text{if $4|n$}\\
+0 & \text{otherwise.}\end{array}\right.
+$
+\\
+\\ \hline\end{tabular}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Numerical Examples (5--cycles)}
+
+
+$$\text{If } q\not\in\{2, 13, 61, 3719, 3100067\} \Rightarrow
+m_{[5]}(\F_q)=\frac{q(q-1)}{5}(r_q+t_q+u_q),$$
+
+\begin{scriptsize}
+$$t_q=\left\{
+\begin{array}{rl}
+4 & \text{if $q\equiv1\pmod 5$}\\
+1& \text{if $q\equiv0\pmod 5$}\\
+0 & \text{otherwise,}\end{array}
+\right.
+ \ u_q=\left\{
+\begin{array}{rl}
+-1 & \text{if $p=11,41$}\\
+0 & \text{otherwise,}\end{array}
+\right.\  r_q=\#\{\genfrac{}{}{0pt}{}{\F_q-\text{roots}}{\text{of } g_2}\}
+$$
+
+$$\begin{array}{rl}
+g_2(x)=&
+2\,{x}^{20}-29\,{x}^{19}+229\,{x}^{18}-1249\,{x}^{17}+5187\,{x}^{16}-17222\,{x}^{15}+\\
+&47040\,{x}^{14}-107505\,{x}^{13}+207622\,{x}^{12}-340496\,{x}^{11}+474638\,{x}^{10}-\\
+&560999\,{x}^{9}+559052\,{x}^{8}-465487\,{x}^{7}+319628\,{x}^{6}-177653\,{x}^{5}+\\
+&77807\,{x}^{4}-25797\,{x}^{3}+6074\,{x}^{2}-904\,x+64.
+\end{array}$$
+
+\end{scriptsize}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+
+\begin{center}
+\begin{tabular}{|c|}
+\hline
+$g_2(\alpha)=0, \sigma_\alpha=(0,1,\alpha,y(\alpha),z(\alpha))
+\ \Rightarrow\ \partial f_{\sigma_\alpha}=q-5\text{ (minimal) }$
+ \\
+\hline\end{tabular}
+\bigskip\end{center}
+
+\begin{tiny}
+$$\begin{array}{l}\mbox{\normalsize $y(x)=$}
+\frac{1}{(2)^{3}(13)(61)(3719)(3100067)}\left(6245340990732510-74275247020348477\,x\right.\\
++425897367479627411\,x^{2}-1556772755104088477\,x^{3}+4068122356423765520\,x^{4}\\
+-8092377944341897339\,x^{5}+12739155747072503154\,x^{6}-16281608694400072277\,x^{7}+\\
+17191467892889878476\,x^{8}-15176855331347725064\,x^{9}+11289210111615920188\,x^{10}\\
+-7103742513094855073\,x^{11}+3782081407301444460\,x^{12}-1696979431552752820\,x^{13}\\
++635807089991226023\,x^{14}-195705738631474759\,x^{15}+48121368022605621\,x^{16}\\
+\left.-9009616966592957\,x^{17}+1165803130533438\,x^{18}-82558295396232\,x^{19}\right)
+\end{array}$$
+$$
+\begin{array}{l}\mbox{\normalsize $z(x)=$}
+\frac{1}{(2)^{3}(13)(61)(3719)(3100067)}\left(-292290150269490\,{x}^{19}+3950333490943181\,{x}^{18}\right.\\
+-29484664428617801\,{x}^{17}+152268243151302965\,{x}^{16}-599002775464475543\,{x}^{15}\\
++1880438345917167218\,{x}^{14}-4841135989461751552\,{x}^{13}+10378374551469856881\,{x}^{12}\\
+-18679878403151115130\,{x}^{11}+28303942873286020848\,{x}^{10}-36041151267474587782\,{x}^{9}\\
++38336702176933085823\,{x}^{8}-33711958096174593304\,{x}^{7}+24129466512539278343\,{x}^{6}\\
+-13742359416000756136\,{x}^{5}+6020424561116746133\,{x}^{4}-1925677501494324283\,{x}^{3}\\
++413273185040891961\,{x}^{2}-51203861193252214\,x+2593061963570136)
+\end{array}
+$$\end{tiny}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Numerical Examples (6--cycles)}
+
+$$\text{If } p\gg1\ \ \Rightarrow \ \
+m_{[6]}(\F_p)=\frac{p(p-1)}{6}(s_1+s_2+s_3+s_4)\ \ \ \text{where}$$
+$$s_i=\#\left\{\genfrac{}{}{0pt}{}{\F_q-\text{roots}}{\text{of } f_i
+}\right\},$$
+
+$$
+\begin{array}{l}
+f_1(x)={x}^{2}-3\,x+3\\
+f_2(x)={x}^{4}-3\,{x}^{3}+9\,{x}^{2}-9\,x +3\\
+f_3(x)={x}^{6}-4\,{x}^{5}+12\,{x}^{4}-22\,{x}^{3}+25\,{x}^{2}-14\,x+3\\
+f_4(x)= \ \textbf{Devil's Hat}.
+\end{array}
+$$
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Galois Structure of the Silvia set}
+
+\begin{center}
+\begin{tabular}{rcl}
+$\operatorname{Gal}(\Q(f_1)/\Q))$ & $\cong$ & $\Z/2\Z $
+(cyclotomic permutations)\\
+\\
+$\operatorname{Gal}(\Q(f_2)/\Q))$ & $\cong$ & $D_4$ \\
+\\
+$\operatorname{Gal}(\Q(f_3)/\Q))$ & $\cong$ & $(\Z/3\Z)^2
+\rtimes S_2$\\
+\\
+$\operatorname{Gal}(\Q(\textit{Devil's Hat}))$ & $\cong$ & ???
+\\
+\end{tabular}\end{center}
+
+ (exponent probably $=(2)^{5}(3)^{3}(5)(7)(11)(13)(17)$ )
+
+
+Later discovered that
+
+$$\operatorname{Gal}(\Q(\textit{Devil's Hat}))\leq
+({\Z}/6{\Z})^{18}\rtimes S_{18}$$
+
+\end{slide}
+\end{document}

@@ -1,0 +1,151 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+
+\begin{document}
+\begin{center}
+
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2008/2009}\\
+
+\textbf{AL1 - Algebra 1: Fondamenti}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 9 - 11 Dicembre 2008}\\
+
+\textbf{Elisa Di Gloria, Luca Dell'Anna}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\vspace{0.5cm}
+
+
+
+
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Trovare le eventuali soluzioni dei seguenti sistemi di congruenze:
+\begin{itemize}
+
+\item $\begin{cases} x\equiv 4 \textrm{  (mod 5)} \\ x\equiv 5 \textrm{  (mod 6)} \\ x\equiv 6 \textrm{  (mod 7)} \end{cases} $
+
+\item $  \begin{cases} x\equiv 2 \textrm{  (mod 5)} \\ x\equiv 5 \textrm{  (mod 6)} \\ x\equiv 5 \textrm{  (mod 12)} \end{cases} $
+
+\item $  \begin{cases} x\equiv 1 \textrm{  (mod 3)} \\ x\equiv 2 \textrm{  (mod 4)} \\ x\equiv 3 \textrm{  (mod 6)}\end{cases} $
+
+\item $  \begin{cases} x\equiv -1 \textrm{  (mod 9)} \\ x\equiv 1 \textrm{  (mod 5)} \\ x\equiv -2 \textrm{  (mod 4)} \\ x\equiv 2 \textrm{  (mod 7)}\end{cases} $
+
+\item $  \begin{cases} x\equiv 11 \textrm{  (mod 19)} \\ x\equiv 7 \textrm{  (mod 8)} \\ x\equiv 10 \textrm{  (mod 6)}\end{cases} $
+
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Sia $p$ un numero primo, $p>3$ tale che $p + 2$ \`e primo. Provare che 12 divide $p + (p + 2)$.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Trovare tutte le soluzioni in $\C$ dell'equazione $x^{10} = 1$.
+\end{Ex}
+
+\vspace{1cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Trovare in ciascuno dei seguenti casi una scelta per gli $a_i$ tali che i seguenti sistemi non sono risolubili e una, non banale, per i quali lo sono.
+\begin{itemize}
+\item $  \begin{cases} x\equiv a_1 \textrm{  (mod 5)} \\ x\equiv a_2 \textrm{  (mod 6)} \\ x\equiv a_3 \textrm{  (mod 12)} \end{cases} $
+\item $  \begin{cases} x\equiv a_1 \textrm{  (mod 15)} \\ x\equiv a_2 \textrm{  (mod 11)} \\ x\equiv a_3 \textrm{  (mod 4)} \\ x\equiv a_4 \textrm{  (mod 6)}\end{cases} $
+
+\item $  \begin{cases} x\equiv a_1 \textrm{  (mod 19)} \\ x\equiv a_2 \textrm{  (mod 8)} \\ x\equiv a_3 \textrm{  (mod 6)}\end{cases} $
+
+\end{itemize}
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Usando il crivello di Eratostene, stabilire se i seguenti numeri sono primi:\\
+167, 253, 137, 151, 1001
+
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 6.}\\ 
+Determinare, per $2\leq m \leq 10$, la tavola additiva di $\frac{\Z}{m\Z}$.\\
+Determinare inoltre, $\forall m$ come sopra, il gruppo degli invertibili $\mathcal{U}(\Z_m)$ e scriverne la tavola moltiplicativa.
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 7.}\\ 
+Scrivere una dimostrazione del fatto che $\varphi(p^{\alpha})=p^{\alpha}-p^{\alpha -1}$ se $p$ \`e primo.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 8.}\\
+Un fruttivendolo deve sistemare poco meno di un migliaio di arance sui suoi banconi, ma disponendole a gruppi di 3 gli avanzano 2 frutti, a gruppi di 4 gliene avanzano 3, a gruppi di 5 ne rimangono 4, a gruppi di 6 ne rimangono 5. Finalmente riesce a sistemarle a gruppi di 7. Quante sono le arance?
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 9.}\\
+Il nonno Mario ha tre nipotine, Adele, Bice e Clara, rispettivamente di 17,16 e 4 anni. Il Nonno dice ad Adele:"Per ottenere la mia et\`a occorre un multiplo della tua pi\`u quella di Bice". Poi, rivolto a Bice, afferma:"Per ottenere la mia et\` occorre un multiplo della tua et\`a pi\`u quella di Clara". Infine dice a Clara:"Sai che la mia et\`a \`e proprio un multiplo della tua?"\\
+Qual \`e l'et\`a di Nonno Mario?
+\end{Ex}
+
+\end{document}

@@ -1,0 +1,351 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{latexsym}
+\usepackage{eucal}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bm}{ \begin{pmatrix} }
+\newcommand{\edm}{ \end{pmatrix} }  
+\newcommand{\sist}{\begin{cases}}
+\newcommand{\esist}{\end{cases}}
+\newcommand{\deter}{\left| \begin{array}}
+ \newcommand{\edet}{\end{array}\right|}
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+  \begin{center} 
+    \textbf{Universit\'a degli Studi Roma Tre - Corso di Laurea in Matematica\\
+     \begin{Huge}Esercizi CR510\end{Huge}\\
+Dario Giannini}\\
+  \end{center}
+  
+  \begin{tabular}{p{.6\textwidth}p{.4\textwidth}}
+    \begin{tabular}{l}
+      \textsc{17 Marzo 2014}
+    \end{tabular}
+  \end{tabular}
+\\\\
+\begin{enumerate}
+\item $C: u^2+v^2=c^2(1+du^2v^2)$ \'e una curva ellittica parametrizzata tramite le coordinate di Edwards, in cui la somma \'e definita nella maniera seguente:
+$$(u_1,v_1)+(u_2,v_2)=\ds{\left(\frac{u_1 v_2+u_2 v_1}{c(1+du_1 u_2 v_1 v_2)},
+\frac{v_1 v_2 - u_1 u_2}{c(1+du_1 u_2 v_1 v_2)}\right)}$$
+Si deve mostrare che il punto $P=(c,0)$ ha ordine $4$, ossia che $4P = (0,c)$, che \'e l'identit\'a del gruppo.\\
+$P+P=(c,0)+(c,0)=(0,-c)$\\
+$4P=2P+2P=(0,-c)+(0,-c)=(c,0)$.
+
+
+
+
+
+\item Come suggerito dal libro di testo si prova a dimostrare l'algoritmo dei quadrati successivi per induzione sulla lunghezza della rappresentazione binaria di $k$.\\
+Sia $P\in E(\mathbb{F}_q)$ e $k\in \mathbb{N}$\\
+$\textbf{(1)}$ $a=k$; $B=\infty$; $C=P$.\\
+$\textbf{(2)}$ Se $2|a\;\;\Rightarrow$ $a \leftarrow \frac{a}{2}$; $B\leftarrow B$; $C\leftarrow 2C$.\\
+$\textbf{(3)}$ Se $a$ \'e dispari $\Rightarrow$ $a \leftarrow a-1$; $B\leftarrow B+C$; $C\leftarrow C$.\\
+$\textbf{(4)}$ If ($a\neq 0$) GO TO $\textbf{(2)}$.\\
+$\textbf{(5)}$ OUTPUT $B=kP$.\\
+Sia $k=a_0+2a_1+4a_2+\ldots+2^l a_l$.\\
+\textbf{BASE INDUZIONE:} Sia $l=0 \rightarrow k=a_0$ e ho due casi:\\
+Se $a_0 = 0$ faccio una volta il passo $\textbf{(2)}$ e come output ho $B=\infty$.\\
+Se $a_0 = 1$ faccio una volta il passo $\textbf{(3)}$ e come output ho $B=P$. \\
+\textbf{PASSO INDUTTIVO:} Suppongo che l'algoritmo funzioni per $l-1$, ossia per tutti i numeri del tipo  
+$k_0 = a_0+2a_1+4a_2+\ldots+2^{l-1} a_{l-1}$ e verifico che valga anche per $l$.\\
+$k=a_0+2a_1+4a_2+\ldots+2^{l-1} a_{l-1}+2^l a_l = k_0 +2^l a_l$\\
+Per ipotesi induttiva so che l'algoritmo vale per $k_0$, quindi:\\
+$$kP = (k_0 + 2^l a_l) P = k_0 P + 2^l a_l P$$
+Mi basta quindi solamente verificare che funzioni per $2^l a_l$.\\
+Applicando l'algoritmo devo effettuare $l$ volte il passo $\textbf{(2)}$
+$a \leftarrow 1 $; $B\leftarrow \infty$; $C\leftarrow 2^l P$\\
+e una volta il passo $\textbf{(3)}$
+$a \leftarrow 0$; $B\leftarrow \infty+2^l P$; $C\leftarrow C$.\\	
+Dunque l'algoritmo dei quadrati successivi funziona poich\'e B \'e proprio l'output finale.
+
+
+
+
+
+
+\item $$E:\;x^2 +a_1 xy +a_3 y=x^3+a_2 x^2+a_4 x+a_6$$
+Si vuole dimostrare la formula per calcolare il punto opposto nel caso dell'equazione di Weierstrass generale, ossia:
+$$-(\alpha,\beta)=(\alpha,-a_1\alpha -a_3 -\beta)$$
+Per farlo passo alle coordinate proiettive della curva; in particolare si \'e interessati a trovare l'altro punto d'intersezione tra la curva ellittica e la retta passante per il punto all'infinito $[0:1:0]$ e 
+$[\alpha:\beta:1]$ (sarebbe $(\alpha,\beta)$ in coordinate affini). Tale punto sar\'a proprio l'opposto di 
+$(\alpha,\beta)$.\\
+$$
+\sist
+x=\alpha z \\
+y^2z+a_1 xyz +a_3 yz^2=x^3+a_2 x^2z +a_4 xz^2+ a_6z^3
+\esist
+$$
+$$
+\sist
+x=\alpha z \\
+y^2z+a_1 \alpha yz^2 +a_3 yz^2=\alpha^3 z^3 +a_2 \alpha^2 z^3 +a_4 \alpha z^3+ a_6z^3
+\esist
+$$
+Se $z=0\;\;\Rightarrow\;\;x=0$ trovo il punto all'infinito che gi\'a sapevo essere soluzione del sistema.\\
+Pongo $z=1$ in quanto il punto trovato deve essere in corrispondenza biunivoca con il piano affine e cerco le altre due soluzioni del sistema (ossia gli altri due punti di intersezione).
+$$
+\sist
+x=\alpha \\
+y^2+a_1 \alpha y +a_3 y=\alpha^3  +a_2 \alpha^2  +a_4 \alpha + a_6
+\esist
+$$ 
+$y=\beta $ \'e sicuramente una radice in quanto $(\alpha, \beta)\in E$ per ipotesi (\'e inoltre coerente con il fatto che $(\alpha,\beta)$ \'e soluzione per costruzione).\\
+L'altro punto di soluzione, ossia il punto che stiamo cercando, sar\'a determinato dall'altra radice del polinomio in $y$. Tale radice \'e $y=-\beta-\alpha a_1-a_3$ come volevasi dimostrare. Infatti:
+$(-\beta-\alpha a_1-a_3)^2 + (a_1 \alpha +a_3)(-\beta-\alpha a_1-a_3)=\alpha^3  +a_2 \alpha^2  +a_4 \alpha + a_6$\\
+Da cui andando a svolgere tutti i calcoli e semplificando il pi\'u possibile si arriva alla seguente:
+$$\beta^2+\alpha \beta a_1+a_3\beta=\alpha^3  +a_2 \alpha^2  +a_4 \alpha + a_6$$ 
+la quale \'e sempre verificata in quanto $(\alpha, \beta)$ \'e un punto di $E$.\\
+Si \'e dunque dimostrato che il terzo punto di intersezione, nonch\'e il punto opposto, \'e il punto
+$(\alpha,-a_1\alpha -a_3 -\beta)$.
+
+
+\item Intuitivamente se si va dalla sfera al piano proiettivo tramite l'applicazione identit\'a la controimmagine di un punto del piano proiettivo sar\'a costituita da due punti della sfera antipodali fra loro
+($[x:y:z]=[-x:-y:z]$).\\ Infatti un punto del piano proiettivo pu\'o essere identificato ad una retta passante per l'origine in $\R^3$ (insieme dei punti tra loro proporzionali) e ogni retta passante per l'origine interseca la sfera in due punti. 
+
+
+
+
+
+\item \begin{enumerate}
+\item Suppongo $a_1 \neq 0$ e che le due rette siano distinte tra loro, ossia che il rango della matrice
+$M=\bm a_1 & b_1 & c_1 \\ a_2 & b_2 & c_2\edm$ \'e uguale a $2$. Detto in altri termini, almeno uno fra i determinanti delle sottomatrici quadrate di ordine due deve essere diverso da zero. Suppongo che 
+$b_2a_1-a_2b_1 \neq 0$ (sempre vero a meno di scambiare l'ordine delle variabili).\\ 
+$ \sist
+a_1x+b_1y+c_1z=0 \\ 
+a_2x+b_2y+c_2z=0
+\esist
+$
+$\sist
+x=-\ds{\frac{b_1y+c_1z}{a_1}}\\
+\ds{y\left(b_2-\frac{a_2b_1}{a_1}\right)=z\left(\frac{a_2c_1}{a_1}-c_2\right)}
+\esist
+$
+$
+\sist
+x=-\ds{\frac{b_1y+c_1z}{a_1}}\\
+y=\ds{\frac{a_2c_1-a_1c_2}{b_2a_1-a_2b_1}}z
+\esist
+$\\
+Se pongo $\lambda=\ds{\frac{a_2c_1-a_1c_2}{b_2a_1-a_2b_1}}$ le soluzioni del sistema saranno:
+$$\ds{\left[-\frac{b_1\lambda+c_1}{a_1}z:\lambda z: z\right]}$$
+al variare di $z$ in $\R$. Tuttavia ci si deve ricordare che si \'e sul piano proiettivo e che in realt\'a su di esso questo insieme di punti al variare di $z$ in $\R$ corrisponde ad un solo punto di $\mathbb{P}_2$. Infatti le componenti di ogni punto dell'insieme dipendono linearmente dal parametro $z$ e quindi individuano su $\mathbb{P}_2$ il solo punto $\left[-\ds{\frac{b_1\lambda+c_1}{a_1}}:\lambda:1\right]$ ottenuto dividendo per $z$ ogni componente.\\
+Ricapitolando nel piano proiettivo si possono presentare due casi distinti:\\
+Se $rank(M)=2$, e quindi le due rette non coincidono, c'\'e un solo punto di intersezione fra le due.\\
+Se $rank(M)=1$, e quindi le rette coincidono, ce ne sono infiniti.\\
+
+\item Supponiamo che esistano due rette $r_1,r_2$ che passino entrambe per i punti 
+$P_1,P_2\in\mathbb{P}_2$ con $P_1\neq P_2 \;\;\Rightarrow\;\; r_1\cap r_2 \supset \{P_1,P_2\}$.\\
+Tuttavia per il punto precedente tale configurazione pu\'o essere possibile se e soltanto se $r_1=r_2$. 
+\end{enumerate}
+
+
+
+\item Per dimostrare che le equazioni parametriche e cartesiane dell'esercizio individuano difatto la stessa retta si vuole mostrare che se una tripla $[x:y:z]$ soddisfa una delle due allora soddisfa anche l'altra (e viceversa).\\
+Sia $[x:y:z]$ tale che 
+$
+\sist
+x= a_1 u + b_1v \\
+y=a_2u+b_2v\\
+z=a_3u+b_3v
+\esist
+$
+e andiamo a sostituire tali valori di $x,y,z$ nell'equazione cartesiana per verificare se \'e soddifatta o meno.\\
+$$a(a_1u+b_1v)+b(a_2u+b_2v)+c(a_3u+b_3v)=( a a_1+b a_2+c a_3)u +( a b_1+b b_2+c b_3)v=0$$
+Infatti i coefficienti di $u$ e $v$ sono entrambi nulli in quanto per ipotesi si ha che:
+$$(a,b,c)\bm a_1 & b_1\\ a_2 & b_2\\ a_3 & b_3 \edm = (a a_1+b a_2+c a_3,a b_1+b b_2+c b_3)=(0,0)$$ 
+Ora si vuole invece mostrare il viceversa, ossia che se $[x:y:z]$ soddisfa $ax+by+cz=0$ allora soddisfa anche le equazioni parametriche.\\
+L'insieme delle soluzioni di $ax+by+cz=0$ \'e uno spazio vettoriale di dimensione $2$ per Rouch\'e-Capelli.\\
+I vettori $[a_1:a_2:a_3]$ e $[b_1:b_2:b_3]$ soddisfano l'equazione e sono linearmente indipendenti per ipotesi, in quanto $rank(M)=2$, quindi generano tale spazio e in particolare ne rappresentano una base. Ogni vettore dello spazio delle soluzioni, ossia ogni punto di $\mathbb{P}_2$ che soddisfa l'equazione cartesiana, potr\'a essere scritto come combinazione lineare di $[a_1:a_2:a_3]$ e $[b_1:b_2:b_3]$, ossia:
+$$
+\bm x \\ y \\ z \edm = \bm a_1 \\ a_2 \\ a_3 \edm u + \bm b_1 \\ b_2 \\b_3 \edm v
+$$
+
+
+
+\item 
+\begin{enumerate}
+\item 
+\'E data la curva ellittica scritta in forma di Legendre:
+$$E:\;y^2=x(x-1(x-\lambda))=x^3-(1+\lambda)x^2+\lambda x$$
+Innanzitutto applico il cambiamento di variabile 
+$\sist 
+x \longmapsto \ds{x+\frac{1+\lambda}{3}} \\
+y \longmapsto y
+\esist$
+per riportare l'equazione nella forma canonica di Weierstrass.
+
+$$y^2=\ds{\left(x+\frac{1+\lambda}{3}\right)^3-(1+\lambda)\left(x+\frac{1+\lambda}{3}\right)^2+
+\lambda\left(x+\frac{1+\lambda}{3}\right)}$$
+Facendo tutti i calcoli si arriva alla seguente equazione:
+$$y^2=x^3+\ds{\left(-\frac{\lambda^2-\lambda+1}{3}\right)x-\frac{2}{27}(\lambda+1)(\lambda-2)\left(\lambda-
+\frac{1}{2}\right)}$$
+Ora si deve solamente calcolare il j-invariante della forma di Weierstrass. Si tratteranno numeratore e denominatore 
+separatamente per poter seguire al meglio i calcoli.
+$$j(E)=1728\ds{\frac{4A^3}{4A^3+27B^2}}$$
+\textbf{NUMERATORE:} \\
+$N=2^6*3^3*4\ds{\left(-\frac{\lambda^2-\lambda+1}{3}\right)^3}=-2^8(\lambda^2-\lambda+1)^3$.\\  
+\textbf{DENOMINATORE:} \\
+$D=4\ds{\left(-\frac{\lambda^2-\lambda+1}{3}\right)^3
++27\left[-\frac{2}{27}(\lambda+1)(\lambda-2)\left(\lambda-\frac{1}{2}\right)\right]^2+}$\\
+$+\ds{\frac{4}{27}\left[-(\lambda^2-\lambda+1)^3+(\lambda-2)^2(\lambda+1)^2\left(\lambda-\frac{1}{2}\right)\right]}=$\\
+$=\ds{\frac{4}{27}\left[-\lambda^6+3\lambda^4(\lambda-1)-3\lambda^2(\lambda-1)^2+(\lambda-1)^3+
+\left(\lambda^3-\frac{3}{2}\lambda^2-\frac{3}{2}\lambda+1\right)^2\right]=}$\\
+$=\ds{\frac{4}{27}\left(-\lambda^6+3\lambda^5-3\lambda^4-3\lambda^4+6\lambda^3-3\lambda^2+\lambda^3-3\lambda^2+3\lambda-1\right)}+$\\
+$+\ds{\frac{4}{27}\left(\lambda^6+\frac{9}{4}\lambda^4+\frac{9}{4}\lambda^2+1-3\lambda^5-3\lambda^4
++2\lambda^3+\frac{9}{2}\lambda^3-3\lambda^2-3\lambda\right)=}$\\
+$=\ds{\frac{4}{27}\left[-\frac{27}{4}\lambda^4+\frac{27}{2}\lambda^3-\frac{27}{4}\lambda^2\right]=
+-\lambda^2(\lambda-1)^2}$\\
+A questo punto basta mettere insieme le due cose per trovare che:
+$$j(E)=\ds{\frac{N}{D}=2^8\frac{(\lambda^2-\lambda+1)^3}{\lambda^2(\lambda-1)^2}}$$
+
+\item Nell'equazione di Legendre il valore di $\lambda$ \'e definito come 
+$$\lambda:=\ds{\frac{e_3-e_1}{e_2-e_1}}$$
+dove $e_i$ sono le radici del polinomio in $x$. Tale valore di $\lambda$ dipender\'a quindi per costruzione dall'ordine che ho dato alle radici. In generale, se scambio l'ordine delle radici, a partire dalla curva originale faccio cambiamenti di variabile che generano valori di $\lambda$ diversi. Questi ultimi dovranno per\'o descrivere la stessa curva ellittica quindi dall'espressione in \textbf{(a)} si dovr\'a ricavare lo stesso valore del j-invariante!\\
+$|S_3|=6$, quindi esistono sei permutazioni delle radici da cui ricavo valori di $\lambda$ differenti. Questi ultimi dipendono da $\lambda$ e sono contenuti nell'insieme
+$$\ds{\left\{\lambda,\frac{1}{\lambda},1-\lambda,\frac{1}{1-\lambda},
+\frac{\lambda}{\lambda-1},\frac{\lambda-1}{\lambda}\right\}}$$
+\'E doveroso precisare che questo discorso pu\'o essere fatto se e solo se gli elementi di questo insieme non coincidono fra loro. Ci\'o accade se $\lambda\neq -1,\frac{1}{2},2$ o se $\lambda^2-\lambda+1\neq 0 $.
+Tali valori di $\lambda$ determinano $j(E)=0,1728$ (come si vedr\'a nel punto successivo).\\
+Riassumendo il tutto si ha che se $j(E) \neq 0,1728$ ci sono $6$ valori distinti di $\lambda$ contenuti nell'insieme descritto sopra per cui la curva ha invariante $j(E)$.
+
+\item Se $j=0$ segue subito dal punto \textbf{(a)} che $\lambda^2-\lambda+1=0$.\\
+Se $j=1728\;\;\Rightarrow\;\;\ds{2^8\frac{(\lambda^2-\lambda+1)^3}{\lambda^2(\lambda-1)^2}}$ da cui si ha che:\\
+$4(\lambda^2-\lambda+1)^3=27\lambda^2(\lambda-1)^2$\\
+$4\lambda^6-12\lambda^5-3\lambda^4+26\lambda^3-3\lambda^2-12\lambda+4=0$\\
+$(2\lambda-1)^2(\lambda-2)^2(\lambda+1)^2=0$, da cui si ricava subito che \\
+se $j=1728\;\;\Rightarrow\;\;\lambda=-1,\frac{1}{2},2$.
+\end{enumerate}
+
+
+
+
+
+\item Siano $C:u^2-v^2=1$ e $P=(u_0,v_0)=(1,0)$.\\
+\begin{enumerate}
+\item Considero $C$ come la curva nel piano $uv$ e definisco $L$ come la retta passante per $P$ con coefficiente angolare $m$.\\
+$$\sist
+u=u_0+t \\
+v=v_0+mt 
+\esist \;\Rightarrow\;
+\sist
+u=1+t \\
+v=mt 
+\esist$$
+Si vuole trovare l'altro punto di intersezione tra $L$ e $C$. Si ha che:\\
+$(1+t)^2-m^2t^2=1\;\Rightarrow\;t((1-m^2)t+2)$
+I due punti di intersezione saranno individuati da $t=0$, da cui si ricava il punto di partenza $P$, e da 
+$t=\ds{\frac{2}{m^2-1}}$ da cui si ricava il secondo punto di intersezione, i.e. il punto che si voleva trovare:
+$$\ds{u=\frac{m^2+1}{m^2-1}\;\;\;v=\frac{2m}{m^2+1}}$$ 
+\item $u^2-v^2=w^2\;\Rightarrow$ per trovare i punti all'infinito della curva si pone $w=0$ e si cercano le soluzioni rispetto le altre due variabili. In questo caso si ha che:\\
+$u^2=v^2\;\Rightarrow\;u=\pm v$ da cui si ricavano le soluzioni\\
+$[v:v:0]$ e $[-v:v:0]$, al variare di $v\in\R$.\\
+Tali soluzioni nel piano proiettivo corrispondono ai due punti\\
+$[1:1:0]$ e $[1:-1:0]$.
+
+\item La parametrizzazione della curva in \textbf{(a)} pu\'o essere scritta in coordinate proiettive come 
+$[m^2+1,2m,m^2-1]$. Se si pone $m=\pm 1$ e si sostituiscono tali valori di $m$ nelle cordinate proiettive di $C$ si ottengono i due punti all'infinito $[1:1:0]$ e $[1:-1:0]$ ($m=\pm 1$ sono infatti gli unici due valori per cui la terza coordinata si annulla). A livello grafico tutto ci\'o deriva dal fatto che la curva $u^2-v^2=1$ nel piano $uv$ \'e un iperbole i cui asintoti sono le rette $y=\pm x$. I valori del parametro $m$ corrispondono dunque ai valori dei coefficienti angolari delle due rette che incontrano $C$ all'infinito.
+\end{enumerate}
+
+
+
+
+\item Siano $F:\; au^2+bv^2=e$ e $G:\; cu^2+dw^2=f$.\\
+Si considera $P=(u_0,0,0)\in F\cap G$.
+\begin{enumerate}
+\item Si \'e visto dall'esercizio precedente che una curva nel piano $uv$ pu\'o essere scritta in funzione del solo parametro $m$.\\
+In particolare si ha che:
+$u=\ds{u_0-\frac{2au_0}{a+bm^2}}$ \\
+Sostituendo tale espressione di $u$ in $G$ si ha che:
+$$dw^2=f-c\ds{\left(u_0-\frac{2au_0}{a+bm^2}\right)^2} \Rightarrow dw^2=f-c u_0^2\ds{\left(\frac{bm^2-a}{a+bm^2}\right)^2}$$
+da cui sfruttando il fatto che $P\in G$, ossia che $c u_0^2=f$:
+$$d w^2=f\ds{\left(1-\left(\frac{bm^2-a}{bm^2+a}\right)^2\right)}\;\Rightarrow\;
+w^2=\ds{\frac{f}{d}\frac{4abm^2}{bm^2+a}}$$
+ossia un'espressione del tipo cercato.
+
+\item $$J=\bm F_u & F_v & F_w \\ G_u & G_v & G_w \edm = 
+\bm 2au & 2bv & 0 \\ 2cu & 0 & 2dw \edm$$
+calcolata nel punto $(u_0,0,0)$ \'e uguale a:
+$$J=\bm 2au_0 & 0 & 0 \\ 2cu_0 & 0 & 0\edm$$
+Quindi $rank(J)=1$ e in particolare non \'e massimo $\Rightarrow$\\
+Il punto $(u_0,0,0)$ \'e un punto singolare! 
+\end{enumerate}
+
+
+
+
+
+\item Si vuole trasformare la cubica $x^3+y^3=d$ nella curva ellittica \\
+$E:\; y^2=x^3-432d^2$.\\
+Per prima cosa faccio il seguente cambio di variabile:
+$$\sist
+x=u+v\\
+y=u-v
+\esist  \;\Rightarrow\; (u+v)^3 + (u-v)^3 = d$$
+Da cui si ricava l'equazione:$2u^3+6uv^2-d=0$. A questo punto moltiplico tutto per $\ds{\frac{d^2}{u^3}}$ ottenendo l'equazione: 
+$$\ds{6\left(\frac{dv}{u}\right)^2=\left(\frac{d}{u}\right)^3-2d^2}\;\Rightarrow\;
+\ds{\frac{6}{36^2}\left(36\frac{dv}{u}\right)^2=\frac{1}{6^3}\left(6\frac{d}{u}\right)^3-2d^2}$$
+A questo punto per ottenere la curva ellittica di arrivo baster\'a  moltiplicare tutto per $6^3$ e applicare il cambio di variabili seguente per ottenere $E$.
+$$\sist
+x_1=6\ds{\frac{d}{u}}\\
+y_1=36\ds{\frac{dv}{u}}
+\esist   $$
+
+\item Per tutti e tre i punti seguenti si dimostrano in maniera analoga i casi particolari.
+\begin{itemize}
+\item Se $P_1+P_2=\infty$ si ha che:
+$f(P_1)+f(P_2)=\infty=f(\infty)=f(P_1+P_2)$ in quanto se $P_1$ e $P_2$ hanno la stessa ascissa, anche
+$f(P_1)$ e $f(P_2)$ avranno stessa ascissa (oppure se sono uguali con ordinata nulla anche le loro immagini tramite $f$ saranno uguali con ordinata nulla).
+\item Se $P_1=\infty$ allora $f(P_1)+f(P_2)=\infty +f(P_2)=f(P_2+\infty)=f(P_1+P_2)$. 
+\end {itemize}
+\begin{enumerate}
+\item Sia $\varphi: (x,y) \longmapsto (x,-y)$. Affinch\'e $\varphi$ sia un omomorfismo deve accadere che:
+$$\varphi(P_1)+\varphi(P_2)=\varphi(P_1+P_2)$$
+Per quanto detto nell'introduzione supponiamo $P_1=(x_1,y_1) \neq (x_2,y_2)=P_2$, con $x_1 \neq x_2$.\\
+$\varphi(P_1)+\varphi(P_2)=(x_1,-y_1)+(x_2,-y_2)=(m^2-x_1-x_2,m(x_1-x_3)+y_1)$\\
+dove $\ds{m=-\frac{y_2-y_1}{x_2-x_1}}$.\\
+$\varphi(P_1+P_2)=\varphi[(m'^2-x_1-x_2,m'(x_1-x_3)-y_1)]=$\\
+$=(m'^2-x_1-x_2,-m'(x_1-x_3)+y_1)$ dove $\ds{m'=\frac{y_2-y_1}{x_2-x_1}}$.\\
+Quindi dal fatto che $m=-m'$ segue subito l'uguaglianza.\\
+In maniera del tutto analoga si tratta il caso in cui $P_1=P_2$, con $y \neq 0$ \\
+Infatti cambia solo il valore di $m$ e $m'$, che sono comunque uno l'opposto dell'altro.\\
+Stessa cosa si potr\'a dire per i casi seguenti in cui non verr\'a neanche menzionato.\\
+\item Sia $\psi: (x,y) \longmapsto (\zeta x, -y)$, dove $\zeta$ \'e una radice cubica dell'unit\'a non banale.
+Innanzitutto si vuole dimostrare che $\psi$ \'e una biezione da $E$ in s\'e, se la curva \'e della forma $y^2=x^3+B$.\\
+$Ker(\psi)$ \'e banale, quindi $\psi$ \'e iniettiva. Inoltre preso un elemento $(x,y)\in E \;\exists\;
+(x_1,y_1)\in E$ t.c. $\psi((x_1,y_1))=(x,y)$. Infatti basta prendere $(x_1,y_1)=(\zeta^2 x,-y)$.\\
+\'E da notare il fatto che $(\zeta^2 x,-y)\in E$ solo se $E$ \'e della forma particolare che si sta trattando.\\
+Ora rimane da mostrare che $\psi$ \'e un omomorfismo.\\
+$\psi(P_1)+\psi(P_2)=(\zeta x_1,-y_1)+(\zeta x_2,-y_2)=$
+$=(m^2-\zeta x_1-\zeta x_2,m(\zeta x_1-x_3)+y_1)$\\
+dove $\ds{m=-\frac{y_2-y_1}{\zeta(x_2-x_1)}=-\zeta^2\frac{y_2-y_1}{x_2-x_1}}$.\\
+$\psi(P_1+P_2)=\psi[(m'^2-x_1-x_2,m'(x_1-x_3)-y_1)]=$\\
+$=(\zeta m'^2- \zeta x_1- \zeta x_2,-m'(x_1-x_3)+y_1)$ dove $\ds{m'=\frac{y_2-y_1}{x_2-x_1}}$.\\
+Quindi dal fatto che $m=-\zeta^2 m'$ e $\zeta^3=1$ segue subito l'uguaglianza.\\
+
+\item Sia $\chi: (x,y) \longmapsto (-x,iy)$ dove $i$ \'e l'unit\'a immaginaria, quindi una radice quarta dell'unit\'a non banale. Innanzitutto si vuole dimostrare che $\chi$ \'e una biezione da $E$ in s\'e, se la curva \'e della forma $y^2=x^3+Ax$.\\
+$Ker(\chi)$ \'e banale, quindi $\chi$ \'e iniettiva. Inoltre preso un elemento $(x,y)\in E \;\exists\;
+(x_1,y_1)\in E$ t.c. $\chi((x_1,y_1))=(x,y)$. Infatti basta prendere $(x_1,y_1)=(-x,- i 
+y)$.\\
+\'E da notare il fatto che $(-x,-iy)\in E$ solo se $E$ \'e della forma particolare che si sta trattando.\\
+Ora rimane da mostrare che $\chi$ \'e un omomorfismo.\\
+$\chi(P_1)+\chi(P_2)=(-x_1,iy_1)+(-x_2,iy_2)=$
+$=(m^2+x_1+x_2,m(-x_1-x_3)-iy_1)$\\
+dove $\ds{m=-i\frac{y_2-y_1}{x_2-x_1}}$.\\
+$\chi(P_1+P_2)=\chi[(m'^2-x_1-x_2,m'(x_1-x_3)-y_1)]=$\\
+$=(-m'^2+x_1+x_2,im'(x_1-x_3)+iy_1)$ dove $\ds{m'=\frac{y_2-y_1}{x_2-x_1}}$.\\
+Quindi dal fatto che $m=-im'$ e $i^2=-1$ segue subito l'uguaglianza.\\
+
+\end{enumerate}
+
+
+
+\end{enumerate}
+\end{document}

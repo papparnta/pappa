@@ -1,0 +1,274 @@
+
+\documentclass[italian,a4paper,10pt]{report}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi}
+\newtheorem{Proposition}{Proposition}[section]
+\newtheorem{Theo}{Teorema}[section]
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Es}{Esercizio}[section]
+\newtheorem{Corollary}{Corollary}[section]
+\newcommand{\om}{\Omega_t}
+\newcommand{\la}{\lambda}
+\newcommand{\fine}{$\blacksquare$}
+\newcommand{\e}{\`e\;}
+\newcommand{\E}{\`E\;}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\El}{\mathcal{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Lap}{\triangle}
+\newcommand{\sol}{{\bf Soluzione.}\quad }
+\newcommand{\displayfrac}[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+\renewcommand{\baselinestretch}{1,2}
+\parindent 0pc
+%\parskip 6pt
+\overfullrule=0pt
+\begin{document}
+\centerline{{\bf Universit\`a degli Studi Roma Tre}}
+\centerline{{\bf Corso di Laurea in Matematica, A.A. 2002/2003}}
+\centerline{{\bf Soluzione del II Esonero di CR1 - Crittografia
+1}} \centerline{A cura di Andrea Susa} \vspace{15mm}
+
+1. Definire il concetto di  curva ellittica su un campo finito ed
+il gruppo di Mordell-Weyll associato. \vspace{3mm}
+
+2. Consideriamo la curva $y^2 = x^3 +x + 6$ sul campo
+ $F_{7}$. Descrivere $\El(F_{7})$.
+
+{\bf Soluzione}
+
+Per prima cosa verifichiamo che la curva ellittica sia ben
+definita, cio\e valga la relazione:
+$$
+4a^3 + 27b^2 \not\equiv 0  \qquad (\bmod\;7).
+$$
+Nel nostro caso:
+$$
+4 + 27(-1)^2 \equiv 5 \not\equiv 0\qquad (\bmod\;7).
+$$
+Determiniamo i punti finiti di $\mathcal{E}(\F_7)$:
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  $x$ & $x^3+x+6 \;(\bmod\;7)$ & RQ & $y$ \\
+ \hline
+  0 & 6 & no &  \\
+   \hline
+  1 & 1 & si & $\pm 1$ \\
+ \hline
+  2 & 2 & si & $\pm 3$ \\
+\hline
+  3 & 1 & si & $\pm 1$ \\
+\hline
+  4 & 4 & si & $\pm 2$ \\
+  \hline
+  5 & 3 & no &  \\ \hline
+ 6 & 4 & si & $\pm 2$ \\ \hline
+\end{tabular}
+\end{center}
+
+Quindi $\El(\F_7) \simeq \F_{11}$.
+
+
+
+ 3. Descrivere l'algoritmo dello scambio delle chiavi di Diffie-Helmann sulle
+curve
+ ellittiche. \vspace{5mm}
+
+4. Sia $g$ una radice primitiva di $F_p$. Dimostrare le seguenti
+propriet\`{a} del logaritmo discreto:
+\begin{align*}
+\log_g(a\cdot b) \; &= \log_g(a) + \log_g(b), \qquad &&(\bmod\;p-1)\\
+\log_g(a^n) &= n \log_g(a) \qquad &&(\bmod\;p-1).
+\end{align*}
+
+{\bf Soluzione}
+
+Siano $g^r = a$, $g^s = b$, $g^n = ab$. Quindi $\log_g (ab) = n$.
+Ma
+$$g^n = ab =(g^r)(g^s) = g^{r+s} \quad \Longrightarrow \quad n
+\equiv r+s \quad (\bmod\;p-1).
+$$
+Allora:
+$$
+\log_g (ab) = n \equiv r + s = log_g(a) + \log_g(b) \qquad
+(\bmod\;p-1).
+$$
+
+Per induzione su $n$:
+
+se $n=2$ per la precedente $\log_g(a^2) = \log_g(a) + \log_g(a) =
+2\log_g(a)$.
+
+Per ipotesi induttiva $\log_g(a^{n-1}) = (n-1)\log_g(a)$.
+
+Allora se $n \geq 3$, $\log_g(a^{n}) = \log_g(a) + \log_g(a^{n-1})
+= n\log_g(a)$. \vspace{5mm}
+
+5. Consideriamo il campo base $F_5$. Determinare il numero dei
+polinomi monici irriducibili di grado 12. Qual \`{e} la
+probabilit\`{a} che, preso random un polinomio monico di grado 12,
+esso sia irriducibile?  \vspace{5mm}
+
+{\bf Soluzione}
+
+Dobbiamo calcolare:
+$$
+5^{12} = \sum_{d|12}\, dN_d(5).
+$$
+Abbiamo che:
+$$
+N_1(5) = 5, \qquad N_2(5) = 10, \qquad N_3(5) = 40
+$$
+Mentre:
+\begin{align*}
+N_4(5) &=\frac{1}{4} \left( 5^4 - N_1(5) - 2N_2(5) \right) = 150\\
+\\
+N_6(5) &= \frac{1}{6} \left( 5^6 - N_1(5) - 2N_2(5) - 3N_3(5)
+\right) = 2580\\
+\end{align*}
+Quindi:
+\begin{align*}
+N_{12}(5) &= \frac{1}{12} (5^{12} - 5 - 20 - 120 - 4\cdot 150 -
+6\cdot 2580) =\\
+&=20343700.
+\end{align*}
+
+Calcoliamo la probabilit\`{a}: se indichiamo con $T_{k}(p)=p^k$ il
+numero dei polinomi monici di grado $k$ su $\F_p$, allora
+$$
+\frac{N_{12}(5)}{T_{12}(5)} = \frac{20343700}{5^{12}} = 0.08332
+$$ \vspace{5mm}
+
+
+6. Consideriamo il polinomio $f = x^3 + x +1 \in F_5[x]$. Dopo
+aver verificato che \`{e} irriducibile, trovare una radice
+primitiva per il campo:
+$$F_{5}[x]/(f) \; = \{a + b\theta + c\theta^2\; |\;
+\theta^3 = - \theta -1 \}.$$ \vspace{2mm}
+
+{\bf Soluzione}
+
+Il polinomio \e irriducibile in quanto ha grado $3$, e quindi se
+fosse riducibile dovrebbe avere una radice sul campo. Ma si
+calcola che $f(0) = 1$, $f(\pm 1) = (\pm 1) + (\pm 1)+1 \ne 0$,
+$f(\pm 2) = (\pm 8) + (\pm 2)+1 \ne 0$. Quindi $f$ riducibile.
+
+Sia $\theta$ una radice formale. Allora $\theta^2+1$ \e primitiva.
+\vspace{5mm}
+
+
+
+
+
+
+
+
+
+7. Calcolare il $\log_3(13)$ nel campo $\F_{31}$, utilizzando un
+qualsiasi metodo. \vspace{5mm}
+
+{\bf Soluzione}
+
+Utiliziamo l'algortimo di Shanks:
+
+$m= [\sqrt{31} ]= 5$. Otteniamo le seguenti liste:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+  j & 0 & 1 & 2 & 3 & 4 \\
+  \hline
+  $g^{mj}$ & 1 & 26 & 25 & 30 & 5 \\ \hline
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+  i& 0 & 1 & 2 & 3 & 4 \\
+  \hline
+ $ 13\cdot g^{-i}$ & 13 & 25 & 29 & 20 &17 \\ \hline
+\end{tabular}
+\end{center}
+
+Le coppie sono: $(2,25)$ e $(1,25)$. Quindi $\log_3(13) = mj + i =
+5 \cdot 2 + 1=11$. \vspace{5mm}
+
+8. Dimostrare che il polinomio $x^2+1$ \`{e} irriducibile su tutti
+i campi finiti $F_p$ con $p \equiv 3$ $(\bmod\;4)$. \vspace{5mm}
+
+{\bf Soluzione} Il polinomio $f=x^2+1$ \e irriducibile su $\F_p$
+se e soltanto se non ha radici su $\F_p$, cio\e se $\left(
+\frac{-1}{p} \right) = -1$. Ma questo accade se e soltanto se $p
+\equiv 3$ $(\bmod\;4)$. \vspace{5mm}
+
+
+9. Si descrivino tutti i valori di $a \in F_p$ per cui il
+polinomio: $ f(x) \; =\; x^2 + a $ \`{e} irriducibile, e si
+dimostri che tale polinomio non pu\`{o} mai essere primitivo.
+
+{\bf Soluzione} $f$ \e irriducibile per ogni $a\in F_p$ tale che
+$\left( \frac{-a}{p}\right) = -1$.
+
+Se per assurdo $f$ fosse primitivo, allora avremmo che la sua
+radice $\theta$ \e tale che:
+$$
+ord_p(\theta^2) = ord_p(-a) \leq p-1.
+$$
+Quindi: $ord_p(\theta) = p^2 - 1 = \frac{1}{2} ord_p(\theta^2)
+\leq \frac{p-1}{2}$ e questo \e assurdo. \vspace{5mm}
+
+
+
+
+
+10. Mostrare che tutti i polinomi del tipo $x^p +x +1$ sono
+riducibili su $\F_p$, per $p \geq 3$.
+
+{\bf Soluzione} I polinomi del tipo $x^p + x+1$ hanno sempre una
+radice sul campo $\F_p$. Infatti $(p- 2)^*$, cio\e l'inverso
+aritmetico di $-2$ $(\bmod\;p)$ \e sempre soluzione del polinomio:
+$$
+(p-2^*)^p + (p-2^*) +1 \equiv (-2^*) + (-2^*) +1 \equiv -2 \cdot
+(2^*) + 1 \equiv 0 \qquad (\bmod\;p).
+$$
+\vspace{5mm}
+
+
+
+
+11. Dopo aver scritto tutti i polinomi irriducibili di grado $\leq
+4$ su $F_2$, mostrare che il polinomio $f(x) = x^5+x^2+1$ \`{e}
+irriducibile. \vspace{5mm}
+
+{\bf Soluzione} La seguente tabella mostra tutti i polinomi
+irriducibili di grado $\leq 4$.
+\begin{center}
+\begin{tabular}[c]{|c|c|c|c|}
+    \hline
+    $n=1$         &$x$ &$ x+1$ &$$\\ \hline
+    $n=2$      &$x^2 + x + 1$ &$$ &$$\\ \hline
+    $n=3$        &$x^3+x^2+1$&$x^3+x+1 $ &$$\\ \hline
+    $n=4$        &$x^4+x+1$&$ x^4+x^3+1$&$x^4+x^3+x^2+x+1$ \\
+    \hline
+ \end{tabular}
+\end{center}
+
+Si verifica che $f$ non ha radici sul campo, quindi se fosse
+riducibile dovrebbe essere il prodotto di un polinomio di grado
+tre con un polinomio di grado due.
+
+Ma svolgendo la divisione di $f$ con l'unico polinomio polinomio
+irriducibile di grado 2 otteniamo:
+$$
+f = (x^2+x+1)(x^3+x^2) + 1
+$$
+quindi $f$ \e irriducibile.
+
+12. Descrivere tutti i sottocampi di $F_{5^{30}}$.\vspace{5mm}
+
+{\bf Soluzione} Esiste un sottocampo per ogni divisore proprio di
+30.
+
+
+\end {document}

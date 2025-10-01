@@ -1,0 +1,197 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      3918,        132]*)
+(*NotebookOutlinePosition[      4583,        155]*)
+(*  CellTagsIndexPosition[      4539,        151]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+    \(Integrate[x^3/\((x - 2)\)^3, x]\)], "Input"],
+
+Cell[BoxData[
+    \(\(-\(4\/\((\(-2\) + x)\)\^2\)\) - 12\/\(\(-2\) + x\) + x + 
+      6\ Log[\(-2\) + x]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(D[\((Cos[x])\)^\((Log[x])\), x]\)], "Input"],
+
+Cell[BoxData[
+    \(Cos[x]\^Log[x]\ \((Log[Cos[x]]\/x - Log[x]\ Tan[x])\)\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Plot[0, {x, \(-1\), 10}, \ 
+      PlotRange \[Rule] \ {{\(-2\), 6}, {\(-10\), 10}}, 
+      AxesLabel \[Rule] \ {"\<x\>", "\<y\>"}]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[\(\[SkeletonIndicator]  Graphics  \[SkeletonIndicator]\),
+      False,
+      Editable->False]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Plot[Sqrt[x + 1]*\((\ x^2 - x - 4)\), {x, \(-1\), 10}, \ 
+      PlotRange \[Rule] \ {{\(-2\), 6}, {\(-10\), 10}}, 
+      AxesLabel \[Rule] \ {"\<x\>", "\<y\>"}]\)], "Input"],
+
+Cell[BoxData[
+    TagBox[\(\[SkeletonIndicator]  Graphics  \[SkeletonIndicator]\),
+      False,
+      Editable->False]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Series[Exp[x]*Cos[x], {x, 0, 13}] - \((1 + x - x\^3\/3)\)\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[
+      RowBox[{\(-\(x\^4\/6\)\), "-", \(x\^5\/30\), "+", \(x\^7\/630\), 
+        "+", \(x\^8\/2520\), "+", \(x\^9\/22680\), "-", \(x\^11\/1247400\), 
+        "-", \(x\^12\/7484400\), "-", \(x\^13\/97297200\), "+", 
+        InterpretationBox[\(O[x]\^14\),
+          SeriesData[ x, 0, {}, 4, 14, 1],
+          Editable->False]}],
+      SeriesData[ x, 0, {
+        Rational[ -1, 6], 
+        Rational[ -1, 30], 0, 
+        Rational[ 1, 630], 
+        Rational[ 1, 2520], 
+        Rational[ 1, 22680], 0, 
+        Rational[ -1, 1247400], 
+        Rational[ -1, 7484400], 
+        Rational[ -1, 97297200]}, 4, 14, 1],
+      Editable->False]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(D[Exp[x]*Cos[x], x]\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\[ExponentialE]\^x\ Cos[x] - \[ExponentialE]\^x\ Sin[x]\)], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"5.2 for Microsoft Windows",
+ScreenRectangle->{{0, 1280}, {0, 717}},
+WindowSize->{1272, 683},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+ShowSelection->True
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 64, 1, 30, "Input"],
+Cell[1843, 56, 118, 2, 44, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[1998, 63, 64, 1, 30, "Input"],
+Cell[2065, 66, 87, 1, 42, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2189, 72, 163, 3, 30, "Input"],
+Cell[2355, 77, 130, 3, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2522, 85, 193, 3, 30, "Input"],
+Cell[2718, 90, 130, 3, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2885, 98, 90, 1, 45, "Input"],
+Cell[2978, 101, 683, 17, 45, "Output"]
+}, Open  ]],
+Cell[3676, 121, 26, 0, 30, "Input"],
+
+Cell[CellGroupData[{
+Cell[3727, 125, 83, 1, 50, "Input"],
+Cell[3813, 128, 89, 1, 29, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

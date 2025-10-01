@@ -1,0 +1,747 @@
+% \documentclass[12pt,a4paper]{article}
+% \usepackage{beamerarticle}
+% \mode<article>{\usepackage{fullpage}}
+
+\documentclass[10pt,handout]{beamer} %,hyperref={pdfpagelabels=false},draft,final,]
+\input{EC-lecture-style.tex}
+
+%\includeonlyframes{current,current1,current2}
+
+\lecture[3]{Elliptic curves over finite fields}{First Steps}
+\date{April 16, 2015}
+
+\def\lecturename{African Mathematical School}
+
+\title[Elliptic curves over $\F_{q}$]{\insertlecture}
+\subtitle{The group order}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Reminder from last lecture}
+
+
+\begin{frame}\frametitle{The division polynomials}
+
+\begin{Definition}[Division Polynomials of $E:y^2=x^3+Ax+B$ ($p>3$)]\vspace*{-0.7cm}
+\begin{align*}
+        \psi_{0} =& 0,
+        \psi_{1} = 1,
+        \psi_{2} = 2y\\
+        \psi_{3} =& 3x^{4} + 6Ax^{2} + 12Bx - A^{2}\\
+        \psi_{4} =& 4y(x^{6} + 5Ax^{4} + 20Bx^{3} - 5A^{2}x^{2} - 4ABx - 8B^{2} - A^{3}) \\
+        &\vdots\\
+        \psi_{2m+1} =& \psi_{m+2}\psi_{m}^{3}-\psi_{m-1}\psi^{3}_{m+1} \qquad \text{ for } m \geq 2\\
+        \psi_{2m}  =& \left(\frac{\psi_{m}}{2y}\right)\cdot(\psi_{m+2}\psi^{2}_{m-1}-\psi_{m-2}\psi^{2}_{m+1}) \quad \text{ for } m \geq 3
+\end{align*}
+The polynomial $\psi_m\in{\mathbb Z}[x,y]$ is the $m^{\text{th}}$ \emph{division polynomial}
+\end{Definition}\pause
+\begin{theorem}[$E: Y^2=X^3+AX+B$ elliptic curve, $P=(x,y)\in E$]
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=9.2cm,center]{formul}
+$\!\!\!mP=m(x,y)=\left ( \frac{\phi_{m}(x)}{\psi_{m}^{2}(x)}, \frac{\omega_{m}(x,y)}{\psi^{3}_{m}(x,y)} \right),$\\ where $\phi_{m}=x\psi_{m}^{2} - \psi_{m+1}\psi_{m-1},\omega_{m}=\frac{\psi_{m+2}\psi_{m-1}^{2}-\psi_{m-2}\psi_{m+1}^{2}}{4y}
+\!\!\!$\end{beamercolorbox}}
+\end{theorem}
+\end{frame}
+
+\subsection{Points of finite order}
+
+\begin{frame}\frametitle{Points of order $m$}
+\begin{definition}[$m$--torsion point] Let $E/K$ and let $\bar{K}$ an \emph{algebraic closure of $K$}.
+
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=5cm,center]{postit}
+$E[m]=\{P\in E(\bar{K}):\ mP=\infty\}$\end{beamercolorbox}}
+\end{definition}\pause
+
+\begin{theorem}[Structure of Torsion Points]
+Let $E/K$  and $m\in\N$. If $p=\operatorname{char}(K)\nmid m$,
+
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=3.5cm,center]{formul}
+$E[m]\cong C_m\oplus C_m$\end{beamercolorbox}}
+
+If $m=p^rm', p\nmid m'$,
+
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=8cm,center]{formul}
+$E[m]\cong C_m\oplus C_{m'}\qquad\text{or}\qquad E[m] \cong C_{m'}\oplus C_{m'}$\end{beamercolorbox}}
+\end{theorem}\pause
+
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Idea of the proof:}
+Let $[m]:E\rightarrow E, P\mapsto mP$. Then
+\alert{$$\#E[m]=\#\operatorname{Ker[m]}\le\partial\phi_m=m^2$$}
+ \hfil equality holds iff \alert{$p\nmid m$}.
+\end{beamerboxesrounded}
+
+\end{frame}
+
+\begin{frame}
+\begin{block}{Remark.}
+\begin{itemize}
+\item $E[2m+1]\setminus \{\infty\}= \{(x,y)\in E(\bar{K}):\  \psi_{2m+1}(x)=0\}$
+\item $E[2m]\setminus E[2]= \{(x,y)\in E(\bar{K}):\  y^{-1}\psi_{2m}(x)=0\}$
+\end{itemize}
+\end{block}\vspace*{-2mm}\pause
+
+\begin{example}\vspace*{-.7cm}
+ \begin{scriptsize}
+ \begin{align*}
+\psi_4(x)=&2y(x^6
+ + 5 A x^4
+ + 20 B x^3
+ - 5 A^2 x^2
+ - 4 B A x
+ + \left(-A^3
+ - 8 B^2\right))\\
+ \psi_5(x)=&5 x^{12}
+ + 62 A x^{10}
+ + 380 B x^9
+ - 105 A^2 x^8
+ + 240 B A x^7\\&
+ + \left(-300 A^3
+ - 240 B^2\right)  x^6
+ - 696 B A^2 x^5\\&
+ + \left(-125 A^4
+ - 1920 B^2 A\right)  x^4
+ + \left(-80 B A^3
+ - 1600 B^3\right)  x^3\\&
+ + \left(-50 A^5
+ - 240 B^2 A^2\right)  x^2
+ + \left(-100 B A^4
+ - 640 B^3 A\right)  x\\&
+ + \left(A^6
+ - 32 B^2 A^3
+ - 256 B^4\right)\\
+ \psi_6(x)=&2y(
+ 6 x^{16}
+ + 144 A x^{14}
+ + 1344 B x^{13}
+ - 728 A^2 x^{12}
+ + \left(-2576 A^3
+ - 5376 B^2\right)  x^{10}\\ &
+ - 9152 B A^2 x^9
+ + \left(-1884 A^4
+ - 39744 B^2 A\right)  x^8
+ + \left(1536 B A^3
+ - 44544 B^3\right)  x^7\\&
+ + \left(-2576 A^5
+ - 5376 B^2 A^2\right)  x^6
+ + \left(-6720 B A^4
+ - 32256 B^3 A\right)  x^5\\&
+ + \left(-728 A^6
+ - 8064 B^2 A^3
+ - 10752 B^4\right)  x^4
+ + \left(-3584 B A^5
+ - 25088 B^3 A^2\right)  x^3\\&
+ + \left(144 A^7
+ - 3072 B^2 A^4
+ - 27648 B^4 A\right)  x^2\\&
+ + \left(192 B A^6
+ - 512 B^3 A^3
+ - 12288 B^5\right)  x
+ + \left(6 A^8
+ + 192 B^2 A^5
+ + 1024 B^4 A^2\right))
+  \end{align*}
+ \end{scriptsize}\vspace*{-7mm}
+\end{example}
+
+\end{frame}
+
+\subsection{The group structure}
+\begin{frame}\frametitle{Group Structure of $E(\F_q)$}
+
+\begin{exercise} Use division polynomials in Sage to write a list of all curves $E$ over $\F_{103}$
+such that $E(\F_{103})\supset E[6]$. Do the same for curves over $\F_{5^4}$.
+\end{exercise}\pause
+
+\begin{corollary}[Corollary of the Theorem of Structure for torsion] Let $E/\F_q$. $\exists n,k\in\mathbb N$ are such that
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=6cm,center]{formul}
+$$E(\F_q)\cong C_n\oplus C_{nk}$$\end{beamercolorbox}}
+\end{corollary}\pause
+
+\begin{theorem}  Let $E/\F_q$ and $n,k\in\mathbb N$ such that
+$E(\F_q)\cong C_n\oplus C_{nk}.$
+Then $n\mid q-1$.
+\end{theorem}
+\end{frame}
+
+
+
+\section{Weil Pairing}
+\begin{frame}\frametitle{Weil Pairing}
+Let $E/K$ and $m\in\N$ s.t. $p\nmid m$. Then
+
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=3cm,center]{formul}
+$E[m]\cong C_m\oplus C_m$\end{beamercolorbox}}\pause
+
+We set
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=4cm,center]{postit}
+$\mu_m:=\{x\in\bar{K}: x^m=1\}$\end{beamercolorbox}}\pause
+
+$\mu_m$ is a cyclic group with $m$ elements(since $p\nmid m$)\pause
+\begin{theorem}[Existence of Weil Pairing]
+There exists a pairing \alert{$e_m:E[m]\times E[m]\rightarrow\mu_m$}
+called \emph{Weil Pairing}, s.t. $\forall P, Q\in E[m]$\pause
+\begin{enumerate}[<+-| alert@+>]
+  \item $e_m(P+_EQ,R)=e_m(P,R)e_m(Q,R)$ (bilinearity)
+  \item $e_m(P,R)=1\forall R\in E[m]\ \Rightarrow\ P=\infty$ (non degeneracy)
+  \item $e_m(P,P)=1$
+  \item $e_m(P,Q)=e_m(Q,P)^{-1}$
+  \item $e_m(\sigma P,\sigma Q)=\sigma e_m(P,Q)\ \forall \sigma\in\operatorname{Gal}(\bar{K}/K)$ %   ($\sigma(A)=A$, $\sigma(B)=B$)
+  \item $e_m(\alpha(P),\alpha(Q))=e_m(P,Q)^{\deg\alpha}\ \forall\alpha$ separable endomorphism
+\end{enumerate}
+\end{theorem}\vspace*{-4.2pt}\pause
+\alert{{\scriptsize{The last one needs to be discussed further!!!}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Properties of Weil pairing}
+
+\begin{enumerate}[<+-| alert@+>]
+  \item \begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{postit}$E[m]\cong C_m\oplus C_m\ \Rightarrow\  E[m]$ has a $\Z/m\Z$--\emph{basis}\end{beamercolorbox}
+\hspace*{-10mm}i.e. $\exists P,Q\in E[m]: \forall R\in E[m], \exists!\alpha,\beta\in\Z/m\Z, R=\alpha P+\beta Q$\hspace*{-15mm}
+  \item \begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{postit}
+  If $(P, Q)$ is a $\Z/m\Z$--basis, then $\zeta=e_m(P,Q)\in\mu_m$ is \emph{primitive}\\\ \hfill \hfill (i.e. $\operatorname{ord}\zeta=m$)
+\end{beamercolorbox}
+  \textbf{Proof.} Let $d=\operatorname{ord}\zeta$. Then $1=e_m(P, Q)^d=e_m(P, dQ)$.\\
+  \qquad\ $\forall R\in E[m],$ $e_m(R,dQ)=e_m(P,dQ)^\alpha e_m(Q,Q)^{d\beta}=1$.\\
+  \qquad\ So $dQ=\infty\ \Rightarrow\ m\mid d$.
+  \item\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{postit}
+   $E[m]\subset E(K)\ \Rightarrow\ \mu_m\subset K$
+\end{beamercolorbox}
+  \textbf{Proof.} Let $\sigma\in\operatorname{Gal}(\bar{K}/K)$ %$\sigma(A)=A$, $\sigma(B)=B$
+ since the basis $(P,Q)\subset E(K)$,\\ $\qquad\ \sigma(P)=P$, $\sigma(Q)=Q$. Hence\\
+ \qquad\ $\zeta= e_m(P,Q)=e_m(\sigma P,\sigma Q)=\sigma e_m(P,Q)=\sigma\zeta$\\
+ \qquad\ So $\zeta\in \bar{K}^{\operatorname{Gal}(\bar{K}/K)}=K\ \Rightarrow\ \mu_n=\langle\zeta\rangle\subset K^*$
+  \item \begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{postit}
+  if $E(\F_q)\cong C_n\oplus C_{kn}\ \Rightarrow q\equiv1\bmod n$
+  \end{beamercolorbox}
+  \textbf{Proof.} $E[n]\subset E(\F_q)\Rightarrow \mu_n\subset\F_q^*\Rightarrow n\mid q-1$
+  \item \begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{postit}
+  If $E/\Q\ \Rightarrow\ E[m]\not\subseteq E(\Q)$ for $m\ge3$\end{beamercolorbox}
+\end{enumerate}
+\end{frame}
+
+\section{Endomorphisms}
+
+\begin{frame}
+\frametitle{Endomorphisms}
+
+\begin{definition} A map \alert{$\alpha: E(\bar{K})\rightarrow E(\bar{K})$} is called
+an \alert{endomorphism} if\pause
+\begin{itemize}[<+-| alert@+>]
+  \item $\alpha(P+_EQ)=\alpha(P)+_E\alpha(Q)$ ($\alpha$ is a group homomorphism)
+  \item $\exists R_1,R_2\in \bar{K}(x,y)$ s.t. $\alpha(x,y)=(R_1(x,y),R_2(x,y))\qquad\forall (x,y)\not\in\operatorname{Ker}(\alpha) $
+\end{itemize}\pause
+($\bar{K}(x,y)$ is the field of \emph{rational functions}, \pause  $\alpha(\infty)=\infty$
+)\vspace*{-1pt}
+\end{definition}\vspace*{-3.5pt}\pause
+
+\begin{exercise}[Show that we can always assume]
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=7cm]{postit}
+$\alpha(x,y)=(r_1(x),yr_2(x)),\qquad \exists r_1,r_2\in\bar{K}(x)$
+\end{beamercolorbox}}
+
+\hfil\ \textbf{Hint:} use $y^2=x^3+Ax+B$ and $\alpha(-(x,y))=-\alpha(x,y)$,
+\end{exercise}\vspace*{-1pt}\pause
+
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Remarks/Examples:}
+\begin{itemize}[<+-| alert@+>]
+\item if $r_1(x)=p(x)/q(x)$ with $\gcd(p,q)=1$ and $(x_0,y_0)\in E(\bar{K})$ with $q(x_0)=0$ $\Rightarrow$ $\alpha(x_0,y_0)=\infty$
+\item $[m](x,y)=\left(\frac{\phi_m}{\psi_m^2},\frac{\omega_m}{\psi_m^3}\right)$ is an
+endomorphism $\forall m\in\Z$
+\item $\Phi_q:E(\bar{\F}_q))\rightarrow E(\bar{\F}_q)), (x,y)\mapsto(x^q,y^q)$ is called
+\emph{Frobenius Endomorphism}
+\end{itemize}
+\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}
+\frametitle{Endomorphisms (continues)}
+
+\begin{theorem} If $\alpha\neq[0]$ is an endomorphism, then it is surjective.
+\end{theorem}\pause
+
+\begin{proof}[Sketch of the proof] Assume \alert{$p>3$}, \alert{$\alpha(x,y)=(p(x)/q(x),yr_2(x)$} and \alert{$(a,b)\in E(\bar{K})$}.\medskip
+
+\begin{itemize}
+  \item If \alert{$p(x)-aq(x)$} is not constant, let $x_0$ be one of its roots.
+Choose $y_0$ a square root of $x_0^2+AX_0+B$.\medskip
+
+Then either \alert{$\alpha(x_0,y_0)=(a,b)$} or \alert{$\alpha(x_0,-y_0)=(a,b)$}.\medskip
+
+  \item If \alert{$p(x)-aq(x)$} is  constant,\\
+\hfill   this happens only for one value of $a$!
+\begin{itemize}
+\item[] Let \alert{$(a_1,b_1)\in E(\bar{K})$}:\\
+\alert{$(a_1,b_1)\neq (a,\pm b)$} and \alert{$(a_1,b_1)+_E(a, b)\neq (a,\pm b).$}\medskip
+
+\item[] Then \alert{$(a_1,b_1)=\alpha(P_1)$} and \alert{$(a_1,b_1)+_E(a,b)=\alpha(P_2)$}\medskip
+
+\item[] Finally \alert{$(a,b)=\alpha(P_2-P_1)$}
+\end{itemize}
+\end{itemize}
+\end{proof}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Endomorphisms (continues)}
+
+\begin{definition} Suppose $\alpha: E\rightarrow E, (x,y)=(r_1(x),yr_2(x))$ endomorphism. Write
+$r_1(x)=p(x)/q(x)$ with $\gcd(p(x),q(x))=1$.
+\begin{itemize}[<+-| alert@+>]
+  \item The \textbf{degree} of $\alpha$ is $\deg\alpha:=\max\{\deg p,\deg q\}$
+  \item $\alpha$ is said \textbf{separable} if $(p'(x),q'(x))\neq(0,0)$ \hfill (identically)
+\end{itemize}
+\end{definition}\pause
+
+\begin{lemma}
+\begin{itemize}[<+-|alert@+>]
+\item $\Phi_q(x,y)=(x^q,y^q)$ is a non separable endomorphism of degree $q$
+\item $[m](x,y)=\left(\frac{\phi_m}{\psi_m^2},\frac{\omega_m}{\psi^3_m}\right)$ has degree $m^2$
+\item $[m]$ separable iff $p\nmid m$.
+\end{itemize}
+\end{lemma}\pause
+
+\begin{proof}
+\alert{\emph{First:}} Use the fact that $x\mapsto x^q$ is the identity on $\F_q$ hence it
+fixes the coefficients of the Weierstra\ss\ equation.\pause \alert{\emph{Second:}} already done.
+\pause \alert{\emph{Third}} See \cite[Proposition 2.28]{washington}
+\end{proof}
+\end{frame}
+
+\begin{frame}
+\frametitle{Endomorphisms (continues)}
+
+\begin{theorem}
+Let $\alpha\neq0$ be an endomorphism. Then
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=7cm]{postit}
+$\#\operatorname{Ker}(\alpha)\begin{cases}=\deg\alpha&\text{if }\alpha\text{ is separable}\\
+                                        <\deg\alpha&\text{otherwise}\end{cases}$
+                                        \end{beamercolorbox}}
+\end{theorem}\pause
+
+\begin{proof}
+It is same proof as $\#E[m]=\#\operatorname{Ker}[m]\le\partial\phi_m= m^2$\pause \\ \ \hfill (equality for $p\nmid m$)
+\end{proof}\pause
+
+\begin{Definition} Let $E/K$. The \emph{ring of endomorphisms}
+\alert{$$\operatorname{End}(E):=\{\alpha: E\rightarrow E, \alpha\text{ is an endomorphism}\}.$$}
+where for all $\alpha_1,\alpha_2\in\operatorname{End}(E)$,\pause
+\begin{itemize}[<+-|alert@+>]
+  \item $(\alpha_1+\alpha_2)P:=\alpha_1(P)+_E\alpha_2(P)$
+  \item $(\alpha_1\alpha_2)P=\alpha_1(\alpha_2(P))$
+\end{itemize}
+\end{Definition}
+\end{frame}
+
+\subsection{Separability}
+\begin{frame}
+\frametitle{Endomorphisms (continues)}
+
+\begin{block}{Properties of $\operatorname{End}(E)$:}
+\begin{itemize}[<+-|alert@+>]
+  \item \alert{$[0]:P\mapsto\infty$} is the zero element
+  \item \alert{$[1]:P\mapsto P$} is the identity element
+  \item \alert{$\Z\hookrightarrow\operatorname{End}(E)$}, $m\mapsto [m]$
+  \item \alert{$\operatorname{End}(E)$} is not necessarily commutative
+  \item if $K=\F_q$, \alert{$\Phi_q\in\operatorname{End}(E)$}. So \alert{$\Z[\Phi_q]\subset\operatorname{End}(E)$}
+\end{itemize}\pause
+\end{block}
+
+Recall that $\alert{\alpha\in \operatorname{End}(E)}$ is said \textbf{separable}
+ if $(p'(x),q'(x))\neq(0,0)$ where $\alpha(x,y)=(p(x)/q(x),yr(x))$.\pause
+
+\begin{lemma} Let \alert{$\Phi_q: (x,y)\mapsto(x^q,y^q)$} be the Frobenius endomorphism and
+let $r,s\in\Z$. Then
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,center,wd=8cm]{postit}
+$r\Phi_q+s\in \operatorname{End}(E)$ is separable $\ \Leftrightarrow\ p\nmid s$
+\end{beamercolorbox}}
+\end{lemma}\pause
+
+\begin{proof}
+See \cite[Proposition 2.29]{washington}
+\end{proof}
+
+\end{frame}
+
+\subsection{the degree of endomorphism}
+\begin{frame}
+
+Recall that the \textbf{degree} if $\alpha$ is \alert{$\deg\alpha:=\max\{\deg p,\deg q\}$} where \alert{$\alpha(x,y)=(p(x)/q(x),yr(x))$}.\pause
+
+\begin{lemma} $\forall r,s\in\Z$ and $\forall \alpha,\beta\in\operatorname{End}(E)$,\\
+\alert{\centerline{\small{$\!\!\deg(r\alpha+s\beta)=r^2\deg\alpha+s^2\deg\beta+rs(\deg(\alpha+\beta)-\deg\alpha-\deg\beta)$}}}
+\end{lemma}\pause
+
+\begin{proof} Let $m\in\N$ with $p\nmid m$ and fix a basis $P, Q$ of $E[m]\cong C_m\oplus C_m$.\pause
+
+Then $\alpha(P)=aP+bQ$ and $\alpha(Q)=cP+dQ$ with \\
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,center,wd=\textwidth]{postit}
+$\alpha_m=\begin{pmatrix}a&b\\c&d\end{pmatrix}$ with entries in $\Z/m\Z$.
+\end{beamercolorbox}}\pause
+
+We claim that \alert{$\deg(\alpha)\equiv\det\alpha_m\bmod m$}. In fact if $\zeta=e_m(P,Q)$
+is the Weil pairing (primitive root).\pause\\
+\centerline{\alert{$\zeta^{\deg(\alpha)}=e_m(\alpha(P),\alpha(Q))=
+e_m(aP+bQ,cP+dQ)=\zeta^{ad-bc}$}}\pause
+So
+\begin{beamercolorbox}[shadow=true,left,rounded=true,center,wd=6cm]{postit}
+$\deg(\alpha)\equiv ad-bc=\det\alpha_m(\bmod m)$.\end{beamercolorbox}\pause A calculation shows\\
+\centerline{\begin{scriptsize}\alert{
+$\det(r\alpha_m+s\beta_m)= r^2\det\alpha_m+s^2\det\beta_m+rs\det(\alpha_m+\beta_m)-\det\alpha_m-\det\beta_m)$}
+\end{scriptsize}}\pause
+\centerline{\begin{scriptsize}
+So\hfill \alert{$\deg(r\alpha+s\beta)\equiv r^2\deg\alpha+s^2\deg\beta+rs\deg(\alpha+\beta)-\deg\alpha-\deg\beta\bmod m$}
+\end{scriptsize}}\pause
+Since it holds for $\infty$--many $m$'s the above is an equality.\vspace{-1.5pt}
+\end{proof}
+\end{frame}
+
+
+\section{Hasse's Theorem}
+\begin{frame}
+\begin{theorem}[Hasse]
+Let $E$ be an elliptic curve over the finite field $\F_q$. Then the order of $E(\F_q)$
+satisfies
+$$\left|q+1-\#E(\F_q)\right|\le 2\sqrt q.$$
+\end{theorem}\pause
+
+So \alert{$\#E(\F_q)\in [(\sqrt q -1)^2, (\sqrt q+1)^2]$} the \emph{Hasse interval} ${\mathcal I}_q$
+
+\begin{tiny}
+ \begin{example}[Hasse Intervals]
+\centerline{\begin{tabular}{|l|l|}
+\hline
+ $q$ & ${\mathcal I}_q$\\
+\hline
+$2$ & $\{1, 2, 3, 4, 5\}$\\
+$3$ & $\{1, 2, 3, 4, 5, 6, 7\}$\\
+$4$ & $\{1, 2, 3, 4, 5, 6, 7, 8, 9 \}$\\
+$5$ & $\{2, 3, 4, 5, 6, 7, 8, 9, 10\}$\\
+$7$ & $\{3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13\}$\\
+$8$ & $\{4, 5, 6, \alert{7}, 8, 9, 10, \alert{11}, 12, 13, 14\}$\\
+$9$ & $\{4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16\}$\\
+$11$ & $\{6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18\}$\\
+$13$ & $\{7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21\}$\\
+$16$ & $\{9, 10, \alert{11}, 12, 13, 14, \alert{15}, 16, 17, 18, \alert{19}, 20, 21, \alert{22}, 23, 25\}$\\
+$17$ & $\{10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26\}$\\
+$19$ & $\{12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28\}$\\
+$23$ & $\{15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+ 33\}$\\
+$25$ & $\{16, 17, 18, 19, 20, 21, 22, 23, 24, 25, \alert{26}, 27, 28, 29, 30, 31, 32, 33,
+ 34, 35, 36\}$\\
+$27$ & $\{18, 19, 20, 21, \alert{22}, 23, 24, \alert{25}, 26, 27, 28, 29, 30, \alert{31}, 32, 33, \alert{34}, 35,
+ 36, 37, 38\}$\\
+$29$ & $\{20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+ 38, 39, 40\}$\\
+$31$ & $\{21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+ 39, 40, 41, 42, 43 \}$\\
+$32$ & $\{22, \alert{23}, 24, 25, 26, \alert{27}, 28, \alert{29}, 30, \alert{31}, 32, 33, 34, \alert{35}, 36, \alert{37}, 38, \alert{39},
+ 40, 41, 42, \alert{43}, 44\}$\\  \hline
+\end{tabular}}
+\end{example}
+\end{tiny}
+\end{frame}
+
+\subsection{Frobenius endomorphism}
+\begin{frame}
+\frametitle{The Frobenius endomorphism $\Phi_q$}\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,center,wd=8cm]{postit}
+$\Phi_q:\bar{\F}_q\rightarrow\bar{\F}_q, x\mapsto x^q$ is a field automorphism
+\end{beamercolorbox}}\pause
+
+Given $\alpha\in\bar{\F}_q$,
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,center,wd=6cm]{formul}
+$\alpha\in\F_{q^n}\ \Leftrightarrow\ \Phi_q^n(\alpha)=\alpha^{q^n}=\alpha$\pause
+\end{beamercolorbox}}\pause
+
+Fixed points of powers of $\Phi_q$ are exactly elements of $\F_{q^n}$\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,center,wd=8cm]{postit}
+$\Phi_q:E(\bar{\F}_q)\rightarrow E(\bar{\F}_q), (x,y)\mapsto(x^q,y^q),\infty\mapsto\infty$\end{beamercolorbox}}\pause
+
+\begin{block}{Properties of $\Phi_q$}
+\begin{itemize}[<+-|alert@+>]
+\item $\Phi_q\in \operatorname{End}(E)$, it is not separable and has degree $q$
+\item $\Phi_q(x,y)=(x,y)\ \Longleftrightarrow\ (x,y)\in E(\F_q)$
+\item $\operatorname{Ker}(\Phi_q-1)=E(\F_q)$
+\item $\#\operatorname{Ker}(\Phi_q-1)=\deg(\Phi_q-1)$ (since $\Phi_q-1$ is separable)
+\item if we can compute $\deg(\Phi_q-1)$, we can compute $\#E(\F_q)$
+\item $\Phi_{q}^n(x,y)=(x^{q^n},y^{q^n})$ so  \alert{$\Phi_{q}^n(x,y)=(x,y)\Leftrightarrow(x,y)\in\F_{q^n}$}
+\item $\operatorname{Ker}(\Phi_q^n-1)=E(\F_{q^n})$
+\end{itemize}
+\end{block}
+\end{frame}
+
+\subsection{proof}
+\begin{frame}
+\frametitle{Proof of Hasse's Theorem}
+
+\begin{lemma} Let $E/\F_q$ and write
+$a=q+1-\#E(\F_q)=q+1-\deg(\Phi_q-1).$ Then $\forall r,s\in\Z$, $\gcd(q,s)=1$,\pause
+
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=6cm,center]{formul}
+$\deg(r\phi+s)=r^2q+s^2-rsa$
+\end{beamercolorbox}}
+\end{lemma}\pause
+
+\begin{proof}{Proof of the Lemma} From a previous proposition, we know that
+\alert{\scriptsize $\deg(r\Phi_q+s)=r^2\deg(\Phi_q)+s^2\deg([-1])-rs(\deg(\Phi_q-1)-\deg(\Phi_q)-\deg([-1]))$}\pause\\
+But\\
+\centerline{$\deg(\Phi_q)=q$, $\deg([-1])=1$ and $\deg(\Phi_q-1)-q-1=-a$}
+\end{proof}\pause
+
+
+\begin{proof}[Proof of Hasse's Theorem]
+\alert{\centerline{$q\left(\frac rs\right)^2-a\left(\frac rs\right)+1=\frac{\deg(r\Phi_q+s)}{s^2}\ge0$}}
+
+on a dense set of rational numbers.\\\pause
+This implies $\forall X\in\R$, $X^2-aX+q\ge0$.\pause So\\
+\alert{\centerline{$a^2-4q\le0\ \Leftrightarrow\ |a|\le2\sqrt{q}!!$}}\end{proof}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Proof of Hasse's Theorem (continues)}
+
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]
+{Ingredients for the proof:}\pause
+\begin{enumerate}[<+-|alert@+>]
+             \item $E(\F_q)=\operatorname{Ker}(\Phi_q-1)$
+             \item $\Phi_q-1$ is separable
+             \item $\#\operatorname{Ker}(\Phi_q-1)=\deg(\Phi_q-1)$
+           \end{enumerate}
+\end{beamerboxesrounded}\pause
+
+\begin{corollary} Let $a=q+1-\#E(\F_q)$. Then
+\begin{enumerate}[<+-|alert@+>]
+             \item\
+{\begin{beamercolorbox}[vmode,rounded=true,shadow=true,wd=3.2cm,center]{formul}
+$\Phi_q^2-a\Phi_q+q=0$\end{beamercolorbox}}\\
+\hfill is an identity of endomorphisms.
+\item
+
+$a\in\Z$ is the unique integer $k$ such that $\Phi_q^2-k\Phi_q+q=0$
+\item\
+{\begin{beamercolorbox}[rounded=true,shadow=true,wd=7cm,center]{formul}
+$a\equiv\operatorname{Tr}((\Phi_q)_m)\bmod m\ \forall m\text{ s.t. }\gcd(m,q)=1$\end{beamercolorbox}}
+\end{enumerate}
+\end{corollary}
+\end{frame}
+
+\begin{frame}
+\begin{proof}[Sketch of the Proof of Corollary]
+Let $m\in\N$ s.t. $\gcd(m,q)=1$. Choose a basis for $E[m]$ and write
+\alert{$$(\Phi_q)_m=\begin{pmatrix}s&t\\u&v\end{pmatrix}$$}\pause
+$\Phi_q-1$ separable implies
+\alert{
+\begin{align*}
+\#\operatorname{Ker}(\Phi_q-1)&=\deg(\Phi_q-1)\equiv\det((\Phi_q)_m-I))\\
+                               &=\det((\Phi_q)_m)-\operatorname{Tr}((\Phi_q)_m)+1 (\bmod m).
+\end{align*}
+}\pause
+Hence
+\alert{$$\operatorname{Tr}((\Phi_q)_m)\equiv a(\bmod m)$$}\pause
+By Cayley--Hamilton
+\alert{$$(\Phi_q)_m^2-a(\Phi_q)_m+qI\equiv0(\bmod m)$$}\pause
+Since this happens for infinitely many $m$'s,
+\alert{$$\Phi_q^2-a\Phi_q+q=0$$}as endomorphism.\pause \end{proof}
+\end{frame}
+
+\begin{frame}\frametitle{Subfield curves (continues)}
+
+\begin{definition}
+Let $E/\F_q$ and write $E(\F_q)=q+1-a$, ($|a|\le2\sqrt{q}$). The \emph{characteristic}
+polynomial of $E$ is
+$$P_E(T)=T^2-aT+q\in\Z[T].$$
+and its roots:
+$$\alpha=\frac12\left(a+\sqrt{a^2-4q}\right)\qquad\beta=\frac12\left(a-\sqrt{a^2-4q}\right)$$
+are called \emph{characteristic roots of Frobenius} ($P_E(\Phi_q)=0$).
+\end{definition}
+
+\begin{theorem} $\forall n\in\N$
+\centerline{$\#E(\F_{q^n})=q^n+1-(\alpha^n+\beta^n).$}
+\end{theorem}
+\end{frame}
+
+\begin{frame}\frametitle{Subfield curves (continues)}
+\begin{theorem} $\forall n\in\N$
+$\#E(\F_{q^n})=q^n+1-(\alpha^n+\beta^n).$
+\end{theorem}
+
+\begin{proof} Note that\pause
+\begin{enumerate}[<+-|alert@+>]
+  \item Result is true for $n=1$, {$\alpha+\beta=a$}
+  \item {$\alpha^n+\beta^n\in\Z$, $(\alpha\beta)^n=q^n$}
+  \item $f(X)=(X^n-\alpha^n)(X^n-\beta^n)=X^{2n}-(\alpha^n+\beta^n)X^n+q^n\in\Z[X]$
+
+  \item $f(X)$ is divisible by $X^2-aX+q=(X-\alpha)(X-\beta)$
+
+  \item $(\Phi_q)^n|_{\bar{\F}_{q^n}}=\Phi_{q^n}:(x,y)\mapsto(x^{q^n},y^{q^n})$
+
+  \item $(\Phi_q^n)^2-(\alpha^n+\beta^n)\Phi_q^n+q^n=Q(\Phi_q))(\Phi_q^2-a\Phi_q+q)=0$
+  where $f(X)=Q(X)(X^2-aX+q)$
+\end{enumerate}\pause
+Hence $\Phi_q^n$ satisfies
+\alert{\centerline{$X^2-((\alpha^n+\beta^n))X+q.$}}\pause\\
+So\\
+\alert{\centerline{$\alpha^n+\beta^n=q^n+1-\#E(\F_{q^n}).$}}\pause
+Characteristic polynomial of $\Phi_{q^n}$: \pause
+\alert{ $X^2-(\alpha^n+\beta^n)X+q^n$}
+\end{proof}
+
+\end{frame}
+
+\begin{frame}\frametitle{Subfield curves (continues)}
+
+\alert{\centerline{$E(\F_{q})=q+1-a\ \Rightarrow\ E(\F_{q^n})=q^n+1-(\alpha^n+\beta^n)$}}
+
+\hfill where $P_E(T)=T^2-aT+q=(T-\alpha)(T-\beta)\in\Z[T]$\pause
+\begin{block}{Curves $/\F_2$}
+\begin{tabular}{|l|c|l|l|}
+\hline
+ $E$  & $a$ & $P_E(T)$ &$(\alpha,\beta)$\\
+\hline
+&&&\\
+ $y^2+xy=x^3+x^2+1$ & $1$ & $T^2-T+2$& $\frac12(1\pm\sqrt{-7})$\\
+&&&\\
+$y^2+xy=x^3+1$  & $-1$ & $T^2+T+2$&$\frac12(-1\pm\sqrt{-7})$\\
+&&&\\
+$y^2+y=x^3+x$ &$-2$ & $T^2+2T+2$&$-1\pm i$\\
+&&&\\
+ $y^2+y=x^3+x+1$& $2$ &  $T^2-2T+2$&$1\pm i$\\
+&&&\\
+$y^2+y=x^3$  & $0$ & $T^2+2$ &$\pm\sqrt{-2}$\\
+&&&\\\hline
+\end{tabular}
+\end{block}\pause
+
+\begin{tiny}
+$E:y^2+xy=x^3+x^2+1\ \Rightarrow$\\
+$E(\F_{2^{100}})=2^{100}+1-\left(\frac{1+\sqrt{-7}}2\right)^{100}-
+\left(\frac{1-\sqrt{-7}}2\right)^{100} =
+1267650600228229382588845215376$
+\end{tiny}
+\end{frame}
+
+\begin{frame}\frametitle{Subfield curves}
+\alert{\centerline{$E(\F_{q})=q+1-a\ \Rightarrow\ E(\F_{q^n})=q^n+1-(\alpha^n+\beta^n)$}}
+
+\hfill where $P_E(T)=T^2-aT+q=(T-\alpha)(T-\beta)\in\Z[T]$\pause
+\begin{block}{Curves $/\F_2$}
+\begin{tabular}{|l|r|c|c|c|}
+\hline
+$i$ & $E_i$ & $a$ & $P_{E_i}(T)$ &$(\alpha,\beta)$\\
+\hline
+$1$& $y^2=x^3+x$ & $0$ & $T^2+3$ & $\pm\sqrt{-3}$\\
+\hline
+$2$&$y^2=x^3 - x$ & $0$ & $T^2+3$ & $\pm\sqrt{-3}$\\
+\hline
+$3$&$y^2=x^3 - x +1$& $-3$ & $T^2+3T+3$ & $\frac12(-3\pm\sqrt{-3})$\\
+\hline
+$4$&$y^2=x^3 - x -1$  &$3$ & $T^2-3T+3$ & $\frac12(3\pm\sqrt{-3})$\\
+\hline
+$5$&$y^2=x^3 + x^2 - 1$ & $1$ & $T^2-T+3$ & $\frac12(1\pm\sqrt{-11})$\\
+\hline
+$6$&$y^2=x^3 - x^2 + 1$ & $-1$ &$T^2+T+3$ & $\frac12(-1\pm\sqrt{-11})$\\
+\hline
+$7$&$y^2=x^3 + x^2 + 1$ & $-2$ & $T^2+2T+3$ & $-1\pm\sqrt{-2}$\\
+\hline
+$8$&$y^2=x^3 - x^2 - 1$ & $2$ &  $T^2-2T+3$ & $1\pm\sqrt{-2}$\\
+\hline
+\end{tabular}
+%\end{center}
+\end{block}\pause
+
+
+\begin{lemma} Let $s_n=\alpha^n+\beta^n$ where $\alpha\beta=q$ and $\alpha+\beta=a$. Then
+$$s_0=2,\quad,s_1=a\quad\text{and}\quad s_{n+1}=as_n-qs_{n-1}$$
+\end{lemma}
+\end{frame}
+
+\section{Legendre Symbols}
+\begin{frame}
+\frametitle{Legendre Symbols}
+
+Recall the \emph{Finite field Legendre symbols}: let $x\in\F_q$,\pause
+
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=8cm,center]{postit}
+\alert{$\left(\frac{x}{\F_q}\right)=\begin{cases}
++1 &\text{ if }t^2=x\text{ has a solution }t\in\F_q^*\\
+-1 &\text{ if }t^2=x\text{ has no solution }t\in\F_q\\
+0 &\text{ if }x=0
+\end{cases}$}\end{beamercolorbox}}\pause
+
+\begin{theorem} Let $E:y^2=x^3+Ax+B$ over $\F_q$. Then
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=6cm,center]{formul}
+$\#E(\F_q)=q+1+\sum_{x\in\F_q}\left(\frac{x^3+Ax+B}{\F_q}\right)$\end{beamercolorbox}}
+\end{theorem}\pause
+
+\begin{proof} Note that
+\alert{\centerline{$1+\left(\frac{x_0^3+Ax_0+B}{\F_q}\right)=\begin{cases}
+2 &\text{if }\exists y_0\in\F_q^*\text{ s.t. }(x_0,\pm y_0)\in E(\F_q)\\
+1 &\text{if }(x_0,0)\in E(\F_q)\\
+0 &\text{otherwise}
+\end{cases}$}}\pause
+
+Hence
+\centerline{{$\#E(\F_q)=1+\sum_{x\in\F_q}\left(1+\left(\frac{x^3+Ax+B}{\F_q}\right)\right)$}}\vspace*{-2.7pt}
+\end{proof}
+\end{frame}
+
+\begin{frame}\frametitle{Last Slide}
+\begin{corollary} Let
+\alert{$E: y^2=x^3+Ax+B$} over $\F_q$ and
+\alert{$E_\mu: y^2=x^3+\mu^2 Ax+\mu^3B$},
+$\mu\in\F_q^*\setminus(\F_q^*)^2$ its \emph{twist}. Then
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=8.5cm,center]{formul}
+$\#E(\F_q)=q+1-a\ \Leftrightarrow\ \#E_\mu(\F_q)=q+1+a$\end{beamercolorbox}}
+and
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=5cm,center]{formul}
+$\#E(\F_{q^2})=\#E_\mu(\F_{q^2}).$\end{beamercolorbox}}
+\end{corollary}\pause
+
+\begin{proof}
+\alert{\begin{align*}
+\#E_\mu(\F_q)&=q+1+\sum_{x\in\F_q}\left(\frac{x^3+\mu^2 Ax+\mu^3B}{\F_q}\right)\\ &=
+q+1+\left(\frac{\mu}{\F_q}\right)\sum_{x\in\F_q}\left(\frac{x^3+Ax+B}{\F_q}\right)\end{align*}}
+and $\left(\frac{\mu}{\F_q}\right)=-1$\vspace*{-2pt}
+\end{proof}
+\end{frame}
+
+\section{Further reading}
+\begin{frame}
+\frametitle{Further Reading...}
+\begin{scriptsize}
+\begin{thebibliography}{99}
+\bibitem{BSS} \textsc{Ian~F.~Blake,~Gadiel~Seroussi,~and~Nigel~P.~Smart},
+Advances in elliptic curve cryptography, London Mathematical Society Lecture Note Series, vol. 317, Cambridge University Press, Cambridge, 2005.
+ \bibitem{C} \textsc{J.~W.~S.~Cassels},
+Lectures on elliptic curves, London Mathematical Society Student Texts, vol. 24, Cambridge University Press, Cambridge, 1991.
+ \bibitem{CR} \textsc{John~E.~Cremona},
+Algorithms for modular elliptic curves, 2nd ed., Cambridge University Press, Cambridge, 1997.
+ \bibitem{Kn} \textsc{Anthony~W.~Knapp},
+Elliptic curves, Mathematical Notes, vol. 40, Princeton University Press, Princeton, NJ, 1992.
+ \bibitem{Ko} \textsc{Neal~Koblitz},
+Introduction to elliptic curves and modular forms, Graduate Texts in Mathematics, vol. 97, Springer-Verlag, New York, 1984.
+ %\bibitem{Po} \textsc{Poonen B} Elliptic curves (introduction)(19s) notes
+ \bibitem{Sil} \textsc{Joseph~H.~Silverman},
+The arithmetic of elliptic curves, Graduate Texts in Mathematics, vol. 106, Springer-Verlag, New York, 1986.
+\bibitem{ST} \textsc{Joseph~H.~Silverman~and~John~Tate},
+Rational points on elliptic curves, Undergraduate Texts in Mathematics, Springer-Verlag, New York, 1992.
+\bibitem{washington} \textsc{Lawrence~C.~Washington},
+Elliptic curves: Number theory and cryptography, 2nd ED. Discrete Mathematics and Its Applications, Chapman \& Hall/CRC, 2008.
+\bibitem{Zimm} \textsc{Horst~G.~Zimmer},
+Computational aspects of the theory of elliptic curves, Number theory and applications
+(Banff, AB, 1988) NATO Adv. Sci. Inst. Ser. C Math. Phys. Sci., vol. 265, Kluwer Acad. Publ., Dordrecht, 1989, pp. 279--324.
+\end{thebibliography}
+\end{scriptsize}
+\end{frame}
+
+\end{document}
+
+

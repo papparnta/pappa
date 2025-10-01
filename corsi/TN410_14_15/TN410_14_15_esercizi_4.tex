@@ -1,0 +1,51 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[cm]{fullpage}
+%opening
+\title{Elementary Number Theory (TN410)}
+\author{Exercises: Sheet \#4}
+\date{May 20, 2015}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{enumerate}
+\item Use the Chebichev Theorem to prove that if $\psi(X)=\sum_{m\le X}\Lambda(n)$, then
+$$X\ll \psi(X)\ll X\quad X\rightarrow\infty$$
+\item Show that
+$$\sum_{n\le X}\Lambda(n)\log n=\psi(X)\log X+O(X).$$
+ \item Prove the identity:
+$\Lambda(n)=-\sum_{d\mid n}\mu(d)\log d$
+\item Prove the identity: $(\Lambda*\Lambda)(n)=\Lambda(n)\log n+\sum_{d\mid n}\mu(d)\log^2d.$
+\item Dimostrare l'identit\`a 
+$$\operatorname{mcm}[1,2,3,\ldots,n]=e^{\psi(n)}.$$
+\item[] Let $n, q\in\mathbb N$. The \textbf{Ramanujan's sum} is defined by the formula
+
+\centerline{$c_q(n):=  \displaystyle\sum_{\substack{a=1\\ (a,q)=1}}^q e\left(\tfrac{an}{q}\right)$}
+where $e(z):=e^{2\pi i z}$.
+Prove the following properties:
+ \item Verificare esplicitamente che
+        \begin{align*} c_1(n) &= 1,\quad c_2(n) = \cos n\pi & 
+                       c_3(n) &= 2\cos \tfrac23 n\pi, \quad c_4(n) = 2\cos \tfrac12 n\pi \\ 
+                       c_5(n) &= 2\cos \tfrac25 n\pi + 2\cos \tfrac45 n\pi & c_6(n) &= 2\cos \tfrac13 n\pi \\ 
+                       c_7(n) &= 2\cos \tfrac27 n\pi + 2\cos \tfrac47 n\pi + 2\cos \tfrac67 n\pi & c_8(n) &= 2\cos \tfrac14 n\pi + 2\cos \tfrac34 n\pi \\
+                       c_9(n) &= 2\cos \tfrac29 n\pi + 2\cos \tfrac49 n\pi + 2\cos \tfrac89 n\pi & c_{10}(n)&= 2\cos \tfrac15 n\pi + 2\cos \tfrac35 n\pi \\ 
+    \end{align*} \vspace*{-1cm}
+\item[] Let $\eta_q(n) = \displaystyle\sum_{k=1}^q e(\frac{kn}q)$. Prove that 
+\item $\eta_q(n) = \begin{cases} 0&\;\mbox{ if }q\nmid n\\ q&\;\mbox{ if }q\mid n\\ \end{cases} $
+$\qquad\eta_q(n) =  \displaystyle\sum_{d\,\mid\, q} c_d(n),\qquad
+c_q(n) = \displaystyle{\sum_{d\,\mid\,q} \mu\left(\frac{q}d\right)\eta_d(n)}$
+\item  $c_q(n)$ is multiplicative in the following sense:
+if $(q,r) = 1$  then $c_q(n)c_r(n)=c_{qr}(n).$
+\item if p is a prime number,
+$$ c_p(n) = \begin{cases} -1 &\mbox{ if }p\nmid n\\ \varphi(p)&\mbox{ if }p\mid n\\ \end{cases}\qquad
+    c_{p^k}(n) = \begin{cases} 0 &\mbox{ if }p^{k-1}\nmid n\\ -p^{k-1} &\mbox{ if }p^{k-1}\mid n \mbox{ and }p^k\nmid n\\ 
+    \varphi(p^k) &\mbox{ if }p^k\mid n\\ \end{cases}$$ 
+\item $c_q(n)= \displaystyle\sum_{d\,\mid\,(q,n)}\mu\left(\frac{q}{d}\right) d$ (formula di Kluyver - 1906) 
+        \item $c_q(n)= \mu\left(\frac{q}{(q, n)}\right)\frac{\varphi(q)}{\varphi\left(\frac{q}{(q, n)}\right)}$
+         (formula di von Sterneck) 
+ \end{enumerate} 
+\end{document}

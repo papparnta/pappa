@@ -1,0 +1,133 @@
+%%%%%%%%%%%%%%%%%%% FILE programma.sty (VERSIONE 0.0) %%%%%%%%%%%%%%%%%%%%%%%%
+\magnification 1200
+%
+% FONTS
+\font\sixrm=cmr7  at 6pt
+\font\sixbf=cmbx7 at 6pt
+\font\eightrm=cmr7  at 8pt
+\font\Largebf=cmbx10 at 14pt 
+\font\eightbf=cmbx7 at 8pt
+\font\eightsl=cmsl10 at 8pt
+\font\mathbb=msbm10
+\font\sc=cmcsc10 at 14pt
+\font\eightsc=cmcsc10 at 8pt
+%
+%
+%
+% INSIEMI NUMERICI 
+\def\C{{\mathbb C}}
+\def\Q{{\mathbb Q}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\A{{\mathbb A}}
+%
+% DIMENSIONE PAGINA
+\baselineskip 5mm
+\interlinepenalty=1000
+\hsize=16truecm
+\vsize=550pt
+\voffset=0pt
+\advance\vsize by-\voffset
+\parindent=6mm
+\parskip=0mm
+\nopagenumbers
+\hfuzz3pt
+\vfuzz2pt
+% FINE DIMENSIONE PAGINA
+%
+% ALTRE EDINIZIONI
+%
+%%%%%%%%%%%%% NUMERAZIONE E STAMPA TESTI CONSIGLIATI
+\def\autore#1{{\eightsc #1},}
+\def\titolo#1{{\eightsl #1\/}.}
+\def\editore#1{{\eightrm #1},}
+\def\annopub#1{({\eightrm #1}).}
+\def\volume#1{{\eightbf #1}.}
+\def\altro#1{{\eightrm #1}.}
+%
+\countdef\nreferenza=40
+\global\advance\nreferenza by 1
+\def\bib{\itemitem{\eightrm [\the\nreferenza]}
+\global\advance\nreferenza by 1}
+\def\endbib{\par}
+%%%%%%%%%%%%% FINE NUMERAZIONE E STAMPA TESTI CONSIGLIATI
+%
+%
+%%%%%%%%%%%%% NUMERAZIONE E STAMPA ARGOMENTI CORSO
+\countdef\narg=30
+\global\advance\narg by 1
+\def\titoloparagr#1{\bigskip%
+\noindent{\bf{\the\narg}. #1}
+\global\advance\narg by 1}
+%%%%%%%%%%%%% FINE NUMERAZIONE E STAMPA ARGOMENTI CORSO
+%
+% TITOLI VARI
+%%%%%%%%%%%%% STAMPA TITOLO INIZIALE
+\def\Intestazione{\centerline{\Largebf \abbrcorso\ \ \titolocorso}\smallskip
+\centerline{\sc A.A. 1999/2000}\smallskip
+\centerline{\bf \docente}\smallskip
+\centerline{\bf \sottotitolo}}
+%%%%%%%%%%%%% FINE STAMPA TITOLO INIZIALE
+%
+%%%%%%%%%%%%% INTESTAZIONE PAGINE SUCCESSIVE
+\headline={\ifnum\pageno>1
+\sixrm A.A. 1999/2000, \semestre\ Semestre \hfil \sixbf \abbrcorso\ \sixrm \hfil Crediti\ \crediti
+\else  \sixbf \abbrcorso\sixrm, \semestre\ Semestre, Crediti\ \crediti\hfill\fi}
+\footline{\ifnum\pageno>1\hss\sixrm --- \folio\ ---\hss
+\else \hfill\fi}
+%%%%%%%%%%%%% FINE INTESTAZIONE PAGINE SUCCESSIVE
+%
+%
+%%%%%%%%%%%%% QUADRATINI PIENI E VUOTI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\bull{\vrule height1.6ex width2ex depth.4ex}      %quadrato pieno%
+                                                      %
+\def\sqr#1#2{{\vcenter{\vbox{\hrule height.#2pt       %
+        \hbox{\vrule width.#2pt height#1pt \kern#1pt  %
+           \vrule width.#2pt }                        %
+        \hrule height.#2pt}}}}                        %
+\def\boll{\mathchoice\sqr34\sqr84\sqr{2.1}6\sqr{1.5}6}%quadrato vuoto%
+%%%%%%%%%%%%% FINE QUADRATINI %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%%%%%%%%% INTESTAZIONE BIBLIOGRAFIA %%%%%%%%%
+\def\testi{ %  \vfill\eject
+
+\centerline{\sc{Testi consigliati}}\medskip
+\baselineskip-3mm}
+
+\def\altritesti{\medskip
+
+\centerline{\sc Bibliografia supplementare}\medskip}
+%%%%%%%%%%FINE INTESTAZIONI BIBLIOGRAFIA%%%%%%%%%%%%%%
+%
+%%%%%%%% STAMPA TABELLA MODALITA` DI ESAME
+\def\esami{\bigskip
+
+\centerline{\sc Modalit\`a d'esame}\bigskip
+
+\centerline{
+\vbox{\offinterlineskip
+\hrule
+\halign{
+\vrule## & \quad\strut## \hfil& \strut## \quad \hfil&\strut\quad\hfil## &\quad\strut\hfil## &\ \ \vrule## \cr
+       &                                        &\omit    &                &          &\cr
+       & - valutazione in itinere (``esoneri'') &\omit    & {\ifnum\esoneri=1$\bull$\else$\boll$\fi}\  SI   
+                                                          & {\ifnum\esoneri=1$\boll$\else$\bull$\fi}\ NO &\cr
+& & \omit & & & \cr
+       & - esame finale                         & scritto & {\ifnum\scrittofinale=1$\bull$\else$\boll$\fi}\  SI
+                                                          & {\ifnum\scrittofinale=1$\boll$\else$\bull$\fi}\  NO &\cr
+       &                                        & orale   & {\ifnum\oralefinale=1$\bull$\else$\boll$\fi}\  SI  
+                                                          & {\ifnum\oralefinale=1$\boll$\else$\bull$\fi}\ NO &\cr
+& & \omit & & & \cr
+       & - altre prove di valutazione del profitto & \omit   & {\ifnum\altreprove=1$\bull$\else$\boll$\fi}\ SI 
+                                                             & {\ifnum\altreprove=1$\boll$\else$\bull$\fi}\ NO &\cr
+       & \ \  (meglio descritte sotto)          & \omit   &\omit        &\omit     &\cr
+       &                                        & \omit   &             &          &\cr}
+\hrule}}
+\baselineskip 5mm}
+%%%%% FINE STAMPA TABELLA MODALITA` DI ESAME.
+%
+%
+%%%%%%%%%% FINE FILE DI STILE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

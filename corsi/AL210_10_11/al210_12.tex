@@ -1,0 +1,118 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2010/2011}\\
+
+\textbf{AL210 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 12  - Gennaio 2011}\\
+
+\textbf{Tutore: Matteo Acclavio}\\
+
+www.matematica3.com\\
+\end{center}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Sia $R$ un anello commutativo ed unitario. Siano $I,J$ due suoi ideali.\\
+Sia $I + J := \{x + y$ con $x \in I, y \in J\}$. Sia $\phi : R\longrightarrow R/I \times R/J$, l'applicazione definita come $\phi(r):= (r + I, r + J)$ per ogni $r\in R$.
+\begin{itemize}
+\item Si dimostri che $I + J$ \acc e un ideale di $R$.
+\item Si dimostri che $\phi$ \acc e un omomorfismo unitario di anelli.
+\item Si dimostri che $\phi$ \acc e suriettivo se e solo se $I + J = R$.
+\item Si dimostri che il nucleo di $\phi$ \acc e $I\cap J$.
+\item Nel caso $R = \Z$, $I = 5\Z, J = 12\Z$, si dimostri che\\ $\Z/60\Z = \Z/5\Z \times \Z/12\Z$.
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 2.}
+\begin{description}
+	\item[(a)]Quali elementi del campo $\Z_7$ sono quadrati perfetti? (Cio\`e quali \\ elementi $q\in \Z_7$ sono tali che l'equazione $X^2=q$ ha soluzione in $\Z_7$?).
+	\item[(b)] Dedurre da \textbf{(a)} per quali valori $a\in \Z_7$ si ha che $\Z_7[X]/(X^2+a)$ \`e un campo;
+	\item[(c)] Determinare l'inverso del generico elemento di $\Z_7[X]/(X^2+4)$;
+	\item[(d)] Determinare i divisori dello zero in $\Z_7[X]/(X^2+3)$.
+\end{description}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Sia $A$ l'insieme dei numeri complessi del tipo $a+ib\sqrt{5}$, con $a,b \in \Z$.
+\begin{itemize}
+	\item Provare che $A$ \`e un sottoanello di $\C$.
+	\item Stabilire se $A$ \`e un sottocampo di $\C$.
+	\item Provare che $I=\{a+ib\sqrt{5}\mid a,b\in 2\Z\}$ \`e un ideale di $A$, ma non \`e un ideale primo di $A$.
+	\item Provare che $J=\{a+ib\sqrt{5}\mid a\in 5\Z\}$ \`e un ideale massimale di $A$.
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Sia $A$ anello commutativo unitario che ammette (per ogni suo elemento non nullo) una fattorizzazione in irriducibili, le seguenti sono equivalenti
+\begin{description}
+	\item[(a)] la fattorizzazione \acc e essenzialemente unica (a meno dell'ordine dei fattori e di invertibili)
+	\item[(b)] $\forall a,b \in A \ \exists MCD(a,b)$
+	\item[(c)] $p\in A, p\ irriducibile \Rightarrow p  \ primo$
+\end{description}
+\end{Ex}
+
+\end{document}
+

@@ -1,0 +1,731 @@
+\documentclass[landscape]{powersem} %,display
+\usepackage{fancybox,marvosym,graphicx,amsmath,amssymb,pifont}
+\usepackage[bookmarksopen,colorlinks,urlcolor=red,pdfpagemode=FullScreen]{hyperref}
+\usepackage{fixseminar}
+\usepackage{color}
+\usepackage[latin1]{inputenc}
+\usepackage[coloremph,colormath,colorhighlight,lightbackground]{texpower}
+\hfuzz=30pt
+\vfuzz=30pt
+\setlength{\slidewidth}{25cm} \setlength{\slideheight}{17.5cm}
+\slideframe{}
+\def\slideitemsep{.5ex plus .3ex minus .2ex}
+\newtheorem{theorem}{\textcolor{Salmon}{Theorem}}
+\newtheorem{lemma}{\textcolor{Salmon}{Lemma}}
+
+\renewcommand{\slidetopmargin}{10mm}
+\renewcommand{\slidebottommargin}{15mm}
+\renewcommand{\slideleftmargin}{5mm}
+\renewcommand{\sliderightmargin}{5mm}
+\newcommand{\Ccal}{{\mathcal{C}}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\Q}{{{\mathbb Q}}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Ss}{{\mathcal S}}
+\newcommand{\li}{\operatorname{li}}
+
+\newcommand{\manorossa}{\textcolor{conceptcolor}{\ding{43}}}
+\newcommand{\manogrigia}{\textcolor{Emerald}{\ding{41}}}
+\newcommand{\matitablu}{\textcolor{MidnightBlue}{\ding{46}}}
+ \newcommand{\heading}[1]{%
+ \begin{center}
+  \large\bf
+  \shadowbox{{\textcolor{conceptcolor}{#1}}}%
+ \end{center}
+ \vspace{1ex minus 1ex}}
+\definecolor{Salmon}{cmyk}{0,0.53,0.38,0}
+\definecolor{MidnightBlue}{cmyk}{0.98,0.13,0,0.43}
+\definecolor{BurntOrange}{cmyk}{0,0.51,1,0}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{Emerald}{cmyk}{1,0,0.51,0}
+\backgroundstyle[startcolor=grey,
+                   endcolor=grey,%firstgradprogression=3,
+            rightpanelwidth=-7\semcm,,rightpanelcolor=pagecolor]{hgradient}%
+%%%%%%%%%%%%% DATI DEL SEMINARIO IN QUESTIONE %%%%%%%%%%%%
+\newpagestyle{327}%
+ {\textcolor{codecolor}{\textit{$\varphi$ vs $\lambda$}} \hspace{\fill}\rightmark
+\hspace{0.1cm}\thepage}
+ {\includegraphics[width=4mm]{images/dipmat.pdf}\hspace{\fill}\textcolor{codecolor}{\sc Universit\`a Roma Tre}
+ \hspace{\fill}\includegraphics[width=5mm]{images/roma3.pdf}}%%
+\pagestyle{327} \markright{\textcolor{conceptcolor}{College of Science for Women}}
+\title{\vspace*{.2cm} \ %\present{\doublebox{\includegraphics[width=2cm]{rims-s.jpg} \
+%\begin{minipage}[c]{9cm} \vspace*{-5mm} \textsc{Research Institute of
+%Mathematical Science}\\ \hspace*{2cm}  Kyoto, JAPAN
+%\end{minipage}}}\\
+\ \\ \textcolor{underlcolor}{\textsc{Values of the Carmichael
+function versus values of the Euler function}} \\ \ \\
+Advanced Topics in Number Theory\\
+\ \\
+College of Science for Women \\
+Baghdad University}
+\author{\textcolor{Emerald}{Francesco Pappalardi}\\ \ }
+\date{\textcolor{BurntOrange}{April 1, 2014}}
+
+\begin{document}
+
+\begin{slide}\pagestyle{empty}
+\maketitle
+\end{slide}
+
+\begin{slide}
+\heading{Introduction: The Euler $\varphi$--function}\pause\vspace{-2mm}
+{\Large$\varphi(n):=\#\{m\in\N:\ 1\le m\le n, \gcd(m,n)=1\}$ is the Euler $\varphi$
+function}\pause
+
+\noindent\textcolor{BurntOrange}{Elementary facts:}\pause\vspace{-2mm}
+\begin{itemize}
+\item[\matitablu] $\varphi(1)=1$, $\varphi(2)=1$, $\varphi(3)=2$, $\varphi(4)=3$, $\varphi(5)=4$,
+$\varphi(6)=2,\ \ldots$ 
+\item[\matitablu] $\varphi(p)=p-1$ \hfill iff $p$ is a prime number\pause
+\item[\matitablu] $\varphi(p^a)=p^{a-1}(p-1)$ \hfill if $p$ is a prime number\pause
+\item[\matitablu] if $(n,m)=1$ then $\varphi(nm)=\varphi(n)\varphi(m))$\hfill  ($\varphi$ is a multiplicative function)\pause
+\item[\matitablu] $\varphi(n):=\#(\Z/n\Z)^*$\pause
+\item[\matitablu] if $n=pq$ is an RSA module\quad then $\varphi(pq)=(p-1)(q-1)$.
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}
+\heading{Introduction}\pause\vspace{-2mm}
+{\Large$\varphi(n):=\#(\Z/n\Z)^*$\hfill Euler $\varphi$
+function}\pause
+
+{\Large$\lambda(n):=\exp(\Z/n\Z)^*$\hfill Carmichael $\lambda$
+function}\pause $\qquad\ \ \ \ \ \ =\min\{k\in\N\ \text{s.t.}\ \
+a^k\equiv1\bmod n\ \  \forall a\in(\Z/n\Z)^*\}$\pause
+
+\noindent\textcolor{BurntOrange}{Elementary facts:}\pause\vspace{-2mm}
+\begin{itemize}
+\item[\matitablu] $\varphi(n)=\lambda(n)$ \hfill iff $n=2,4,p^a,2p^a$\ \ with\ \  $p\geq3$\pause
+\item[\matitablu] $\lambda(n)\mid\varphi(n)$ \hfill $\forall n\in\N$\pause
+\item[\matitablu] if $(n,m)=1$ then $\lambda(nm)=\operatorname{lcm}(\lambda(n),\lambda(m))$\hfill  ($\lambda$ is \emph{not} multiplicative)\pause
+\item[\matitablu] $\lambda(n)$ and $\varphi(n)$ have the same prime factors\pause
+\item[\matitablu] $\lambda(2^\alpha p_1^{\alpha_1}\cdots p_s^{\alpha_s})=
+\operatorname{lcm}\{\lambda(2^\alpha),p_1^{\alpha_1-1}(p_1-1),\ldots,p_s^{\alpha_s-1}(p_s-1)\}$\pause
+\item[\matitablu] $\lambda(2^\alpha)=2^{\alpha-2}$ if $\alpha\geq3$, $\lambda(4)=2$, $\lambda(2)=1$\pause
+\item[\matitablu] $n$ is a Carmichael number\qquad iff \qquad $\lambda(n)\mid n-1$\pause
+\item[\matitablu] if $n=pq$ is an RSA module\quad then $\lambda(n)$ should not be too small.
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\heading{Minimal, Normal and Average Orders of $\lambda$}\pause
+
+\textcolor{OliveGreen}{Erd\H os, Pomerance \&  Schmutz} (1991):\pause
+
+\begin{itemize}
+    \item[\manorossa] $\lambda(n)>(\log n)^{1.44\log_3n}$ for all large $n$;\bigskip\pause
+
+   \item[\manorossa] $\lambda(n)<(\log n)^{3.24\log_3n}$ for $\infty$-many $n$'s;\bigskip\pause
+
+  \item[\manorossa] $\lambda(n)=n(\log n)^{-\log_3n-A+E(n)}$ for almost all $n$.\pause
+$A=-1+\displaystyle{\sum_{l}\frac{\log l}{(l-1)^2}=0.2269688}\cdots$, $E(n)\ll (\log_2n)^{\varepsilon-1}\ \forall\varepsilon>0$ fixed;\bigskip\pause
+
+    \item[\manorossa] Let $B=e^{-\gamma}\displaystyle{\prod_{l}\left(1-\frac1{(l-1)^2(l+1)}\right)=0.37537\cdots}$. Then
+
+\centerline{$\displaystyle{\sum_{n\le x}\lambda(n) =\frac {x^2}{\log x} \exp \left\{\frac
+{B\log_2x} {\log_3x} (1+o(1)) \right\}\quad (x\to +\infty)}$}
+
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}
+\heading{A recent result}\pause
+
+\textcolor{OliveGreen}{Friedlander, Pomerance \& Shparlinski} (2001):\pause
+
+\begin{itemize}
+\item[\manorossa] $\forall\Delta\geq(\log\log N)^3$,\pause\medskip
+
+\centerline{$\displaystyle{\lambda(n)\geq N\exp(-\Delta)}$}
+
+for all $n$ with  $1\leq n\leq N$,
+with at most
+$N\exp(-0.69(\Delta\log\Delta)^{1/3})$
+exceptions
+\end{itemize}\pause\bigskip\bigskip
+
+\centerline{\textcolor{BurntOrange}{Has Cryptographic Application...}}\pause\bigskip
+
+\ \hfill\manorossa Most of the times $\lambda(pq)$ is not too small...
+\end{slide}
+
+%\begin{slide}
+%\heading{Normal number of prime factors of $\varphi$ and
+%$\lambda$}\pause
+%
+%Erd\H os, Pomerance (1985):
+%\bigskip \centerline{$\displaystyle{\lim_{x\rightarrow\infty}\frac 1x
+%\#\Big\{n\leq x \colon \Omega(\varphi(n))- {\frac 12}(\log\log
+%x)^2\leq\frac{u}{\sqrt{3}}(\log\log x)^{3/2}\Big\}=G(u),}$} for every
+%real number $u$, where
+%$G(u)=(2\pi)^{-1/2}\int^u_{-\infty}e^{-t^2/2}\,dt$.
+%
+%The result (1) is shown to hold also with $\omega(\varphi(n))$,
+%$\Omega(\lambda(n))$ and $\omega(\lambda(n))$ in place of
+% $\Omega(\varphi(n))$
+%
+%\end{slide}
+
+
+
+\begin{slide}
+\heading{$\lambda$-analogue of the Artin Conjecture 1/3}\vspace{-2mm}\pause
+
+\matitablu If $a,n\in\N$ with $(a,n)=1$, then
+\centerline{$\displaystyle{\operatorname{ord}_n(a)=\min\{k\in\N\ \text{s.t.}\ a^k\equiv1\bmod n\}.}$}\pause
+
+\matitablu We say that $a$ is a \emph{$\lambda$--primitive root modulo $n$} if
+\centerline{$\displaystyle{\operatorname{ord}_n(a)=\lambda(n)}$}\pause
+\ \hfill (i.e. $a$ has the maximum possible order modulo $n$)\pause
+
+\matitablu If $r(n)$ is the number of $\lambda$-primitive roots modulo $n$ in $(\Z/n\Z)^*$. Then
+\centerline{$\displaystyle{r(n)=\varphi(n)\prod_{p\mid \lambda(n)}\left(1-{p^{-\Lambda_n(p)}}\right)}$}\pause
+where $\Lambda_n(p)$ is the number of summand with highest $p$--th power exponent in the
+decomposition of $(\Z/n\Z)^*$ a product of cyclic groups\pause
+
+\matitablu \textcolor{OliveGreen}{Li} (1998): $r(n)/\varphi(n)$ does't have a continuous distribution\pause
+
+\matitablu $r(p)=\varphi(p-1)$\pause
+
+\matitablu \textcolor{OliveGreen}{K\'atai} (1968): $\varphi(p-1)/(p-1)$ has a continuous distribution
+\end{slide}
+
+\begin{slide}
+\heading{$\lambda$-analogue of the Artin Conjecture 2/3}\pause
+
+\matitablu \textcolor{BurntOrange}{Artin Conjecture}. If $a\neq\square,\pm1$, $\exists A_a>0$, s.t.
+\bigskip
+
+\centerline{$\displaystyle{\#\{p\leq x\ |\ a\ \text{is a primitive root mod }p\}\sim A_a\li(x).}$}\pause
+\ \hfill\emph{(It is a Theorem under GRH (Hooley's Theorem))}\pause
+
+\matitablu Let\bigskip
+
+\centerline{$\displaystyle{N_a(x)=\#\{n\leq x\ |\ (a,n)=1,\ a \emph{ is a $\lambda$--primitive root modulo $n$}\}}$}\pause
+
+\matitablu Question(\textcolor{BurntOrange}{$\lambda$-Artin Conjecture}): Determine when/if\ $\exists B_a>0$, with
+\bigskip
+
+\centerline{$\displaystyle{N_a(x)\sim B_a x}$?}
+\end{slide}
+
+\begin{slide}
+\heading{$\lambda$-analogue of the Artin Conjecture 3/3}\pause
+
+\matitablu \textcolor{OliveGreen}{Li} (2000):
+\centerline{$\displaystyle{\limsup_{x\to\infty} \frac1{x^2}\sum_{1\le a\le x} N_a(x) > 0\qquad
+\text{but}\qquad \liminf_{x\to\infty} \frac1{x^2}\sum_{1\le a\le x} N_a(x) = 0.}$}\pause
+\ \hfill\emph{($\lambda$--Artin Conjecture is wrong on Average)}\pause\bigskip
+
+\matitablu \textcolor{OliveGreen}{Li \& Pomerance} (2003): On GRH, $\exists A > 0$ such that
+\centerline{$\displaystyle{ \limsup_{x \to \infty} \frac{N_a(x)}{x}\geq \frac{A
+\varphi(|a|)}{|a|}, }$}\pause \ \hfill as long as $a \not\in\mathcal E:=\{ - \square,  2
+\square,  m^c (c \geq 2)\}$ while if $a\in\mathcal E \Longrightarrow\!\!\!> N_a(x)=o(x).$\pause\bigskip
+
+\matitablu \textcolor{OliveGreen}{Li} (1999): For all $a\in\Z$,
+\centerline{$\displaystyle{\liminf_{x\to\infty} \frac{N_a(x)}x=0}$}\pause
+\ \hfill\emph{($\lambda$--Artin Conjecture is always wrong)}
+\end{slide}
+
+
+\begin{slide}
+\heading{$\lambda$ vs average order of elements in
+$(\Z/n\Z)^*$}\pause
+
+\matitablu\textcolor{OliveGreen}{Shparlinski \& Luca} (2003)\pause
+
+\manorossa Let
+\bigskip
+
+\centerline{$\displaystyle{u(n):=\frac1{\varphi(n)}\sum_{a\in\Z/\Z^*}\operatorname{ord}_n(a)}$}\pause
+\ \hfill (the average multiplicative order of the elements of $({\Bbb Z}/n{\Bbb Z})^*$)\pause
+
+\manorossa
+\bigskip
+
+\centerline{$\displaystyle{\liminf_{n\to\infty}\frac{u(n)\log\log n}{\lambda(n)}=\frac{\pi^2}{6e^\gamma}\qquad\text{and}
+\qquad\limsup_{n\to\infty}\frac{u(n)}{\lambda(n)}=1}$}\pause
+
+\manorossa The sequence\bigskip
+
+\centerline{$\displaystyle{\left(\ u(n)/\lambda(n)\ \right)_{n\in\N}}$}
+\ \hfill is dense in $[0,1]$
+\end{slide}
+
+%\begin{slide}
+%\heading{square/squarefull values of $\varphi$ and $\lambda$}\pause
+%
+%\end{slide}
+
+\begin{slide}
+\heading{$k$--free values of $\varphi$}\pause
+
+\noindent\matitablu \textcolor{OliveGreen}{Banks \& F\!\!P} (2003)\pause
+
+\centerline{$\displaystyle{\Ss_\varphi^k(x)=\{n\leq
+x\ \text{t.c.}\ \varphi(n)\ \text{is $k$--free}\}.}$}\pause
+
+$\forall k\ge 3$,
+\centerline{$\displaystyle{\Ss_\varphi^k(x)=
+\frac{3\alpha_k}{2(k-2)!}\frac{x\,(\log\log x)^{k-2}}{\log x}
+\left(1+o_k(1)\right)\qquad (x\to +\infty)}
+%O_k\!\left(\frac{(\log\log\log x)^{2(k+1)^{2k-4}-1}}{(\log\log x)^{1-1/k}}\right)\right)
+$}\pause
+where
+\centerline{$\displaystyle{
+\alpha_k:=\frac1{2^{k-1}}\prod_{l>2}\left(1-\frac1{l^{k-1}}\sum_{i=0}^{k-2}\sum_{j=0}^{k-2-i}
+\binom{k-1}{i}\binom{k-1+j}{j} \frac{(l-2)^j}{(l-1)^{i+j+1}}\right).
+}$}
+\end{slide}
+
+
+\begin{slide}
+\heading{$k$--free values of $\lambda$}\pause
+
+\noindent\matitablu \textcolor{OliveGreen}{F\!\!P, Saidak \& Shparlinski} (2002)\pause
+
+\centerline{{{$\displaystyle{\Ss_\lambda^k(x)=\#\{n\leq
+x\ \text{s.t.}\ \lambda(n)\ \text{ is
+$k$--free}\}}$}}}\pause
+
+$\forall k\ge 3$,
+\centerline{$\displaystyle{\Ss_\lambda^k(x)=\left(\kappa_k+
+o(1)\right)\frac{x}{\log^{1-\alpha_k}x}\qquad (x\to +\infty)}$}\pause
+
+where\medskip
+
+\centerline{$\displaystyle{\kappa_k:= \frac{2^{k+2}-1}{2^{k+2}-2} \cdot
+\frac{\eta_k}{e^{\gamma\alpha_k}\Gamma(\alpha_k)},\quad
+\alpha_{k}:=\prod_{l\text{
+prime}}\left(1-\frac1{l^{k-1}(l-1)}\right)}$}\medskip\pause
+
+\centerline{$\displaystyle{\eta_k:=\lim_{T\rightarrow\infty}\frac1{\log^{\alpha_k}T}\prod_{\substack{l\leq
+T\\ l-1\ \text{$k$--free}}}
+\log\left(1+\frac{1}{l}+\ldots+\frac{1}{l^k}\right)}$}
+\pause\bigskip\vfill
+
+\centerline{e.g. $k_2=0.80328\ldots\quad\text{ and }\quad\alpha_2=0.37395\ldots$.}
+
+\end{slide}
+
+
+\begin{slide}
+\heading{Carmichael Conjecture}\pause
+
+\matitablu  $A_\varphi(m)=\#\{n\in\N\ |\ \varphi(n)=m\}$\pause
+\centerline{\fbox{\textcolor{BurntOrange}{\it Carmichael Conjecture:\/} $A_\varphi(m)\neq1\ \forall m\in\N$}}\medskip\pause
+
+\matitablu $\mathcal B_\varphi(x)=\{m\leq x\ |\  A_\varphi(m)=1\}
+\quad \text{and}\quad \mathcal F(x)=\{n\in\N\ |\ \varphi(n)\leq x\}$\pause
+
+\matitablu \textcolor{OliveGreen}{Ford} (1998)\pause
+\begin{itemize}
+\item[\manorossa] If $\mathcal B_\varphi(x)\ne\varnothing$ for some $x$, then necessarily
+{$\displaystyle{
+\liminf_{x\to\infty}\frac{\#\mathcal B_\varphi(x)}{\#\mathcal F(x)}>0}$}
+\pause
+\item[\manorossa] Hence if $\liminf_{x\to\infty}\frac{\#\mathcal B_\varphi(x)}{\#\mathcal F(x)}=0$,
+Carmichael Conjecture follows\pause
+
+\item[\manorossa] $\displaystyle{\limsup_{x\to\infty}\frac{\#\mathcal B_\varphi(x)}{\#\mathcal F(x)}<1}$\pause
+
+\item[\manorossa] $\displaystyle{\liminf_{x\to\infty}\frac{\#\mathcal B_\varphi(x)}{\#\mathcal F(x)}<10^{-5000000000}}$\pause
+
+\item[\manorossa] {If $A_\varphi(m)=1$ them $m>10^{10^{10}}$}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\heading{Carmichael Conjecture for $\lambda$\qquad (1/2)}\pause
+
+\matitablu  $A_\lambda(m)=\#\{n\in\N\ |\ \lambda(n)=m\}$\pause
+\centerline{\fbox{\textcolor{BurntOrange}{\it Carmichael Conjecture for $\lambda$:\/}
+$A_\lambda(m)\neq1\ \forall m\in\N$}}\medskip\pause
+
+\matitablu \textcolor{OliveGreen}{Banks, Friedlander, Luca, F\!\!P, Shparlinski}(2004)\pause
+\begin{itemize}
+\item[\manorossa] $\forall n\leq x$,
+$A_\lambda(\lambda(n)) \ge \exp\left((\log\log x)^{10/3}\right)$ with at most
+$O(x/\log\log x)$ exceptions\pause
+\item[\manorossa]$
+\#\{n\leq x\ | A_\lambda(\lambda(n))=1\} \le x \exp\left(- (\log \log x)^{0.77}\right).
+$\pause\bigskip
+
+\begin{itemize}
+\item[\manogrigia] The bound $\#\{n\leq x\ | A_\varphi(\varphi(n))=1\}
+\le  x\exp\left(-\log\log x+o((\log_3 x)^2)\right)$ implies Carmichael Conjecture (for $\varphi$)\pause
+\item[\manogrigia] Non non-trivial upper bound for the above is known\pause
+\item[\manogrigia] Notion of {\it primitive\/} counter example to Carmichael Conjecture(s)
+\end{itemize}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\heading{Carmichael Conjecture for $\lambda$\qquad (2/2)}\pause
+
+\begin{itemize}
+\item[\manorossa] $n\in\N$ is a {\it primitive
+counterexample to Carmichael conjecture}  (CCCP) if\pause
+\begin{itemize}
+\item[\matitablu] $A_\varphi(\varphi(n))=1$;\pause
+\item[\matitablu] $A_\varphi(\varphi(d))\neq 1\ \forall d\mid n, d<n.$\pause
+\end{itemize}
+\item[\manorossa] $\mathcal C_\varphi(x)=\{n\leq x\ |\ n \text{ is (CCCP)}\}$\pause
+
+\item[\manorossa] $\#\mathcal C_\varphi(x)\le x^{2/3+o(1)}$\pause
+
+\item[\manorossa] If $\#\mathcal C_\lambda(x)$ is the number of primitive
+counterexamples up to $x$ to the  Carmichael conjecture for $\lambda$\pause
+
+\item[\manorossa] A primitive counterexample to the Carmichael conjecture for $\lambda$,
+if it exists, is unique. i.e.\pause
+\centerline{\present{
+$\#\mathcal C_\lambda(x)\le 1$}}\pause
+
+\item[\manorossa] All counterexamples to Carmichael conjecture for $\lambda$
+(if any) are multiples of the smallest one
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\heading{Image of $\varphi$}\pause
+
+\manorossa Denote
+ \centerline{$\displaystyle{\mathcal F:=\left\{\varphi(m)\ |\ m\in\N\right\}\qquad\text{and}
+ \qquad\mathcal L:=\left\{\lambda(m)\ |\ m\in\N\right\}}$}\pause
+\manorossa for any set $\mathcal A$ and $x\geq1$, set $\displaystyle{\mathcal A(x):=\mathcal A\cap[1,x]}$\pause
+\manorossa A lot of work on  $\mathcal F(x)$ (Pillai, Erd\H os, Hall, Maier, Pomerance, ...)\pause
+\manorossa \textcolor{OliveGreen}{Ford} (1998)\pause
+\bigskip
+\centerline{$\displaystyle{\mathcal L(x)=\frac x{\log x}\exp\left\{ C(\log_3 x-\log_4 x)^2 - D\log_3 x-(D+\frac12-2C)\log_4 x+O(1)\right\}}$}
+\pause
+where $C=0.81781464640083632231\cdots$, $D=2.17696874355941032173\cdots$.\pause\medskip
+
+\manorossa Could not find literature on $\mathcal L(x)$
+
+\end{slide}
+
+
+\begin{slide}
+\heading{Image of $\varphi$ vs image of $\lambda$}\pause
+
+\textcolor{OliveGreen}{Banks, Friedlander, Luca, F\!\!P, Shparlinski} (2004)\pause
+
+\begin{itemize}
+
+\item[\matitablu]
+The number of integers $m\leq x$ which are values of both $\lambda$
+and $\varphi$ satisfies\pause\medskip
+ \centerline{\fbox{$\displaystyle{
+\#\left({\mathcal{L}\cap\mathcal{F}}\right)(x)\geq\frac{x}{\log
+x} \exp\left((C+o(1)) (\log\log\log x)^2\right),
+}$}}\pause
+where $C=0.81781464640083632231\cdots$.
+\pause\medskip
+
+\item[\matitablu] The number of integers $m\le x$ which are values of $\lambda$ but
+not of $\varphi$ satisfies\medskip\pause
+ \centerline{\fbox{$\displaystyle{
+\#(\mathcal{L} \setminus \mathcal F)(x)\ge \frac{x}{\log x}
+\exp\left((C+o(1)) (\log\log\log x)^2\right)
+}$}}\pause
+ $C$ as above.\pause
+
+\item[\matitablu] The number of integers $m\le x$ which are values of $\varphi$
+but not of $\lambda$ satisfies\medskip\pause
+ \centerline{\fbox{$\displaystyle{
+\#(\mathcal F \setminus\mathcal{L})(x)\gg\frac x{\log^2 x}.
+}$}}
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\heading{Image of $\varphi$ vs image of $\lambda$ - Numerical Examples\qquad (1/2)}\pause
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+      $x$& $\#\mathcal F(x)$ & $\#\mathcal L(x)$ & $\#(\mathcal F\cap\mathcal L)(x)$&
+$\#(\mathcal L\setminus\mathcal F)(x)$&$\#(\mathcal F\setminus\mathcal L)(x)$\\
+\hline
+$10$ & $6$ & $6$ & $6$ & $0$ & $0$\\
+$10^2$ & $38$ & $39$ & $38$ & $1$ & $0$\\
+$10^3$ & $291$ & $328$ & $291$ & $37$ & $0$\\
+$10^4$ & $2374$ & $2933$ & $2369$ & $564$ & $5$\\
+$10^5$ & $20254$ & $27155$ & $20220$ & $6935$ & $34$\\
+$10^6$ & $180184$ & $256158$ & $179871$ & $76287$ & $313$\\
+$10^7$ & $1634372$ & $2445343$&$1631666$&$813677$ & $ 2706$ \\
+\hline
+\end{tabular}\pause\bigskip
+
+\fbox{\textcolor{Emerald}{Criterion.} $m\in\mathcal L\quad\Leftrightarrow\quad m=\lambda(s)$
+with $
+s=2\displaystyle{\prod_{\substack{p\text{~prime}\\(p-1)\,\mid\,m}}p^{v_p(m)+1}}
+$}
+\end{center}
+\end{slide}
+
+\begin{slide}
+\heading{Image of $\varphi$ vs image of $\lambda$ - Numerical Examples\qquad (2/2)}\pause
+
+\matitablu if
+$m=1936$ then  $s=33407040=2^6\cdot3\cdot5\cdot17\cdot23\cdot89$\pause
+ \hfill but $\lambda(33407040)=176$. So $1936\not\in\mathcal L$\pause
+
+\matitablu $\varphi((2\cdot 11+1)\cdot 89)=\varphi(2047)=1936$. So $1936\in\mathcal F$\pause
+
+\matitablu  $m\in\mathcal F(10^9)$ if and only if $m=\varphi (r)$ for some
+$r\le 6.113m$.\pause
+
+\matitablu $m=90=\lambda(31\cdot19)\in\mathcal L$ but $90\not\in\mathcal F$\pause
+
+\matitablu \textcolor{OliveGreen}{Contini, Croot \& Shparlinski}
+
+\qquad\qquad Deciding whether a given integer $m$ lies in $\mathcal F$ is
+{\it NP-complete\/}.\pause
+
+
+\matitablu $\mathcal L\setminus\mathcal F=\{ 90,$ $174,$ $230,$ $234,$ $246,$ $290,$ $308,$ $318,$ $364,$ $390,$ $410,$ $414,$
+$450,$ $510,$ $516,$ $530,$ $534,$ $572,$ $594,$ $638,$ $644,$ $666,$ $678,$ $680,$ $702,$ $714,$ $728,$ $740,$ $770,$
+%$804,$
+$\ldots\}$\pause
+
+\matitablu $\mathcal F\setminus\mathcal L=\{
+1936,$ $3872,$ $6348,$ $7744,$ $9196,$ $15004,$ $15488,$ $18392,$ $20812,$ $21160,
+22264,$ $30008,$ $35332,$ $36784,$ $38416,$ $41624,$ $42320,$ $44528,$ $51304,$ %$58564,$
+$\ldots \}$
+
+\end{slide}
+
+\begin{slide}
+\heading{Proof of a weaker statement}\pause
+
+ \centerline{\present{\fbox{$\displaystyle{
+%\#\left(\mathcal{L}\cap\mathcal{F}\right)(x) \gg\frac{x\log_2
+%x}{\log x} \qquad \text{and} \qquad
+\#(\mathcal{L}\setminus\mathcal{F})(x)
+\gg\frac{x\log\log x}{\log x}.
+}$}}}\pause
+
+\noindent\textbf{Proof.} Let
+\centerline{$\mathcal P_2(x)=\{q_0q_1\le x,  \text{s.t.} q_0\equiv q_1\equiv3 \pmod 4 \text{and} (q_0-1,q_1-1)=2\}$}\pause
+Then $\forall n\in\mathcal P_2(x)$
+\centerline{$
+\lambda(n) = \frac{(q_0-1)(q_1-1)}{2} \equiv 2 \pmod 4.
+$}\pause
+%Hence
+%\centerline{$\lambda(16n) = [4, \lambda(n)] = 2 \lambda(n)= (q_0-1)(q_1-1) = \varphi(n).
+%$}\pause
+
+If $m\in\mathcal F$ with $m\equiv2\bmod 4$, then
+$m=4,2p^a,p^a$ and $p\equiv3\bmod4$ \pause
+If $m=\lambda(n)\in\mathcal F$ then $m\leq 3x$\pause
+
+Hence
+\centerline{$\displaystyle{\#\{\lambda(n)\in\mathcal F\ |\ n\in\mathcal P_2(x)\}
+\leq \#\{p^a\leq 3x\}
+\ll \frac x{\log x}}$}\pause
+It is enough to show that there are sufficiently many elements in
+\centerline{$\displaystyle{
+\mathcal{L}_2(x)=\{\lambda(n):n\in{\mathcal P}
+_2(x)\}\subset\mathcal{L}(x)
+}$}
+\end{slide}
+
+\begin{slide}
+It is enough to show that
+\centerline{$\displaystyle{
+\mathcal{L}_2(x)=\{\lambda(n):n\in{\mathcal P}
+_2(x)\}\subset\mathcal{L}(x)
+}$}
+has sufficiently many elements. i.e.\pause
+\begin{equation}
+\label{eq:Large L_2} \#\mathcal{L}_2(x) \gg \frac{x}{\log x}\log_2
+x.
+\end{equation}\pause
+
+\begin{lemma}
+\label{uno} If $Q\leq x^{1/4}$ and
+{$\displaystyle{N_Q(x)=\#\{n = q_0q_1\in {\mathcal P}_2(x) \text{ with }q_1 \leq Q\}}.$}\pause
+Then
+\quad \qquad{$\displaystyle{N_Q(x)\gg \frac x{\log x}\log_2 Q.}$}
+\end{lemma}\pause
+\begin{lemma}
+\label{due} If $Q\leq x^{1/4}$ and
+\centerline{$\displaystyle{S_Q(x)=\#\left\{ (p_0,p_1,q_0,q_1)\ \text{s.t.}\
+\genfrac{}{}{0pt}{1}{q_1<p_1\leq Q,\quad p_0p_1\leq x, \quad q_0q_1\leq x,}
+{(p_0-1)(p_1-1)=(q_0-1)(q_1-1)}\right\}.
+}$}\pause
+Then\quad\qquad
+{$\displaystyle{S_Q(x)\ll \frac x{(\log x)^2}(\log Q)^3.
+}$}\pause
+\end{lemma}
+\centerline{\fbox{$\displaystyle{\forall Q\qquad
+\#\mathcal{L}_2(x) \ge N_Q(x) - 2S_Q(x) \ge c_1\frac{x}{\log
+x}\log_2 Q - c_2\frac{x}{(\log x)^2}(\log Q)^3
+}$}}\pause
+\ \hfill Take\quad $Q=\exp\left((\log
+x)^{1/3}\right)$ and get (\ref{eq:Large L_2})
+\end{slide}
+
+\begin{slide}
+
+\heading{Proof of Lemma \ref{uno}}
+The contribution to $N_Q(x)$ from primes $q_1\le Q$,
+$q_1\equiv3 \pmod4$ is
+ \centerline{$\displaystyle{
+\sum_{\substack{q_0\leq x/q_1\\ q_0\equiv3\pmod4}}
+~\sum_{\substack{d\mid(\frac {q_0-1}{2},\frac {q_1-1}{2})}}\mu(d)
+=\sum_{d\mid (q_1-1)/2}\mu(d) \sum_{\substack{q_0\le
+x/q_1\\q_0\equiv3\pmod4\\q_0\equiv1\pmod d}}1.
+}$}\pause
+Therefore
+\qquad\qquad{$\displaystyle{
+N_Q(x) = \sum_{\substack{q\leq Q\\ q\equiv3\pmod4}}M_q +
+\sum_{\substack{q\leq Q\\ q\equiv3\pmod4}} R_q
+}$}\pause
+where
+\begin{eqnarray*}
+M_q &=&\frac{\li(x/q)}{2}
+\sum_{d\mid (q-1)/2}\frac{\mu(d)}{\varphi(d)},\\
+R_q &=& \sum_{d\mid
+(q-1)/2}\mu(d)\left(\pi(x/q;4d,a_d)-\frac{\li(x/q)}{2\varphi(d)}\right),
+\end{eqnarray*}\pause\vspace{-3mm}
+{\scriptsize{and  $a_d$ is the residue class modulo $4d$ determined by the
+classes $3\pmod 4$ and $1\pmod d$.}}
+
+\end{slide}
+
+\begin{slide}
+
+For the sum $R_q$ over $q\le Q$,
+Bombieri--Vinogradov (since $Q\leq x^{1/4}$) implies, $\forall A > 1$,\vspace{-5mm}\pause
+\begin{eqnarray*}
+\sum_{\substack{q\leq Q\\ q\equiv3\pmod4}}R_q &\ll&\sum_{q\leq
+Q}\sum_{d\mid (q-1)/2}\left|
+\pi(x/q;4d,a_d)-\frac1{2\varphi(d)}\li(x/q)\right|\\
+&\ll& \sum_{q\leq Q} \frac{x}{q} (\log x)^{-A} \ll x(\log x)^{1-A},
+\end{eqnarray*}\vspace{-3mm}\pause
+
+For the sum of  $M_q$  over $q$\vspace{-3mm}
+\begin{eqnarray*}
+\sum_{\substack{q\leq Q\\ q\equiv3\pmod4}}M_q
+&\gg&\sum_{\substack{q\leq Q\\ q\equiv3\pmod4}}
+\li(x/q)\prod_{p\mid(q-1)/2}\left(1-\frac{1}{p-1}\right)\\
+&\gg&\frac{x}{\log x} \sum_{\substack{q\leq Q\\ q\equiv3\pmod4}}
+\frac{\varphi(q-1)}{q(q-1)}\gg \frac x{\log
+x}\log_2 Q
+\end{eqnarray*}\vspace{-2mm}\pause
+by a classical formula (Stephens) via partial summation.\hfill$_\Box$
+
+\end{slide}
+
+\begin{slide}
+
+\heading{Proof of Lemma \ref{due}}
+
+Fix $p_1$ and $q_1$ and estimate $S_{p_1,q_1}$ to
+$S_Q(x)$ arising. \pause Then
+$$S_{p_1,q_1}=\left\{m\le \frac x{[p_1-1,q_1-1]}\ \text{s.t. }\
+\genfrac{}{}{0pt}{1}{\text{both }\frac{p_1-1}{(p_1-1,q_1-1)}\cdot m + 1 \text{ and}} {\frac{q_1-1}{(p_1-1,q_1-1)}\cdot m + 1
+\text{ are prime}}\
+\right\}.$$\pause  Applying the sieve
+%(e.g.,~\cite[Theorem5.7]{HR}), we obtain
+\begin{eqnarray*}
+S_{p_1,q_1} &\ll& \frac {x}{(\log x)^2} \quad
+\frac{(p_1-1,q_1-1)}{(p_1-1)(q_1-1)}
+\prod_{p\,|\,[p_1-1,q_1-1]}(1-1/p)^{-1}\\
+& \le & \frac {x}{(\log x)^2} \quad
+\frac{(p_1-1,q_1-1)}{\varphi(p_1-1)\varphi(q_1-1)}.
+\end{eqnarray*}\pause
+
+Sum over $q_1<p_1\le Q$, and enlarge the sum to include all
+integers up to $Q$:\end{slide}
+
+\begin{slide}
+
+Sum over $q_1<p_1\le Q$, and enlarge the sum to include all
+integers up to $Q$:
+
+\begin{eqnarray*}
+\sum_{q_1<p_1\leq Q}
+\frac{(p_1-1,q_1-1)}{\varphi(p_1-1)\varphi(q_1-1)}
+&\ll&\sum_{k,m\leq Q}\frac{(k,m)}{\varphi(k) \varphi (m)}\\
+&=&\sum_{k,m\leq Q}\frac1 {\varphi(k) \varphi (m)}
+~\sum_{\substack{d\mid k\\ d\mid m}}\varphi(d)\\
+&\le&\sum_{d\leq Q}\frac1 {\varphi(d)} \ \sum_{k,m\leq Q/d}\frac 1
+{\varphi(k) \varphi (m)}\ll
+         (\log Q)^3.
+\end{eqnarray*}\pause
+This completes the proof of the Lemma.$\hfill_\Box$\pause
+\vfill
+
+\ \hfill {\Large{\textcolor{Salmon}{And the proof of the Theorem too!!}}}
+
+\end{slide}
+
+\begin{slide}
+\heading{Collision of powers of $\varphi$ and $\lambda$ (last topic)}\pause
+
+\begin{itemize}
+\item[\matitablu] $
+\varphi(1729)=\lambda(1729)^2,
+\quad\varphi(666)^2=\lambda(666)^3,
+\quad\varphi(768)^3=\lambda(768)^4,
+\quad\ldots
+$\pause\medskip
+
+\item[\matitablu] $
+\mathcal A_k(x)=\{n\le x\ :\ \varphi(n)^{k-1}=\lambda(n)^k\}.
+$\pause\medskip
+
+\item[\matitablu] For $r\ge s\ge 1$
+
+\centerline{$\mathcal A_{r,s}=\{n\ :\ \varphi(n)^s=\lambda(n)^r\}
+$}\pause\medskip
+
+\item[\matitablu] \textcolor{OliveGreen}{Banks, Ford, Luca, F\!\!P \& Shparlinski} (2004)
+\pause\medskip
+\begin{itemize}
+\item[\manorossa] $\mathcal A_k(x)\geq x^{19/27k}$ for $k\geq2$\pause\medskip
+\item[\manorossa] Dickson's \textbf{$k$--tuples Conjecture} implies $\#\mathcal A_{r,1}=\infty$\pause\medskip
+\item[\manorossa] Schinzel's \textbf{Hypothesis H} implies $\#\mathcal A_{r,1}=\infty$\pause\medskip
+\item[\manorossa] The set $\{\log\varphi(n)/\log\lambda(n)\}_{n \ge 3}$ is dense in
+$[1,\infty)$
+\end{itemize}
+\end{itemize}
+
+\end{slide}
+
+\begin{slide}
+
+\present{\begin{minipage}[c]{11cm}\textbf{$k$--tuples Conjecture} \textit{$\forall k\ge 2$, let $a_1,\ldots,a_k, b_1,\ldots,b_k\in\Z$,
+ with
+ \begin{itemize}
+ \item $a_i>0$
+ \item $\gcd(a_i,b_i)=1\ \forall i=1,\ldots, k$
+ \item $\forall p\le k$ $\exists n$ such that
+$p\nmid \prod_{i=1}^k(a_in+b_i)$
+\end{itemize}  Then
+$\exists \infty$-many $n$'s such that $p_i=a_in+b_i$ is prime  $\forall i=1,\ldots,k$.}
+\end{minipage}}
+\bigskip\bigskip\pause
+
+\present{\begin{minipage}[c]{11cm}\textbf{Hypothesis H} \textit{If $f_1(n),\ldots,f_r(n)\in\Z[x]$ \begin{itemize}
+\item irreducible
+\item positive leading coefficients
+\item $\forall q$ $\exists n$ such that
+$q\nmid f_1(n)\ldots f_r(n)$.
+\end{itemize}
+Then $f_1(n),\ldots,f_r(n)$
+are simultaneously prime for $\infty$-many $n$'s.}\end{minipage}}
+
+
+
+
+\end{slide}
+\end{document}

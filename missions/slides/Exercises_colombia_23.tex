@@ -1,0 +1,102 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{amssymb,amsmath}
+\usepackage[cm]{fullpage}
+
+%opening
+\title{Ejercicios de Curvas el\'{\i}pticas sobre cuerpos finitos}
+\author{Popayán - Esquela CIMPA 2023}
+
+\begin{document}
+
+\maketitle
+\section{Ecuaci\'on (general) de Weierstrass}
+\begin{itemize}
+ \item Considere la ecuaci\'on (general) de Weierstrass:
+ $y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$
+donde $a_1,a_2,a_3,a_4,a_6\in K$ cuerpo.
+ \item Muestre que si $K$ tiene una caracter\'\i stica diferente de $2$, la transformaci\'on af\'in
+ $$\left\{\begin{array}{l}
+ x\leftarrowtail x\\
+ y \leftarrowtail y-(a_1x+a_3)/2
+          \end{array}
+\right.$$
+mapea la ecuaci\'on (general) de Weierstrass en una de las formas $y^2=x^3+b_2x^2+b_4x+b_6$. Calcule $b_2, b_4, b_6$ en t\'erminos de $a_1, a_2, a_3, a_4, a_6$.
+\item  Muestre que si $K$ tiene una caracter\'\i stica diferente de $3$, la transformaci\'on af\'in
+ $$\left\{\begin{array}{l}
+ x\leftarrowtail x-a_2/3\\
+ y\leftarrowtail y
+          \end{array}
+\right.$$
+mapea la ecuaci\'on de Weierstrass:  $y^2=x^3+b_2x^2+b_4x+b_6$ en una de las formas $y^2=x^3+c_4x+c_6$. Calcule $c_4, c_6$ en t\'erminos de $b_ 2, b_ 4, b_ 6$.
+\item Suponga que la caracter\'{\i}stica de $K$ es $2$ y considere la ecuaci\'on de Weierstrass:  $y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$
+\begin{itemize}
+ \item Si $a_1\ne0$, demuestre que la transformaci\'on
+ $$\left\{\begin{array}{l}
+ x\leftarrowtail a_1^2x+a_3/a_1\\
+ y\leftarrowtail a_1^3y+(a_1^2a_4+a_3^2)/a_1^3
+          \end{array}
+\right.$$
+asigna la ecuaci\'on anterior a lo siguiente:
+$y^2+xy=x^3+b_2x^2+b_6$. Tambi\'en pruebe que lo anterior no es singular si y solo si $b_6\ne0$.
+\item 
+Si $a_1=0$, demuestre que la transformaci\'on
+$$\left\{\begin{array}{l}
+ x\leftarrowtail x+a_2\\
+ y\leftarrowtail y         \end{array}
+\right.$$
+asigna la ecuaci\'on anterior a lo siguiente:
+$y^2+b_3x=x^3+b_4x+b_6$. Tambi\'en pruebe que lo anterior no es singular si y solo si $b_3\ne0$.
+\item Muestre que una curva definida por $y^2+xy=x^3+b_2x^2+b_6$ ($b_6\ne0$) tiene un \'unico punto de orden $2$ mientras que
+$y^2+b_3x=x^3+b_4x+b_6$ ($b_3\ne0$) no tiene puntos de orden $2$.
+\item Enumere todas las posibles ecuaciones de Weierstrass no singulares (simplificadas)
+sobre $\mathbb F_2$ y para cada uno de ellos calcular el grupo de puntos racionales sobre $\mathbb F_2$. Calcular, cuando sea posible, las isogenias entre las curvas anteriores.
+\end{itemize}
+\item Considere la transformaci\'on af\'{\i}n:
+$$
+\left\{\begin{aligned}
+                x &= u^2x' + r          \\
+                y &= u^3y' + su^2x' + t \\        
+    \end{aligned}                       
+\right.$$
+d\'onde: $u\in K^*, r, s,t\in K$.
+\begin{itemize}
+\item Muestre que mapea una ecuaci\'on general de Weierstrass en otra ecuaci\'on de Weierstass;
+\item Muestre que cualquier transformaci\'on af\'{\i}n entre las ecuaciones de Weierstrass tiene la forma anterior;
+\item Muestre que la transformaci\'on anterior es un isomorfismo entre los respectivos grupos de puntos racionales.
+\end{itemize}
+\item Clasificar todas las posibles clases de isomorfismos de curvas el\'{\i}pticas sobre $\mathbb F_3$.
+\end{itemize}
+\newpage
+
+\section{Polinomios de divisi\'on}
+Considerar
+$$\left\{\begin{array}{l}
+\psi _{{0}}=0,\quad  \psi _{{1}}=1,\\
+\psi _{{2}}=2y,\\
+\psi _{{3}}=3x^{{4}}+6Ax^{{2}}+12Bx-A^{{2}},\\
+\psi _{{4}}=4y(x^{{6}}+5Ax^{{4}}+20Bx^{{3}}-5A^{{2}}x^{{2}}-4ABx-8B^{{2}}-A^{{3}}),\\
+\vdots\\
+\psi _{{2m+1}}=\psi _{{m+2}}\psi _{{m}}^{{3}}-\psi _{{m-1}}\psi _{{m+1}}^{{3}}{\text{ por }}m\geq 2,\\
+\psi _{{2m}}=\left({\frac {\psi _{{m}}}{2y}}\right)\cdot (\psi _{{m+2}}\psi _{{m-1}}^{{2}}-\psi _{{m-2}}\psi _{{m+1}}^{{2}}){\text{ por }}m\geq 3.
+\end{array}\right.
+$$
+El polinomio $\psi_n$ se llama \textbf{polinomio $n$--\'esimo de divisi\'on}.
+El objetivo de estos problemas es establecer las propiedades b\'asicas de estos polinomios.
+
+\begin{enumerate}
+ \item Verificar la identidad
+$$[n](x,y)=\left(x-{\frac {\psi _{{n-1}}\psi _{{n+1}}}{\psi _{{n}}^{{2}}(x)}},{\frac {\psi _{{2n}}(x,y)}{2\psi _{{n}}^{{4}}(x)}}\right)$$
+por $n=1,2,3$.
+\item Establecer $y^{2}=x^{3}+Ax+B$ y mostrar que $\psi _{{2m+1}}\in {\mathbb {Z}}[x,A,B]$ y $\psi _{{2m}}\in 2y{\mathbb {Z}}[x,A,B].$
+\item Demostrar la identidad
+$$\psi_{n}=\begin{cases}
+            nx^{(n^2-1)/2}+\cdots&\text{si $n$ es impar};\\
+            y(nx^{(n^2-4)/2}+\cdots)&\text{si $n$ es par}.
+           \end{cases}$$
+\item Muestre que si $E$ est\'a definido sobre $K$, entonces 
+$\psi _{{n}}^{2} , {\frac {\psi _{{2n}}}{y}},\psi _{{2n+1}},$ est\'an todos en $K[x]$.
+\item Demuestra que las ra\'{\i}ces de $\psi _{{2n+1}}$ son las coordenadas $x$ de los puntos de $ E[2n+1]\setminus \{\infty\}$, donde $E[2n +1]$ es el subgrupo de torsi\'on $(2n+1)^{{{\text{th}}}}$ de $E$. De manera similar, las ra\'{\i}ces de $ \psi _{{2n}}/y$ son las coordenadas $x$ de los puntos de $E[2n]\setminus E[2]$.
+\end{enumerate}
+
+
+\end{document}

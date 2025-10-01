@@ -1,0 +1,160 @@
+\documentclass[a4paper,12pt]{article}
+% The preamble section.
+\usepackage[cm]{fullpage}
+\title{CR410 (Crittografia a chiave pubblica)}
+\author{AA13/14 -- Compiti d'esame}
+\date{\ }
+ 
+\begin{document}
+
+\maketitle
+
+\begin{itemize}
+\item  Risolvere il massimo numero di esercizi fornendo spiegazioni chiare e sintetiche.
+\item NON SI ACCETTANO RISPOSTE SCRITTE SU ALTRI FOGLI.
+\item 1 Esercizio = 4 punti. 
+\item Tempo previsto: 2 ore. 
+\item Nessuna domanda durante le prima ora e durante gli ultimi 20 minuti.
+\end{itemize}\bigskip
+
+\hrule\smallskip
+
+\noindent ESAME DI MET\`A SEMESTRE \hfill 4 Aprile 2014 
+
+\hrule\smallskip
+
+\begin{enumerate}
+\item Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:
+\begin{enumerate}
+\item Esistono campi finiti con 48 elementi?
+\item E' vero che non esistono identit\`a di Bezout con coefficienti a segno discorde?
+\item Fornire un esempio di campi finiti diversi con 16 elementi.
+\item Scrivere tutti i polinomi primitivi in ${\bf F}_2[x]$ di grado minore uguale a $4$.
+\end{enumerate}
+\item Enunciare e dimostrare il Teorema di struttura dei sottocampi di ${\bf F}_{p^n}$. Lo si utilizzi per costruire
+un esempio di campo finito con esattamente $6$ sottocampi. 
+\item Determinare tutti le radici primitive di ${\bf F}_{5}[\tau], \tau^2=2$.
+\item Spiegare il funzionamento di alcuni sistemi crittografici che basano la propria sicurezza sul problema del 
+logaritmo discreto.
+\item Spiegare in dettaglio if funzionamento dell'Algoritmo Pohlig--Hellman.
+\item Si applichi l'algoritmo delle approssimazioni successive per calcolare la parte intera del numero binario $\sqrt{101011101}$
+\item Si determini il grado del campo di spezzamento su ${\bf F}_3$ del sequente polinomio $(x^{3^{11}}+6x-x^9+30)(x^6+1)(x^9+15x-1)$
+\item Calcolare il massimo comun divisore  $\gcd(273,130)$ utilizzando sia l'algoritmo binario che quello esteso di Euclide. Utilizzare l'algoritmo di Euclide anche per 
+calcolare un identit\`a di Bezout.
+\end{enumerate}
+
+\hrule\smallskip
+
+\noindent ESAME DI FINE SEMESTRE \hfill 26 Maggio 2014 
+
+\hrule\smallskip
+
+\begin{enumerate}
+\item Rispondere alle seguenti domande con una giustificazione di 1 riga:
+\begin{enumerate}
+\item E' possibile calcolare i simboli di Jacobi senza fattorizzare?
+\item I simboli di Jacobi hanno applicazioni in crittografia?
+\item E' possibile implementare RSA con un esponente di cifratura pari? perch\`e?
+\item Dare un esempio di curva ellittica $E/{\bf F}_p$ in cui $\#E({\bf F}_p)$ \`e dispari.
+\end{enumerate}
+\item Spiegare il funzionamento del crittosistema RSA. 
+\item Definire la nozione di pseudo primo di Miller Rabin e dimostrare che $91$ \`e pseudo primo di Miller Rabin in base $10$ e in base $22$.
+\item Calcolare il simbolo di Jacobi $\left({m\over n}\right)$ sapendo che $n\equiv 7\bmod 4m$ e che $m\equiv 3\bmod 28$.
+\item Dopo aver definito la nozione di numero di Carmichael, si enunci e dimostri il criterio di Korselt.
+\item Sia $E: y^2=x^3+Ax+B$ una curva ellittica su un campo ${\bf F}_p$ di caratteristica maggiore di $3$. 
+Dimostrare che se $P=(\alpha,\beta)\in E({\bf F}_p)$ \`e un punto di ordine tre, allora $\alpha$ \`e una radice del polinomio:
+$$\Psi_3(X)=3X^4+6AX^2+12BX-A^2$$
+\item Sapendo che una curva ellittica $E$ su ${\bf F}_{101}$ ha un punto di ordine $50$, cosa possiamo dire su $\#E({\bf F}_{101})$?
+\item Si determini $\#E({\bf F}_{5^{20}})$ quando $E: y^2=x^3+2x-3$.
+\item Si dimostri la legge di reciprocit\`a quadratica.
+\end{enumerate}
+
+\hrule\smallskip
+
+\noindent APPELLO A \hfill 3 GIUGNO 2014
+
+\hrule\smallskip
+
+\begin{enumerate}
+\item Si descriva un algoritmo per calcolare in tempo polinomiale la parte intera di $m^{1/2}$ per ogni intero positivo $m$.
+\item Supponiamo che $e=5$ sia la chiave di cifratura di un crittosistema RSA con modulo $n=53\cdot43$. Si calcoli la chiave $d$ di 
+decifratura.
+\item Dimostrare che in ${\bf F}_p$ l'equazione $x^m\equiv1\bmod p$ 
+          ammette $\gcd(p-1,m)$ soluzioni. Quante ne ammette in ${\bf Z}/(101\cdot 103){\bf Z}$?
+\item Definire il simbolo di Jacobi ed illustrare un algoritmo polinomiale per calcolarlo.
+\item Spiegare il funzionamento dei protocolli crittografici incontrati nel corso.
+\item Si determini la probabilit\`a che un polinomio irriducibile 
+          su ${\bf F}_2$ di grado $8$ risulti primitivo.
+\item Determinare tutti i generatori di ${\bf F}_{5}[\tau], \tau^2=2$ e di ciascuno determinare il polinomio minimo.
+\item Determinare la struttura del gruppo dei punti razionali di una curva ellittica definita su ${\bf F}_{101}$ sapendo che
+ha un punto $P$ di ordine $41$.
+\item Siano $E_1: y^2=x^3+x+1$ e $E_2: y^2=x^3+x+4$ due curve definite su ${\bf F}_5$. Dopo aver verificato se sono ellittiche determinarne ka struttura della
+          gruppo dei punti razionali su ${\bf F}_5$ e si ${\bf F}_{5^2}$.
+\end{enumerate}
+
+\hrule\smallskip
+
+\noindent APPELLO B \hfill  30 GIUGNO 2014 
+
+\hrule\smallskip
+
+\begin{enumerate}
+\item Si descriva un algoritmo per calcolare in tempo polinomiale la parte intera di $m^{1/2}$ per ogni intero positivo $m$.
+\item Supponiamo che $e=5$ sia la chiave di cifratura di un crittosistema RSA con modulo $n=53\cdot43$. Si calcoli la chiave $d$ di 
+decifratura.
+\item Dimostrare che in ${\bf F}_p$ l'equazione $x^m\equiv1\bmod p$ ammette $\gcd(p-1,m)$ soluzioni. Quante ne ammette in ${\bf Z}/(101\cdot 103){\bf Z}$?
+\item Definire il simbolo di Jacobi ed illustrare un algoritmo polinomiale per calcolarlo.
+\item Spiegare il funzionamento dei protocolli crittografici incontrati nel corso.
+\item Si determini la probabilit\`a che un polinomio irriducibile su ${\bf F}_2$ di grado $8$ risulti primitivo.
+\item Determinare tutti i generatori di ${\bf F}_{5}[\tau], \tau^2=2$ e di ciascuno determinare il polinomio minimo.
+\item Determinare la struttura del gruppo dei punti razionali di una curva ellittica definita su ${\bf F}_{101}$ sapendo che
+ha un punto $P$ di ordine $41$.
+\item Siano $E_1: y^2=x^3+x+1$ e $E_2: y^2=x^3+x+4$ due curve definite su ${\bf F}_5$. Dopo aver verificato se sono ellittiche determinarne ka struttura della
+ gruppo dei punti razionali su ${\bf F}_5$ e si ${\bf F}_{5^2}$.
+\end{enumerate}
+
+\hrule\smallskip
+
+\noindent APPELLO C \hfill Roma, 30 GENNAIO 2015 
+
+\hrule\smallskip
+
+\begin{enumerate}
+\item[] Si descrivano:
+\item L'algoritmo di Euclide (per l'identit\`a di Bezout) e suo il tempo di esecuzione. ;
+\item Gli algoritmi per la moltiplicazione degli interi a la loro complessit\`a;
+\item L'algoritmo Baby Steps Giant Steps per il calcolo dell'ordine di una curva ellittica su un campo  finito;
+\item L'algorimo di Pholig--Hellman per il calcolo dei logaritmi discreti; 
+\item La varie definizioni di pseudo primi e le loro principali propriet\`a.
+\item Determinare ordine e struttura di $E({\bf F}_7)$ dove $E: y^2=x^3-1$.
+\item Dopo aver descritto quali sono i fattori irriducibili in ${\bf F}_11[x]$ di $x^{11^6}-x$ ($p$ primo), 
+si determini il numero di tali fattori che sono primitivi.
+\item Dopo aver fornito la definizione di numero di Carmichael, si enuncino e dimostrino le principali propriet\`a
+dei numeri di Carmichael fornendone esempi.
+\item Dimostrare che su ${\bf F}_q, q$ dispari, c'\`e sempre una curva ellittica con gruppo dei punti razionali non ciclico.
+\item Si descrivano i principali algoritmi di cifratura e decifratura.
+\end{enumerate}
+
+\hrule\smallskip
+
+\noindent APPELLO X \hfill Roma, 3 SETTEMBRE 2014 
+
+\hrule\smallskip
+
+\begin{enumerate}
+\item[] Si descrivano:
+\item L'algoritmo dei quadrati successivi;
+\item L'algoritmo per calcolare i simboli di Jacobi (senza fattorizzare);
+\item L'algoritmo Baby Steps Giant Steps per il calcolo dei logaritmi discreti;
+\item L'algorimo di Pholig--Hellman per il calcolo dei logaritmi discreti; 
+\item Dopo aver descritto la nozione di algoritmo probabilistico di tipo Montecarlo, l'algoritmo di Miller--Rabin.  
+\item Determinare ordine e struttura di $E({\bf F}_7)$ dove $E: y^2=x^3+3$.
+\item Dopo aver descritto quali sono i fattori irriducibili in ${\bf F}_p[x]$ di $x^{p^4}-x$ ($p$ primo), nel caso in cui $p=2$, li
+si elenchino tutti specificando quali tra questi sono primitivi.
+\item Siano $n$ e $m$ interi tali che $m\equiv3\bmod4$, $m\equiv2\bmod n$ e $n\equiv1\bmod8$. Si calcoli il simbolo di Jacobi
+$\left({(5m+n)^7\over m}\right)$.
+\item Dimostrare che se ${\bf F}_q$ \`e un campo finito di caratteristica dispari,
+allora esiste sempre una curva ellittica su ${\bf F}_q$ con gruppo dei punti razionali non ciclico.
+\item Si descrivano i principali algoritmi di cifratura e decifratura.
+\end{enumerate}
+\end{document}

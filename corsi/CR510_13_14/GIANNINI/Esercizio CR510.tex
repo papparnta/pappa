@@ -1,0 +1,61 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{latexsym}
+\usepackage{eucal}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bm}{ \begin{pmatrix} }
+\newcommand{\edm}{ \end{pmatrix} }  
+\newcommand{\sist}{\begin{cases}}
+\newcommand{\esist}{\end{cases}}
+\newcommand{\deter}{\left| \begin{array}}
+ \newcommand{\edet}{\end{array}\right|}
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+  \begin{center} 
+    \textbf{Universit\'a degli Studi Roma Tre - Corso di Laurea in Matematica\\
+     \begin{Huge}Esercizio supplementare CR510\end{Huge}\\
+Dario Giannini}\\
+  \end{center}
+  
+  \begin{tabular}{p{.6\textwidth}p{.4\textwidth}}
+    \begin{tabular}{l}
+      \textsc{24 Marzo 2014}
+    \end{tabular}
+  \end{tabular}
+\\\\
+\begin{enumerate}
+\item Dato un primo dispari $p$ e un elemento a in $\mathbb{F}_p$. Dimostrare che:
+\begin{enumerate}
+\item Per ogni $x$ in $\mathbb{F}_p$ esistono $u$ e $v$ in $\mathbb{F}_p$ tali che $x=u^2-av^2$.
+\item Sia $\alpha$ in $\mathbb{F}_{p^2}$ radice quadrata di $a$, allora $\phi:\;\mathbb{F}_p[\alpha]^*\longrightarrow \mathbb{F}_p^*$, $u+\alpha v\longmapsto u^2-(\alpha v)^2$ \'e un omomorfismo di gruppi moltiplicativi.\\
+\end{enumerate}
+\textbf{SOLUZIONE:}\\
+\begin{enumerate}
+\item Si considerino i due insiemi:\\ 
+$A:=\{u\in\mathbb{F}_p : \;\exists k\in\;\mathbb{F}_p$ per cui $k^2\equiv u(mod p)\}$\\
+$B:=\{x+av^2: v\in\mathbb{F}_p\}$\\
+$A$ di fatto \'e l'insieme dei redidui quadratici modulo $p$ quindi avr\'a cardinalit\'a uguale a 
+$\ds{\frac{p+1}{2}}$. Stessa cosa si pu\'o dire del secondo insieme in quanto $a$ e $x$ sono fissati e i suoi elementi sono ottenuti al variare di $v$ nell'insieme dei residui quadratici modulo $p$.\\
+Riassumendo il tutto si ha che:
+$$|A|+|B|=p+1>p=|\mathbb{F}_p|$$
+Quindi per il principio delle gabbie e dei piccioni si deve avere che $A\cap B \neq \emptyset$, ossia devono esistere $u$ e $v$ in $\mathbb{F}_p$ tali che $x=u^2-av^2$.\\
+
+ 
+\item Si vuole dimostrare che $\phi$ \'e un omomorfismo di gruppi moltiplicativi:
+$\phi(u_1+\alpha v_1)*\phi (u_2+\alpha v_2)=\phi[(u_1+\alpha v_1)*(u_2+\alpha v_2)]$.\\
+$\phi(u_1+\alpha v_1)*\phi (u_2+\alpha v_2)=(u_1^2-av_1^2)*(u_2^2-av_2^2)=$\\
+$u_1^2u_2^2-av_2^2u_1^2-av_1^2u_2^2+a^2v_1^2v_2^2$.\\
+$\phi[(u_1+\alpha v_1)*(u_2+\alpha v_2)]=\phi[(u_1u_2+av_1v_2)+\alpha(v_1u_2+u_2v_1)]=$\\
+$u_1^2u_2^2-av_2^2u_1^2-av_1^2u_2^2+a^2v_1^2v_2^2$.\\
+
+\end{enumerate}
+\end{enumerate}
+\end{document}

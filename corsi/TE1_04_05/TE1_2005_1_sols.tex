@@ -1,0 +1,301 @@
+\magnification 1200
+
+ \ \hskip -6mm TE1 AA04/05\ (Teoria delle
+Equazioni)\hfill 12 Aprile 2005. \hrule
+\bigskip
+\ \hskip -6mm \hfill SOLUZIONI DELL' ESAME DI MET\`{A} SEMESTRE
+\hfill \ \
+\medskip\hrule
+\bigskip
+
+\item{1.} Sia $F$ un campo e sia $f\in F[x]$ irriducibile. Mostrare
+che $f$ ha radici multiple se e solo se $F$ ha caratteristica finita
+$p\neq0$ e esiste $g\in F[x]$ tale che $f(x)=g(x^p)$.
+
+\smallskip\noindent{\bf SOLUZIONE.} \it Si tratta di parte dell'enunciato della Proposizione 2.12
+a pagina 23 delle note di Milne.\rm
+\bigskip
+
+\item{2.} Descrivere gli elementi del gruppo di Galois del
+polinomio $(x^2+1)(x^4-3)\in{\bf Q}[x]$ determinando anche tutti i
+sottocampi del campo di spezzamento.
+
+\smallskip\noindent{\bf SOLUZIONE.} \it Le sei radici del polinomio sono
+$\pm i,\pm3^{1/4}$ e $\pm i3^{1/4}$; pertanto il campo di spezzamento
+\`{e} $E={\bf Q}[i,3^{1/4}]$ che ha dimensione $8$ su ${\bf Q}$. Gli
+otto elementi del gruppo di Galois $G={\rm Gal}({\bf
+Q}[i,3^{1/4}]/{\bf Q})$ sono:
+$$
+{\rm id}:\left\{{\quad i\mapsto i\atop3^{1/4}\mapsto3^{1/4}}
+\right\}\quad
+\sigma:\left\{{\quad i\mapsto-i\atop3^{1/4}\mapsto3^{1/4}}
+\right\}\quad
+\tau:\left\{{\quad i\mapsto i\atop3^{1/4}\mapsto i3^{1/4}}
+\right\}\quad
+\tau\sigma:\left\{{\quad i\mapsto-i\atop3^{1/4}\mapsto i3^{1/4}}
+\right\}$$
+$$
+\tau^2:\left\{{\quad i\mapsto i\atop3^{1/4}\mapsto -3^{1/4}}
+\right\}\quad
+\tau^3:\left\{{\quad i\mapsto i\atop3^{1/4}\mapsto -i3^{1/4}}
+\right\}$$
+$$\tau^2\sigma:\left\{{\quad i\mapsto -i\atop3^{1/4}\mapsto -3^{1/4}}
+\right\}\quad
+\tau^3\sigma:\left\{{\quad i\mapsto-i\atop3^{1/4}\mapsto -i3^{1/4}}
+\right\}.$$
+Denotiamo con $D_4$ il gruppo delle simmetrie del quadrato di
+vertici $1,2,3$ e $4$ e ne rappresentiamo gli elementi mediante
+permutazioni dei vertici. Pertanto
+$$D_4=\big\{(1),\ (1,2,3,4),\ (1,3)(2,4),\ (1,4,3,2),\ (1,2)(3,4),\ (1,4)(2,3),\ (1,3),\ (2,4)\}.$$
+L'applicazione $G\longrightarrow D_4, \sigma\mapsto(1,3),\tau\mapsto(1,2,3,4)$ definisce un isomorfismo di
+gruppi. I $9$ sottogruppi di $D_4$ sono i seguenti:
+$$D_4,$$
+$$\langle(1,2,3,4)\rangle,\quad
+\langle(1,3),\ (2,4)\rangle,\quad
+\langle(1,2)(3,4),\ (1,4)(2,3)\rangle,
+$$
+$$\langle(1,2)(3,4)\rangle,\quad
+\langle(1,3)\rangle,\quad
+\langle(2,4)\rangle,\quad
+\langle(1,3)(2,4)\rangle,\quad
+\langle(1,4)(2,3)\rangle,$$
+$$\langle(1)\rangle.$$
+e i $9$ sottocampi corrispondenti attraverso la corrispondenza di Galois sono:
+$${\bf Q},$$
+$${\bf Q}[i],\quad
+{\bf Q}[\sqrt{3}],\quad
+{\bf Q}[\sqrt{-3}],$$
+$$
+{\bf Q}[(1-i)3^{1/4}],\quad
+{\bf Q}[3^{1/4}],\quad
+{\bf Q}[i3^{1/4}],\quad
+{\bf Q}[i,\sqrt{3}],\quad
+{\bf Q}[(1+i)3^{1/4}],$$
+$${\bf Q}[i,3^{1/4}].$$
+\rm
+\bigskip
+
+\item{3.} Dopo aver verificato che \`e algebrico, calcolare il
+polinomio minimo di $\cos \pi/18$ su ${\bf Q}$.
+
+\smallskip\noindent{\bf SOLUZIONE.} \it Scriviamo $\nu=\cos {\pi\over18}
+={1\over2}(\zeta_{36}+\overline{\zeta}_{36})$ e osserviamo che $\nu$
+\`e algebrico in quanto si ottiene come il prodotto di un numero
+razionale e la somma di due numeri algebrici. Il fatto che
+$\zeta_{36}$ e $\overline{\zeta}_{36}$ sono algebrici segue subito
+dal fatto che soddisfano il polinomio $X^{36}-1$. Inoltre dalla
+fattorizzazione $X^{36}-1=(X^{18}-1)(X^6+1)(X^{12}-X^6+1)$ segue che
+il polinomio minimo \`e $f_{\zeta_{36}}(X)=X^{12}-X^6+1$ e che $\nu$
+soddisfa un polinomio di grado sei. Osservando che
+$$f_{\zeta_{36}}(\cos{\pi\over18}+i\sin{\pi\over18})=0,$$
+che $\zeta_{36}^{12}=\zeta_3=-{1\over2}+i{\sqrt{3}\over2}$,
+otteniamo
+$$-{1\over2}+i{\sqrt{3}\over2}-(\cos{\pi\over18}+i\sin{\pi\over18})^6+1=0.$$
+La parte reale dell'identit\`a sopra \`e $$ -
+\nu^6+15\nu^4\sin^2{\pi\over18}-15\nu^2\sin^4{\pi\over18}+\sin^6{\pi\over18}+{1\over2}=0.$$
+Usando la relazione
+$\sin^2{\pi\over18}=1-\cos^2{\pi\over18}=1-\nu^2$, si arriva a
+$$ -\nu^6+15\nu^4(1-\nu^2)-15\nu^2(1-\nu^2)^2+(1-\nu^2)^3+{1\over2}=0.$$
+Un breve calcolo ci porta a
+$$-32\nu^6+48\nu^4-18\nu^2 +{3\over2}=0.$$
+Dunque si ha che
+$f_\nu(X)=X^6-{3\over2}X^4+{9\over16}X^2-{3\over64}$.\rm
+\bigskip
+
+\item{4.} Si consideri $E={\bf F}_2[\alpha]$ dove $\alpha$ \`{e}
+una radice del polinomio $X^3+X+1$. Determinare il polinomio
+minimo su ${\bf F}_2$ di $\alpha+1$.
+
+\smallskip\noindent{\bf SOLUZIONE.} \it Basta usare la regola generale che
+se $E/F$ \`e un'estensione, $\alpha\in E$ e $f_\alpha(X)\in F[X]$
+\`e il polinomio minimo di $\alpha$ su $F$, allora
+$f_{A\alpha+B}(X)= A^{\partial f_\alpha}f_{\alpha}\big({X-B\over
+A}\big)$ \`e il polinomio minimo di $A\alpha+B$ per ogni $A,B\in
+F$, $A\neq 0$. Questa propriet\`{a} segue dal fatto chiaro che
+$f_{A\alpha+B}(A\alpha+B)=0$ e siccome ${\bf Q}(\alpha)={\bf
+Q}(A\alpha+B)$, risulta $\partial f_\alpha=[{\bf Q}(\alpha):{\bf
+Q}]=[{\bf Q}(A\alpha+B):{\bf Q}]=\partial f_{A\alpha+B}.$
+
+Nel caso in questione, $A=B=1$ e quindi
+$$f_{\alpha+1}(X)=f_\alpha(X+1)=(X+1)^3+(X+1)+1=X^3+X^2+1.$$
+ \rm\bigskip
+
+\item{5.} Dimostrare che ${\bf Q}(\zeta_m)$ possiede almeno un sottocampo
+quadratico e fornire un esempio in cui i sottocampi quadratici sono
+pi\`u di uno.
+
+\smallskip\noindent{\bf SOLUZIONE.} \it
+In effetti \`e necessario assumere che $m>3$ altrimenti ${\bf
+Q}(\zeta_m)={\bf Q}$ e l'enunciato \`e falso per ragioni ovvie. Se
+$m=2^t$ \`e una potenza di due, allora $t\geq2$. In questo caso
+$i=\zeta_4=\zeta_{2^t}^{2^{t-2}}\in{\bf Q}(\zeta_{2^t})$ e quindi
+${\bf Q}(i)\subseteq{\bf Q}(\zeta_m)$ \`e un sottocampo
+quadratico. Altrimenti sia $p>2$ un primo tale che $p|m$. Allora
+$\zeta_m^{m/p}=\zeta_p$ e quindi ${\bf Q}(\zeta_p)\subseteq{\bf
+Q}(\zeta_m)$. Adesso osserviamo che per ogni $p>3$ il gruppo di
+Galois {\rm Gal}$({\bf Q}(\zeta_p)/{\bf Q})\cong \big({\bf
+Z}/p{\bf Z}\big)^*\cong C_{p-1}$ \`e ciclico e pertanto ammette un
+unico sottogruppo per ogni divisore del suo ordine. Siccome
+$d=(p-1)/2$ divide $p-1$, dall'osservazione precedente otteniamo
+che {\rm Gal}$({\bf Q}(\zeta_p)/{\bf Q})$ ammette un sottogruppo
+$H$ con indice $2=(p-1)/d$. Per il Teorema di corrispondenza
+otteniamo che il sottocampo fisso $E^H$ ha grado 2 su ${\bf Q}$ ed
+\`{e} quindi quadratico.
+
+Per quanto riguarda la seconda parte, basta considerare ${\bf
+Q}[\zeta_8]={\bf Q}[i,\sqrt{2}]$ in cui i sottocampi quadratici sono
+$3$.\rm
+\bigskip\bigskip
+
+ \item{6.} Mostrare che se $F$ \`e un campo e $g\in F[X]$, allora
+il grado del campo di spezzamento $E_g$ di $g$ su $F$ soddisfa
+$$[E_g:F]\leq \partial(g)!.$$
+
+\smallskip\noindent{\bf SOLUZIONE.} \it Si tratta della Proposizione
+2.4 a pagina 20 delle note di Milne. \rm \bigskip
+
+\item{7.} Mostrare che se $p_n$ denota l'$n$--esimo numero primo, allora
+$$[{\bf Q}(\sqrt{p_1},\cdots,\sqrt{p_n}):{\bf Q}]=2^n.$$ Quanti sono
+i sottocampi quadratici?
+
+\smallskip\noindent{\bf SOLUZIONE.} \it Dalla formula della
+moltiplicativit\`a del grado si ottiene che
+$$[{\bf Q}(\sqrt{p_1},\cdots,\sqrt{p_n}):{\bf Q}]=[{\bf Q}(\sqrt{p_1}):{\bf
+Q}]\cdot \prod_{j=2}^n[{\bf Q}(\sqrt{p_1},\cdots,\sqrt{p_j}):{\bf
+Q}(\sqrt{p_1},\ldots,\sqrt{p_{j-1}})].$$ Inoltre si ha che per
+ogni $j=2,\ldots,n$, $\sqrt{p_j}\not\in{\bf
+Q}(\sqrt{p_1},\ldots,\sqrt{p_{j-1}})$ come \`{e} possibile
+verificare facendo il calcolo e usando il fatto che i primi sono
+tutti distinti. Quindi $[{\bf
+Q}(\sqrt{p_1},\cdots,\sqrt{p_j}):{\bf
+Q}(\sqrt{p_1},\ldots,\sqrt{p_{j-1}})]=2$ e l'enunciato segue
+immediatamente.
+
+Per quando riguarda la seconda parte, osserviamo che il gruppo di
+Galois
+$${\rm Gal}({\bf Q}(\sqrt{p_1},\cdots,\sqrt{p_n})/{\bf Q})\cong
+C_2\times \cdots\times C_2$$ \`{e} il prodotto diretto di $n$
+copie di $C_2$. Un isomorfismo \`e il seguente: se
+$\varepsilon=(\varepsilon_1,\ldots,\varepsilon_n)\in C_2^n$ con
+$\varepsilon_i\in\{0,1\}$, allora $\sigma_\varepsilon\in{\rm
+Gal}({\bf Q}(\sqrt{p_1},\cdots,\sqrt{p_n})/{\bf Q})$ \`{e}
+l'au\-to\-mor\-fis\-mo definito da
+$\sigma_\varepsilon(\sqrt{p_j})=(-1)^{\varepsilon_j} \sqrt{p_j}$
+per ogni $j=1,\ldots n$.
+
+Si ha che $C_2^n$ ammette $2^n-1$ sottogruppi di indice $2$.
+Infatti per ogni $\varepsilon\in C_2^n\setminus\{(0,\ldots,0)\}$,
+l'omomorfismo $\varphi\mapsto \langle\varphi,\varepsilon\rangle$
+ha per nucleo un diverso sottogruppo di indice due (qui
+$\langle\cdot,\cdot\rangle$ denota il prodotto scalare). Si
+verifica che tutti i sottogruppi di indice due si ottengono in
+questo modo.
+
+Infine tutti e soli i sottocampi quadratici di ${\bf
+Q}(\sqrt{p_1},\cdots,\sqrt{p_n})$ sono della forma $${\bf
+Q}(\sqrt{p_{i_1}\cdots p_{i_k}})$$ dove $\{i_1,\ldots,i_k\}$ \`{e}
+un sottoinsieme non vuoto di $\{1,\ldots,n\}$. \`{E} chiaro che
+diversi sottoinsiemi danno luogo a diversi sottocampi e in questo
+modo si ottengono i $2^n-1$ sottocampi quadratici. Il sottocampo
+fissato dal nucleo dell'omomorfismo
+$\langle\cdot,\varepsilon\rangle$ \`{e} ${\bf
+Q}(\sqrt{p_1^{\varepsilon_1}\cdots p_n^{\varepsilon_n}})$.\rm
+\bigskip
+
+\item{8.} Si enunci nella completa generalit\`a il Teorema di
+corrispondenza di Galois.
+
+\smallskip\noindent{\bf SOLUZIONE.}
+\hrule\medskip {\bf Teorema.} {\it Sia $E/F$ un'estensione di
+Galois (cio\`{e} $E$ \`{e} il campo di spezzamento di un polinomio
+separabile in $F[x]$) e sia $G=${\rm Gal}$(E/F)$. Allora c'\`{e}
+una corrispondenza biunivoca tra i sottogruppi di $G$ e i
+sottocampi di $E$ che contengono $F$. Se $H\leq G$ e $F\subseteq
+M\subseteq E$, allora la corrispondenza \`{e} data da:
+$$H\mapsto E^H,\quad M\mapsto {\rm Gal}(E/M).$$
+Inoltre \item{i} $G$ corrisponde a $F$ e $\{1\}$ corrisponde a
+$E$; \item{ii} $H_1\leq H_2 \Leftrightarrow E^{H_1}\supseteq
+E^{H_2}$; \item{iii} Se $H_1\leq H_2$, allora
+$[H_2:H_1]=[E^{H_1}:E^{H_2}]$;
+ \item{iv} Per ogni $\sigma\in G$,
+$E^{\sigma H\sigma^{-1}}=\sigma E^H$; \item{v} $H\triangleleft G
+\Leftrightarrow E^H/F$ \`{e} un'estensione normale. In tal caso
+inoltre $Gal(E^H/F)\cong G/H.$}
+\medskip\hrule
+\medskip
+
+\item{9.} Mostrare che i polinomi irriducibili di grado 3 a coefficienti
+razionali che ammettono un'unica radice reale hanno  $S_3$ come
+gruppo di Galois.
+
+\smallskip\noindent{\bf SOLUZIONE.} \it Assumiamo il fatto che i
+gruppi di ordine $6$ sono isomorfi a $S_3$ oppure a $C_6$. Il
+fatto che il polinomio ammette un'unica radice reale implica che
+il suo campo di spezzamento ha grado $6$ su {\bf Q}. Infatti se
+$\alpha, \beta, \overline{\beta}\in{\overline{\bf Q}}$ sono le
+radici del polinomio con $\alpha\in{\bf R}$, allora il campo di
+spezzamento \`e ${\bf Q}(\alpha,\beta)$ e siccome
+$\beta\not\in{\bf Q}(\alpha)$, si ha
+$$[{\bf Q}(\alpha,\beta):{\bf Q}]=[{\bf Q}(\alpha,\beta):{\bf Q}(\alpha)]
+[{\bf Q}(\alpha):{\bf Q}]=2\times 3=6.$$ Quindi il gruppo di Galois,
+che ha tanti elementi quanto il grado del campo di spezzamento, ha
+cardinalit\`{a} $6$.  Infine i sottocampi ${\bf Q}(\alpha)$ e ${\bf
+Q}(\beta)$ hanno grado $3$ su ${\bf Q}$ pertanto il gruppo di Galois
+non pu\`{o} essere ciclico altrimenti avrebbe un unico sottocampo
+per ogni divisore dell'ordine.\rm
+\bigskip
+
+\item{10.} Dopo aver definito la nozione di campo perfetto,
+dimostrare che i campi finiti sono perfetti.
+
+\smallskip\noindent{\bf SOLUZIONE.} \it La definizione \`{e} la 2.14
+a pagina 23 delle note di Milne mentre la dimostrazione \`{e} una conseguenza diretta
+della Proposizione 2.15.\rm
+\bigskip
+
+\item{11.} Sia $\zeta_{16}$ una radice primitiva 16--esima
+dell'unit\`a. Descrivere gli ${\bf Q}(\sqrt{-1})$--omomorfismi di
+${\bf Q}(\zeta_{16})$ in ${\bf C}$.
+
+\smallskip\noindent{\bf SOLUZIONE.} \it Innanzi tutto osserviamo che
+$\sqrt{-1}=\zeta_{16}^4$ e che tutti gli omomorfismi di ${\bf
+Q}(\zeta_{16})$ in ${\bf C}$ sono della forma:
+$$\sigma_j:{\bf Q}(\zeta_{16})\longrightarrow{\bf C},
+\zeta_{16}\mapsto\zeta_{16}^j,$$ dove
+$j\in\{1,3,5,7,9,11,13,15\}$. Tali omomorfismi risultano ${\bf
+Q}(\sqrt{-1})$--omomorfismi se e solo se fissano $\zeta_{16}^4$.
+
+La condizione $\sigma_j(\zeta_{16}^4)=\zeta_{16}^4$ \`e
+equivalente a $4j\equiv 4\bmod16$ e cio\`e $j\equiv1\bmod4$.
+Quindi $j=1,5,9,13$. Infine gli ${\bf Q}(\sqrt{-1})$--omomorfismi
+sono $\{\sigma_1,\sigma_5,\sigma_9,\sigma_{13}\}$.\rm
+\bigskip
+
+\item{12.} Sia $E$ un'estensione finita di ${\bf Q}$ e siano
+ $E_1$ e $E_2$ due sottocampi di $E$. Dimostrare che se $E_1$ e $E_2$ sono
+ estensioni di Galois di ${\bf Q}$ allora anche il composto $E_1E_2$ \`{e}
+ un'estensione di Galois di ${\bf Q}$.
+
+\smallskip\noindent{\bf SOLUZIONE.} \it
+ \`E una conseguenza immediata del Teorema di corrispondenza di
+Galois il fatto che l'intersezione di due sottogruppi $H_1$ e
+$H_2$ di {\rm Gal}$(E/F)$ corrisponde al composto dei due campi
+che corrispondono a $H_1$ e $H_2$ (i.e. $E^{H_1\cap
+H_2}=E^{H_1}E^{H_2}$)
+
+Infatti, per definizione l'intersezione di due sottogruppi \`e il
+pi\`u grande sottogruppo contenuto in entrambi mentre il composto
+di due campi \`e il pi\`u piccolo sottocampo contenente entrambi.
+Il fatto che la corrispondenza di Galois \`e antimonotona rispetto
+alla relazione di inclusione implica che l'intersezione
+corrisponde al composto.
+
+Infine se $E_1$ e $E_2$ sono di Galois (e quindi normali) su $F$,
+allora {\rm Gal}$(E/E_1)$ e {\rm Gal}$(E/E_2)$ sono normali in
+{\rm Gal}$(E/F)$. Da questo segue che {\rm Gal}$(E/E_1)\cap{\rm
+Gal}(E/E_2)$ \`e normale in {\rm Gal}$(E/F)$ in quanto
+l'intersezione di sottogruppi normali \`{e} normale. Da quanto
+detto sopra segue anche che
+$$E_1E_2=E^{{\rm Gal}(E/E_1)\cap{\rm
+Gal}(E/E_2)}$$ e corrispondendo ad un sottogruppo normale, anche
+$E_1E_2$ risulta normale. \bye

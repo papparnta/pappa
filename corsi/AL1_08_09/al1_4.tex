@@ -1,0 +1,130 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+
+\begin{document}
+\begin{center}
+
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2008/2009}\\
+
+\textbf{AL1 - Algebra 1: Fondamenti}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 4 - 31 Ottobre 2008}\\
+
+\textbf{Elisa Di Gloria, Luca Dell'Anna}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\vspace{1cm}
+
+
+
+
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Dire di quali propriet\`a godono le seguenti relazioni ed individuare quali di esse sono relazioni d'ordine, d'equivalenza o d'ordine totale.\\
+In $\Z$, $x$,$y \in \Z$
+\begin{itemize}
+	\item $x\rho y :\sse \  x+y$ \`e pari
+	\item $x\rho y :\sse \ x=y$ oppure $x+y$ \`e multiplo di 3
+	\item $x\rho y :\sse \ x < 3y$
+	\item $x\rho y :\sse \ x^2 < y^2$
+	\item $x\rho y :\sse \ x$ e $y$ non hanno divisori in comune
+	\item $x\rho y :\sse \ xy>0$
+	\item $x\rho y :\sse \ x=y+3$
+	\item $x\rho y :\sse \ x=\pm y$
+	\item $x\rho y :\sse \ x^2 \le y^2$
+\end{itemize}
+Sia $X$ l'insieme degli esseri umani, $x$,$y \in X$ 
+\begin{itemize}
+	\item $x \rho y :\sse \ x$ e $y$ sono nati nello stesso anno
+  \item $x \rho y :\sse \ x$ e $y$ sono figli dello stesso padre
+	\item $x \rho y :\sse \ x$ e $y$ hanno un genitore in comune
+	\item $x \rho y :\sse \ x$ e $y$ 
+	\item Nell'insieme delle rette nel piano, $x \rho y$ se e solo se $x$ e $y$ non sono parallele
+\end{itemize}
+Determinare infine il relativo insieme quoziente qualora la relazione sia di equivalenza.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Nell'insieme degli studenti di una classe esibire una relazione che sia:\\
+i) Riflessiva, simmetrica ma non transitiva.\\
+ii) Simmetrica, transitiva ma non riflessiva.\\
+iii) Riflessiva, transitiva ma non simmetrica.\\
+iv) Di equivalenza, che non sia stata gi\`a proposta nel primo esercizio, e descrivere l'insieme quoziente relativo.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Sia $X = \{1, 2, 3, 4\}$.
+\begin{itemize}
+	\item Esibire una relazione su $X$, che sia riflessiva, simmetrica ma non transitiva.
+	\item Esibire una relazione su $X$, che sia simmetrica, transitiva ma non riflessiva.
+	\item Esibire una relazione su $X$, che sia riflessiva, transitiva ma non simmetrica.
+\end{itemize}
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Sia $X = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$.
+\begin{itemize}
+	\item Consideriamo su $X$ la relazione: $x \rho y$ se $x+y$ \`e un numero pari. Dimostrare che $\rho$ \`e relazione di equivalenza e determinare le classi di equivalenza corrispondenti.
+	\item Consideriamo su $X$ la relazione: $x \rho y$ se $x+y$ \`e un numero dispari. Determinare se $\rho$ \`e una relazione di equivalenza e calcolarne eventualmente le classi di equivalenza corrispondenti.
+\end{itemize}
+\end{Ex}
+
+\end{document}

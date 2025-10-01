@@ -1,0 +1,168 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20001102//EN" "svg-20001102.dtd">
+<svg width="600" height="480" viewBox="0 0 600 480"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<desc>Produced by GNUPLOT 4.0 patchlevel 0 </desc>
+
+<defs>
+
+
+	<circle id='gpDot' r='1'/>
+	<path id='gpPt0' style='stroke-width:0.222' d='M-1,0 h2 M0,-1 v2'/>
+	<path id='gpPt1' style='stroke-width:0.222' d='M-1,-1 L1,1 M1,-1 L-1,1'/>
+	<path id='gpPt2' style='stroke-width:0.222' d='M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1'/>
+	<rect id='gpPt3' style='stroke-width:0.222' x='-1' y='-1' width='2' height='2'/>
+	<use xlink:href='#gpPt3' id='gpPt4' style='fill:currentColor; stroke:none'/>
+	<circle id='gpPt5' style='stroke-width:0.222' cx='0' cy='0' r='1'/>
+	<use xlink:href='#gpPt5' id='gpPt6' style='fill:currentColor; stroke:none'/>
+	<path id='gpPt7' style='stroke-width:0.222' d='M0,-1.33 L-1.33,0.67 L1.33,0.67 z'/>
+	<use xlink:href='#gpPt7' id='gpPt8' style='fill:currentColor; stroke:none'/>
+	<use xlink:href='#gpPt7' id='gpPt9' transform='rotate(180)'/>
+	<use xlink:href='#gpPt9' id='gpPt10' style='fill:currentColor; stroke:none'/>
+	<use xlink:href='#gpPt3' id='gpPt11' transform='rotate(45)'/>
+	<use xlink:href='#gpPt11' id='gpPt12' style='fill:currentColor; stroke:none'/>
+</defs>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00">
+	<path d='M40,464 L31,464 M40,464 L49,464 '></path>
+	<g transform="translate(32,468)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text>-4</text>
+	</g>
+	<path d='M40,413 L31,413 M40,413 L49,413 '></path>
+	<g transform="translate(32,417)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text>-2</text>
+	</g>
+	<path d='M40,361 L31,361 M40,361 L49,361 '></path>
+	<g transform="translate(32,365)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 0</text>
+	</g>
+	<path d='M40,310 L31,310 M40,310 L49,310 '></path>
+	<g transform="translate(32,314)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 2</text>
+	</g>
+	<path d='M40,259 L31,259 M40,259 L49,259 '></path>
+	<g transform="translate(32,263)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 4</text>
+	</g>
+	<path d='M40,208 L31,208 M40,208 L49,208 '></path>
+	<g transform="translate(32,212)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 6</text>
+	</g>
+	<path d='M40,156 L31,156 M40,156 L49,156 '></path>
+	<g transform="translate(32,160)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 8</text>
+	</g>
+	<path d='M40,105 L31,105 M40,105 L49,105 '></path>
+	<g transform="translate(32,109)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 10</text>
+	</g>
+	<path d='M40,54 L31,54 M40,54 L49,54 '></path>
+	<g transform="translate(32,58)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:end">
+		<text> 12</text>
+	</g>
+	<path d='M40,361 L40,370 M40,361 L40,352 '></path>
+	<g transform="translate(40,392)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 0</text>
+	</g>
+	<path d='M147,361 L147,370 M147,361 L147,352 '></path>
+	<g transform="translate(147,392)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 5</text>
+	</g>
+	<path d='M254,361 L254,370 M254,361 L254,352 '></path>
+	<g transform="translate(254,392)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 10</text>
+	</g>
+	<path d='M361,361 L361,370 M361,361 L361,352 '></path>
+	<g transform="translate(361,392)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 15</text>
+	</g>
+	<path d='M468,361 L468,370 M468,361 L468,352 '></path>
+	<g transform="translate(468,392)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 20</text>
+	</g>
+	<path d='M575,361 L575,370 M575,361 L575,352 '></path>
+	<g transform="translate(575,392)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text> 25</text>
+	</g>
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:2.00">
+	<path d='M40,361 L575,361 '></path>
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00">
+	<path d='M40,464 M575,464 M575,54 M40,54 L40,464 '></path>
+	<g transform="translate(17,259) rotate(-90)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text>li(x)</text>
+	</g>
+	<g transform="translate(307,423)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text>x</text>
+	</g>
+	<g transform="translate(307,31)" style="stroke:none; fill:black; font-family:Arial; font-size:12.00; text-anchor:middle">
+		<text>logarithmic integral li(x)</text>
+	</g>
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:2.00">
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:2.00">
+	<path d='M62,460 L63,422 L63,407 L64,397 L65,390 L66,384 L67,379 L68,375 L69,371 L69,367 
+		L70,364 L71,361 L72,359 L73,356 L74,354 L74,352 L75,350 L76,348 L77,346 L78,344 
+		L79,342 L80,341 L80,339 L81,337 L82,336 L83,334 L84,333 L85,331 L86,330 L86,329 
+		L87,327 L88,326 L89,325 L90,324 L91,322 L92,321 L92,320 L93,319 L94,318 L95,317 
+		L96,316 L97,315 L98,314 L98,313 L99,312 L100,311 L101,310 L102,309 L103,308 L104,307 
+		L104,306 L105,305 L106,304 L107,303 L108,302 L109,301 L110,300 L111,299 L112,298 L113,297 
+		L114,296 L115,295 L116,295 L116,294 L117,293 L118,292 L119,291 L120,291 L121,290 L122,289 
+		L122,288 L123,287 L124,287 L125,286 L126,285 L127,284 L128,284 L128,283 L129,282 L130,282 
+		L131,281 L132,280 L133,279 L134,279 L134,278 L135,277 L136,277 L137,276 L138,275 L139,275 
+		L140,274 L140,273 L141,273 L142,272 L143,271 L144,271 L145,270 L146,269 L147,268 L148,268 
+		L149,267 L150,266 L151,266 L152,265 L152,264 L153,264 L154,263 L155,263 L156,262 L157,261 
+		L158,261 L158,260 L159,260 L160,259 L161,258 L162,258 L163,257 L164,257 L164,256 L165,255 
+		L166,255 L167,254 L168,254 L169,253 L170,253 L170,252 L171,251 L172,251 L173,250 L174,250 
+		L175,249 L176,249 L176,248 L177,248 L178,247 L179,246 L180,246 L181,245 L182,244 L183,244 
+		L184,243 L185,243 L186,242 L187,242 L187,241 L188,240 L189,240 L190,239 L191,239 L192,238 
+		L193,238 L193,237 L194,237 L195,236 L196,236 L197,235 L198,235 L199,234 L200,233 L201,233 
+		L202,232 L203,232 L204,231 L205,231 L205,230 L206,230 L207,229 L208,229 L209,228 L210,228 
+		L211,227 L212,226 L213,226 L214,225 L215,225 L216,224 L217,224 L217,223 L218,223 L219,222 
+		L220,222 L221,221 L222,221 L223,220 L224,219 L225,219 L226,219 L227,218 L228,218 L229,217 
+		L230,216 L231,216 L232,215 L233,215 L234,214 L235,214 L235,213 L236,213 L237,212 L238,212 
+		L239,212 L240,211 L241,211 L241,210 L242,210 L243,209 L244,209 L245,208 L246,208 L247,207 
+		L248,207 L249,206 L250,206 L251,205 L252,205 L253,204 L254,203 L255,203 L256,202 L257,202 
+		L258,202 L259,201 L260,200 L261,200 L262,199 L263,199 L264,199 L265,198 L266,197 L267,197 
+		L268,196 L269,196 L270,195 L271,195 L272,194 L273,194 L274,193 L275,193 L276,192 L277,192 
+		L278,191 L279,191 L280,190 L281,190 L282,190 L283,189 L284,188 L285,188 L286,187 L287,187 
+		L288,187 L288,186 L289,186 L290,185 L291,185 L292,184 L293,184 L294,184 L294,183 L295,183 
+		L296,182 L297,182 L298,182 L299,181 L300,181 L300,180 L301,180 L302,180 L303,179 L304,179 
+		L305,178 L306,178 L306,177 L307,177 L308,177 L309,176 L310,176 L311,175 L312,175 L313,174 
+		L314,174 L315,173 L316,173 L317,173 L318,172 L319,171 L320,171 L321,171 L322,170 L323,170 
+		L324,169 L325,169 L326,168 L327,168 L328,167 L329,167 L330,167 L330,166 L331,166 L332,166 
+		L333,165 L334,165 L335,164 L336,164 L337,163 L338,163 L339,162 L340,162 L341,162 L342,161 
+		L343,160 L344,160 L345,160 L346,159 L347,159 L348,159 L348,158 L349,158 L350,157 L351,157 
+		L352,157 L353,156 L354,156 L354,155 L355,155 L356,155 L357,154 L358,154 L359,154 L360,153 
+		L361,152 L362,152 L363,152 L364,151 L365,151 L366,151 L366,150 L367,150 L368,149 L369,149 
+		L370,149 L371,148 L372,148 L373,147 L374,147 L375,146 L376,146 L377,146 L378,145 L379,145 
+		L380,144 L381,144 L382,143 L383,143 L384,143 L384,142 L385,142 L386,142 L387,141 L388,141 
+		L389,140 L390,140 L391,139 L392,139 L393,139 L394,138 L395,138 L396,137 L397,137 L398,136 
+		L399,136 L400,136 L401,135 L402,135 L403,134 L404,134 L405,134 L406,133 L407,133 L407,132 
+		L408,132 L409,132 L410,131 L411,131 L412,131 L413,130 L414,130 L415,129 L416,129 L417,129 
+		L418,128 L419,128 L419,127 L420,127 L421,127 L422,126 L423,126 L424,126 L425,125 L426,125 
+		L427,124 L428,124 L429,124 L430,123 L431,123 L432,122 L433,122 L434,121 L435,121 L436,121 
+		L437,120 L438,120 L439,119 L440,119 L441,119 L442,118 L443,118 L444,117 L445,117 L446,117 
+		L447,116 L448,116 L449,116 L449,115 L450,115 L451,114 L452,114 L453,114 L454,113 L455,113 
+		L456,112 L457,112 L458,112 L459,111 L460,111 L461,111 L461,110 L462,110 L463,110 L464,109 
+		L465,109 L466,109 L467,108 L468,108 L469,107 L470,107 L471,107 L472,106 L473,106 L474,105 
+		L475,105 L476,105 L477,104 L478,104 L479,103 L480,103 L481,102 L482,102 L483,102 L484,101 
+		L485,101 L486,100 L487,100 L488,100 L489,99 L490,99 L491,99 L491,98 L492,98 L493,98 
+		L494,97 L495,97 L496,97 L497,96 L498,96 L499,95 L500,95 L501,95 L502,94 L503,94 
+		L504,93 L505,93 L506,93 L507,92 L508,92 L509,91 L510,91 L511,91 L512,90 L513,90 
+		L514,90 L514,89 L515,89 L516,89 L517,88 L518,88 L519,88 L520,87 L521,87 L522,86 
+		L523,86 L524,86 L525,85 L526,85 L527,84 L528,84 L529,84 L530,83 L531,83 L532,83 
+		L533,82 L534,82 L535,82 L536,81 L537,81 L538,81 L538,80 L539,80 L540,80 L541,79 
+		L542,79 L543,79 L544,78 L545,78 L546,77 L547,77 L548,77 L549,76 L550,76 L551,75 
+		L552,75 L553,75 L554,74 L555,74 L556,74 L556,73 L557,73 L558,73 L559,72 L560,72 
+		L561,72 L562,71 L563,71 L564,71 L565,70 L566,70 L567,70 L568,69 L569,69 L570,68 
+		L571,68 L572,68 L573,67 L574,67 '></path>
+</g>
+<g style="fill:none; color:red; stroke:currentColor; stroke-width:1.00">
+</g>
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.00">
+	<path d='M40,464 M575,464 M575,54 M40,54 L40,464 '></path>
+</g>
+</svg>
+

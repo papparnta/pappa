@@ -1,0 +1,123 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2010/2011}\\
+
+\textbf{AL210 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 3 - 11 Ottobre 2010}\\
+
+\textbf{Tutore: Matteo Acclavio}\\
+
+www.matematica3.com\\
+\end{center}
+
+\vspace{0.2cm}
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Sia $(G, \cdot)$ un gruppo abeliano e $a,b \in G$ dimostrare se sono vere le seguenti affermazioni (in caso contrario fornire un controesempio):
+\begin{itemize}
+\item $o(a)=m, o(b)=n \Rightarrow o(ab)=MCD(n,m)$.
+\item $o(a)=\infty,\; o(b)$ finito $\Rightarrow o(ab)=\infty$.
+\item $o(a)=\infty ,\; o(b)=\infty \Rightarrow o(ab)=\infty $
+\end{itemize}
+\end{Ex}
+
+\vspace{0.2cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Sia $(G,\cdot )$ gruppo e $\sim_\gamma$ la relazione cos\acc i definita:
+$g \sim _\gamma h \Leftrightarrow g=x^{-1}hx\;\exists x \in G$.\\
+Dimostare che $\sim_\gamma$  \acc e una relazione di equivalenza
+\end{Ex}
+
+\vspace{0.2cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Sia $G$ un gruppo e sia $x\in G$. Mostrare che:
+\begin{description}
+	\item[i)] L'insieme $C(x):=\{g\in G\ \mid \ gx=xg\}$ \acc e un sottogruppo di $G$. Questo sottogruppo si chiama  il $centralizzante$ di $x$.
+		\item[ii)] $C(x)$ pu\acc o non essere normale in $G$;
+		\item[iii)] $Z(G)=\displaystyle \bigcap_{x\in G} C(x)$;
+		\item[iv)] $gxg^{-1}=hxh^{-1}$ se e soltanto se $gC(x)=hC(x)$. Dedurne che il numero dei coniugati distinti di $x$ \acc e $\left|G\right| /\left| C(x)\right|$.
+		\end{description}
+\end{Ex}
+
+
+\vspace{0.2cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Dimostrare  se $N$ \acc e normale in $H$ e se $H$ \acc e normale in $GL_2(\R)$ dove:\\ 
+$N=\left\{ \left(\begin{array}{cc}1 &b\\0 & 1\end{array}\right) | b\in \R\right\}$\\
+$H=\left\{ \left(\begin{array}{cc}a&b\\0 & d\end{array}\right) | a,b,c\in \R ab\neq 0 \right\}.$
+\end{Ex}
+
+
+\vspace{0.2cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Dimostrare  che $H$ \acc e normale in $V_4$ e $V_4$ \acc e normale in $A_4$ ma $H$ non \acc e normale in $A_4$dove:\\ 
+$H=<(12)(34)>$\\
+$V_4=<(12)(34),(14)(23)>$
+\end{Ex}
+
+
+		
+
+
+
+\end{document}

@@ -1,0 +1,112 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2010/2011}\\
+
+\textbf{AL210 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 10 - 13 Dicembre 2010}\\
+
+\textbf{Tutore: Matteo Acclavio}\\
+
+www.matematica3.com\\
+\end{center}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Sia $K$ un campo e consideriamo l'anello $A = K[X;Y]/(X^2;Y^2)$.
+\begin{itemize}
+\item Dette $x$ e $y$ le classi di $A$ determinate da $X$ e $Y$ , provare che ogni
+elemento di $A$ si pu\acc o esprimere in un unico modo nella forma:\\ $axy + bx + cy + d$ con $a, b, c, d \in K$
+\item Calcolare il prodotto tra due elementi di $A$ generici.
+\item Determinare gli zero divisori di $A$.
+\item Determinare gli invertibili di $A$.
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Sia $D$ un dominio euclideo e $v: D^* \rightarrow \N $ la sua valutazione, mostrare che:
+\begin{itemize}
+\item $v(1)=v(u) \forall u \in \U(D)$
+\item $v(1)\leq v(a) \  \forall a\in A $
+\item $x|y \Leftrightarrow v(x)\leq v(y)$
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Sia $\Z[i]:=\{ a+bi \ | a,b\in \Z, \ i^2=-1\}$ e sia $|\cdot|: \Z[i]^* \rightarrow \N $ tale che $|(a+ib)|=a^2+b^2$ il modulo su $\Z[i]$. Dimostrare che:
+\begin{itemize}
+\item $\Z[i]$ \acc e isomorfo a $\frac {Z[x]}{(x^2+1)}$
+\item $\Z[i]$ \acc e un dominio euclideo (verificare se il modulo rispetta le propriet\acc a della valutazione)
+\end{itemize}
+\end{Ex}
+
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Dimostrare che $\Z[\sqrt 6]$ non \acc e un UFD
+\end{Ex}
+
+
+
+\end{document}

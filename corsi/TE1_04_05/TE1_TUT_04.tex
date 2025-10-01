@@ -1,0 +1,164 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{times}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\nopagenumbers
+\def\Q{{\mathbb Q}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\F{{\mathbb F}}
+\def\C{{\mathbb C}}
+\def\QQ{{\rm Q}}
+
+\title{Teoria di Galois 1 - Tutorato IV}
+\author{\Large{Gruppi di Galois, campi ciclotomici, campi finiti}}
+\date{Venerdì 29 Aprile 2005}
+
+\begin{document}
+\maketitle
+
+\theoremstyle{definition}
+
+\newtheorem{es}{Esercizio}
+
+
+
+\begin{es}
+Si calcoli il gruppo di Galois (cioè il numero di elementi e la struttura) di ciascuno dei seguenti polinomi:
+\item{a.} $x^4 + 2x^3 + 15x^2 + 14x + 73$;    \hfill{b.} $x^4 + 8x^3 + 26x^2 + 24x + 28$;
+\item{c.} $x^4 - 354x^2 + 29929$;      \hfill{d.} $x^4 - 11x^3 + 41x^2 - 61x + 30$;
+\item{e.} $x^4 + 8x^3 + 14x^2 - 8x - 23;$  \hfill{f.} $x^4 - 13x^3 + 64x^2 - 142x + 121$;
+\item{g.} $x^4 + x^3 + 2x^2 + 4x + 2$  \hfill{h.} $x^4+25x^2+5$;
+\item{i.} $x^4+3x^3+3$  \hfill{l.} $ x^4 + x^3 + 4x^2 + 3x + 3$;
+\item{m.} $x^4 + 60x^3 + 99x^2 + 60x + 1$ \hfill{n.} $ x^4 - 356x^2 + 29584$;
+\item{o.} $x^4+8x+12$;
+\end{es}
+\medskip
+
+
+\begin{es}
+Si elenchino i sottogruppi transitivi di $S_4$ descrivendone gli elementi come permutazioni.
+\end{es}
+\medskip
+
+
+\begin{es}
+Descrivere gli elementi del gruppo di Galois del polinomio $x^5-2$ mostrando
+che ha $20$ elementi.
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Dimostrare che il gruppo di Galois de polinomio (che si pu\`{o} assumere irriducibile) $x^5+x^4+x^3+2x^2+3x+4$ non
+ha $20$ elementi n\'{e} $10$ mostrando che contiene un $3$ ciclo.\hfill ({\it Pensare al numero primo $2$})
+\end{es}
+\medskip
+
+
+
+\begin{es}
+In ciascuno dei seguenti casi si calcoli il campo di spezzamento e il numero
+di campi intermedi tra il campo base e il campo di spezzamento.
+\item{a.} $(x^4+x^2+x+1)(x^3+x+1)  \in\F_2[x]$;
+\item{b.} $(x^3+x+1)(x^6+x+1)\in \F_3[x];$
+\item{c.}  $(x^4+x^2+1)(x^3+x+1)(x^3+1)\in\F_5[x]$;
+\item{d.} $(x^4+x^2+1)(x^3+x+1)(x^3+1)\in\F_7[7]$.
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Mostrare che se $f$ è un polinomio irriducibile di grado tre a coefficienti
+in un campo $F$, $G_f$ è di tipo $A_3$ se e solo se $F_f$ non contiene sottocampi quadratici.
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Calcolare una fomula per il discriminante di $X^n+aX+b$.
+\end{es}
+\medskip
+
+
+\begin{es}
+Si calcoli il gruppo di Galois di $y^5 - 3y^2 + 1$.
+\end{es}
+\medskip
+
+
+
+
+\begin{es}
+Mostrare che $\Phi_{p^r}(x)=\Phi_{p}(x^{p^{r-1}})$ e dedurne una formula
+per il discriminante di $\Phi_{p^r}(x)$.
+\end{es}
+\medskip
+
+
+
+\begin{es}
+Sia $\Phi_p(x)=1+x+\cdots+x^{p-1}$ il polinomio ciclotomico. Mostrare che
+$${\rm disc}\ \Phi_p(x)=(-1)^{(p-1)/2}p^{p-2}.$$
+\end{es}
+\medskip
+
+
+
+
+
+\begin{es}
+Mostrare che se $n$ \`{e} dispari, allora $\Psi_{2n}(x)=\Psi_n(-x)$ e che
+$$\Psi_n(x)=\prod_{d\mid n}(x^d-1)^{\mu(n/d)}$$
+dove $\mu$ \`{e} la funzione di M\"{o}bius.
+\end{es}
+\medskip
+
+
+\begin{es}
+L'obbiettivo di questo esercizio \`{e} di scoprire per passi successivi del seguente:\hfill\break
+{\bf Teorema.} {\it Dato un gruppo {\bf abeliano} $G$, esiste sempre $f\in\Q[x]$ tale che $G\cong G_f$.}\smallskip
+\item{i.} Il famoso Teorema di Dirichlet per primi in progressione aritmentica afferma (tra l'altro) che per ogni intero $m$,
+esiste sempre un numero primo congruente a $1$ modulo $m$. Dedurne che esiste un polinomio
+a coefficienti razionali il cui gruppo di Galois \`{e} isomorfo al gruppo ciclico $\Z/m\Z$;
+
+\  \hfill {\it Suggerimento:} cercare tra i sottocampi di un opportuno
+campo ciclotomico.
+
+\item{ii.} Dimostrare $f$ e $g$ sono polinomi $\in\Q[x]$ con campi di spezzamento {\it linearmente
+disgiunti} (i.e. $\Q_f\cap\Q_f=\Q$) allora $G_{fg}\cong G_f\times G_f.$
+
+\ \hfill {\it Suggerimento:} Utilizzare la proprietà  che
+${\rm Gal}(E_1E_2/F)\cong\{(\sigma_1,\sigma_2)\in{\rm Gal}(E_1/F)\times
+{\rm Gal}(E_2/F)\ |\ \sigma_1|_{E_1\cap E_2}=\sigma_2|_{E_1\cap E_2}\}.$
+
+\item{iii.} Dedurre il teorema dal Teorema di classificazione dei gruppi abeliani finiti
+che dice che ogni gruppo abeliano \`{e} il prodotto di gruppi ciclici con ordini coprimi.
+
+\end{es}
+\medskip
+
+
+
+
+\clearpage
+\nocite{*}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+%-----------------------------------------------------------------------------
+% Beginning of ams-j-l.sup
+%-----------------------------------------------------------------------------
+
+Supplementary Instructions
+--------------------------
+
+This series follows the basic specifications and style for AMS journals,
+with the following additions.
+
+
+Copyright information is entered with the \copyrightinfo command:
+
+  \copyrightinfo{2000}%            % copyright year
+    {American Mathematical Society}% copyright holder
+
+If the AMS is not the copyright holder for a given article, substitute
+the name of the copyright holder as the second argument of the
+\copyrightinfo command.
+
+
+If your version of amsart.cls is version 2.0 (released in December 1999),
+enter subject information as:
+
+  \subjclass[2000]{...}
+
+If you still have version 1.2, add this definition to the preamble of
+your document:
+
+  \renewcommand{\subjclassname}{%
+    \textup{2000} Mathematics Subject Classification}
+
+and enter the subject information as \subjclass{...} .
+
+
+[2000/02/25]
+
+%-----------------------------------------------------------------------------
+% End of ams-j-l.sup
+%-----------------------------------------------------------------------------

@@ -1,0 +1,880 @@
+\documentclass[10pt,a4paper,twoside]{article}
+\usepackage{latexsym}
+\textwidth=6.5in
+\oddsidemargin=0.1cm
+\evensidemargin=-0.9cm
+\parskip=.5mm
+\lineskip=0mm
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\def\Fq{{\mathbb{F}}_q}
+\def\oFq{\overline{\mathbb{F}}_q}
+\def\Cl{{\mathcal{C}}}
+\def\Tl{{\mathcal{T}}}
+\hfuzz=3pt
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{Proposition}{Proposition}[section]
+\newcommand{\sopra}[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
+\pagenumbering{arabic} \pagestyle{myheadings}
+\markboth{C. Malvenuto and F. Pappalardi}{Degrees of PP}
+\title{Enumerating Permutation Polynomials I:\\  Permutations with non--maximal degree}
+\author{Claudia Malvenuto and Francesco Pappalardi}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let $\Cl$ be a conjugation class of permutations of a finite field
+$\Fq$. We
+consider the function $N_{\Cl}(q)$ defined as the number of permutations in
+$\Cl$ for which the associated permutation polynomial has degree $<q-2$. In 1969,
+C. Wells proved a formula for $N_{[3]}(q)$ where $[k]$ denotes the conjugation class of
+$k$--cycles. We will prove formulas for $N_{[k]}(q)$ where $k=4, 5, 6$ and for the
+classes of permutations of type $[2\ 2], [3\ 2], [4\ 2], [3\ 3]$ and $[2\ 2\ 2]$.
+Finally
+in the case $q=2^n$, we will prove a formula for the classes of permutations
+which are product
+of $2$--cycles.
+\end{abstract}
+\section{Introduction.}
+Let $q$ be a power of a prime and denote with $\Fq$ the finite field with $q$
+elements. If $\sigma$ is a permutation of the elements of $\Fq$, then one can
+associate to $\sigma$ the polynomial in $\Fq[x]$
+\begin{equation}\label{definiz}
+f_\sigma(x)=\sum_{c\in\Fq}\sigma(c)\left(1-\left(x-c\right)^{q-1}\right).
+\end{equation}
+The following properties are easy to verify:
+\begin{enumerate}
+\item $f_\sigma(b)=\sigma(b)$ for all $b\in\Fq$;
+\item The degree $\partial(f_\sigma)\leq q-2$ (since the sum of all the
+elements of $\Fq$ is zero).
+\end{enumerate}
+Notice that $f_\sigma$ is the unique polynomial in $\Fq$ with these
+two properties. Such
+polynomials are called \emph{permutation polynomials}.
+
+Basic literature on permutation polynomials can be found in the book
+of Lidl and Niederreiter \cite{LN}. Various applications of permutation polynomials to
+cryptography have been described. See for example \cite{LB,LMu}.
+Lidl and Mullen in \cite{LM1,LM2}, (see also \cite{M}),
+describe a number of open problems regarding permutations polynomials: among these,
+the problem of enumerating permutation polynomials by their degree.
+
+We denote by
+$$S_\sigma = \{x\in \Fq\ | \sigma(x)\neq x\}$$
+the set of those elements of $\Fq$ which are moved by $\sigma$.
+Our first remark is that
+\begin{equation}\label{lb}
+\partial(f_\sigma)\geq q-|S_\sigma| \quad \textrm{ if }\quad  \sigma\neq\textrm{id}.
+\end{equation}
+To see this it is enough to note that the polynomial $f_\sigma(x)-x$ has as roots all
+the elements of $\Fq$ fixed by $\sigma$, that is which are not in $S_\sigma$.
+Therefore, if not identically zero, it has to have degree at least $q-|S_\sigma|$.
+An immediate consequence is that all transpositions give rise to permutation polynomials
+of degree exactly $q-2$. This fact was noticed by C. Wells in \cite{W},
+where he also proved the following:
+
+\begin{theorem}[Wells -- 1969] If $q>3$,
+the number of $3$--cycles permutations $\sigma$ of $\Fq$ such that
+$\partial(f_\sigma)\leq q-3$ (which in view of (\ref{lb}) implies
+$\partial(f_\sigma)= q-3$) is
+$$
+\left\{\begin{array}{ll}
+\frac{2}{3}q(q-1) & \textrm{if\ } q\equiv1\pmod3\\
+\\
+0 & \textrm{if\ } q\equiv2\pmod3\\
+\\
+\frac{1}{3}q(q-1) & \textrm{if\ } q\equiv0\pmod3.\\
+\end{array}\right.
+$$
+\end{theorem}
+
+The goal of this note is to extend the previous result to the cases of $k$--cycles
+($k=4,5, 6$) and to other classes of permutations.
+
+Let $A_i(\sigma)$ denote the coefficient of $x^{q-1-i}$ in the polynomial $f_\sigma(x)$
+of (\ref{definiz}), that is
+$$f_\sigma(x)=A_1(\sigma)x^{q-2}+A_2(\sigma)x^{q-3}+
+\cdots+A_{q-2}(\sigma)x+A_{q-1}(\sigma).$$
+
+From (\ref{definiz}) it is very easy to derive the formula for the coefficient
+of the leading term
+$$A_1(\sigma)=-\sum_{c\in\Fq}\sigma(c)c.$$
+Since the squares of all the elements of $\Fq$ add up to zero when $q>3$,
+the previous formula can be written as
+\begin{equation}\label{lavoro}
+A_1(\sigma)=\sum_{c\in\Fq}(c-\sigma(c))c=
+\sum_{c\in S_\sigma}(c-\sigma(c))c=\sum_{j=1}^t
+\sum_{k=1}^{l_j}(c_{j,k}-c_{j,k+1})c_{j,k}.
+\end{equation}
+where we write $\sigma$ as the product of disjoint cycles (of length larger than $1$):
+$$\sigma=(c_{1,1},\ldots, c_{1,l_1})(c_{2,1},\ldots, c_{2,l_2})
+\ldots(c_{k,1},\ldots, c_{t,l_t}).$$
+Note that in (\ref{lavoro})
+we set $c_{j,l_j+1}=c_{j,1}$.
+
+It is well known that a conjugation class of permutations is determined by a cycle
+decomposition and we will denote by $[l_1\ l_2\ \cdots\ l_k]$ ($l_i>1$)
+a conjugation class.
+For example $[k]$ denotes the class of $k$--cycle permutations.
+If $\sigma\in[l_1\ l_2\ \cdots\ l_k]$
+then $|S_\sigma|=l_1+l_2+\cdots+l_k$.
+
+For a given conjugation class $\Cl$ here we will consider the following function:
+$$N_{\Cl}(q)=\left|\left\{\sigma\in\Cl \ |\
+\partial(f_\sigma)< q-2\right\}\right|$$
+that counts the number of permutations in  $\Cl$ whose degree is non--maximal.
+
+If we denote by $\eta$ the quadratic character of $\Fq^*$ ($q$
+odd) and set $\eta(0)=0$, for $q>3$, Wells' result can be written as
+$$
+    N_{[3]}(q)=
+\left\{
+    \begin{array}{ll}
+\frac{1}{3}q(q-1)\left(1+\eta(-3)\right) & \textrm{ if } q>3 \textrm{ odd }\\
+    \\
+    \frac{1}{3}2^n(2^n-1)(1+(-1)^n)    & \textrm{ if } q=2^n, q>2.
+    \\
+    \\ 0 & q\leq 3
+    \end{array}
+\right.
+$$
+
+Sometimes it is also useful to denote the class of those permutations
+that are the product
+of $m_1$  cycles of length $1$, $m_2$ cycles of length $2$, $\ldots$, $m_t$
+cycles of length $t$,
+as $(m_1;m_2;\ldots;m_t)$ where $m_1+2m_2+\cdots+tm_t=q$. With this notation
+we have that if
+$\sigma\in\Cl$ then $|S_\sigma|=q-m_1$ and
+\begin{equation}\label{conjusize}
+|\Cl|=\frac{q!}{m_1!1^{m_1}m_2!2^{m_2}\cdots m_t!t^{m_t}}
+\end{equation}
+
+Now for $\Cl=[l_1\ \ldots \ l_k]$ and $c=l_1+\cdots+l_k$ consider the
+polynomial in
+$c$ indeterminates (cfr. (\ref{lavoro}))
+\begin{equation}\label{polinomiaccio}
+A_{\Cl}(x_1,\ldots,x_c)=
+\sum_{\sopra{i=1}{i\not\in \{l_1,l_1+l_2,\ldots, c\}}}^c (x_i-x_{i+1})x_i
++\sum_{i=1}^k(x_{l_1+\cdots+l_i}-x_{l_1+\cdots+l_{i-1}+1})x_{l_1+\cdots+l_{i}}.
+\end{equation}
+From the above discussion we deduce that
+\begin{equation}
+\label{gen2}
+N_{\Cl}(q)=\frac{1}{m_2!2^{m_2}\cdots m_t!t^{m_t}}
+\left|\left\{{\underline x}\in \Fq^{c}: \quad {\underline x}
+\textrm{ has coordinates all distinct and }
+A_{\Cl}({\underline x})=0
+\right\}\right|.
+\end{equation}
+Indeed by (\ref{lavoro}) every permutation counted by $N_{\Cl}(q)$ gives rise
+to a root of
+(\ref{polinomiaccio}); furthermore by cyclically permuting the elements of every cycle
+and by permuting
+different cycles of the same length we get different roots of (\ref{polinomiaccio})
+that correspond
+to the same element of $N_{\Cl}(q)$.
+
+\section{4--cycle polynomials.}
+
+Let us now consider the case of 4--cycles. We will show the following:
+
+\begin{theorem} Suppose $q>3$ is odd. Then
+$$N_{[4]}(q)=\frac{1}{4}q(q-1)\left(q-5-2\eta(-1)-4\eta(-3)\right).$$
+Suppose $q=2^n$ with $n\geq2$. Then
+$$N_{[4]}(2^n)=\frac{1}{4}2^n(2^n-1)(2^{n}-4)(1+(-1)^n).$$
+\end{theorem}
+
+\noindent\textbf{Proof.} By (\ref{gen2}), any $a,\,b,\,c,\,d\in\Fq$
+(all distinct)
+such that the 4--cycle $(a\ b\ c\ d)$ is counted by $N_{[4]}(q)$,
+have to satisfy the equation:
+\begin{equation}\label{4cicl}
+(a-b)a+(b-c)b+(c-d)c+(d-a)d=0.
+\end{equation}
+For every of the $q(q-1)$ fixed choices of $a$ and $b$ distinct in $\Fq$,
+substituting in (\ref{4cicl}) $c=x(b-a)+a$, $d=y(b-a)+a$, we obtain the equation
+\begin{equation}\label{normal}
+  (1-x)+(x-y)x+y^2=0
+\end{equation}
+Since the conditions that $a,\,b,\,c$ and $d$ are all distinct, are equivalent
+to the conditions that $x,\,y\not\in\{0,1\}$ and $x\neq y$, taking into account
+that every circular permutation of a solution of (\ref{4cicl}) gives rise to the
+same $4$--cycle, we have
+$$N_{[4]}(q)=\frac{1}{4}q(q-1)P_{[4]}(q)$$
+where
+$$P_{[4]}(q)=\left|\left\{(x,y)\
+\left|\ x,y\in\Fq\setminus\{0,1\},\ x\neq y,\ (1-x)+(x-y)x+y^2=0\right.\right\}
+\right|$$
+
+Assume $q$ odd. The affine conic $(1-x)+(x-y)x+y^2=0$ has
+\begin{equation}\label{cla1}
+q-\eta(-3)
+\end{equation}
+rational points over $\Fq$. This can be seen by noticing that
+the associated projective conic has $q+1$ points and its points at infinity
+over $\oFq$ are $[1,\omega,0]$,
+$[1,\omega^2,0]$ (where $\omega,\omega^2\in\oFq$ are
+the roots of $T^2-T+1$, i.e. $\omega=\frac{-1+\sqrt{-3}}{2}$)  which
+are rational if and only if $\eta(-3)\neq-1$.
+
+From (\ref{cla1}) we have to subtract the number of rational points $(x,y)$ verifying
+one of the conditions $x, y\in\{0,1\}$ or $x=y$. All these conditions give rise to
+the following (at most) 10 points over $\oFq$:
+$$(0,i),\ \ (0,-i),\ \ (1+i,1),\ \ (1-i,1)$$
+$$(1,\omega),\ \ (1,{\omega}^2),\ \ (\omega,0),\ \ ({\omega}^2,0),\ \
+(\omega,\omega),\ \ ({\omega}^2,{\omega}^2)$$
+where $i$ is a root of $T^2+1$. The number of the above points which are
+rational over $\Fq$ is
+$$2\left[1+\eta(-1)\right]+
+  3\left[1+\eta(-3)\right]$$
+Subtracting the above quantity from (\ref{cla1}), we obtain the statement for $q$ odd.
+
+If $q=2^n$, then first note that the affine transformation $y=Y+1, x=X+Y$ maps the
+affine conic (\ref{normal}) to
+$$X^2+Y^2+X Y=0.$$
+Therefore the number of solutions of (\ref{normal}) is $2^{n+1}-1$ if $n$ is
+even and $1$
+if $n$ is odd. We can write this number with one formula
+by:
+$$(1+(-1)^n)2^n-(-1)^n$$
+Finally the five conditions $x,y\neq0,1$ and $x\neq y$ are equivalent to
+$Y\neq 0,1$, $X\neq Y$, $X\neq Y+1$ and $X\neq 1$.
+So the total number of rational points over $\mathbb F_{2^n}$
+that have to be removed is $1+3(1+(-1)^n)$.
+This concludes the proof.
+\bigskip\hfill $_\square$\bigskip
+
+\section{Product of two disjoint transposition polynomials.}
+
+Let us now consider the case of permutations which are product of two disjoint
+transpositions,
+that is whose conjugation class is $[2\ 2]$. In his paper of 1969, C. Wells announces
+the following formula. For completeness we will prove it here.
+
+\begin{theorem} Suppose $q>3$ is odd. Then
+\begin{equation}\label{22}
+N_{[2\ 2]}(q)=\frac{1}{8}q(q-1)(q-4)\left\{1+\eta(-1)\right\}
+\end{equation}
+and if $q=2^n$, then
+$$N_{[2\ 2]}(2^n)=\frac{1}{8}2^{n}(2^n-1)(2^{n}-2).$$
+\end{theorem}
+
+\noindent\textbf{Proof.}  Following the same lines of previous section, if $q$ is odd,
+ by (\ref{lavoro}), a permutation $(a\ b)\ (c\ d)$ with degree  $< q-2$
+has to satisfy the equation:
+\begin{equation}\label{toto}
+(a-b)^2+(c-d)^2=0.
+\end{equation}
+It is clear that this equation has a (admissible) solution if and only if $-1$
+is a square
+in $\Fq$. In this case, if $q$ is odd, for any of the $q(q-1)$ fixed choices
+of the first two variables $(a_0,b_0)$ we have the linear equations:
+$$c=d\pm\sqrt{-1}(a_0-b_0)$$
+where $d$ can assume all possible values except the ones in the set
+$$\{a_0,b_0,a_0\mp\sqrt{-1}(a_0-b_0),b_0\mp\sqrt{-1}(a_0-b_0)\}.$$
+This analysis yields $2q(q-1)(q-4)$ solutions.
+If $q=2^n$ with $n\geq2$, then (\ref{toto}) becomes
+$$a^2+b^2+c^2+d^2=(a+b+c+d)^2=0$$
+and for any of the $q(q-1)(q-2)$ choices of $a, b, c$, the value $d=a+b+c$
+is not equal to $a$ or $b$ or $c$.
+
+Finally regardless of the characteristic, since the $8$ solutions
+$$
+(a,b,c,d), (b,a,c,d), (a,b,d,c), (b,a,d,c)$$
+$$ (c,d,a,b,), (d,c,a,b), (c,d,b,a), (d,c,b,a)
+$$
+give rise to the same permutation, we deduce the formula for $N_{[2\ 2]}(q)$.
+\bigskip\hfill $_\square$\bigskip
+
+
+\section{5--cycle polynomials.}
+
+In this section we will see the limits of the approach under consideration.
+
+\begin{theorem} Let $q$ be a power of a prime $p$. Then
+$$N_{[5]}(q)=\frac{1}{5}q(q-1)P_{[5]}(q)$$
+where
+\begin{equation}\label{laprima}
+\left\{
+    \begin{array}{ll}
+    P_{[5]}(q)=q^2-\left(9-\eta(5))\right)q+26+5\eta(-7)+15\eta(-3)+15\eta(-1)&
+\quad\textrm{ if } p>3\\
+        &\\
+    P_{[5]}(3^n)=3^{2n}-(9-6(-1)^n)3^n+26+35(-1)^n & \\
+    &\\
+    P_{[5]}(2^n)=(2^n-3-(-1)^n)(2^n-6-3(-1)^n).&
+    \end{array}
+\right.
+\end{equation}
+\end{theorem}
+
+\noindent\textbf{Proof.} Using, as in the previous sections, identity
+(\ref{gen2}) and a transformation
+that eliminates two of the variables, we deduce that
+$$N_{[5]}(q)=\frac{1}{5}q(q-1)P_{[5]}(q)$$
+where $P_{[5]}(q)$ is the number of solutions $(x,y,z)$ of
+\begin{equation}\label{quadrica5ciclo}
+1-x+{x}^{2}-x y+{y}^{2}-y z+{z}^{2}=0
+\end{equation}
+with $x,y,z\not\in\{0,1\}$, $x\neq y$, $y\neq z$ and  $z\neq x$.
+
+If $q$ is odd, the affine transformation
+$$(x,y,z)\mapsto (x-y+z-2^{-1},x-z-2^{-1},y-2^{-1})$$
+yields to the quadric
+$$x^2+y^2+z^2=5/4$$
+which has the same number of rational points of (\ref{quadrica5ciclo}).
+%the matrix associated to the previous quadric surface is
+%$$\left(\begin{array}{cccc}
+%2 & -1 & 0 & 0 \\
+%-1 & 2 & -1 & 0 \\
+%0 & -1 & 2 & -1 \\
+%0 & 0 & -1 & 2 \\
+%\end{array}\right)$$
+%and it has determinant equal to $5$.
+Therefore the number of rational points
+on (\ref{quadrica5ciclo}), which can be calculated with the standard
+formulas that can be found in \cite[Theorem 6.27]{LN}, is
+\begin{equation}\label{primo}
+q^2+q\eta(5).
+\end{equation}
+If $q$ is even then the quadric (\ref{quadrica5ciclo}) is equivalent
+via the transformation $x=X+Y+Z, y=Y+1, z=X+Y+1$ to the quadric
+$$X+YZ+Y^2+Z^2=0$$
+which has clearly $q^2$ points.
+
+From (\ref{primo}) we have to subtract the number of points on the $9$ quadratic
+curves obtained intersecting the previous surface with the following $9$ planes:
+$$x=0,\ \ x=1,\ \ y=0,\ \ y=1,\ \ z=0,\ \ z=1,\ \ x=y,\ \  x=z,\ \ y=z.$$
+Note that all these quadrics are non degenerate, except in characteristics
+$2$ and $3$: hence
+the cases $(6,q)=1, q=2^n$ and $q=3^n$ have to be considered separately.
+The equations of the $9$  curves obtained in this way and
+the number of their points (calculated again with
+the formulas in \cite[Theorem 6.26 -- 6.32]{LN}) are listed in the following table.
+\begin{center}
+\begin{tabular}{|l|c|l|c|c|c|}
+\hline
+   & Plane &        \multicolumn{1}{|c|}{Curve}          &
+\multicolumn{3}{c|}{Number of points}\\
+\cline{4-6}
+&&& $(6,q)=1$ & $q=2^n$ & $q=2^n$\\
+\hline
+ 1 & $x=0$ & $1+{y}^{2}-yz+{z}^{2}=0$ &
+$q-\eta(-3)$ & $3^n(1+(-1)^n)$ & $2^n-(-1)^n$\\
+\hline
+ 2 & $x=1$ &    $1-y+y^2-yz+z^2=0$    &
+$q-\eta(-3)$ & $3^n$ &$2^n(1+(-1)^n)-(-1)^n$\\
+\hline
+ 3 & $y=0$ &     $1-x+x^2+z^2=0$      &
+$q-\eta(-1)$  & $3^n(1+(-1)^n)-(-1)^n$ &$2^n$\\
+\hline
+ 4 & $y=1$ &    $2-2x+x^2-z+z^2=0$    &
+$q-\eta(-1)$  & $3^n(1+(-1)^n)-(-1)^n$ & $2^n$\\
+\hline
+ 5 & $z=0$ &    $1-x+x^2-xy+y^2=0$    &
+$q-\eta(-3)$ & $3^n$ &$2^n(1+(-1)^n)-(-1)^n$\\
+\hline
+ 6 & $z=1$ &   $2-x+x^2-xy+y^2-y=0$   &
+$q-\eta(-3)$ & $3^n(1+(-1)^n)$&$2^n-(-1)^n$ \\
+\hline
+ 7 & $x=y$ &    $1-x+x^2-xz+z^2=0$    &
+$q-\eta(-3)$  & $3^n$&$2^n(1+(-1)^n)-(-1)^n$\\
+\hline
+ 8 & $x=z$ &   $1-z+2z^2-2yz+y^2=0$   &
+$q-\eta(-1)$ & $3^n(1+(-1)^n)-(-1)^n$ &$2^n$\\
+\hline
+ 9 & $y=z$ &    $1-x+x^2-xz+z^2=0$    &
+$q-\eta(-3)$  & $3^n$& $2^n(1+(-1)^n)-(-1)^n$\\
+\hline
+\end{tabular}
+\end{center}
+Therefore the total number of points to subtract from (\ref{primo}) is
+\begin{equation}\label{secondo}
+\left\{
+\begin{array}{ll}
+9q-6\eta(-3)-3\eta(-1) &
+\textrm{ if } (6,q)=1;\\
+9\cdot3^n+5(-1)^n3^n-3(-1)^n&\textrm{ if } q=3^n;\\
+9\cdot2^n+4(-1)^n2^n-6(-1)^n&\textrm{ if } q=2^n.\\
+\end{array}
+\right.
+\end{equation}
+
+The final step is to add back the number of points that we have
+subtracted too many times,
+that is the points that lie in the intersection of two or more of the previous curves.
+
+If the characteristic is odd consider the following $19$ pairs of points of the quadric
+(\ref{quadrica5ciclo}) over $\oFq$. Beside each pair of points
+we have written the number of quadrics of the previous table to which the points belong.
+
+\begin{center}
+\begin{tabular}{|l|c|r|}
+\hline
+1&$(0,0,\pm i)$   &  3 \\
+2&$\left(0,1,\frac{1\pm\sqrt {-7}}{2}\right)$   & 2 \\
+3&$(0,\pm i,0)$   &  3 \\
+4&$\left(0,\frac{1\pm\sqrt {-7}}{2},1\right)$   &  2  \\
+6&$(1,1,\omega^{\pm1})$   &  3 \\
+7&$(1,\omega^{\pm1},0)$   &  2  \\
+8&$(1,1\pm i,1)$   &  3\\
+9&$(\omega^{\pm1},\omega^{\pm1},\omega^{\pm1})$   & 3 \\
+10&$(\omega^{\pm1},\omega^{\pm1},0)$   & 2  \\
+\hline
+\end{tabular}\hspace{2cm}
+\begin{tabular}{|l|c|r|}
+\hline
+ 11&$(1\pm i,1\pm i,1)$   &  2\\
+ 12&$(0,\pm i,\pm i)$   &  2\\
+ 13&$(1,\omega^{\pm1},\omega^{\pm1})$   &  2 \\
+ 14&$\left(\frac{1\pm\sqrt {-7}}{4},0,\frac{1\pm\sqrt {-7}}{4}\right)$   & 2 \\
+ 15&$\left(\frac{3\pm\sqrt {-7}}{4},1,\frac{3\pm\sqrt {-7}}{4}\right)$   &  2\\
+ 16&$(1\pm i,1,0)$   &  2 \\
+ 17&$\left(\frac{1\pm\sqrt{-7}}{2},0,1\right)$   & 2 \\
+ 18&$(\omega^{\pm1},0,0)$ & 3\\
+ 19&$(1\pm i,1,1)$ & 3\\
+\hline
+\end{tabular}
+\end{center}
+The total number of points that has to be subtracted from (\ref{secondo}) is therefore
+\begin{equation}\label{terzo}
+26+5\eta(-7)+12\eta(-1)+9\eta(-3) \quad \textrm{ if } (6,q)=1
+\end{equation}
+and
+\begin{equation}
+26+17(-1)^n \quad \textrm{ if } q=3^n.
+\end{equation}
+If the characteristic is even and $\xi$ is a root of $T^2+T+1$ in
+$\overline{\mathbb F}_{2^n}$,
+then the corresponding points lying on more than one of the quadrics 1-9 are:
+$$(0,0,1),\ (0,1,0),\ (0,1,1),\ (1,0,1)$$
+each lying on 4 quadrics,
+$$(\xi,\xi,\xi),\ (\xi,0,0),\ (1,1,\xi)$$
+each lying on 3 quadrics and
+$$(1,\xi,0),\ (\xi,\xi,0),\ (1,\xi,\xi)$$
+each lying on 2 quadrics. The total number of points to be subtracted when $q=2^n$ is
+\begin{equation}\label{quarto}
+12+9(1+(-1)^n),
+\end{equation}
+because $\xi\in \mathbb F_{2^n}$ if and only if $n$ is even.
+
+Collecting together the various quantities, we obtain the
+formulas. \hfill $_\square$\bigskip
+
+The same argument applied to permutations that are the product of a
+3--cycle and a 2--cycle
+lead to the following result whose proof we omit.
+
+\begin{theorem}
+ Let $q$ be a power of a prime $p$. Then
+$$N_{[2\ 3]}(q) =\frac{1}{12}q(q-1)P_{[2\ 3]}(q)$$
+where
+$$P_{[2\ 3]}(q)=\left\{\begin{array}{ll}
+   \left(q^2-(9+\eta(-3)+3\eta(-1))q+(24+6\eta(-3)+
+18\eta(-1)+6\eta(-7))\right) & \textrm{if } p>3;\\
+\\
+(1+(-1)^n)(3^{2n}-9\cdot3^n+24) & \textrm{if } q=3^n;\\
+\\
+(2^n-3-(-1)^n)(2^n-6) & \textrm{if } q=2^n.
+\end{array}\right.$$
+\end{theorem}
+
+%\noindent\textbf{Proof.} We will only outline the main steps since it is
+%analogous to the ones of the previous sections.
+%
+%First
+%$$N_{[2\ 3]}(q) =\frac{1}{12}q(q-1)\left|\left\{
+%(x,y,z)
+%\ \left|\ 1+x(x-y)+y(y-z)+z(z-x)=0,
+%\genfrac{}{}{0pt}{}{\textrm{with } x,y,z\not\in\{0,1\},}
+%{ x\neq y, y\neq z \text{ and }  z\neq x
+%}\right.\right\}\right|.$$
+%Note that $\#\{(x,y,z)
+%\ |\ 1+x(x-y)+y(y-z)+z(z-x)=0\}=q(q-\eta(-3))$ and each of the nine
+%conditions
+%$$x=0,\ x=1,\ y=0,\ y=1,\ z=0,\ z=1,\ x=y,\ x=z,\ z=t$$
+%corresponding to points to be removes gives one of the curves
+%
+%Finally the intersections of any two of the previous curves are in
+%the table:
+%
+%and this completes the calculation for $q$ odd.
+
+\section{General conjugation classes of permutations.}
+
+It is not difficult in principle to generalize the 
+inclusion--exclusion argument of the
+previous sections to any conjugation class of permutation.
+
+For example, if we want to compute $N_{[k]}(q)$, the number
+of $k$--cycles permutations $\sigma$ of $\Fq$ such that
+$\partial f_\sigma<q-2$, then (see
+ (\ref{polinomiaccio})), we want to count the number of
+$\sigma=(a_1,\ a_2,\ \ldots,\ a_k)$ for which
+$$(a_1-a_2)^2+(a_2-a_3)^2+\cdots+(a_{k-1}-a_k)^2+(a_k-a_1)^2=0.$$
+We perform the transformation $a_{i+2}=x_i(a_1-a_2)+a_1$, $i=1,\ldots,k-2$ and
+simplify $(a_1-a_2)^2$. Taking into account that there are $q$ possibilities for $a_1$
+and $q-1$ for $a_2$ and that circular permutations of the $a_i$'s give rise to the same
+$\sigma$, we have that $N_{[k]}(q)$ equals $q(q-1)/k$ times the number
+of rational points
+of the quadric hypersurface
+\begin{equation}\label{genreduced}
+1+(x_1-1)^2+(x_2-x_1)^2+\cdots+(x_{k-3}-x_{k-2})^2+x_{k-2}^2=0
+\end{equation}
+with the $(k+1)(k-2)/2$ conditions that $x_i\neq 0,1$, $x_i\neq x_j$,
+for $i,j=1,\ldots,k-2$
+and $i\neq j$.
+
+Let us assume for simplicity that $q$ is odd. Then
+we can associate to the quadratic hypersurface in (\ref{genreduced}) the
+$(k-1)\times(k-1)$ matrix:
+
+\begin{equation}\label{matrix}M_k=
+\left(\begin{array}{cccccc}
+2 & -1 & 0 & 0 & \cdots & 0 \\
+-1 & 2 & -1 & 0 & & 0\\
+0 & -1 & 2 & -1 & &0\\
+\vdots& & -1&  \ddots & -1\\
+0 & & & -1& 2& -1\\
+0 & & & & -1 & 2
+\end{array}\right)
+\end{equation}
+
+It is easy to see that the determinant of $M_k$ equals $k$.
+If $(q,k-1)=1$ then the transformation of variables:
+$$(x_1,x_2,\ldots,x_{k-2})\mapsto \left(x_1-\frac{k-2}{k-1},x_2-
+\frac{k-3}{k-1},\ldots,x_{k-2}
+-\frac1{k-1}\right)$$
+brings (\ref{genreduced}) to
+$$x_1^2+(x_2-x_1)^2+\cdots+(x_{k-3}-x_{k-2})+x_{k-2}^2+\frac k{k-1}=0$$
+which has matrix
+$$
+\left(\begin{array}{cccc}
+k/(k-1) & 0 & \cdots & 0\\
+0 & & & \\
+\vdots  & & M_{k-1} & \\
+0 & & &
+\end{array}
+\right).$$
+
+From
+\cite[Theorem 6.26 -- 6.27]{LN}
+we find that if $(q,(k-1))=1$, the number of rational points of
+(\ref{genreduced}) equals
+\begin{equation}\label{akappa}
+a_k(q)=
+\left\{
+\begin{array}{ll}
+q^{k-3}+q^{(k-3)/2}\eta((-1)^{(k-1)/2}k) & \textrm{if $k$ is odd}\\
+&\\
+q^{k-3} +v(k)q^{(k-4)/2}\eta((-1)^{(k-2)/2}(k-1)) & \textrm{if $k$ is even}
+\end{array}
+\right.
+\end{equation}
+where $v(k)=-1$ if $(q,k)=1$ and $v(0)=q-1$.
+
+If $(q,(k-1))>1$, then $k=1$ in $\Fq$. In this case we can count the number of
+point on (\ref{genreduced}) as follows:
+$$a_k(q)=\frac 1{(q-1)}\left(a'-a''\right)$$
+where $a'$ is the number of solutions of the non--degenerate
+quadric
+$$x_0^2+(x_1-x_0)^2+(x_2-x_1)^2+\cdots+(x_{k-3}-x_{k-2})^2+x_{k-2}^2=0$$
+and $a''$ is the number of solutions of the degenerate quadric
+$$x_1^2+(x_2-x_1)^2+\cdots+(x_{k-3}-x_{k-2})^2+x_{k-2}^2=0$$
+which is equivalent to the quadric (non--degenerate is $k-3$ variables)
+$$x_2^2+(x_3-x_2)^2+\cdots+(x_{k-3}-x_{k-2})^2+x_{k-2}^2=0$$
+via the transformation
+$(x_1,x_2,\ldots,x_{k-2})\mapsto \left(x_1,x_2-2x_1,x_3-3x_1
+\ldots,x_{k-2}-(k-2)x_1\right)$. Note that $a'$ is the number
+of projective solutions of the projective quadric associated to (\ref{genreduced})
+and $a''$ is its number of solutions at infinity (i.e. on the hyperplane
+$x_0=0$).
+
+From
+\cite[Theorem 6.26 -- 6.27]{LN} we have that
+$$
+a'=\left\{\begin{array}{ll}
+q^{k-2}+(q-1)q^{(k-3)/2}\eta((-1)^{(k-1)/2})            & \textrm{if $k$ is odd}\\
+q^{k-2}            & \textrm{if $k$ is even}\\
+\end{array}
+\right.
+$$
+and$$
+a''=\left\{\begin{array}{ll}
+q^{k-3}+(q-1)q^{(k-3)/2}\eta((-1)^{(k-1)/2}))            & \textrm{if $k$ is odd}\\
+q^{k-3}            & \textrm{if $k$ is even}\\
+\end{array}
+\right.
+$$
+Therefore we obtain that $a_k(q)=q^{k-3}$ when $(q,k-1)>1$.%as in (\ref{akappa})
+
+ In all cases, if $q$ is odd, we have the upper bound
+$$N_{[k]}(q)\leq \frac{q(q-1)}{k}a_k(q).$$
+
+To compute $N_{[k]}(q)$, we have to subtract from $a_k(q)$ the number of points in
+the $(k+1)(k-2)/2$
+quadratic varieties obtained intersecting (\ref{genreduced}) with the
+hyperplanes $x_i= 0$,
+$x_i=1$, $x_i= x_j$, for $i,j=1,\ldots,k-2$, $i\neq j$ and so on.
+In  each step we have to
+compute the number of solutions of some quadric equations over $\Fq$.
+However we are
+not able to control how the discriminant of the quadrics behaves in the generic step.
+
+In the case when $\Cl=[l_1\ \ldots\ l_s]$ is a general conjugation class
+(after a transformation which reduces the number of variables to $c-s$, being
+$c=l_1+\ldots+l_s$ the number of elements moved by any permutation in $\Cl$),
+one will have to consider a quadric hypersurface whose matrix will be
+\begin{equation}\label{finsper}\left(
+\begin{array}{cccc}
+ M_{l_1} &         &        &    0    \\
+         & M_{l_2} &        &         \\
+         &         & \ddots &         \\
+    0    &         &        & M_{l_s} \\
+\end{array}\right)
+\end{equation}
+with determinant $l_1\cdots l_s$. This can be used to deduce
+an upper bound for $N_{\Cl}(q)$.
+
+If we use the other notation introduced in the first section for a
+conjugation class $\Cl=(m_1;m_2;\ldots;m_t)$, then we have that
+$$N_{\Cl}(q)=\frac{q(q-1)}{m_2!2^{m_2}\cdots m_t!t^{m_t}}P_\Cl(q)
+\ \ \ \ \textrm{and}\ \ \ \
+P_\Cl(q)=a_0+a_1q+\cdots+a_{c-3}q^{c-3}$$
+where, when $q$ is odd, each $a_i$ is an expression of the form
+$$a_i=a_{i1}\eta(\alpha_{i1})+\cdots+a_{ij_i}\eta(\alpha_{ij_i})$$
+with $a_{ij},\alpha_{ij}\in\mathbb Z$. Furthermore $a_{c-3}=1$ for $q$
+large enough with respect to $c$.
+
+Finally note that $\alpha_{ij}$ is, up to a sign, the discriminant
+of a quadratic form which is the intersection of  (\ref{genreduced}) with
+a number of hyperplanes among $x_i= 0,1$, $x_i= x_j$,
+$i,j=1,\ldots,k-2$. This implies that there are finitely many
+possibilities for $\alpha_{ij}$. Hence the expressions
+$P_{\Cl}(q)$ can be calculated by computing $N_\Cl(q)$
+for sufficiently many values of $q$ and by solving linear
+equations. For example using Pari \cite{Pari} we calculated,
+if $q=p^n$ and $p>3$:
+
+\begin{small}
+$$ \begin{array}{|rcl|}
+\hline&&\\
+P_{[6]}(q)&=&{q}^{3}-14\,{q}^{2}+[68-6\,\eta(5)-6\,
+\eta(50)]q-[154+66\,\eta(-3)+93\,\eta(-1)+12\,
+\eta(-2)+54\,\eta(-7)]\\
+&& \\
+P_{[4\ 2]}(q)& =&
+{q}^{3}-[14-\eta(2)]{q}^{2}+[71+12\,\eta(-1)+\eta(-2)+4\,\eta(-3)-8\,\eta
+(50)]q\\
+& &-[148+100\,\eta(-1)+24\,\eta(-2)+44\,\eta(-3)+40\,\eta(-7)]\\
+&& \\
+P_{[3\ 3]}(q)& =& q^3-13\,{q}^{2}+[62+9\,\eta(-1)+4\,\eta(-3)]q
+ -[150+99\,\eta(-1)+42\,\eta(-3)+72\,\eta(-7)]\\
+&&\\
+P_{[2\ 2\ 2]}(q)&=&q^3-[14+3\,\eta(-1)]{q}^{2}+[70+36\,\eta(-1)+6\,\eta(-2)]q
+-[136+120\,\eta(-1)+48\,\eta(-2)+8\,\eta(-3)]\\
+&&\\
+\hline \end{array}
+$$\end{small}
+
+$$ \begin{array}{|rcl|}\hline&&\\
+P_{[6]}(3^n)&=&3^{3n}-[14+2(-1)^n]3^{2n}+[71+39(-1)^n]3^n-[162+147(-1)^n]
+\\
+&&\\
+P_{[4\ 2]}(3^n)&=& {3}^{3n}-[14+3\left (-1\right )^{n}]{3}^{2n}+[72+40\left (-1
+\right )^{n}]{3}^{n}-[164+140\left (-1\right )^{n}]
+\\
+&& \\
+P_{[3\ 3]}(3^n)&=&\left (1+\left (-1\right )^{n}\right ){3}^{3\,n}-[14+15\,\left (-1
+\right )^{n}]{3}^{2\,n}+[71+81\,\left (-1\right )^{n}]{3}^{n}-
+[150+171\,\left (-1\right )^{n}]
+\\
+&& \\
+P_{[2\ 2\ 2]}(3^n)&=&3^{3n}-[14+3(-1)^n]{3}^{2n}+[76+36(-1)^n]3^n
+-[168+120(-1)^n]\\
+&&\\\hline \end{array}$$
+and
+$$ \begin{array}{|rcl|}
+\hline &&\\
+P_{[6]}(2^n)& =& (2^n-3-(-1)^n)(2^{2n}-(11-(-1)^n)2^n+(41+7(-1)^n)) \\
+&&\\
+P_{[4\ 2]}(2^n)& =&(2^n-3-(-1)^n)(2^{2n}-11\cdot2^n+37+(-1)^n)\\
+&& \\
+P_{[3\ 3]}(2^n)& =&(2^n-3-(-1)^n)(2^{2n}-(10-(-1)^n)2^n+45-3(-1)^n))\\
+&&\\
+P_{[2\ 2\ 2]}(2^n)&=& (2^n-2)(2^n-4)(2^n-8).\\
+&&\\
+\hline
+ \end{array}
+$$
+\bigskip
+
+\noindent As a last consequence of the above discussion we have that
+
+\begin{Proposition} Suppose $\Cl$ is a fixed conjugation class
+of permutations. Then
+$$N_\Cl(q)=\frac{q^{c-1}}{c_2!2^{c_2}\cdots c_t!t^{c_t}}
+\left(1+O\left(\frac{1}{q}\right)\right).$$
+Therefore, since by (\ref{conjusize})
+$$|\Cl|=\frac{q^{c}}{c_2!2^{c_2}\cdots
+c_t!t^{c_t}}\left(1+O\left(\frac{1}{q}\right)\right),$$
+the probability that an element of $\sigma\in\Cl$
+is such that $\partial f_\sigma<q-2$ is
+$$\frac{1}{q}+O\left(\frac{1}{q^2}\right).$$
+\end{Proposition}
+
+\section{Permutations of $\mathbb F_{2^n}$ that are product of $2$--cycles.}
+
+A permutation has order $2$ if and only if its cycle decomposition
+consists only of cycles
+of length $2$. Let $\Tl_{r}=[2\ 2\ \ldots \ 2]$ be the
+conjugation class of those permutations
+of $\Fq$ which have a cycle decomposition consisting of
+$r$ cycles of length $2$.
+
+\begin{theorem} Let $q=2^n$.
+Then $N_{[2]}(2^n)=0$ and the following recursive relation holds:
+$$N_{\Tl_{r}}(q)=
+\frac{q!}{r!2^r(q-2r+1)!}-\frac{(q-2(r-1))(2r-1)}{2r}N_{\Tl_{r-1}}(q).$$
+Therefore (in accordance with the formulas already proven):
+$$\begin{array}{rcl}
+{N}_{[2\ 2]}(2^n)&=&\frac{1}{8}2^n(2^n-1)(2^n-2),\\
+ {N}_{[2\ 2\ 2]}(2^n)&=&\frac{1}{48}2^n(2^n-1)(2^n-2)(2^n-4)(2^n-8),\\
+{N}_{[2\ 2\ 2\ 2]}(2^n)&=&\frac{1}{384}{2}^{n}({2}^{n}-1)({2}^{n}-2)({2}^{n}-
+4)({2}^{n}-6 )({2}^{2n}-15\,{2}^{n}+71).\end{array}$$
+\end{theorem}
+
+\noindent\textbf{Proof.} We have observed in the introduction that all transpositions
+have permutation polynomial with degree exactly $q-2$ so
+$$N_{[2]}(2^n)=0.$$
+The polynomial $A_{\Cl}$ of (\ref{polinomiaccio}) is in this case:
+$$
+\begin{array}{rcl}
+A_{T_r}({\underline x}) & = &
+        \displaystyle\sum_{\sopra{i=1}{ i \textrm{ odd }}} ^{2r}
+        x_i(x_i-x_{i+1})
+        + \displaystyle\sum_{i=1}^r x_{2i}(x_{2i}-(x_{2i-1}))\\
+ & = &\displaystyle\sum_{i=1}^{2r} x_i^2  + 2 \sum_{i=1}^r x_{2i}x_{2i-1} \\
+ & = & \displaystyle\sum_{i=1}^{2r} x_i^2 \\
+ & = & \left( \displaystyle\sum_{i=1}^{2r} x_i\right)^2
+\end{array}
+$$
+From this, applying (\ref{gen2}), we have that
+$$
+  N_{\Tl_{r}}(q)  = \frac{1}{r!2^r}\left|
+\left\{{\underline x} \in \Fq^{2r}: \quad
+   {\underline x}\textrm{ has coordinates all distinct and }
+\sum_{i=1}^{2r}x_{i}=0 \right\}\right|
+$$
+For simplicity, call  $\mathcal N_r$  the last set above. Let start
+selecting arbitrarily $2r-1$ distinct values $(x_1,\ldots,x_{2r-1})$
+for the first  $2r-1$ coordinates
+of ${\underline x}\in \Fq^{2r}$: this can be done in
+$q(q-1)\cdots(q-(2r-2))$ ways. For each such choice,
+the value of the last coordinate is uniquely determined by $x_{2r}=\sum_{j< 2r}x_j$
+if we want to have $\underline{x}\in\mathcal N_r$.
+However a value for $x_{2r}$ is not admissible if it coincides with
+one of the previous coordinates. There are $2r-1$ possible indices $j_0$
+where this can happen and if  $\sum_{j< 2r}x_j=x_{2r}=x_{j_0}$, then
+$$\sum_{\genfrac{}{}{0pt}{}{j=1}{j\neq j_0}}^{2r-1} x_j=2x_{j_0}+
+\sum_{\genfrac{}{}{0pt}{}{j=1}{j\neq j_0}}^{2r-1} x_j=\sum_{j=1}^{2r} x_j=0,$$
+that is $
+%{\underline x'}=
+(x_1,\ldots,x_{j_0-1},x_{j_0+1},\ldots,x_{2r-1})
+\in \mathcal N_{r-1}$. So for each choice of index $j_0$,
+the number of possible values for
+$\{x_1,\cdots,x_{2r-1}\} \setminus\{x_{j_0}\}$
+above is $\left|\mathcal N_{r-1}\right|$.
+Taking into account that for
+any choice of an element in $\mathcal N_{r-1}$
+%$\{x_1,\cdots,x_{2r-1}\}\setminus \{x_{j_0}\}$,
+there are $q-2r+2$
+choices for $x_{j_0}$,
+we deduce that
+$$\left|\mathcal N_r\right|=\frac{q!}{(q-2r+1)!}-
+(q-2(r-1))(2r-1)\left|\mathcal N_{r-1}\right|.$$
+which, in view of the fact that
+$$N_{\Tl_{r}}(q)=\frac{\left|\mathcal N_r\right|}{r!2^r},$$
+is equivalent to  the statement.
+This concludes the proof.\hfill$_\square$\bigskip
+
+
+\section{Conclusion.}
+
+In a forthcoming paper we will deal with the problem of counting
+permutation polynomials with
+minimal possible degree in a fixed conjugation class. Note also that S. Konyagin and the
+second author have recently proved that if
+$$\mathcal N=\left|\{\sigma\ \textrm{permutation of $\Fq$ such that }
+\partial f_\sigma<q-2\}\right|,$$
+then
+$$\left|\mathcal N -(q-1)!\right|\leq \sqrt{\frac{2e}{\pi}}q^{q/2}$$
+which confirms the common belief that almost all permutation
+polynomials have degree $q-2$. A similar result has been
+proven independently by Pinaki Das.\bigskip
+
+\noindent\textbf{Acknowledgments.}
+We would like to thank the referee for some useful comments and corrections.
+
+\begin{thebibliography}{99}
+
+\bibitem{LB} \textsc{Levine J. \& Brawley J. V.},
+\textit{Some cryptographic applications of permutation polynomials}, Cryptologia
+\textbf{1}, N. 1, (1977)  76--92.
+
+\bibitem{LMu} \textsc{Lidl R. \& M\"uller W. B.}, \textit{A note on polynomials
+and functions in cryptography}, Ars Comb. \textbf{17}-A (1984) 223--229.
+
+\bibitem{LM1} \textsc{Lidl R. \& Mullen G. L.},
+\textit{When does a polynomial over a finite field permute the elements of the field?},
+Amer. Math. Mon. \textbf{95} (1988) 243--246.
+
+\bibitem{LM2} \textsc{Lidl R. \& Mullen G. L.}, \textit{When does a polynomial
+over a finite field permute the elements of the field? II}, Amer. Math. Mon.
+\textbf{100} (1993) 71--74.
+
+\bibitem{LN} \textsc{Lidl R. \& Niederreiter H.}, \textit{Finite fields}, Encyclopedia of Mathematics and its Applications 20, Addison--Wesley Publishing Company, Reading, MA 1983.
+
+%\bibitem{CP} \textsc{Malvenuto C. \& Pappalardi F.}, 
+%\textit{On the enumeration of Permutation
+%Polynomials II: $k$-cycles with minimal degree}, preprint (2000).
+
+\bibitem{M} \textsc{Mullen G. L.}, \textit{Permutation polynomials over finite fields},
+ Finite fields, coding theory, and advances in communications and computing
+(Las Vegas, NV, 1991), 131--151, Lecture Notes in Pure and Appl. Math., 141,
+Dekker, New York, 1993.
+
+\bibitem{W} \textsc{Wells C.}, \textit{The degrees of permutation polynomials
+over finite
+fields}, J. Combinatorial Theory \textbf{7} (1969) 49--55.
+
+\bibitem{Pari} \textsc{Batut C.,  Belabas K., Bernardi D.,
+Cohen H. \& Olivier M.}, GP/PARI Calculator Version 2.0.14
+1989-1999.
+
+%\bibitem{Maple} Maple V Release 5.1 (1999), Waterloo Maple Inc.
+\end{thebibliography}
+
+
+\begin{footnotesize}
+\noindent Claudia Malvenuto\\
+Dipartimento di Scienze dell'Informazione\\
+Universit\`a degli studi ``La Sapienza''\\
+Via Salaria, 113\\
+I--00198, Roma -- ITALY.\\
+\texttt{claudia@dsi.uniroma1.it}
+\bigskip
+
+\noindent Francesco Pappalardi\\
+Dipartimento di Matematica\\
+Universit\`a degli studi Roma Tre\\
+Largo S. L. Murialdo, 1\\
+I--00146, Roma -- ITALY.\\
+\texttt{pappa@mat.uniroma3.it}\vfill
+\end{footnotesize}
+
+
+
+\end{document}

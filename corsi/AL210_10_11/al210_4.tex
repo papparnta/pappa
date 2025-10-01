@@ -1,0 +1,122 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2010/2011}\\
+
+\textbf{AL210 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 4 - 18 Ottobre 2010}\\
+
+\textbf{Tutore: Matteo Acclavio}\\
+
+www.matematica3.com\\
+\end{center}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Sia $G := \left\{\left(\begin{matrix} a & 0 \\ c & b \end{matrix}\right) \mid a, b, c \in \Z_3 , a \neq 0, b \neq 0 \right\}$ \\
+Provare che:
+\begin{itemize}
+\item $G$ con l'usuale moltiplicazione fra matrici \acc e un gruppo e dire se $G$ \acc e abeliano.
+\item $H := \left\{M \in G \mid det(M) =1\right\}$ \acc e un sottogruppo di $G$.
+\item $H$ \acc e un sottogruppo normale.
+\item $H$ \acc e ciclico e trovare un suo generatore.
+\item Ogni elemento di $G$ che non sta in $H$ ha ordine 2.
+\item Determinare il centro di $G$.
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Sia $f_n : (\Z, +) \frecdl (\Z, +)$ definita da $f_n(x) = nx$. Verificare che $f_n$ \'e
+un omomorfismo, trovare il nucleo e l'immagine di $f_n$.
+\end{Ex}
+
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Mostra che l'applicazione $Re: (\C, +) \longrightarrow (\R, +)$ definita da $Re(a+ib)=a$ \acc e un omomorfismo di gruppi. Determinarne il nucleo $N$ e l'immagine $H$. Applicando il teorema di omomorfismo, definire l'isomorfismo canonico.
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Sia $G$ un gruppo e sia $H$ un suo sottogruppo. Definiamo $N(H)=\{x\in G \mid xHx^{-1}=H\}$. Dimostrare che $N(H)$ \`e un sottogruppo di $G$ e che $H$ \`e normale in $N(H)$. $N(H)$ si dice $normalizzante$ di $H$ in $G$ ed \`e il pi\`u grande sottogruppo di $G$ in cui $H$ \`e normale (verificare che se $H$ normale in $G$ allora $N(H)=G$).
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 6.}\\
+Sia $\varphi: G\longrightarrow G'$ omomorfismo. Dimostrare che:
+\begin{itemize}
+\item $\forall g \in G, \; o(g)\mid |G|$
+\item $\forall g' \in G', \; o(g')\mid |G'|$
+\item $\forall g \in G ,\; o(\varphi(g))\mid o(g)$
+\item se $G=<g>$ allora $\varphi(G)=<\varphi(g)>$
+\end{itemize}
+Determinare gli elementi di $Hom(\Z_n, \Z_m)=\{$omomorfismi da $\Z_n$ in $\Z_m\}$.
+Dimostrare che il gruppo $Aut(Z_n)$ \`e isomorfo a $(\U(\Z_n), \cdot)$
+\end{Ex}
+
+
+
+\end{document}

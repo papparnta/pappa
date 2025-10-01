@@ -1,0 +1,148 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+
+\begin{document}
+
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2008/2009}\\
+
+\textbf{AL1 - Algebra 1: Fondamenti}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 3 - 23 Ottobre 2008}\\
+
+\textbf{Elisa Di Gloria, Luca Dell'Anna}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\vspace{1cm}
+
+
+
+
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Determinare il dominio e il codominio massimali (i.e. i pi\`u grandi possibili), come sottoinsiemi di $\R$, per i quali le seguenti corrispondenze siano applicazioni biunivoche.
+\begin{itemize}
+	\item $f(x)=\sin x$
+	\item $f(x)=\frac{\sin x}{x+1}$
+	\item $f(x)=x^2+2x-8$
+	\item $f(x)=\frac{x^3+3x^2+2x}{x^2+x}$
+	\item $f(x)=\log (x-2)$
+\end{itemize}
+
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Provare per induzione:
+\begin{itemize}
+	\item Il numero di diagonali di un poligono con $k$ vertici \`e uguale a $\frac{k(k-3)}{2}$
+	\item $\displaystyle\sum_{k=0}^n x^k =\frac{1-x^{n+1}}{1-x}$ con  $x\neq1$
+	\item $\displaystyle\sum_{k=1}^n (2k-1) = n^2$
+	\item $\displaystyle\sum_{k=1}^n (4k-1) = n(2n+1)$
+	\item $\displaystyle\sum_{k=1}^n k^2 = \frac{n(n+1)(2n+1)}{6}$
+\end{itemize}
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Dire di quali propriet\`a godono le seguenti relazioni ed individuare quali di esse sono relazioni di equivalenza.
+\begin{itemize}
+	\item Nell'insieme dei cittadini italiani, due persone sono in relazione se e solo se abitano nella stessa citt\`a. \end{itemize}
+Nell'insieme delle rette nel piano:
+	\begin{itemize}
+	\item $x\rho x':\sse x$ \`e parallela e non coincidente a $x'$;
+	\item $x\rho x':\sse x$ \`e perpendicolare ad $x'$.
+	\end{itemize}
+In $\Z$:
+	\begin{itemize}
+	\item $x\rho x':\sse x-x'=5k\ \ \ \ \exists \ k\in \Z$;
+	\item $x\rho x':\sse |x|=|x'|$;
+	\item $x\rho x':\sse xx'>0$;
+	\item $x\rho x':\sse x$ e $x'$ hanno lo stesso numero di cifre.
+
+
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Mostrare che le seguenti relazioni sono relazioni di equivalenza:
+\begin{itemize}
+\item In $\Z$, la relazione: $x\rho x':\sse x=x'$;
+\item In $\Z$, la relazione: $x\rho x' :\sse x$ ha la stessa parit\`a di $x'$ (cio\`e: $x$ \`e in relazione con $x'$ se $x$ ed $x'$ sono entrambi pari oppure entrambi dispari);
+\item In $\R$, la relazione: $x\rho x' :\sse x=x'+2kp \  \exists k \in\Z$ con $p$ primo;
+\item In $\R$, la relazione $x\rho x':\sse [x] = [x']$;
+\item In $\R$, la relazione: $x \rho x':\sse x= x' + k$ per qualche $k\in \Z$;
+\item Sia $X$ il piano (o lo spazio) Euclideo ed $x_0$ un punto di $X$; nell'insieme $X \setminus{x_0}$ la relazione: $x$ \'e allineato con $x_0$ e con $x'$;
+\item In $X$ := $\R\times\R\setminus{(0,0)}$ la relazione: $(x,y) \rho (x', y'):\sse  x'^2y = x^2y'$;
+\item Fissato un insieme $S$ finito non vuoto, in $X:=\mathcal{P}(S)$ la relazione: $x$ ha lo stesso numero di elementi di $x'$.
+
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Utilizzando il Principio di Induzione, provare che, per ogni $n\geq3$, la seguente espressione:
+$2\cdot3+2\cdot4+\ldots+2(n-1)+2n$
+\`e uguale ad una soltanto tra le seguenti:\\
+(i) $3(n-1)$;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ii) $\frac{n(n+1)}{2}$; \\
+(iii)  $n(n+1)-6$;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (iv)  $n(n-1)$.
+\end{Ex}
+\end{document}
+

@@ -1,0 +1,129 @@
+\nopagenumbers \hrule\bigskip
+ \hskip -6mm TN1 AA03/04\ (Teoria dei Numeri)\hfill ESAME DI
+FINE SEMESTRE \hfill Roma, 31 Maggio 2004. \bigskip\hrule
+\bigskip
+\centerline{SOLUZIONI}\bigskip\hrule \bigskip\bigskip
+
+\item{1.} Calcolare per quali valori di $\alpha\in{{\bf Z}/13 {\bf
+Z}}$ la congruenza $$X^2+X+\alpha\equiv0\bmod 13$$ \`{e} risolubile.
+
+\bigskip{\it\itemitem{\bf Soluzione:} La congruenza \`{e} risolubile se e solo
+se il discriminante $1-4\alpha$ \`{e} un residuo quadratico modulo
+$13$. Inoltre $$\Big({1-4\alpha\over13}\Big)=\cases{1 & se
+$\alpha\in\{0,1,6,7,9,11\}$ \cr 0 & se $\alpha=10$ \cr -1 &
+altrimenti }.$$ Pertanto l'equazione ammette due soluzione se
+$\alpha\in\{0,1,6,7,9,11\}$, una se $\alpha=10$ e nessuna
+altrimenti.}\bigskip
+
+\item{2.} Enunciare e dimostrare il criterio di Eulero per il
+calcolo del simbolo di Legendre.
+
+\bigskip{\it\itemitem{\bf Soluzione:} Vedi la Proposizione 6.5 a pagina 86 del
+secondo capitolo delle note. }
+\bigskip
+
+\item{3.} Si calcoli il simbolo di Legendre
+$\Big({1755\over3001}\Big).$
+
+\bigskip{\it\itemitem{\bf Soluzione:} Usiamo il metodo del simbolo di Jacobi e
+dalla reciprocit\`{a} quadratica otteniamo visto che
+$3001\equiv1\bmod4$
+$$\Big({1755\over3001}\Big)=\Big({3001\over1755}\Big)=\Big({1246\over1755}\Big)
+=\Big({2\over1755}\Big)\Big({623\over1755}\Big)$$ e siccome
+$1755\equiv3\bmod8$, $1755\equiv632\equiv3\bmod4$}, si ha
+$$\Big({2\over1755}\Big)\Big({623\over1755}\Big)=\Big({1755\over623}\Big)=
+\Big({509\over623}\Big)$$ e siccome $509\equiv1\bmod4$,
+$$\Big({509\over623}\Big)=\Big({623\over509}\Big)=\Big({114\over509}\Big)
+=\Big({2\over509}\Big)\Big({57\over509}\Big)$$ e siccome
+$509\equiv5\bmod8$,
+$$\Big({2\over509}\Big)\Big({57\over509}\Big)=-\Big({509\over57}\Big)
+=-\Big({53\over57}\Big)=-\Big({57\over53}\Big)=-\Big({4\over53}\Big)=-1$$
+\bigskip
+
+\item{4.} Dopo aver definito la nozione di residuo quadratico, dimostrare che il numero di
+residui quadratici in ${\bf Z}/p{\bf Z}^*$ \`{e} $(p-1)/2$.
+
+\bigskip{\it\itemitem{\bf Soluzione:} Vedi Proposizione 6.3 a pagine 85 del
+secondo capitolo delle note.}\bigskip
+
+\item{5.} Mostrare che se $p\equiv 9\bmod 28$, allora
+$\Big({7\over p}\Big)=1$.
+
+\bigskip{\it\itemitem{\bf Soluzione:} Il fatto che $p\equiv 9\bmod 28$ implica
+che $p\equiv 1\bmod 4$ e $p\equiv 2\bmod 7$. Quindi, per la legge di
+reciprocit\`{a} quadratica, otteniamo $$\Big({7\over
+p}\Big)=\Big({p\over 7}\Big)=\Big({2\over 7}\Big)=1$$}\bigskip
+
+\item{6.} Sia $\omega(n)$ il numero di divisori primi distinti
+dell'intero $n$. Mostrare che per ogni numero complesso $z$, la
+funzione $f_z(n):=z^{\omega(n)}$ \`{e} moltiplicativa. Nel caso in
+cui $z=i$, calcolare $(f_z*\mu)(60)$.
+
+\bigskip{\it\itemitem{\bf Soluzione:} Osservare che se $(m,n)=1$, allora
+$\omega(mn)=\omega(m)+\omega(n)$ ($\omega$ \`{e} additiva) e
+quindi
+$$f_z(mn)=z^{\omega(mn)}=z^{\omega(m)+\omega(n)}=f_z(m)\cdot
+f_z(n).$$ Per la moltiplicativit\`{a}, abbiamo che
+$$(f_z*\mu)(60)=(f_z*\mu)(3)(f_z*\mu)(5)(f_z*\mu)(4)=
+\Big(i-1\Big)^3(-i+i)=0.$$}
+\bigskip
+
+\item{7.} Enunciare e dimostrare la formula di inversione di M\"obius.
+
+\bigskip{\it\itemitem{\bf Soluzione:} Vedi Teorema 3.2 a pagina 24 del terzo
+capitolo delle dispense.}\bigskip
+
+\item{8.} Elencare tutte le terne pitagoriche primitive e positive
+$(x,y,z)$ con $x,y,z\leq85$.
+
+\bigskip{\it\itemitem{\bf Soluzione:} Usando il Teorema di classificazione
+sappiamo che tutte le tpp positive sono della forma
+$$(x,y,z)=(2st,s^2-t^2,s^2+t^2)$$ dove $s,t\in{\bf N}$, $s>t>0$,
+$(s,t)=1$ e $s\not\equiv t\bmod 2$. Osservando che
+$z=s^2+t^2\leq85$ da luogo alle seguenti possibilit\`{a},
+$$(s,t)\in\Big\{(2,1),(3,2),(4,1),(4,3),(5,2),(5,4),(6,1),(6,5),(7,2),(7,4),(7,6)
+,(8,1),(8,3),(9,2)\Big\}.$$ Otteniamo le seguenti 14 terne:
+$$
+(4,3,5),(12,5,13),(8,15,17),(24,7 ,25),
+(20,21,29),(40,9,41),(12,35,37),(60,11,41),$$
+$$(28,45,53),(56,33,65),(84,13,85),(16,63,65),(48,55,73),(36,79,85).$$}
+\bigskip
+
+\item{9.} Enunciare il teorema di caratterizzazione per i numeri
+che si possono esprimere come somma di due quadrati.
+
+\bigskip{\it\itemitem{\bf Soluzione:} vedi Teorema 3.7 nel capitolo rilevante
+nelle note.}
+\bigskip
+
+\item{10.} Esprimere $5^s13^t$ per ogni $s,t\in{\bf N}$ come somma di due quadrati.
+
+\bigskip{\it\itemitem{\bf Soluzione:} Osservare che
+ $$5^s=\cases{(5^k)^2+0^2 & se $s=2k$\cr (5^k)^2+(2\cdot5^k)^2 & se $s=2k+1$}\quad
+ \hbox{e}\quad 13^t=\cases{(13^m)^2+0^2 & se $t=2m$\cr
+ (2\cdot13^m)^2+(3\cdot13^m)^2 & se $t=2m+1$}\quad$$
+Quindi
+$$5^s\cdot 13^t=\cases{
+(5^k\cdot13^m)^2+0^2 & se $s=2k, t=2m$\cr
+(5^k\cdot13^m)^2+(2\cdot5^k\cdot13^m)^2  & se $s=2k+1, t=2m$ \cr
+(2\cdot13^m5^k)^2+(3\cdot5^k\cdot13^m)^2 & se $s=2k, t=2m+1$\cr
+(8\cdot13^m5^k)^2+(5^k\cdot13^m)^2 & se $s=2k+1, t=2m+1$}$$}
+\bigskip
+
+\item{11.} Dopo aver espresso $3$ e $5$ come somma di tre quadrati, mostrare che non \`{e} detto che
+se due interi si esprimono come somma di tre quadrati, allora anche il loro prodotto si
+esprime come somma di tre quadrati. Fornire pi\`{u} di un contro esempio.
+
+\bigskip{\it\itemitem{\bf Soluzione:} $3=1^2+1^2+1^2$, $5=1^2+2^2+0^2$. I due
+contro esempi sono
+ $15=3\cdot5=7+8$ e $60=6\cdot10=4\cdot(7+8)$. Infatti $6=2^2+1^2+1^2$ e
+ $10=1^2+3^2+0^2.$\bigskip}
+
+\item{12.} Scrivere $47$ come somma del minor numero possibile di
+quadrati.
+
+\bigskip{\it\itemitem{\bf Soluzione:} $47=1^2+1^2+3^2+6^2$. Siccome
+$47=7+5\cdot8$, non si pu\`{o} scrivere come somma di due quadrati
+e quindi nemmeno di due.}
+
+ \bye

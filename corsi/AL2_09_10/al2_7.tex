@@ -1,0 +1,129 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2009/2010}\\
+
+\textbf{AL2 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 7 - 25 Novembre 2009}\\
+
+\textbf{Matteo Acclavio, Luca Dell'Anna}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\vspace{0.4cm}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Si considerino in $(\Z,+,\cdot)$ gli insiemi $(3):=\{3z \ | \ z\in\Z\}$, $(7):=\{7h \ | \ h\in\Z\}$, $(9):=\{9l \ | \ l\in\Z\}$, $(21):=\{21f \ | \ f\in\Z\}$. 
+\begin{itemize}
+\item  Verificare che gli insiemi descritti sono ideali di $\Z$
+\item Stabilire quali di essi sono ideali primi
+\item Stabilire quali di essi sono ideali massimali
+\item Determinare $(21)\cap(9)$, $(3)\cap(7)$, $(3)+(9)$, $(3)+(7)$
+\item Descrivere i relativi quozienti determinandone le propriet\acc a (i.e. se sono domini, campi...), calcolare la caratteristica di ogni anello quoziente e descriverne gli ideali
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Si consideri l'applicazione $\varphi:\Z\longrightarrow \Z_7\times\Z_5=:B$,  definito come $\varphi(x):=([x]_7,[x]_5)$. Dimostrare che $\varphi$ \acc e un omomorfismo di anelli. Dire se \acc e iniettivo e/o suriettivo e descriverne il nucleo e l'immagine. Dimostrare inoltre che tutti e soli gli ideali primi di $B$ sono $I:=\{[0]_7\}\times \Z_5$ e $J:=\Z_7\times\{[0]_5\}$. Determinare gli ideali primi $P:=\varphi^{-1}(I)$ e $Q:=\varphi^{-1}(J)$. Descrivere infine $\varphi^{-1}(([5]_7,[2]_5))$
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Sia $A=\{{m\over{10^t}}\in \Q \ | \ m,t\in Z, \ t\geq 0\}$. 
+\begin{itemize}
+\item Verificare che $A$ \acc e un sottoanello di $\Q$
+\item Determinare gli elementi invertibili di $A$
+\item Se $I$ \acc e un ideale di $A$ provare che $I\cap\Z$ \acc e un ideale di $\Z$
+\item Provare che se $I\neq J$ sono ideali di $A$ allora $I\cap\Z \neq J\cap\Z$
+\item Provare che se $I$ \acc e primo o massimale allora $I\cap\Z$ \acc e primo o massimale
+\item Provare che per ogni $p\neq 2,5$, con $p$ primo, $pA$ \acc e un ideale massimale in $A$ e $(p)\cap \Z$ \acc e un ideale primo di $\Z$
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Sia $A$ un anello commutativo unitario e siano $I,J$ ideali di $A$.
+\begin{itemize}
+\item Si dimostri che $IJ:=\{\sum_{i=1}^na_ib_i \ | \ a_i\in I, \ b_i\in J\}$ \acc e un ideale di $A$ contenuto in $I\cap J$
+\item Dimostrare che se $I$ e $J$ sono ideali primi allora $IJ$ \acc e primo se e solo se $J\subseteq I$ oppure $I\subseteq J$ 
+\end{itemize}
+\end{Ex}
+
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Sia $$A:=\left\{\left(\begin{matrix} a & b \\ 0 & c \end{matrix} \right) \ | \ a,b,c\in \Z \right\}.$$
+\begin{itemize}
+\item Si dimostri che $A$ \acc e un sottoanello delle matrici quadrate $2\times2$ a coefficienti in $\Z$
+\item Dato $n\geq2$ e $$I:=\left\{\left(\begin{matrix} a & b \\ 0 & c \end{matrix} \right) \ | \ a,b,c\in n\Z \right\},$$ dimostrare che $I$ \acc e un ideale bilatero di $A$ e trovare un omomorfismo di anelli $\varphi:A\longrightarrow\Z/n\Z$ tale che $Ker(\varphi)=I$
+\item Descrivere gli ideali di $A/I$
+\end{itemize}
+\end{Ex}
+
+
+\end{document}

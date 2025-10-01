@@ -1,0 +1,430 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage[cm]{fullpage}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+
+%opening
+\title{Galois representations on torsion points of elliptic curves\\ NATO ASI 2014 -- 
+Arithmetic of Hyperelliptic Curves and Cryptography}
+%, the former Yugoslav Republic of Macedonia
+\author{Francesco Pappalardi}
+\date{Ohrid, August 25 - September 5, 2014}
+\begin{document}
+
+\maketitle
+
+%\begin{abstract}
+%later today
+%\end{abstract}
+
+\section{Lecture 1 - Introduction }
+
+Let $E/\Q$ be an elliptic curve. It is well known since the time of Jacobi that, for any field extension $K/\Q$, the set
+$E(K)$ of projective $K$--rational points has a natural group structure. Furthermore, if $K/\Q$ is finite, $E(K)$, with respect to this group structure, 
+is finitely generated.
+
+For any integer $n$, we consider the kernel of the \emph{multiplication-by-$n$ map},
+$$E[n]=\{P\in E(\overline{\Q}): nP=\infty\}$$
+which is called the \emph{$n$--torsion subgroup}. It is part of the classical theory the fact that 
+if $n$ is an odd integer and $P(x,y,1)\in E(\overline{\Q})$
+is non zero, then $P\in E[n]$ if and only if $x$ is a root of the \emph{$n$--division polynomial} $\psi_n(X)\in\Z[X]$
+which are defined by recursive formulas and are separable. Furthermore
+$$\deg\psi_n=\frac{n^2-1}2.$$
+This implies easily that if $n$ is odd, then 
+\begin{equation}\label{uno}
+E[n]\cong \Z/n\Z\times\Z/n\Z. 
+\end{equation}
+A similar argument allows to conclude that (\ref{uno}) holds also for $n$ even.
+We set 
+$$E[\infty]=\bigcup_{n\in\N}E[n]$$
+which is the \emph{torsion subgroup} of $E(\overline{\Q})$.
+In virtue of (\ref{uno}), we have that
+$$\operatorname{Aut}(E[n])\cong\operatorname{GL}_2(\Z/n\Z).$$
+So, there is a profinite group structure
+$$\operatorname{Aut}(E[\infty])\cong\operatorname{GL}_2(\hat\Z)\quad\text{where}\quad\hat\Z=\lim_{\leftarrow}\Z/n\Z.$$
+
+% For a prime $\ell$, the $\ell$--adic \emph{Tate module} of $E$ is defined by the inverse limit
+%     $$T_\ell(E)=\underset{\longleftarrow}{\lim} E[\ell^n]$$
+% over positive integers $n$ with transition morphisms given by the multiplication-by-$p$ map $E[\ell^{n+1}] \rightarrow E[\ell^n]$. 
+% Thus, the Tate module encodes all the $\ell$-power torsion of $E$. So, we  can think at the elements of $T_\ell(E)$ as compatible sequences 
+% $(P_n)_{n\in\Z}$ where $P_n\in E[\ell^n]$ and $\ell\cdot P_{n+1}=P_n$. Hence $T_\ell(E)$ is equipped with the structure of $\Z_\ell$--module 
+% ($\Z_\ell$ is the ring of $\ell$--adic integers) via
+% the multiplication 
+% $$z\cdot(P_n)_{n\in\N}=((z \bmod \ell^n)P_n)_{n\in\N}.$$
+% Furthermore $T_\ell(E)$ is a free $\Z_\ell$--module of rank $2$ So that 
+% $$\operatorname{Aut}T_\ell(E)\cong\operatorname{GL}_2(\Z_\ell).$$
+% However there is an extra very powerful structure that can be defined on $T_\ell(E)$.
+    
+The absolute Galois group 
+$$G_\Q:=\operatorname{Gal}(\overline{\Q}/\Q)=\{\sigma:\overline{\Q}\rightarrow\overline{\Q},\text{ field automorphism}\}$$ 
+is also a profinite group and if $K$ is any Galois extension of $\Q$, then
+$$\operatorname{Gal}(K/\Q)\cong G_\Q/\{\sigma\in G_\Q: \sigma_{|_K}=\text{id}_K\}.$$
+So $G_\Q$ admits as quotient any possible Galois Group of Galois extensions of $\Q$ and it is the projective limit of its finite quotients.
+%Furthermore, any group homomorphism $\operatorname{Gal}(K/\Q)\rightarrow G$ can be extended to a group homomorphism
+%$$G_\Q\rightarrow G$$
+%in such a way that it is trivial if restricted to $\{\sigma: \sigma_{|_K}=\text{id}_K\}$
+
+For every integer $n$, we consider the \emph{$n$--torsion field} $\Q(E[n])$ obtained by adjoining to $\Q$ all coordinates of
+all non zero points in $E[n]$. Finally we use $G(n)$ to denote the Galois group $\operatorname{Gal}(\Q(E[n])/\Q)$. 
+
+If $P=(x,y,1)\in E[n]$ and $\sigma\in G(n)$, then $\sigma P:=(\sigma x,\sigma y,1)\in E[n]$. This property and the fact that the operation in $E(\overline{\Q})$
+is defined by $\Q$--rational functions, provides us with an inclusion
+$$\rho_n: G(n)\hookrightarrow\operatorname{Aut}(E[n])\cong \operatorname{GL}_2(\Z/n\Z)$$
+which can be extended to
+$$\rho: G_\Q\longrightarrow \operatorname{Aut}(E[\infty])=\prod_{\ell\text{ prime}}\operatorname{Aut}(E[\ell^\infty])
+\cong \prod_{\ell\text{ prime}}\operatorname{GL}_2(\Z_\ell).$$
+where $E[\ell^\infty]=\cup_{m\in\N}E[\ell^m]$ and $\Z_\ell$ denoted the ring of \emph{$\ell$--adic integers}.
+The above representation is an object of study during these three lectures. 
+
+The main result of the Theory is
+
+\begin{theorem}[Serre's Uniformity Theorem] If $E$ does not have complex multiplication (i.e. the only homomorphism
+$E(\overline{\Q})\rightarrow E(\overline{\Q})$ which are defined by rational maps are the \emph{multiplication-by-$n$ maps}), 
+then the index of $\rho_n(G(n))$ inside $\operatorname{Aut}(E[n])$ is bounded by a constant that depends
+only on $E$. 
+\end{theorem}
+
+This statement has several striking consequences among which:
+\begin{corollary} If $E$ does not have complex multiplication, then  for all $\ell$ large enough 
+$$G(\ell)= \operatorname{Aut}(E[\ell])$$
+\end{corollary}
+
+One of the central problem of this theory is to establish explicit bounds for $\ell$ for which the conclusion of 
+the above Corollary holds. It is believed that it holds for all $\ell>37$.
+
+The group homomorphism
+$$\rho_{\ell^\infty}: G_\Q\rightarrow\operatorname{Aut}(E[\ell^\infty])$$
+obtained by composing $\rho$ with the projection on the $\ell$-th component,
+is actually a continuous homomorphism of topological groups and it is called \emph{$\ell$--adic representation}.
+
+The representation $\rho_{\ell^\infty}$ is \emph{unramified} at all primes $p\nmid \ell\Delta_E$ in the sense that for such primes
+$\rho_\ell|_{I_\mathfrak p}=\operatorname{Id}_{\Z_\ell}$
+where, for a fixed prime number $p$ and a fixed prime $\mathfrak p$ of $\bar{\Q}$ over $p$, one defines the \emph{inertia subgroup} 
+$I_\mathfrak p\subset G_\Q$ as the set of those elements of $G_\Q$ such that
+$$\sigma(x)\equiv x\bmod\mathfrak p,\quad \forall x\in\bar{\Z}.$$
+
+Serre's Uniformity Theorem is equivalent to the conjunction of the following two statements:
+\begin{itemize}
+ \item For all primes $\ell$, $\rho_{\ell^\infty}(G_\Q)$ is an open subgroup with respect to the $\ell$--adic topology,
+ \item For all but finitely many primes $\ell$, $\rho_{\ell^\infty}(G_\Q)=\operatorname{Aut}(E[\ell^\infty])$.
+\end{itemize}
+
+An important tool in the study of the above representations is the \emph{Frobenius element}. In general, in a Galois extension $K$
+of $\Q$, for an unramified prime $p$, one defines the Frobenius element as any element in the conjugation class of the Galois Group 
+$\operatorname{Gal}(K/\Q)$ which is determined by the lift of the Frobenius automorphism of the finite field 
+$\mathcal O_K/\mathcal P$ obtained as a quotient of the ring of integers $\mathcal O$ by any 
+prime ideal $\mathcal P$ over $p$. Sometimes one calls \emph{Artin symbol}, the conjugation class itself and denotes it
+by $\left[\frac{K/\Q}p\right]$.
+
+In the case of the division fields $\Q(E[n])$, the Artin symbol can be thought as a conjugation class of matrices in $\operatorname{GL}_2(\Z/n\Z)$.
+The characteristic polynomial 
+$\det(\left[\frac{\Q(E[n])/\Q}p\right]-T)$
+turns out not to depend on $n$ in the sense that
+$$\det\left(\left[\frac{\Q(E[n])/\Q}p\right]\right)\equiv p\bmod n,\qquad \operatorname{tr}\left(\left[\frac{\Q(E[n])/\Q}p\right]\right)\equiv a_E\bmod n$$
+where $a_E=p-1-\#E(\F_p)$.
+
+During the first lecture we will introduce the above notions and explain some of their properties.
+
+\section{Lecture 2 - Serre's Open Mapping Theorem and its applications}
+
+In most of Lecture 2 we will assume that $E$ has no complex multiplication. During this lecture we will introduce more tools and notions necessary
+for later applications.
+
+\subsection{Chebotarev Density Theorem}
+
+If $K/\Q$ is a finite Galois extension and $\mathcal C\subset\operatorname{Gal}(K/\Q)$ is a union if conjugation classes of 
+$\mathcal G=\operatorname{Gal}(K/\Q)$, then the \emph{Chebotarev Density Theorem} predicts that 
+the density of the primes $p$ such that the Artin symbol
+$\left[\frac{K/\Q}p\right]\subset \mathcal C$ equals $\frac{\#\mathcal C}{\#\mathcal G}.$
+The Chebotarev Density Theorem has also a quantitative versions. Let
+$$\pi_{\mathcal C/\mathcal G}(x):=\#\left\{p\le x: \left[\frac{K/\Q}p\right]\subset \mathcal C\right\}.$$
+Then (see Serre \cite{S3} and Murty, Murty \& Saradha \cite{MMS}), assuming that the Dedekind zeta function of $K$ satisfies the \emph{Generalized Riemann Hypothesis}, 
+$$\pi_{\mathcal C/\mathcal G}(x)=
+\frac{\#\mathcal C}{\#\mathcal G}\int_2^x\frac{dt}{\log x}+O\left(\sqrt{\#\mathcal C}\sqrt{x}\log(xM\#\mathcal G)\right)$$
+where $M$ is the product of primes numbers that ramify in $K/\Q$. An analogue version, independent on the Generalized Riemann Hypothesis can be
+found in \cite{S3}.
+
+We will apply it in the special case when $K=\Q(E[n])$ where we think at the element of $\mathcal G$ as 2 by 2 non singular matrices. For example
+\begin{itemize}
+ \item In the case when $\mathcal C=\{\operatorname{id}\}$, the condition $\left[\frac{\Q(E[n])/\Q}p\right]=\{\operatorname{id}\}$ is equivalent
+to the property that 
+$$E[n]\subset \bar{E}(\F_p)$$
+where $\overline E(\F_p)$ is the group of $\F_p$-rational points on the reduced curve $\overline E$.
+\item In the case when $\mathcal C=\mathcal G_{\text{tr}=r}=\{\sigma\in\mathcal G:\operatorname{tr}\sigma=t\}$, and $\ell$ is a sufficiently large prime so that $\operatorname{Gal}(\Q(E[\ell])/\Q)=
+\operatorname{GL}_2(\F_\ell)$, then
+$$\#\operatorname{GL}_2(\F_\ell)_{\text{tr}=r}=\begin{cases}
+                   \ell^2(\ell-1) & \text{if } r=0\\
+                   \ell(\ell^2-\ell-1) & \text{otherwise.}
+                  \end{cases}
+$$
+\end{itemize}
+These examples will be elaborated during Lecture~3.
+
+\subsection{Classification of possible subgroups of $\operatorname{GL}_2(\F_\ell)$ that can appear as image of Galois}
+Part of the work of Serre consists in classifying the possible images of $G(\ell)$. More precisely, Serre proved in \cite{S2} 
+that $\rho_\ell(G_\Q)$ contains a subgroup of one of the 
+following types:
+\begin{enumerate}
+ \item ``split half Cartan subgroup'': A cyclic subgroup of of $\ell-1$ which can be represented as
+ $$\left\{\begin{pmatrix} a&0\\ 0&1            
+           \end{pmatrix}: a\in\F_\ell^*\right\},$$
+ \item ``half Borel subgroup'': A solvable group that can be represented as
+ $$\left\{\begin{pmatrix} a&0\\ 0&b            
+           \end{pmatrix}: a\in\F_\ell^*, b\in\F_\ell\right\},$$ 
+ \item ``non split half Cartan subgroup'': A cyclic subgroup of of $\ell^2-1$.
+\end{enumerate}
+Furthermore if $\rho_\ell(G_\Q)\neq\operatorname{GL}_2(\F_\ell)$, then one of the following happens:
+
+\begin{itemize}
+ \item $\rho_\ell(G_\Q)$ is either contained in a Cartan subgroup or a Borel subgroup (upper
+triangular matrices) of $\operatorname{GL}_2(\F_\ell)$,
+ \item $\rho_\ell(G_\Q)$ is contained in the normalizer of a Cartan subgroup and it is not contained in the Cartan subgroup
+ of $\operatorname{GL}_2(\F_\ell)$.
+\end{itemize}
+We will conclude with some explicit examples.
+\subsection{The Definition of Serre's Curve}
+
+It is in general not easy to compute the image $\rho(G_\Q)\subset\operatorname{GL}_2(\hat\Z).$ Actually, it was showed by Serre that
+$\rho(G_\Q)$ is always contained in an index $2$ subgroup of $\operatorname{GL}_2(\hat\Z)$. 
+Such subgroup is called the \emph{Serre's Subgroup} $\mathcal H_E$ and it 
+is defined as 
+$$\mathcal H_E=\pi_{m_E}^{-1}(H_{m_E})$$ where 
+\begin{itemize}
+ \item $\pi_m:\operatorname{GL}_2(\hat\Z)\rightarrow\operatorname{GL}_2(\Z/m\Z)$ is the natural projection,
+ \item $m_E$ is the \emph{Serre number of $E$} defined as the least common multiple $[2,\operatorname{disc}(\Q(\sqrt{|\Delta_E|}))]$,
+ \item and if $\varepsilon$ denotes the \emph{signature map} (i.e.
+$\varepsilon:\operatorname{GL}_2(\Z/m\Z)\rightarrow\operatorname{GL}_2(\Z/2\Z)\cong S_3\rightarrow\{\pm1\}$), then
+$$H_m=\left\{\sigma\in\operatorname{GL}_2(\Z/m\Z): \varepsilon(A)=\left(\frac{\Delta_E}{\det A}\right)\right\}.$$
+ \end{itemize}
+ 
+An elliptic curve $E/\Q$ is called \emph{a Serre curve} if $\rho(G_\Q)=\mathcal H_E$. These curves are quite common and will be considered in 
+the third lecture.
+
+\section{Lecture 3 - The Lang--Trotter Conjectures}
+
+The third lecture is devoted to reviews of some applications of $\ell$--adic representations
+to number Theory and in particular to the Lang--Trotter Conjectures. 
+
+\subsection{Lang Trotter for primitive points}
+
+E. Artin made a celebrated conjecture concerning the density of primes for which a given 
+ integer is a primitive root. 
+  In the first part of this lecture, we will discuss an analogous conjecture for elliptic curves.
+   Let $E$ be an elliptic curve defined over $\Q$ with $P\in E(\Q)$ a $\Q$-rational point 
+   of infinite order. $P$ is called \emph{primitive} for a prime $p$ if the reduction $\overline P$ of $P\bmod p$ 
+   generates the entire group $\overline E(\F_p)$ of $\F_p$-rational points on the reduced curve $\overline E$.
+   
+We set $$\pi_{E,P}(x)=\#\{p\le x: p\nmid\Delta_E\text{ and } P\text{ is primitive for } p\}.$$
+
+In 1976, Lang and Trotter in \cite{LT1} conjecture an asymptotic formula for $\pi_{E,P}(x)$ and consequently 
+an expression for the density of primes for which $P$ is primitive.
+More precisely, they conjecture that
+$$\pi_{E,P}(x)\sim \delta_{E,P}\frac x{\log x}\qquad x\rightarrow\infty.$$
+where 
+$$\delta_{E,P}=\sum_{n=1}^\infty\mu(n)\frac{\#\mathcal C_{P,n}}{\#\operatorname{Gal}(\Q(E[n],n^{-1}P)/\Q)}$$
+where $\Q(E[n],n^{-1}P)$ is the extension of $\Q(E[n])$ obtained with all the coordinates of the points
+$Q\in E(\bar{\Q})$ such that $nQ=P$ and $\mathcal C_{P,n}$ are suitable defined union of conjugacy classes in 
+$\operatorname{Gal}(\Q(E[n],n^{-1}P)/\Q)$.
+
+The heuristic argument is based on the Chebotarev Density Theorem.
+%   Let $K_\ell=\Q(E[\ell],\ell^{-1}P)$. The affine group equal to the extension of the 
+%    translation group $E[\ell]$ by $\operatorname{GL}_2(\F_\ell)$ operates on $\ell^{-1}P$. 
+%    
+%    Fix $u_0\in \ell^{-1}P$ and represent $\sigma$ in this 
+%    affine group by $(\gamma,\tau)$ with $\gamma\in\operatorname{GL}_2(\F_\ell)$ and $\tau\in E[\ell]$ 
+%    such that $(\gamma,\tau)u=u_0+\gamma(u-u_0)+\tau$. 
+%   
+%   Assume $p\nmid\Delta_E\ell$ where $\Delta_E$ is the discriminant of $E$. 
+%   Let $S_\ell=G_\ell-S_\ell{}'$ where $S_\ell{}'$ denotes the set of all $(\gamma,\tau)$ 
+%    such that $\gamma$ has eigenvalue 1 and either $\gamma=1$ or 
+%    $\operatorname{Ker}(\gamma-1)$ is cyclic and $\tau\in\operatorname{Im}(\gamma-1)$. 
+%    The index of the subgroup generated by $\overline P$ is divisible by $\ell\leftrightarrow$ the Frobenius lies in $S_\ell{}'$.
+%    For any set of primes $L$, let $S_L=\prod_{\ell\in L}S_\ell$, let $K_L$ be the compositum of all $K_\ell$ with $\ell\in L$, let 
+%    $G_L=\operatorname{Gal}(K_L/\Q)$, let $P_{L,S}(x)$ be the set of primes $p\leq x$ such that $p\nmid\Delta_E$ and such that the Frobenius 
+%    $(p,K_\ell/\Q)\in S_\ell$, $\forall \ell\in L$, $\ell\neq p$. 
+%    Chebotarev's density theorem implies that 
+%    $$\delta_L(S)=\lim_{x\rightarrow\infty}|P_{L,S}(x)|/\pi(x)=|S_L\cap G_L|/|G_L|$$ 
+%    for $L$ finite. 
+%    
+%    As $L$ increases to include all primes, $\delta(S)=\lim_L\delta_L(S)$ exists. 
+%    The conjecture is then that $\delta(S)$ is equal to the density of primes for which $P$ is primitive. 
+%    A number of examples, numerical computations, and generalizations will be discussed.
+   The Lang--Trotter conjecture for primite points is still not known in any case. The Generalized Riemann Hypothesis allows to deduce some analogue conjectures 
+   for CM elliptic curves. We will discuss some of the known results and in particular those due to Gupta, Murty and Murty \cite{GM}
+   
+\subsection{Serre's Cyclicity Conjecture}
+J. P. Serre has formulated a conjecture with a similar flavor. Let $E/\Q$ be an elliptic curve and let 
+$$\pi_E^{\text{cyclic}}(x)=\#\{p\le x:\overline E(\F_p)\text{ is cyclic}\}.$$
+The conjecture postulates the validity of the asymptotic formula:
+$$\pi_E^{\text{cyclic}}(x)\sim\delta_E^{\text{cyclic}}\frac x{\log x}\qquad x\rightarrow\infty$$
+where 
+$$\delta_E^{\text{cyclic}}=\sum_{n=1}^\infty\frac{\mu(n)}{\operatorname{Gal}(\Q(E[n])/\Q)}.$$
+Serre himself applied the Chebotarev Density Theorem, in analogy with the Hooley's work for Artin's Conjecture, 
+and proved this conjecture as a consequence of the Generalized Riemann Hypothesis.
+Furthermore, if $E$ has no CM,  $\delta_E^{\text{cyclic}}$ is a rational multiple of the quantity
+$$\prod_\ell\left(1-\frac{1}{(\ell^2-\ell)(\ell^2-1)}\right).$$
+We will discuss this result and several more due to Gupta and Murty \cite{GM2} and to A. Cojocaru \cite{C}.
+ 
+\subsection{Lang Trotter for fixed trace of Frobenius}
+In an earlier publication \cite{LT2}, Lang and Trotter considered, for  a fixed elliptic curve $E/\Q$ and an integer $r$, the function
+$$\pi_E^r(x)=\#\{p\le x: p\nmid\Delta_E\text{ and } \#\overline E(\F_p)=p+1-r\}$$
+and they conjecture that if either $r\ne0$ or if $E$ has no CM, then
+$$\pi_E^r(x)\sim C_{E,r}\frac{\sqrt{x}}{\log x}\qquad x\rightarrow\infty$$
+where $C_{E,r}$ is the so--called \emph{Lang--Trotter constant} which is defined as follows:
+$$C_{E,r}=\frac2\pi\lim_{m\rightarrow\infty}\frac{K_m\#\operatorname{Gal}\Q(E[K_m])/\Q)_{\text{trace}=r}}{\#\operatorname{Gal}\Q(E[K_m])/\Q)}$$
+where $K_m$ a sequence of integers with the property that every integer divides $K_m$ when $m$ is large enough. For example $k_m=m!$  
+has this property.
+
+In virtue of the Open Mapping Theorem, we know that there exists an integer $N_E$, called the \emph{torsion conductor} such that 
+$$C_{E,r}=\frac2\pi\frac{N_E\#\operatorname{Gal}\Q(E[N_E])/\Q)_{\text{trace}=r}}{\#\operatorname{Gal}\Q(E[N_E])/\Q)}
+\times\prod_{\ell\nmid N_E}\frac{\ell\#\operatorname{GL}_2(\F_\ell)_{\text{tr}=r}}{\#\operatorname{GL}_2(\F_\ell)} $$
+ 
+ 
+As an application of the theory of $\ell$--adic representations and of the Chebotarev density Theorem, assuming the Generalized Riemann 
+Hypoythesis, Serre in \cite{S3} showed that
+$$\pi_E^r(x)\ll\begin{cases} x^{7/8}(\log x)^{-1/2}&\text{if}\ r\ne0\\ x^{3/4}&\text{if}\ r=0.\end{cases}$$  
+
+These results were improved for $r\ne0$ by Murty, Murty and Sharadha \cite{MMS} that showed, assuming the Gereralized Riemann Hypothsis, that
+$\pi_E^r(x)\ll x^{4/5}/(\log x).$
+
+%    Let $K/{\bf Q}$ be an (infinite) Galois extension with Galois group of $G$, let
+%     $\rho\colon G\rightarrow\times\text{GL}_2({\bf Z}_\ell)$ be representation 
+%     and let $\rho_l$ be the projection on the $\ell$-th factor. 
+%     From $\rho$ is required: 
+%     \begin{enumerate}
+%      \item  $\rho(G)$ is an open subset of $\times\text{GL}_2({\bf Z}_\ell)$ ($\ell$ prime);
+%  \item There is an integer $\Delta$, such that for all primes $p$ with $p\nmid\Delta\cdot\ell$, $\rho_\ell$ is unramified at $p$
+%     \end{enumerate}
+%     Property (2) makes it possible to consider the Frobenius class $\sigma_p$ in 
+%     $G/\text{Ker}\rho_l$. Let $X^2-t_pX+p$ be the characteristic polynomial $\rho_l(\sigma_p)$. 
+%   It is well known that (3) $t_p$ is an integer, which is independent of $\ell$ ($t_p =$ trace of Frobenius), and that the roots
+% of the characteristic polynomial have the absolute value less than $\sqrt{p}$ and are complex conjugate to each other.
+% We denote by $\pi_p$ one such a root. 
+% We can also consider the extension $K$ of $\Q$, obtained by adjoining the torsion points of an ellipti curve over $\Q$ with out
+% complex multiplication \cite{S2}.
+% Let $t_0\in{\bf Z}$, $k$ an imaginary quadratic number field, $x\in{\bf R}$. 
+% Let $N_{t_{0,\rho}}(x)=$ number of primes $p\leq x$ with $t_p=t_0$ and 
+% $N_{k,\rho}(x)=$ number of primes $p\leq x$ with $k={\bf Q}(\pi_p)$. Sia $\pi_{1/2}(x)=\sum_{p\leq x}1/(2\surd p)$..
+% 
+% Then the following conjecture is made: There is a constant $C(t_0,\rho)$ and a constant $C(K,\rho)$
+% such that: $N_{t_{0,\rho}}(x)\sim C(t_{0,\rho})\cdot\pi_{1/2}(x)$ and $N_{k,\rho}(x)\sim C(k,\rho)\cdot\pi_{1/2}(x)$.
+% 
+% To justify these assumptions, the simplest possible probabilistic models with the sequences $\{t_p\}$ are considered as random sequences,
+% o that almost all the episodes show an asymptotic behavior that is consistent with the density of sets of Chebotarev, Hecke 
+% and the Sato-Tate Conjecture.
+% 
+% Example (Part I,$\S$ $\S$3, 4):): Let $M$ be a positive number, $G(M)$ the reduction of 
+% $\rho(G)\,\text{mod}\,M$, $G(M)_t=\{\sigma\in G(M)$, $\text{tr}(\sigma)\equiv t\,\text{mod}\,M\}$. Let $F_M(t)=M\cdot|G(M)_t|/|G(M)|$.
+% 
+% Then, by Chebotarev $F_M(t)/M$ is the density of primes $p$ such that 
+% $t_p\equiv t\text{mod}\,M$. It is further assumed that a density function $g(\xi)$ exists which is equal to 0 outside $[-1,1]$, 
+% the integral of the density of primes $p$ measures the $\xi(t_p,p):= t_p/(2\surd p)$ is in a certain interval.
+% If $\rho$ comes from an elliptic curve, we take $g(\xi)=(2/\pi)\surd(1-\xi^2)$.    
+%       
+% The main assumption with respect to the probability model is then that the function $f_M(t,p)=c_pg(\xi(t,p)) F_M(t)$ abbia misura
+% $\mu_p$ in the fiber through $p$ of the probability space representing, wherein $c_p$ is determined so that 
+% $\sum_tf_M(t,p)=1$.
+% 
+% It follows: $c_p\sim 1/(2\surd p)$.
+% 
+%   In $\S4$ it is shown that $\lim_MF_M(t_0):= F(t_0)$ exists for $p\rightarrow\infty$ 
+%   goes $c_p\cdot g(\xi,t_0)$ against $(1/(2\surd p))\cdot g(0)$.
+%   Substituting $C(t_{0,\rho})=g(0)\cdot F(t_0)$, one has for ``almost all'' sequences 
+%   $\{t_p\}\colon N_{t_0}(x)\sim C(t_{0,\rho})\pi_{1/2}(x)$.
+% 
+% For further determination of $C(t_{0,\rho})$, $F(t_0)$ 
+% is written as a product of local factors, the determination can be achieved $\rho$ 
+% by an accurate investigation of the special presentation.
+% 
+% For the so-called "Serre curves'' (the image of $\rho$ is as large as possible) and for $X_0(11)$, 
+% this is in \S \S 5-8, Part I, using and further development of techniques of J.-P. Serre \cite{S1} 
+% and G. Shimura [J. Reine Angew Math 221 (1966), 209-220.;
+% MR0188198 (\# 32 5637)] carried out. 
+% 
+% Much more complicated is the situation with the statement about imaginärquadratische field $k$ (Part II), 
+% especially when the maximum abelian extension of $k$ with $K$ has an average which is truly greater than the bodies of all roots of unity.
+%      
+% To handle these cases, in Part III special ingenious calculations are performed. 
+% The resulting constant $C(k,\rho)$ is inversely proportional to  $\surd|D|$ ($D=$ discriminant $k$ ) 
+% is again the product of local factors is dependent almost all $\ell$ only of $D$ and $\ell$, and an ``infinite'' 
+% factor resulting from the Sato Tate distribution.
+%  
+% The local factors can be represented as $\ell$-adic integrals of certain functions that are Harish transform ($\S$ $\S$7, 8, Part II). 
+%     
+% A numerical discussion on Serre curves is in the fourth part (for the first 5000 prime numbers) and $X_0(11)$  (with even further calculations), 
+% where a satisfactory agreement between theory and practice can be determined.    
+
+\subsection{Average Lang--Trotter}
+
+For every integer $a,b$ such that $4a^3+27b^2\ne0$, we let
+$$E(a,b):y^2=x^3+ax+b.$$
+We will conclude the lecture with a discussion of the following statement which appeared in \cite{DP}.
+ Let $r$ be an integer, $A,B>1$. For every $c > 0$ we have
+$$\frac{1}{4AB}\sum_{|a|\le A,|b|\le B}
+\pi^r_{E(a,b)}(x)=C_r\int_2^x\frac{dt}{\sqrt{t}\log t}+
+O\left(\left(\frac1A+\frac1B\right)x^{3/2}+\frac{x^{5/2}}{AB}+\frac{\sqrt x}{\log^cx}
+\right).$$
+where
+$$C_r=\frac2\pi\prod_{\ell}\frac{\#\operatorname{GL}_2(\F_\ell)_{\text{tr}=r}}{\#\operatorname{GL}_2(\F_\ell)}.$$
+
+\begin{thebibliography}{2}
+\bibitem{C}
+\textsc{Cojocaru, Alina Carmen}, 
+\textit{Cyclicity pf CM Elliptic Curves modulo $p$}
+Trans. of the AMS \textbf{355}, 7, (2003) 2651--2662.
+
+\bibitem{DP}  
+\textsc{David, Chantal; Pappalardi, Francesco},
+\textit{Average Frobenius Distribution of Elliptic Curves}, 
+Internat. Math. Res. Notices \textbf{4} (1999) 165--183.
+
+\bibitem{GM}
+\textsc{Gupta, Rajiv; Murty M. Ram},
+\textit{Primitive points on elliptic curves},
+Compositio Mathematica \textbf{58}, n. 1 (1986), 13--44.
+
+\bibitem{GM2}
+\textsc{Gupta, Rajiv; Murty M. Ram},
+\textit{Cyclicity and generation of points mod $p$ on elliptic curves},
+Inventiones mathematicae \textbf{101} 1 (1990)  225--235
+
+\bibitem{LT1}
+\textsc{Lang, Serge; Trotter, Hale},
+Frobenius distributions in ${\rm GL}_{2}$-extensions.
+Lecture Notes in Mathematics, Vol. 504. \textit{Springer-Verlag}, Berlin--New York, 1976
+
+\bibitem{LT2}
+\textsc{Lang, Serge; Trotter, Hale},
+\textit{Primitive points on elliptic curves}. Bull. Amer. Math. Soc. 
+\textbf{83} (1977), no. 2, 289--292.
+
+\bibitem{MMS}
+\textsc{Murty, M. Ram; Murty, V. Kumar; Saradha, N.},
+\textit{Modular Forms and the Chebotarev Density Theorem,}
+American Journal of Mathematics, \textbf{110}, No. 2 (1988), 253--281
+
+\bibitem{S1}
+\textsc{Serre, Jean-Pierre}, 
+Abelian $\ell$-adic representations and elliptic curves. 
+With the collaboration of Willem Kuyk and John Labute. 
+Second edition. Advanced Book Classics. Addison-Wesley Publishing Company, 
+\textit{Advanced Book Program}, Redwood City, CA, 1989.
+
+\bibitem{S2}
+\textsc{Serre, Jean-Pierre},
+\textit{Propri\'et\'es galoisiennes des points d'ordre fini des courbes elliptiques}. 
+(French) Invent. Math. \textbf{15} (1972), no. 4, 259--331.
+\rho
+\bibitem{S3}
+\textsc{Serre, Jean-Pierre},
+\textit{Quelques applications du th\'eor\`eme de densit\'e de Chebotarev}. (French) 
+Inst. Hautes \'Etudes Sci. Publ. Math. No. \textbf{54} (1981), 323--401. 
+\end{thebibliography} 
+
+\end{document}

@@ -1,0 +1,1268 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     48668,       1259]
+NotebookOptionsPosition[     44502,       1128]
+NotebookOutlinePosition[     46090,       1178]
+CellTagsIndexPosition[     45762,       1166]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Adding Points on an Elliptic Curve", "DemoTitle",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4033559818751063`*^9, 3.4033559870314226`*^9}, {
+   3.403362237456413*^9, 3.4033622471594133`*^9}, 3.4033624529067802`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["", "InitializationSection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"EcAdd", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a_", ",", "b_"}], "}"}], ",", "p1_", ",", "p2_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "m", ",", "x1", ",", "y1", ",", "x2", ",", "y2", ",", "x3", ",", "y3", 
+       ",", "w"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"x1", ",", "y1"}], "}"}], "=", "p1"}], ";", " ", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"x2", ",", "y2"}], "}"}], "=", "p2"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"Handle", " ", "identity", " ", "cases"}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"x1", "\[Equal]", "\[Infinity]"}], ",", 
+        RowBox[{"Return", "[", "p2", "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["p", "1"], " ", "+", " ", 
+         RowBox[{"(", 
+          RowBox[{"-", 
+           SubscriptBox["p", "1"]}], ")"}]}], " ", "=", " ", "\[Infinity]"}], 
+       " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"x1", "\[Equal]", "x2"}], "&&", " ", 
+         RowBox[{
+          RowBox[{"y1", "+", "y2"}], "\[Equal]", "0"}]}], ",", 
+        RowBox[{"Return", "[", 
+         RowBox[{"{", 
+          RowBox[{"\[Infinity]", ",", "\[Infinity]"}], "}"}], "]"}]}], "]"}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "If", " ", "we", " ", "are", " ", "doubling", " ", "a", " ", "point"}],
+        " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"p1", "\[Equal]", "p2"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"Check", " ", "for", " ", "vertical", " ", "tangent"}], " ", 
+         "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"y1", "\[Equal]", "0"}], ",", 
+           RowBox[{"Return", "[", 
+            RowBox[{"{", 
+             RowBox[{"\[Infinity]", ",", "\[Infinity]"}], "}"}], "]"}]}], 
+          "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "Compute", " ", "the", " ", "slope", " ", "of", " ", "the", " ", 
+           "tangent"}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"m", "=", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"3", " ", 
+              SuperscriptBox["x1", "2"]}], "+", "a"}], ")"}], "/", 
+           RowBox[{"(", 
+            RowBox[{"2", " ", "y1"}], ")"}]}]}], ";"}], "\[IndentingNewLine]",
+         ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "else", " ", "compute", " ", "the", " ", "slope", " ", "of", " ", 
+          "the", " ", "chord"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"m", "=", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"y2", "-", "y1"}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"x2", "-", "x1"}], ")"}]}]}]}], "\[IndentingNewLine]", 
+       "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"x3", "=", 
+       RowBox[{
+        SuperscriptBox["m", "2"], "-", "x1", "-", "x2"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"y3", "=", 
+       RowBox[{
+        RowBox[{"m", 
+         RowBox[{"(", 
+          RowBox[{"x1", "-", "x3"}], ")"}]}], "-", "y1"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"x3", ",", "y3"}], "}"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{3.35696210375764*^9, 3.4033580218610697`*^9},
+ CellID->481247131],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"EcY", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a_", ",", "b_"}], "}"}], ",", "x_"}], "]"}], ":=", 
+   RowBox[{"Sqrt", "[", 
+    RowBox[{
+     SuperscriptBox["x", "3"], "+", 
+     RowBox[{"a", " ", "x"}], "+", "b"}], "]"}]}], ";"}]], "Input",
+ CellID->341104547],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"PlotEcAdd", "[", 
+    RowBox[{"pt1_", ",", "pt2_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pt3", ",", "pt4"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"pt4", "=", 
+       RowBox[{"EcAdd", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"a", ",", "b"}], "}"}], ",", "pt1", ",", "pt2"}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"pt3", "=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+         "pt4", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+         RowBox[{"-", 
+          RowBox[{
+          "pt4", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}]}], 
+        "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"ContourPlot", "[", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["y", "2"], "\[Equal]", 
+           RowBox[{
+            SuperscriptBox["x", "3"], "+", 
+            RowBox[{"a", " ", "x"}], "+", "b"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", 
+            RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"y", ",", 
+            RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+          RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+          RowBox[{"PerformanceGoal", "\[Rule]", "\"\<Quality\>\""}], ",", 
+          RowBox[{"PlotPoints", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"15", ",", "20"}], "}"}]}]}], "]"}], ",", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"PointSize", "[", "0.02", "]"}], ",", 
+           RowBox[{"Point", "[", 
+            RowBox[{"{", 
+             RowBox[{"pt1", ",", "pt2", ",", "pt3"}], "}"}], "]"}], ",", 
+           RowBox[{"ColorData", "[", 
+            RowBox[{"1", ",", "2"}], "]"}], ",", 
+           RowBox[{"Point", "[", "pt4", "]"}], ",", 
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"pt1", ",", "pt3"}], "}"}], "]"}], ",", 
+           RowBox[{"ColorData", "[", 
+            RowBox[{"1", ",", "3"}], "]"}], ",", 
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"pt3", ",", "pt4"}], "}"}], "]"}]}], "}"}], "]"}]}], 
+       "}"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4033580137048197`*^9, 3.4033580247985697`*^9}},
+ CellID->441945186],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{"-", "3"}]}], ";", 
+  RowBox[{"b", "=", 
+   RowBox[{"-", "1"}]}], ";", " ", 
+  RowBox[{"x1", "=", 
+   RowBox[{"-", "1.2"}]}], ";", " ", 
+  RowBox[{"pt1", "=", 
+   RowBox[{"{", 
+    RowBox[{"x1", ",", 
+     RowBox[{"EcY", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b"}], "}"}], ",", "x1"}], "]"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4033554375073915`*^9, 3.403355443632509*^9}},
+ CellID->12825914],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DemoEcAdd", "[", "]"}], ":=", 
+  RowBox[{"Manipulate", "[", 
+   RowBox[{
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotEcAdd", "[", 
+       RowBox[{"pt1", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+          "pt", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+          RowBox[{"EcY", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"a", ",", "b"}], "}"}], ",", 
+            RowBox[{
+            "pt", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+           "]"}]}], "}"}]}], "]"}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", "440"}]}], "]"}], ",", 
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Row", "[", 
+       RowBox[{"{", 
+        RowBox[{"\"\< Elliptic Curve Point Addition \>\"", ",", 
+         RowBox[{"TraditionalForm", "[", 
+          RowBox[{
+           SuperscriptBox["y", "2"], "\[Equal]", 
+           RowBox[{
+            SuperscriptBox["x", "3"], "+", 
+            RowBox[{"a", " ", "x"}], " ", "+", "b"}]}], "]"}]}], "}"}], "]"}],
+       ",", "18"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"pt", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1.2"}], ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "0.38"}], ",", "0"}], "}"}], ",", "Locator", ",", 
+      RowBox[{"Appearance", "\[Rule]", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<|\>\"", ",", "20", ",", "Red"}], "]"}]}]}], "}"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.403355458273415*^9, 3.403355458867176*^9}, {
+   3.4033580053298197`*^9, 3.4033580054235697`*^9}, {3.4033581826891947`*^9, 
+   3.4033581826891947`*^9}},
+ CellID->160765096]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"PlotEcAdd", "[", 
+      RowBox[{"pt1", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"pt", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+          ",", 
+         RowBox[{"EcY", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"a", ",", "b"}], "}"}], ",", 
+           RowBox[{
+           "pt", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+          "]"}]}], "}"}]}], "]"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "440"}], ",", 
+     RowBox[{"PlotLabel", "\[Rule]", 
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{"Row", "[", 
+         RowBox[{"{", 
+          RowBox[{"TraditionalForm", "[", 
+           RowBox[{
+            SuperscriptBox["y", "2"], "\[Equal]", 
+            RowBox[{
+             SuperscriptBox["x", "3"], "+", 
+             RowBox[{"a", " ", "x"}], " ", "+", "b"}]}], "]"}], "}"}], "]"}], 
+        ",", "18"}], "]"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"pt", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1.2"}], ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "0.38"}], ",", "0"}], "}"}], ",", "Locator", ",", 
+     RowBox[{"Appearance", "\[Rule]", 
+      RowBox[{"Style", "[", 
+       RowBox[{"\"\<|\>\"", ",", "20", ",", "Red"}], "]"}]}]}], "}"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.403355465507929*^9, 3.4033554667423277`*^9}, {
+   3.4033579959860697`*^9, 3.4033580023923197`*^9}, {3.4033581118610697`*^9, 
+   3.4033581827048197`*^9}, 3.403362270237243*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`pt$$ = {-0.38, 0}, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`pt$$], {-1.2, 0}, {-0.38, 0}}}, Typeset`size$$ = {
+    440., {230., 234.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`pt$112000$$ = {0, 0}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`pt$$ = {-1.2, 0}}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`pt$$, $CellContext`pt$112000$$, {0, 0}]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`PlotEcAdd[$CellContext`pt1, {
+          Part[$CellContext`pt$$, 1], 
+          $CellContext`EcY[{$CellContext`a, $CellContext`b}, 
+           Part[$CellContext`pt$$, 1]]}], ImageSize -> 440, PlotLabel -> Style[
+          Row[{
+            
+            TraditionalForm[$CellContext`y^2 == $CellContext`x^3 + \
+$CellContext`a $CellContext`x + $CellContext`b]}], 18]], 
+      "Specifications" :> {{$CellContext`pt$$, {-1.2, 0}, {-0.38, 0}, 
+         ControlType -> Locator, Appearance -> Style["|", 20, 
+           RGBColor[1, 0, 0]]}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{491., {261., 266.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotEcAdd[
+         Pattern[$CellContext`pt1, 
+          Blank[]], 
+         Pattern[$CellContext`pt2, 
+          Blank[]]] := 
+       Module[{$CellContext`pt3, $CellContext`pt4}, $CellContext`pt4 = \
+$CellContext`EcAdd[{$CellContext`a, $CellContext`b}, $CellContext`pt1, \
+$CellContext`pt2]; $CellContext`pt3 = {
+            Part[$CellContext`pt4, 1], -Part[$CellContext`pt4, 2]}; {
+           
+           ContourPlot[$CellContext`y^2 == $CellContext`x^3 + $CellContext`a \
+$CellContext`x + $CellContext`b, {$CellContext`x, -5, 5}, {$CellContext`y, -4,
+              4}, Axes -> True, PerformanceGoal -> "Quality", 
+            PlotPoints -> {15, 20}], 
+           Graphics[{
+             PointSize[0.02], 
+             Point[{$CellContext`pt1, $CellContext`pt2, $CellContext`pt3}], 
+             ColorData[1, 2], 
+             Point[$CellContext`pt4], 
+             Line[{$CellContext`pt1, $CellContext`pt3}], 
+             ColorData[1, 3], 
+             
+             Line[{$CellContext`pt3, $CellContext`pt4}]}]}], $CellContext`pt1 = \
+{-1.2, 0.9338094023943001}, $CellContext`EcAdd[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]]}, 
+         Pattern[$CellContext`p1, 
+          Blank[]], 
+         Pattern[$CellContext`p2, 
+          Blank[]]] := 
+       Module[{$CellContext`m, $CellContext`x1, $CellContext`y1, \
+$CellContext`x2, $CellContext`y2, $CellContext`x3, $CellContext`y3, \
+$CellContext`w}, {$CellContext`x1, $CellContext`y1} = $CellContext`p1; \
+{$CellContext`x2, $CellContext`y2} = $CellContext`p2; 
+         If[$CellContext`x1 == Infinity, 
+           Return[$CellContext`p2]]; If[
+           
+           And[$CellContext`x1 == $CellContext`x2, $CellContext`y1 + \
+$CellContext`y2 == 0], 
+           Return[{Infinity, Infinity}]]; 
+         If[$CellContext`p1 == $CellContext`p2, If[$CellContext`y1 == 0, 
+             
+             Return[{Infinity, Infinity}]]; $CellContext`m = (
+              3 $CellContext`x1^2 + $CellContext`a)/(2 $CellContext`y1); 
+           Null, $CellContext`m = ($CellContext`y2 - \
+$CellContext`y1)/($CellContext`x2 - $CellContext`x1)]; $CellContext`x3 = \
+$CellContext`m^2 - $CellContext`x1 - $CellContext`x2; $CellContext`y3 = \
+$CellContext`m ($CellContext`x1 - $CellContext`x3) - $CellContext`y1; \
+{$CellContext`x3, $CellContext`y3}], $CellContext`a = -3, $CellContext`b = \
+-1, $CellContext`x1 = -1.2, $CellContext`EcY[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]]}, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := 
+       Sqrt[$CellContext`x^3 + $CellContext`a $CellContext`x + \
+$CellContext`b]}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->342910837]
+}, {2}]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection"],
+
+Cell[TextData[{
+ "Elliptic curves are the solutions sets of nonsingular cubic polynomials of \
+degree three. It is possible to define an addition law for these points so \
+that they form an abelian algebraic group. In order to add distinct points, \
+construct the line between them and determine the third point of intersection \
+with the curve. The sum of the two points is then the reflection of the third \
+point about the axis of symmetry, which is the ",
+ Cell[BoxData[
+  FormBox["x", TraditionalForm]], "InlineMath"],
+ " axis for the case illustrated here. In order to add a point to itself, use \
+the tangent line to the curve at that point."
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.403355480555093*^9, 3.403355648698946*^9}, {
+   3.4033581824079447`*^9, 3.4033581962204447`*^9}, {3.4033584501891947`*^9, 
+   3.4033584968610697`*^9}, {3.4033623490487347`*^9, 3.403362416485371*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`pt$$ = {-0.982, 0}, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`pt$$], {-0.982, 0}}, {-1.2, 0}, {-0.38, 0}}}, 
+    Typeset`size$$ = {440., {230., 234.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`pt$112049$$ = {0, 0}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`pt$$ = {-0.982, 0}}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`pt$$, $CellContext`pt$112049$$, {0, 0}]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`PlotEcAdd[$CellContext`pt1, {
+          Part[$CellContext`pt$$, 1], 
+          $CellContext`EcY[{$CellContext`a, $CellContext`b}, 
+           Part[$CellContext`pt$$, 1]]}], ImageSize -> 440, PlotLabel -> Style[
+          Row[{
+            
+            TraditionalForm[$CellContext`y^2 == $CellContext`x^3 + \
+$CellContext`a $CellContext`x + $CellContext`b]}], 18]], 
+      "Specifications" :> {{{$CellContext`pt$$, {-0.982, 0}}, {-1.2, 
+          0}, {-0.38, 0}, ControlType -> Locator, Appearance -> Style["|", 20, 
+           RGBColor[1, 0, 0]]}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{491., {261., 266.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotEcAdd[
+         Pattern[$CellContext`pt1, 
+          Blank[]], 
+         Pattern[$CellContext`pt2, 
+          Blank[]]] := 
+       Module[{$CellContext`pt3, $CellContext`pt4}, $CellContext`pt4 = \
+$CellContext`EcAdd[{$CellContext`a, $CellContext`b}, $CellContext`pt1, \
+$CellContext`pt2]; $CellContext`pt3 = {
+            Part[$CellContext`pt4, 1], -Part[$CellContext`pt4, 2]}; {
+           
+           ContourPlot[$CellContext`y^2 == $CellContext`x^3 + $CellContext`a \
+$CellContext`x + $CellContext`b, {$CellContext`x, -5, 5}, {$CellContext`y, -4,
+              4}, Axes -> True, PerformanceGoal -> "Quality", 
+            PlotPoints -> {15, 20}], 
+           Graphics[{
+             PointSize[0.02], 
+             Point[{$CellContext`pt1, $CellContext`pt2, $CellContext`pt3}], 
+             ColorData[1, 2], 
+             Point[$CellContext`pt4], 
+             Line[{$CellContext`pt1, $CellContext`pt3}], 
+             ColorData[1, 3], 
+             
+             Line[{$CellContext`pt3, $CellContext`pt4}]}]}], $CellContext`pt1 = \
+{-1.2, 0.9338094023943001}, $CellContext`EcAdd[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]]}, 
+         Pattern[$CellContext`p1, 
+          Blank[]], 
+         Pattern[$CellContext`p2, 
+          Blank[]]] := 
+       Module[{$CellContext`m, $CellContext`x1, $CellContext`y1, \
+$CellContext`x2, $CellContext`y2, $CellContext`x3, $CellContext`y3, \
+$CellContext`w}, {$CellContext`x1, $CellContext`y1} = $CellContext`p1; \
+{$CellContext`x2, $CellContext`y2} = $CellContext`p2; 
+         If[$CellContext`x1 == Infinity, 
+           Return[$CellContext`p2]]; If[
+           
+           And[$CellContext`x1 == $CellContext`x2, $CellContext`y1 + \
+$CellContext`y2 == 0], 
+           Return[{Infinity, Infinity}]]; 
+         If[$CellContext`p1 == $CellContext`p2, If[$CellContext`y1 == 0, 
+             
+             Return[{Infinity, Infinity}]]; $CellContext`m = (
+              3 $CellContext`x1^2 + $CellContext`a)/(2 $CellContext`y1); 
+           Null, $CellContext`m = ($CellContext`y2 - \
+$CellContext`y1)/($CellContext`x2 - $CellContext`x1)]; $CellContext`x3 = \
+$CellContext`m^2 - $CellContext`x1 - $CellContext`x2; $CellContext`y3 = \
+$CellContext`m ($CellContext`x1 - $CellContext`x3) - $CellContext`y1; \
+{$CellContext`x3, $CellContext`y3}], $CellContext`a = -3, $CellContext`b = \
+-1, $CellContext`x1 = -1.2, $CellContext`EcY[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]]}, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := 
+       Sqrt[$CellContext`x^3 + $CellContext`a $CellContext`x + \
+$CellContext`b]}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->270072088]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`pt$$ = {-1.2, 0}, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`pt$$], {-1.2, 0}, {-0.38, 0}}}, Typeset`size$$ = {
+    440., {230., 234.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`pt$112098$$ = {0, 0}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`pt$$ = {-1.2, 0}}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`pt$$, $CellContext`pt$112098$$, {0, 0}]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`PlotEcAdd[$CellContext`pt1, {
+          Part[$CellContext`pt$$, 1], 
+          $CellContext`EcY[{$CellContext`a, $CellContext`b}, 
+           Part[$CellContext`pt$$, 1]]}], ImageSize -> 440, PlotLabel -> Style[
+          Row[{
+            
+            TraditionalForm[$CellContext`y^2 == $CellContext`x^3 + \
+$CellContext`a $CellContext`x + $CellContext`b]}], 18]], 
+      "Specifications" :> {{$CellContext`pt$$, {-1.2, 0}, {-0.38, 0}, 
+         ControlType -> Locator, Appearance -> Style["|", 20, 
+           RGBColor[1, 0, 0]]}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{491., {261., 266.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotEcAdd[
+         Pattern[$CellContext`pt1, 
+          Blank[]], 
+         Pattern[$CellContext`pt2, 
+          Blank[]]] := 
+       Module[{$CellContext`pt3, $CellContext`pt4}, $CellContext`pt4 = \
+$CellContext`EcAdd[{$CellContext`a, $CellContext`b}, $CellContext`pt1, \
+$CellContext`pt2]; $CellContext`pt3 = {
+            Part[$CellContext`pt4, 1], -Part[$CellContext`pt4, 2]}; {
+           
+           ContourPlot[$CellContext`y^2 == $CellContext`x^3 + $CellContext`a \
+$CellContext`x + $CellContext`b, {$CellContext`x, -5, 5}, {$CellContext`y, -4,
+              4}, Axes -> True, PerformanceGoal -> "Quality", 
+            PlotPoints -> {15, 20}], 
+           Graphics[{
+             PointSize[0.02], 
+             Point[{$CellContext`pt1, $CellContext`pt2, $CellContext`pt3}], 
+             ColorData[1, 2], 
+             Point[$CellContext`pt4], 
+             Line[{$CellContext`pt1, $CellContext`pt3}], 
+             ColorData[1, 3], 
+             
+             Line[{$CellContext`pt3, $CellContext`pt4}]}]}], $CellContext`pt1 = \
+{-1.2, 0.9338094023943001}, $CellContext`EcAdd[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]]}, 
+         Pattern[$CellContext`p1, 
+          Blank[]], 
+         Pattern[$CellContext`p2, 
+          Blank[]]] := 
+       Module[{$CellContext`m, $CellContext`x1, $CellContext`y1, \
+$CellContext`x2, $CellContext`y2, $CellContext`x3, $CellContext`y3, \
+$CellContext`w}, {$CellContext`x1, $CellContext`y1} = $CellContext`p1; \
+{$CellContext`x2, $CellContext`y2} = $CellContext`p2; 
+         If[$CellContext`x1 == Infinity, 
+           Return[$CellContext`p2]]; If[
+           
+           And[$CellContext`x1 == $CellContext`x2, $CellContext`y1 + \
+$CellContext`y2 == 0], 
+           Return[{Infinity, Infinity}]]; 
+         If[$CellContext`p1 == $CellContext`p2, If[$CellContext`y1 == 0, 
+             
+             Return[{Infinity, Infinity}]]; $CellContext`m = (
+              3 $CellContext`x1^2 + $CellContext`a)/(2 $CellContext`y1); 
+           Null, $CellContext`m = ($CellContext`y2 - \
+$CellContext`y1)/($CellContext`x2 - $CellContext`x1)]; $CellContext`x3 = \
+$CellContext`m^2 - $CellContext`x1 - $CellContext`x2; $CellContext`y3 = \
+$CellContext`m ($CellContext`x1 - $CellContext`x3) - $CellContext`y1; \
+{$CellContext`x3, $CellContext`y3}], $CellContext`a = -3, $CellContext`b = \
+-1, $CellContext`x1 = -1.2, $CellContext`EcY[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]]}, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := 
+       Sqrt[$CellContext`x^3 + $CellContext`a $CellContext`x + \
+$CellContext`b]}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->549443680],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`pt$$ = {-0.6379999999999999, 0}, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`pt$$], {-0.6379999999999999, 0}}, {-1.2, 0}, {-0.38, 
+       0}}}, Typeset`size$$ = {440., {230., 234.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`pt$112147$$ = {0, 0}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`pt$$ = {-0.6379999999999999, 0}}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`pt$$, $CellContext`pt$112147$$, {0, 0}]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`PlotEcAdd[$CellContext`pt1, {
+          Part[$CellContext`pt$$, 1], 
+          $CellContext`EcY[{$CellContext`a, $CellContext`b}, 
+           Part[$CellContext`pt$$, 1]]}], ImageSize -> 440, PlotLabel -> Style[
+          Row[{
+            
+            TraditionalForm[$CellContext`y^2 == $CellContext`x^3 + \
+$CellContext`a $CellContext`x + $CellContext`b]}], 18]], 
+      "Specifications" :> {{{$CellContext`pt$$, {-0.6379999999999999, 
+           0}}, {-1.2, 0}, {-0.38, 0}, ControlType -> Locator, Appearance -> 
+         Style["|", 20, 
+           RGBColor[1, 0, 0]]}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{491., {261., 266.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotEcAdd[
+         Pattern[$CellContext`pt1, 
+          Blank[]], 
+         Pattern[$CellContext`pt2, 
+          Blank[]]] := 
+       Module[{$CellContext`pt3, $CellContext`pt4}, $CellContext`pt4 = \
+$CellContext`EcAdd[{$CellContext`a, $CellContext`b}, $CellContext`pt1, \
+$CellContext`pt2]; $CellContext`pt3 = {
+            Part[$CellContext`pt4, 1], -Part[$CellContext`pt4, 2]}; {
+           
+           ContourPlot[$CellContext`y^2 == $CellContext`x^3 + $CellContext`a \
+$CellContext`x + $CellContext`b, {$CellContext`x, -5, 5}, {$CellContext`y, -4,
+              4}, Axes -> True, PerformanceGoal -> "Quality", 
+            PlotPoints -> {15, 20}], 
+           Graphics[{
+             PointSize[0.02], 
+             Point[{$CellContext`pt1, $CellContext`pt2, $CellContext`pt3}], 
+             ColorData[1, 2], 
+             Point[$CellContext`pt4], 
+             Line[{$CellContext`pt1, $CellContext`pt3}], 
+             ColorData[1, 3], 
+             
+             Line[{$CellContext`pt3, $CellContext`pt4}]}]}], $CellContext`pt1 = \
+{-1.2, 0.9338094023943001}, $CellContext`EcAdd[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]]}, 
+         Pattern[$CellContext`p1, 
+          Blank[]], 
+         Pattern[$CellContext`p2, 
+          Blank[]]] := 
+       Module[{$CellContext`m, $CellContext`x1, $CellContext`y1, \
+$CellContext`x2, $CellContext`y2, $CellContext`x3, $CellContext`y3, \
+$CellContext`w}, {$CellContext`x1, $CellContext`y1} = $CellContext`p1; \
+{$CellContext`x2, $CellContext`y2} = $CellContext`p2; 
+         If[$CellContext`x1 == Infinity, 
+           Return[$CellContext`p2]]; If[
+           
+           And[$CellContext`x1 == $CellContext`x2, $CellContext`y1 + \
+$CellContext`y2 == 0], 
+           Return[{Infinity, Infinity}]]; 
+         If[$CellContext`p1 == $CellContext`p2, If[$CellContext`y1 == 0, 
+             
+             Return[{Infinity, Infinity}]]; $CellContext`m = (
+              3 $CellContext`x1^2 + $CellContext`a)/(2 $CellContext`y1); 
+           Null, $CellContext`m = ($CellContext`y2 - \
+$CellContext`y1)/($CellContext`x2 - $CellContext`x1)]; $CellContext`x3 = \
+$CellContext`m^2 - $CellContext`x1 - $CellContext`x2; $CellContext`y3 = \
+$CellContext`m ($CellContext`x1 - $CellContext`x3) - $CellContext`y1; \
+{$CellContext`x3, $CellContext`y3}], $CellContext`a = -3, $CellContext`b = \
+-1, $CellContext`x1 = -1.2, $CellContext`EcY[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]]}, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := 
+       Sqrt[$CellContext`x^3 + $CellContext`a $CellContext`x + \
+$CellContext`b]}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->166701746],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`pt$$ = {-0.38, 0}, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`pt$$], {-0.4169999999999999, 0}}, {-1.2, 0}, {-0.38, 
+       0}}}, Typeset`size$$ = {440., {230., 234.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`pt$112196$$ = {0, 0}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`pt$$ = {-0.4169999999999999, 0}}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`pt$$, $CellContext`pt$112196$$, {0, 0}]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`PlotEcAdd[$CellContext`pt1, {
+          Part[$CellContext`pt$$, 1], 
+          $CellContext`EcY[{$CellContext`a, $CellContext`b}, 
+           Part[$CellContext`pt$$, 1]]}], ImageSize -> 440, PlotLabel -> Style[
+          Row[{
+            
+            TraditionalForm[$CellContext`y^2 == $CellContext`x^3 + \
+$CellContext`a $CellContext`x + $CellContext`b]}], 18]], 
+      "Specifications" :> {{{$CellContext`pt$$, {-0.4169999999999999, 
+           0}}, {-1.2, 0}, {-0.38, 0}, ControlType -> Locator, Appearance -> 
+         Style["|", 20, 
+           RGBColor[1, 0, 0]]}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{491., {261., 266.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`PlotEcAdd[
+         Pattern[$CellContext`pt1, 
+          Blank[]], 
+         Pattern[$CellContext`pt2, 
+          Blank[]]] := 
+       Module[{$CellContext`pt3, $CellContext`pt4}, $CellContext`pt4 = \
+$CellContext`EcAdd[{$CellContext`a, $CellContext`b}, $CellContext`pt1, \
+$CellContext`pt2]; $CellContext`pt3 = {
+            Part[$CellContext`pt4, 1], -Part[$CellContext`pt4, 2]}; {
+           
+           ContourPlot[$CellContext`y^2 == $CellContext`x^3 + $CellContext`a \
+$CellContext`x + $CellContext`b, {$CellContext`x, -5, 5}, {$CellContext`y, -4,
+              4}, Axes -> True, PerformanceGoal -> "Quality", 
+            PlotPoints -> {15, 20}], 
+           Graphics[{
+             PointSize[0.02], 
+             Point[{$CellContext`pt1, $CellContext`pt2, $CellContext`pt3}], 
+             ColorData[1, 2], 
+             Point[$CellContext`pt4], 
+             Line[{$CellContext`pt1, $CellContext`pt3}], 
+             ColorData[1, 3], 
+             
+             Line[{$CellContext`pt3, $CellContext`pt4}]}]}], $CellContext`pt1 = \
+{-1.2, 0.9338094023943001}, $CellContext`EcAdd[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]]}, 
+         Pattern[$CellContext`p1, 
+          Blank[]], 
+         Pattern[$CellContext`p2, 
+          Blank[]]] := 
+       Module[{$CellContext`m, $CellContext`x1, $CellContext`y1, \
+$CellContext`x2, $CellContext`y2, $CellContext`x3, $CellContext`y3, \
+$CellContext`w}, {$CellContext`x1, $CellContext`y1} = $CellContext`p1; \
+{$CellContext`x2, $CellContext`y2} = $CellContext`p2; 
+         If[$CellContext`x1 == Infinity, 
+           Return[$CellContext`p2]]; If[
+           
+           And[$CellContext`x1 == $CellContext`x2, $CellContext`y1 + \
+$CellContext`y2 == 0], 
+           Return[{Infinity, Infinity}]]; 
+         If[$CellContext`p1 == $CellContext`p2, If[$CellContext`y1 == 0, 
+             
+             Return[{Infinity, Infinity}]]; $CellContext`m = (
+              3 $CellContext`x1^2 + $CellContext`a)/(2 $CellContext`y1); 
+           Null, $CellContext`m = ($CellContext`y2 - \
+$CellContext`y1)/($CellContext`x2 - $CellContext`x1)]; $CellContext`x3 = \
+$CellContext`m^2 - $CellContext`x1 - $CellContext`x2; $CellContext`y3 = \
+$CellContext`m ($CellContext`x1 - $CellContext`x3) - $CellContext`y1; \
+{$CellContext`x3, $CellContext`y3}], $CellContext`a = -3, $CellContext`b = \
+-1, $CellContext`x1 = -1.2, $CellContext`EcY[{
+          Pattern[$CellContext`a, 
+           Blank[]], 
+          Pattern[$CellContext`b, 
+           Blank[]]}, 
+         Pattern[$CellContext`x, 
+          Blank[]]] := 
+       Sqrt[$CellContext`x^3 + $CellContext`a $CellContext`x + \
+$CellContext`b]}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->149165383]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "DetailsSection"],
+
+Cell[TextData[{
+ "For an introduction to the mathematics and applications of elliptic curves, \
+see L. C. Washington, ",
+ StyleBox["Elliptic Curves: Number Theory and Cryptography (Discrete \
+Mathematics and Its Applications)",
+  FontSlant->"Italic"],
+ " [online], Boca Raton, FL: Chapman & Hall/CRC, 2003. ",
+ ButtonBox["http://www.math.umd.edu/~lcw/ec.html",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://www.math.umd.edu/~lcw/ec.html"], None}],
+ ".\n"
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.403895273634472*^9, 3.403895316930793*^9}},
+ CellID->127975012]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Resize Images"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"ResizeImages"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Rotate and Zoom in 3D"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"RotateAndZoomIn3D"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Drag Locators"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.4033580644548197`*^9},
+ FontFamily->"Verdana",
+ CellTags->"DragLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Create and Delete Locators"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"CreateAndDeleteLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Slider Zoom"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"SliderZoom"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Gamepad Controls"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9},
+ FontFamily->"Verdana",
+ CellTags->"GamepadControls"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Automatic Animation"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0], BoxBaselineShift -> 
+     0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"AutomaticAnimation"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Bookmark Animation"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0], BoxBaselineShift -> 
+     0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SearchTermsSection"],
+
+Cell["elliptic curve", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4033558289043984`*^9, 3.4033558330294514`*^9}},
+ CellID->526646062],
+
+Cell["chord and tangent addition", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.403355839638911*^9, 3.4033558440139666`*^9}},
+ CellID->49861520],
+
+Cell["addition of points", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.403355965421771*^9, 3.4033559683749332`*^9}},
+ CellID->50694469]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "RelatedLinksSection"],
+
+Cell[TextData[ButtonBox["Elliptic Curve",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://mathworld.wolfram.com/EllipticCurve.html"], 
+   None}]], "RelatedLinks",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4033558566078777`*^9, 3.403355877780024*^9}},
+ CellID->337397296]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["John McGee",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=John+McGee"], 
+    None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=John+McGee"]
+}], "Author",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4033558831550927`*^9, 3.403355885264495*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1280, Automatic},
+WindowMargins->{{4, Automatic}, {4, Automatic}},
+FrontEndVersion->"8.0 for Linux x86 (32-bit) (November 7, 2010)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ResizeImages"->{
+  Cell[37577, 925, 312, 8, 24, "ControlSuggestions",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[37892, 935, 678, 16, 24, "ControlSuggestions",
+   CellTags->"RotateAndZoomIn3D"]},
+ "DragLocators"->{
+  Cell[38573, 953, 404, 12, 24, "ControlSuggestions",
+   CellTags->"DragLocators"]},
+ "CreateAndDeleteLocators"->{
+  Cell[38980, 967, 637, 15, 24, "ControlSuggestions",
+   CellTags->"CreateAndDeleteLocators"]},
+ "SliderZoom"->{
+  Cell[39620, 984, 844, 21, 24, "ControlSuggestions",
+   CellTags->"SliderZoom"]},
+ "GamepadControls"->{
+  Cell[40467, 1007, 369, 9, 24, "ControlSuggestions",
+   CellTags->"GamepadControls"]},
+ "AutomaticAnimation"->{
+  Cell[40839, 1018, 1412, 31, 24, "ControlSuggestions",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[42254, 1051, 882, 21, 24, "ControlSuggestions",
+   CellTags->"BookmarkAnimation"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ResizeImages", 44868, 1139},
+ {"RotateAndZoomIn3D", 44976, 1142},
+ {"DragLocators", 45085, 1145},
+ {"CreateAndDeleteLocators", 45200, 1148},
+ {"SliderZoom", 45313, 1151},
+ {"GamepadControls", 45418, 1154},
+ {"AutomaticAnimation", 45531, 1157},
+ {"BookmarkAnimation", 45648, 1160}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 225, 3, 74, "DemoTitle"],
+Cell[CellGroupData[{
+Cell[817, 29, 33, 0, 266, "InitializationSection"],
+Cell[853, 31, 3803, 103, 421, "Input",
+ CellID->481247131],
+Cell[4659, 136, 320, 11, 29, "Input",
+ CellID->341104547],
+Cell[4982, 149, 2490, 66, 179, "Input",
+ CellID->441945186],
+Cell[7475, 217, 520, 18, 27, "Input",
+ CellID->12825914],
+Cell[7998, 237, 1743, 49, 73, "Input",
+ CellID->160765096]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[9778, 291, 29, 0, 188, "ManipulateSection"],
+Cell[CellGroupData[{
+Cell[9832, 295, 1706, 46, 87, "Input"],
+Cell[11541, 343, 4780, 101, 539, "Output",
+ CellID->342910837]
+}, {2}]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16367, 450, 36, 0, 166, "ManipulateCaptionSection"],
+Cell[16406, 452, 920, 15, 53, "ManipulateCaption"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17363, 472, 28, 0, 168, "ThumbnailSection"],
+Cell[17394, 474, 4820, 102, 539, "Output",
+ CellID->270072088]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22251, 581, 28, 0, 138, "SnapshotsSection"],
+Cell[22282, 583, 4779, 101, 539, "Output",
+ CellID->549443680],
+Cell[27064, 686, 4893, 104, 539, "Output",
+ CellID->166701746],
+Cell[31960, 792, 4879, 104, 539, "Output",
+ CellID->149165383]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36876, 901, 26, 0, 332, "DetailsSection"],
+Cell[36905, 903, 595, 15, 52, "DetailNotes",
+ CellID->127975012]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37537, 923, 37, 0, 120, "ControlSuggestionsSection"],
+Cell[37577, 925, 312, 8, 24, "ControlSuggestions",
+ CellTags->"ResizeImages"],
+Cell[37892, 935, 678, 16, 24, "ControlSuggestions",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[38573, 953, 404, 12, 24, "ControlSuggestions",
+ CellTags->"DragLocators"],
+Cell[38980, 967, 637, 15, 24, "ControlSuggestions",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[39620, 984, 844, 21, 24, "ControlSuggestions",
+ CellTags->"SliderZoom"],
+Cell[40467, 1007, 369, 9, 24, "ControlSuggestions",
+ CellTags->"GamepadControls"],
+Cell[40839, 1018, 1412, 31, 24, "ControlSuggestions",
+ CellTags->"AutomaticAnimation"],
+Cell[42254, 1051, 882, 21, 24, "ControlSuggestions",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43173, 1077, 30, 0, 152, "SearchTermsSection"],
+Cell[43206, 1079, 151, 3, 22, "SearchTerms",
+ CellID->526646062],
+Cell[43360, 1084, 160, 3, 22, "SearchTerms",
+ CellID->49861520],
+Cell[43523, 1089, 152, 3, 22, "SearchTerms",
+ CellID->50694469]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43712, 1097, 31, 0, 138, "RelatedLinksSection"],
+Cell[43746, 1099, 281, 7, 22, "RelatedLinks",
+ CellID->337397296]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44064, 1111, 25, 0, 136, "AuthorSection"],
+Cell[44092, 1113, 382, 11, 22, "Author"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

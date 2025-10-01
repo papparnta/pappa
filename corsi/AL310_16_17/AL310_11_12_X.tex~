@@ -1,0 +1,119 @@
+\nopagenumbers \font\title=cmti12
+\def\ve{\vfill\eject}
+\def\vv{\vfill}
+\def\vs{\vskip-2cm}
+\def\vss{\vskip10cm}
+\def\vst{\vskip13.3cm}
+
+%\def\ve{\bigskip\bigskip}
+%\def\vv{\bigskip\bigskip}
+%\def\vs{}
+%\def\vss{}
+%\def\vst{\bigskip\bigskip}
+
+\hsize=19.5cm
+\vsize=27.58cm
+\hoffset=-1.6cm
+\voffset=0.5cm
+\parskip=-.1cm
+\ \vs \hskip -6mm AL310 AA11/12\ (Teoria delle Equazioni)\hfill APPELLO X (Scritto) \hfill Roma, 17 Settembre 2012. \hrule
+\bigskip\noindent
+{\title COGNOME}\  \dotfill\ {\title NOME}\ \dotfill {\title
+MATRICOLA}\ \dotfill\
+\smallskip  \noindent
+Risolvere il massimo numero di esercizi accompagnando le risposte
+con spiegazioni chiare ed essenziali. \it Inserire le risposte
+negli spazi predisposti. NON SI ACCETTANO RISPOSTE SCRITTE SU
+ALTRI FOGLI. Scrivere il proprio nome anche nell'ultima pagina.
+\rm 1 Esercizio = 5 punti. Tempo previsto: 2 ore. Nessuna domanda
+durante la prima ora e durante gli ultimi 20 minuti.
+\smallskip
+\hrule\smallskip
+\centerline{\hskip 6pt\vbox{\tabskip=0pt \offinterlineskip
+\def \trl{\noalign{\hrule}}
+\halign to277pt{\strut#& \vrule#\tabskip=0.7em plus 1em& \hfil#&
+\vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil&
+\vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#&
+\hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfil#&
+\vrule#\tabskip=0pt\cr\trl && FIRMA && 1 && 2 && 3 && 4 &&
+5 && 6 && 7 && 8 &&   TOT. &\cr\trl && &&   &&
+&&     &&   &&   &&   &&   &&    && &\cr &&
+\dotfill &&     &&   &&   &&     &&   && && && &&
+&\cr\trl }}}
+\medskip
+
+\item{1.} Rispondere alle sequenti domande fornendo una giustificazione di una riga (giustificazioni
+incomplete o poco chiare comportano punteggio nullo):\bigskip\bigskip\bigskip
+
+
+\itemitem{a.} Quali possono essere tutti i possibili gruppi di Galois
+dei polinomi di grado 4 su ${\bf Q}$ e su ${\bf F}_2$?\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{b.*} Scrivere una ${\bf Q}[i]$--base del campo di spezzamento del polinomio $X^4-2\in{\bf Q}[i][X]$.\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{c.} \`E vero che due polinomi in ${\bf F}_p[X]$ aventi
+lo stesso grado potrebbero avere campi di spezzamento non isomorfi?\medskip\bigskip\bigskip
+ 
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{d.} Elencare tutti i polinomi irriducibili (monici) di grado minore di $5$ su ${\bf F}_{2}$.\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip
+
+\itemitem{e.*} Sia $E/{\bf Q}$ un estensione di Galois tale che $\#{\rm Gal}(E/{\bf Q})=2^\alpha$ ($\alpha\in{\bf N}$).
+\`E vero che $E\cap{\bf R}$ contiene solo numeri costruibili?\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip
+
+\vfil\eject
+
+%Dimostrare che un estensione finita \`{e} necessariamente algebrica. Produrre
+%un esempio di un estensione algebrica non finita.
+
+\item{2.*} Dato un gruppo finito $G$, dimostrare che esiste una estensione di campi $E/F$ opportuna tale che
+Gal$(E(F)\cong G$.\hfill\break 
+{\it Suggerimento:} Usare il Teorema di Cayley, il fatto che l'enunciato \`e vero
+per $G=S_n$ e il Teorema di Corrispondenza.
+
+\vv
+
+
+\item{3.*}  Dopo aver definito la nozione di polinomio primitivo in ${\bf F}_p[X]$, si dinostri
+che se $p=1+2l$ con $l>2$ primo della forma $l=2q-1$ con $q>3$ primo, allora il numero di polinomi primitivi di grado $2$ in ${\bf F}_p[X]$
+\`e pari a $\varphi(p^2-1)/2$
+\ve\ \vs
+
+%Dopo aver verificato che \`e algebrico, calcolare
+%il polinomio minimo di $\cos \pi/9$ su ${\bf Q}$.
+
+\item{4.} Descrivere il gruppo di Galois del polinomio $(X+5)^6+3$ specificandone l'ordine.\vv
+
+\item{5.} Dopo aver definito la nozione di polinomio ciclotomico ed
+averne elencato alcune propriet\`a fondamentali, dimostrare che se $p$ \`e primo, allora $(X^{p^{k+1}}-1)/(X^{p^k}-1)$ \`e 
+il $p^k$--esimo polinomio ciclotomico.
+\ve\ \vs
+
+%--\item{6.} Descrivere la nozione di campo perfetto dimostrando che i campi finiti
+%sono perfetti.
+
+\item{6.} Si enunci nella completa generalit\`a il Teorema di
+corrispondenza di Galois dimostrandone alcune parti.\vskip 6cm\bigskip\bigskip\bigskip\vv\vv
+
+
+\item{7.} Dopo averne determinato i fattori irriducibili, si calcoli il numero di elementi nel campo di spezzamento del polinomio 
+$(x^3+x+1)(x^3+x^2+1)(x^{15}+x^{10}+1)(x^{25}+5x^{3}+1)$ su ${\bf F}_5$
+\vskip 6cm\bigskip\bigskip\bigskip\vv\vv
+
+\item{8.} Dopo aver dimostrato che \`{e} un estensione di Galois
+di ${\bf Q}$, determinare tutti i sottocampi di ${\bf
+Q}(\zeta_{26})$.
+
+\vv
+
+\ \vst
+\bye

@@ -1,0 +1,92 @@
+\input programma.sty
+\def\abbrcorso{TN2}
+\def\titolocorso{Teoria dei Numeri}
+\def\sottotitolo{Introduzione alla Teoria analitica dei numeri}
+\def\docente{Prof. Francesco Pappalardi}
+\def\crediti{6}
+\def\semestre{II}
+\def\esoneri{0}
+\def\scrittofinale{0}
+\def\oralefinale{1}
+\def\altreprove{1}
+\Intestazione 
+
+\titoloparagr{notazioni della teoria analitica dei
+numeri.} La costante di Eulero, Il problema di Dirichlet per il
+numero medio di divisori di un intero, il metodo dell'iperbole. Teoremi
+di Chebichev. Teorema di Mertens.
+
+\titoloparagr{Teorema di Dirichlet per primi in progressione
+aritmetica.} La funzione $\zeta(s)$ reale, Il Teorema di Dirichlet
+per primi in progressione aritmetica, $L$-serie di Dirichlet
+$L(s,\chi)$, produttorie. Somme di Gauss, formula della somma di
+Poisson, applicazione alle di Gauss. Caratteri di Dirichlet,
+determinazione dei Caratteri esplicita, leggi di ortogonalità dei
+caratteri, il Teorema di Dirichlet nel caso generale. Estensione
+analitica a $s>0$ della funzione $\zeta(s)$ e delle $L$-serie di
+Dirichlet. Dimostrazione di de la Valle Poussin che la $L$-serie non
+si annullano in $s=1$ ( $L(1,\chi)\neq 0$). Teorema di Mertens per
+primi in progressione aritmetica.
+
+\titoloparagr{La funzione $\zeta$ di Riemann.} L'articolo di Riemann
+e l'estensione analitica di $\zeta(s)$. Programma di Riemann per la
+dimostrazione del Teorema dei numeri primi. Dimostrazione di Riemann
+dell'equazione funzionale per $\zeta(s)$, zeri banali per
+$\zeta(s)$.  
+Prodotti di Hadamard. Funzioni intere di ordine finito. Teorema di
+Hadamard per funzioni intere di ordine uno. Distribuzione degli zeri
+di funzioni intere di ordine uno. L'ordinata dello zero non banale
+più piccolo di $\zeta$ \`{e} in valore assoluto maggiore di 6,5.
+Derivate logaritmiche della funzione $\xi(s)$. La
+serie dei reciproci degli zeri nella striscia critica. La funzione
+zeta non ha zeri sulla retta $\Re s = 1$. La funzione Gamma. Regione
+priva di zeri per $\zeta$ (Teorama di Hadamard - de La Valle Poussin
+1896). La formula di von Mangoldt per $N(T)$.
+
+\titoloparagr{Distribuzione dei primi} La formula esplicita per la
+funzione $\psi(x)$, l'integrale discontinuo di Perron. Il Teorema
+dei numeri primi. Conseguenze dell'ipotesi di Riemann.
+
+\titoloparagr{Distribuzione dei primi in progressione aritmetica}
+La formula esplicita per la
+funzione $\psi(x,\chi)$, La formula di von Mangoldt per $N(T,\chi)$. Il Teorema
+dei numeri primi in progressione aritmetica (prima forma). Conseguenze dell'ipotesi di Riemann.
+
+\titoloparagr{Argomenti seminariali} Il Teorema di Siegel, La disuguaglianza di Polya Vinogradov e le stime
+di Burgess, Il Teorema di Siegel Walfitz per primi in progressione aritmetica, Il crivello Largo, Il metodo di Vaughan
+per somme sui primi, il Teorema dei Tre primi di Vinogradov.
+
+\testi
+\bib
+\autore{Davenport, Harold}
+\titolo{Multiplicative number theory}
+\editore{Graduate Texts
+in Mathematics, 74. Springer-Verlag, New York}
+\annopub{2000}
+\endbib
+
+\bib
+\autore{Tenenbaum, G\'erald} \titolo{Introduction to analytic and
+probabilistic number theory} \editore{Cambridge Studies in
+Advanced Mathematics, 46. Cambridge University Press, Cambridge}
+\annopub{1995}
+\endbib
+
+\altritesti
+\bib
+\autore{Apostol, Tom} \titolo{Introduction to analytic number
+theory} \editore{Undergraduate Texts in Mathematics.
+Springer-Verlag, New York-Heidelberg} \annopub{1976}
+\endbib
+
+\bib
+\autore{Murty, M. Ram} \titolo{Problems in analytic number theory}
+\editore{Graduate Texts in Mathematics, 206. Readings in
+Mathematics. Springer-Verlag, New York} \annopub{2001}
+\endbib
+
+\esami Gli studenti sono tenuti a presentare un seminario su un
+argomento attinente al corso.
+
+Gli studenti devono consegnare le soluzioni di alcuni degli esercizi
+proposti durante il corso. \bye

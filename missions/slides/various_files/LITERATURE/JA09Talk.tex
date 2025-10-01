@@ -1,0 +1,1033 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Instructions for using the LaTeXSlide style package
+%%
+%% Top of document should look like:
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Macros available for formatting slides
+%%
+%% \SetSlideHead{XXX}  -  Heading to appear at top of each slide
+%% \SectionTitlePage{XXX} - Title page for section
+%% \SlideTitle{XXX}  -  Centered title for slide
+%% \ITEM[X] - item in a list, labeled with X
+%% \WIDEITEM[XXX] - item in a list, with a wide label XXX
+%% \BULLETITEM - item in a list, labeled with a bullet
+%%   NOTE: It is important to put a \par at the end of each ITEM
+%% \HRULE - horizonal rule
+%%
+%% \DefTerm{XXX} - for highlighting a term being defined
+%% \Declare{XXX} - for Theorem, Corollary, etc
+%% \HighlightDisplay{math material} - math on a  colored background
+%%     Example:  \[ \HighlightDisplay{X^n+Y^n=Z^n} \]
+%% \TheoremBox{type}{statement} -  to state a theorem, proposition, lemma, etc.
+%%     Example: \TheoremBox{Theorem}{(Tate 1960) Let $K$ be a ...}
+%%
+%% \FinalEq - use before displayed equations appearing just _before_  \EndPart
+%% \InitialItem -  use before an \ITEM that appears just _after_  \EndPart
+%%
+%% The format for a slide with overlays is:
+%%   \BeginSlide
+%%     Material to initially print on the slide.
+%%   \EndPart
+%%     Additional material to overlay on the slide.
+%%   \EndPart
+%%     And yet more material to overlay on the slide.
+%%   \EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article} 
+\def\SplitSlides{F}  %% where X is T for true or F for false
+% \def\SplitSlides{T}  %% where X is T for true or F for false
+
+\usepackage{graphics}
+\usepackage{c:/JHS/Conferences/LaTeXSlidePackage/LaTeXSlide}
+
+\advance\voffset by-10pt
+%%--------------------------------
+\def\TalkTitle{%
+Specialization Maps\\[10pt] 
+and\\[10pt] 
+Unlikely Intersections}
+\def\TalkTitleOneLine{Specialization and Unlikely Intersections}
+\def\Speaker{Joseph H. Silverman}
+\def\Affiliation{Brown University}
+\def\Event{26th Journ\'ees Arithm\'etique\\
+Saint-\'Etienne, France}
+\def\TalkDate{July 6--10, 2009}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%--------------------------------
+\cfoot{\fancyplain{}{\footnotesize\textrm{\TalkTitleOneLine}}} 
+\def\SlideHead{\TalkTitleOneLine}
+%%--------------------------------
+%% Insert additional macro definitions here
+\newcommand{\qedtag}{$\square$}
+\renewcommand{\endproof}[1]{\hbox to\hsize{#1\hfill\qedtag\enspace}}
+\newcommand{\Prob}{\operatorname{Prob}}
+\renewcommand\pmod[1]{~(\text{mod}~#1)}
+%% \newcommand{\oa}{{\circ a}}
+\newcommand{\oa}{\textup{na}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\Gcal}{\mathcal{G}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%--------------------------------
+\begin{document}
+\Huge
+\TitlePage  %% delete if do not want a title page
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SetSlideHead{Specialization for Families of Abelian Varieties}
+\SectionTitlePage{Specialization for\\[10pt] Families of\\[10pt] Abelian Varieties}
+
+%%\SectionTitlePage{XXXXXXXXXXXXXXXXXXX}
+%% If need to break lines on a title page, use
+%% \SectionTitlePage{XXXXXXXXXXXX\\[10pt]  and\\[10pt] YYYYYYYYYYYYYYYY}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{An Example}
+We start with an example.
+Consider the family of elliptic curves and family of points,
+\[\HighlightDisplay{
+  E:y^2=x^3+x+T^2,\qquad P=(0,T).
+  }
+\]
+\EndPart
+\vspace{-5pt}
+We are interested in studying how frequently the \emph{specialized
+point} $P_t=(0,t)$ is a point of finite order on the \emph{specialized
+elliptic curve} $E_t$.
+\EndPart
+\vspace{10pt}
+For example, setting $t=0$, we find that
+\[\HighlightDisplay{
+   \text{$P_0=(0,0)$ is a point of order~$2$ on~$E_0$.}
+  }
+\]
+\EndPart
+Similarly,
+\[\HighlightDisplay{
+  t=\frac{\sqrt[4]{\sqrt5-1}}{2}
+  \quad\text{makes $P_t$ a point of order $5$ on $E_t$.}
+  }
+\]
+\EndSlide
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{The Specialization Map}
+In general, given an elliptic curve~$E$ defined over $K(T)$, 
+\[\HighlightDisplay{
+  E:y^2 = x^3+A(T)x+B(T),
+  }
+\]
+each
+$t\in K$ defines a \DefTerm{Specialization Map}
+\[\HighlightDisplay{
+  \s_t : E\bigl(K(T)\bigr) \longrightarrow E_t(K).
+  }
+\]
+\EndPart
+Thus given a point $P=\bigl(x(T),y(T)\bigr)\in E\bigl(K(T)\bigr)$, we
+compute $\s_t(P)$ by evaluating at~$T=t$:
+\[\HighlightDisplay{
+  \s_t(P)=\bigl(x(t),y(t)\bigr)\in E_t(K) : y^2=x^3+A(t)x+B(t).
+  }
+\]
+\EndPart
+It is natural to ask how frequently independent points in~$E\bigl(K(T)\bigr)$
+remain independent when specialized. Equivalently, how large is
+the \DefTerm{exceptional set}
+\[\HighlightDisplay{
+  \Ecal(E,K) \stackrel{\scriptscriptstyle\text{def}}{=}
+  \bigl\{ t\in K : \text{$\s_t$ fails to be injective }\bigr\}?
+  }
+\]
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Specialization Theorems}
+\TheoremBox{Theorem}{%
+Let $K/\QQ$ be a number field and $E/K(T)$ an elliptic curve. Then
+\[
+%%  \{t\in K : \text{$\s_t$ fails to be injective} \}
+  \Ecal(E,K) 
+  \longrightarrow\begin{cases}
+    \text{is small \textup(density $0$\textup) 
+              \textup(N\'eron, 1952\textup),} \\[8pt]
+    \text{is finite \textup(JS, 1983\textup).}\\
+  \end{cases}
+\]
+}
+\EndPart
+More generally, we look at one-parameter families of abelian
+varieties and consider specializations over $\Qbar$.
+\TheoremBox{Theorem}{%
+Let $T/\Qbar$ be a curve and let $A\to T$ be a family of abelian
+varieties, defined over $\Qbar$, with no constant part.
+%% \textup(i.e., with $\Qbar(T)/\Qbar$ trace zero\textup).  
+Then
+\[
+  \Ecal(A,\Qbar) = 
+  \bigl\{t\in T(\Qbar) :  \text{$\s_t$ fails to be injective} \}
+\]
+is a set of bounded height.}
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Heights and Specialization}
+The theorem is proven using  a height specialization result. 
+We fix an ample symmetric divisor~$D$ on~$A$ and consider 
+three height functions:
+\[\HighlightDisplay{
+  \begin{aligned}
+    \hhat_t : A_t(\Qbar)&\longrightarrow \RR,
+      &&\text{canonical height wrt $D_t$,} \\
+    \hhat : A\bigl(\Qbar(T)\bigr) &\longrightarrow \RR,
+      &&\text{canonical height wrt divisor $D$,} \\
+    h : T(\Qbar) &\longrightarrow\RR
+      &&\text{height wrt degree 1 divisor.}
+  \end{aligned}
+  }
+\]
+\EndPart
+These heights are related by a limit formula:
+\TheoremBox{Theorem}{%
+Let $P\in A\bigl(\Qbar(T)\bigr)$. Then
+\[\HighlightDisplay{
+  \lim_{\substack{t\in T(\Qbar)\\ h(t)\to\infty\\}}
+  \frac{\hhat_t(P_t)}{h(t)} = \hhat(P).
+  }
+\]
+}
+\EndPart
+The specialization theorem follows from nondegeneracy of $\hhat$ and
+$\hhat_t$.
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SetSlideHead{Specialization in the Multiplicative Group}
+\SectionTitlePage{Specialization\\[10pt]  in the\\[10pt] Multiplicative Group}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Specialization in the Multiplicative Group}
+\vspace{-5pt}
+Somewhat surprisingly, specialization results on elliptic curves and abelian
+varieties preceded study of the analogous
+question for the multiplicative group.%
+\EndPart
+\vspace{5pt}
+We again start with an example.
+\[\HighlightDisplay{
+  \begin{gathered}
+    \text{For which $t\in\QQ$ are $t$ and $t-2$}\\
+    \text{ multiplicatively dependent?}
+  \end{gathered}
+  }
+\]
+\EndPart
+If either $t$ or $t-2$ equals~$1$ or~$-1$, they are dependent, so
+that's $t\in\{-1,1,3\}$. Are there other $t\in\QQ$?
+\EndPart
+\vspace{-5pt}
+\[\HighlightDisplay{
+  \begin{gathered}
+    \text{$t$ and $t-2$ are multiplicatively dependent} \\
+    \hspace{7em}\Longleftrightarrow\quad
+    t\in\{-2,-1,1,3,4\}.
+  \end{gathered}
+  }
+\]
+\EndPart 
+Of course, if we allow $t\in\Qbar$, there are many exceptional
+values.  Indeed, each equation $t^n(t-2)^m=1$ with $n,m\in\ZZ$,
+$(m,n)\ne(0,0)$ gives finitely many $t\in\Qbar$ such that $t$ and
+$t-2$ are multiplicatively dependent.
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Specialization in the Multiplicative Group}
+Let 
+\[\HighlightDisplay{
+  f_1,\ldots,f_r\in\Qbar(T)^*
+  }
+\]
+be rational functions that are multiplicatively independent modulo
+$\Qbar^*$. The associated \DefTerm{exceptional set} is
+\[\HighlightDisplay{
+  \Ecal(f_1,\ldots,f_r) = \left\{t\in\Qbar : 
+    \begin{tabular}{l}
+      $f_1(t),\ldots,f_r(t)$ are\\ multiplicatively dependent\\
+    \end{tabular}
+  \right\}.
+  }
+\]
+\EndPart
+\TheoremBox{Theorem}{%
+(Bombieri--Masser--Zannier, 1999)
+\[
+  \text{$\Ecal(f_1,\ldots,f_r)$ is a set of bounded height.}
+\]
+}
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Heights and Specialization}
+\vspace{-4pt}
+The BMZ proof relies on height estimates, but note that the
+height is not a positive definite form on $\GG_m$.
+\TheoremBox{Theorem}{%
+(BMZ)
+There exist $C_1,C_2>0$ such that for all $m_1,\ldots,m_r\in\ZZ$ and
+all $t\in\Qbar$,
+\[\HighlightDisplay{
+    \begin{aligned}
+      h\bigl(f_1(t)^{m_1}f_2(t)^{m_2}&\cdots f_r(t)^{m_r}\bigr)\\
+      &\ge \bigl(\max_{1\le i\le r} |m_i|\bigr) \bigl(C_1h(t)-C_2).
+    \end{aligned}
+  }
+\]
+}
+\EndPart
+\emph{Proof Idea.}\enspace
+\textbullet\enspace
+$\deg\left(f_1^{m_1}\cdots f_r^{m_r}\right) \gg \max |m_i|$.
+\EndPart
+\textbullet\enspace
+A general theorem says that
+\[\HighlightDisplay{
+    h\bigl(f(t)\bigr) \ge (\deg f)h(t) - c(f),
+  }
+\]
+but that's no good, since $c(f)$ depends on $f$. It requires an
+intricate argument to replace the constant $c(f)$ with
+$\deg(f)c(f_1,\ldots,f_r)$ when~$f$ is in the group generated by
+$f_1,\ldots,f_r$.
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{An Unlikely Intersection}
+\vspace{-5pt}
+We can reformulate the BMZ result as follows. Consider the map
+\[\HighlightDisplay{
+  F = (f_1,\ldots,f_r) : T \longrightarrow \AA^r.
+  }
+\]
+Since $T$ is a curve, we have
+\[\HighlightDisplay{
+    \begin{aligned}
+      f_1(t),\ldots&,f_r(t)\text{ are multiplicatively dependent} \\
+      &\Longleftrightarrow
+      \text{$F(t)$ lies on some
+	$\underbrace{X_1^{e_1}\cdots X_r^{e_r}=1}_{\text{subgroup 
+	       of $\GG_m^r$}}$.} \\
+    \end{aligned}
+  }
+\]
+\EndPart
+Thus the exceptional set is the intersection
+\[\HighlightDisplay{
+    \vrule height0pt depth70pt width0pt
+    \hspace{30pt}
+    \Ecal(f_1,\ldots,f_r) = \operatorname{Image}(F) \cap
+	\left(\begin{tabular}{l}subgroups\\of $\GG_m^r$\\\end{tabular}\right).
+    \hspace{30pt}
+  }
+\]
+\EndPart
+\vspace{-70pt}
+\hspace{200pt}
+$\underbrace{\phantom{XXXXXXXXXXXX}}_{\textbf{Unlikely Intersection}}$
+\EndPart
+\vspace{14pt}
+The BMZ results says that this unlikley intersection is a set
+of bounded height.
+%% The term \DefTerm{Unlikely Intersection}  refers to
+%% a body of work by
+%% Pink, Zilber, Bombieri, Masser, Zannier,\dots\thinspace.%
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SetSlideHead{Higher Dimensional Families}
+\SectionTitlePage{Higher Dimensional\\[10pt] Families}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Higher Dimensional Families}
+\vspace{-5pt}
+Up to now we have been considering one-paramter families, i.e., 
+$\dim T=1$. Things become much more complicated when $\dim T\ge2$.
+Let
+\[\HighlightDisplay{
+  f_1,\ldots,f_r\in\Qbar(T_1,\ldots,T_n)^*
+  }
+\]
+be multiplicatively independent rational functions of $n$
+variables. Each relation
+\[\HighlightDisplay{
+  f_1(t)^{e_1}\cdots f_r(t)^{e_r}=1
+  }
+\]
+cuts the dimension of the solution set by one, so each $n$ \emph{independent}
+relations gives a finite set of points.
+\EndPart
+\vspace{-5pt}
+\TheoremBox{Problem}{%
+Describe the \emph{exceptional set}
+\[
+%%  \Ecal 
+  \Ecal(f_1,\ldots,f_r)
+  = \left\{ t\in \Qbar^n :
+     \begin{tabular}{l}
+	 $f_1(t),\ldots,f_r(t)$ satisfy\\
+	 $n$ independent\\
+	 multiplicative relations\\
+      \end{tabular}
+  \right\}.
+\]
+}
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Higher Dimensional Unlikely Intersections}
+We again reformulate the problem by looking at the map
+\[\HighlightDisplay{
+  F = (f_1,\ldots,f_r) : \AA^n \longrightarrow \AA^r.
+  }
+\]
+Then
+\[\HighlightDisplay{
+  \Ecal(F) = \text{(Image of $F$)} \quad\cap\quad
+    \bigcup_{\substack{H\subset\GG_m^r\\
+       \hidewidth\text{subgroup of codim $n$}\hidewidth\\
+   }} H. \qquad
+  }
+\]
+\EndPart
+It is natural to guess that
+\[\HighlightDisplay{
+  \Ecal(F) \stackrel{?}{\subset} 
+      \left(\begin{tabular}{l}
+              proper Zariski\\closed set\\
+           \end{tabular}\right)
+      \cup
+      \left(\begin{tabular}{l}
+              set of bounded\\ height\\
+           \end{tabular}\right).
+  }
+\]
+\EndPart
+This guess is correct for $r=n$,  which is the case
+\[\HighlightDisplay{
+  \Ecal(F) = \bigl\{t\in\Qbar^n : 
+    \text{$f_1(t),\ldots,f_n(t)$ are roots of unity} \bigr\}.
+  }
+\]
+However, in general it is \textbf{not correct}.
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{A Counterexample}
+\vspace{-10pt}
+This example was shown to me by David Masser.
+%% David sent it to me in answer to an email in which I had formulated
+%% the incorrect conjecture.
+%% He recently sent me a simpler (but less satisfying) example.
+%% \[
+%%   n=1,\quad r=2, \quad f_1=X, \quad f_2=2.
+%% \]
+%% (The image is $C=\GG_m\times\{2\}\subset\GG_m\times\GG_m$.) The 
+%% points~$\{2^k\}$ have unbounded height, but $f_1(2^k)$ and $f_2(2^k)$
+%% satisfy one relation, namely $f_1(2^k)=f_2(2^k)^k$. In this case
+%% the non-anomalous subset is empty,~$C^\na=\emptyset$.
+\[\HighlightDisplay{
+  n=2,\quad r=3,\quad f_1=X,\quad f_2=Y,\quad f_3=X+Y.
+  }
+\]
+\EndPart
+\vspace{-17pt}
+For $u,v\in\NN$, let $\b\in\Qbar$ be a root of
+\[\HighlightDisplay{
+  \b^u + \b^v = 1
+  \quad\text{and specialize}\quad
+  X = \b^u,\enspace Y=\b^v.
+  }
+\]
+\EndPart
+\vspace{-17pt}
+Then the specialized values
+\vspace{-5pt}
+\[\HighlightDisplay{
+  f_1 = \b^u,\qquad f_2=\b^v,\qquad f_3=1,
+  }
+\]
+satisfy two independent relations
+\[\HighlightDisplay{
+  f_1^vf_2^u=1\qquad\text{and}\qquad f_3=1.
+  }
+\]
+\EndPart
+\vspace{-17pt}
+But for any B, the set
+\[\HighlightDisplay{
+  \bigcup_{u,v\in\NN}
+  \bigl\{(\b^u,\b^v) : \b^u+\b^v=1,\;h(\b^u)>B\bigr\}
+  }
+\]
+is Zariski dense in~$\AA^2$, so $\Ecal(f_1,f_2)$ is not %contained
+in the union of a set of bounded height and a proper %Zariski
+closed subset.
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SetSlideHead{Anomalous Subvarieties and the Bounded Height Theorem}
+\SectionTitlePage{Anomalous Subvarieties\\[10pt]  and the\\[10pt]  Bounded Height Theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Anomalous Subvarieties}
+\Declare{Definition.}\enspace
+Let
+\vspace{-10pt}
+\[\HighlightDisplay{
+    Y\subset X\subset \GG_m^r.
+  }
+\]
+$Y$ is \DefTerm{anomalous} (\DefTerm{for $\boldsymbol X$}) if $\dim Y\ge1$
+and there exists a coset (translate of a subgroup) $K\subset\GG_m^r$
+satisfying
+\[\HighlightDisplay{
+    \vrule height0pt depth50pt width0pt
+    Y\subset K
+    \quad\text{and}\quad
+    \dim Y >
+    \dim X+\dim K - r\strut.\hspace{40pt}
+  }
+\]
+\EndPart
+\vspace{-80pt}\hspace{245pt}
+  $\underbrace{\phantom{\dim X+\dim K - r}}_{
+     \text{expected dimension of $X\cap K$}}$
+\EndPart
+\vspace{20pt}
+Since $Y\subset X\cap K$, this means that $X$ and $K$ contain
+an \DefTerm{unlikey intersection}.
+\EndPart
+\vspace{5pt}
+\Declare{Definition.}\enspace
+The \DefTerm{non-anomalous part} of $X$ is
+\[\HighlightDisplay{
+    X^{\oa} = X \setminus (\text{all anomalous subvarieties}).
+  }
+\]
+\EndPart
+\vspace{-15pt}
+\Declare{Example.}\enspace
+$X = \bigl\{(x,y,x+y)\bigr\}\subset\GG_m^3 \Longrightarrow
+X^{\oa}=\emptyset$.
+%% In fact, in this case the larger set~$X^{\circ}$ is empty, where~$X^{\circ}$
+%% is the complement of all cosets that are contained in~$X$. Here's why.
+%% For any numbers~$a,b\in\CC^*$ with $a,b,a+b$ all nonzero, let~$K$
+%% be the translate of the one-dimensional subgroup~$\{(t,t,t)\}$
+%% by the point~$(a,b,a+b)$. Thus
+%% \[
+%%   K = \bigl\{ (at,bt,(a+b)t) : t\in\CC^* \bigr\}.
+%% \]
+%% Then take $Y=K$ in the definition of anomalous. We have $Y\subset X$,
+%% and
+%% \[
+%%   1 = \dim Y > \dim X + \dim K - 3 = 2+1-3=0.
+%% \]
+%% Hence~$Y=K$ is $X$-anomalous. However, as~$a$ and~$b$ vary, the sets~$K$
+%% completely cover~$X$, which proves that $X^\oa=\emptyset$.
+\EndPart
+\vspace{-10pt}
+\TheoremBox{Theorem}{%
+\text{(BMZ) $X^\oa$ is a Zariski open subset of~$X$.}}
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{The Bounded Height Theorem}
+\vspace{-8pt}
+The following beautiful result was conjectured by Bombieri, Masser and
+Zannier (2007) and proven by Habegger.  
+\EndPart
+\Declare{Notation.}\enspace
+\[\HighlightDisplay{
+    \Gcal^{[d]} = \left(\begin{tabular}{l}
+	  union of all algebraic subgroups\\
+	    of $\GG_m^r$ of codimension $d$\\
+	\end{tabular}\right)
+  }
+\]
+%% \[\HighlightDisplay{
+%%     \Hcal_d = \left(\begin{tabular}{l}
+%% 	  union of all algebraic subgroups\\
+%% 	    of $\GG_m^r$ of dimension $d$\\
+%% 	\end{tabular}\right)
+%%   }
+%% \]
+\EndPart
+\vspace{-10pt}
+\TheoremBox{Theorem}{%
+(Habegger 2009)
+\[
+  \text{$X^{\oa}\cap \Gcal^{[\dim X]}$ is a set of bounded height.}
+\]
+}
+\EndPart
+More generally, Habegger shows that the result is true for points that
+are ``close to $\Gcal^{[\dim X]}$.''
+\EndPart
+\vspace{-6pt}
+\TheoremBox{Theorem}{%
+There exists an $\e>0$ such that
+\[
+  \!X^{\oa} \cap \left\{ xy :
+      \begin{array}{l}
+         x\in\Gcal^{[\dim X]},\; y\in\GG_m^r,\\
+         \text{and }h(y)\le\e(h(x)+1) \\
+     \end{array}
+   \right\}
+%%   \!X^{\oa} \cap \bigl\{ xy :
+%%     x\in\Gcal^{[\dim X]},\, y\in\GG_m^r,\, h(y)\le\e(h(x)+1) \bigr\}
+\]
+is a set of bounded height.
+}
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Sketch of Habegger's Proof}
+Let $n=\dim X$.
+Construct a set of algebraic quotient groups $\G_1,\ldots,\G_t$
+of~$\GG_m^r$ such that every $P\in \GG_m^r$ lying in a subgroup of
+codimension~$n$ is in the kernel of some~$\GG_m^r\to\G_i$. It thus suffices
+to fix one
+\[\HighlightDisplay{
+    \psi:\GG_m^r\longrightarrow\G.
+  }
+\]
+\EndPart
+\vspace{-10pt}
+In order to compare the heights of $P$ and $\psi(P)$, Habegger uses
+the following theorem of Siu.
+\TheoremBox{Theorem}{%
+(Siu 1993)
+Let $X$ be an irreducible projective variety of dimension $n\ge1$ defined
+over $\CC$. Let $\Lcal$ and $\Mcal$ be \textup{nef} line bundles on $X$. If
+\[
+  c_1(\Lcal)^n[X]  > n \bigl(c_1(\Lcal)^{n-1}c_1(\Mcal)[X]\bigr),
+\]
+then there exists an integer~$k\ge1$ such that
+\text{$(\Lcal\otimes\Mcal^{-1})^k$} has a nonzero global section.}
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Sketch of Habegger's Proof (continued)}
+Habegger uses Siu's theorem to construct an effective divisor~$D$
+satisfying
+\[\HighlightDisplay{
+  h_D\bigl(\psi(P)\bigr) \ge c(\psi)h_D(P)
+  \quad\text{for $P\in \bigl(X\setminus|D|\bigr)(\Qbar)$,}
+  }
+\]
+where
+\[\HighlightDisplay{
+  c(\psi) \ge 0\quad\text{is given as an intersection number.}
+  }
+\]
+\EndPart
+\vspace{-5pt}
+In order to show that $c(\psi)>0$, Harbegger proves that it extends to
+a continuous map
+\[\HighlightDisplay{
+  c : \operatorname{Hom}(\GG_m^r,\G)\otimes\RR \longrightarrow\RR
+  }
+\]
+and uses properties of $X^{\oa}\cap(\text{subgroups})$ 
+and a (special case of a) theorem of~Ax 
+on analytic subgroups of $\GG_m^r(\CC)$ to prove positivity.
+\EndPart
+\vspace{5pt}
+The proof also requires working on an appropriate compactification 
+of the group law map~$\GG_m^r\times\GG_m^r\to\GG_m^r$.
+%% Ax's Theorem:
+%% Let $A$ be an analytic subgroup of $\GG_m^r(\CC)$, i.e. the image of a
+%% $\CC$-vector space under the exponential map. Let $K$ be an
+%% irreducible analytic subvariety of an open subset of $\GG_m^r(\CC)$
+%% with $1\in K$ and $K\subset X\cap A$. Let $V$ be the Zariski closure
+%% of $K$. Then there exists an algebraic subgroup $H\subset\GG_m^r$
+%% containing $V$ and satisfying $\dim H\le \dim V+\dim H-\dim K$.
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{The Case $r=n$}
+We sketch an elementary proof of Habegger's theorem when $r=n$.
+We thus have a rational map
+\[\HighlightDisplay{
+  F = (f_1,\ldots,f_n) : \GG_m^n \longrightarrow \GG_m^n.
+  }
+\]
+\EndPart
+\vspace{-10pt}
+If $F$ is not dominant,  a result of Laurent gives the desired
+result.
+%% Laurent's Theorem
+%% Let $X\subset\GG_m^n$ be a subvariety. Then the Zariski closure of
+%% $X\cap\GG_m^n(\CC)_\tors$ is a \emph{finite} union of translates of
+%% algebraic subgroups of~$\GG_m^n$ by torsion points.
+Let
+\[\HighlightDisplay{
+  \f : V \dashrightarrow W
+  }
+\]
+be a rational map of varieties. The triangle inequality gives an
+elementary upper bound (on an open set)
+\[\HighlightDisplay{
+  h\bigl(\f(t)\bigr) \ll h(t).
+  }
+\]
+\EndPart
+\vspace{-22pt}
+\TheoremBox{Proposition}{%
+Assume that $\dim V=\dim W$ and that $\f$ is dominant. Then
+\[
+  h\bigl(\f(t)\bigr) \gg h(t)
+  \quad\text{on a nonempty open subset of $V$.}
+\]
+}
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{The Case $r=n$ (continued)}
+\textit{Proof Sketch}.\enspace
+\[\HighlightDisplay{
+  \begin{aligned}
+    \dim V&=\dim W\text{ and }
+    \text{$\f$ dominant}\\
+    &\Longrightarrow\quad
+    \text{$k(V)/\f^*k(W)$ is a finite extension}.
+  \end{aligned}
+  }
+\]
+\EndPart
+Let~$f\in k(V)$, so $f$ is a root of
+\[\HighlightDisplay{
+  X^d+A_1X^{d-1}+\cdots+A_d=0,
+  \qquad A_i\in\f^*k(W).
+  }
+\]
+There is an open subset~$U\subset V$ so that
+for all $t\in U$,
+\[\HighlightDisplay{
+  f(t)~\text{is a root of}~
+  X^d+A_1(t)X^{d-1}+\cdots+A_d(t)=0.
+  }
+\]
+\EndPart
+Standard estimates relating the height of the coefficients of a
+polynomial to its roots gives
+\[\HighlightDisplay{
+  h\bigl(f(t)\bigr) \le h\bigl([1,A_1(t),\ldots,A_d(t)]\bigr) + O(1).
+  }
+  \qquad(*)
+\]
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{The Case $r=n$ (continued)}
+\vspace{-8pt}
+Write $A_i=\f^*B_i$ and define
+\[\HighlightDisplay{
+    \begin{aligned}
+      \a &= [1,A_1,\ldots,A_d] : V \dashrightarrow \PP^d,\\
+      \b &= [1,B_1,\ldots,B_d] : W \dashrightarrow \PP^d.
+    \end{aligned}
+  }
+\]
+Then $(*)$ says
+\[\HighlightDisplay{
+  h\bigl(f(t)\bigr) \le h\bigl(\a(t)\bigr) + O(1).
+  }
+\]
+\EndPart
+\vspace{-8pt}
+The elementary height estimate gives
+\[\HighlightDisplay{
+  h\bigl(\b(x)\bigr) \ll h(x) + O(1).
+  }
+\]
+\EndPart
+\vspace{-18pt}
+\[\HighlightDisplay{
+    \begin{aligned}
+      h\bigl(f(t)\bigr) &\le h\bigl(\a(t)\bigr) + O(1) \\
+      &= h\bigl(\b\circ\f(t)\bigr) + O(1) &&\text{since $\a=\b\circ\f$,}\\
+      &\ll h\bigl(\f(t)\bigr) + O(1).
+    \end{aligned}
+  }
+\]
+\EndPart
+Now apply this to each of the coordinate functions of some embedding
+$V\subset\PP^N$.
+\hspace{250pt}$\square$
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SetSlideHead{``Very'' Unlikely Intersections}
+\SectionTitlePage{``Very''\\[10pt]  Unlikely\\[10pt]  Intersections}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Increasing the Codimension}
+The codimension condition used to define 
+unlikely intersections between subvarieties and subgroups
+is set up so that each individual $X\cap H$ is finite.
+But since there may be infinitely many~$H$, the exceptional
+set consisting of all unlikely intersections
+\[\HighlightDisplay{
+  \Ecal = X \cap \bigcup_H H
+  }
+\]
+is generally infinite. In this case, one hopes to prove that the points in
+$\Ecal$  in a geometrically
+described subset have bounded height.
+\EndPart
+\vspace{10pt}
+If we increase the codimension condition by one, then most individual
+intersections  $X\cap H$ should be empty, so we might expect
+the full exceptional set to be finite.
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{``Very'' Unlikely Intersections}
+Conjectures for \DefTerm{Very Unlikely Intersections} of this sort
+were originally formulated by Zilber (2002, for constant families) and
+Pink (2005, in general).  Here is a general version.
+\EndPart
+\TheoremBox{Conjecture}{%
+Let $\Gcal\to T$ be a semiabelian scheme over a base~$T$, all defined
+over~$\CC$. For any~$d$, let $\Gcal^{[d]}$ be the union of the
+semiabelian subschemes of~$\Gcal$ of codimension at least~$d$. Let $X$
+be an irreducible closed subvariety of~$\Gcal$. Then
+$X^\oa\cap\Gcal^{[\dim X+1]}$ is contained in a finite union of
+semiabelian subschemes of~$\Gcal$ of positive codimension.}  
+\EndPart
+\vspace{10pt}
+A number of people (Bombieri, Habegger, Masser, Maurin,
+Ratazzi, Remond, Viada, Zannier,\dots) have made progress on this
+conjecture in the last few years, especially for constant families.
+
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Very Unlikely Intersections in $\GG_m^r$}
+For the constant group scheme
+\[\HighlightDisplay{
+  \Gcal = \GG_m^r
+  }
+\]
+over a variety~$X$, 
+Habegger's upper bound can be combined with:
+\TheoremBox{Theorem}{%
+(BMZ 2008) For all $B$,
+\[
+  \bigl\{ P\in X^\oa\cap \Gcal^{[\dim X+1]} : h(P) \le B \bigr\}
+%%   \bigl\{ P\in X^\oa\cap \Hcal_{r-n-1} : h(P) \le B \bigr\}
+  \quad\text{is finite.}
+\]}
+\EndPart
+\vspace{10pt}
+to prove finiteness:
+\TheoremBox{Corollary}{%
+\[\HighlightDisplay{
+    X^\oa\cap\Gcal^{[\dim X+1]}\quad\text{is finite.}
+%    X^\oa\cap\Hcal_{r-n-1}\quad\text{is finite.}
+  }
+\]
+}
+\EndPart
+\vspace{10pt}
+For non-constant families, very little  is known.
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Very Unlikely Intersections in a Non-Constant Family}
+\vspace{-3pt}
+Consider the elliptic curve
+\[\HighlightDisplay{
+  E : y^2 = x(x-1)(x-T)
+  }
+\]
+and the two points
+\[\HighlightDisplay{
+  P = \bigl(2,\sqrt{4-2T}\,\bigr),\qquad
+  Q = \bigl(3,\sqrt{18-6T}\,\bigr).
+  }
+\]
+(We may view $E$ as an elliptic curve over the function field
+$\QQ(T,U,V)$, where $U^2=4-2T$ and $V^2=18-6T$.)%
+\EndPart
+\vspace{2pt}
+The original theorem that we discussed says that the set of~$t$ for
+which $P_t$ is a torsion point is a set of bounded height, and
+similarly for~$Q_t$. What happens if we require that~$P_t$
+and~$Q_t$ simultaneously be torsion points?
+\EndPart
+\vspace{-3pt}
+\TheoremBox{Theorem}{%
+(Masser--Zannier, 2008)
+\[
+  \{ t \in \CC : \text{$P_t$ and $Q_t$ are both torsion points} \}
+\]
+is a finite set.
+}
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \SetSlideHead{Additional Results and Directions}
+%% \SectionTitlePage{Additional Results\\[10pt]  and\\[10pt]  Directions}
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \BeginSlide
+%% \SlideTitle{Some Additional Results and Directions}
+%% \vspace{-25pt}
+%% \BULLETITEM
+%% Habegger has also proven results for unlikely intersections in an abelian
+%% variety. His results may be reformulated as specialization theorems for
+%% a constant family of abelian varieties.
+%% \EndPart
+%% \BULLETITEM
+%% For non-constant families of abelian varieties $A\to T$, there is a
+%% result of Masser~(1989) saying that the specialization map
+%% $\s_t:A(T)\to A(\Qbar)$ is injective for most $t\in T(\Qbar)$ (in a
+%% certain density-theoretic sense). 
+%% \EndPart
+%% \BULLETITEM
+%% For non-constant families of abelian varieties~$A\to T$ over bases~$T$
+%% of dimension at least two, we still lack general bounded height
+%% results for unlikely specializations,  and
+%% we lack finiteness results for very
+%% unlikely specializations.
+%% \EndSlide
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SetSlideHead{Selected References}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{Selected References}
+%% *** What about my specialization paper. And Neron's 1950s paper?
+\vspace{-20pt}
+{\Large
+\begin{itemize}
+\setlength{\itemsep}{-5pt}
+\item
+J. Ax, Some topics in differential algebraic geometry I: Analytic
+subgroups of algebraic groups, \emph{Amer. J. Math.} 94 (1972),
+1195--1204.
+\item
+E. Bombieri, D. Masser, and U. Zannier, Intersecting a curve with
+algebraic subgroups of mult.\ groups,
+%% algebraic subgroups of multiplicative groups,
+\emph{Int. Math. Res. Not.} 20 (1999), 1119--1140.
+\item
+E. Bombieri, D. Masser, and U. Zannier, Anomalous Subvarieties -
+Structure Theorems and Applications, \emph{Int. Math. Res. Not.}
+(2007) 1--33.
+\item
+E. Bombieri, D. Masser, and U. Zannier, Intersecting a plane with
+algebraic subgroups of multiplicative groups, \emph{Ann. Scuola Norm.
+Super. Pisa Cl. Sci.} (5) 7 (2008), 51--80.
+\item
+P. Habegger,
+Intersecting subvarieties of abelian varieties with algebraic
+subgroups of complementary dimension, \emph{Invent. Math.}, to appear.
+\item
+P. Habegger, On the Bounded Height Conjecture, 
+\emph{Int. Math. Res. Not.} (2009), 860--886.
+%% \item
+%% D. Masser, Specializations of finitely generated subgroups of abelian
+%% varieties, \emph{Trans. Amer. Math. Soc.} 311 (1989), 413--424.
+\item
+D.~Masser and U.~Zannier,
+Torsion anomalous points and families of elliptic curves,
+\emph{C.~R.~Math. Acad. Sci. Paris} 346 (2008), 491--494.
+%% There is also a longer preprint with the same title that gives
+%% more details
+\item
+R.~Pink, A Common Generalization of the Conjectures of Andr\'e--Oort,
+Manin--Mumford, and Mordell--Lang, Preprint (April 17, 2005).
+\item
+Y.-T. Siu, An effective Matsusaka big theorem, \emph{Ann. Inst. Fourier}
+43 (1993), no. 5, 1387--1405. 
+(See R. Lazarsfeld, \emph{Positivity in Algebraic Geometry I},
+Springer, 2004, Theorem 2.2.15.) %% page 143
+\item
+B.~Zilber, Exponential sums equations and the Schanuel conjecture,
+\emph{J. London Math. Soc.} (2) 65 (2002), no. 1, 27--44.
+\end{itemize}
+}
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\TitlePage
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BeginSlide
+\SlideTitle{}
+
+\EndSlide
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

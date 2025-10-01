@@ -1,0 +1,1194 @@
+\documentclass[10pt,final]{beamer} %,hyperref={pdfpagelabels=false},draft,handout,handout
+%\let\Tiny=\tiny
+\hfuzz=3pt
+\vfuzz=3pt
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+%\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{colortbl}
+\usepackage{yfonts}
+\usepackage{pifont}
+\usepackage{translator} % comment this, if not available
+\mode<article>
+{
+  \usepackage{times}
+  \usepackage{mathptmx}
+  \usepackage[left=1.5cm,right=6cm,top=1.5cm,bottom=3cm]{geometry}
+}
+
+ \newcommand{\Q}{\mathbb Q}
+ \newcommand{\Z}{\mathbb Z}
+ \newcommand{\N}{\mathbb N}
+ \newcommand{\F}{\mathbb F}
+ \newcommand{\C}{\mathbb C}
+ \newcommand{\R}{\mathbb R}
+% Common theorem-like environments
+
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{\translate{Exercise}}
+\newtheorem{rem}[theorem]{\translate{Remark}}
+\newtheorem{conj}[theorem]{\translate{Conjecture}}
+\newtheorem{proposition}[theorem]{\translate{Proposition}}
+\newtheorem{notation}[theorem]{\translate{Notation}}
+\newtheorem{Note}[theorem]{\translate{Note}}
+\newtheorem{Block}[theorem]{\translate{}}
+
+
+% New useful definitions:
+
+\lecture[1]{Introduction to Galois Representations\\
+\small{Definitions and basic properties}}
+{Galois Representations}
+\date{September 2$^\textrm{nd}$, 2014}
+\title[{Dipartim. Mat. \& Fis.}]{\insertlecture}
+\subtitle{\ }
+\author[\ \hspace{-2mm} Universit\`a Roma Tre]{Francesco Pappalardi}
+\institute{Dipartimento di Matematica e Fisica\\
+  Universit\`a Roma Tre}
+
+% Beamer version theme settings
+
+\useoutertheme[height=0pt,width=2cm,right]{sidebar}
+\usecolortheme{rose,sidebartab}
+\useinnertheme{circles}
+\usefonttheme[only large]{structurebold}
+
+\setbeamercolor{formul}{fg=black,bg=pink}
+\setbeamercolor{sidebar right}{bg=black!15}
+\setbeamercolor{structure}{fg=green!50!black}
+\setbeamercolor{author}{parent=structure}
+\setbeamercolor{postit}{fg=black,bg=yellow}
+\setbeamercolor{greys}{fg=black,bg==black!25}
+\setbeamerfont{title}{series=\normalfont,size=\LARGE}
+\setbeamerfont{title in sidebar}{series=\bfseries}
+\setbeamerfont{author in sidebar}{series=\bfseries}
+\setbeamerfont*{item}{series=}
+\setbeamerfont{frametitle}{size=}
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[book]
+\setbeamertemplate{sidebar right}
+{
+  {\usebeamerfont{title in sidebar}%
+    \vskip1.5em%
+    \hskip3pt%
+    \usebeamercolor[fg]{title in sidebar}%
+    \insertshorttitle[width=2.1cm,respectlinebreaks]\par%   left,
+    \vskip1.25em%
+  }%
+  {%
+    \hskip3pt%
+    \usebeamercolor[fg]{author in sidebar}%
+    \usebeamerfont{author in sidebar}%
+    \insertshortauthor[width=2cm,center,respectlinebreaks]\par%
+    \vskip1em%
+  }%
+  \hbox to2cm{\hss\insertlogo\hss}
+  \vskip1em%
+  \insertverticalnavigation{2cm}%
+  \vfill
+  \hbox to 2cm{\hfill\usebeamerfont{subsection in
+      sidebar}\strut\usebeamercolor[fg]{subsection in
+      sidebar}\insertframenumber\hskip5pt}%
+  \vskip3pt%
+}%
+
+\setbeamertemplate{title page}
+{
+  \vbox{}
+  \vskip1em
+  %{\huge Lecture \insertshortlecture\par}
+  {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par}%
+  \ifx\insertsubtitle\@empty%
+  \else%
+    \vskip0.25em%
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+  \fi%
+  \vskip1em\par
+   \textbf{\Large{NATO ASI, Ohrid 2014}}\\
+\textsl{Arithmetic of Hyperelliptic Curves}\\ August 25 - September 5, 2014\\ 
+\emph{Ohrid, the former Yugoslav Republic of Macedonia},\par
+  \vskip0pt plus1filll
+  \leftskip=0pt plus1fill\insertauthor\par
+  \insertinstitute\vskip1em
+}
+
+\logo{\includegraphics[width=1cm]{images/roma3.pdf}}
+
+% Article version layout settings
+
+\mode<article>
+
+\makeatletter
+\def\@listI{\leftmargin\leftmargini
+  \parsep 0pt
+  \topsep 5\p@   \@plus3\p@ \@minus5\p@
+  \itemsep0pt}
+\let\@listi=\@listI
+
+
+\setbeamertemplate{frametitle}{\paragraph*{\insertframetitle\
+    \ \small\insertframesubtitle}\ \par
+}
+\setbeamertemplate{frame end}{%
+  \marginpar{\scriptsize\hbox to 1cm{\sffamily%
+      \hfill\strut\insertframenumber}\hrule height .2pt}}
+\setlength{\marginparwidth}{1cm}
+\setlength{\marginparsep}{4.5cm}
+
+\def\@maketitle{\makechapter}
+
+\def\makechapter{
+  \newpage
+  \null
+  \vskip 2em%
+  {%
+    \parindent=0pt
+    \raggedright
+    \sffamily
+    \vskip8pt
+    {\fontsize{36pt}{36pt}\selectfont Kapitel \insertshortlecture \par\vskip2pt}
+    {\fontsize{24pt}{28pt}\selectfont \color{blue!50!black} \insertlecture\par\vskip4pt}
+    {\Large\selectfont \color{blue!50!black} \insertsubtitle\par}
+    \vskip10pt
+  }
+  \par
+  \vskip 1.5em%
+}
+
+\let\origstartsection=\@startsection
+\def\@startsection#1#2#3#4#5#6{%
+  \origstartsection{#1}{#2}{#3}{#4}{#5}{#6\normalfont\sffamily\color{blue!50!black}\selectfont}}
+
+\makeatother
+
+\mode
+<all>
+
+% Typesetting Listings
+
+\usepackage{listings}
+\lstset{language=Java}
+
+\alt<presentation>
+{\lstset{%
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\slshape\color{green!50!black},
+  keywordstyle=\bfseries\color{blue!50!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  escapechar=\#,
+  emphstyle=\color{red}}
+}
+{
+  \lstset{%
+    basicstyle=\ttfamily,
+    keywordstyle=\bfseries,
+    commentstyle=\itshape,
+    escapechar=\#,
+    emphstyle=\bfseries\color{red}
+  }
+}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Weierstra\ss\ Equations}
+
+\begin{frame}{The (general) Weierstra\ss\ Equation}
+
+An elliptic curve $E$ over a field $K$ is given by an equation
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7cm]{formul}
+$E: y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$\end{beamercolorbox}}
+where $a_1, a_3, a_2, a_4 ,a_6\in K$ \pause
+
+\begin{center}
+ \includegraphics[width=60mm]{images/elliptic1.pdf}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic2.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic3.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic3b.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic4.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic5.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic6.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic7.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic8.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic9.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic9b.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic10.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic10b.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic6.pdf}}\pause
+\end{center}
+
+ \begin{beamercolorbox}[sep=1em,wd=6.5cm]{postit}
+ The equation should not be \emph{singular}
+ \end{beamercolorbox}
+\end{frame}
+
+
+\subsection{The Discriminant}
+
+\begin{frame}
+\frametitle{The Discriminant of an Equation}
+\framesubtitle{The condition of absence of singular points in terms of $a_1, a_2, a_3, a_4, a_6$}
+\pause
+\begin{Definition}[The discriminant of a Weierstra\ss\ equation]
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{formul}
+\begin{align*}
+\Delta_E&:=%\frac{1}{2^43^3}\left(
+-a_1^5 a_3 a_4 - 8 a_1^3 a_2 a_3 a_4 - 16 a_1 a_2^2 a_3 a_4 + 36 a_1^2 a_3^2 a_4 \\
+  &-a_1^4 a_4^2 - 8 a_1^2 a_2 a_4^2 - 16 a_2^2 a_4^2 + 96 a_1 a_3 a_4^2 +64 a_4^3 + \\
+  & a_1^6 a_6 + 12 a_1^4 a_2 a_6 + 48 a_1^2 a_2^2 a_6 + 64 a_2^3 a_6 -36 a_1^3 a_3 a_6\\
+  & - 144 a_1 a_2 a_3 a_6 - 72 a_1^2 a_4 a_6 - 288 a_2 a_4 a_6 +
+  432 a_6^2%  \right)
+ \end{align*}
+\end{beamercolorbox}}
+ \end{Definition}
+\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7cm]{postit}
+$E$ is non singular if and only if $\Delta_E\neq0$\end{beamercolorbox}}\pause
+
+\begin{Definition}
+ Two Weierstra\ss\ equations over $K$ are said \textsl{(affinely) equivalent} if there exists a (affine) 
+ transformation of the following form
+ $$\begin{cases}
+x\longleftarrow u^2 x+r\\
+y\longleftarrow u^3 y+ u^2s x + t
+  \end{cases} r,s,t,u\in K\vspace*{-11.7pt}$$
+that ``takes'' one equation into the other
+  \end{Definition}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{The Weierstra\ss\ equation}
+\framesubtitle{Classification of simplified forms}
+
+After applying a suitable affine transformation we can always assume that $E/K (p=\operatorname{char}(K))$
+has a Weierstra\ss\ equation of the following form\pause
+
+\begin{scriptsize}
+ \begin{example}[Classification]
+\centerline{\begin{tabular}{|l|c|l|}
+\hline
+ $E$ & $p$ & $\Delta_E$\\
+\hline
+&&\\
+ $y^2=x^3+Ax+B$ & $\ge5$ & $4A^3+27B^2$\\
+&&\\
+$y^2+xy=x^3+a_2x^2+a_6$ & $2$ & $a_6^2$\\
+&&\\
+ $y^2+a_3y=x^3+a_4x+a_6$  & $2$ & $a_3^4$\\
+&&\\
+ $y^2=x^3+Ax^2+Bx+C$ & $3$ & $\!\begin{array}{l}
+                               4A^3C-A^2B^2-18ABC\\+4B^3+27C^2
+                              \end{array}$\\
+&&\\\hline
+\end{tabular}}
+\end{example}
+\end{scriptsize}\pause
+
+\begin{definition}[Elliptic curve] An elliptic curve is a non
+singular Weierstra\ss\ equation (i.e. $\Delta_E\neq0$)
+\end{definition}\pause
+
+\small{
+\alert{\textbf{Note:} If $p=0$ or $p\ge3, \Delta_E=0\Leftrightarrow x^3+Ax^2+Bx+C$ has double roots}}
+\end{frame}
+
+\begin{frame}
+\frametitle{The definition of $E(K)$}
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=\textwidth]{formul}
+Let $E/K$ elliptic curve, $\infty:=[0,1,0]$. Set\\
+\ \\
+$E(K)=\{[X,Y,Z]\in\mathbb P_2(K):$\\
+$\quad\qquad Y^2Z+a_1XYZ+a_3YZ^2=X^3+a_2X^2Z+a_4XZ^2+a_6Z^3\}$\\
+\ \\
+or equivalently\\
+\ \\
+$E(K)=$\\
+$\quad\{(x,y)\in K^2:\ y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6\}\cup\{\infty\}$
+\end{beamercolorbox}}\pause
+
+\ \hfill \begin{beamercolorbox}[shadow=true,left,rounded=true,wd=9cm]{postit}
+ We can think either\pause
+\begin{itemize}
+ \item<1-> $E(K)\subset\mathbb P_2(K)$   \pause       \hfil$\dashrightarrow$ geometric advantages
+ \item<2-> $E(K)\subset K^2\cup\{\infty\}$\pause \hfil$\dashrightarrow$ algebraic advantages
+\end{itemize}\pause
+\ \hfill$\infty$ might be though as the ``vertical direction''
+\end{beamercolorbox}\pause
+
+\begin{Definition}[line through points $P,Q\in E(K)$]
+$r_{P,Q}:\begin{cases}
+                     \text{line through $P$ and }Q &\text{if }P\neq Q\\
+                     \text{tangent line to $E$ at }P &\text{if }P=Q
+                    \end{cases}$\hfill projective or affine
+\end{Definition}
+
+% \pause
+% 
+% \begin{itemize}[<+-| alert@+>]
+% \item if $\#(r_{P,Q}\cap E(\F_q))\ge2\ \Rightarrow\ \#(r_{P,Q}\cap E(\F_q))=3$\\
+% \hfill\scriptsize{\alert{if tangent line, contact point is counted with multiplicity}}  \item $r_{\infty,\infty}\cap E(\F_q)=\{\infty,\infty,\infty\}$%\vspace*{-4.4pt}
+%  % $\#(r_{P_1,P_1}\cap E(\F_q))=2$
+%  \item $r_{P,Q}: aX+bZ=0$ (vertical) $\Rightarrow \infty=[0,1,0]\in r_{P,Q}$
+%                     \vspace*{-4.4pt}
+% \end{itemize}
+% 
+\end{frame}
+
+
+\begin{frame}
+
+If $P,Q\in E(K), r_{P,Q}:\begin{cases}
+                     \text{line through $P$ and }Q &\text{if }P\neq Q\\
+                     \text{tangent line to $E$ at }P &\text{if }P=Q,
+                    \end{cases}$\\ \ \hfill $r_{P,\infty}:$ vertical line through $P$
+\pause
+\begin{center}
+\includegraphics[width=4.9cm]{images/ad15.pdf}\includegraphics[width=4.9cm]{images/add7.pdf}\pause
+\end{center}
+
+{$r_{P,\infty}\cap E(K)=\{P,\infty,P'\}$}\hfill$\rightsquigarrow$
+{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2cm]{formul}
+             $-P:=P'$
+            \end{beamercolorbox}}\medskip
+
+{$r_{P,Q}\cap E(K)=\{P,Q,R\}$}\hfill$\rightsquigarrow$
+{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2.9cm]{formul}
+$P+_E Q:=-R$
+            \end{beamercolorbox}}
+\end{frame}
+
+\begin{frame}
+ \begin{Theorem}
+ The addition law on $E/K$ ($K$ field) has the following
+properties:
+\begin{enumerate}[(a)]
+ \item  $P+_EQ\in E \hfill\forall P,Q\in E$
+ \item  $P+_E\infty=\infty+_E P=P\hfill\forall P\in E$
+ \item  $P+_E(-P)=\infty\hfill\forall P\in E$
+ \item  $P+_E(Q +_E R)=(P+_E Q)+_E R\hfill\forall P,Q,R\in E$
+ \item  $P+_E Q=Q +_E P\hfill\forall P,Q\in E$
+\end{enumerate}
+So $(E(\bar{K}),+_E)$ is an abelian group.
+ \end{Theorem}\pause
+
+ \begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Remark:}
+If $E/K \ \Rightarrow\ \forall L, K\subseteq L\subseteq\bar{K}, E(L)$ is an abelian group.
+\end{beamerboxesrounded}\medskip\pause
+
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{postit}
+$$-P=-(x_1,y_1)=(x_1,-a_1x_1-a_3-y_1)$$
+\end{beamercolorbox}}
+\end{frame}
+
+\begin{frame}%[label=current2]
+ \frametitle{Proof of the associativity}
+ \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7.3cm]{formul}
+             $P+_E(Q+_ER)=(P+_EQ)+_ER\quad\forall P,Q,R\in E$
+            \end{beamercolorbox}}\pause
+ We should verify the above in many different cases according if $Q=R$, $P=Q$, $P=Q+_ER,\ldots$\pause
+
+Here we deal with the \emph{generic case}. i.e. All the points
+\alert{$\pm P, \pm R,\pm Q,\pm(Q+_ER),\pm(P+_EQ),\infty$} all different
+
+{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=9.6cm]{postit}
+ \scriptsize{{\color[rgb]{1,0.1,0.1}\texttt{Mathematica code}}\\
+\texttt{L[x\_,y\_,r\_,s\_]:=(s-y)/(r-x);\\
+M[x\_,y\_,r\_,s\_]:=(yr-sx)/(r-x);\\
+A[\{x\_,y\_\},\{r\_,s\_\}]:=\{(L[x,y,r,s])$^2$-(x+r),\\
+\ \hfill -(L[x,y,r,s])$^3$+L[x,y,r,s](x+r)-M[x,y,r,s]\}\\
+Together[A[A[\{x,y\},\{u,v\}],\{h,k\}]-A[\{x,y\},A[\{u,v\},\{h,k\}]]]\\
+det = Det[(\{\{1,x$_1$,x$_1^3$-y$_1^2$\},\{1,x$_2$,x$_2^3$-y$_2^2$\},\{1,x$_3$,x$_3^3$-y$_3^2$\}\})]\\
+PolynomialQ[Together[Numerator[Factor[res[[1]]]]/det],\\
+\ \hfill\{x$_1$,x$_2$,x$_3$,y$_1$,y$_2$,y$_3$\}]
+PolynomialQ[Together[Numerator[Factor[res[[2]]]]/det],\\ \ \hfill\{x$_1$,x$_2$,x$_3$,y$_1$,y$_2$,y$_3$\}]}}
+             \end{beamercolorbox}}\pause
+
+
+% {\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=9.6cm]{postit}
+%  \scriptsize{{\color[rgb]{1,0.1,0.1}\texttt{Pari code}}\\
+% \texttt{L(a,b,c,d)=(d-b)/(c-a);\\
+% M(a,b,c,d)=(b*c-a*d)/(c-a);\\
+% AX(a,b,c,d)=L(a,b,c,d)\^{}2-(a+c);\\
+% AY(a,b,c,d)=-L(a,b,c,d)\^{}3+L(a,b,c,d)*(a+c)-M(a,b,c,d);\\
+% simplify(AX(x1,y1,AX(x2,y2,x3,y3),AY(x2,y2,x3,y3))-\\ \ \hfill AX(AX(x1,y1,x2,y2),AY(x1,y1,x2,y2),x3,y3));\\
+% simplify(AY(x1,y1,AX(x2,y2,x3,y3),AY(x2,y2,x3,y3))-\\ \ \hfill AY(AX(x1,y1,x2,y2),AY(x1,y1,x2,y2),x3,y3))}}
+% \end{beamercolorbox}}\pause
+
+\begin{scriptsize}
+\begin{itemize}[<+-| alert@+>]
+ \item runs in 2 seconds on a PC
+ %\item Complete proof requires several cases (e.g. $(P+_EP)+_ER=P+_E(P+_ER)$)
+%  \item For an elementary proof:
+%  ``\text{An Elementary Proof of the Group Law for Elliptic Curves.}''
+% Department of Mathematics: Rice
+% University. Web. 20 Nov. 2009.\\ \ \hfill\texttt{http://math.rice.edu/\~{}friedl/papers/AAELLIPTIC.PDF}
+\item More cases to check. e.g  \alert{$P+_E2Q=(P+_EQ)+_EQ$}
+\end{itemize}
+\end{scriptsize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Formulas for Addition on $E$ (Summary)}
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{formul}
+$E: y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$\end{beamercolorbox}}
+$P_1 = (x_1, y_1), P_2 = (x_2, y_2)\in E(K)\setminus\{\infty\}$,
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Addition Laws for the sum of affine points}
+\begin{itemize}
+ \item If $P_1\neq P_2$
+\begin{itemize}
+ \item $x_1 = x_2\ \hfill\Rightarrow\hfil$\ \
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2cm]{formul}$P_1+_EP_2=\infty$
+\end{beamercolorbox}
+ \item $x_1\neq x_2$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,wd=6cm]{postit}
+             $\lambda=\frac{y_2-y_1}{x_2-x_1}\qquad \nu=\frac{y_1x_2-y_2x_1}{x_2-x_1}$
+            \end{beamercolorbox}}
+ \end{itemize}
+\item If $P_1=P_2$
+\begin{itemize}
+ \item $2y_1+a_1x+a_3 = 0\ \hfill\Rightarrow\hfil$\ \
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=3cm]{formul}$P_1 +_E P_2 = 2P_1 = \infty$\end{beamercolorbox}
+\item $2y_1+a_1x+a_3\neq 0$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,wd=7cm]{postit}
+$\lambda=\frac{3x_1^2+2a_2x_1+a_4-a_1y_1}{2y_1+a_1x+a_3}, \nu=-\frac{a_3y_1+x_1^3-a_4x_1-2a_6}{2y_1+a_1x_1+a_3}$
+            \end{beamercolorbox}}
+\end{itemize}
+\end{itemize}\pause
+
+Then\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=11cm]{formul}
+\scriptsize{$P_1 +_E P_2 = ({\color[cmyk]{0,1,1,0.5}\lambda^2-a_1\lambda-a_2-x_1-x_2},
+{\color[cmyk]{1,0,1,0.5}-\lambda^3-a_1^2\lambda+(\lambda+a_1)(a_2+x_1+x_2)-a_3-\nu})$}
+            \end{beamercolorbox}}
+\end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}
+\frametitle{Formulas for Addition on $E$ (Summary for special equation)}
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{formul}
+$E: y^2=x^3+Ax+B$\end{beamercolorbox}}
+$P_1 = (x_1, y_1), P_2 = (x_2, y_2)\in E(K)\setminus\{\infty\}$,
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Addition Laws for the sum of affine points}
+\begin{itemize}
+ \item If $P_1\neq P_2$
+\begin{itemize}
+ \item $x_1 = x_2\ \hfill\Rightarrow\hfil$\ \ \
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2cm]{formul}$P_1 +_E P_2 = \infty$
+\end{beamercolorbox}
+ \item $x_1 \neq x_2$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,wd=6cm]{postit}
+             $\lambda=\frac{y_2-y_1}{x_2-x_1}\qquad \nu=\frac{y_1x_2-y_2x_1}{x_2-x_1}$
+            \end{beamercolorbox}}
+ \end{itemize}
+\item If $P_1 = P_2$
+\begin{itemize}
+ \item $y_1 = 0\ \hfill\Rightarrow\hfil$\ \ \
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=3cm]{formul}$P_1 +_E P_2 = 2P_1 = \infty$\end{beamercolorbox}
+\item $y_1\neq 0$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,wd=7cm]{postit}
+$\lambda=\frac{3x_1^2+A}{2y_1}, \nu=-\frac{x_1^3-Ax_1-2B}{2y_1}$
+            \end{beamercolorbox}}
+\end{itemize}
+\end{itemize}
+
+Then\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7cm]{formul}
+\small{$P_1 +_E P_2 = ({\color[cmyk]{0,1,1,0.5}\lambda^2-x_1-x_2},
+{\color[cmyk]{1,0,1,0.5}-\lambda^3+\lambda(x_1+x_2)-\nu})$}
+            \end{beamercolorbox}}
+\end{beamerboxesrounded}
+\end{frame}
+
+
+\section{Points of finite order}
+
+\begin{frame}\frametitle{Points of order (dividing) $m$}\pause
+\begin{definition}[$m$--torsion point] Let $E/K$ and let $\bar{K}$ an \emph{algebraic closure of $K$}.
+
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=5cm,center]{postit}
+$E[m]=\{P\in E(\bar{K}):\ mP=\infty\}$\end{beamercolorbox}}
+\end{definition}\pause
+
+\begin{theorem}[Structure of Torsion Points]
+Let $E/K$  and $m\in\N$. If $p=\operatorname{char}(K)\nmid m$,\pause
+
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=3.5cm,center]{formul}
+$E[m]\cong C_m\oplus C_m$\end{beamercolorbox}}
+
+If $m=p^rm', p\nmid m'$,
+
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=8cm,center]{formul}
+$E[m]\cong C_m\oplus C_{m'}\qquad\text{or}\qquad E[m] \cong C_{m'}\oplus C_{m'}$\end{beamercolorbox}}
+\end{theorem}\pause
+
+\begin{block}\ \hfill
+$E/\F_p$ is called $\begin{cases} \text{\emph{ordinary}} &\text{ if }E[p]\cong C_p\\
+                \text{\emph{supersingular}} &\text{ if }E[p]=\{\infty\}
+                    \end{cases}$\end{block}
+\end{frame}
+
+\subsection{The group structure}
+\begin{frame}\frametitle{Group Structure of $E(\F_q)$}
+
+\begin{corollary} Let $E/\F_q$. $\exists n,k\in\mathbb N$ are such that
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=6cm,center]{formul}
+$$E(\F_q)\cong C_n\oplus C_{nk}$$\end{beamercolorbox}}
+\end{corollary}\pause
+
+\begin{proof}\pause
+From classification Theorem of finite abelian group\\
+\centerline{$E(\F_q)\cong  C_{n_1}\oplus C_{n_2}\oplus\cdots\oplus C_{n_r}$}
+with $n_i|n_{i+1}$ for $i\ge1$.\pause
+
+Hence $E(\F_q)$ contains $n_1^r$ points of order dividing $n_1$.\pause \\ From
+\emph{Structure of Torsion Theorem}, $\#E[n_1]\le n_1^2$.
+So $r\le2$\end{proof}
+
+\end{frame}
+
+
+\begin{frame}\frametitle{The division polynomials}\pause
+
+\begin{Definition}[Division Polynomials of $E:y^2=x^3+Ax+B$]\vspace*{-0.7cm}\pause
+\begin{align*}
+        \psi_{0} =& 0\\
+        \psi_{1} =& 1\\
+        \psi_{2} =& 2y\\
+        \psi_{3} =& 3x^{4} + 6Ax^{2} + 12Bx - A^{2}\\
+        \psi_{4} =& 4y(x^{6} + 5Ax^{4} + 20Bx^{3} - 5A^{2}x^{2} - 4ABx - 8B^{2} - A^{3}) \\
+        &\vdots\\
+        \psi_{2m+1} =& \psi_{m+2}\psi_{m}^{3}-\psi_{m-1}\psi^{3}_{m+1} \qquad \text{ for } m \geq 2\\
+        \psi_{2m}  =& \left(\frac{\psi_{m}}{2y}\right)\cdot(\psi_{m+2}\psi^{2}_{m-1}-\psi_{m-2}\psi^{2}_{m+1}) \quad \text{ for } m \geq 3
+\end{align*}
+The polynomial $\psi_m\in{\mathbb Z}[x,y]$ is called the $m^{\text{th}}$ \emph{division polynomial}
+\end{Definition}\pause
+
+There are more more complicated formulas for general Weierstra\ss\ equations.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The division polynomials (continues)}
+ 
+\begin{block}{Properties of division polynomials}
+\begin{itemize}[<+-| alert@+>]
+  \item $\psi_{2m+1}\in\Z[x]$  and $\psi_{2m}\in 2y\Z[x]$ 
+ \item $\psi_m=\begin{cases} y(mx^{(m^2-4)/2}+\cdots) &\text{if $m$ is even}\\
+ mx^{(m^2-1)/2}+\cdots &\text{if $m$ is odd.}\end{cases}$
+  \item $m(x,y)=\left(x - \frac {\psi_{m-1} \psi_{m+1}}{\psi_{m}^{2}(x)}, \frac{\psi_{2 m}(x,y)}{2\psi_{m}^{4}(x)} \right)=\left ( \frac{\phi_{m}(x)}{\psi_{m}^{2}(x)}, \frac{\omega_{m}(x,y)}{\psi^{3}_{m}(x,y)} \right)
+ $
+ \item[] where
+ \item[]  $\phi_{m}=x\psi_{m}^{2} - \psi_{m+1}\psi_{m-1},\omega_{m}=\frac{\psi_{m+2}\psi_{m-1}^{2}-\psi_{m-2}\psi_{m+1}^{2}}{4y}$
+ \item $\#E[m]=\#\{P\in E(\bar{K}): mP=\infty\}\begin{cases}=m^2&\text{if }p\nmid m\\
+<m^2&\text{if }p\mid m\end{cases}$
+\item $E[2m+1]=\{\infty\}\cup\{(x,y)\in E(\bar{K}): \psi_{2m+1}(x)=0\}$
+\item $E[2m]=E[2]\cup\{(x,y)\in E(\bar{K}): \psi'_{2m}(x)=0\}$\\ \qquad\hfill $\psi'_{2m}:=\psi_{2m}/2y$
+ \item The structure theorem of $E[m]$ follows form these properties
+\end{itemize}
+ \end{block}
+ \end{frame}
+ 
+\section{Endomorphisms}
+
+\begin{frame}
+\frametitle{Endomorphisms}
+
+\begin{definition} A map \alert{$\alpha: E(\bar{K})\rightarrow E(\bar{K})$} is called
+an \alert{endomorphism} if\pause
+\begin{itemize}[<+-| alert@+>]
+  \item $\alpha(P+_EQ)=\alpha(P)+_E\alpha(Q)$ ($\alpha$ is a group homomorphism)
+  \item $\exists R_1,R_2\in \bar{K}(x,y)$ s.t. $\alpha(x,y)=(R_1(x,y),R_2(x,y))\qquad\forall (x,y)\not\in\operatorname{Ker}(\alpha) $
+\end{itemize}\pause
+($\bar{K}(x,y)$ is the field of \emph{rational functions}, \pause  $\alpha(\infty)=\infty$
+)\vspace*{-1pt}
+\end{definition}\vspace*{-3.5pt}\pause
+
+\begin{block}{Facts about Endomorphisms}
+\begin{itemize}[<+-| alert@+>]
+  \item can assume that $\alpha(x,y)=(r_1(x),yr_2(x)),\qquad  r_1,r_2\in\bar{K}(x)$
+\item if
+$r_1(x)=p(x)/q(x)$ with $\gcd(p(x),q(x))=1$.
+\begin{itemize}[<+-| alert@+>]
+ \item The \textbf{degree} of $\alpha$ is $\deg\alpha:=\max\{\deg p,\deg q\}$
+ \item $\alpha$ is said \textbf{separable} if $(p'(x),q'(x))\neq(0,0)$ \hfill (identically)
+\end{itemize}
+ \item $[m](x,y)=\left(\frac{\phi_m}{\psi_m^2},\frac{\omega_m}{\psi_m^3}\right)$ is an
+endomorphism $\forall m\in\Z$
+ \item if $E/\F_q$, $\Phi_q:E(\bar{\F}_q)\rightarrow E(\bar{\F}_q), (x,y)\mapsto(x^q,y^q)$ is called
+\emph{Frobenius Endomorphism}
+\item If $\alpha\neq[0]$ is an endomorphism, then it is surjective
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+
+\begin{block}{Facts about Endomorphisms (continues)}
+
+\begin{itemize}[<+-| alert@+>]
+\item $\Phi_q(x,y)=(x^q,y^q)$ is endomorphism 
+\item $\Phi_q$ is non separable and $\deg\Phi_q=q$
+\item $[m](x,y)=\left(\frac{\phi_m}{\psi_m^2},\frac{\omega_m}{\psi^3_m}\right)$ has degree $m^2$
+\item $[m]$ separable iff $p\nmid m$.
+\item Let $\alpha\neq0$ be an endomorphism. Then
+
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=6cm]{postit}
+$\#\operatorname{Ker}(\alpha)\begin{cases}=\deg\alpha&\text{if }\alpha\text{ is separable}\\
+                                        <\deg\alpha&\text{otherwise}\end{cases}$
+                                        \end{beamercolorbox}}
+
+                                        \end{itemize}
+\end{block}\end{frame}
+
+\begin{frame}
+\frametitle{The ring Endomorphisms}
+
+
+\begin{Definition}\pause Let $E/K$. The \emph{ring of endomorphisms}
+\alert{$$\operatorname{End}(E):=\{\alpha: E\rightarrow E, \alpha\text{ is an endomorphism}\}.$$}
+where for all $\alpha_1,\alpha_2\in\operatorname{End}(E)$,\pause
+\begin{itemize}[<+-|alert@+>]
+  \item $(\alpha_1+\alpha_2)P:=\alpha_1(P)+_E\alpha_2(P)$
+  \item $(\alpha_1\alpha_2)P=\alpha_1(\alpha_2(P))$
+  \end{itemize}
+\end{Definition}\pause
+
+\begin{block}{Properties of $\operatorname{End}(E)$:}\pause
+\begin{itemize}[<+-|alert@+>]
+  \item \alert{$[0]:P\mapsto\infty$} is the zero element
+  \item \alert{$[1]:P\mapsto P$} is the identity element
+  \item $\Z\subseteq \operatorname{End}(E)$
+  \item if $K=\F_q$, \alert{$\Phi_q\in\operatorname{End}(E)$}. So \alert{$\Z[\Phi_q]\subset\operatorname{End}(E)$}
+  \item $\Phi_q$ satisfied in $\operatorname{End}(E)$ the polynomial $X^2-a_qX+q$
+  where $E(\F_q)=q+1-a_q$
+  \end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Complex Multiplication curves}
+
+If $E/\Q$, then\pause
+\begin{itemize}[<+-|alert@+>]
+ \item either $\operatorname{End}(E)\cong\Z$ (it happens most of the times)
+\item or $\operatorname{End}(E)\supsetneq\Z$.
+\end{itemize}\pause
+
+
+\begin{block}{Examples}\pause If \alert{$E: y^2=x^3+dx, d\in\Z\setminus\{0\}$}, \pause
+$$\iota: E(\overline{\Q})\rightarrow E(\overline{\Q}), (x,y)\mapsto (-x,i y)\quad (\infty\mapsto\infty)$$\pause
+$\iota\in\operatorname{End}(E)$, $\iota$ is NOT of the form $[m], m\in \Z$ ($\iota^2=[-1]$).\pause
+\ Hence
+$$\operatorname{End}(E)\supset\Z[i].$$\pause
+
+If \alert{$E: y^2=x^3+d, d\in\Z\setminus\{0\}$}, then
+$$\omega: E(\overline{\Q})\rightarrow E(\overline{\Q}), (x,y)\mapsto (e^{2\pi i/3}x,y)\quad (\infty\mapsto\infty)$$\pause
+$\omega\in\operatorname{End}(E)$, $\omega$ is NOT of the form $[m], m\in \Z$ ($\omega^3=[1]$)\pause
+$$\operatorname{End}(E)\cong\Z[\omega]\vspace*{-3.5pt}$$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Complex Multiplication curves (continues)}
+
+\begin{Definition}{Complex Multiplication Curves} $E/\Q$ is called a \emph{complex multiplication} (CM) curve if
+$$\operatorname{End}(E)\supsetneq\Z$$ 
+\end{Definition}\pause
+
+\begin{itemize}[<+-|alert@+>]
+  \item For $E/\Q$ CM, $\operatorname{End}(E)$ is always an order in a ring of integer of a quadratic field with class number $1$
+  \item There are exactly 13 CM curves $\Q$, up to isomorphism over $\overline{\Q}$
+  \item They are completely classified
+  \end{itemize}\pause
+
+We shall focus on elliptic curves \underline{without CM}.
+\end{frame}
+
+\begin{frame}
+\frametitle{Definition of Galois Representation}
+\begin{itemize}[<+-| alert@+>]
+% \item $\ell$ is a prime number
+\item $E/\Q$ be an elliptic curve.
+\item $\Q(E[m])$ is the Galois extension of $\Q$ of the $m$--torsion points
+\item[] it is obtained by
+adjoining to $\Q$ the cohordinates of the points in $E[m]$ i.e.
+\item[] $\qquad\qquad\Q(E[m])=\displaystyle\prod_{(x,y)\in E[m]}\Q(x,y)$
+\item  $G_m = \operatorname{Gal}(\Q(E[m])/\Q)$
+\item $G_m$ acts linearly on $E[m]$ in the following way:
+\begin{itemize}[<+-| alert@+>]
+\item if $\sigma\in G_m$, $P=(x_P,y_P)\in E[m]$
+\item $\sigma P=(\sigma x_P,\sigma y_P)\in E[m]$
+\item[] $\sigma P\in E[m]$ is a consequence of the rationality $\psi_{m}$
+\item[] $\psi_m(\sigma x_P,\sigma y_P)=\sigma\psi_m(x_P,y_P)=0$
+
+\item $\sigma(\tau(P))=(\sigma\tau)P$ and $1_{G_m}$ acts trivially
+\item $\sigma(P + Q) = \sigma P + \sigma Q$
+\item[] apply $\sigma$ to the equations defining the group law
+ \end{itemize}
+% E[ ]
+% Z/ Z ⊕ Z/ Z,
+% yielding a group representation
+% ρ E, : Gal(L/K ) −→ Aut(E[ ])
+% GL 2 (Z/ Z).
+% This is the mod- Galois representation attached to E.
+% This works for any integer > 1, but we shall assume is prime.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Galois images}
+
+\begin{itemize}[<+-| alert@+>]
+ \item The action of $G_m=\operatorname{Gal}(\Q(E[m]/\Q)$ on $E[m]$ induces a representation
+$$\rho_{E,m}: \operatorname{Gal}(\Q(E[m]/\Q) \longrightarrow \operatorname{Aut}(E[m])$$
+\item[] we will refer to $\rho_{E,m}$ as the \emph{mod-$m$ Galois representation attached to $E$}
+\item By identifying $\operatorname{Aut}(E[m])$  with $\operatorname{Aut}(\Z/m\Z \otimes \Z/m\Z)$,
+\item[] we can think at the image of $\rho_{E,m}$ as a subgroup of $\operatorname{GL}_2(\Z/m\Z)$
+%\item[] We are interested in computing this subgroup.
+%\item[] We shall focus primarily on the case where m is a prime .
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Surjectivity of $\rho_{E,\ell}, \ell$ prime}
+Assume that $E$ is without complex multiplication ($\operatorname{End}(E)\cong \Z$)
+then $\rho_{E,\ell}$, is usually surjective.\pause
+
+But if $E$ has CM, then $\rho_{E,\ell}$, is never surjective for $\ell> 2$.\pause
+ 
+Let $K$  be a number field and let $E/K$ be an elliptic curve.\pause
+ 
+\begin{theorem}[Serre]
+If $E/K$ does not have CM then $\operatorname{im}\rho_{E,\ell}=\operatorname{GL}_2 (\Z/\ell \Z)$ for all
+sufficiently large primes $\ell$.
+\end{theorem}\pause
+ 
+ \begin{conj}
+ For each number field $K$ there is a uniform bound $\ell_{\text{max}}$ such that
+ $$\operatorname{im}\rho_{E,\ell}=\operatorname{GL}_2 (\Z/\ell \Z)$$ 
+ for every $E/K$ and every $\ell>\ell_{\text{max}}$.
+ \end{conj}\pause 
+
+For $K = \Q$, it is generally believed that $\ell_{\text{max}}= 37$. 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Non--surjectivity of $\rho_{E,\ell}, \ell$ prime} 
+
+If $E$ has a \alert{rational point of order $\ell$}, then $\rho_{E,\ell}$, is NOT surjective.\pause
+
+In fact if $P$ is such a point, and $E[\ell]=\langle P, Q\rangle$, then 
+$$\operatorname{im}\rho_{E,\ell}\subset
+\left\{\begin{pmatrix}
+ 1& a\\ 0& b  
+  \end{pmatrix}: a\in \Z/\ell \Z, b\in\Z/\ell \Z^*\right\}
+\subset\operatorname{GL}_2 (\Z/\ell \Z)$$\pause
+
+For $E/\Q$ this occurs for $\ell\le 7$ (Mazur).\pause
+
+If $E$ admits a \alert{rational $\ell$-isogeny}, then $\rho_{E,\ell}$, is not surjective.\pause
+
+In fact in such a case, a base of $E[\ell]$ can be chosen is such a way that 
+$$\operatorname{im}\rho_{E,\ell}\subset
+\left\{\begin{pmatrix}
+ a& b\\ 0& c  
+  \end{pmatrix}: b\in \Z/\ell \Z, a,c\in\Z/\ell \Z^*\right\}
+\subset\operatorname{GL}_2 (\Z/\ell \Z)$$\pause
+
+
+For $E/\Q$ without CM, this occurs for $\ell\le 17$ and $\ell = 37$ (Mazur).\pause
+
+But $\rho_{E,\ell}$, may be non-surjective even when $E$ does not admit a
+rational $\ell$-isogeny.\pause
+
+Even when $E$ has a rational $\ell$-torsion point,
+this does not determine the image of $\rho_{E,\ell}$.
+\end{frame}
+
+\section{Absolute Galois Group}
+\begin{frame}
+\frametitle{Absolute Galois Group} 
+
+\begin{itemize}[<+-| alert@+>]
+ \item The absolute Galois group \\
+\centerline{$G_\Q:=\operatorname{Gal}(\overline{\Q}/\Q)=\{\sigma:\overline{\Q}\rightarrow\overline{\Q},\text{ field automorphism}\}$}
+is a profinite group
+\item If $K$ is any Galois extension of $\Q$, then
+$$\operatorname{Gal}(K/\Q)\cong G_\Q/\{\sigma\in G_\Q: \sigma_{|_K}=\text{id}_K\}$$
+\item
+So $G_\Q$ admits as quotient any possible Galois Group of Galois extensions of $\Q$ and it is the projective limit of its finite quotients
+\item Recall  \emph{$n$--torsion field} $\Q(E[n])$ and $G_m=\operatorname{Gal}(\Q(E[n])/\Q)$. 
+\item The mod $m$--representation
+$$\rho_{E,n}: G_n\hookrightarrow\operatorname{Aut}(E[n])\cong \operatorname{GL}_2(\Z/n\Z)$$
+can be extended to
+$$\rho_E: G_\Q\longrightarrow \operatorname{Aut}(E[\infty])$$
+where 
+$E[\infty]=\cup_{m\in\N}E[m]$ is the \emph{torsion subgroup} of $E(\overline{\Q})$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{$\ell$--adic representations} 
+
+Consider the decomposition:
+ $$\operatorname{Aut}(E[\infty])=\prod_{\ell\text{ prime}}\operatorname{Aut}(E[\ell^\infty])
+ \cong \prod_{\ell\text{ prime}}\operatorname{GL}_2(\Z_\ell).$$
+ where \pause
+ $E[\ell^\infty]=\cup_{m\in\N}E[\ell^m]$ and $\Z_\ell$ denoted the ring of \emph{$\ell$--adic integers}.\pause
+ 
+ For every fixed prime $\ell$, the projection
+ $$\rho_{E,\ell^\infty}: G_\Q\longrightarrow \operatorname{GL}_2(\Z_\ell)$$
+ is called $\ell$--adic representation attached to $E$.\pause
+
+\begin{itemize}[<+-| alert@+>]
+ \item  $\rho_{E,\ell^\infty}$ is \emph{unramified} at all  $p\nmid \ell\Delta_E$ (i.e. 
+$\rho_\ell|_{I_\mathfrak p}=\operatorname{Id}_{\Z_\ell}$
+where, if $\mathfrak p$ is a prime of $\bar{\Q}$ over $p$, the \emph{inertia subgroup} 
+$$I_\mathfrak p\subset G_\Q=\{\sigma \in G_\Q: \sigma(x)\equiv x\bmod\mathfrak p,\quad \forall x\in\bar{\Z}\}$$
+ \item For all primes $\ell$, $\rho_{\ell^\infty}(G_\Q)$ is an open in the $\ell$--adic topology
+ \item For all but finitely many primes $\ell$, $\rho_{\ell^\infty}(G_\Q)=\operatorname{Aut}(E[\ell^\infty])$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Serre Uniformity Theorem} 
+
+The statements:
+
+\begin{enumerate}
+\item For all primes $\ell$, $\rho_{\ell^\infty}(G_\Q)$ is an open subgroup with respect to the $\ell$--adic topology,
+ \item For all but finitely many primes $\ell$, $\rho_{\ell^\infty}(G_\Q)=\operatorname{Aut}(E[\ell^\infty])$.
+ \end{enumerate}
+
+ are equivalent to \pause
+
+\begin{theorem}[Serre's Uniformity Theorem] If $E$ is not CM, 
+then the index of $\rho_n(G(n))$ inside $\operatorname{Aut}(E[n])$ is bounded by a constant that depends
+only on $E$. 
+\end{theorem}\pause
+
+which in particular implies
+
+\begin{corollary} If $E$ in not CM, then   $\forall\ell$ large enough 
+$$G_\ell= \operatorname{Aut}(E[\ell])$$
+\end{corollary}\pause
+\end{frame}
+
+\begin{frame}
+\frametitle{The Definition of Serre Curve} 
+
+\begin{corollary} If $E$ in not CM, then   $\forall\ell$ large enough 
+$$G_\ell= \operatorname{Aut}(E[\ell])$$
+\end{corollary}\pause
+
+\begin{block}{Question:}
+Is it possible that for some curve $E/\Q$,\\ 
+$G_m= \operatorname{Aut}(E[m])$
+for all $m\in\N$? \pause \alert{Answer is NO!!}
+\end{block}\pause
+
+The above statement is equivalent to 
+$$\rho_E: G_\Q\cong \operatorname{Aut}(E[\infty])$$\pause
+
+Serre showed
+$$\rho(G_\Q)\subseteq \mathcal H_E\subset \operatorname{Aut}(E[\infty])$$ \pause
+
+where 
+$$[\operatorname{Aut}(E[\infty]):\mathcal H_E]=2$$
+\alert{$\mathcal H_E$ is the \emph{Serre's Subgroup}} 
+\end{frame}
+
+\begin{frame}
+\frametitle{The Definition of Serre Curve} 
+
+The Serre's Subgroup:
+$$\mathcal H_E=\pi_{m_E}^{-1}\left(\left\{\sigma\in\operatorname{GL}_2(\Z/m_E\Z): \varepsilon(A)=\left(\frac{\Delta_E}{\det A}\right)\right\}\right)$$
+where \pause
+\begin{itemize}[<+-| alert@+>]
+ \item $\pi_m:\operatorname{Aut}(E[\infty])\cong\operatorname{GL}_2(\hat\Z)\rightarrow\operatorname{GL}_2(\Z/m\Z)$ is the natural projection,
+ \item $m_E$ is the \emph{Serre number of $E$}:
+ $\quad m_E = [2,\operatorname{disc}(\Q(\sqrt{|\Delta_E|}))]$
+ \item  $\varepsilon$ is the \emph{signature map} (i.e.
+$\varepsilon:\operatorname{GL}_2(\Z/m\Z)\rightarrow\operatorname{GL}_2(\Z/2\Z)\cong S_3\rightarrow\{\pm1\}$)
+ \end{itemize}\pause
+ 
+An elliptic curve $E/\Q$ is called \emph{a Serre curve} if $\rho(G_\Q)=\mathcal H_E$. 
+
+\begin{theorem}[N. Jones (2010)]
+Almost all elliptic curves are Serre's curves 
+\end{theorem}\pause
+
+{If $E$ admits a rational $\ell$--isogeny (a $\Q$--rational morphism of degree $\ell$, $E'\rightarrow E$), then $E$ it is \alert{NOT} a Serre's curve }
+\end{frame}
+
+\begin{frame}
+\frametitle{The Frobenius Elements}
+
+\begin{Definition}
+Let $K/\Q$ be Galois and let $p$ be prime, unramified in $K$, and let $\mathcal{P}$ be a prime of $K$ above $p$. 
+The \emph{Frobenius element} $\sigma_\mathcal{P}\in\operatorname{Gal}(K/\Q)$ is the lift of the Frobenius automorphism of the finite field 
+$\mathcal O_K/\mathcal P$.\pause (i.e. 
+$$\sigma_\mathcal{P}\alpha\equiv \alpha^{N\mathcal{P}}\bmod \mathcal P\quad \forall \alpha\in\mathcal{O}).$$\pause
+
+The \emph{Artin symbol}  $\left[\frac{K/\Q}p\right]$ is the conjugation class of all such $\sigma_\mathcal{P}$
+\end{Definition}\pause
+
+If $\left[\frac{K/\Q}p\right]=\{id\}$ then $p$ splits completely in $K/\Q$\pause
+
+\begin{itemize}[<+-| alert@+>]
+ \item If  $K=\Q(E[n])$ is the division fields, 
+the Artin symbol is thought as a conjugation class of matrices in $\operatorname{GL}_2(\Z/n\Z)$.
+\item The characteristic polynomial 
+$\det(\left[\frac{\Q(E[n])/\Q}p\right]-T)$
+does not depend on $n$:
+\item{} $\det\left(\left[\frac{\Q(E[n])/\Q}p\right]\right)\equiv p\bmod n$
+\item{} $\operatorname{tr}\left(\left[\frac{\Q(E[n])/\Q}p\right]\right)\equiv a_E\bmod n$
+where $a_E=p-1-\#E(\F_p)$.
+\end{itemize}
+\end{frame}
+
+\section{Chebotarev Density Theorem}
+
+\begin{frame}
+\frametitle{Chebotarev Density Theorem} 
+
+\begin{itemize}[<+-| alert@+>]
+ \item Let $K/\Q$  Galois  
+ \item let $\mathcal G=\operatorname{Gal}(K/\Q)$
+ \item let $\mathcal C\subset\operatorname{Gal}(K/\Q)$ be a union of conjugation classes of 
+$\mathcal G$
+\end{itemize}\pause
+
+
+\begin{theorem}[Chebotarev Density Theorem]
+The density of the primes $p$ such that 
+$\left[\frac{K/\Q}p\right]\subset \mathcal C$ equals $\frac{\#\mathcal C}{\#\mathcal G}$ 
+\end{theorem}\pause
+
+\begin{itemize}[<+-| alert@+>]
+ \item Quantitative versions consider
+$$\pi_{\mathcal C/\mathcal G}(x):=\#\left\{p\le x: \left[\frac{K/\Q}p\right]\subset \mathcal C\right\}.$$
+\item we shall consider these versions in next version 
+\item The Generalized Riemann Hypothesis implies
+$$\pi_{\mathcal C/\mathcal G}(x)=
+\frac{\#\mathcal C}{\#\mathcal G}\int_2^x\frac{dt}{\log x}+O\left(\sqrt{\#\mathcal C}\sqrt{x}\log(xM\#\mathcal G)\right)$$
+where $M$ is the product of primes numbers that ramify in $K/\Q$.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Chebotarev Density Theorem} 
+
+We will apply it in the special case when $K=\Q(E[n])$ where we think at the element of $\mathcal G$ as 2 by 2 non singular matrices. For example\pause
+\begin{itemize}[<+-| alert@+>]
+ \item In the case when $\mathcal C=\{\operatorname{id}\}$, the condition $\left[\frac{\Q(E[n])/\Q}p\right]=\{\operatorname{id}\}$ is equivalent
+to the property that 
+$$E[n]\subset \bar{E}(\F_p)$$
+where $\overline E(\F_p)$ is the group of $\F_p$-rational points on the reduced curve $\overline E$.
+\item In the case when $\mathcal C=\mathcal G_{\text{tr}=r}=\{\sigma\in\mathcal G:\operatorname{tr}\sigma=t\}$, and $\ell$ is a sufficiently large prime so that $\operatorname{Gal}(\Q(E[\ell])/\Q)=
+\operatorname{GL}_2(\F_\ell)$, then
+$$\#\operatorname{GL}_2(\F_\ell)_{\text{tr}=r}=\begin{cases}
+                   \ell^2(\ell-1) & \text{if } r=0\\
+                   \ell(\ell^2-\ell-1) & \text{otherwise.}
+                  \end{cases}
+$$
+\end{itemize}
+
+\end{frame}
+
+\section{Serre's Cyclicity Conjecture}
+
+\begin{frame}
+\frametitle{Serre's Cyclicity Conjecture}
+ Let $E/\Q$ and set\pause
+$$\pi_E^{\text{cyclic}}(x)=\#\{p\le x:\overline E(\F_p)\text{ is cyclic}\}.$$\pause
+
+\begin{conj}[Serre]
+The following asymptotic formula holds
+$$\pi_E^{\text{cyclic}}(x)\sim\delta_E^{\text{cyclic}}\frac x{\log x}\qquad x\rightarrow\infty$$
+where 
+$$\delta_E^{\text{cyclic}}=\sum_{n=1}^\infty\frac{\mu(n)}{\operatorname{Gal}(\Q(E[n])/\Q)}.$$
+ \end{conj}\pause
+
+\begin{itemize}[<+-| alert@+>]
+ \item Heuristics based on Chebotarev Density Theorem 
+ \item Serre proved that GRH implies the conjecture
+ \item If $E$ has no CM,  $\delta_E^{\text{cyclic}}$ is a rational multiple of the quantity
+$$\prod_\ell\left(1-\frac{1}{(\ell^2-\ell)(\ell^2-1)}\right).$$
+%\item for Serre's curves there is a nice formula for  $\delta_E^{\text{cyclic}}$
+%\item more tomorrow $\ldots$.
+\end{itemize}
+
+\end{frame}
+
+
+\section{Lang Trotter Conjecture for trace of Frobenius}
+
+\begin{frame}
+\frametitle{Lang Trotter Conjecture for trace of Frobenius} 
+ Let $E/\Q$, $r\in\Z$  and set\pause
+$$\pi_E^r(x)=\#\{p\le x: p\nmid\Delta_E\text{ and } \#\overline E(\F_p)=p+1-r\}$$
+\pause
+\begin{conj}[Lang -- Trotter (1970)]
+If either $r\ne0$ or if $E$ has no CM, then
+the following asymptotic formula holds
+$$\pi_E^r(x)\sim C_{E,r}\frac{\sqrt{x}}{\log x}\qquad x\rightarrow\infty$$
+where $C_{E,r}$ is the  \emph{Lang--Trotter constant}
+ \end{conj}\pause
+
+\begin{definition}
+Let $(k_m)_{m\in\N}\subset\N$ be s.t. $\forall k\in\N$, $k\mid k_m$  $\forall m$ is large enough. 
+(Example: $k_m=m!$  has this property). The the Lang--Trotter constants is\pause
+$$C_{E,r}=\frac2\pi\lim_{m\rightarrow\infty}\frac{k_m\#\operatorname{Gal}(\Q(E[k_m])/\Q)_{\text{trace}=r}}{\#\operatorname{Gal}(\Q(E[K_m])/\Q)}$$
+\end{definition}
+
+ \end{frame}
+
+\subsection{Definition of the Lang Trotter Constant}
+
+\begin{frame}
+\frametitle{Lang Trotter Conjecture for trace of Frobenius} 
+\framesubtitle{Definition of the Lang Trotter Constant}
+
+\begin{definition}
+Let $E/\Q$ be an elliptic curve with out CM and consider the representation of the torsion points:\pause
+$\rho_E: G_\Q\longrightarrow \operatorname{Aut}(E[\infty]).$\pause
+Let $m\in\N$ and denote by $\hat{G}_m$ the projection of $\rho_E(G_Q)$ in
+$\displaystyle\prod_{\ell\mid m}\operatorname{GL}_2(\Z_\ell)$\pause
+\begin{itemize}[<+-| alert@+>]
+\item We say that $m$ \textbf{splits} $\rho_{E}$ if 
+ $$\rho_E(G_\Q)\cong \hat{G}_m\times \prod_{\ell\nmid m}\operatorname{GL}_2(\Z_\ell)$$
+\item We say that $m$ \textbf{stabilizes} $\rho_{E}$ if
+$$\hat{G}_m=r_m^{-1}(\operatorname{Gal}(\Q(E[m])/\Q))$$
+where 
+$$r_m:\prod_{\ell\mid m}\operatorname{GL}_2(\Z_\ell)\rightarrow\operatorname{Gal}(\Q(E[m])/\Q)$$
+is the reduction map
+\end{itemize}
+\end{definition}
+
+ \end{frame}
+
+\begin{frame}
+\frametitle{Lang Trotter Conjecture for trace of Frobenius} 
+
+\begin{theorem}[Serre]
+Let $E/\Q$ be an elliptic curve with out CM. Then there exists $m\in\N$ that splits and stabilizes $\rho_E$
+\end{theorem}\pause
+
+The smallest such an $m$ is called the \emph{Serre's conductor} of $E$ and denoted by $m_E$.\pause
+
+Lang and Trotter showed that 
+
+\begin{eqnarray*}
+ C_{E,r}&=&\frac2\pi\lim_{m\rightarrow\infty}\frac{m!\#\operatorname{Gal}\Q(E[m!])/\Q)_{\text{tr}=r}}{\#\operatorname{Gal}\Q(E[m!])/\Q)}\\
+ &=&\frac2\pi\frac{m_E\#\operatorname{Gal}\Q(E[m_E])/\Q)_{\text{tr}=r}}{\#\operatorname{Gal}\Q(E[m_E])/\Q)}
+\times\prod_{\ell\nmid m_E}\frac{\ell\#\operatorname{GL}_2(\F_\ell)_{\text{tr}=r}}{\#\operatorname{GL}_2(\F_\ell)}\end{eqnarray*}\pause
+
+Although it is hard to compute in General, there is a simple formula to compute the Serre's conductor of Serre's curves. (more next lecture)
+\end{frame}
+
+\subsection{state of the Art}
+
+\begin{frame}
+\frametitle{Lang Trotter Conjecture for trace of Frobenius} 
+\framesubtitle{An application of $\ell$--adic representations and of the Chebotarev density Theorem}\pause
+
+\begin{theorem}[Serre]
+Assume that $E/\Q$ is not CM or that $r\neq0$ and that the Generalized Riemann 
+Hypothesis holds. Then
+$$\pi_E^r(x)\ll\begin{cases} x^{7/8}(\log x)^{-1/2}&\text{if}\ r\ne0\\ x^{3/4}&\text{if}\ r=0.\end{cases}$$  
+\end{theorem}\pause
+
+\begin{itemize}[<+-| alert@+>]
+ \item If $E/\Q$ is CM and $r=0$. It is classical
+ $$\pi_E^0(x)\sim\frac12\frac{x}{\log x}\qquad x\rightarrow\infty$$
+ \item Murty, Murty and Sharadha: If $r\ne0$, on GRH, $\pi_E^r(x)\ll x^{4/5}/(\log x).$
+ \item Elkies $\pi_E^0(x)\rightarrow\infty\quad x\rightarrow\infty$
+ \item Elkies \& Murty $\pi_E^0(x)\gg\log\log x$
+ \item Average Versions tomorrow
+ \end{itemize}
+
+\end{frame}
+
+\section{Lang Trotter Conjecture for Primitive points}
+
+\begin{frame}
+\frametitle{Lang Trotter Conjecture for Primitive points} \pause
+
+\begin{definition}
+   Let $E/\Q$ and let $P\in E(\Q)$ be of infinite order. 
+   $P$ is called \emph{primitive} for a prime $p$ if the reduction $\overline P$ of $P\bmod p$ 
+    $\langle \overline P\rangle =\overline E(\F_p)$
+\end{definition}\pause
+
+Set $$\pi_{E,P}(x)=\#\{p\le x: p\nmid\Delta_E\text{ and } P\text{ is primitive for } p\}.$$\pause
+
+\begin{conj}[Lang--Trotter for primitive points (1976)] The following asymptotic formula holds
+$$\pi_{E,P}(x)\sim \delta_{E,P}\frac x{\log x}\qquad x\rightarrow\infty.$$
+with\vspace*{-4pt}\pause
+$$\delta_{E,P}=\sum_{n=1}^\infty\mu(n)\frac{\#\mathcal C_{P,n}}{\#\operatorname{Gal}(\Q(E[n],n^{-1}P)/\Q)}$$
+where $\Q(E[n],n^{-1}P)$ is the extension of $\Q(E[n])$ of the coordinates of the points
+$Q\in E(\bar{\Q})$ such that $nQ=P$ and $\mathcal C_{P,n}$ is a union of conjugacy classes in 
+$\operatorname{Gal}(\Q(E[n],n^{-1}P)/\Q)$. (more next lecture)
+\end{conj}
+\end{frame}
+
+
+\section{Some reading}
+\begin{frame}
+\frametitle{Some reading}
+\begin{scriptsize}
+\begin{thebibliography}{99}
+\bibitem{BSS} \textsc{Ian~F.~Blake,~Gadiel~Seroussi,~and~Nigel~P.~Smart},
+Advances in elliptic curve cryptography, London Mathematical Society Lecture Note Series, vol. 317, Cambridge University Press, Cambridge, 2005.
+ \bibitem{C} \textsc{J.~W.~S.~Cassels},
+Lectures on elliptic curves, London Mathematical Society Student Texts, vol. 24, Cambridge University Press, Cambridge, 1991.
+ \bibitem{CR} \textsc{John~E.~Cremona},
+Algorithms for modular elliptic curves, 2nd ed., Cambridge University Press, Cambridge, 1997.
+ \bibitem{Kn} \textsc{Anthony~W.~Knapp},
+Elliptic curves, Mathematical Notes, vol. 40, Princeton University Press, Princeton, NJ, 1992.
+ \bibitem{Ko} \textsc{Neal~Koblitz},
+Introduction to elliptic curves and modular forms, Graduate Texts in Mathematics, vol. 97, Springer-Verlag, New York, 1984.
+ %\bibitem{Po} \textsc{Poonen B} Elliptic curves (introduction)(19s) notes
+ \bibitem{Sil} \textsc{Joseph~H.~Silverman},
+The arithmetic of elliptic curves, Graduate Texts in Mathematics, vol. 106, Springer-Verlag, New York, 1986.
+\bibitem{ST} \textsc{Joseph~H.~Silverman~and~John~Tate},
+Rational points on elliptic curves, Undergraduate Texts in Mathematics, Springer-Verlag, New York, 1992.
+\bibitem{washington} \textsc{Lawrence~C.~Washington},
+Elliptic curves: Number theory and cryptography, 2nd ED. Discrete Mathematics and Its Applications, Chapman \& Hall/CRC, 2008.
+\bibitem{Zimm} \textsc{Horst~G.~Zimmer},
+Computational aspects of the theory of elliptic curves, Number theory and applications
+(Banff, AB, 1988) NATO Adv. Sci. Inst. Ser. C Math. Phys. Sci., vol. 265, Kluwer Acad. Publ., Dordrecht, 1989, pp. 279--324.
+\end{thebibliography}
+\end{scriptsize}
+\end{frame}
+
+
+
+
+\end{document}
+
+

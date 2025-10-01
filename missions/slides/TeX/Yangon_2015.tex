@@ -1,0 +1,853 @@
+\documentclass[12pt,handout]{beamer} %,hyperref={pdfpagelabels=false},draft,handout,heout
+\vfuzz=4pt
+\hfuzz=4pt
+\usepackage[orientation=lescape,size=custom,width=16,height=9,scale=0.30,debug]{beamerposter} 
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{colortbl}
+\usepackage{yfonts}
+\usepackage{translator} % comment this, se not available
+\mode<article>
+{
+  \usepackage{times}
+  \usepackage{mathptmx}
+  \usepackage[left=1.5cm,right=6cm,top=1.5cm,bottom=3cm]{geometry}
+}
+
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\F}{\mathbb F}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+% Common theorem-like environments
+
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{\translate{Exercise}}
+\newtheorem{rem}[theorem]{\translate{Remark}}
+\newtheorem{conj}[theorem]{\translate{Conjecture}}
+\newtheorem{teo}{Theorem}
+\newtheorem{Note}[theorem]{\translate{Note}}
+\newtheorem{Defi}[theorem]{\translate{Definition}}
+\newtheorem{lem}{Lemma}
+
+% New useful definitions:
+
+\newbox\mytempbox
+\newdimen\mytempdimen
+
+\newcommand\includegraphicscopyright[3][]{%
+  \leavevmode\vbox{\vskip3pt\raggedright\setbox\mytempbox=\hbox{\includegraphics[#1]{#2}}%
+    \mytempdimen=\wd\mytempbox\box\mytempbox\par\vskip1pt%
+    \fontsize{3}{3.5}\selectfont{\color{black!25}{\vbox{\hsize=\mytempdimen#3}}}\vskip3pt%
+}}
+
+\newenvironment{colortabular}[1]{\medskip\rowcolors[]{1}{blue!20}{blue!10}\tabular{#1}\rowcolor{blue!40}}{\endtabular\medskip}
+
+\def\equad{\leavevmode\hbox{}\quad}
+
+\newenvironment{greencolortabular}[1]
+{\medskip\rowcolors[]{1}{green!50!black!20}{green!50!black!10}%
+  \tabular{#1}\rowcolor{green!50!black!40}}%
+{\endtabular\medskip} 
+
+\lecture[1]{On Never Primitive points for Elliptic curves}
+\date{}
+\title[Dip. Matem. \& Fisica]{\insertlecture}
+\subtitle{\ }
+\author[Universit\`a Roma Tre]{Francesco Pappalardi}
+\institute{Dipartimento di Matematica e Fisica\\
+  Universit\`a Roma Tre\\ 
+  \& \emph{Roman Number Theory Association}}
+
+% Beamer version theme poniamotings
+
+\useoutertheme[height=0pt,width=2cm,right]{sidebar}
+\usecolortheme{rose,sidebartab}
+\useinnertheme{circles}
+\usefonttheme[solo large]{structurebold}
+
+\setbeamercolor{formul}{fg=black,bg=pink}
+\setbeamercolor{sidebar right}{bg=black!15}
+\setbeamercolor{structure}{fg=blue}
+\setbeamercolor{author}{parent=structure}
+ \setbeamercolor{postit}{fg=black,bg=yellow}
+ \setbeamercolor{greys}{fg=black,bg==black!25}
+
+\setbeamerfont{title}{series=\normalfont,size=\LARGE}
+\setbeamerfont{title in sidebar}{series=\bfseries}
+\setbeamerfont{author in sidebar}{series=\bfseries}
+\setbeamerfont*{item}{series=}
+\setbeamerfont{frametitle}{size=}
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[book]
+\setbeamertemplate{sidebar right}
+{
+  {\usebeamerfont{title in sidebar}%
+    \vskip1.5em%
+    \hskip3pt%
+    \usebeamercolor[fg]{title in sidebar}%
+    \insertshorttitle[width=2.1cm,respectlinebreaks]\par%   left,
+    \vskip1.25em%
+  }%
+  {%
+    \hskip3pt%
+    \usebeamercolor[fg]{author in sidebar}%
+    \usebeamerfont{author in sidebar}%
+    \insertshortauthor[width=2cm,center,respectlinebreaks]\par%
+    \vskip1.25em%
+  }%
+  \hbox to2cm{\hss\insertlogo\hss}
+  \vskip1.25em%
+  \insertverticalnavigation{2cm}%
+  \vfill
+  \hbox to 2cm{\hfill\usebeamerfont{subsection in
+      sidebar}\strut\usebeamercolor[fg]{subsection in
+      sidebar}\insertframenumber\hskip5pt}%
+  \vskip3pt%
+}%
+
+\setbeamertemplate{title page}
+{
+  \vbox{}
+  \vskip1em
+  %{\huge Lecture \insertshortlecture\par}
+  {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par}%
+  \ifx\insertsubtitle\@empty%
+  \else%
+    \vskip0.25em%
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+  \fi%
+  \vskip1em\par
+   \textbf{\Large{The $8^{\textrm{th}}$ International Conference on Science and}}\\
+   \ \\
+   \textbf{\Large{Mathematical Education
+   in Developing Countries}}\\
+\ \\
+   \textbf{University of Yangon}\\
+\ \\   \textbf{Myanmar}\\ \emph{ $4^{\textrm{th}}$-$6^{\textrm{th}}$ December 2015},\par
+  \vskip0pt plus1filll
+  \leftskip=0pt plus1fill\insertauthor\par
+  \insertinstitute\vskip1em
+}
+
+\logo{\includegraphics[width=1cm]{roma3.pdf}}
+
+
+
+% Article version layout poniamotings
+
+\mode<article>
+
+\makeatletter
+\def\@listI{\leftmargin\leftmargini
+  \parsep 0pt
+  \topsep 5\p@   \@plus3\p@ \@minus5\p@
+  \itemsep0pt}
+\let\@listi=\@listI
+
+
+\setbeamertemplate{frametitle}{\paragraph*{\insertframetitle\
+    \ \small\insertframesubtitle}\ \par
+}
+\setbeamertemplate{frame end}{%
+  \marginpar{\scriptsize\hbox to 1cm{\sffamily%
+      \hfill\strut\insertframenumber}\hrule height .2pt}}
+\setlength{\marginparwidth}{1cm}
+\setlength{\marginparsep}{4.5cm}
+
+\def\@maketitle{\makechapter}
+
+\def\makechapter{
+  \newpage
+  \null
+  \vskip 2em%
+  {%
+    \parindent=0pt
+    \raggedright
+    \sffamily
+    \vskip8pt
+    {\fontsize{36pt}{36pt}\selectfont Kapitel \insertshortlecture \par\vskip2pt}
+    {\fontsize{24pt}{28pt}\selectfont \color{blue!50!black} \insertlecture\par\vskip4pt}
+    {\Large\selectfont \color{blue!50!black} \insertsubtitle\par}
+    \vskip10pt
+%    \normalsize\selectfont Druckfassung der
+   % Vorlesung \emph{\lecturename} vom \@date\par\vskip1.5em
+    %\hfill Till Tantau, Institut f\"ur Theoretische Informatik, Universit\"at zu L\"ubeck
+  }
+  \par
+  \vskip 1.5em%
+}
+
+\let\origstartsection=\@startsection
+\def\@startsection#1#2#3#4#5#6{%
+  \origstartsection{#1}{#2}{#3}{#4}{#5}{#6\normalfont\sffamily\color{blue!50!black}\selectfont}}
+
+\makeatother
+
+\mode
+<all>
+
+
+
+
+% Typesetting Listings
+
+\usepackage{listings}
+\lstset{language=Java}
+
+\alt<presentation>
+{\lstset{%
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\slshape\color{green!50!black},
+  keywordstyle=\bfseries\color{blue!50!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  escapechar=\#,
+  emphstyle=\color{red}}
+}
+{
+  \lstset{%
+    basicstyle=\ttfamily,
+    keywordstyle=\bfseries,
+    commentstyle=\itshape,
+    escapechar=\#,
+    emphstyle=\bfseries\color{red}
+  }
+}
+
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+
+%\section{Introduction}
+
+\begin{frame}
+ \frametitle{Notations}
+
+\begin{alertblock}{Fields of characteristics 0}
+ \begin{enumerate}
+ \item $\Z$ is the ring of integers
+ \item $\Q$ is the field of rational numbers
+\item $\R$ is the field of real numbers
+\item $\C$ is the fields of complex numbers
+ \item For every prime $p$, $\F_p=\{0,1,\ldots,p-1\}$ is the prime field;
+\end{enumerate}
+\end{alertblock}
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=5cm]{formul}
+{\Huge{$\Z\subsetneq\Q\subsetneq\R\subsetneq\C$}}\end{beamercolorbox}}\bigskip
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7cm]{postit}
+{\Large{$\Z\twoheadrightarrow\F_p, n\longmapsto n(\bmod p)\text{ surjective map}$}}\end{beamercolorbox}}
+
+
+\end{frame}
+
+\begin{frame}{The Weierstra\ss\ Equation}
+
+A Weierstra\ss\ equation $E$ over a $K$ (field) is an equation
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+$E: y^2=x^3+Ax^2+Bx+C$\end{beamercolorbox}}
+where $A,B,C\in K$ \pause
+
+\begin{center}
+% \includegraphics[width=60mm]{images/elliptic1.pdf}\pause
+%\llap{\includegraphics[width=60mm]{images/elliptic2.pdf}}\pause
+%\llap{\includegraphics[width=60mm]{images/elliptic3.pdf}}\pause
+%\llap{\includegraphics[width=60mm]{images/elliptic3b.pdf}}\pause
+%\llap{\includegraphics[width=60mm]{images/elliptic4.pdf}}\pause
+%\llap{\includegraphics[width=60mm]{images/elliptic5.pdf}}\pause
+%\llap{\includegraphics[width=60mm]{images/elliptic6.pdf}}\pause
+{\includegraphics[width=60mm]{images/elliptic7.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic8.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic9.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic9b.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic10.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic10b.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic6.pdf}}\pause
+\end{center}\pause
+
+\begin{center}
+ 
+ \begin{beamercolorbox}[sep=1em,wd=9.5cm]{postit}
+A Weierstra\ss\ equation  is called \textbf{elliptic curve} if it is \emph{non singular}!\pause
+
+(i.e. $4A^3C-A^2B^2-18ABC+4B^3+27C^2\ne0$)
+ \end{beamercolorbox}
+\end{center}\pause
+
+We consider (most of times) simplified Weierstra\ss\ equation $y^2=x^3+ax+b$ that are elliptic curves when
+$4a^3+27b^2\neq0$
+ \end{frame}
+%\section{The sum of points}
+\begin{frame}
+\frametitle{The definition of $E(K)$}
+%\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=9cm]{formul}
+Let $E/K$ elliptic curve and consider $\infty$ to be an extra point. Set\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=9cm]{postit}
+$$E(K)=\{(x,y)\in K^2:\ y^2+=x^3+ax+b\}\cup\{\infty\}\subseteq K^2\cup\{\infty\}$$\end{beamercolorbox}}
+
+ 
+%\end{beamercolorbox}}
+\pause
+
+\ \hfill$\infty$ might be though as the ``vertical direction''
+
+\begin{Definition}[line through points $P,Q\in E(K)$]
+$r_{P,Q}:\begin{cases}
+                     \text{line through $P$ and }Q &\text{if }P\neq Q\\
+                     \text{tangent line to $E$ at }P &\text{if }P=Q
+                    \end{cases}$\hfill projective or affine
+\end{Definition}\pause
+
+\begin{itemize}[<+-| alert@+>]
+\item if $\#(r_{P,Q}\cap E(K))\ge2\ \Rightarrow\ \#(r_{P,Q}\cap E(K))=3$\\
+\hfill\scriptsize{\alert{if tangent line, contact point is counted with multiplicity}}  
+ \item $r_{P,Q}: aX+b=0$ (vertical) $\Rightarrow \infty\in r_{P,Q}$
+\item $r_{\infty,\infty}\cap E(K)=\{\infty,\infty,\infty\}$%\vspace*{-4.4pt}
+ % $\#(r_{P_1,P_1}\cap E(K))=2$
+% \vspace*{-4.4pt}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{History (from \textsc{Wikipedia})}
+
+\begin{columns}[c]
+\begin{column}{4.5cm}
+\begin{small}
+\textbf{Carl Gustav Jacob Jacobi} (10/12/1804 -- 18/02/1851) was a German mathematician,
+who made fundamental contributions to elliptic functions, dynamics, differential equations,
+and number theory.
+\end{small}\\
+\centerline{\includegraphics[width=1.8cm]{images/Jacobi.jpg}}
+%\centerline{\scriptsize{Carl Gustav Jacob Jacobi}}\\
+\begin{scriptsize}\begin{block}{Some of His Achievements:}
+\begin{itemize}
+ \item Theta and elliptic function
+ \item Hamilton Jacobi Theory
+ \item Inventor of determinants
+ \item Jacobi Identity\\
+ \tiny{ $[A,[B,C]]+[B,[C,A]]+[C,[A,B]]=0$}
+\end{itemize}
+\end{block}\end{scriptsize}
+\end{column}\pause
+\begin{column}{5.5cm}\vspace*{-16.3pt}
+\begin{center}
+\includegraphics[width=5.5cm]{images/add1.pdf}\pause
+\llap{\includegraphics[width=5.5cm]{images/add2.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add3.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add5.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add6.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add7.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add1.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add8.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add9.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad10.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad11.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad12.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add1.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad13.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad14.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad15.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add7.pdf}}\pause
+\end{center}
+\small{
+$r_{P,Q}\cap E(K)=\{P,Q,R\}$\\
+$r_{R,\infty}\cap E(K)=\{\infty,R,R'\}$}
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2cm]{formul}
+$P+_E Q:=R'$\pause
+            \end{beamercolorbox}}%\smallskip
+
+ \small{$r_{P,\infty}\cap E(K)=\{P,\infty,P'\}$}\\
+ \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2cm]{formul}
+             $-P:=P'$
+            \end{beamercolorbox}}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Properties of the operation ``$+_E$''}
+
+\begin{Theorem}
+ The addition law on $E(K)$ has the following
+properties:
+\begin{enumerate}[<+-| alert@+>][(a)]
+ \item $P+_EQ\in E(K)\hfill\forall P,Q\in E(K)$
+ \item  $P+_E\infty=\infty+_E P=P\hfill\forall P\in E(K)$
+ \item  $P+_E(-P)=\infty\hfill\forall P\in E(K)$
+ \item  $P+_E(Q +_E R)=(P+_E Q)+_E R\hfill\forall P,Q,R\in E(K)$
+ \item  $P+_E Q=Q +_E P\hfill\forall P,Q\in E(K)$
+\end{enumerate}
+ \end{Theorem}\pause
+
+\begin{itemize}[<+-| alert@+>]
+%  \item By ``a point of $E/K$ ($P\in E$)'' we mean $P\in E(\bar{\F}_q)$
+%  in analogy for $E/\Q$ where ``a point of $E$'' means  $P\in E(\C)$
+ \item $\left(E(K),+_E\right)$  \alert{commutative group}
+ \item All group properties are easy except \alert{associative law (d)}
+ \item Geometric proof of associativity uses \emph{Pappo's Theorem}
+%  \item We shall comment on how to do it by explicit computation
+%  \item can substitute $K$ with any field $K$; Theorem holds for $\left(E(K),+_E\right)$
+% \item In particular, if $E/K$, can consider the groups $E(\overline{\F}_q)$ or $E(\F_{q^n})$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Formulas for Addition on $E$}
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+$E: y^2=x^3+Ax+B$\end{beamercolorbox}}\bigskip\pause
+
+$P_1 = (x_1, y_1), P_2 = (x_2, y_2)\in E(K)\setminus\{\infty\}$,\pause
+
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Addition Law}
+\begin{itemize}[<+-| alert@+>]
+ \item If $P_1\neq P_2$
+\begin{itemize}[<+-| alert@+>]
+ \item $x_1 \neq x_2$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,wd=4cm]{postit}
+             $\displaystyle{\lambda=\frac{y_2-y_1}{x_2-x_1}\qquad \nu=\frac{y_1x_2-y_2x_1}{x_2-x_1}}$
+            \end{beamercolorbox}}
+ \item $x_1 = x_2\ \Rightarrow\ P_1 +_E P_2 = \infty$
+            \end{itemize}
+\item If $P_1 = P_2$
+\begin{itemize}[<+-| alert@+>]
+\item $y_1\neq 0$\\
+\centerline{\begin{beamercolorbox}[shadow=true,center,wd=5cm]{postit}
+$\displaystyle{\lambda=\frac{3x_1^2+A}{2y_1}, \nu=-\frac{x_1^3-Ax_1-2B}{2y_1}}$
+            \end{beamercolorbox}}
+
+ \item $y_1 = 0\ \Rightarrow P_1 +_E P_2 = 2P_1 = \infty$
+\end{itemize}
+ \end{itemize}\pause
+
+Then
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7cm]{formul}
+{ $P_1 +_E P_2 = ({\color[cmyk]{0,1,1,0.5}\lambda^2-x_1-x_2},
+{\color[cmyk]{1,0,1,0.5}-\lambda^3+\lambda(x_1+x_2)-\nu})$}
+            \end{beamercolorbox}}
+\end{beamerboxesrounded}
+
+\end{frame}
+
+
+
+\begin{frame}
+ \frametitle{Elliptic curves over $\C$ and over $\R$}
+
+  \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+$$E(\C)\cong \R/\Z\oplus\R/\Z$$
+It is a compact Rieman surface of genus $1$
+            \end{beamercolorbox}}\pause
+
+\centerline{\includegraphics[width=2.8cm]{images/torus.jpg}}\pause
+
+  \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+$$E(\R)\cong\begin{cases}
+             \R/\Z\\ \R/\Z\oplus\{\pm1\} 
+            \end{cases}
+ $$
+It is a circle or two circles
+            \end{beamercolorbox}}\pause
+
+ 
+\end{frame}
+
+\begin{frame}
+ \frametitle{Elliptic curves over $\Q$}
+ 
+ \begin{teo}[Mordell Theorem]
+If $E/\Q$ is an elliptic curve, then $\exists r\in\N$ and $G$ and finite abelian group $G$ 
+such that
+$$E(\Q)\cong\Z^r\oplus G.$$
+In other words, $E(\Q)$ is finitely generated.
+\end{teo}\bigskip\pause
+
+ \begin{teo}[Mazur Torsion Theorem]
+ If $\Z/n\Z$ denotes the cyclic group of order $n$, then the possible torsion subgroups 
+ $$G=\operatorname{Tor}(E(\Q))\cong\begin{cases}
+ \Z/n\Z\quad \text{with}\ 1 \le n \le 10\\        
+ \Z/12\Z\\
+ \Z/2\Z\oplus\Z/2n\Z\quad \text{with}\ 1 \le n \le 4.
+         \end{cases}$$
+ \end{teo}\pause
+ 
+ It is not known if $r$ (the rank of $E$) is bounded. 
+
+ \end{frame}
+
+\begin{frame}
+ \frametitle{Elliptic curves over $\F_p$}
+
+\begin{teo}
+ \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+$$E(\F_p)\cong \Z/n\Z\oplus\Z/nk\Z\qquad\exists n,k\in\N^{>0}$$
+            \end{beamercolorbox}}\pause
+
+            (i.e. $E(\F_p)$ is either cyclic ($n=1$) or the product of $2$ cyclic groups) 
+\end{teo}\pause
+
+\begin{teo}[Weil]
+ $$n\mid p-1$$
+\end{teo}\pause
+            
+\begin{teo}[Hasse]
+Let $E$ be an elliptic curve over the finite field $\F_p$. Then the order of $E(\F_p)$
+satisfies
+$$\left|p+1-\#E(\F_p)\right|\le 2\sqrt p.$$
+\end{teo} 
+ \end{frame}
+
+\begin{frame}
+ \frametitle{From Elliptic curves over $\Q$ to Elliptic curves over $\F_p$}
+ 
+If $E/\Q$ then $\exists a,b\in\Z$ s.t.: 
+ \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+$$E: y^2=x^3+ax+b$$
+            \end{beamercolorbox}}\pause
+
+For all primes $p\nmid 4a^3+27b^2$, we can consider \emph{the reduces curve} $\bar{E}/\F_p$:
+$$\bar{E}: y^2=x^3+\bar{a}x+\bar{b}.$$
+where $\bar{a}=a\bmod p$ and $\bar{b}=b\bmod p$.\pause
+
+Given a certain property $\mathbb P$ ``defined on finite groups'', we consider
+
+ \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+$$\pi_E(x,\mathbb P)=\#\{p\le x: \bar{E}(\F_p)\text{ satisfies }\mathbb P\}.$$
+            \end{beamercolorbox}}\pause
+
+We are interested in studying the behaviour of $\pi_E(x,\mathbb P)$ and $x\rightarrow\infty$ for 
+various properties $\mathbb P$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Serre's Cyclicity Conjecture} 
+
+\begin{Theorem}[Serre's Cyclicity Conjecture under the Riemann Hypothesis (1976)]
+Let $E/\Q$ be an elliptic curve and assume GRH
+%for the division fields
+%$\Q(E[m])$. 
+Then $\exists \gamma_{E,P}\in\R^{\ge0}$ s.t.%, as $x\rightarrow\infty$,
+$$\#\{p\le x:  \bar{E}(\F_p)\text{ is cyclic}\}\sim\gamma_{E,P}\frac{x}{\log x}\quad\text{ as }x\rightarrow\infty$$
+\end{Theorem}\pause
+
+%\begin{itemize}[<+-|alert@+>]
+% \item If $E[2]\subset E(\Q)$ then $\gamma_{E,P}=0$
+% \item 1983: Ram Murty eliminated GRH for the analogue on CM curves
+% \item 1990: Rajiv Gupta \& Ram Murty: if $E[2] \nsubseteq E(\Q)$, $\#\{p\le x: p\nmid\Delta_E, E(\F_p)\text{ is cyclic}\}\gg_E\frac{\pi(x)}{\log x}$ 
+% \item 2004: Alina Cojocaru \& Ram Murty: significant improvements on the error terms both unconditional and on GRH
+% \end{itemize}
+
+\frametitle{Lang Trotter Conjecture for \textit{primitive points}}
+ 
+\begin{conj}[Lang--Trotter primitive points Conjecture (1977)] Let $E/\Q$, $P\in E(\Q)$ with infinite order.
+$\exists \alpha_{E,P}\in\R^{\ge0}$ s.t.
+$$\#\{p\le x:  \bar{E}(\F_p)=\langle P\bmod p\rangle\}\sim\alpha_{E,P}\frac{x}{\log x}\quad\text{ as }x\rightarrow\infty$$
+\end{conj}\pause
+
+\begin{itemize}[<+-|alert@+>]
+\item[] For most of the $E$'s:
+\item If $C=\prod_\ell\left(1-\frac1{\ell(\ell-1)^2(\ell+1)}\right)= 0.81375190610681571\cdots$, then $\gamma_{E,P}=q\cdot C$ with $q\in\Q^{\ge0}$ 
+\item If $B=\prod_\ell\left(
+1-\frac{\ell^3-\ell-1}{\ell^2(\ell-1)^2(\ell+1)}\right)=0.440147366792057866\cdots$, then  $\alpha_{E,P}=q'\cdot B$ with $q'\in\Q^{\ge0}$ 
+\item It is possible that $\alpha_{E,P}=0$ or that $\gamma_{E,P}=0$
+\item $\gamma_{E,P}=0\ \Longleftrightarrow\ \Z/2\Z\oplus\Z/2\Z\subseteq E(\Q)$
+\item if $P=kQ$, $Q\in E(\Q)$ and $d=\gcd(k,\#\operatorname{Tor}(E(\Q))>1$, then $\alpha_{E,P}=0$
+%\ \hfill (since $\operatorname{ord}P\mid \frac{\#\bar{E}(\F_p)}{d}$)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Comparison between empirical data in Serre's Conjecture and Lang--Trotter Conjecture}
+\framesubtitle{Tests on Curves of rank 1, no torsion, Galois surjective $\forall\ell$}
+% \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=9cm]{postit}
+% $\displaystyle{A=0.373955813619202288054728054346416415111\cdots}$
+% \end{beamercolorbox}}\pause\smallskip
+% 
+% \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+% $\displaystyle{\pi_q(x)=\#\{p\le x: \langle q\bmod p\rangle=\mathbb F_p^*\}}$
+% \end{beamercolorbox}}\pause\smallskip
+% 
+% \begin{tiny}
+% \begin{center}
+% \begin{tabular}{|l|l|r|}
+% \hline
+% $q$& $\pi_q(2^{25})/\pi(2^{25})$ & $A-\pi_q(2^{25})/\pi(2^{25})$\\
+% \hline         
+%   2&$0.37395508\cdots$&   $0.0000007\cdots$\\
+%   3&$0.37388094\cdots$&   $0.0000748\cdots$\\
+%   7&$0.37409997\cdots$&  $-0.0001441\cdots$\\
+%  11&$0.37422450\cdots$&  $-0.0002686\cdots$\\
+%  19&$0.37400887\cdots$&  $-0.0000530\cdots$\\
+%  23&$0.37402147\cdots$&  $-0.0000656\cdots$\\
+%  31&$0.37422208\cdots$&  $-0.0002662\cdots$\\
+% \hline
+% \end{tabular}\end{center}
+% \end{tiny}\pause
+%
+%\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=9cm]{postit}
+%$\displaystyle{B=0.4401473667920578662600197830604687798836\cdots}$
+%\end{beamercolorbox}}\pause\smallskip
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=11.5cm]{formul}
+$\displaystyle{\pi_P(x)=\#\{p\le x: \langle P\bmod p\rangle=\bar{E}(\mathbb F_p^*)\}
+\qquad \pi_{\text{cycl}}(x)=\#\{p\le x: \bar{E}(\mathbb F_p^*)\ \text{is cyclic}\}}$
+\end{beamercolorbox}}\pause\smallskip
+
+\begin{center}
+\begin{tabular}{|l|l|r|}
+\hline
+\hspace*{-1mm} label \hspace*{-3mm}&\!\! $\frac{\pi_P(2^{25})}{\pi(2^{25})}$\!\!&\!\! $B-\frac{\pi_P(2^{25})}{\pi(2^{25})}$\!\!\\
+\hline
+37.a1 &$0.44017485\cdots$&   $-0.000027\cdots$\\
+43.a1 &$0.44034784\cdots$&   $-0.000200\cdots$\\
+53.a1 &$0.44020198\cdots$&   $-0.000054\cdots$\\
+57.a1 &$0.44016176\cdots$&   $-0.000014\cdots$\\
+58.a1 &$0.44012203\cdots$&    $0.000025\cdots$\\
+61.a1 &$0.44034299\cdots$&   $-0.000195\cdots$\\                       
+77.a1 &$0.43964812\cdots$&    $0.000499\cdots$\\
+79.a1 &$0.44043021\cdots$&  $ -0.000282\cdots$\\
+\hline
+\end{tabular}\pause
+
+\begin{tabular}{|l|l|r|}
+\hline
+\hspace*{-1mm} label \hspace*{-3mm}&\!\! $\frac{\pi_{cycl}(2^{25})}{\pi(2^{25})}$\!\!&\!\! $C-\frac{\pi_{cycl}(2^{25})}{\pi(2^{25})}$\!\!\\
+\hline
+37.a1 &$0.81383047\cdots$&   $-0.000078\cdots$\\
+43.a1 &$0.81363907\cdots$&   $ 0.000112\cdots$\\
+53.a1 &$0.81389250\cdots$&   $-0.000140\cdots$\\
+57.a1 &$0.81387263\cdots$&   $-0.000120\cdots$\\
+58.a1 &$0.81374131\cdots$&   $ 0.000010\cdots$\\
+61.a1 &$0.81397584\cdots$&   $-0.000223\cdots$\\                       
+77.a1 &$0.81380285\cdots$&   $-0.000050\cdots$\\
+79.a1 &$0.81392157\cdots$&   $-0.000169\cdots$\\\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+ \frametitle{The notion of never primitive point}
+ 
+ \begin{Defi} Let $E/\Q$ be an elliptic curve such that  $\Z/2\Z\oplus\Z/2\Z\nsubseteq E(\Q)$. A point $P\in E(\Q)$ is called a 
+\textbf{never primitive} if
+\begin{itemize}
+ \item $P$ has infinite order 
+ \item for all $\ell\mid\#\operatorname{Tor}(E(\Q))$, $P$ is not the $\ell$--th power of a rational point $Q\in E(\Q)$
+ \item $\langle P\bmod p\rangle \neq \bar{E}(\F_p)$ for all $p$ large enough
+\end{itemize}
+\end{Defi}\pause
+
+\begin{itemize}[<+-|alert@+>]
+ \item Hence, given $p$, a \emph{primitive point} $P$ modulo $p$ satisfies
+$\langle P\bmod p\rangle = \bar{E}(\F_p).$
+\item A \textbf{never primitive} point never satisfies the above
+\item if $\Z/2\Z\oplus\Z/2\Z\subseteq E(\Q)$, no point is ever primitive since $\bar{E}(\F_p)$ is never cyclic
+\item[] we avoid such obvious cases
+\item we are interested in examples of curves with \textbf{never primitive points}
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Twists with a Never Primitive point}
+
+\begin{Defi} Given an elliptic curve $E/\Q$ with Weierstra\ss\ equation 
+$$E: y^2=x^3+Ax^2+Bx+C$$
+and $D\in\Q^*$, the \textbf{twisted curve $E_D$} of $E$ by $D$ is
+$$E_D: y^2=x^3+ADx^2+BD^2x+CD^3.$$
+\end{Defi}
+ 
+ 
+ \begin{teo}
+Let $E/\Q$ be an elliptic curve such that $E(\Q)$ contains a point of order $2$. \\
+There $\exists \infty D\in\Z$ s.t. 
+the twisted curve $E_D$ is such that $E_D(\Q)$ contains a never primitive point.
+\end{teo}
+
+% \begin{proof}
+Every elliptic curve with a point of order $2$ can be written in the form:
+$$E: y^2=x^3+ax^2+bx\quad\text{with }a^2-4b\neq0$$ 
+Set $D=s (a s+2)\left(1-bs^2\right)$. Then, $\forall s\in\Q$ except possibly when $D$ is a perfect square,
+$$P_D\left(\left(1-bs^2\right)^2,\left(a s+1+bs^2\right)\left(b-s^2\right)^2\right)\in E_D(\Q)\quad\textbf{is never primitive}.$$
+
+%be an ellptic curve over $\Q$. We have that $(0,0)\in\operatorname{Tor}(E(\Q))$. We shall also
+%assume that $$ is not a perfect square 
+% so that 
+% $$E[2]=\left\{\infty,(0,0),\left(\frac{-a+\sqrt{\delta}}{2},0\right),\left(\frac{-a-\sqrt{\delta}}{2},0\right)\right\}\nsubseteq E(\Q).$$ 
+% 
+% Let us consider the twists $E_D: y^2=x^3+aDx^2+bD^2$ for which there $t\in\Q$ with 
+% $P_D(1,t)\in E_D(\Q)$. Then $t^2=1+aD+bD^2$ and if we make the substitutions:
+% $D\to \frac{X-ab}{2 b}, t\to \frac{Y}{2}$ and we obtain
+% $$X^2-b Y^2=\delta$$
+% It is immediate to check that the above has as solution 
+% $(a,2)\in\Q^2$ and that all the rational solutions can be parameterized by
+% $$
+% \begin{cases}
+% X=&\displaystyle a\times\frac{1+bs^2}{1-bs^2}+2\times\frac{2 s}{1-bs^2} \\
+% \\
+% Y=&\displaystyle a\times\frac{2 s}{1-bs^2}+2\times\frac{1+bs^2}{1-bs^2}.
+% \end{cases}
+% $$
+% Hence
+% $$
+% D=\displaystyle\frac{s (a s+2)}{\left(1-bs^2\right)}\qquad t=\displaystyle\frac{\left(a s+1+bs^2\right)}{1-bs^2}.
+% $$
+% Changing coordinates ($(x,y)\longleftarrow(x/\left(1-bs^2\right)^2,y/\left(1-bs^2\right)^3)$, we obtain
+% The setminus
+% \begin{eqnarray*}
+% \frac12P_D&=&\left\{\left(-s(1-bs^2)(a + 2 b s\pm \sqrt{\delta(1-bs^2)},\right)\right.\\
+% & &\left.\left((as+1)(1-bs^2)(-1\pm\sqrt{1-bs^2}),\pm(as+1)^2\sqrt{(1-bs^2)^3}(1\pm\sqrt{1-bs^2})\right)\right\}.
+% \end{eqnarray*}
+% We can apply Theorem\ref{criterion} with $\ell=2$, $\alpha=\delta$ and $\beta= (1-bs^2)$.
+% \end{proof}
+
+ \end{frame}
+
+ \begin{frame}
+\frametitle{Other parametric families of curves with a never primitive point}
+
+\begin{teo}[1 - Jones, Pappalardi]
+Let $s\in\Q\setminus\{\pm1\}$ and let
+$$E_s: y^2=x^3-27(s^2-1)^2.$$\pause
+Then 
+\begin{itemize}
+ \item $P_s(s^2+3,s(s^2-9))\in E(\Q)\setminus\operatorname{Tor}(E(\Q))$
+ \item $\operatorname{Tors}(E_s(\Q))$ is trivial %for all but finitely many $s$
+ \item $P_s$ is a \emph{never--primitive} point %for all but finitely many $s$
+\end{itemize}
+\end{teo}\pause
+
+
+\begin{teo}[2 - Jones, Pappalardi] Let $s\in\Q\setminus\{0,\pm3,\pm\frac13\}$, and let 
+$$E_s: y^2=x^3-3s^2(s^2-8)x-2s^2(s^4-12s^2+24).$$\pause
+Then 
+\begin{itemize}
+ \item $P_s(2s^2+1,9s^2-1)\in E(\Q)\setminus\operatorname{Tor}(E(\Q))$
+ \item $\operatorname{Tors}(E_s(\Q))$ is trivial %for all but finitely many $s$
+ \item $P_s$ is a \emph{never--primitive} point %for all but finitely many $s$
+\end{itemize}
+\end{teo}
+
+% ha discriminante and $j$--invariante rispettivamente:
+% $
+% \Delta_{E_s}= -2^8 3^3 s^4 (s^2-9)\qquad j_{E_s}=3^3s^2 \left(\frac{s^2-8}{s^2-9}\right)^3.
+% $
+\end{frame}
+
+\begin{frame}
+ \frametitle{Galois Action on the root sets}
+ 
+ The construction and its proof is based on the study of the Galois Action on the root-sets of $P$:\pause
+
+ \begin{Defi} Given $E/Q$, $P\in E(\Q)$ and $n\in\N$. 
+ $$E[n]:=\{Q\in\C: nQ=\infty\}$$
+ and
+ $$\frac1nP:=\{Q\in\C: nQ=P\}$$
+  \end{Defi}\pause
+
+  \begin{rem} Note that
+  \begin{itemize}[<+-|alert@+>]
+   \item $E[n]$ is an abelian group
+   \item $E[n]\cong \Z/n\Z\oplus \Z/n\Z$
+   \item if $R\in E[n]$ and $S\in \frac1nP$, then
+   $R+S\in\frac1nP$
+   \item $\frac1nP$ is a $\Z/n\Z$--affine space.
+   \item $\operatorname{Gal}(\Q(E[n])/\Q)\subset\operatorname{Aut}(E[n])\cong\operatorname{GL}_2(\Z/n\Z)$
+   \item $\operatorname{Gal}(\Q(\frac{1}{n}P)/\Q)\subset\operatorname{Aff}(\frac{1}n{P})\cong\operatorname{GL}_2(\Z/n\Z)\ltimes \Z/n\Z$
+   \item To verify the Theorems one needs to compute the above Galois Groups for each elements of the family under consideration
+   \end{itemize}
+  \end{rem}
+ \end{frame}
+
+
+
+
+\begin{frame}
+ \frametitle{A ``never primitivity'' criterion}
+  
+ \begin{lem}[1]
+ Let $E/\Q$ be an elliptic curve, $P\in E(\Q)\setminus\operatorname{Tor}(E(\Q))$ and $\ell\ge3$ be a prime such that
+ \begin{itemize}
+ \item $P$ is not an $\ell$-th power of a point in $E(\Q)$\medskip
+  \item $\Q(E[\ell])=\Q(\zeta_\ell,\alpha^{1/\ell}),\qquad \exists \alpha\in\Q^*$\medskip
+  \item $\Q(\frac1\ell P)\cap\R=\{Q_1,\ldots,Q_\ell\}$\medskip
+  \item $\Q(Q_i)=\Q((\alpha^i\beta)^{1/\ell}), i=1,\ldots,\ell,\qquad \exists \beta\in\Q^*$.\medskip
+ \end{itemize}
+Then $\Q(\frac1\ell P)=\Q(\zeta_\ell,\alpha^{1/\ell},\beta^{1/\ell})$ and $P$ is \textbf{never primitive}.
+ \end{lem}\pause
+ 
+The proofs of both Theorems use the previous Lemma with $\ell=3$
+ 
+ \frametitle{Idea of the proof of Theorem 2}
+
+\begin{lem}[2] Let $s\in\Z\setminus\{0,\pm1,\pm3,\pm13\}$ and consider $E_s$, the elliptic curve in Theorem 2. Let $\alpha=\sqrt[3]{s(s^2-9)}$ and set
+$\displaystyle T\left(\frac{1}{3}(s^2+4s\alpha+\alpha^2),\frac{4}{3}(\alpha^3+s\alpha^2+s^2\alpha)\right)\in E_s(\C).$\pause
+ Then\\
+\centerline{$\displaystyle{E_s[3]:=\left\{\infty,(-s^2,\pm4\sqrt{-3}s)\right\}
+\cup\left\{\pm T,\pm T^\sigma, \pm T^\sigma\right\}}$}\pause
+
+where $\sigma\in\operatorname{Gal}(\overline{\Q}/\Q(\sqrt{-3})$) is such that $\sigma(\sqrt[3]d)=e^{2\pi i/3}\sqrt[3]d$
+ $\forall d\in\Q$. Hence\\
+\centerline{$\displaystyle\Q(E_s[3])=\Q(e^{2\pi i/3},\sqrt[3]{s(s^2-9)}).$}
+\end{lem}
+
+% \begin{Note}
+%  Se $\ell$ \`e un primo tale che\\
+% \centerline{$S_\ell=G_\ell$}
+% allora per ogni primo $p\nmid\Delta'_E$,\\
+% \centerline{$\ell\mid[E(\F_p):\langle P\bmod p\rangle].$} 
+% \end{Note}\pause
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Idea of the proof of Theorem 2}
+
+\begin{lem}[3] Let $s\in\Z\setminus\{0,\pm1,\pm3,\pm13\}$ and consider $E_s$, the elliptic curve in Theorem 2. Set %$\alpha=\sqrt[3]{s(s^2-9)}$,
+$$
+\beta=\sqrt[3]{s^2(s+3)},\qquad 
+\gamma=\sqrt[3]{s^2(s-3)}=\frac{\alpha\beta^2}{s(s+3)},\qquad  
+\delta=\sqrt[3]{(s-3)^2(s+3)}=\frac{\alpha^2\beta^2}{s^2(s+3)} $$\pause
+and $P_\gamma(x_\gamma,y_\gamma), P_\beta(x_\beta,y_\beta), P_\delta(x_\delta,y_\delta)$ dove 
+\begin{eqnarray*}
+x_\beta=s(3s-8)+4(s-1)\beta+4\beta^2,& &y_\beta=4(s(3-s)(1-3s)-s(7-3s)\beta-(4-3s)\beta^2)\\
+x_\gamma= s(3s+8)+4(s+1)\gamma+4\gamma^2,& &y_\gamma= 4(s(3+s)(1+3s)+s(7+3s)\gamma+(4 + 3 s)\gamma^2)\\
+x_\delta=3+(s+1)\delta+\frac{s-1}{s-3}\delta^2,& &y_\delta=s^2-9+(s-3)\delta+\frac{s+3}{s-3}\delta^2.
+\end{eqnarray*}\pause
+Then $\Q(P_\gamma)=\Q(\gamma)$, $\Q(P_\beta)=\Q(\beta)$, $\Q(P_\delta)=\Q(\beta)$ and\\
+\centerline{$\frac13P=\left\{
+P_\beta,P_\beta^\sigma,P_\beta^{\sigma^2},
+P_\gamma,P_\gamma^\sigma,P_\gamma^{\sigma^2},
+P_\delta,P_\delta^\sigma,P_\delta^{\sigma^2}\right\}.$}\pause
+Hence
+$$\Q(E_s[3],\frac13P)=\Q(e^{2\pi i/3},\sqrt[3]{s(s^2-9)},\sqrt[3]{s^2(s-3)}).$$
+\end{lem}\pause
+
+The result follows from the previous lemmas
+\end{frame}
+\end{document}
+

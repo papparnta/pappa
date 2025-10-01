@@ -1,0 +1,643 @@
+\documentclass[landscape]{powersem} %,display
+\usepackage{fancybox,marvosym,graphicx,amsmath,amssymb,pifont,textcomp}
+\usepackage[bookmarksopen,colorlinks,urlcolor=red]{hyperref} %,pdfpagemode=FullScreen
+\usepackage{fixseminar}
+\usepackage{color}
+\usepackage[latin1]{inputenc}
+\usepackage{eurosans}
+\usepackage[coloremph,colormath,colorhighlight,lightbackground]{texpower}
+\hfuzz=30pt
+\vfuzz=30pt
+\setlength{\slidewidth}{25cm} \setlength{\slideheight}{17cm}
+\slideframe{}%shadow
+\def\slideitemsep{.5ex plus .3ex minus .2ex}
+\renewcommand{\slidetopmargin}{10mm}
+\renewcommand{\slidebottommargin}{15mm}
+\renewcommand{\slideleftmargin}{5mm}
+\renewcommand{\sliderightmargin}{5mm}
+\newcommand{\psd}{\pause}%\addtocounter{slide}{-1}}
+\newcommand{\Ccal}{{\mathcal{C}}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\Q}{{{\mathbb Q}}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\manorossa}{\textcolor{conceptcolor}{\ding{43}}}
+\newcommand{\matitablu}{\textcolor{altemcolor}{\ding{46}}}
+\newcommand{\verde}{\textcolor{black}}
+\newcommand{\heading}[1]{%
+ \begin{center}
+  \large\bf
+  \Ovalbox{{\textcolor{conceptcolor}{#1}}}%
+ \end{center}
+ \vspace{1ex minus 1ex}}
+\definecolor{verdescu}{rgb}{0,0.6,0.6}
+\definecolor{rossoscu}{rgb}{1,0,0.2}
+
+\backgroundstyle[startcolor=white,
+                   endcolor=white %inactivecolor,%firstgradprogression=3,
+            rightpanelwidth=-7\semcm,,rightpanelcolor=pagecolor]{hgradient}%
+%%%%%%%%%%%%% DATI DEL SEMINARIO IN QUESTIONE %%%%%%%%%%%%
+
+\newpagestyle{327}%
+ {\textcolor{codecolor}{\textit{Factorisation d'entiers}} \hspace{\fill}\rightmark
+\hspace{2mm}\thepage}
+ {\includegraphics[width=4mm]{images/dipmat.pdf}\hspace{\fill}\textcolor{codecolor}{\sc Universit\`a Roma Tre}
+ \hspace{\fill}\includegraphics[width=5mm]{images/roma3.pdf}}%%
+\pagestyle{327} \markright{\textcolor{conceptcolor}{\'ECOLE DE THEORIE DES NOMBRES}}
+
+\begin{document}
+
+%\begin{slide}\pageTransitionWipe{30}
+%\maketitle
+%\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\addtocounter{slide}{-1}
+\includegraphics[width=1.3cm]{images/crypto.jpg}\ \hfill \includegraphics[width=1.3cm]{images/crypto.jpg}
+\vfil
+
+\begin{sc}\begin{center}
+\begin{Large}
+
+\textcolor{underlcolor}{Factorisation d'entiers}
+\end{Large}\bigskip
+
+\ {Francesco Pappalardi}\bigskip\bigskip
+
+\begin{large}\begin{bf}Th\'eorie des nombres et algorithmique
+\end{bf}\end{large}\medskip
+
+15-26 novembre, Bamako (Mali)\medskip
+
+%\present{\doublebox{\includegraphics[width=4cm]{institute.jpg} \
+%%\begin{minipage}[c]{7cm} \vspace*{-1cm}\textsc{National Institute of Advanced Studies}\\
+%%\hspace*{3cm}\textbf{\emph{NIAS}}\end{minipage}\
+%%\includegraphics[width=1.5cm]{logo.pdf}
+%}}\\
+
+\end{center}
+\end{sc}
+\vfill
+
+\includegraphics[width=1.3cm]{images/crypto.jpg}\ \hfill \includegraphics[width=1.3cm]{images/crypto.jpg}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Quelle est la taille des ``grands nombres''}\pause
+
+\parstepwise{\begin{itemize}
+ \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{nombre de combinaisons \`a la loterie}:\hspace*{1.4cm}$622.614.630$}
+\bigskip\medskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{nombre de cellules dans un corps humain}:\hspace*{2.4cm}$10^{15}$}
+\bigskip\medskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{nombre d'atomes dans l'univers:}\hspace*{3.685cm}$10^{80}$}
+\bigskip\medskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{nombre de particules subatomiques:}\hspace*{3.04cm}$10^{120}$}
+\bigskip\medskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{nombre d'atomes dans le cerveau humain:}\hspace*{2.5cm}$10^{27}$}
+\bigskip\medskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{\textsc{nombre d'atomes dans un chat:}\hspace*{3.95cm}$10^{26}$}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+
+\begin{center}
+\begin{small}
+\ $RSA_{2048}$ = 25195908475657893494027183240048398571429282126204
+032027777137836043662020707595556264018525880784406918290641249
+515082189298559149176184502808489120072844992687392807287776735
+971418347270261896375014971824691165077613379859095700097330459
+748808428401797429100642458691817195118746121515172654632282216
+869987549182422433637259085141865462043576798423387184774447920
+739934236584823824281198163815010674810451660377306056201619676
+256133844143603833904414952634432190114657544454178424020924616
+515723350778707749817125772467962926386356373289912154831438167
+899885040445364023527381951378636564391212010397122822120720357
+\end{small}\end{center}\psd
+\bigskip
+
+\centerline{$RSA_{2048}$ est un nombre avec 617 chiffres (d\'ecimaux)}\psd
+
+\bigskip
+
+\heading{\begin{small}\texttt{http://www.rsa.com/rsalabs/challenges/factoring/challengenumbers.txt}\end{small}}
+\end{slide}
+
+
+
+% ----------------------------------------------------------------
+
+\begin{slide}\pageTransitionWipe{30}
+
+\centerline{$RSA_{2048}$=$p\cdot q$,\ \ \ \   $p,q\approx
+10^{308}$}\psd
+
+
+\heading{{\bf PROBLEME:} {\ it Calculer $p$ et $q$}}\psd
+
+\centerline{\textcolor{black}{\textsc{Prix:}}
+ 200.000 US\$ ($\sim$ 94.580.000 XOF)!!}
+\bigskip\psd
+
+\begin{center}
+\begin{tabular}{|c|}
+\hline \textbf{\textcolor{red}{Th\'eor\`eme.}} Si $a \in{\mathbb N}$, il ya $p_1<p_2<\cdots<p_k$\ \textit{premier} unique\\
+$ \ \ \textrm{telle que} \ \ a=p_1^{\alpha_1}\cdots
+p_k^{\alpha_k}$\\\hline\end{tabular}
+\end{center}\psd
+\bigskip
+
+\textbf{Malheureusement:} RSAlabs estime que l'affacturage en un an nous avons besoin: \center{\begin{tabular}{|c|c|c|}\hline
+nombre & ordinateurs & m\'emoire\\
+$RSA_{1620}$ & $1.6\times10^{15}$&  $120$ Tb\\
+$RSA_{1024}$ & $342,000,000$ &  $170$ Gb\\
+$RSA_{760}$  & 215,000  & $4$Gb.\\ \hline
+\end{tabular}}
+\end{slide}
+
+
+
+\begin{slide}\pageTransitionWipe{30}
+
+
+\heading{\begin{small}\texttt{http://www.rsa.com/rsalabs/challenges/factoring/challengenumbers.txt}\end{small}}\psd
+
+
+\begin{center}
+\begin{tabular}{|c|c|}\hline
+ \textcolor{blue}{Nombre} & \textcolor{blue}{Prix (\$US)}  \\
+$RSA_{576}$ &  \$10,000   \\
+$RSA_{640}$ &  \$20,000    \\
+$RSA_{704}$ &     \$30,000 \\
+$RSA_{768}$ &     \$50,000 \\
+$RSA_{896}$ &     \$75,000 \\
+$RSA_{1024}$ &     \$100,000 \\
+$RSA_{1536}$ &  \$150,000 \\
+$RSA_{2048}$ &     \$200,000   \\
+\hline
+\end{tabular}
+\end{center}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\addtocounter{slide}{-1}
+
+\heading{\begin{small}\texttt{http://www.rsa.com/rsalabs/challenges/factoring/challengenumbers.txt}\end{small}}
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+ \textcolor{blue}{Nombre} & \textcolor{blue}{Prix (\$US)} & \textcolor{blue}{Etat} \\
+$RSA_{576}$ &  \$10,000  & Factoriz\'e D\'ecembre 2003\\
+$RSA_{640}$ &  \$20,000   & Factoriz\'e Novembre 2005\\
+$RSA_{704}$ &     \$30,000&  pas factoriz\'e\\
+$RSA_{768}$ &     \$50,000&   pas factoriz\'e\\
+$RSA_{896}$ &     \$75,000& pas factoriz\'e\\
+$RSA_{1024}$ &     \$100,000&  pas factoriz\'e\\
+$RSA_{1536}$ &  \$150,000 & pas factoriz\'e\\
+$RSA_{2048}$ &     \$200,000 &  pas factoriz\'e\\
+\hline
+\end{tabular}
+\end{center}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{C\'el\`ebre citation!!!}\bigskip
+
+\centerline{\includegraphics[width=4cm]{images/borel1.jpg}}
+
+\textit{Un ph\'enom\`ene dont la probabilit\'e est $10^{-50}$ ne se produira jamais, et
+moins sera jamais observ\'e.}\bigskip
+
+\textsc{- \'Emil Borel (La probabilit\'es et sa vie)}
+\end{slide}
+
+\begin{slide}
+\centerline{\includegraphics[width=11cm]{images/School_of_Athens.jpeg}}\vspace*{-8cm}
+\parstepwise{
+\step{
+      \hspace*{-1mm}\colorbox{white}{\shadowbox{L'\'Ecole d'Ath\`enes (Raffaello Sanzio)}}
+      }
+\bigskip\bigskip\bigskip\bigskip\\ %\vspace*{1cm}\hspace*{2cm}
+\step{\hspace*{3cm}
+      \begin{minipage}{5cm}
+                      \shadowbox{\includegraphics[width=3.5cm]{images/Euclid_7.jpeg}}\\
+                      \colorbox{white}{\begin{minipage}[c]{4cm}
+                               \ \ \ Euclide d'Alexandrie\vspace*{-2mm}\\
+                                 {\tiny Naissance: 325 avant JC (Approx.)}\vspace*{-2.5mm}\\
+                                 {\tiny D\'ec\`es: 265 avant JC (Approx.)}
+                                \end{minipage}}\\
+       \end{minipage}
+       }\\ \bigskip\medskip% \bigskip\\
+\step{\hspace*{1.5cm}
+      \colorbox{white}{\shadowbox{Il ya une infinit\'e de nombres premier!!}}
+      }
+            }
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+\bigskip\bigskip
+
+\begin{center}
+\includegraphics{images/eratostene.jpg}
+
+220AC  (\'Eratosth\`ene de Cyr\`ene)
+\end{center}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+\bigskip\bigskip
+
+\begin{center}
+\includegraphics[width=5cm]{images/Euler_9.jpeg}
+
+1730 Euler $2^{2^5}+1=641\cdot 6700417 $
+\end{center}
+\end{slide}
+
+\begin{slide}
+\heading {Comment avez Euler factoris\'e $2^{2^5}+1$?}\pause 
+
+\noindent\textsc{Proposition} \textit{Supposons quw $p\mid b^n+1$. Il s'ensuit que
+\begin{enumerate}
+ \item $p\mid b^{d}+1$ pour certains diviseur propre $d$ de $n$ tel que $n/d$ est impair, ou bien
+ \item $p\equiv 1\bmod 2n$.
+\end{enumerate}}\medskip
+\medskip
+
+\noindent\textcolor{red}{\textit{Application.}} Soit $b=2$ et $n=2^5=64$. Alors $2^{2^5}+1$ est soit an nombre premier ou bien
+est divisible par un nombre premier $p\equiv1\bmod 128$. 
+
+Notez que \\
+$1+1\times128=3\times43$, $1+2\times128=257$ est premier,\\ 
+$1+3\times128=5\times7\times11$, $1+4\times 128=3^3\times19$ et $1+5\cdot 128=641$
+est premier.
+
+Enfin  
+$$\frac{2^{2^5}+1}{641}=\frac{6700417}{641}=6700417$$.
+
+\end{slide}
+ 
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+\bigskip\bigskip
+
+\begin{center}
+\includegraphics[width=7cm]{images/euler1.jpg}
+
+1730 Euler $2^{2^5}+1=641\cdot 6700417 $
+\end{center} 
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+
+\begin{center}
+\includegraphics[width=4.5cm]{images/fermat.jpg}
+\includegraphics[width=4.5cm]{images/Gauss_1803.jpeg}
+
+1750--1800 Fermat, Gauss (Cribles - Tableaux)
+\end{center} 
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+
+\begin{center}
+\includegraphics[width=5cm]{images/fermatstamp.jpg}
+\includegraphics[width=5cm]{images/Gauss_banknote.jpeg}
+
+1750--1800 Fermat, Gauss (Cribles - Tableaux)\psd
+
+Premier algorithme de factorisation par crible
+$N=x^2-y^2=(x-y)(x+y)$
+\end{center} 
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+\begin{itemize}
+\item[\textcolor{black}{\ding{243}}] 220AC  (\'Eratosth\`ene de Cyr\`ene)
+\item[\textcolor{black}{\ding{243}}] 1730 Euler $2^{2^5}+1=641\cdot 6700417 $
+\item[\textcolor{black}{\ding{243}}] 1750--1800 Fermat, Gauss (Cribles - Tableaux)\psd
+\item[\textcolor{black}{\ding{243}}] 1880 Landry \& Le Lasseur:
+$$2^{2^6}+1= 274177 \times 67280421310721$$\psd
+\vspace{-3mm}\item[\textcolor{black}{\ding{243}}] 1919 Pierre et Eug\`ene Carissan (Machine pour Factoriser)
+\end{itemize}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Ancien Machine pour factoriser dei Carissan}\psd
+
+
+\begin{figure}
+  \centering
+\includegraphics[width=5cm]{images/cari.jpg}
+  \caption{Conservatoire Nationale des Arts et M\'etiers in Paris}
+\end{figure}\psd
+
+\heading{\begin{small}\texttt{http://www.cs.uwaterloo.ca/\~{}shallit/Papers/carissan.html}\end{small}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\begin{figure}
+  \centering \includegraphics[width=3cm]{images/caris2.jpg}
+  \caption{Lieutenant Eug\`ene Carissan}\end{figure}\psd
+\centerline{\begin{tabular}{rcl}
+$225058681=229\times982789$ & &{2 minutes}\\
+$3450315521=1409\times 2418769$ & & {3 minutes}\\
+$3570537526921=841249\times4244329$ & & {18 minutes}\\
+\end{tabular}}
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+\begin{itemize}
+\item[\textcolor{black}{\ding{243}}] 220AC  (\'Eratosth\`ene de Cyr\`ene)
+\item[\textcolor{black}{\ding{243}}] 1730 Euler $2^{2^5}+1=641\cdot 6700417 $
+\item[\textcolor{black}{\ding{243}}] 1750--1800 Fermat, Gauss (Cribles - Tebleaux)
+\item[\textcolor{black}{\ding{243}}] 1880 Landry \& Le Lasseur:
+$$2^{2^6}+1= 274177 \times 67280421310721$$
+\vspace{-3mm}\item[\textcolor{black}{\ding{243}}] 1919 Pierre et Eug\`ene Carissan (Machine pour Factoriser)\psd
+\item[\textcolor{black}{\ding{243}}] 1970 Morrison \& Brillhart
+$$2^{2^7}+1=
+59649589127497217 \times 5704689200685129054721 $$
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+\bigskip
+
+\begin{center}
+\includegraphics[width=5cm]{images/brillhart.JPG}
+
+1970 - John Brillhart \&  Michael A. Morrison  $2^{2^7}+1=
+59649589127497217 \times 5704689200685129054721 $
+\end{center}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+\bigskip\bigskip
+
+\begin{center}
+\includegraphics[width=3cm]{images/smallcarl1.jpg}
+
+1982 - Carl Pomerance - Le Crible Quadratique
+\end{center}
+\end{slide}
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+\begin{itemize}
+\item[\textcolor{black}{\ding{243}}] 220AC  (\'Eratosth\`ene de Cyr\`ene)
+\item[\textcolor{black}{\ding{243}}] 1730 Euler $2^{2^5}+1=641\cdot 6700417 $
+\item[\textcolor{black}{\ding{243}}] 1750--1800 Fermat, Gauss (Cribles - Tebleaux)
+\item[\textcolor{black}{\ding{243}}] 1880 Landry \& Le Lasseur:
+\centerline{$2^{2^6}+1= 274177 \times 67280421310721$}
+\item[\textcolor{black}{\ding{243}}] 1919 Pierre et Eug\`ene Carissan (Machine pour Factoriser)
+\item[\textcolor{black}{\ding{243}}] 1970 Morrison \& Brillhart
+\centerline{$2^{2^7}+1=
+59649589127497217 \times 5704689200685129054721 $}
+\item[\textcolor{black}{\ding{243}}] 1982 Crible Quadratique \textbf{QS}
+(Pomerance)\hfil $\rightsquigarrow$\hfil Crible del sur corps num\`erique \textbf{NFS}\psd
+\item[\textcolor{black}{\ding{243}}] 1987 Factorisation avec  Courbes Elliptiques \textbf{ECF} (Lenstra)
+\end{itemize}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Etat de ``\emph{l'art de la factorisation}''}
+\bigskip\bigskip
+
+\begin{center}
+\includegraphics[width=4cm]{images/Lenstra.jpg}
+
+1987 - Hendrik Lenstra - Factorisation avec  courbes elliptiques
+\end{center}
+\end{slide}
+
+
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Factorisation Contemporanea}\vspace{-3mm}\psd
+
+\begin{itemize}
+  \item[\textcolor{blue}{\ding{182}}] 1994, Crible Quadratique (QS): (8 mois, 600 volontaires, 20 Nations)\\
+  D.Atkins, M. Graff, A. Lenstra, P. Leyland
+\begin{tiny}\begin{tabular}{l}
+$  RSA_{129} = 114381625757888867669235779976146612010218296721242362562561842935706$\\
+\hspace*{5mm}$935245733897830597123563958705058989075147599290026879543541=$\\
+$        = 3490529510847650949147849619903898133417764638493387843990820577 \times$\\
+$
+32769132993266709549961988190834461413177642967992942539798288533
+$\end{tabular}\end{tiny}\psd
+
+  \item[\textcolor{blue}{\ding{183}}] (2 F\'evrier 1999), Crible sur corps num\`erique (NFS): (160 Sun, 4 mois)
+ \begin{tiny}\begin{tabular}{c}
+\hspace*{-1cm}$ RSA_{155} = 109417386415705274218097073220403576120037329454492059909138421314763499842$\\
+$88934784717997257891267332497625752899781833797076537244027146743531593354333897=$\\
+$=102639592829741105772054196573991675900716567808038066803341933521790711307779
+\times$\\
+$106603488380168454820927220360012878679207958575989291522270608237193062808643
+$\end{tabular}\end{tiny}\psd
+
+  \item[\textcolor{blue}{\ding{184}}] (3 D\'ecembre, 2003) (NFS): J. Franke et al. (174 chiffres d\'ecimal)
+ \begin{tiny}\begin{tabular}{c}
+\hspace*{-1cm}$ RSA_{576} = 1881988129206079638386972394616504398071635633794173827007633564229888597152346$\\
+$65485319060606504743045317388011303396716199692321205734031879550656996221305168759307650257059=$\\
+$=398075086424064937397125500550386491199064362342526708406385189575946388957261768583317\times$\\
+$472772146107435302536223071973048224632914695302097116459852171130520711256363590397527
+$\end{tabular}\end{tiny}\psd
+
+\item[\textcolor{blue}{\ding{185}}]
+  Factorisation avec  courbes elliptiques: mis en place par  H. Lenstra.
+  convenient pour trouver des petits factors (50 chiffres)\psd
+
+\end{itemize}
+
+\centerline{\textcolor{red}{Tous: "\emph{complexit\'e sous--exponentielle}"}}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{La factorisation de $RSA_{200}$}
+
+\begin{tiny}
+
+$RSA_{200}=2799783391122132787082946763872260162107044678695542853756000992932612840010$
+          $7609345671052955360856061822351910951365788637105954482006576775098580557613$
+          $579098734950144178863178946295187237869221823983$\psd
+
+
+Date: Mon, 9 May 2005 18:05:10 +0200 (CEST) 
+From: "Thorsten Kleinjung"
+Subject: rsa200 
+
+We have factored RSA200 by GNFS. The factors are
+
+35324619344027701212726049781984643686711974001976\
+25023649303468776121253679423200058547956528088349
+
+and
+
+79258699544783330333470858414800596877379758573642\
+19960734330341455767872818152135381409304740185467
+
+
+We did lattice sieving for most special q between 3e8 and 11e8
+using mainly factor base bounds of 3e8 on the algebraic side and 18e7 
+on
+the rational side. The bounds for large primes were $2^{35}$. This produced
+26e8 relations. Together with 5e7 relations from line sieving the total
+yield was 27e8 relations. After removing duplicates 226e7 relations
+remained. A filter job produced a matrix with 64e6 rows and columns,
+having 11e9 non-zero entries. This was solved by Block-Wiedemann.
+
+Sieving has been done on a variety of machines. We estimate that
+lattice sieving would have taken 55 years on a single 2.2 GHz Opteron 
+CPU.
+Note that this number could have been improved if instead of the PIII-
+binary which we used for sieving, we had used a version of the
+lattice-siever optimized for Opteron CPU's which we developed in the 
+meantime.
+The matrix step was performed on a cluster of 80 2.2 GHz Opterons 
+connected via a Gigabit network and took about 3 months.
+
+We started sieving shortly before Christmas 2003 and continued until
+October 2004. The matrix step began in December 2004.
+Line sieving was done by P. Montgomery and H. te Riele at the CWI, by
+F. Bahr and his family.
+
+More details will be given later.
+
+F. Bahr, M. Boehm, J. Franke, T. Kleinjung
+\end{tiny}
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+
+\centerline{\Large{\textcolor{blue}{RSA}}}
+
+\centerline{\includegraphics[width=9cm]{images/rsa-photo.jpg}}
+
+\centerline{Adi Shamir, Ron L. Rivest, Leonard Adleman (1978)}
+\end{slide}
+
+\begin{slide}
+
+\centerline{\Large{\textcolor{blue}{RSA}}}
+
+\centerline{\includegraphics[width=9cm]{images/RSA-2003.jpg}}
+
+\centerline{Ron L. Rivest, Adi Shamir, Leonard Adleman (2003)}
+\end{slide}
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textsc{Probl\`eme:} \'Etant donn\'e $n\in\N$, trouver un diviseur propre de $n$}}\pause
+\parstepwise{\begin{itemize}
+ \item \step{Un probl\`eme tr\`es ancien et tres difficile;}
+\item \step{Trial division requires $O(\sqrt n)$ division which is an exponential time}\\ \step{(i.e. impractical)}
+\item \step{Plusieurs algorithmes diff\'erents}
+\item \step{nous passons en revue la m\'ethode \'el\'egante de Pollard (m\'etode $\rho$).}
+\end{itemize}}
+{Suppose $n$ is not a power and consider the function:}\pause
+\centerline{$f:\Z/n\Z\longrightarrow\Z/n\Z,\quad x\mapsto f(x)=x^2+1.$}
+
+The $k$-th iterate of $f$ is $f^k(x)=f^{k-1}(f(x))$ with $f^1(x)=f(x)$.
+
+ If $x_0\in\Z/n\Z$ is chosen ``sufficiently
+randomly'',  the sequence $\{f^{k}(x_0)\}$ behaves as a random sequence of elements of $\Z/n\Z$ and we exploit
+this fact.
+
+\end{slide}
+
+
+\begin{slide}
+\heading{Pollard $\rho$ factoring method}
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{11cm}
+\texttt{\noindent 
+\noindent 
+\textcolor{red}{Input:}  $n\in\N$ odd and not a perfect power (to be factored)\\
+\textcolor{blue}{Output:}  a non trivial factor of $n$\\
+1. Choose at random $x\in\Z/n\Z=\{0,1,\ldots,n-1\}$\\
+2. For $i=1,2\ldots$.\\
+\hspace*{1cm} \qquad $g:=\gcd(f^i(x)-f^{2i}(x),n)$\\
+\hspace*{1cm} \qquad If $g=1$, goto next $i$\\  
+\hspace*{1cm} \qquad If $1<g<n$ then output $g$ and halt\\
+\hspace*{1cm} \qquad If $g=n$ then go to Step 1 and choose another $x$.}
+\end{minipage}}}
+\end{center}
+\pause\vspace*{-3mm}
+What is going on here?\pause\vspace*{-3mm}
+Is is obviously a probabilistic algorithm but it is not even clear that it will ever terminate.
+
+But in fact it terminates with complexity $O(\sqrt[4]n)$ which is attained in the worst case (i.e.
+when $n$ is an RSA module (for RSA see course in Cryptography by K. Chakraborty).
+\end{slide}
+
+\begin{slide}
+\heading{\textsc{The birthday paradox}}
+
+\noindent\textbf{Elementary Probability Question:} \textit{what is the chance that in a sequence of $k$ elements (where
+repetitions are allowed) from a set of $n$ elements, there is a repetition?} \pause
+
+\noindent\textit{Answer:}  The chance is $\displaystyle{1-\frac{n!}{n^k(n-k)!}\approx 1-e^{-k(k-1)/2n}}$
+
+\fbox{In a party of $23$ friends there $50.04\%$ chances that $2$ have the same birthday!!}
+
+Relevance to the $\rho$-Factoring method:
+\begin{center}
+\fbox{\begin{minipage}[l]{12cm}If $d$ is a divisor of $n$, then in $O(\sqrt{d})=O(\sqrt[4]{n})$ steps there is a high chance that in the sequence 
+$\{f^{k}(x_0)\bmod d\}$ there is a repetition modulo $d$.\end{minipage}}
+\end{center}
+
+\noindent\textsc{Remark (WHY $\rho$).} If $y_1,\ldots,y_m,y_{m+1},\ldots,y_{m+k}=y_m,y_{m+k+1}=y_{m+1},\ldots$. and $i$ is the smallest
+multiple of $k$ with $i\ge m$, then $y_i=y_{2i}$ (the Floyd's cycle trick). 
+
+\end{slide}
+
+
+
+
+\begin{slide}
+\heading{\textcolor{red}{R\'ef\'erences pour ce cours}}
+\vspace*{-2mm}\small{\begin{itemize}
+ \item[\mbox{[1]}] J. Buhler \& S. Wagon \textit{Basic algorithms in number theory} Algorithmic Number Theory,
+MSRI Publications
+Volume \textbf{44}, 2008
+{\small \url{http://www.msri.org/communications/books/Book44/files/02buhler.pdf}
+\href{http://www.msri.org/communications/books/Book44/files/02buhler.pdf}{}}
+\item[\mbox{[2]}] C. Pomerance \textit{Smooth numbers and the quadratic sieve}
+Algorithmic Number Theory,
+MSRI Publications
+Volume \textbf{44}, 2008
+{\small \url{http://www.msri.org/communications/books/Book44/files/03carl.pdf}
+\href{http://www.msri.org/communications/books/Book44/files/03carl.pdf}{}}
+\item[\mbox{[3]}] R. Crandall and C. Pomerance, \textit{Prime numbers}, 2nd
+ed., Springer-Verlag, New York, 2005.
+\item[\mbox{[4]}] E. Bach and J. Shallit, \textit{Algorithmic number theory, I: Efficient
+algorithms}, MIT Press, Cambridge, MA, 1996.
+\item[\mbox{[5]}] J. von zur Gathen and J. Gerhard, \textit{Modern computer
+algebra}, 2nd ed., Cambridge University Press, Cambridge, 2003.
+\item[\mbox{[6]}] V. Shoup, \textit{A computational introduction to number theory and algebra,}
+Cambridge University Press, Cambridge, 2005.
+\item[\mbox{[7]}] 
+These notes \vspace*{-2mm} 
+{\small \url{http://www.mat.uniroma3.it/users/pappa/bamako2010_A.pdf}
+\href{http://www.mat.uniroma3.it/users/pappa/bamako2010_A.pdf}{}}
+\end{itemize}}
+\end{slide}
+
+
+\end{document}

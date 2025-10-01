@@ -1,0 +1,92 @@
+\nopagenumbers \font\title=cmti12
+\def\ve{\vfill\eject}
+\def\vv{\vfill}
+\def\vs{\vskip-2cm}
+\def\vss{\vskip10cm}
+\def\vst{\vskip13.3cm}
+
+%\def\ve{\bigskip\bigskip}
+%\def\vv{\bigskip\bigskip}
+%\def\vs{}
+%\def\vss{}
+%\def\vst{\bigskip\bigskip}
+
+\hsize=19.5cm
+\vsize=27.58cm
+\hoffset=-1.6cm
+\voffset=0.5cm
+\parskip=-.1cm
+\ \vs \hskip -6mm CR410 AA12/13 (Crittografia a chiave pubblica)\hfill APPELLO C \hfill Roma, 10 Febbraio 2014. \hrule
+\bigskip\noindent
+{\title Cognome}\  \dotfill\ {\title Nome}\ \dotfill {\title
+Matricola}\ \dotfill\
+\smallskip  \noindent
+Risolvere il massimo numero di esercizi fornendo spiegazioni chiare e sintetiche. \ it Inserire le risposte negli spazi
+predisposti. NON SI ACCETTANO RISPOSTE SCRITTE SU ALTRI FOGLI.
+\rm 1 Esercizio = 4 punti. Tempo previsto: 2 ore. Nessuna domanda durante le prima ora e durante gli ultimi 20 minuti.
+\smallskip
+\hrule\smallskip
+\centerline{\hskip 6pt\vbox{\tabskip=0pt \offinterlineskip
+\def \trl{\noalign{\hrule}}
+\halign to247.5pt{\strut#& \vrule#\tabskip=0.7em plus 1em& \hfil#&
+\vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil&
+\vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#&
+\hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfil#&
+\vrule#\tabskip=0pt\cr\trl && 1 && 2 && 3 && 4 &&
+5 && 6 && 7 && 8  && 9 && TOT. &\cr\trl  &&   &&
+&&     &&   &&     &&   &&   &&    &&  && &\cr &&       &&   &&   &&     &&   && && && &&
+ && &\cr\trl }}}
+\medskip
+
+\item{1.} Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:\bigskip\bigskip\bigskip
+
+\itemitem{a.} E' vero che se $E$ \`e una curva ellittica definita su ${\bf F}_{2^n}$, allora
+non ha mai un equazione della forma $y^2=x^3+ax+b$?\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{b.} E' vero che se tutti i fattori primi di $n-1$ sono pi\`u piccoli di $\log n$, allora \`e
+possibile determinare un fattore non banale di $n$ in modo rapido? come?\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{c.} E' vero che se $p>3$, il polinomio $X^2+2\in{\bf F}_p$ \`e irriducibile per alcuni valori di $p$ ma non tutti?\medskip\bigskip\bigskip
+ 
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{d.} E' vero che esistono modi per moltiplicare interi con complessit\`a 
+inferiore a quella quadratica?\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil\eject
+
+\item{2} Se $n\in{\bf N}$, sia $\tau(n)$ il numero dei divisori di $n$. Supponiamo che sia nota
+la fattorizzazione (unica) di $n=p_1^{\alpha_1}\cdots p_s^{\alpha_s}$. Fornire una stima per il
+numero di operazioni bit necessarie per calcolare $\tau(n)$. (\it Suggerimento: Usare il
+fatto che $\tau$ \`{e} una funzione moltiplicativa e calcolare una formula per $\tau(p^\alpha)$ \rm).\vv
+
+\item{3.} Siano $m,n$ interi tali che $m\equiv3\bmod4$,
+che $m\equiv2\bmod n$ e che $n\equiv1\bmod8$. Si calcoli il
+seguente simbolo di Jacobi: $\left({(11m+n)^7 \over m}\right)$. \vv
+
+\item{4.}  Illustrare l'algoritmo dei quadrati successivi in un gruppo analizzandone la complessit\`{a}. Considerare
+la curva ellittica $E: y^2=x^3-x.$ Illustrare l'algoritmo appena descritto calcolando $[5](1,0)$ dove $(1,0)\in E({\bf F}_{13})$. \ve\ \vs
+
+\item{5.}  Si dia la definizione di pseudo primo forte in base $2$ e si mostri che
+se $n=2^\alpha+1$ \`{e} pseudo primo forte in base $2$, allora
+$2^{2^\beta}\equiv -1\bmod n$ per qualche $\beta<\alpha$.\vv
+
+\item{6.} Fissare una radice primitiva di ${\bf F}_{3^3}$ ed
+ utilizzarla per simulare un scambio chiavi alla Diffie--Hellmann.\vv
+
+\item{7.} Dopo aver definito la nozione di polinomio primitivo su un campo finito, si calcoli la probabilit\`{a} che un polinomio
+irriducibile $f$ di grado $8$ su ${\bf F}_{7}$ risulti primitivo?.\ve\ \vs
+
+\item{8.}  Fattorizzare
+$f(x)=(x^{12}+3x^{4}+1)(x^2+x+2)(x^{10}+x^2+1)$ su ${\bf
+  F}_2$ e determinare il numero di elementi del campo di spezzamento di $f$.\vv
+
+\item{9.}  Dopo aver verificato che si tratta di una curva ellittica, determinare (giustificando la risposta)
+l'ordine e la struttura del gruppo dei punti razionali della curva ellittica su
+${\bf F}_7$
+$$y^2=x^3-x+5.$$.\ \vst\bye

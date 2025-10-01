@@ -1,0 +1,52 @@
+\documentclass[a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{fancybox,marvosym,graphicx,amsmath,amssymb,pifont,textcomp,amsfonts}
+\renewcommand{\familydefault}{\sfdefault}
+\title{}
+\author{silvia pappalardi}
+\date{\today}
+\begin{document}\begin{center}
+Number Theory in Cryptography and its Applications\\
+CIMPA-UNESCO-MICINN, NEPAL\\
+Dhulikhel, Nepal, July 19-31.
+\end{center}
+\centerline{Assignments.}
+\thispagestyle{empty}
+\noindent\textbf{The following Exercises should be done by hand}
+\begin{enumerate}
+		\item Use the fact that $X=19$ is a solution of $X^2\equiv4\bmod 119$ to factor $119$.
+		\item Show that $n=33$ is not prime without attempting to factor it nor mentioning any of its factors. 
+		\item \textsc{Legendre Symbols.} \begin{enumerate}
+			\item Compute all quadratic residues in $\mathbb Z/31\mathbb Z$
+			\item Compute $\left(\frac{37}{101}\right)$.
+		\end{enumerate}
+		\item \textsc{GCD.} Compute the GCD of $(2345,1085)$ first with the binary algorithm and then
+with the Extended Euclidean Algorithm. In the latter case also write the Bezout identity.
+		\item \textsc{Roots of Polynomials.} 
+Find all solutions of $X^3+X+2\equiv0(\bmod 20)$ by computing first all solutions modulo $4$ and $5$, then
+using the Chinese Remainder Theorem to compute the solutions modulo $20$.
+\end{enumerate}	
+
+\noindent\textbf{The following Exercises should be done with Mathematica}
+\begin{enumerate}
+		\item \textsc{RSA.} Produce two (random) primes  with $15$ decimal digits that are suitable
+               to produce an RSA module with encryption exponent $e=3$
+\begin{itemize}
+	\item Compute the decription exponent
+        \item Encode $2067$ 
+        \item Decode $5425254974713583142451954123$; 
+\end{itemize}
+		\item List all primitive roots of $(\mathbb Z/2069\mathbb Z)^*$ and those of $(\mathbb Z/202\mathbb Z)^*$;
+		\item \textsc{DL.} Choose a random prime $p$ with $30$ decimal digits, compute a primitive roots
+                 $(\mathbb Z/p\mathbb Z)^*$ and
+\begin{enumerate}
+	\item Generate a key using the Diffie--Hellmann method
+ 	\item Use the Massey Omura Cryptosystem to encode and decode $2067$
+	\item Use the ElGamal system to encode and decode $2067$
+ \end{enumerate} 
+		\item Compute the roots $\sqrt[k]{2067}$ by Newton's method (with 10 iterations), for $k=2,\ldots,10$
+		\item Find all solutions of $X^2\equiv 6 (\bmod 2^{2067} + 2949)$ and
+			$X^2\equiv 10 (\bmod 2^{2067} + 2949)$. 
+\end{enumerate}	
+
+\end{document}

@@ -1,0 +1,151 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2009/2010}\\
+
+\textbf{AL2 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 3 - 21 Ottobre 2009}\\
+
+\textbf{Matteo Acclavio, Luca Dell'Anna}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\vspace{0.4cm}
+
+
+\noindent
+\begin{Ex}\textbf{ 1.}
+\begin{itemize}
+\item Determinare gli elementi del gruppo degli automorfismi del gruppo dei quaternioni
+\item Determinare gli elementi del gruppo degli automorfismi interni del gruppo dei quaternioni
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Determinare, qualora esista, un isomorfismo tra $\Z_{3} \times \Z_2 $ e un sottogruppo di $S_6$.
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Siano $(G, +)$ e $(G', +)$ due gruppi abeliani. Sia $Hom(G,G')$ l'insieme degli
+omomorfismi da $G$ in $G'$. Si consideri l'applicazione
+$$ + : Hom(G,G') \times Hom(G,G') \longrightarrow Hom(G,G') $$
+tale che $(\varphi + \psi )(x) := \varphi(x) + \psi(x)$.
+\begin{description}
+\item[a)] Dimostrare che $+$ \`e effettivamente un'operazione binaria.
+\item[b)] Dimostrare che $(Hom(G,G'), +)$ \`e un gruppo abeliano.
+\end{description}
+ Sia $\varphi \in Hom(\Z_n,\Z_m)$. Mostrare che:
+\begin{description}
+\item[c)] l'ordine di $\varphi([1]_n)$ divide $n$ e quindi anche il $MCD(m, n)$
+\item[d)] $Im(\varphi)$ \`e generato da $\varphi([1]_n)$ e che in particolare $\varphi$ \`e suriettivo se e
+solo se $\varphi([1]_n) \in U(\Z_m)$
+\item[e)] se $[a]_m \in \Z_m$ \`e t.c. $o([a]_m)\mid n$ allora  $\psi_{a} : \Z_n \rightarrow \Z_m$, definita come
+ $\psi_{a}([x]_n) := [ax]_m$, \`e un omomorfismo.
+\end{description} Si consideri ora l'applicazione $f : (Hom(Z_n,Z_m), +) \rightarrow (Z_m, +)$ definita
+come $f(\varphi) := \varphi([1]_n)$.
+\begin{description}
+\item[f)] Dimostrare che $f$ \`e un omomorfismo iniettivo di gruppi.
+\item[g)] Trovare l'immagine di $f$ e dire a quale gruppo \`e isomorfo $Hom(Z_n,Z_m)$.
+\item[h)] Trovare tutti gli omomorfismi da $\Z_{18}$ a $\Z_{12}$
+\item[i)] Trovare tutti gli omomorfismi da $\Z_6$ a $\Z_{15}$
+\end{description}
+Sia ora $Aut(\Z_n)$ l'insieme degli automorfismi di $\Z_n$. Mostrare che:
+\begin{description}
+\item[j)] $(Aut(\Z_n), +) \subseteq (Hom(\Z_n,\Z_n), +)$ non \`e un sottogruppo
+\item[k)] $(Aut(\Z_n), \circ)$ \`e un gruppo
+\item[l)] $(Aut(\Z_n), \circ)$ \`e isomorfo a $(U(\Z_n), \cdot)$.
+\item[m)] Trovare tutti gli automorfismi di $Z_{16}$
+\end{description}
+Si consideri infine il gruppo degli endomorfismi di $\Z$. Sia $\nu_a : \Z \rightarrow \Z$ la
+moltiplicazione per $a$, i.e. $\nu_a(x) = ax$.
+\begin{description}
+\item[n)] Dimostrare che per ogni $a \in \Z$, $\nu_a \in Hom(\Z,\Z)$
+\item[o)] A cosa \`e isomorfo $Hom(\Z,\Z)$?
+\end{description}
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Si immerga $\Z_p$ in un opportuno $S_n$ tramite l'applicazione di Cayley $\phi$. Determinare la struttura ciclica degli elementi di $\phi(\Z_p)$ e dire quali tra gli elementi di $\phi(\Z_p)$ sono coniugati in:
+\begin{itemize}
+\item $\phi(\Z_p)$
+\item $S_n$
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Sia $G$ un gruppo e sia $\varphi: G\longrightarrow G$ l'applicazione che manda ogni elemnto nel suo inverso. Dimostrare che $\varphi$ \acc e biiettiva e che $\varphi$ \acc e un automorfismo se e solo se $G$ \acc e commutativo.
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 6.}\\
+Sia $G$ un gruppo finito e sia $\varphi$ un endomorfismo tale che pi\acc u della met\acc a degli elementi di $G$ sia mandato nell'elemento neutro. Dimostrare che $\varphi$ manda tutto $G$ nell'elemento neutro.
+\end{Ex}
+
+\end{document}

@@ -1,0 +1,3 @@
+1. Elementi di teoria elementare dei numeri: stime per il tempo necessario a compiere elaborazioni aritmetiche, divisibilità, algoritmo di Euclide, cogruenze, fattorizzazione degli interi, campi finiti, residui quadratici. 
+2. Crittografia: esempi di sistemi crittografici, sistemi crittografici a chiave pubblica, il metodo RSA, logaritmi discreti, il problema dello zaino, protocolli a conoscenza zero, implementazione. 
+3. Primalità e fattorizzazione: numeri pseudo primi, il metodo “rho”, il metodo di Fermat, il metodo di delle frazioni continue, il metodo del crivello quadratico.

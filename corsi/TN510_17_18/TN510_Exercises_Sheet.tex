@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+\usepackage[
+  margin=1.5cm,
+  includefoot,
+  footskip=30pt,
+]{geometry}
+\usepackage{layout}
+
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+ \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+\title{TN510 - Introduction to Analytic Number Theory - $2^{nd}$ term}
+\author{Exercises Sheet}
+\date{}
+\maketitle
+\thispagestyle{empty}
+\begin{exercise}{1}
+Write down all character $\bmod 6,7,8,9$.
+\end{exercise}
+\begin{exercise}{2}
+Show that $\displaystyle\sum_{n\leq x}\varphi(x)=cx^2+O(x)$ and compute c.
+\end{exercise}
+\begin{exercise}{3}
+Show that,
+\begin{itemize}
+\item $\cos(z)$=$\dfrac{1}{2}\left(\exp(iz)+\exp(-iz)\right)$.
+\item $\sin(z)$=$\dfrac{1}{2i}\left(\exp(iz)-\exp(-iz)\right)$.
+\item $\exp(x+iy)$=$\exp(x)(\cos(y)+i\sin(y))$.
+\item $\exp(in\alpha)=\cos(n\alpha)+i\sin(n\alpha)$.
+\end{itemize}
+\end{exercise}
+\begin{exercise}{4} Show that $\log(z)=\log|z|+i \operatorname{arg}(z)$, where $\vert 1-z\vert<1$.
+\end{exercise}
+\begin{exercise}{5}
+Show that $\displaystyle\int_{0}^{\infty}\dfrac{1}{1+x^n}=\dfrac{\pi}{n\sin\pi/n}.$
+\end{exercise}
+\begin{exercise}{6}
+Determine the Hadamard factorisation of 
+\begin{itemize}
+\item $\cos(\pi z)$,
+\item $e^z-1$.
+\end{itemize}
+\end{exercise}
+\begin{exercise}{7}
+Show that for $\vert z \vert<1$ we have, $\displaystyle\prod _{n=1}^{\infty }e^{{\frac {z^n}{n}}}=\sum_{n=0}^{\infty}z^{n}$
+\end{exercise}
+\begin{exercise}{8}
+Determine a sequence $(a_n)_n\in \C$ such that $\prod_{n}\left(1+a_n\right)$ convergent but $\sum_{n}a_n$ divergent.
+\end{exercise}
+\begin{exercise}{9}
+Determine a sequence $(a_n)_n\in\C$ such that $\sum_{n}a_n$ convergent but $\prod_{n}\left(1+a_n\right)$ divergent.
+\end{exercise}
+\begin{exercise}{10}
+let $f$ be an (integral) entire function of finite order. 
+Deduce form the characterisation of nowhere vanishing functions that if $f$ misses two distinct 
+values then $f$ is constant (does the conclusion of the theorem remain valid under the hypothesis that $f$ is an entire function?).
+\end{exercise}
+\begin{exercise}{11}
+Compute $\genfrac{}{}{0pt}{1}{\displaystyle\operatorname{Res}}{z=-n}\Gamma(z), \forall n\in\N.$
+\end{exercise}
+\begin{exercise}{12}
+Show that $\dfrac{\Gamma^{'}}{\Gamma}(3/2)=-\gamma+2-\log2$, where $\gamma$ Euler constant.
+\end{exercise}
+\begin{exercise}{13}
+Let $y>1, c>0$ and $T>0$. Show that 
+$$\left|\frac1{2\pi i}\int_{c-iT}^{c+iT}\frac{y^s}ds-1\right|< y^{c}\min\left(1,\dfrac{1}{T|\log y|}\right).$$
+\end{exercise}
+\end{document}

@@ -1,0 +1,53 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{amsmath,amsfonts}
+\usepackage[utf8]{inputenc}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\NN}{\mathbb N}
+%opening
+\title{Exercises-Analytic Number Theory Course}
+\author{25/04/2013}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+ \item Show that
+ \begin{enumerate}
+  \item ${\chi}_\omega$ is well defined.
+  \item ${\chi}_\omega$ has period $q$.
+  \item ${\chi}_\omega$ is totally multiplicative.
+  \item The set $\{{\chi}_\omega : \ZZ\rightarrow\CC, \omega \in\CC , \omega^{q-1}= 1  \}$ does not depend on primitive root g (mod $q$).  
+  \item $$\sum_{w}^q {\chi_\omega(a)}^{-1} {\chi_\omega(n)}= \begin{cases}
+                                                              0 & \text{if } a\not \equiv n (\bmod q)\\
+                                                              q-1 & \text{otherwises.}
+                                                             \end{cases}$$
+  \item $$\sum_{a\in \ZZ/q\ZZ} {\chi_\omega(a)}=\begin{cases}
+                                                 0 & \text{if }\omega\not=1\\
+                                                 q-1 & \text{otherwis}
+                                                 \end{cases}$$
+  \end{enumerate}
+ \item Explore Davenport page 9 line 13-26.
+\item Explore Davenport page 11 line 6 to end.
+ \item  Prove $3$ equalities of $\Gamma(s)$ function.
+ \begin{enumerate}
+  \item $\Gamma(s)\Gamma(1-s)= (\pi)/(\sin(\pi*s)) $
+  \item $\Gamma(s)\Gamma(s+1/2)= (\sqrt\pi)2^{1-2s}\Gamma(2s) $
+  \item $\Gamma(s)\Gamma(1/2(1-s))= (1/\sqrt\pi) 2^{1-s} (\cos(\pi*s/2)) \Gamma(s) $
+ \end{enumerate}
+\item Give another proof of formula of Wallis.
+\item If $\alpha >3$ and $ n\in \ZZ/2^\alpha\ZZ$, there exists unique $u,v$ where $v\in\ZZ/2\ZZ, v\in\ZZ/2^{\alpha-2}$ and $n\equiv(-1)^u*5^v$.
+\item  Show that $\Gamma(1/2)=\sqrt\pi$.
+\item Show that, for all $x>1$, $\omega(x)<1/2*x^{-1/2}$.
+\item  Prove the $3$ formula of Merten's.
+ \begin{enumerate}
+  \item $\sum_{p\leq x} \log p/p = \log x + O (1)$
+  \item $\sum_{p\leq x} 1/p = \log\log x +A+ O (1/\log x)$
+  \item ${\prod_{p\leq x}\log (1- 1/p}\sim \exp^{-\delta}/\log x$
+  \end{enumerate}
+  \item Compute $\forall n\in \NN$, $\zeta(-n)$. 
+  \item Write a report on the identity on the last line of page 67 (Davenport): Let $\chi(\mod q)$ be an \emph{imprimitive} character induced
+  by the \emph{primitive} character $\chi_1(\bmod q_1)$. Then
+  $$\tau(\chi)=\mu(q/q_1)\chi_1(q/q_1)\tau(\chi_1).$$
+ \item Write a one page report on Hurwitz Zeta Function.
+\end{enumerate}
+\end{document}

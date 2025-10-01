@@ -1,0 +1,623 @@
+\documentclass[landscape]{powersem} %,display
+\usepackage{fancybox,marvosym,graphicx,amsmath,amssymb,pifont,textcomp}
+\usepackage[bookmarksopen,colorlinks,urlcolor=red,pdfpagemode=FullScreen]{hyperref}
+\usepackage{fixseminar}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[latin1]{inputenc}
+\usepackage{eurosans}
+\usepackage[coloremph,colormath,colorhighlight,lightbackground]{texpower}
+\hfuzz=30pt
+\vfuzz=30pt
+\setlength{\slidewidth}{25cm} \setlength{\slideheight}{17cm}
+\slideframe{}%shadow
+\def\slideitemsep{.5ex plus .3ex minus .2ex}
+\renewcommand{\slidetopmargin}{10mm}
+\renewcommand{\slidebottommargin}{15mm}
+\renewcommand{\slideleftmargin}{5mm}
+\renewcommand{\sliderightmargin}{5mm}
+\newcommand{\psd}{\pause}%\addtocounter{slide}{-1}}
+\newcommand{\Ccal}{{\mathcal{C}}}
+\newcommand{\Exp}{\operatorname{Exp}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\Q}{{{\mathbb Q}}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\manorossa}{\textcolor{conceptcolor}{\ding{43}}}
+\newcommand{\matitablu}{\textcolor{altemcolor}{\ding{46}}}
+\newcommand{\verde}{\textcolor{black}}
+\newcommand{\heading}[1]{%
+ \begin{center}
+  %\large\bf
+  \Ovalbox{{#1}}%\textcolor{conceptcolor}{
+ \end{center}
+ \vspace{1ex minus 1ex}}
+\definecolor{verdescu}{rgb}{0,0.6,0.6}
+\definecolor{rossoscu}{rgb}{1,0,0.2}
+
+%\backgroundstyle[startcolor=white,
+ %                  endcolor=inactivecolor,%firstgradprogression=3,
+  %          rightpanelwidth=-7\semcm,,rightpanelcolor=pagecolor]{hgradient}%
+%%%%%%%%%%%%% DATI DEL SEMINARIO IN QUESTIONE %%%%%%%%%%%%
+
+\newpagestyle{327}%
+ {\textcolor{codecolor}{\textit{Basic Algorithms in Number Theory}} \hspace{\fill}\rightmark
+\hspace{0.5cm}\thepage}
+ {}%{\includegraphics[width=4mm]{images/dipmat.pdf}\hspace{\fill}\textcolor{codecolor}{\sc Universit\`a Roma Tre}
+ %\hspace{\fill}\includegraphics[width=5mm]{images/roma3.pdf}}%%
+\pagestyle{327} \markright{\textcolor{conceptcolor}{Algorithmic Complexity ...}}
+
+\begin{document}
+
+%\begin{slide}\pageTransitionWipe{30}
+%\maketitle
+%\end{slide}
+
+\begin{slide}\ \vfill
+
+\begin{sc}\begin{center}
+\begin{Large}
+
+\textcolor{underlcolor}{Basic Algorithms in Number Theory}
+\end{Large}\bigskip
+
+\ {Francesco Pappalardi}\bigskip\bigskip
+
+\begin{large}\begin{bf}Algorithmic Complexity \& more.
+\end{bf}\end{large}\medskip
+
+July $19^{\textrm{th}}$ 2010\medskip
+\vfil
+
+\end{center}
+\end{sc}
+\vfill
+
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{What is an \emph{algorithm} and what is its \textit{complexity}?}\pause
+
+\parstepwise{\begin{itemize}
+  \item[\textcolor{blue}{\ding{43}}]  \step{An \textit{algorithm} takes \textcolor{red}{\texttt{Inputs}} and produces 
+\textcolor{blue}{\texttt{Outputs}}}
+\bigskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{The \textit{Complexity} (or \textit{running time})
+of an algorithm $A$ is a function}
+\step{$\displaystyle{C_A(n)=\max\left\{\text{cost of running $A$ in $I$ }\left|\text{ $I$ is an input of size $\le n$}
+\right.\right\}.}$}
+
+  \item[\textcolor{blue}{\ding{43}}]  \step{The \textit{cost of running} depends on the context.} 
+\step{It is measured in terms of the number of \textit{elementary operations} that the }\\
+\step{algorithm
+performs.} 
+\bigskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{The \textit{input size} also depends on the context}\\ 
+\step{(many times we will
+use the number of digits)}
+\bigskip
+  \item[\textcolor{blue}{\ding{43}}]  \step{All these concepts can be formalized. However, we adopt
+a naive }\\ \step{approach and we immediately specialize to the number theoretic set up.}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}
+\heading{What is the size of an integer?}\pause
+
+If $x\in\Z$, the $\text{size}_b(x)$ is the number of digits of $x$ in base $b$.
+That is\pause
+$\displaystyle{\text{size}_b(x):= 1+\lceil\log_b(1+|x|)\rceil}$\pause
+where $\log_b$ denotes the logarithm in base $b$ and $\lceil u\rceil$ is
+the ceiling of $u$ (i.e. the smallest integer greater than or equal to $u$.\pause
+
+We have that 
+$\text{size}_b(x)=O(\log|x|).$\pause
+
+We write that $g(x)=O(f(x))$ if there exists $C>0$ such that $|g(x)|\le C|f(x)|$
+for all sufficiently large $x$.\pause
+
+Note that if $a, b>1$ are fixed, then $\log_a(|x|)=O(\log_b(|x|).$ Therefore
+when using the $O$--notation the choice of $b$ is irrelevant.\pause
+ 
+We use the $O$--notation to estimate the complexity of Algorithms. We say that
+an algorithm runs in polynomial time if its complexity on inputs of size up to $n$,
+is $O(n^k)$ for some $k>0$.
+\end{slide}
+
+
+
+% ----------------------------------------------------------------
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textbf{PROBLEM 1.}} \textsc{Multiplication:} for $x,y\in\Z$, find $x\cdot y$.}
+
+\parstepwise{\begin{itemize}
+ \item \step{\textbf{School Multiplication Algorithm:} It requires about $n^2$ digit-sized}\\
+\step{multiplications followed by $n$ sums of integers of size about $n$.}
+\begin{itemize}
+ \item \step{Since to add two $n$--sized integers,  about $n$}\\ \step{digit-sized operations are necessary,}
+ \item \step{The complexity to multiply two $n$-sized integers using the School}\\ \step{Multiplication 
+       Algorithm is $O(n^2)+nO(n)=O(n^2).$} 
+\end{itemize}
+ \item \step{\textbf{Karatsuba Multiplication Algorithm (1960):}}\\ \step{ It uses multiplication of polynomials}
+\step{\centerline{\tiny $(a+bX)(c+dX)=ac+(ad+bc)X+bdX^2=ac+((a+b)(c+d)-ac-bd)X+bdX^2$}}
+
+\step{It has complexity $O(n^{\log_23})$.}
+
+\item \step{\textbf{Sch\"onhage Multiplication (1971):} It has complexity}\\ \step{ $O(n\log n\log\log n)$ on
+$n$--digit number (algorithms that use it are said to}\\ \step{ use \textit{fast arithmetics};\hfill\textit{(sometimes
+we write $O(n^{1+\varepsilon}$)).}}
+\end{itemize}}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textbf{PROBLEM 2.}} \textsc{Exponentiation:} for $x\in\Z$ and $n\in\N$, find $x^n$.}\pause
+
+Here we assume that $x$ is fixed and we review algorithms whose complexity depends on
+the size of $n$. (It is easy to check that the complexity of exponentiation is $O(n)$).\pause
+
+\emph{Example:} To compute $x^{16}$ are clearly enough $15$ multiplications. However since\pause
+\centerline{$x^{16}=\left(\left(\left(x^2\right)^2\right)^2\right)^2,$}\pause
+only $4$ squaring are enough!!
+
+The binary expansion of $n$ has a role in efficient exponentiation. \pause
+If $n=\sum a_i2^i$ with $a_i\in{0,1}$, then
+\centerline{$x^n=x^{a_0}(x^2)^{a_1}(x^4)^{a_2}\cdots.$}\pause
+The idea also works when $x$ is the element of any multiplicative group (or a monoid).
+\end{slide}
+
+\begin{slide}
+\heading{\textsc{Right-to-Left Exponentiation}}\pause
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{7cm}
+\texttt{\noindent 
+\textcolor{red}{Input:} $x$ in a fixed group and $n\in\N$\\
+\textcolor{blue}{Output:} $x^n$\\
+1. $y:=1$\\
+2. While $n>0$,\\
+\hspace*{5mm} \quad if $n$ is odd $y:=x\cdot y$\\
+\hspace*{5mm} \quad $x:=x^2, n:=\lfloor n/2\rfloor$\\
+3. Return $y$
+}
+\end{minipage}}}
+\end{center}\pause
+where the \textit{floor} $\lfloor u\rfloor$ of $u$ denotes
+the largest integer less than or equal to $u$.\pause
+The proof is by induction and gives the recursive algorithm\vspace*{-3mm}
+$$\Exp(x,n)=\begin{cases}1 & \text{if }n=0,\\ \Exp(x^2,n/2) & \text{if } n>0\text{ is even},\\
+             x\Exp(x^2,(n-1)/2)& \text{if $n$ is odd.}
+            \end{cases}$$
+Complexity is $O(\log n)$. Very important applications in Number Theory.
+\end{slide}
+
+\begin{slide}
+
+\heading{\textsc{Left-to-Right Exponentiation}}
+Using the mathematical equivalence of algorithms:
+$$\Exp(x,n)=%\begin{cases}1 & \text{if }n=0,\\ \Exp(x^2,n/2) & \text{if } n>0\text{ is even},\\             x\Exp(x^2,(n-1)/2)& \text{if $n$ is odd.}            \end{cases}=
+\begin{cases}1 & \text{if }n=0,\\ \Exp(x,n/2)^2 & \text{if } n>0\text{ is even},\\
+             x\Exp(x,(n-1)/2)^2& \text{if $n$ is odd.}
+            \end{cases}$$
+and unfolding it into an iterative algorithms:
+
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{7cm}
+\texttt{\noindent 
+\noindent 
+\textcolor{red}{Input:} $x$ in a fixed group, $n\in\N$ and $m=2^a$ with $m/2\le n< m$\\
+\textcolor{blue}{Output:} $x^n$\\
+1. $y:=1$\\
+2. While $m>1$,\\
+\hspace*{5mm} \quad $m:=m/2, y:=y^2$\\
+\hspace*{5mm} \quad if $n\ge m$ $y:=x\cdot y$, $n:=n-m$\\
+3. Return $y$
+}
+\end{minipage}}}
+\end{center}
+\end{slide}
+\begin{slide}
+
+\heading{The ring $\Z/m\Z$ ($m>1$)}\pause
+The cost of computing $x^n$ is $O(\log n)$ if the cost of multiplication in the
+monoid $G$ is bounded.\pause
+A very important case is when $G=(\Z/m\Z)^*$.\pause
+The ring $\Z/m\Z$ is the ring whose elements are the arithmetic progressions modulo $m$.\pause
+We know that $\Z/m\Z$ has $m$ elements, namely $k+m\Z$ where $k=0,1,\ldots,m-1$. \pause
+
+Sometimes we abuse the notation and write
+$\Z/m\Z=\{0,1,\ldots,m-1\}$. With this abused notation we have, for $a,b\in\Z/m\Z$ 
+$$a+_mb:=\begin{cases} a+b&\text{if }a+b<m \\ a+b-m &\text{otherwise}\end{cases}
+\qquad\text{and}\quad
+         a\times_mb:= a\cdot b\mod m.$$
+
+\end{slide}
+
+\begin{slide}
+\heading{The ring $\Z/m\Z$ continues}
+
+$$a+_mb:=\begin{cases} a+b&\text{if }a+b<m \\ a+b-m &\text{otherwise}\end{cases}
+\qquad\text{and}\quad
+         a\times_mb:= a\cdot b\mod m$$\pause
+
+The symbol $u\mod m$ denoted the \textit{remainder} of the division of $u$ by $m$. 
+That is the unique integer $r$ such that\pause
+\begin{enumerate}
+ \item $0\leq r<m$,\\
+\item $u=qm+r$ for some $q\in\Z$.
+\end{enumerate}\pause
+
+It can be shown that, if $u,m\in\Z$, $m>1$ then $u=qm+r$ can be computed in time
+$O((\log m)(\log q))=O(\log^2\max(|u|,m))$ with naive algorithms and in time $O(\log^{1+\epsilon}\max(|u|,m))$
+using fast arithmetics.
+
+\end{slide}
+
+\begin{slide}
+\heading{The ring $\Z/m\Z$ continues}\pause
+
+\textcolor{red}{CONSEQUENCE:} Operations in $\Z/m\Z$ can be performed in time 
+\medskip\pause
+\begin{center}
+\begin{tabular}{l|l|l}
+\hline
+&(scholarly)&(fast arithmetics) \\
+\hline
+addition & $O(\log m)$ & \\
+multiplication & $O(\log^2m)$  & $O(\log^{1+\epsilon}m)$\\
+exponentiation by $n$ & $O(\log n\log^2m)$& $O(\log n\log^{1+\epsilon}m)$ \\
+inverses & $O(\log^2m)$  & $O(\log^{1+\epsilon}m)$\\
+\end{tabular}
+\end{center}
+\pause
+
+\textcolor{red}{NOTE.} There is also an efficient old method to compute the inverses in 
+$$(\Z/m\Z)^*=\{a\in\Z/m\Z\ \text{such that there exists}\ b\ \text{ with }ab\equiv1\bmod n\}.$$\pause
+This will be one of the highlights of tomorrow's lecture.
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textbf{PROBLEM 3.}} \textsc{GCD:} Given $a,b\in\N$ find $\gcd(a,b)$} \pause
+The non negative $\gcd(a,b)$ is the greatest common divisor of $a$ and $b$. Note that\pause
+\centerline{$\gcd(a,0)=a\quad\text{ and }\gcd(a,b)=\gcd(b,a\bmod b).$}\pause
+This observation leads to the algorithm:
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{7cm}
+\texttt{\noindent 
+\noindent 
+\textcolor{red}{Input:} $a,b\in\N$\\
+\textcolor{blue}{Output:} $\gcd(a,b)$\\
+While $b>0$,\\
+\hspace*{5mm} \quad $\{a,b\}:=\{b,a\bmod b\}$\\
+Return $a$
+}
+\end{minipage}}}
+\end{center}\pause
+Since the number of times the loop is iterated in $O(\log\max\{a,b\})$,  the complexity of this algorithm 
+is certainly $O(k^3)$ on $k$-bits integers but we will do much better tomorrow. 
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{red}{\textbf{PROBLEM 4.}} \textsc{Primality:} Given $n\in\N$ odd, determine if
+it is prime}\pause
+
+This is our first example of \textit{decision problem}, for which the Output is ``\textit{yes}'' or ``\textit{no}''.
+\pause
+It is easy to check if a number is prime with \textit{trial division}. The complexity of such an
+algorithm is $O(\sqrt{n})$ which is exponential. \pause
+
+\noindent\textbf{Fermat Little Theorem.} \textit{If $n$ is prime and $a\in(\Z/n\Z)^*$, then the multiplicative order
+of $a$ divides $n-1$ (i.e. $a^{n-1}\equiv1\bmod n$).}
+\medskip\pause
+
+Note that FTL can be checked on $n$ in time $O(\log^3 n)$ so it provides (often) a good way to 
+check that a number is composite.\pause
+
+Example: $2^{1000}\bmod1001 = 561$ implies that $1001$ is not prime and we haven't even tried to factor it
+
+\end{slide}
+
+\begin{slide}
+\heading{\textsc{Primality} continues}\pause
+
+However from the idea of FLT we deduce a primality test:\pause
+\noindent\textbf{Theorem.} \textit{If $n$ is an integer and $a\in(\Z/n\Z)^*$ such that $a^{n-1}\equiv1\bmod n$,
+and $a^{(n-1)/q}\not\equiv1\bmod n$ for all prime divisors of $n-1$, then $n$ is prime.}
+\pause
+\noindent\textit{Proof.} The statement is just rephrasing of the fact that $(\Z/n\Z)^*$ is cyclic (generated
+by $a$) and has order $n-1$.\pause
+Since $\#(\Z/n\Z)^*=\varphi(n)$ (the Euler function), the conclusion follows
+from the fact the $\varphi(n)=n-1$ iff $n$ is prime.\hfill$\square$\pause
+\textcolor{red}{Note:} FLT is of any use to determine primality only if we can factor $n-1$. For example it
+can be shown that $n=15\times2^{1518}+1$ is prime since $11^{n-1}\bmod n=1$ and
+\begin{small}
+$$\text{$11^{\frac{n-1}2}\bmod n=137919\cdots, 11^{\frac{n-1}3}\bmod n=79851\cdots$ and 
+$11^{\frac{n-1}5}\bmod n=134287\cdots$}$$
+However it is seldom the case that $n-1$ can be factored.
+\end{small}\pause\vspace*{-3mm}
+Exercise: find large primes that can be proved prime via the above Theorem.
+\end{slide}
+
+\begin{slide}
+\heading{\textsc{Primality} continues}\pause
+A ``more'' useful result: \pause
+\noindent\textbf{Theorem (Pocklington).} \textit{If $n$ is an integer, $a\in(\Z/n\Z)^*$ and $m$ is a divisor of $n-1$
+with $m>\sqrt{n}$ such that $a^{n-1}\equiv1\bmod n$,
+and $\gcd(a^{(n-1)/q}-1,n)=1$ for all prime divisors of $m$, then $n$ is prime.}
+\pause
+Therefore \textit{proving Primality is easy if $n-1$ can be ``half factored''}
+\pause
+Assuming that $a^{n-1}\bmod n$ is a \emph{random} integer modulo $n$, one could think that the above
+idea could be pushed further. However there are composite number, called \textit{Carmichael numbers} such that
+\centerline{$a^{n-1}\equiv 1\bmod n\quad\forall a\in(\Z/n\Z)^*.$}\pause
+For example $561=3\times 11\times 17$ is the smallest Carmichael number.\pause
+\noindent\textbf{Theorem (AGP).}(Alford, Granville, Pomerance (1994)) \textit{There are infinitely many Carmichael numbers.}\\
+If $p$ is an odd prime, then $a^{(p-1)/2}\equiv\pm1\mod p$ since $\Z/p\Z$ is a field!!
+\end{slide}
+
+\begin{slide}
+\heading{\textsc{Legendre Symbols}}
+
+We take the ``square root'' of the Fermat congruence.\pause
+
+\textbf{Definition.} $a\in\Z$ is a \emph{quadratic residue} modulo a prime $p$ if $\exists x\in\Z$ not
+divisible by $p$ such that $a\equiv x^2\bmod p$. (i.e. $a$ is a square modulo $p$). Furthermore the
+\emph{Legendre symbol}
+$$\left(\frac ap\right)=\begin{cases}0 & \text{if } p \text{ divides } a,\\
+                         1 & \text{if $a$ is a quadratic residue modulo $p$},\\
+                         -1 & \text{if $a$ is a quadratic nonresidue modulo $p$.}
+                        \end{cases}
+$$\pause
+\noindent\textbf{Theorem (Euler).} \textit{$\left(\frac ap\right)\equiv a^{(p-1)/2}\bmod p$.}
+\pause\medskip
+The above can be checked (scholarly) in time $O(\log^3p)$
+\pause
+
+We want to extend the definition of $\left(\frac ap\right)$ to the case when $p$ non
+necessarily prime but still odd. 
+\end{slide}
+
+\begin{slide}
+\heading{\textsc{Jacobi Symbols}}
+
+\textbf{Definition.} Let $a,b\in\Z$ with $b>1$ odd. The \emph{Jacobi symbol} is defined as
+$$\left(\frac ab\right)= \prod_{p^{\alpha_p}\| b}\left(\frac ap\right)^{\alpha_p}.$$
+\pause
+
+\textsc{Properties of the Jacobi Symbols:}
+\begin{enumerate}
+ \item if $b$ is prime, the Jacobi symbols and Legendre's symbols are the same,
+ \item Jacobi symbols are multiplicative in the numerators and denominators,
+ \item $\left(\frac ab\right)=\left(\frac{a\bmod b}b\right)$; so that $\left(\frac ab\right)=0$ iff $\gcd(a,b)\neq1$,
+ \item (\emph{Quadratic Reciprocity}) $\left(\frac ab\right)\left(\frac ba\right)=(-1)^{(a-1)(b-1)/4}$
+ \item $\left(\frac{-1}b\right)=(-1)^{(b-1)/2}$, $\left(\frac2b\right)=(-1)^{(b^2-1)/8}$
+\end{enumerate}\pause
+
+From the above we can extract an algorithm to compute the Jacobi symbol without factoring the denominator!
+\end{slide}
+
+\begin{slide}
+\heading{Computation of Jacobi (and Legendre) symbols}
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{11cm}
+\texttt{\noindent 
+\noindent 
+\textcolor{red}{Input:} $a\in\Z, b\in\N$ odd\\
+\textcolor{blue}{Output:} $\left(\frac{a}{b}\right)\in\{0,1,-1\}$\\
+$(X,Y,Z):=(a,b,1)$;\\
+1. if $X=0$ or $X=1$, Return $X\cdot Z$,\\
+2. if $X<0$, $(X,Y,Z)=(-X,Y,Z\cdot(-1)^{(Y-1)/2}),$\\
+3. if $X\ge Y$, $(X,Y,Z)=(X\bmod Y,Y,Z)$,\\
+4. if $X$ is even, $(X,Y,Z)=(X/2,Y,Z\cdot(-1)^{(Y^2-1)/8})$,\\
+5. if $X$ is odd $(X,Y,Z)=(Y\bmod X,X,Z\cdot(-1)^{(X-1)(Y-1)/4})$,\\
+6. Goto 1
+}
+\end{minipage}}}
+\end{center}\pause%\vspace*{-3mm}
+The algorithm, incidentally, also checks if $\gcd(a,b)=1$ (i.e. if $a$ and $b$ are coprime)\pause
+It requires only: \textit{reductions, division by $2$, sign changes}.
+Its complexity is really equivalent to the complexity of the $\gcd$-algorithm (with some
+bookkeeping) which is
+$O(k^3)$ (scholarly) on integers of size $\leq k$. 
+\end{slide}
+
+\begin{slide}
+\heading{\textsc{Primality} continues}
+
+We want to apply Jacobi symbols to primality. 
+
+\noindent\textbf{Exercise:} Prove that the Fermat number $F_k:=2^{2^k}+1$ is prime iff 
+$3^{2^{2^k-1}}\equiv-1\bmod F_k$.\pause
+
+\noindent\textbf{Definition.} \textit{A \emph{probabilistic (or randomized)} algorithm is
+an algorithm where a ``coin flip'' is allowed (typically a the cost of $1$ unit of running time)
+and it makes the next move depending on the result. The probability of correctness
+of a probabilistic algorithm is the proportion of the possible inputs of the algorithm for
+which it provides the correct answer.}\pause
+
+This definition may look vague. However randomized algorithm are ubiquitous in Number Theory.
+They are so at the level that we will refer to \emph{deterministic} algorithm as those
+that are NOT probabilistic.\pause
+
+It is best to review a famous example.
+\end{slide}
+\begin{slide}
+\heading{Solovay--Strassen Primality Test}\vspace*{-3mm}
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{13cm}
+\texttt{\noindent 
+\noindent 
+\textcolor{red}{Input:} $k\in\N^{>1}$ and $n\in\N$ odd (to be tested)\\
+\textcolor{blue}{Output:} ``\textcolor{Brown}{Prime}'' or ``\textcolor{Brown}{Composite}''\\
+1. For $i=1,\ldots,k$\\
+\hspace*{2cm} \qquad Choose $a$ randomly from $\Z/n\Z=\{0, 1,\cdots,n-1\}$\\
+\hspace*{2cm} \qquad if $\gcd(a,n)\neq1$ then\\
+\hspace*{2cm} \qquad\qquad Output ``\textcolor{Brown}{Composite}'' and halt.\\
+\hspace*{2cm} \qquad if $\left(\frac an\right)\not\equiv a^{(n-1)/2}\bmod n$ then\\  
+\hspace*{2cm} \qquad\qquad Output ``\textcolor{Brown}{Composite}'' and halt.\\
+2. Output ``\textcolor{Brown}{Prime}''.
+}
+\end{minipage}}}
+\end{center}%\vspace*{-3mm}
+\pause
+\noindent\textbf{Theorem.}\textit{ The Solovay--Strassen algorithm returns ``\textcolor{Brown}{Prime}'' if $n$
+is prime and returns ``\textcolor{Brown}{Composite}'' with probability $\ge 1-2^{-k}$ if $n$ is 
+composite. It has polynomial complexity in $k$ and $\log n$.}\pause\vspace*{-3mm}
+Here we will say nothing more about primality. For more:$\ldots$ \textit{next week course on primality tests (P.Arnoux)}
+ We will say nothing at all about random numbers. $\ldots$ \textit{next week course on pseudo-random sequences (C.Mauduit)} 
+\end{slide}
+
+\begin{slide}\pageTransitionWipe{30}
+\heading{Famous quotation!!!}\bigskip
+
+\centerline{\includegraphics[width=4cm]{images/borel1.jpg}}
+
+\textit{Un ph\'enom\`ene dont la probabilit\'e est $10^{-50}$ ne se
+produira donc jamais, au moins ne sarait jamais observ\'e.}\bigskip
+
+\textsc{- \'Emil Borel (Les probabilit\'es et sa vie)}
+\end{slide}
+
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textbf{PROBLEM 5.}} \textsc{Quadratic Nonresidues:}} \vspace*{-2mm}
+It illustrates why a \emph{deterministic} life is \emph{sometimes unreasonable}.\\
+\noindent\textbf{PROBLEM 5.} \textsc{Quadratic Nonresidues:}\textit{Given an odd prime $p$, find
+a quadratic non residue mod $p$.}\pause\vspace*{-2mm}
+
+If $p$ is prime then
+$\displaystyle{\#\{a\ | 1\le a<p, a\text{ is a quadratic residue }\}=\frac{p-1}2}$
+and the same for nonresidues.
+\centerline{\fbox{\textcolor{Black}{Any $a$ has $50\%$ chance of being a quadratic nonresidue}}}\\
+Checking for quadratic residuosity if quite cheap (i.e. fast) via Jacobi symbols.
+
+However no \emph{deterministic} polynomial time algorithm is known. Nothing seems better then
+testing $a=2,3,5,6,7,8\ldots$ until arriving to a nonresidue. 
+\begin{itemize}
+\item best known result: least quadratic nonresidue is $O(p^{1/4})$;
+\item believed that: least quadratic nonresidue is $O(\log^{1+\epsilon}p)$;
+\item (Bach 1990): ERH implies least quadratic nonresidue is $\le 2\log^2p$. (for more on the Riemann Hypothesis
+see the course on the Riemann zeta function next week by S. Kanemitsu)
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textbf{PROBLEM 6.}} \textsc{Power Test:} Given $n\in\N$, determine if $n=b^k (\exists k>1)$ }
+\pause
+This is a mandatory preliminary check in several algorithms
+\pause
+\begin{itemize}
+ \item If $n=b^k$, then $1<k\le \log_2 n$;
+\item for each $k=1,\ldots,\lfloor\log_2n\rfloor$, 
+Newton's method for finding roots can be applied to $x^k-n$ so to check if there is an integer root. 
+\item This is central in the course \emph{Selected Numerical Methods} by R. Ferretti.
+\item here we will assume that it is doable in polynomial time.
+\end{itemize}
+
+\end{slide}
+
+
+\begin{slide}
+
+\heading{\textcolor{red}{\textbf{PROBLEM 7.}} \textsc{Factoring:} Given $n\in\N$, find a proper divisor of $n$}\pause
+\parstepwise{\begin{itemize}
+ \item \step{A very old problem and a difficult one;}
+\item \step{Trial division requires $O(\sqrt n)$ division which is an exponential time}\\ \step{(i.e. impractical)}
+\item \step{Several different algorithms}
+\item \step{A very important one uses \emph{elliptic curves}$\ldots$}\\
+\step{\textit{see next week course by J. Jimenez Urroz}.}
+\item \step{we review the elegant Pollard $\rho$ method.}
+\end{itemize}}
+{Suppose $n$ is not a power and consider the function:}\pause
+\centerline{$f:\Z/n\Z\longrightarrow\Z/n\Z,\quad x\mapsto f(x)=x^2+1.$}
+
+The $k$-th iterate of $f$ is $f^k(x)=f^{k-1}(f(x))$ with $f^1(x)=f(x)$.
+
+ If $x_0\in\Z/n\Z$ is chosen ``sufficiently
+randomly'',  the sequence $\{f^{k}(x_0)\}$ behaves as a random sequence of elements of $\Z/n\Z$ and we exploit
+this fact.
+
+\end{slide}
+
+
+\begin{slide}
+\heading{Pollard $\rho$ factoring method}
+\begin{center}\fbox{\textcolor{black}{
+\begin{minipage}[c]{11cm}
+\texttt{\noindent 
+\noindent 
+\textcolor{red}{Input:}  $n\in\N$ odd and not a perfect power (to be factored)\\
+\textcolor{blue}{Output:}  a non trivial factor of $n$\\
+1. Choose at random $x\in\Z/n\Z=\{0,1,\ldots,n-1\}$\\
+2. For $i=1,2\ldots$.\\
+\hspace*{1cm} \qquad $g:=\gcd(f^i(x)-f^{2i}(x),n)$\\
+\hspace*{1cm} \qquad If $g=1$, goto next $i$\\  
+\hspace*{1cm} \qquad If $1<g<n$ then output $g$ and halt\\
+\hspace*{1cm} \qquad If $g=n$ then go to Step 1 and choose another $x$.}
+\end{minipage}}}
+\end{center}
+\pause\vspace*{-3mm}
+What is going on here?\pause\vspace*{-3mm}
+Is is obviously a probabilistic algorithm but it is not even clear that it will ever terminate.
+
+But in fact it terminates with complexity $O(\sqrt[4]n)$ which is attained in the worst case (i.e.
+when $n$ is an RSA module (for RSA see course in Cryptography by K. Chakraborty).
+\end{slide}
+
+\begin{slide}
+\heading{\textsc{The birthday paradox}}
+
+\noindent\textbf{Elementary Probability Question:} \textit{what is the chance that in a sequence of $k$ elements (where
+repetitions are allowed) from a set of $n$ elements, there is a repetition?} \pause
+
+\noindent\textit{Answer:}  The chance is $\displaystyle{1-\frac{n!}{n^k(n-k)!}\approx 1-e^{-k(k-1)/2n}}$
+
+\fbox{In a party of $23$ friends there $50.04\%$ chances that $2$ have the same birthday!!}
+
+Relevance to the $\rho$-Factoring method:
+\begin{center}
+\fbox{\begin{minipage}[l]{12cm}If $d$ is a divisor of $n$, then in $O(\sqrt{d})=O(\sqrt[4]{n})$ steps there is a high chance that in the sequence 
+$\{f^{k}(x_0)\bmod d\}$ there is a repetition modulo $d$.\end{minipage}}
+\end{center}
+
+\noindent\textsc{Remark (WHY $\rho$).} If $y_1,\ldots,y_m,y_{m+1},\ldots,y_{m+k}=y_m,y_{m+k+1}=y_{m+1},\ldots$. and $i$ is the smallest
+multiple of $k$ with $i\ge m$, then $y_i=y_{2i}$ (the Floyd's cycle trick). 
+
+\end{slide}
+
+
+
+
+\begin{slide}
+\heading{\textcolor{red}{References for this course}}
+\vspace*{-2mm}\small{\begin{itemize}
+ \item[\mbox{[1]}] J. Buhler \& S. Wagon \textit{Basic algorithms in number theory} Algorithmic Number Theory,
+MSRI Publications
+Volume \textbf{44}, 2008
+{\small \url{http://www.msri.org/communications/books/Book44/files/02buhler.pdf}
+\href{http://www.msri.org/communications/books/Book44/files/02buhler.pdf}{}}
+\item[\mbox{[2]}] C. Pomerance \textit{Smooth numbers and the quadratic sieve}
+Algorithmic Number Theory,
+MSRI Publications
+Volume \textbf{44}, 2008
+{\small \url{http://www.msri.org/communications/books/Book44/files/03carl.pdf}
+\href{http://www.msri.org/communications/books/Book44/files/03carl.pdf}{}}
+\item[\mbox{[3]}] R. Crandall and C. Pomerance, \textit{Prime numbers}, 2nd
+ed., Springer-Verlag, New York, 2005.
+\item[\mbox{[4]}] E. Bach and J. Shallit, \textit{Algorithmic number theory, I: Efficient
+algorithms}, MIT Press, Cambridge, MA, 1996.
+\item[\mbox{[5]}] J. von zur Gathen and J. Gerhard, \textit{Modern computer
+algebra}, 2nd ed., Cambridge University Press, Cambridge, 2003.
+\item[\mbox{[6]}] V. Shoup, \textit{A computational introduction to number theory and algebra,}
+Cambridge University Press, Cambridge, 2005.
+\item[\mbox{[7]}] 
+These notes \vspace*{-2mm} 
+{\small \url{http://www.mat.uniroma3.it/users/pappa/KU2010/NEPAL2010_1.pdf}
+\href{http://www.mat.uniroma3.it/users/pappa/KU2010/NEPAL2010_1.pdf}{}}
+\end{itemize}}
+\end{slide}
+
+
+\end{document}

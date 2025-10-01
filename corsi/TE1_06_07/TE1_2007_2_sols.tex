@@ -1,0 +1,80 @@
+\nopagenumbers \font\title=cmti12
+\centerline{TE1 AA06/07\ (Teoria delle Equazioni)}
+\hrule\medskip
+
+\centerline{\bf SOLUZIONE DI FINE SEMESTRE DEL  6/6/07}
+\medskip
+\hrule
+\bigskip
+\bigskip
+
+\item{1.} Si calcoli il gruppo di Galois del polinomio $x^4 + 10x^2 - 4x + 2\in{\bf Q}[x]$.
+\smallskip
+\item{\bf RISPOSTA:}\it Il polinomio \`{e} $2$-Eisenstein e quindi \`{e} irriducibile. La risolvente cubica
+\`{e} $x^3-10x^2-8x+64$ + il cui discriminante \`{e} pari a $2^8\times31^2$ pertanto il gruppo di Galois del polinomio di partenza \`{e} il
+gruppo alterno $A_4$.
+
+\rm\bigskip
+
+\item{2.} Determinare tutti i sottocampi del campo ${\bf Q}(\zeta_{17})$.
+\smallskip
+\item{\bf RISPOSTA:}\it Si applica il Teorema di corrispondenza di Galois all'estensione 
+${\bf Q}(\zeta_{17})/{\bf Q}$ il cui gruppo di Galois \`{e} ciclico con $16$ elementi. I sottogruppi del
+gruppo di Galois corrispondono ai divisori di $16$. Al divisore $1$ corrisponde ${\bf Q}(\zeta_{17})$,
+al divisore $2$ corrisponde ${\bf Q}(\cos{2\pi/17})$ al divisore $4$ corrisponde ${\bf Q}(\eta)$ (dove
+$\eta=\zeta_{17}+\zeta_{17}^4+\zeta_{17}^{16}+\zeta_{17}^{13}$ \`{e} un periodo di Gauss che soddisfa il polinomio $x^4+x^3-6x^2-x+1$)
+al divisore $8$ corrisponde ${\bf Q}(\sqrt{17})$ e 
+al divisore $16$ corrisponde ${\bf Q}$.
+\rm\bigskip
+
+\item{3.} Descrivere la chiusura algebrica di ${\bf F}_{7}$ giustificando la risposta.
+\smallskip
+\item{\bf RISPOSTA:}\it  Vedi note Milne. Proposizione 4.23 a pagina 42.
+\rm\bigskip
+
+\item{4.} Dopo aver dimostrato che $\cos(\pi/8)$ \`{e} costruibile, se ne determini esplicitamente
+una costruzione. 
+\smallskip
+\item{\bf RISPOSTA:}\it Siccome ${\bf Q}(\cos(\pi/8)$ \`{e} un estensione reale e di Galois dei razionali e
+siccome $[{\bf Q}(\cos(\pi/8):{\bf Q}]=4$ \`{e} una potenza di $2$, per una nota caratterizzazione dei numeri
+costruibili, si ha che $\cos(\pi/8)$ \`{e} costruibile. Inoltre siccome $\cos(\pi/8)=\sqrt{(1+\cos(\pi/4))/2}=
+\sqrt{(1+1/\sqrt2)/2}$, si ha che ${\bf Q}\subset{\bf Q}(\sqrt2)\subset{\bf Q}(\cos(\pi/8))$ \`{e} una costruzione.
+\rm\bigskip
+
+\item{5.} Determinare almeno due valori distinti di $M$ tali che ${\bf Q}(\zeta_{M})$ contiene un
+sottocampo con gruppo di Galois su ${\bf Q}$ isomorfo a $C_6\times C_{12}$.
+\smallskip
+\item{\bf RISPOSTA:}\it Basta osservare che {\rm Gal}$({\bf Q}(\zeta_7)/{\bf Q})$ e che 
+{\rm Gal}${\bf Q}(\zeta_{13})/{\bf Q}\cong C_{12}$. Quindi sia $M_1=7\times13$ e $M_2=3\times7\times13$. Si ha che
+{\rm Gal}${\bf Q}(\zeta_{M_1})/{\bf Q}\cong C_6\times C_{12}$ e che ${\bf Q}(\zeta_{M_2})/{\bf Q}\cong C_2\times C_6\times C_{12}$
+e per entrambi il valori $M_1$ e $M_2$ si ha la propriet\`{a} richiesta.
+\rm\bigskip
+
+\item{6.} Dimostrare giustificando la risposta che se $p$ \`{e} primo allora $(x^{p^5}-x)/(x^p-x)\in{\bf F}_p[x]$ \`{e} il prodotto di tutti
+i polinomi irriducibili su ${\bf F}_p$ di grado $5$.
+\smallskip
+\item{\bf RISPOSTA:}\it Vedi note Milne. Corollario 4.20 a pagina 42 e si osservi che $(x^{p^5}-x)/(x^p-x)$ non ha fattori
+lineari.\rm\bigskip
+
+\item{7.} Si enunci nella completa generalit\`a il Teorema di
+corrispondenza di Galois.
+\smallskip
+\item{\bf RISPOSTA:}\it Vedi note Milne. Teorema 3.16 a pagina 29.\rm\bigskip
+
+\item{8.} Dimostrare che se $f$ \`{e} un polinomio a coefficienti razionali senza fattori multipli di grado $n$,
+allora $G_f\subset A_n$ se e solo se il discriminante di $f$ \`{e} un quadrato perfetto.
+\smallskip
+\item{\bf RISPOSTA:}\it Vedi note Milne. Proposizione 4.1 e Corollario 4.2 a pagina 36.
+\rm\bigskip
+
+\item{9.} Calcolare il numero di elementi del campo di spezzamento del polinomio $(x^{2^8}-x)(x^8+x^4+1)(x^{12}+x^4+1)(x^5+x)\in{\bf F}_2[x]$.
+\smallskip
+\item{\bf RISPOSTA:}\it
+Notare che 
+\itemitem{a.} $(x^{2^8}-x)(x^8+x^4+1)(x^12+x^4+1)(x^5+x)=(x^{2^8}-x)(x^2+x+1)^2(x^3+x+1)^4x(x+1)^4$.
+\itemitem{b.} Un campo di spezzamento su ${\bf F}_2$ di $x^{2^8}-x$ ha $2^8$ elementi e contiene le radici di $x^2+x+1$.
+\itemitem{c.} Un campo di spezzamento su ${\bf F}_2$ di $x^{3}+x+1$ ha $2^3$ elementi.
+
+Quindi il campo di spezzamento del polinomio ha $2^{{\rm mcm}(8,3)}=2^{24}$ elementi.
+\rm
+ \bye

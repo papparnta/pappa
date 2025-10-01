@@ -1,0 +1,542 @@
+\documentclass[handout]{beamer}%,[handout] %,hyperref={pdfpagelabels=false},draft,handout,handout
+\usepackage[orientation=landscape,size=custom,width=16,
+height=9,scale=0.42,debug]{beamerposter} 
+\usepackage[english]{babel}
+\usepackage{lmodern}% http://ctan.org/pkg/lm
+\usepackage[latin1]{inputenc}
+\usepackage{times,hyperref,tikz,colortbl,yfonts,translator}
+\usepackage[T1]{fontenc}
+ \newcommand{\Q}{\mathbb Q}
+ \newcommand{\Z}{\mathbb Z}
+ \newcommand{\N}{\mathbb N}
+ \newcommand{\F}{\mathbb F}
+ \newcommand{\C}{\mathbb C}
+ \newcommand{\R}{\mathbb R}
+%\useoutertheme[height=0pt,width=2cm,right]{sidebar}
+\usecolortheme{rose,sidebartab}
+\useinnertheme{circles}
+\usefonttheme[only large]{structurebold}
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{\translate{Exercise}}
+\newtheorem{Note}[theorem]{\translate{Note}}
+\lecture[4]{Elliptic curves over finite fields}{First Lecture}
+\title[Elliptic curves over $\F_{q}$]{\insertlecture}
+\setbeamercolor{formul}{fg=black,bg=pink}
+\setbeamercolor{sidebar right}{bg=green!15}
+\setbeamercolor{structure}{fg=black!120}
+\setbeamercolor{postit}{fg=black,bg=yellow}
+\setbeamercolor{greys}{fg=black,bg==black!25}
+\setbeamerfont{title in sidebar}{series=\bfseries}
+\setbeamerfont*{item}{series=}
+\setbeamerfont{frametitle}{size=}
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
+\begin{document}
+
+\begin{frame}
+\includegraphics[width=1.6cm]{images/roma3.pdf}\hfill\includegraphics[width=1.9cm]{images/kku.jpeg}
+\vfill
+
+\begin{center}\begin{sc}
+\begin{Large}
+
+\textcolor{red}{Elliptic curves Cryptography}
+\end{Large}\bigskip
+
+\ {Francesco Pappalardi}\bigskip\bigskip
+
+\begin{large}\begin{bf}\#1 - First Lecture.
+\end{bf}\end{large}\medskip
+
+June $16^{\text{th}}$ 2019\medskip
+\vfill
+\end{sc}\end{center}
+
+%\includegraphics[width=1.6cm]{images/cimpalogo.pdf}\hfill
+\begin{minipage}[b]{9.3cm}
+\textsc{WAMS School:\\
+Introductory topics in Number Theory\\ and Differential Geometry}\\
+\textbf{King Khalid University}\\
+Abha, Saudi Arabia
+\end{minipage}\hfill
+%\includegraphics[width=1.9cm]{images/seams.png}
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+ \frametitle{Three Lectures on Elliptic Curves Cryptography}
+
+ \begin{Note}[Program of the Lectures]
+  \begin{enumerate}[<+-| alert@+>]
+   \item Generalities on Elliptic Curves over finite Fields
+   \item Basic facts on Discrete Logarithms on finite groups, generic attacks (Pohlig--Hellmann, BSGS, Index Calculus)
+   \item Elliptic curves Cryptography: pairing based Cryptography, MOV attacks, anomalous curves
+  \end{enumerate}
+ \end{Note} 
+\end{frame}
+
+
+\subsection{Fields}
+
+\begin{frame}
+ \frametitle{Notations}
+
+\begin{alertblock}{Fields of characteristics 0}
+ \begin{enumerate}[<+-| alert@+>]
+ \item $\Q$ is the field of rational numbers
+\item $\R$ and $\C$ are the fields of real and complex numbers
+\item $K\subset\C$, $\dim_\Q K<\infty$ is a \emph{number field}
+\begin{itemize}
+\item $\Q[\sqrt{d}]$, $d\in\Q$
+\item $\Q[\alpha]$, $f(\alpha)=0$, $f\in\Q[X]$
+irreducible
+\end{itemize}
+\end{enumerate}
+\end{alertblock}
+
+\begin{exampleblock}{Finite fields}
+ \begin{enumerate}[<+-| alert@+>]
+ \item $\F_p=\{0,1,\ldots,p-1\}$ is the prime field;
+ \item $\F_q$ is a finite field with $q=p^n$ elements
+ \item $\F_q=\F_p[\xi]$, $f(\xi)=0$, $f\in\F_p[X]$
+irreducible, $\partial f=n$
+\item $\F_4=\F_2[\xi]$, $\xi^2=1+\xi$
+\item $\F_8=\F_2[\alpha]$, $\alpha^3=\alpha+1$ but also $\F_8=\F_2[\beta]$, $\beta^3=\beta^2+1$, ($\beta=\alpha^2+1$)
+\item $\F_{101^{101}}=\F_{101}[\omega], \omega^{101}=\omega+1$
+\end{enumerate}
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[label=current]
+\frametitle{Notations}
+%
+ \begin{block}{Algebraic Closure of $\F_q$}\pause
+ \begin{itemize}[<+-| alert@+>] % [<ballot@+-| visible@1-,+(1)>]
+  \item $\C\supset\Q$ satisfies that \emph{Fundamental Theorem of Algebra}! (i.e. $\forall f\in\Q[x], \partial f>1, \exists\alpha\in\C,
+ f(\alpha)=0)$
+  \item We need a field that plays the role, for $\F_q$, that $\C$ plays for $\Q$. It will be $\overline{\F_q}$, called
+\emph{algebraic closure of $\F_q$}
+ \item[] \ \hfil 
+ \begin{beamercolorbox}[rounded=true,shadow=true,wd=6.5cm]{postit}
+         \begin{enumerate}
+          \item $\forall n\in\N$, we fix an $\F_{q^n}$
+          \item We also require that $\F_{q^n}\subseteq\F_{q^m}$ if $n\mid m$
+          \item We let $\overline{\F_q}=\displaystyle\bigcup_{n\in\N}\F_{q^n}$
+         \end{enumerate}
+\end{beamercolorbox}
+ \item
+  \textbf{Fact:} $\overline{\F_q}$ is \emph{algebraically closed}\\ (i.e. $\forall f\in\F_q[x], \partial f>1, \exists\alpha\in\overline{\F_q},
+ f(\alpha)=0)$
+ \end{itemize}
+ \end{block}
+\begin{scriptsize}
+If $F(x,y)\in\Q[x,y]$ a \emph{point of the curve $F=0$}, means $(x_0,y_0)\in\C^2$ s.t.
+$F(x_0,y_0)=0$. \pause
+
+If $F(x,y)\in\F_q[x,y]$ a \emph{point of the curve $F=0$}, means $(x_0,y_0)\in\overline{\F_q}^2$ s.t.
+$F(x_0,y_0)=0$.
+\end{scriptsize}
+\end{frame}
+
+
+\section{Weierstra\ss\ Equations}
+
+\begin{frame}{The (general) Weierstra\ss\ Equation}
+
+An elliptic curve $E$ over a $\F_q$ (finite field) is given by an equation
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=8cm]{formul}
+$E: y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$\end{beamercolorbox}}
+where $a_1, a_3, a_2, a_4 ,a_6\in\F_q$ \pause
+
+\begin{center}
+ \includegraphics[width=60mm]{images/elliptic1.pdf}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic2.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic3.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic3b.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic4.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic5.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic6.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic7.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic8.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic9.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic9b.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic10.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic10b.pdf}}\pause
+\llap{\includegraphics[width=60mm]{images/elliptic6.pdf}}\pause
+\end{center}
+
+ \begin{beamercolorbox}[sep=1em,wd=7.5cm]{postit}
+ The equation should not be \emph{singular}
+ \end{beamercolorbox}
+\end{frame}
+
+\subsection{The Discriminant}
+
+\begin{frame}
+\frametitle{The Discriminant of an Equation}
+\framesubtitle{The condition of absence of singular points in terms of $a_1, a_2, a_3, a_4, a_6$}
+\pause
+
+\begin{Definition} The \emph{discriminant} of a Weierstra\ss\ equation over $\F_q$,  $q=p^n$, $p\ge3$ is
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=11cm]{formul}
+\begin{align*}
+{D}_E&:=\frac{1}{2^4}\left(-a_1^5 a_3 a_4 - 8 a_1^3 a_2 a_3 a_4 - 16 a_1 a_2^2 a_3 a_4 + 36 a_1^2 a_3^2 a_4 \right. \\
+  &-a_1^4 a_4^2 - 8 a_1^2 a_2 a_4^2 - 16 a_2^2 a_4^2 + 96 a_1 a_3 a_4^2 +64 a_4^3 + \\
+  & a_1^6 a_6 + 12 a_1^4 a_2 a_6 + 48 a_1^2 a_2^2 a_6 + 64 a_2^3 a_6 -36 a_1^3 a_3 a_6\\
+  &\left. - 144 a_1 a_2 a_3 a_6 - 72 a_1^2 a_4 a_6 - 288 a_2 a_4 a_6 +
+  432 a_6^2  \right)
+ \end{align*}
+\end{beamercolorbox}}\pause
+\end{Definition}
+
+\begin{Note}
+ $E$ is \emph{non singular} if and only if ${D}_E\ne0$
+\end{Note}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Special Weierstra\ss\ equation of $E/\F_{p^\alpha}, p\neq2$}
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=9cm]{formul}
+$E: y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6\quad a_i\in\F_{p^\alpha}$\end{beamercolorbox}}\pause
+
+If ``complete the squares`` %by applying the transformation:%\begin{scriptsize}
+%\centerline{
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=3.7cm]{postit}
+        $\begin{cases}
+  x\leftarrow x \\ y\leftarrow y -\frac{a_1x+a_3}2
+ \end{cases}$            \end{beamercolorbox}%}%\end{scriptsize}
+ \pause
+
+ the Weierstra\ss\ equation becomes:
+\ \ \begin{beamercolorbox}[shadow=true,center,rounded=true,wd=5.1cm]{formul}
+$E': y^2=x^3+a'_2x^2+a'_4x+a'_6$
+            \end{beamercolorbox}
+
+            where $a'_2=a_2+\frac{a_1^2}4, a'_4= a_4+\frac{a_1a_3}2, a'_6= a_6+\frac{a_3^2}4$\pause
+
+If $p\ge5$, we can also apply the transformation \pause
+%\centerline{%\begin{scriptsize}
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2.5cm]{postit}
+$\begin{cases}
+  x\leftarrow x-\frac{a'_2}{3} \\ y\leftarrow y
+ \end{cases}$\end{beamercolorbox}
+%\end{scriptsize}
+%} 
+obtaining the equations:\pause
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=4.2cm]{formul}
+$E'': y^2=x^3+a''_4x+a''_6$
+            \end{beamercolorbox}
+            
+\hfil\ \hspace*{-1.2cm} where $a''_4=a'_4-\frac{{a'_2}^2}3, a''_6= a'_6+\frac{2{a'_2}^3}{27}-\frac{a'_2a'_4}3$
+\end{frame}
+
+% \begin{frame}
+% \frametitle{Special Weierstra\ss\ equation for $E/\F_{2^\alpha}$}
+% \framesubtitle{Case $a_1\neq0$}
+% \centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=9cm]{formul}
+% $E: y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6\qquad a_i\in\F_{2^\alpha}$\hfill\\
+% \ \hfill ${D}_E:=\frac{a_1^6 a_6+a_1^5 a_3 a_4+a_1^4 a_2 a_3^2+a_1^4 a_4^2+a_1^3 a_3^3+a_3^4}{a_1^6}$
+% \end{beamercolorbox}}\pause
+% 
+% If we apply the affine transformation:\begin{scriptsize}
+% \centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=3.9cm]{postit}
+%         $\begin{cases}
+% x\longleftarrow a_1^2x+a_3/a_1\\\
+% y\longleftarrow a_1^3y+(a_1^2a_4+a_3^2)/a_1^2
+%   \end{cases}$\end{beamercolorbox}}\end{scriptsize}\pause
+% 
+% we obtain
+% 
+% \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7cm]{formul}
+% $E': y^2+xy=x^3+\left(\frac{a_2}{a_1^2}+\frac{a_3}{a_1^3}\right)x^2+\frac{{D}_E}{a_1^6}$\hfill \\
+% \ \hfill Surprisingly ${D}_{E'}={D}_E/a_1^6$
+% \end{beamercolorbox}}\pause\bigskip
+% 
+% With \texttt{Mathematica}
+% 
+% \begin{scriptsize}
+% \ \hfill{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=8cm]{postit}
+%       \texttt{El:=a6+a4x+a2x\^{ }2+x\^{ }3+a3y+a1xy+y\^{ }2;\\
+% Simplify[PolynomialMod[ReplaceAll[El, \\
+% \ \hfill \{x->a1\^{ }2 x+a3/a1, y->a1\^{ }3y+(a1\^{ }2a4+a3\^{ }2)/a1\^{ }3\}],2]]}
+% \end{beamercolorbox}}\end{scriptsize}
+% \end{frame}
+% 
+% 
+\begin{frame}
+% \frametitle{Special Weierstra\ss\ equation for $E/\F_{2^\alpha}$}
+% \framesubtitle{Case $a_1=0$ and ${D}_E:=a_3\neq0$}
+% \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=8cm]{formul}
+% $E: y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6\qquad a_i\in\F_{2^\alpha}$\\
+% \end{beamercolorbox}}\pause
+% 
+% If we apply the affine transformation:\begin{scriptsize}
+% \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=2.7cm]{postit}
+%         $\begin{cases}
+% x\longleftarrow x+a_2\\
+% y\longleftarrow y
+%   \end{cases}$\end{beamercolorbox}}\end{scriptsize}\pause
+% 
+% we obtain
+% 
+% \centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=7cm]{formul}
+% $E: y^2+a_3y=x^3+(a_4+a_2^2)x+(a_6+a_2a_4)$
+% \end{beamercolorbox}}\pause\medskip
+% 
+% With \texttt{Mathematica}
+% 
+% \begin{scriptsize}
+% \ \hfill{\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=8.6cm]{postit}
+%       \texttt{El:=a6+a4x+a2x\^{ }2+x\^{ }3+a3y+y\^{ }2;
+%  Simplify[PolynomialMod[ReplaceAll[El,\{x->x+a2,y->y\}],2]]}
+% \end{beamercolorbox}}\end{scriptsize}\pause
+% 
+%\begin{small}
+\begin{Definition}
+ Two Weierstra\ss\ equations over $\F_q$ are said (affinely) equivalent if there exists a (affine) change of variables that takes one
+into the other
+\end{Definition}
+%\end{small}
+\pause
+
+
+\begin{Note}{The only affine transformation that take a Weierstrass equations in another Weierstrass equation have the form}
+$$\begin{cases}
+x\longleftarrow u^2 x+r\\
+y\longleftarrow u^3 y+ u^2s x + t
+  \end{cases} r,s,t,u\in\F_q$$
+\end{Note}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Weierstra\ss\ equation}
+\framesubtitle{Classification of simplified forms}
+
+After applying a suitable affine transformation we can always assume that $E/\F_q (q=p^n)$
+has a Weierstra\ss\ equation of the following form\pause
+
+\begin{scriptsize}
+ \begin{example}[Classification]
+\centerline{\begin{tabular}{|l|c|l|}
+\hline
+ $E$ & $p$ & ${D}_E$\\
+\hline
+&&\\
+ $y^2=x^3+Ax+B$ & $\ge5$ & $4A^3+27B^2$\\
+&&\\
+$y^2+xy=x^3+a_2x^2+a_6$ & $2$ & $a_6^2$\\
+&&\\
+ $y^2+a_3y=x^3+a_4x+a_6$  & $2$ & $a_3^4$\\
+&&\\
+ $y^2=x^3+Ax^2+Bx+C$ & $3$ & $
+                               4A^3C-A^2B^2-18ABC+4B^3+27C^2$
+                              \\
+&&\\\hline
+\end{tabular}}
+\end{example}
+\end{scriptsize}\pause
+
+\vspace*{-1cm}
+\begin{definition}[Elliptic curve] An elliptic curve is the data of a non
+singular Weierstra\ss\ equation (i.e. ${D}_E\neq0$)
+\end{definition}\pause
+
+\centerline{\alert{\textbf{Note:} If $p\ge3, {D}_E\neq0\Leftrightarrow x^3+Ax^2+Bx+C$ has {no} double root}}
+\end{frame}
+
+\subsection{Elliptic curves \texorpdfstring{$/\F_2$}{F2}}
+\begin{frame}
+\frametitle{Elliptic curves over $\F_2$}
+
+All possible Weierstra\ss\ equations over $\F_2$ are:\pause
+
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Weierstra\ss\ equations over $\F_2$}
+\begin{enumerate}
+ \item $y^2+xy=x^3+x^2+1$
+ \item$y^2+xy=x^3+1$
+ \item$y^2+y=x^3+x$
+ \item$y^2+y=x^3+x+1$
+ \item$y^2+y=x^3$
+ \item$y^2+y=x^3+1$
+ \end{enumerate}
+\end{beamerboxesrounded}
+\pause
+
+However the change of variables
+$\begin{cases} x\leftarrow x+1\\ y\leftarrow y+x\end{cases}$ takes the sixth curve
+into the fifth. Hence we can remove the sixth from the list.
+\pause\bigskip
+
+\begin{beamerboxesrounded}[upper=postit,lower=block body,shadow=true]{Fact:}
+There are $5$ affinely inequivalent elliptic curves over $\F_2$
+\end{beamerboxesrounded}
+\end{frame}
+
+\subsection{Elliptic curves \texorpdfstring{$/\F_3$}{F3}}
+\begin{frame}
+\frametitle{Elliptic curves in characteristic $3$}
+
+Via a suitable transformation ($x\rightarrow u^2x+r, y\rightarrow u^3y+u^2sx+t$) over $\F_3$,  $8$ inequivalent
+elliptic curves over $\F_3$ are found:\pause
+
+\begin{beamerboxesrounded}[upper=block title example,lower=block body alerted,shadow=true]{Weierstra\ss\ equations over $\F_3$}
+\begin{enumerate}
+ \item $y^2=x^3+x$
+ \item$y^2=x^3 - x$
+ \item$y^2=x^3 - x +1$
+ \item$y^2=x^3 - x -1$
+ \item$y^2=x^3 + x^2 + 1$
+ \item$y^2=x^3 + x^2 - 1$
+ \item$y^2=x^3 - x^2 + 1$
+ \item$y^2=x^3 - x^2 - 1$
+ \end{enumerate}
+\end{beamerboxesrounded}\pause
+
+\vspace*{-3mm}\begin{beamerboxesrounded}[upper=postit,lower=block body,shadow=true]{Fact: let $\left(\frac{a}{q}\right)$ be the Kronecker symbol. The number of non--isomorphic (i.e. inequivalent) classes of elliptic c. over $\F_q$ is }
+\centerline{$2q+3+\left(\frac{-4}{q}\right)+2\left(\frac{-3}{q}\right)$}
+\end{beamerboxesrounded}
+
+
+
+% p=5;S=0;for(a=0,p-1,for(b=0,p-1,if((4*a^3+27*b^2)%p>0,print1(S++" "x^3+a*x+b" 2-torsion "matsize(factormod(x^3+a*x+b,p))[1]);T=1;for(x=0,p-1,for(y=0,p-1,if((y^2-x^3-a*x-b)%p==0,T++)));print("  pts= "T))))
+
+\end{frame}
+
+\section{The sum of points}
+\begin{frame}
+\frametitle{The definition of $E(\F_q)$}
+\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=12cm]{formul}
+Let $E/\F_q$ elliptic curve and consider a ``symbol'' $\infty$ (point at infinity). Set
+$$E(\F_q)=\{(x,y)\in \F_q^2:\ y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6\}\cup\{\infty\}$$
+\end{beamercolorbox}\pause
+
+\ \hfill \begin{beamercolorbox}[shadow=true,left,rounded=true,wd=9cm]{postit}
+Hence\pause
+\begin{itemize}
+ \item<1-> $E(\F_q)\subset\F_q^2\cup\{\infty\}$
+ \item<2-> If $\F_q\subset\F_{q^n}$, then $E(\F_q)\subset E(\F_{q^n})$
+ \item<3-> We may think that $\infty$ sits on the top of the $y$--axis (``vertical direction'') 
+\end{itemize}
+\end{beamercolorbox}\pause
+
+\begin{Definition}[line through points $P,Q\in E(\F_q)$]
+$r_{P,Q}:\begin{cases}
+                     \text{line through $P$ and }Q &\text{if }P\neq Q\\
+                     \text{tangent line to $E$ at }P &\text{if }P=Q
+                    \end{cases}$\hfill projective or affine
+\end{Definition}\pause
+
+\begin{itemize}[<+-| alert@+>]
+\item if $\#(r_{P,Q}\cap E(\F_q))\ge2\ \Rightarrow\ \#(r_{P,Q}\cap E(\F_q))=3$
+\hfill\scriptsize{\alert{if tangent line, contact point is counted with multiplicity}}  
+\item $r_{\infty,\infty}\cap E(\F_q)=\{\infty,\infty,\infty\}$%\vspace*{-4.4pt}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{History (from \textsc{Wikipedia})}
+
+\begin{columns}[c]
+\begin{column}{6cm}
+\begin{small}
+\textbf{Carl Gustav Jacob Jacobi} (10/12/1804 -- 18/02/1851) was a German mathematician,
+who made fundamental contributions to elliptic functions, dynamics, differential equations,
+and number theory.
+\end{small}\\
+\centerline{\includegraphics[width=1.8cm]{images/Jacobi.jpg}}
+%\centerline{\scriptsize{Carl Gustav Jacob Jacobi}}\\
+\begin{scriptsize}\begin{block}{Some of His Achievements:}
+\begin{itemize}
+ \item Theta and elliptic function
+ \item Hamilton Jacobi Theory
+ \item Inventor of determinants
+ \item Jacobi Identity
+ \tiny{ $[A,[B,C]]+[B,[C,A]]+[C,[A,B]]=0$}
+\end{itemize}
+\end{block}\end{scriptsize}
+\end{column}\pause
+\begin{column}{6.5cm}\vspace*{-16.3pt}
+\begin{center}
+\includegraphics[width=5.5cm]{images/add1.pdf}\pause
+\llap{\includegraphics[width=5.5cm]{images/add2.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add3.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add5.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add6.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add7.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add1.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add8.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add9.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad10.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad11.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad12.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add1.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad13.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad14.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/ad15.pdf}}\pause
+\llap{\includegraphics[width=5.5cm]{images/add7.pdf}}\pause
+\end{center}
+\small{\vspace*{-2mm}
+$r_{P,Q}\cap E(\F_q)=\{P,Q,R\}$\pause\\
+$r_{R,\infty}\cap E(\F_q)=\{\infty,R,R'\}$}
+%\centerline
+{\begin{beamercolorbox}[shadow=true,center,wd=2cm]{formul}
+$P+_E Q:=R'$\pause
+            \end{beamercolorbox}}%\smallskip
+
+ \small{$r_{P,\infty}\cap E(\F_q)=\{P,\infty,P'\}$}
+ %\centerline
+ {\begin{beamercolorbox}[shadow=true,center,wd=2cm]{formul}
+             $-P:=P'$
+            \end{beamercolorbox}}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{beamercolorbox}[shadow=true,left,rounded=true,wd=12cm]{formul}
+$E/\F_q$ elliptic curve ($D_E=D_E(a_1,a_2,a_3,a_4,a6)\neq0$)\\
+$E(\F_q)=\{(x,y)\in \F_q^2:\ y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6\}\cup\{\infty\}$
+\end{beamercolorbox}
+
+\includegraphics[width=7cm]{images/add7.pdf}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Properties of the operation ``$+_E$''}
+
+\begin{Theorem}
+ The addition law on $E(\F_q)$ has the following
+properties:
+\begin{enumerate}[<+-| alert@+>][(a)]
+ \item $P+_EQ\in E(\F_q)\hfill\forall P,Q\in E(\F_q)$
+ \item  $P+_E\infty=\infty+_E P=P\hfill\forall P\in E(\F_q)$
+ \item  $P+_E(-P)=\infty\hfill\forall P\in E(\F_q)$
+ \item  $P+_E(Q +_E R)=(P+_E Q)+_E R\hfill\forall P,Q,R\in E(\F_q)$
+ \item  $P+_E Q=Q +_E P\hfill\forall P,Q\in E(\F_q)$
+\end{enumerate}
+ \end{Theorem}\pause
+
+\begin{itemize}[<+-| alert@+>]
+%  \item By ``a point of $E/\F_q$ ($P\in E$)'' we mean $P\in E(\overline{\F_q})$
+%  in analogy for $E/\Q$ where ``a point of $E$'' means  $P\in E(\C)$
+ \item $\left(E(\F_q),+_E\right)$  \alert{commutative group}
+ \item All group properties are easy except \alert{associative law (d)}
+ \item Geometric proof of associativity uses \emph{Pappo's Theorem}
+% \item We shall comment on how to do it by explicit computation
+ \item can substitute $\F_q$ with any field $K$; Theorem holds for $\left(E(K),+_E\right)$
+\item $-P=-(x_1,y_1)=(x_1,-a_1x_1-a_3-y_1)$
+%In particular, if $E/\F_q$, can consider the groups $E(\overline{\F_q})$ or $E(\F_{q^n})$
+\end{itemize}
+\end{frame}
+\end{document}
+
+

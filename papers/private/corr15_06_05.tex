@@ -1,0 +1,170 @@
+\documentclass{amsart}
+\hfuzz=7.65pt
+\vfuzz=1.23pt
+\newcommand{\F}{\mathbb F_q}
+\newtheorem{prop}{Proposition}[section]
+
+\title[Corrigendum]{Corrigendum to\\ ``Enumerating Permutation Polynomials I: Permutations with
+Non-Maximal Degree''}
+\author{Claudia Malvenuto and Francesco Pappalardi}
+\address[Malvenuto]{Dipartimento di Informatica\\
+Universit\`a degli studi ``La Sapienza''\\
+Via Salaria, 113\\
+I--00198, Roma -- ITALY.} \email{claudia@di.uniroma1.it}
+
+\address[Pappalardi]
+{Dipartimento di Matematica\\
+Universit\`a degli studi Roma Tre\\
+Largo S. L. Murialdo, 1\\
+I--00146, Roma -- ITALY.}
+\email{pappa@mat.uniroma3.it}
+
+\date{\today}
+
+\begin{document}
+\begin{abstract}
+This note corrects a statement that appeared in \textit{Finite
+Fields Appl.} \textbf{8} (2002) no. 4, 531--547. It also provides a
+self contained proof.
+\end{abstract}
+\maketitle \setcounter{section}{5}
+
+Let $\F$ be a finite field with $q$ elements and suppose
+$\mathcal{C}$ is a conjugation class of permutations of the elements
+of $\F$. We denote by $\mathcal{C}=(c_1;c_2;\ldots;c_t)$ the
+conjugation class of permutations that admit a cycle decomposition
+with $c_i$ $i$--cycles ($i=1,\ldots,t$). Further we set
+$c=2c_2+\cdots+tc_t=q-c_1$ to be the number of elements of $\F$
+moved by any permutation in $\mathcal C$.
+
+If $\sigma\in\mathcal C$ then the permutation polynomial associated
+to $\sigma$ is defined as
+$$f_\sigma(t)=\sum_{x\in\F}\sigma(x)\left(1-(t-x)^{q-1}\right).$$
+Therefore for $q>3$ the function
+$$N_\mathcal{C}(q)=\#\left\{\sigma\in\mathcal{C}\ |\
+\sum_{x\in\F}x(\sigma(x)-x)=0\right\}$$ enumerates the permutations
+in $\mathcal C$ whose permutation polynomials have degree strictly
+less than $q-2$.
+
+The reviews of \cite{CP} that appeared in Math Reviews (MR1933624
+(2003j:11146)) and in Zentralblatt Math (Zbl 1029.11068) point out
+that the case of transpositions provides a counterexample to the
+statement of Proposition 5.1. The statement is also obviously wrong
+in the cases of three--cycles and the case  of the conjugation class
+of the product of two transpositions (see \cite[Theorems 1.1 and
+3.1]{CP}). For brevity, we will indicate these three classes of
+permutations respectively by $[2], [3]$ and $[2\ 2]$. Other
+counterexamples to Proposition 5.1 occur if the characteristic of
+$\F$ is ``small''. The correct statement should read:
+
+\begin{prop} Suppose $\mathcal{C}=(c_1;c_2;\ldots;c_t)$
+is a fixed conjugation class of permutations which does not coincide with
+the classes $[2], [3]$ and $[2\ 2]$. Then,
+if $\operatorname{char}(\F)>2$ and does not divide $2^{c_2}\cdots t^{c_t}$,
+we have
+$$N_\mathcal{C}(q)=\frac{q^{c-1}}{c_2!2^{c_2}\cdots c_t!t^{c_t}}
+\left(1+O\left(\frac{1}{q}\right)\right).$$
+Therefore, since
+$|\mathcal{C}|=\frac{q^{c}}{c_2!2^{c_2}\cdots
+c_t!t^{c_t}}\left(1+O\left(\frac{1}{q}\right)\right),$ as
+$\operatorname{char}(\F)\rightarrow\infty$, the probability that an
+element of $\sigma\in\mathcal{C}$ is such that the degree $\partial
+f_\sigma<q-2$ is $\frac{1}{q}+O\left(\frac{1}{q^2}\right).$
+\end{prop}
+
+\begin{proof} We associate to $\mathcal C$ the quadratic form in $c$
+variables
+$$Q_\mathcal
+C(\underline{X})=\sum_{i=2}^t\sum_{j=1}^{c_i}
+\left(X_{ij1}(X_{ij1}-X_{ij2})+
+ X_{ij2}(X_{ij2}-X_{ij3})+\cdots+X_{iji}(X_{iji}-X_{ij1})\right).
+$$
+
+Let $\hat{N}(Q_\mathcal C)$ be the number of solutions of
+$Q_\mathcal C(\underline{X})=0$ over $\F$ with all distinct
+coordinates. We have that
+\begin{equation}\label{uno}
+N_\mathcal{C}(q)=\frac{\hat{N}(Q_\mathcal C)}{c_2!2^{c_2}\cdots
+c_t!t^{c_t}}\end{equation} since the denominator above counts the
+number of distinct representations of any permutation in $\mathcal
+C$ as product of disjoint cycles.
+
+Next we consider the inequalities:
+$$ N(Q_\mathcal C) -\sum_{I}N(Q^{I}_\mathcal C)\leq \hat{N}(Q_\mathcal C)\leq N(Q_\mathcal
+C)$$ where the sum ranges over $2$--element sets of variables
+$I=\{X_{i_1j_1k_1}, X_{i_2j_2k_2}\}$ of the quadratic form
+$Q_\mathcal C$, where $Q^{I}_\mathcal C$ denotes the quadratic form
+in $c-1$ variables obtained by $Q_\mathcal C$ substituting
+$X_{i_1j_1k_1}=X_{i_2j_2k_2}$ and for any quadratic form $Q$, $N(Q)$
+denotes the number of solutions over $\F$ of $Q=0$.
+
+Note that if $\mathcal C\neq[2]$, then $Q^{I}_\mathcal C\neq0$
+(indeed if $X_{rst}$ is a variable not in $I$, then the coefficient
+of $X_{rst}^2$ in $Q^{I}$ is $1$). From this we deduce that
+$N(Q^{I}_\mathcal C)\leq 2q^{c-2}$. Hence we obtain that
+ \begin{equation}\label{due}
+\hat{N}(Q_\mathcal C)=N(Q_\mathcal C)+O(q^{c-2}).
+\end{equation}
+Furthermore note that $Q_\mathcal C$ is equivalent to the form in
+$\tilde{c}=c-(c_2+\cdots+c_t)$ variables $\tilde{Q}_\mathcal
+C(\underline{Y})$
+$$=\sum_{\substack{2< i\leq t\\ j\leq c_i}}
+\left(Y_{ij1}(Y_{ij1}-Y_{ij2})+
+\cdots+Y_{ij(i-2)}(Y_{ij(i-2)}-Y_{ij(i-1)})+Y_{ij(i-1)}^2\right)+\sum_{j\leq
+c_2}Y_{2j1}^2,$$ where the equivalence is obtained with the linear
+transformation
+$$\begin{cases}X_{ijk}=Y_{ijk}+Y_{iji} & i=2,\cdots,t;\ j=1,\cdots,c_i;\ k=1,\ldots,i-1;\\
+X_{iji}=Y_{iji} &i=2,\cdots,t;\ j=1,\cdots,c_i.\end{cases}$$ If $q$
+is odd and $i>2$, the $(i-1)\times(i-1)$ matrix
+$$\mathcal M_i=\left(\begin{array}{rrrrrr}
+1& -\frac12 & 0 & 0& \cdots & 0\\
+-\frac12& 1 & -\frac12 & 0 & \cdots & 0\\
+0 & -\frac12 & 1 & -\frac12 &\cdots &\vdots\\
+\vdots & \ddots& \ddots & \ddots& \ddots&\vdots\\
+0 & 0 &\ddots & -\frac12 & 1 & -\frac12\\
+0& 0& \cdots & 0 &-\frac12 & 1
+\end{array}\right)$$
+associated to the quadratic form $$Y_{ij1}(Y_{ij1}-Y_{ij2})+
+Y_{ij2}(Y_{ij2}-Y_{ij3})+\cdots+Y_{ij(i-2)}(Y_{ij(i-2)}-Y_{ij(i-1)})+Y_{ij(i-1)}^2$$
+has determinant equal to $i/2^{i-1}$.
+
+To see this it is enough to notice that $\det \mathcal M_3=3/4$,
+$\det\mathcal M_4=1/2$ and if, for $i>4$, we expand the determinant
+with respect to the first column, we obtain the recursive formula:
+$$\det\mathcal M_i=\det\mathcal M_{i-1}-\frac14\det\mathcal M_{i-2}$$
+which allows us to deduce the claim by induction.
+
+Hence $\tilde{Q}_\mathcal C$ has discriminant $\Delta_\mathcal
+C=2^{c_2}\cdots t^{c_t}/2^{\tilde{c}}$. This implies that if the
+characteristic of $\F$ is larger than $2$ and does not divide
+$2^{c_2}\cdots t^{c_t}$, then $\tilde{Q}_\mathcal C$ is
+non--singular.
+
+Therefore for odd characteristics coprime to $\Delta_\mathcal C$, we can use the
+formulas of \cite[Theorems 6.26 and 6.27]{LN} to enumerate
+$N(Q_\mathcal C)=q^{c_2+\cdots+c_t}N(\tilde{Q}_\mathcal C)$,
+obtaining:
+$$N(\tilde{Q}_\mathcal C)=\begin{cases}q^{\tilde{c}-1}+
+\eta((-1)^{\tilde{c}/2}\Delta_\mathcal C)
+(q-1)q^{(\tilde{c}-2)/2}&\text{if $\tilde{c}$ is even;}\\
+q^{\tilde{c}-1} & \text{if $\tilde{c}$ is odd,}\end{cases}$$ where
+$\eta$ is the quadratic character of $\F^*$. Observe that the power
+of $q$ in the first term above is larger than the one in the second
+term except when $\tilde{c}=c_2+2c_3+\cdots+ (t-1)c_t=2$ which is
+satisfied only in the cases: $c=3,c_3=1$ or $c=4,c_2=2$.
+
+Hence, if $\mathcal C\not\in\{[2],[3],[2\ 2]\}$ and
+$\operatorname{char}(\F)$ is even and does not divide
+$\Delta_\mathcal C$, then $N(Q_\mathcal C)=q^{c-1}+O(q^{c-2})$.
+Substituting this in (\ref{due}) and then in (\ref{uno}), we
+conclude the proof.\end{proof}
+
+\begin{thebibliography}{99}
+\bibitem{LN} \textsc{Lidl R. \& Niederreiter, H.}, \textit{Finite Fields},
+Encyclo. Math. and Appls. V. 20, Addison--Wesley, Reading, MA 1983.
+\bibitem{CP} \textsc{Malvenuto C. \& Pappalardi F.},
+\textit{Enumerating Permutation Polynomials I: Permutations with
+Non-Maximal Degree}. Finite Fields Appl. \textbf{8} (2002) no. 4,
+531--547.
+\end{thebibliography}
+\end{document}

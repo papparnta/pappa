@@ -1,0 +1,134 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{latexsym}
+\usepackage{eucal}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bm}{ \begin{pmatrix} }
+\newcommand{\edm}{ \end{pmatrix} }  
+\newcommand{\sist}{\begin{cases}}
+\newcommand{\esist}{\end{cases}}
+\newcommand{\deter}{\left| \begin{array}}
+ \newcommand{\edet}{\end{array}\right|}
+\newcommand{\ds}{\displaystyle}
+
+
+\begin{document}
+  \begin{center} 
+    \textbf{Universit\'a degli Studi Roma Tre - Corso di Laurea in Matematica\\
+     \begin{Huge}Esercizi CR510\end{Huge}\\
+Dario Giannini}\\
+  \end{center}
+  
+  \begin{tabular}{p{.6\textwidth}p{.4\textwidth}}
+	
+    \begin{tabular}{l}
+      \textsc{3 Marzo 2014}
+    \end{tabular}
+  \end{tabular}
+\\\\
+\begin{enumerate}
+\item \textbf{BASE INDUZIONE:}\\
+Se $x=0$ l'identit\'a \'e verificata in quanto $0=0$.\\
+Se $x=1$ l'identit\'a \'e verificata in quanto $1=\ds{\frac{1(2)(3)}{6}}$.\\
+\textbf{PASSO INDUTTIVO:}\\
+Supponiamo che l'identit\'a valga per $x-1$ e la verifichiamo per $x$:\\
+$1+4+9+ \dots +(x-1)^2+x^2=[1+4+9+ \dots +(x-1)^2]+x^2=$\\
+$=\ds{\frac{(x-1)x[2(x-1)+1]}{6}+x^2=\frac{x[(x-1)(2x-1)+6x]}{6}}=$\\
+$=\ds{\frac{x(2x^2+3x+1)}{6}=\frac{x(x+1)(2x+1)}{6}}$\\
+ossia l'uguaglianza che volevo dimostrare.\\ 
+\item \begin{enumerate}
+\item Basta mostrare un controesempio. Come suggerito dal libro di testo, se si pone 
+$x=\ds{\frac{25}{4}}$, affinch\'e il punto appartenga alla curva ellittica $E:y^2=x^3-25x$ si deve avere che 
+$y=\ds{\frac{75}{8}}$ (per trovare questo valore di $y$ basta sostituire $x$ all'interno dell'equazione di $E$).\\
+Ricapitolando la coppia $(\ds{\frac{25}{4}},\ds{\frac{75}{8}})$ verifica l'equazione di $E$, tuttavia:\\
+$\ds{\frac{25}{4}-5=\frac{5}{4}}$ non \'e un quadrato perfetto;\\\\
+$\ds{\frac{25}{4}+5=\frac{45}{4}}$ non \'e un quadrato perfetto.\\
+
+\item Sia $(a,b)\in E: y^2=x^3-n^2x$ ( i.e. $b^2=a^3-n^2a$ ), con $a\neq 0,\pm n$ .\\
+Voglio trovare la retta tangente passante per $(a,b)$. Per prima cosa trovo il suo coefficiente angolare:
+$$2yy'=3x^2-n^2 \;\;\Rightarrow\;\; m=y'|_{(a,b)}=\ds{\frac{3a^2-n^2}{2b}}$$
+La retta tangente avr\'a quindi la seguente equazione:
+$$t:\; y=\ds{\frac{3a^2-n^2}{2b}\left(x-a\right)+b}$$ 
+A questo punto metto a sistema $t$ ed $E$ per trovare l'altro punto di intersezione (so gi\'a che la retta tangente intersecher\'a il punto $(a,b)$ "`due volte"').\\
+$$\sist
+y=m(x-a)+b \\
+y^2=x^3-n^2x
+\esist\;\;\longrightarrow\;\;
+\sist
+y=m(x-a)+b\\
+(m(x-a)+b)^2=x^3-n^2x
+\esist$$
+A me interessa sapere solo quale sia il coefficiente di $x^2$ che corrisponde all'opposto della somma delle tre radici del polinomio, se questo \'e monico positivo (ossia il coefficiente di $x^3$ \'e $+1$). In questo caso:
+$a+a+x_1=m^2\;\;\Rightarrow\;\; x_1=m^2-2a$ e $y_1=m(m^2-3a)+b$\\
+Ora voglio dimostrare che $x_1$,$x_1-n$ e $x_1+n$ sono quadrati perfetti:
+$$x_1=\ds{\left(\frac{3a^2-n^2}{2b}\right)^2-2a=\frac{9a^4+n^4-6a^2n^2-8b^2a}{4b^2}}$$
+da cui sfruttando il fatto che $b^2=a^3-n^2a$ ricavo:
+$$x_1=\ds\frac{a^4+2a^2n^2+n^4}{4b^2}=\left(\frac{a^2+n^2}{2b}\right)^2$$
+\textbf{N.B.:} Tutto ci\'o \'e valido se e solo se $b\neq 0$. Tuttavia questa condizione \'e verificata per 
+$a\neq 0, \pm n$ come da ipotesi!\\
+Mi rimane da mostrare che $x_1+n$ e $x_1-n$ sono quadrati perfetti:
+$$x_1 +n=\ds{\frac{a^4+4na^3+2a^2n^2-4an^3+n^4}{4b^2}=\left(\frac{a^2+2an-n^2}{2b}\right)^2}$$
+$$x_1 -n=\ds{\frac{a^4-4na^3+2a^2n^2+4an^3+n^4}{4b^2}=\left(\frac{n^2+2an-a^2}{2b}\right)^2}$$
+\end{enumerate}
+
+\item \begin{enumerate}
+\item $x=-4+t$ e $y=6+mt$\\
+$(6+mt)^2=(-4+t)^3-25(-4+t)\;\;\Rightarrow\;\;$\\
+$36+m^2t^2+12mt=-64+t^3+48t-12t^2+100-25t\;\;\Rightarrow\;\;$\\
+$t^3-(m^2+12)t^2+(23-12m)t=0\;\;\Rightarrow\;\;$\\
+$t[t^2-(m^2+12)t+23-12m]=0$
+Da cui ricavo subito che $t=0$ \'e una radice.\\
+\item Sia $m=\ds{\frac{23}{12}}\;\;\Rightarrow\;\;$\\
+Sostituisco tale valore di $m$ all'interno dell'equazione precedente ottenendo\\
+$ t^2(t-\ds{\frac{2257}{144}})$\\
+Da cui ricavo subito che $t=0$ \'e una radice doppia.
+\item La radice non nulla del polinomio in $t$ sar\'a dunque $t_0=\ds{\frac{2257}{144}}$.\\
+Per trovare i valori di $x$ e $y$ richiesti mi basta sostituire $t_0$ alle espressioni di $x$ e $y$ date in precedenza:\\
+$$x=-4+t_0=\ds{\frac{1681}{144}}$$
+$$y=6+mt_0=\ds{\frac{62279}{1728}}$$
+\end{enumerate}
+
+
+\item Sia $(x_1,y_1)=\ds{\left(\frac{1681}{144},\frac{62279}{1728}\right)}$, sfrutto le formule trovate nell'esercizio $2.b$ per trovare l'altro punto di intersezione fra $E:\;y^2=x^3-25x$ e la tangente ad $E$ nel punto $(x_1,y_1)$:
+$$\sist
+x_2=\left(\frac{x_1^2+n^2}{2y_1}\right)^2 \\
+y_2=m(m^2-3x_1)+y_1
+\esist$$
+dove in questo caso $n=5$ e $m=\ds{\frac{3x_1^2-25}{2y_1}=\frac{2652961}{498232}}$.\\
+Sostituendo si trova che:\\
+$$\sist
+x_2=\ds{\frac{43376810656886106520561}{5135673858195456}}\\ \\
+y_2=\ds{\frac{1791076534232245919}{3339324446657665536}}
+\esist$$
+Ora bisogna trovare i cateti $a$,$b$ e l'ipotenusa $c$ che corrispondono al punto di $E$ trovato; si ha che valgono le seguenti relazioni:
+$$\sist 
+x_2=\ds{\left(\frac{c}{2}\right)^2}\\ 
+a^2+b^2=c^2\\
+y_2=\ds{\frac{(a^2-b^2)c}{8}}
+\esist 
+\longrightarrow
+\sist
+a=\ds{\sqrt{\frac{c^2}{2}+\frac{4y_1y_2}{x_1^2+25}}=\frac{4920}{1519}}\\ \\
+b=\ds{\sqrt{\frac{c^2}{2}-\frac{4y_1y_2}{x_1^2+25}}=\frac{1519}{492}}\\ \\
+c=\ds{\frac{x_1^2+25}{y_1}=\frac{3344161}{747348}}
+\esist
+$$
+
+\item Attuando il seguente cambio di variabili
+$\sist x_1=12x+6\\
+y_1=72y
+\esist$
+ all'equazione $y_1^2 = x_1^3 -36x_1$ si ottiene:\\ \\
+$5184y^2=1728x^3+2592x^2+1296x+216-432x-216\;\;\Rightarrow\;\;$\\ \\
+$y^2=\ds{\frac{x^3}{3}+\frac{x^2}{2}+\frac{x}{6}=\frac{x(2x^2+3x+1)}{6}=\frac{x(x+1)(2x+1)}{6}}$.\\
+
+
+\end{enumerate}
+\end{document}

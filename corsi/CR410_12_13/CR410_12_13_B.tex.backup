@@ -1,0 +1,92 @@
+\nopagenumbers \font\title=cmti12
+\def\ve{\vfill\eject}
+\def\vv{\vfill}
+\def\vs{\vskip-2cm}
+\def\vss{\vskip10cm}
+\def\vst{\vskip13.3cm}
+
+% \def\ve{\bigskip\bigskip}
+% \def\vv{\bigskip\bigskip}
+% \def\vs{}
+% \def\vss{}
+% \def\vst{\bigskip\bigskip}
+
+\hsize=19.5cm
+\vsize=27.58cm
+\hoffset=-1.6cm
+\voffset=0.5cm
+\parskip=-.1cm
+\ \vs \hskip -6mm CR410 AA12/13\ (Crittografia 1)\hfill APPELLO A \hfill Roma, 7 GIUGNO 2013. \hrule
+\bigskip\noindent
+{\title COGNOME}\  \dotfill\ {\title NOME}\ \dotfill {\title
+MATRICOLA}\ \dotfill\
+\smallskip  \noindent
+Risolvere il massimo numero di esercizi accompagnando le risposte
+con spiegazioni chiare ed essenziali. \it Inserire le risposte
+negli spazi predisposti. NON SI ACCETTANO RISPOSTE SCRITTE SU
+ALTRI FOGLI. Scrivere il proprio nome anche nell'ultima pagina.
+\rm 1 Esercizio = 3 punti. Tempo previsto: 2 ore. Nessuna domanda
+durante la prima ora e durante gli ultimi 20 minuti.
+\smallskip
+\hrule\smallskip
+\centerline{\hskip 6pt\vbox{\tabskip=0pt \offinterlineskip
+\def \trl{\noalign{\hrule}}
+\halign to560pt{\strut#& \vrule#\tabskip=0.7em plus 2em& \hfil#&
+\vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil&
+\vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#&
+\hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfil#&
+\vrule#\tabskip=0pt\cr\trl && FIRMA && 1 && 2 && 3 && 4 &&
+5 && 6 && 7 && 8 && 9 &&  10 &\cr\trl && &&   &&
+&&     &&   &&   &&   &&   &&   &&    && &\cr &&
+\dotfill &&     &&   &&   &&   &&     &&   && && && &&
+&\cr\trl }}}
+\medskip
+
+
+%\item{1.}
+%Se $n\in{\bf N}$, sia $\varphi(n)$ la funzione di Eulero. Supponiamo che sia nota
+%la fattorizzazione (unica) di $n=p_1^{\alpha_1}\cdots p_s^{\alpha_s}$. Stimare il
+%numero di operazioni bit necessarie per calcolare $\varphi(n)$.
+%\vv
+%\item{2.} Stimare in termini di $k$ il numero di operazioni bit necessarie per calcolare $\left[\sqrt{2^{k^k}\bmod 3^k}
+%\right]$.
+%\vv
+
+\item{1.} Si descrivano le complessit\`a delle operazioni elementari tra interi.\vv
+
+\item{2.} Descrivere l'algoritmo dei quadrati successivi in un qualsiasi monoide moltiplicativo discutendone
+la complessit\`a. \ve\vs
+
+\item{3.} Dimostrare che il gruppo moltiplicativo di un campo finito \`e ciclico. 
+\vv
+
+
+\item{4.} Dopo aver descritto la nozione di base forte, si dimostri che tutte le basi modulo un primo sono forti e si fornisca
+un esempio di un numero composto e di una sua base forte (non banale cio\`e diversa da $-1$).  
+\vv
+
+
+\item{5.} Si descriva e si dimostri il Teorema Cinese dei resti discutendo in particolare l'analisi della complessit\`a
+per determinare le soluzioni di un sistema di congruenze.
+\ve\vs
+
+\item{6.} Si descriva il reticolo dei sottocampi di ${\bf F}_{2^6}$ e per ciascun sottocampo proprio, si elenchino i polinomi
+irriducibili e quelli primitivi.
+
+\vv
+
+\item{7.} Determinare i polinomi minimi e gli ordini degli elementi di ${\bf F}_{9}$.
+\vv
+
+\item{8.} Fornite un esempio di curva ellittica definita su un campo con $25$ elementi per cui $E({\bf F}_{25}$ non \`e
+ciclico.
+\ve \vs
+
+\item{9.} Sia $E : y^2 = x^3 − 5x + 8$ e siano $P = (6, 3),Q = (9, 10) \in E({\bf F}_{37})$. Calcolare $2P$ e $P+Q$.
+\vv
+
+\item{10.} Spiegare il funzionamento di tutti i protocolli crittografici incontrati nel corso.
+\ \vst
+
+ \bye

@@ -1,0 +1,77 @@
+\documentstyle[12pt]{article}
+\begin{document}
+\centerline{\Large Esercizi di Topologia in ${\bf R}^n$ (II)}
+\bigskip\bigskip
+\noindent{\bf A.} Dopo averne tracciato il grafico, si dimostri che
+ ciascuno dei seguenti insiemi non \`e compatto costruendo in ciascun caso
+un  ricoprimento di dischi che non ammette un sottoricoprimento 
+finito:
+\begin{enumerate}
+\item in ${\bf R}^2$:\ \ $\left\{(x,y)\ \mbox{t.c.}\ |x|+|y|<2\right\};$
+\item in ${\bf R}^3$:\ \ $\left\{(x_1,x_2,x_3)\ \mbox{t.c.}\ x_1^2+x_2^2=1,\ 
+x_3\in(-2,2)\right\};$
+\item in ${\bf R}^2$:\ \ $\left\{(x,y)\ \mbox{t.c.}\ |x-y|<1, x\in[-2,2]
+\right\};$
+\item in ${\bf R}^3$:\ \ $\left\{(x,y,z)\ \mbox{t.c.}\ 1<x^2+y^2+z^2\leq 4\right\};$
+\item in  ${\bf R}^3$:\ \ $\left\{(x,y,z)\ \mbox{t.c.}\ x^2-y^2-z^2<0, x\in[0,4]\right\}.$
+\end{enumerate}
+\bigskip
+\noindent{\bf B.} Per ciascuna delle seguenti funzioni si tracci il grafico del 
+dominio ${\bf Dom}(f)$ e si determinino:\\
+l'interno ${\bf Dom}(f)^o$,
+la frontiera $\partial{\bf Dom}(f)$, la chiusura $\overline{{\bf Dom}(f)}$
+e il derivato $D({\bf Dom}(f))$:\medskip
+\begin{enumerate}
+\item $f(x,y)=\sqrt{{x\over y}(x^2+(y-3)^2)};$
+\item $f(x,y)=\log(x^2+(y-5)^2)$;
+\item $f(x,y)=\tan\left({\pi\over2}xy\right)$;
+\item $f(x,y)=\sqrt{\log(x^2+3y^2)};$
+\item $f(x,y)=\tan\left({\pi\over 2}(x+y)\right)+\log(9-x^2-y^2)$
+\item $f(x,y,z)={1\over \cos (x^2+y^2+z^2)}.$
+\end{enumerate}\bigskip
+\noindent{\bf C.} Si dimostri il seguente ``criterio di continuit\`a in coordinate polari'':\\
+{\it Sia $f:A\longrightarrow {\bf R}$ una funzione dove $(0,0)\in A^o\subset{\bf R}^n$. Allora
+$f$ \`e continua in $(0,0)$ se e solo se per ogni $\epsilon>0$ esiste $\delta_\epsilon$ tale che
+se $0<r<\delta_\epsilon$ allora $|f(r\cos\theta,r\sin\theta)-f(0,0)|<\epsilon$.}\\
+Si applichi questo criterio per studiare la continuit\`a della seguente funzione al variare di
+$\alpha, \beta\in{\bf R}$.
+$$f(x,y)=\left\{ \begin{array}{ll}
+{x^\alpha y^\beta\over (x^2+y^2)\arctan(y^2+1)} &\ \mbox{if}\ (x,y)\neq(0,0)\\
+\\
+0 & \ \mbox{if}\ (x,y)=(0,0)\\
+\end{array}\right.$$
+\bigskip
+
+\noindent{\bf D.} Si discuta la continuit\`a delle seguenti 
+funzioni in $(x,y)=(0,0)$:
+\begin{enumerate}
+\item 
+$$f(x,y)=\left\{ \begin{array}{ll}
+{x^3y^4\cos(1/x)\over (x^2+y^2)\arctan(y^2+x^6+1)} &\ \mbox{if}\ (x,y)\neq(0,0)\\
+\\
+0 & \ \mbox{if}\ (x,y)=(0,0)\\
+\end{array}\right.$$
+\item
+$$f(x,y)=\left\{ \begin{array}{ll}
+{x^3y^4\over (x^{6}+y^{6})} &\ \mbox{if}\ (x,y)\neq(0,0)\\
+\\
+0 & \ \mbox{if}\ (x,y)=(0,0)\\
+\end{array}\right.$$
+\item$$f(x,y)=\left\{ \begin{array}{ll}
+{x^2y^4\over x^2+y^6} &\ \mbox{if}\ (x,y)\neq(0,0)\\
+\\
+0 & \ \mbox{if}\ (x,y)=(0,0)\\
+\end{array}\right.$$
+\item$$f(x,y)=\left\{ \begin{array}{ll}
+{x^3+y^3\over x+y} &\ \mbox{if}\ x+y\neq0\\
+\\
+0 & \ \mbox{if}\ x+y=0\\
+\end{array}\right.$$
+\item 
+$$f(x,y)=\left\{ \begin{array}{ll}
+{xy\sin(x+y)\over \pi-2\arctan(y/x)} &\ \mbox{if}\ x\neq0\\
+\\
+0 & \ \mbox{if}\ x=0\\
+\end{array}\right.$$
+\end{enumerate}
+\end{document}

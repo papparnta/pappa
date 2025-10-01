@@ -1,0 +1,473 @@
+\documentclass[landscape]{powersem} %,display
+\usepackage{fancybox,marvosym,graphicx,amsmath,amssymb,pifont,theorem}
+\usepackage[bookmarksopen,colorlinks,urlcolor=red,pdfpagemode=FullScreen]{hyperref}
+\usepackage{fixseminar}
+\usepackage{color}
+\usepackage[latin1]{inputenc}
+\usepackage[coloremph,colormath,colorhighlight,lightbackground]{texpower}
+\hfuzz=30pt
+\vfuzz=30pt
+\setlength{\slidewidth}{25cm} \setlength{\slideheight}{17.5cm}
+\slideframe{}
+\def\slideitemsep{.5ex plus .3ex minus .2ex}
+\newtheorem{cor}{\textcolor{Salmon}{Corollary}}
+\newtheorem{conj}{\textcolor{Salmon}{Conjecture}}
+\newtheorem{lem}{\textcolor{Salmon}{Lemma}}
+\newtheorem{pro}{\textcolor{Salmon}{Problem}}
+\newtheorem{teo}{\textcolor{Salmon}{Theorem}}
+\newtheorem{prop}{\textcolor{Salmon}{Proposition}}
+\renewcommand{\slidetopmargin}{10mm}
+\renewcommand{\slidebottommargin}{15mm}
+\renewcommand{\slideleftmargin}{5mm}
+\renewcommand{\sliderightmargin}{5mm}
+\newcommand{\Ccal}{{\mathcal{C}}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\Q}{{{\mathbb Q}}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Ss}{{\mathcal S}}
+\newcommand{\li}{\operatorname{li}}
+\newcommand{\ord}{\operatorname{ord}}
+
+\newcommand{\manorossa}{\textcolor{conceptcolor}{\ding{43}}}
+\newcommand{\manogrigia}{\textcolor{Emerald}{\ding{41}}}
+\newcommand{\matitablu}{\textcolor{MidnightBlue}{\ding{46}}}
+ \newcommand{\heading}[1]{%
+ \begin{center}
+  \large\bf
+  \shadowbox{{\textcolor{conceptcolor}{#1}}}%
+ \end{center}
+ \vspace{1ex minus 1ex}}
+\definecolor{Salmon}{cmyk}{0,0.53,0.38,0}
+\definecolor{MidnightBlue}{cmyk}{0.98,0.13,0,0.43}
+\definecolor{BurntOrange}{cmyk}{0,0.51,1,0}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{Emerald}{cmyk}{1,0,0.51,0}
+%\backgroundstyle[startcolor=grey,
+%                   endcolor=grey,%firstgradprogression=3,
+%            rightpanelwidth=-7\semcm,,rightpanelcolor=pagecolor]{hgradient}%
+%%%%%%%%%%%%% DATI DEL SEMINARIO IN QUESTIONE %%%%%%%%%%%%
+\newpagestyle{327}%
+ {\textcolor{codecolor}{\textcolor{MidnightBlue}{Words \& primitive roots}} \hspace{\fill}\rightmark
+\hspace{0.1cm}\thepage}
+ {\includegraphics[width=4mm]{images/dipmat.pdf}\hspace{\fill}\textcolor{codecolor}{\sc Universit\`a Roma Tre}
+ \hspace{\fill}\includegraphics[width=5mm]{images/roma3.pdf}}%%
+\pagestyle{327} \markright{\textcolor{conceptcolor}{Monastir}}
+\title{\vspace*{.2cm} \ %\present{\doublebox{\includegraphics[width=2cm]{rims-s.jpg} \
+%\begin{minipage}[c]{9cm} \vspace*{-5mm} \textsc{Research Institute of
+%Mathematical Science}\\ \hspace*{2cm}  Kyoto, JAPAN
+%\end{minipage}}}\\
+\ \\ \textcolor{underlcolor}{\textsc{Words and primitive roots}} \\ \ \\
+\'Ecole d'Et\'e de Calcul Formele et Th\'eorie de Nombres\\
+\ \\
+\emph{\textit{Monastir - TUNISIA} \\
+\ }}
+\author{\textcolor{Emerald}{Francesco Pappalardi}\\
+}
+\date{\textcolor{BurntOrange}{Agost 27, 2007}}
+
+\begin{document}
+
+\begin{slide}\pagestyle{empty}
+\maketitle
+\end{slide}
+
+\begin{slide}
+\heading{Introduction: Gau\ss\ Conjecture}\pause\vspace{-2mm}
+
+$$\frac1p=0.\overline{a_1a_2\cdots a_k}\qquad p\neq 2,5$$
+\pause
+
+\noindent\textcolor{BurntOrange}{Where:}\pause\vspace{-2mm}
+\begin{itemize}
+\item[\matitablu] $k=k_p$ is the \emph{period length}\pause
+\item[\matitablu] $k_p\mid p-1$\pause
+\item[\matitablu] (\textcolor{red}{Gau\ss\ conjecture}) $k_p=p-1$ for infinitely many primes $p$\pause
+\item[\matitablu] $k_p=\ord_p(10)=\min\{N\in\N:\ 10^N\equiv 1\bmod p\}$\pause
+\item[\matitablu] $k_p=p-1$ if and only if $\langle 10\bmod p\rangle=\F_p^*$\pause
+\item[\matitablu] if $a\in\Q$ and $\langle a\bmod p\rangle=\F_p^*$, we say $a$
+\emph{primitive root modulo $p$}\pause
+\item[\matitablu] Today we have the \emph{Artin Conjecture for primitive roots}.
+\end{itemize}
+\vfill
+\end{slide}
+
+\begin{slide}
+\heading{Artin Conjecture}\pause
+
+Let $a\in\Q^*, a\neq-1$, $a\neq b^2$ with $b\in\Q$.
+\centerline{\shadowbox{$\displaystyle{P_a:=\{p:\ \langle a\bmod p\rangle=\F_p^*\}}$}}\pause
+
+\textcolor{red}{Weak Form Conjecture\emph{(WF)}}
+\centerline{\shadowbox{$\displaystyle{\#P_a=\infty}$}}\pause
+
+\textcolor{red}{Strong Form Conjecture\emph{(SF)}} $\exists A_a\in\R^>$ such that
+\centerline{\shadowbox{$\displaystyle{\#P_a(x)\sim A_a\frac x{\log x}}$}}\pause
+
+\noindent \textcolor{red}{NOTATION:} if $A\subset\R$, then  we set $A(x):=A\cap[1,x]$\pause
+
+We will outline 3 approaches to Artin Conjecture
+\end{slide}
+
+\begin{slide}
+
+\heading{Three approaches to Artin Conjecture}\bigskip\bigskip\bigskip\pause
+\begin{itemize}
+    \item[\manorossa] Schinzel's Hypothesis H (SHH) $\rightsquigarrow$ Complete solution of WF\bigskip\bigskip\pause
+
+    \item[\manorossa] Generalized Riemann Hypothesis (GRH) $\rightsquigarrow$ Complete solution of SF\bigskip\bigskip\pause
+
+   \item[\manorossa] Heath--Brown, Gupta Murty (HGM) $\rightsquigarrow$ Unconditional "almost solution" of WF
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\heading{Schinzel's Hypothesis H (SHH) approach}\pause
+
+\begin{conj}[Hypthesis H (A. Schinzel -- 1957) SHH] \ \\ Let $f_1,\ldots,f_s\in\Z[X]$\pause
+\begin{itemize}
+\item irreducible\pause
+\item positive leading coefficients\pause
+\item $\gcd(f_1(n)\cdots f_s(n), n\in\N)=1$\pause \ \hspace*{3cm} (i.e. $\forall l$ prime $\exists n\in\N$ s.t. $l\nmid f_1(n)\ldots f_s(n)$)
+\end{itemize}\pause Then
+\centerline{\ovalbox{$\displaystyle{\exists\infty\text{--many }n\in\N\text{ s.t. }f_1(n),\ldots,f_s(n)\text{ are all prime }}$}}
+\end{conj}\vfill
+\end{slide}
+
+\begin{slide}
+
+\heading{SHH$\Rightarrow$ WF}\pause
+
+Let $a=2$ for simplicity\pause
+Set $f_1(x)=8x+3$, $f_2(x)=4x+1$\pause
+\textcolor{red}{Note that $f_1(0)f_2(0)=3$ and $f_1(1)f_2(1)=11\cdot5$ so we
+can apply $SHH$} \pause
+
+SHH $\Rightarrow \exists\infty\text{--many }p\text{ prime s.t. }p\equiv3\bmod8$ and
+$p=2q+1$ with $q$ prime.\pause
+
+Now \begin{itemize}
+\item[\matitablu] $\ord_p(2)\mid p-1=2q$\pause
+\item[\matitablu] $\ord_p(2)\neq 2$ if $p>3$\pause
+\item[\matitablu] $\ord_p(2)\neq q$ since $-1=\left(\frac 2p\right)\equiv 2^{(p-1)/2}\bmod p$ because $p\equiv3\bmod 8$ \pause
+\item[\matitablu] Hence $\ord_p(2)=2q=p-1$ for $\infty$--many $p$
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\heading{Generalized Riemann Hypothesis (GRH) approach}\pause
+\bigskip\bigskip
+\noindent\textbf{(Dedekind Criterion)} If $m\in\N$ is squarefree and $p\geq3$. Then\pause
+\centerline{\ovalbox{$\displaystyle{m\mid [\F_p^*:\langle 2\bmod p\rangle]\qquad \Leftrightarrow\qquad
+p\text{ splits completely in }\Q[\zeta_m,2^{1/m}]}$}}\pause
+\bigskip\bigskip
+
+\begin{teo}[C. Hooley - 1967] Assume that GRH holds of $\Q[\zeta_m,2^{1/m}]$. Then\pause
+\centerline{$\displaystyle{\#\{p\leq x:\
+p\text{ splits completely in }\Q[\zeta_m,2^{1/m}]\}= \frac1{\varphi(m)m}\li(x)+O(\sqrt{x}\log mx)}$}
+\end{teo}
+\end{slide}
+
+\begin{slide}
+\centerline{$\displaystyle{\#\{p\leq x:\
+p\text{ splits completely in }\Q[\zeta_m,2^{1/m}]\}= \frac1{\varphi(m)m}\li(x)+O(\sqrt{x}\log mx)}$}\pause
+So
+\parstepwise[\let\hidestepcontents=\hidedimmed\let\activatestep=\highlightenhanced]
+{
+\begin{eqnarray*}
+  \#P_2(x) &=& \step{\#\{p\leq x:\ \forall l, l\nmid  [\F_p^*:\langle 2\bmod p\rangle]\}}\\
+   &=& \step{\sum_{m=1}^\infty\mu(m)\#\{p\leq x:\ m\mid  [\F_p^*:\langle 2\bmod p\rangle]\} \hspace{1cm}\text{(inclusion exclusion)}}\\
+   &=& \step{\sum_{m=1}^\infty\mu(m)\#\{p\leq x:\ p\text{ splits completely in }\Q[\zeta_m,2^{1/m}]\}\hspace{0.2cm}\text{(Dedekind)}}\\
+   &\sim& \step{\sum_{m=1}^\infty \frac1{\varphi(m)m}\frac x{\log x} \hspace{5.3cm}\text{(Hooley's GRH)}}
+\end{eqnarray*}}\pause
+
+After classical estimates to handle various error terms. \pause
+Note that $\displaystyle{\sum_{m=1}^\infty \frac1{\varphi(m)m}=\prod_{l\text{ prime}}\left(1-\frac1{l(l-1)}
+\right)=:A}$ \emph{Artin's Constant}
+\end{slide}
+
+\begin{slide}
+\heading{General statement of Hooley's Theorem (1967)}\pause
+\bigskip
+\begin{teo} Let $a\in\Q^*\setminus\{\pm1\}$. Write $a=b^h$ with $b\in\Q$ not a power, $b=b_1b_2^2$ with $b_1$ squarefree. Assume that the Generalised Riemann Hypothesis holds for $\Q[\zeta_m,a^{1/m}]$ for all $m\in\N$.\pause
+\centerline{\ovalbox{$\displaystyle{\#P_a(x)\sim A_a\frac x{\log x}}$}}\pause
+where
+\centerline{\ovalbox{$\displaystyle{A_a=\left(1+\frac12\left(1-\left(\frac{-1}{b_1}\right)\right)\prod_{l\mid b_1}\frac{\gcd(l,h)}{\gcd(l,h)-l-l^2}\right)\prod_{l\text{ prime}}\left(1-\frac{\gcd(l,h)}{l(l-1)}\right)}$}}
+\end{teo}\pause
+\textcolor{red}{Note that $A_a=q_a\cdot A$ with $q_a\in\Q$.} So\vfill\pause
+\heading{GRH $\Rightarrow$ SF Artin Conjecture}
+\end{slide}
+
+\begin{slide}
+\heading{Heath--Brown, Gupta Murty (HGM) }\pause
+
+We say that $n=P_2(\alpha,\delta)$ if either $n$ is prime or $n=p_1p_2$ with
+$n^\alpha\leq p_1\leq n^{1/2-\delta}$.\pause
+
+\begin{lem} Let $k=2,4,8$ and let $u,v\in\Z$ be such that\pause
+  \matitablu\quad $\gcd(u,v)=1$,\qquad $k\mid u-1$,\qquad $16\mid v$\quad \&\quad  $\gcd(\frac{u-1}k,v)=1$.\pause
+
+Then $\exists \alpha\in\left(\frac14,\frac12\right)$ and $\delta\in (0,\frac12-\alpha)$ s.t. if
+\centerline{$\displaystyle{S_2=\left\{p:\ p\equiv u\bmod v\text{ and }\frac{p-1}k=P_2(\alpha,\delta)\right\}}$}\pause
+we have that
+\centerline{\ovalbox{$\displaystyle{\#S_2(x)\gg \frac x{\log^2 x}}$}}
+\end{lem}\pause
+
+\textcolor{red}{Note that $k=4$, $u=197$ and $v=240$ satisfy the conditions of the statement.}
+\end{slide}
+
+\begin{slide}
+From the lemma we deduce that\pause
+
+\begin{teo}[Heath Brown, Gupta Murty (1986)]\ \pause
+One out of $2,3,5$ is a primitive root for infinitely many primes.
+\end{teo}\pause
+
+\textcolor{red}{Note that this is a \emph{quasi resolution} of Artin Conjecture WF.}\pause
+
+\noindent{\textbf{Proof.}} Take $k=4$, $u=197$ and $v=240$ in the lemma and note that if $p\in \mathcal S_2$,
+$p\equiv 197\bmod240$, then\pause\medskip
+\centerline{$\displaystyle{\left(\frac{2}{p}\right)=\left(\frac{3}{p}\right)=\left(\frac{5}{p}\right)=-1}$}\bigskip\pause
+If $p\in S_2$, $p-1=4P_2(\alpha,\delta)$.\pause If $(p-1)/4$ is prime, automatically $2,3$ and $5$ are all primitive root modulo $p$. Otherwise $p-1=4p_1p_2$ and \pause\medskip
+\centerline{$\displaystyle{\ord_p(2),\ord_p(3),\ord_p(5)\in\{4p_1,4p_2,4p_1p_2\}}$}
+\end{slide}
+
+\begin{slide}
+By elementary methods:\\
+$\#\left\{p\in S_2(x):\text{ either of } \ord_p(2),\ord_p(3),\ord_p(5)
+\ =4p_1\right\}=O\left(x^{1-2\delta}\right)$ \\ \ \hspace*{8.5cm} $=o\left(\frac x{\log^2 x}\right)$\pause
+and\\
+$\#\left\{p\in S_2(x):\ \ord_p(2)=\ord_p(3)=\ord_p(5)=4p_2
+\right\}=O\left(x^{4(1-\alpha)/3}\right)$ \\ \ \hspace*{8.5cm} $=o\left(\frac x{\log^2 x}\right)$\pause
+Therefore\\
+$\displaystyle{\#\left\{p\in S_2(x):\text{ one of 2, 3 or 5 ia primitive root mod $p$}\right\}\gg \frac x{\log^2x}}$\pause
+In general
+\begin{teo}[Heath Brown] Given $a,b,c\in\Z$ multiplicatively independent such that none of $a, b, c,-3ab, -3ac, -3bc,abc$
+is a perfect square. Then WF of Artin Conjecture holds for at least one of $a, b$ or $c$
+\end{teo}
+\end{slide}
+
+\begin{slide}
+\heading{Many generalizations and analogies in many directions}\pause
+\medskip
+\textbf{Some authors:} Cangelmi, Chinen, Cojucaru, Goldstein, Gupta, Lapist\"o, Lenstra, Li Hailong, Manickam, Matthews, Murata, K. Murty, R. Murty, Odoni, Roskam, Saari, Schinzel, Shparlinski, Stephen, Stevenhagen, Susa, Thangadurai, Vaugan, Von Zur Gathen, Wiertelak, W\'oicik, Zang Wenpeng and surely many others.\pause
+\medskip
+\centerline{\ovalbox{\emph{\textbf{\textit{SHH\qquad GRH\qquad HGM}}}}}
+\pause
+\textcolor{red}{\textbf{Some chosen generalization/analogies}}\pause
+\begin{itemize}
+  \item[\textcolor{blue}{\ding{182}}] $r$-rank Artin Conjecture\pause
+  \item[\textcolor{blue}{\ding{183}}] Fixed index Artin Conjecture\pause
+  \item[\textcolor{blue}{\ding{184}}] Simultaneous primitive roots\pause
+  \item[\textcolor{blue}{\ding{185}}] Schinzel-W\'ojcik problem\pause
+  \item[\textcolor{blue}{\ding{186}}] Words and Primitive roots.
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{182}} $r$-rank Artin Conjecture}\pause
+
+Let $\Gamma\subset\Q^*$ be a subgroup of finite rank $r\geq1$.\pause Let $\Gamma_p$ be the
+reduction of $\Gamma$ modulo $p$. \emph{it makes sense for all but finitely many primes.}\pause
+\centerline{\shadowbox{$\displaystyle{C_\Gamma=\left\{p:\ \Gamma_p=\F_p^*\right\}}$}}\pause
+
+\begin{teo}[Cangelmi \& F\!\!P, 1999] Assume the GRH for $\Q[\zeta_m,\Gamma^{1/m}]$. Then\pause
+\centerline{\ovalbox{$\displaystyle{\#C_\Gamma(x)\sim d_\Gamma \frac x{\log x}}$}}\pause
+where $d_\Gamma=q_\Gamma\cdot\displaystyle{\prod_{l\text{prime}}\left(1-\frac1{l^r(l-1)}\right)}$
+and $q_\Gamma\in\Q$\qquad ($q_\Gamma=0\Leftrightarrow\Gamma\subset(\Q^*)^2$).
+\end{teo}\pause
+\textcolor{red}{Note: Problem can also be dealt with SHH or HGM. Maybe not so interesting}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{183}} Fixed index Artin Conjecture}\pause
+Let
+\centerline{\shadowbox{$\displaystyle{M_{a,m}=\left\{p:\ [\F_p^*:\langle a\bmod p\rangle]=m\right\}}$}}\pause
+
+\textcolor{red}{\textbf{Question:}} When is
+\centerline{\shadowbox{$\displaystyle{\#M_{a,m}=\infty}?$}}\pause
+
+ \noindent \textcolor{red}{\textit{Note:}}
+\begin{itemize}
+  \item[\textcolor{blue}{\matitablu}] Work by H. Lenstra, L.  Murata, S. Wagstaff and others\medskip\pause
+  \item[\textcolor{blue}{\matitablu}]  if $a\equiv1 \bmod 4$, $m$ odd and $a\mid m$ then $M_{a,m}=\emptyset$ since
+ $\left(\frac ap\right)=\left(\frac pa\right)=\left(\frac 1a\right)=1$ so $[\F_p^*:\langle a\bmod p\rangle]$
+ is even and cannot be $=m$
+\end{itemize}
+
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{183}} Fixed index Artin Conjecture. 2}\pause
+
+\begin{teo}[Murata 1991] Let $a,m\in\Z$, $a$ square free. Assume GRH for $\Q[\zeta_{k_1},a^{1/k_2}]\ \forall k_1,k_2\in\N$. Then
+\centerline{\ovalbox{$\displaystyle{\#M_{a,m}(x)\sim B_{a,m}\frac x{\log x}}$}}
+where $B_{a,m}=q_{a,m}A$ with $q_{a,m}\in\Q$
+\end{teo}\pause
+
+\textcolor{red}{Note: This problem has not been dealt with SHH or HGM.}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{184}} Simultaneous primitive roots}\pause
+
+Let $a_1,\ldots,a_r\in\Q^*\setminus\{\pm1\}$ and set
+\centerline{\shadowbox{$\displaystyle{P_{a_1,\ldots,a_r}=
+\left\{p:\ \forall i=1,\ldots,r,\ \ord_p(a_i)=p-1\right\}}$}}\pause
+
+\textcolor{red}{\textbf{Question:}} When is
+\centerline{\shadowbox{$\displaystyle{\#P_{a_1,\ldots,a_r}=\infty}?$}}\pause
+
+\begin{teo}[Matthews, 1976] Assume GRH for $\Q[\zeta_{k_0},a_1^{1/k_1},\cdots,a^{1/k_r}]$ $\forall k_0, k_1, k_2, \ldots, k_r \in\N$.\pause Then
+$\#P_{a_1,\ldots,a_r}<\infty$ if and only if one of the following two conditions are satisfied:\pause
+\begin{itemize}
+  \item[(I)] $a_{i_1}\cdots a_{i_{2s+1}}\in(\Q^*)^2$ for some $1\leq i_1<\cdots<i_{2s+1}\leq r$;\pause
+  \item[(II)] $a_{i_1}\cdots a_{i_{2s}}\in-3(\Q^*)^2$ for some $1\leq i_1<\cdots<i_{2s}\leq r$ and\\ $\forall l\equiv1\bmod 3,$ $\exists i$ s.t. $x^3\equiv a_i\bmod l$ has solution.
+\end{itemize}
+\end{teo}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{184}} Simultaneous primitive roots, 2}\pause
+
+In all other cases
+$\displaystyle{\#P_{a_1,\ldots,a_r}(x)\sim A_{a_1,\ldots,a_r}\frac x{\log x}}$
+where
+\centerline{$\displaystyle{A_{a_1,\ldots,a_r}=q_{a_1,\ldots,a_r}\prod_{l\ \text{prime}}\left(1-\frac1{l-1}\left[1-\left(1-\frac 1l\right)^r\right]\right)}$ with $q_{a_1,\ldots,a_r}\in\Q^*$}
+\pause
+
+\begin{teo}[F\!\!P, 2006] Assume SHH. Then\\
+$\#P_{a_1,\ldots,a_r}<\infty$ if and only if one of the following two conditions are satisfied:
+\begin{itemize}
+  \item[(I)] $a_{i_1}\cdots a_{i_{2s+1}}\in(\Q^*)^2$ for some $1\leq i_1<\cdots<i_{2s+1}\leq r$;
+  \item[(II)] $a_{i_1}\cdots a_{i_{2s}}\in-3(\Q^*)^2$ for some $1\leq i_1<\cdots<i_{2s}\leq r$ and\\ $\forall l\equiv1\bmod 3,$ $\exists i$ s.t. $x^3\equiv a_i\bmod l$ has solution.
+\end{itemize}
+\end{teo}\pause
+
+\textcolor{red}{Note: This problem has not been dealt with HGM.}
+\end{slide}
+
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{185}} Schinzel-W\'ojcik problem}\pause
+
+Let $a_1,\ldots,a_r\in\Q^*\setminus\{\pm1\}$ and set
+\centerline{\shadowbox{$\displaystyle{Q_{a_1,\ldots,a_r}=
+\left\{p:\ \ord_p(a_1)=\ldots=\ord_p(a_1)\right\}}$}}\pause
+
+\noindent\textcolor{blue}{PROBLEM (Schinzel-W\'ojcik)} Determine when
+\centerline{\shadowbox{$\displaystyle{\#Q_{a_1,\ldots,a_r}<\infty}$}}\pause
+\begin{itemize}
+  \item[\matitablu] If $Q_{a_1,\ldots,a_r}\supset P_{a_1,\ldots,a_r}$. Hence
+  if $\#P_{a_1,\ldots,a_r}=\infty \Rightarrow \#Q_{a_1,\ldots,a_r}=\infty$\pause
+  \item[\matitablu] Schinzel \& W\'ojcik (1991). If $r=2$, then $\#Q_{a_1,a_2}=\infty$\pause
+  \item[\matitablu] W\'ojcik (1992). Assume SHH. If $-1\not\in\langle a_1,\ldots,a_r\rangle\subset \Q^*$\pause
+  then $\#Q_{a_1,\ldots,a_r}=\infty$.
+\end{itemize}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{185}} Schinzel-W\'ojcik problem. 2}\pause
+
+\begin{prop} If $-1\in\langle a_1,\ldots,a_r\rangle\subset \Q^*$ \& $\exists v_1,\cdots,v_r\in\Z$ s.t.
+$v_1+\cdots+v_r$ is odd and $a_1^{v_1}\cdots a_r^{v_r}=1$, then
+\centerline{\ovalbox{$\displaystyle{\#Q_{a_1,\ldots,a_r}\leq1}$}}\pause
+\end{prop}
+
+\noindent\textbf{Proof.} Let $p>2$ and assume $\delta=\ord_p(a_1)=\cdots=\ord_p(a_r)$ and
+$a_1^{\omega_1}\cdots a_r^{\omega_r}=-1$. Then\pause
+\centerline{$(-1)^\delta\equiv a_1^{\delta\omega_1}\cdots a_r^{\delta\omega_r}\equiv1\bmod p$}\pause
+which implies $2\mid \delta$ and so $a_i^{\delta/2}\equiv-1\bmod p$.\pause
+Finally
+\centerline{$1= (a_1^{v_1}\cdots a_r^{v_r})^{\delta/2}\equiv(-1)^{v_1+\cdots+v_r}\bmod p$}
+contradicts $v_1+\cdots+v_r$odd.\hfill$\Box$
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{185}} Schinzel-W\'ojcik problem. 3}\pause
+
+\begin{teo}[F\!\!P, 2007] Assume SHH. $\#Q_{a_1,\ldots,a_r}=\infty$ if and only either of the
+following two conditions is satisfied:\pause
+\begin{itemize}
+  \item[\manorossa] $-1\not\in\langle a_1,\ldots,a_r\rangle\subset \Q^*$\pause
+  \item[\manorossa] $-1\in\langle a_1,\ldots,a_r\rangle\subset \Q^*$ and $\forall v_1,\cdots,v_r\in\Z$ s.t.
+$a_1^{v_1}\cdots a_r^{v_r}=1$ one has $2\mid v_1+\cdots+v_r$.
+\end{itemize}
+\end{teo}\pause
+
+
+\begin{teo}[Susa \& F\!\!P, 2005] Assume GRH for $\Q[\zeta_{k_0},a_1^{1/k_1},\cdots,a^{1/k_r}]\ \forall k_0, k_1, k_2, \ldots, k_r \in\N$. Then $\exists C_{a_1,\ldots,a_r}$ such that\pause
+\centerline{\ovalbox{$\displaystyle{\#Q_{a_1,\ldots,a_r}(x)\sim C_{a_1,\cdots,a_r}\frac x{\log x}}$}}
+\end{teo}
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{185}} Schinzel-W\'ojcik problem. 4}\pause
+
+In particular if $l_1,\ldots,l_r$ are primes
+\centerline{\ovalbox{$\displaystyle{C_{l_1,\cdots,l_r}=q'_{l_1,\ldots,l_r}\prod_{l}\left(1-
+\frac{l(l^r-(l-1)^r-1))}{(l-1)(l^{r+1}-1)}\right)}$}}
+where $q'_{l_1,\ldots,l_r}\in\Q^*$.\pause\bigskip
+
+\textcolor{red}{Note: This problem has not been dealt with HGM.}
+
+
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{186}} Words and Primitive roots, 1 }\pause
+Let $\omega=\omega_0\omega_1\cdots\omega_n$ be a word of length $n+1$ on some alphabet.\pause
+
+We say that $\omega$ is \emph{transposition invariant} if $\forall d\mid n+1$, the matrix
+$$\begin{pmatrix}\omega_0&\ldots&\omega_{d-1}\\
+\omega_d&\cdots&\omega_{2d-1}\\
+\vdots & \ddots & \vdots\\
+\omega_{nd-1}&\cdots&\omega_{n}\\
+\end{pmatrix}$$
+when transposed gives rise to the same word.\pause
+\textcolor{red}{Example.} $(v_0vv\cdots vvv_n)$ is always (trivially) transposition invariant.
+\end{slide}
+
+\begin{slide}
+\heading{\textcolor{blue}{\ding{186}} Words and Primitive roots, 2}
+
+\begin{teo}[A. Lepist\"o \& K. Saari,2006] Given any alphabet with more then $2$ letters,
+$\exists$ only trivially transposition invariant words of length $n$ if and only if $n=p$ is prime and $\exists d\mid p+1$
+which is a primitive root modulo $p$.
+\end{teo}\pause
+
+Therefore we consider the set of primes
+\centerline{\shadowbox{$\displaystyle{F=\left\{p:\ \exists d\mid p+1, \ord_pd=p-1\right\}}$}}\pause
+
+\noindent\textcolor{red}{Note:} If $p\equiv7\bmod 8$, then $p\not\in F$.\pause
+
+Indeed for such primes $p$, $\left(\frac2p\right)=1$ and $\forall$ odd prime $l\mid p+1$,\pause
+\centerline{$\displaystyle{\left(\frac lp\right)=(-1)^{(l-1)/2}\left(\frac pl\right)=
+(-1)^{(l-1)/2}\left(\frac{-1}l\right)=1.}$}\pause
+So all divisors of $p+1$ are squares modulo $p$.
+
+\end{slide}
+\begin{slide}
+\heading{\textcolor{blue}{\ding{186}} Words and Primitive roots, 3}
+
+\noindent\textcolor{red}{Note:} If $\langle 2\bmod p\rangle=\F_p^*$ then $p\in F$\pause
+So on GRH $F$ has positive density ($\geq 0,37$).\pause
+
+\begin{teo}[A. Lepist\"o, F\!\!P \& K. Saari,2006]
+
+\ \hspace*{2cm}{\ovalbox{$\displaystyle{F(x)\gg \frac x{\log^2x}}$}}
+
+\end{teo}\pause
+
+\begin{enumerate}
+  \item The proof is an application of the HGM method. \pause
+  \item GRH should work for count $F(x)$\pause
+  \item Empirical data suggests $F(x)\sim 0,63 \frac x{\log x}$\pause
+  \item $F(x)\lesssim 0,75 \frac x{\log x}$ since if $p\equiv7\bmod 8$, $p\not\in F$\pause
+  \item Good project for a young mathematician
+\end{enumerate}
+\end{slide}
+
+\end{document}

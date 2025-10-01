@@ -1,0 +1,1309 @@
+%From pappa@mat.uniroma3.it Sun Nov 24 13:20:16 2002
+\documentclass[a4paper,twoside]{article}
+\hfuzz=13pt
+\usepackage{latexsym,amsmath,amssymb,amsbsy,amsfonts,amsthm}
+\newtheorem{Proposition}{Proposition}[section]
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Corollary}{Corollary}[section]
+
+\title{Enumerating Permutation Polynomials II\\
+$k$--cycles with minimal degree}
+\author{Claudia Malvenuto and Francesco Pappalardi}
+
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We consider the function $m_{[k]}(q)$ that counts the number of
+cycle permutations of a finite field $\mathbb F_q$ of fixed length
+$k$ such that their permutation polynomial has the smallest
+possible degree. We prove the upper--bound $m_{[k]}(q)\leq
+(k-1)!(q(q-1))/k$  for $\operatorname{char}(\mathbb F_q)>
+e^{(k-3)/e}$ and the lower--bound $m_{[k]}(q)\geq
+\varphi(k)(q(q-1))/k$ for $q\equiv1\pmod k$. This is done by
+establishing a connection with the $\mathbb F_q$--solutions of a
+system of equations $\mathcal A_k$ defined over $\mathbb Z$. As
+example, we give complete formulas for $m_{[k]}(q)$ when $k=4,5$
+and partial formulas for $k=6$. Finally we analyze the Galois
+structure of the algebraic set $\mathcal A_k$
+\end{abstract}
+
+\tableofcontents\vfill\pagebreak
+
+\section{Introduction}
+
+Let $q$ be a power of a prime and denote with $\mathbb F_q$ the finite
+field with $q$ elements. If $\sigma$ is a permutation of the elements of $\mathbb F_q$,
+then one can associate to $\sigma$ the polynomial in $\mathbb F_q[x]$
+
+\begin{equation}\label{primadef}
+f_\sigma(x)=\sum_{c\in\mathbb F_q}\sigma(c)\left(1-\left(x-c\right)^{q-1}\right).
+\end{equation}
+
+Such a polynomial has the property that
+
+\begin{enumerate}
+\item $f_\sigma(b)=\sigma(b)$ for all $b\in\mathbb F_q$;
+\item The degree $\partial(f_\sigma)\leq q-2$ (since the sum of all the elements of $\mathbb F_q$ is zero).
+\end{enumerate}
+
+$f_\sigma$ is the unique polynomial in $\mathbb F_q$ with these
+two properties and it is called the \emph{permutation polynomial of $\sigma$}.
+
+Permutation polynomials have increasingly attracted the attentions of various researchers
+in the past couple of decades. We suggest the inspiring survey papers by Rudolf Lidl and
+Gary Mullen \cite{M}, \cite{LM1} and \cite{LM2}
+for an introduction to the subject.
+
+Various cryptographic applications, including a key
+exchange protocol for public key cryptography based on permutation polynomials have been
+proposed.
+(see J. Levine and Joel V. Brawley \cite{LB} and R. Lidl and W. M\"uller \cite{LMu}).
+
+In their paper of 1988, Rudolf Lidl and Gary Mullen \cite{LM1}
+discuss a number of open problems regarding permutation
+polynomials. Among these, problem P6 asks to determine the number
+$N_d(q)$ of permutation polynomials of degree $d$ where $1\leq
+d\leq q-2$ and $d\nmid q-1$. This seems to be a difficult problem
+at the moment. Some partial results were given by Wells in
+\cite{W}. We will state his results later. See also the paper of
+Sergey Konyagin and the second author \cite{KP} and the results by
+Pinaki Das \cite{Das}.
+
+For a given permutation $\sigma$ of $\mathbb F_q$, let us denote by
+$S_\sigma$ the set of elements of $\mathbb F_q$ that are moved by $\sigma$. Note that
+if $\sigma$ and $\sigma'$ are conjugated, then $\#S_\sigma=\# S_{\sigma'}$.
+
+If $\sigma$ is not the identity we have that $\partial(f_\sigma)\geq q-\#S_\sigma$.
+To see this it is enough to note that the polynomial $f_\sigma(x)-x$ has as roots all the elements
+of $\mathbb F_q$ which are not in $S_\sigma$. Therefore, if not identically zero, $f_\sigma$ has to have degree at
+least $q-\#S_\sigma$.
+
+Let $\mathcal C$ be a conjugation class of permutations of a finite field $\mathbb F_q$ and
+$c(\mathcal C)$ the number of elements of $\mathbb F_q$ moved by any permutation in $\mathcal C$
+(that is: $c(\mathcal C)=\#S_\sigma$ for any $\sigma\in \mathcal C$).
+As we just noticed, for any $\sigma\in\mathcal C$,
+\begin{equation}\label{degfund}
+q-2\geq \partial(f_\sigma)\geq q-c(\mathcal C).
+\end{equation}
+
+An immediate consequence is that all transpositions have polynomials
+with degree $q-2$ while the degree of a $3$--cycle can be $q-2$ or $q-3$.
+
+In the first paper of this series \cite{CP} we dealt
+with the problem of determining $l_{\mathcal C}(\mathbb F_q)$,
+defined as the number of permutation polynomials associated to permutations
+in the class $\mathcal C$ whose degree is strictly less then $q-2$.
+There we obtained a number of formulas and estimates. For classes of permutations
+that move up to 6 elements we have computed closed formulas for $l_{\mathcal C}(\mathbb F_q)$.
+These results extend those of Wells.
+
+In this paper  we consider
+$$M_{\mathcal C}(\mathbb F_q)=\left\{\sigma\in\mathcal C\ |\ \partial(f_\sigma)=q-\#S_\sigma\right\}$$
+(i.e. the permutations in
+$\mathcal C$ for which the permutation polynomial has the minimum possible degree  $q-c(\mathcal C)$) and set $m_{\mathcal C}(q)=\# M_{\mathcal C}(\mathbb F_q)$.
+
+Let us also denote by $[k]$ the class consisting of all the
+$k$--cycle permutations of $\mathbb F_q$.
+
+\begin{Theorem} \label{ciclotomico} Let $\varphi$ be the Euler totient function.
+If  $q\equiv1(\bmod k)$ then
+$$m_{[k]}(q)\geq \frac{\varphi(k)}{k} q(q-1).$$
+\end{Theorem}
+
+Next we will show the upper bound
+
+\begin{Theorem}\label{geometrico} Suppose
+$\operatorname{char}(\mathbb F_q)>e^{(k-3)/e}$. Then
+$$m_{[k]}(q)\leq \frac{(k-1)!}{k}q(q-1).$$
+\end{Theorem}
+
+The hypothesis $\operatorname{char}(\mathbb F_q)>e^{(k-3)/e}$ in Theorem~\ref{geometrico} rules
+out the interesting case when $k$ has approximately the same size
+as $q$. Our proof breaks down for these values of $k$. However we are convinced
+that the upper bound for $m_{[k]}(q)$ holds for any value of $k<q$.
+
+In general, if $\mathcal C$ is any
+conjugation class of permutations then an analogous
+upper bound as the one in Theorem~\ref{geometrico} can be proved
+for $m_{\mathcal C}(q)$.
+In some cases the bounds are stronger.
+We have decided to restrict ourselves to the case of cycle permutations.
+
+We will prove Theorem~\ref{geometrico} in Section 3, Theorem~\ref{ciclotomico} in section 4.
+Section 5 is dedicated to examples. We will consider
+$k$--cycles ($k=3,4,5,6$) and give detailed description of $m_{[k]}(q)$
+in these special cases. In the last
+section we investigate Galois properties of the algebraic sets $\mathcal A_k$ (see (\ref{algsets})).
+
+\section{Reduction to normalized permutations}
+
+A permutation $\sigma$ of $\mathbb F_q$ is said to be
+\emph{normalized}\footnote{Note that this definition of
+\emph{normalized permutation} is different from the usual one
+where a permutation polynomial $f(x)\in\mathbb F_q[x]$ is said
+normalized if it is monic, such that $f(0) = 0$ and when the
+degree $n$ of $f$ is not divisible by the characteristic $p$ the
+coefficient of $x^{n-1}$ is $0$.} if $\sigma(0)=1$. We denote by
+$N_{\mathcal C}(\mathbb F_q)$ the set of normalized permutations
+of $\mathcal C$ that have (minimal) degree $q-c(\mathcal C)$ and
+we set $n_{\mathcal C}(q)=\#N_{\mathcal C}(\mathbb F_q)$.
+
+\begin{Proposition}\label{normal} With the above notations
+we have
+$$m_{\mathcal C}(q)=\frac{1}{c(\mathcal C)}q(q-1)n_{\mathcal C}(q).$$
+Hence if $m_{\mathcal C}(q)\neq0$, then
+$$m_{\mathcal C}(q)\geq \frac{1}{c(\mathcal C)}q(q-1).$$
+\end{Proposition}
+
+\noindent\textbf{Proof.} Let $\mathbb A^1(\mathbb F_q)$ be the
+group of affine transformations of $\mathbb F_q$, that is the
+group of applications
+$$L_{a,b}:\mathbb F_q \rightarrow \mathbb F_q, x\mapsto ax+b.$$
+It is clear that $\#\mathbb A^1(\mathbb F_q)=q(q-1)$.
+
+Consider the map
+$$\begin{array}{rcl}
+\Pi: \mathbb A^1(\mathbb F_q)\times N_{\mathcal C}(\mathbb F_q) & \rightarrow &  M_{\mathcal C}(\mathbb F_q)\\
+\left(L_{a,b},\sigma\right) & \mapsto & (L_{a,b}^{-1}\sigma L_{a,b}).\end{array}$$
+Clearly $\Pi$ is well defined since
+$$\partial((L_{a,b}^{-1}f_\sigma L_{a,b}(x))=\partial( a^{-1}(f(ax+b)-b))=\partial(f_\sigma).$$
+Furthermore $\Pi$ is surjective. This follows from the fact that,
+given $\tau\in M_{\mathcal C}(\mathbb F_q)$, chosen $b\in S_\tau$
+and set $a=\tau(b)-b$, we have that $L_{a,b}^{-1}\tau L_{a,b}$ is
+normalized and therefore
+$$\tau=\Pi(L_{a,b}^{-1},L_{a,b}^{-1}\tau L_{a,b}).$$
+To complete the proof we need to show that for every $\tau\in M_{\mathcal C}(\mathbb F_q)$,
+the fibre $\Pi^{-1}(\tau)$ has exactly $c(\mathcal C)$ elements. Indeed consider the map
+$$\begin{array}{rcl}
+\Sigma: S_\tau & \rightarrow & \Pi^{-1}(\tau)\\
+      b & \mapsto & (L_{a,b}^{-1},L_{a,b}^{-1}\tau L_{a,b})\end{array}$$
+where $a=\tau(b)-b$. It is clear that $\Sigma$ is well defined and injective.
+Furthermore $\Sigma$ is also surjective since if $(L_{c,d},\sigma)\in \Pi^{-1}(\tau)$,
+then $$\tau(-d/c)=L_{c,d}^{-1}\sigma L_{c,d}(-d/c)=L_{c,d}^{-1}\sigma(0)=(1-d)/c.$$
+Therefore $-d/c\in S_\tau$, $1/c=\tau(-d/c)-(-d/c)$ and
+$$\Sigma(-d/c)=(L_{c,d},\sigma).$$
+Finally $\#\Pi^{-1}(\tau)=\# S_\tau=c(\mathcal C)$
+and this concludes the proof.\hfill$_\Box$\bigskip
+
+\noindent\textbf{Remark.} The previous proposition allows us to reduce the problem of computing
+$m_{\mathcal C}(\mathbb F_q)$ to the easier one of computing $n_{\mathcal C}(\mathbb F_q)$.
+Indeed since $c([k])=k$, Theorem~\ref{geometrico} is equivalent to $n_{[k]}(\mathbb F_q)\leq (k-1)!$ and Theorem~\ref{ciclotomico} is equivalent to $n_{[k]}(\mathbb F_q)\geq\varphi(k)$
+for $q\equiv 1\pmod k$.
+
+\section{From normalized permutation polynomials to affine algebraic sets. Proof of Theorem~\ref{geometrico}.}
+
+Let us write
+$$f_\sigma(x)=A_{q-1}+A_{q-2}x+\cdots+A_{1}x^{q-2}.$$
+{From} definition (\ref{primadef}) it follows that for every $i=1,\ldots,q-2$,
+
+$$A_i=A_i(\sigma)=(-1)^{i+1} \binom{q-1}{i}
+\sum_{c\in\mathbb F_q}\sigma(c)c^i.$$
+
+It is well known (see for example \cite[Exercise 7.1]{LN}) that
+for $0\leq i\leq q-1$, $(-1)^{i+1} \binom{q-1}{i} =-1$ in $\mathbb
+F_q$. Furthermore using the identity (see for example \cite[Lemma
+6.3]{LN}),
+$$\sum_{c\in\mathbb F_q}c^{i+1}=0$$
+for $i<q-2$, we deduce that
+$$A_i(\sigma)=\sum_{c\in\mathbb F_q}c^i(c-\sigma(c))=\sum_{c\in S_\sigma}c^i(c-\sigma(c)).$$
+{From} these observations it follows that
+$$m_{\mathcal C}(q)=\#\left\{\sigma\in\mathcal C\ \text{such that} \sum_{c\in S_\sigma}c^i(c-\sigma(c))=0\
+\text{ for }\ i=1,\ldots,c(\mathcal C)-2\right\}.$$
+
+Let us now specialize to the case when $\sigma$ is a normalized
+$k$--cycle:
+$$\sigma=(0,\ 1,\ a_{1},\ a_{2},\ \cdots,\ a_{k-2}).$$
+In this case
+$$A_i(\sigma)=(1-a_1)+a_1^i(a_1-a_2)+\cdots+a_{k-3}^i(a_{k-3}-a_{k-2})+a_{k-2}^{i+1}.$$
+
+For $i=1,\ldots,k-2$, define the polynomial with integer coefficients:
+\begin{equation}\label{prime}
+G_{i}(x_1,\ldots,x_{k-2})=1-x_1+\sum_{j=1}^{k-3}x_{j}^i(x_{j}-x_{j+1})+x_{k-2}^{i+1}
+\in\mathbb Z[x_1,\ldots,x_{k-2}]\end{equation}
+
+The degree $\partial(f_\sigma)=q-\#S_\sigma$ if and only if
+$$A_1(\sigma)=\cdots=A_{k-2}(\sigma)=0$$
+Therefore
+\begin{equation}\nonumber
+n_{[k]}(q)=\#
+\left\{\underline{x}\in(\mathbb F_q\setminus\{0,1\})^{k-2}\  \genfrac{}{}{0pt}{}{\text{such that } G_{1}(\underline{x})=\cdots=G_{k-2}(\underline{x})=0}
+{\text{and all the components of }\ \underline{x}\ \text{ are distinct}}
+\right\}.\end{equation}
+
+We are naturally lead to consider the affine algebraic set $\mathcal A_k$ in
+$\mathbb A^{k-2}$ defined by the equations:
+\begin{equation}\mathcal A_k:\label{algsets}
+\left\{\begin{array}{rcl}
+(1-x_1)+x_1(x_1-x_2)+\cdots +x_{k-3}(x_{k-3}-x_{k-2})+x_{k-2}^{2}& = &0\\
+(1-x_1)+x_1^2(x_1-x_2)+\cdots +x_{k-3}^2(x_{k-3}-x_{k-2})+x_{k-2}^{3}& = &0\\
+& \vdots & \\
+(1-x_1)+x_1^{k-2}(x_1-x_2)+\cdots+ x_{k-3}^{k-2}(x_{k-3}-x_{k-2})+x_{k-2}^{k-1}& = &0
+\end{array}\right.\end{equation}
+Clearly $\mathcal A_k$ is defined over $\mathbb Z$ and therefore over any
+field.
+
+We can also write that
+\begin{equation}\label{citato}
+n_{[k]}(q)=\# \left\{\underline{x}\in\mathcal A_{k}(\mathbb F_q)
+\text{ with components not in } \{0,1\}, \text{ and all
+distinct}\right\}.
+\end{equation}
+
+\begin{Theorem}\label{Lucia} Let $\mathbf K$ be any algebraic closed fields
+and $k\in \mathbb N$ be an integer such that either char$(\mathbf K)=0$
+or char$(\mathbf K)> e^{(k-3)/e}$.
+Then we have that the algebraic variety dimension
+$$\dim_{\mathbf K}(\mathcal A_k)=0.$$
+\end{Theorem}
+
+\noindent\textbf{Remark.} Note that the hypothesis char$(\mathbf K)> e^{(k-3)/e}$ is not redundant.
+In fact it can be seen that, if $p=\operatorname{char}(\mathbf K)$
+is fixed, then
+$$\lim_{k\rightarrow\infty}\dim_{\mathbf K}(\mathcal A_k)=+\infty.$$
+\medskip
+
+\begin{Corollary} Let $\mathbf K$ be any algebraic closed fields
+and $k\in \mathbb N$ be an integer such that either char$(\mathbf
+K)=0$ or char$(\mathbf K)> e^{(k-3)/e}$. Then
+$$\#\mathcal A_k({\mathbf K})= (k-1)!$$
+where the points are counted with multiplicity.
+\end{Corollary}
+
+\noindent\textbf{Proof of the Corollary} We apply the Theorem of
+Bezout (see for example the book of J. Harris \cite{Har}) which
+states that if $k-2$ hyper-surfaces in $\mathbb
+P^{k-2}(\overline{\mathbf K})$ do intersect in a zero dimensional
+sub-variety of  $\mathbb P^{k-2}(\overline{\mathbf K})$, then the
+number of points that they have in common is given by the product
+of the degrees of the equations. In our case the product of the
+degrees is $2\cdot3\cdots (k-1)$ and since none of the points is
+``at infinity'' we have the claim.\hfill$_\Box$\medskip
+
+In order to prove Theorem~\ref{Lucia}, we will need the following
+three auxiliary lemmas:
+
+\begin{Lemma} \label{luciachi} Let $\mathbf K$ be any field and let
+$X_1,\ldots,X_n\in\mathbf K^*$.
+The linear system
+$$
+\left\{\begin{array}{rcl}
+X_1U_1+\cdots+X_nU_n & = & 0\\
+X_1^2U_1+\cdots+X_n^2U_n & = & 0\\
+ &\vdots & \\
+X_1^nU_1+\cdots+X_n^nU_n & = & 0\\
+U_1+\cdots+U_n &=&X_1
+\end{array}\right.$$
+has no solutions $(U_1,\ldots,U_n)$ in $\mathbf K^n$.
+\end{Lemma}
+
+\noindent\textbf{Proof of Lemma~\ref{luciachi}.}
+The proof is done by induction on $n$. If $n=1$, then
+the conditions $X_1U_1=0$ and $U_1=X_1$ imply
+that $X_1=0$. Therefore no solution exists.
+Assume $n\geq2$.
+
+Let $A$ be the matrix of the coefficients of the first $n$
+equations. Expanding the Vandermonde determinant we obtain:
+$$\det(A)=X_1\cdots X_n\prod_{i>j}(X_i-X_j).$$
+If the system of equations admits a solution $(u_1,\ldots,u_n)$,
+then not all the $u_i's$ can be equal to $0$ otherwise the last
+equation cannot be satisfied. Therefore the homogeneous system
+given by the first $n$ equations has to have a non trivial
+solution. This implies that $\det(A)=0$ and therefore $X_i= X_j$
+for some $i\neq j$. Let us assume without loss of generality that
+$X_n=X_{n-1}$. Now $(u_1,\ldots,(u_{n-1}+u_n))$ is a solution of
+the system
+$$
+\left\{\begin{array}{rcl}
+X_1U_1+\cdots+X_{n-1}U_{n-1} & = & 0\\
+X_1^2U_1+\cdots+X_{n-1}^2U_{n-1} & = & 0\\
+ &\vdots & \\
+X_1^{n-1}U_1+\cdots+X_{n-1}^{n-1}U_{n-1} & = & 0\\
+U_1+\cdots+U_{n-1} &=&X_1
+\end{array}\right.$$
+which is a contradiction to the inductive hypothesis.\hfill$_\Box$\medskip
+
+
+\begin{Lemma} \label{topo} Let $A=(a_{ij})$ be a $t\times t$ matrix with integer
+entries such that the following properties hold:
+\begin{enumerate}
+\item For all $i,j=1,\ldots,t$, $i\neq j$, $a_{ii}>0$, $a_{ij}\leq
+0$ (i.e. the elements in the diagonal of $A$ are strictly positive
+and those outside are negative); \item For every $i=1,\ldots,t$
+there exists $j\neq i$ such that $a_{ij}\neq0$ (i.e. every row has
+a a least a non zero entry outside the diagonal); \item For every
+$j=1,\ldots,t$, $\displaystyle{\sum_{i=1}^t a_{ij}}\geq0$ and
+there exists $j$ with $\displaystyle{\sum_{i=1}^t a_{ij}}>0$ (i.e.
+the sum of the elements in every column is positive and for at
+least one column is strictly positive).
+\end{enumerate}
+Then
+$$0<\det(A)\leq a_{11}\cdots a_{tt}.$$
+\end{Lemma}
+
+\noindent\textbf{Proof of Lemma~\ref{topo}.} We proceed by induction on $t$.
+
+If $t=2$, then $A=\left(\begin{array}{cc}
+a_{11}&a_{12}\\ a_{21}&a_{22}
+\end{array}\right)$ and
+$\det(A)=a_{11}a_{22}-a_{21}a_{12}.$ By the third hypothesis we
+have that $a_{11}\geq -a_{21}$, $a_{22}\geq -a_{12}$ and one of
+the two inequalities is a strict one. Therefore, since by property
+\textit{1}, $-a_{21}\geq0$ and $-a_{12}\geq0$, we have
+$$a_{11}a_{22}>a_{21}a_{12}.$$
+Finally $\det(A)>0$. The inequality $\det(A)\leq a_{11}a_{22}$ follows
+from the first hypothesis.
+
+Assume now that $t\geq3$ and also assume without loss of
+generality that $\displaystyle{\sum_{i=1}^ta_{i1}}\geq1$. If
+$A_1,A_2,\ldots A_t$ are the rows of $A$, then consider that
+matrix:
+$$\left(\begin{array}{c}
+A_1\\ a_{11}A_2- a_{21}A_1\\
+\vdots \\ a_{11}A_t-a_{t1}A_1\end{array}\right)=
+\left(\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1t}\\
+0 & & &\\
+\vdots && B & \\
+0 & & &
+\end{array}\right)
+$$
+where
+$B=(b_{ij})$, $i,j=2,\ldots,t$ and
+$$b_{ij}=a_{11}a_{ij}-a_{i1}a_{1j}.$$
+It is clear that $a_{11}^{t-1}\det(A)=a_{11}\det(B)$.
+We claim that $B$ verifies the hypothesis of the Lemma and
+therefore, as $a_{j1}a_{1j}\ge0$ for $j=2\ldots t$, by induction
+$$0<\det(B)\leq (a_{11}a_{22}-a_{21}a_{12})\cdots
+(a_{11}a_{tt}-a_{t1}a_{1t})\leq a_{11}^{t-1}a_{22}\cdots a_{tt}$$
+and this implies the claim.
+
+Let us check that $B$ verifies the hypothesis of the Lemma:
+\begin{enumerate}
+\item Since
+$\displaystyle{\sum_{i=1}^ta_{i1}}\geq1$, for every $i=2,\ldots t$,
+$a_{11}>-a_{i1}$. Furthermore $a_{ii}\geq -a_{1i}$, therefore
+$$b_{ii}=a_{11}a_{ii}-a_{i1}a_{1i}>0$$
+Also $b_{ij}=a_{11}a_{ij}-a_{i1}a_{1j}\leq0$ (if $i\neq j$) since
+it is the sum of two negative numbers. \item For every
+$i=2,\ldots,t$, let $j\neq i$ be such that $a_{ij}\neq0$. Then
+$b_{ij}\leq a_{11}a_{ij}<0$ is also non--zero. \item Consider
+$$\sum_{i=2}^t b_{ij}=a_{11}\sum_{i=2}^t a_{ij}-a_{1j}
+\sum_{i=2}^t a_{i1}\geq -a_{11}a_{1j}-a_{1j}(1-a_{11})=
+-a_{1j}.$$
+Therefore $\sum_{i=2}^t b_{ij}\geq0$ for all $j=2,\ldots,t$ and if
+$j$ is such that $a_{1j}\neq0$, then $\sum_{i=2}^t b_{ij}>0$.
+\end{enumerate}
+This concludes the proof.\hfill$_\Box$\medskip
+
+The following lemma is a standard application of Calculus
+
+\begin{Lemma}\label{max} If $T\in\mathbb N$ is given, then
+$$\max\left\{x_1\cdots x_s\ |\ x_1,\ldots,x_s\in\mathbb N_{\geq2},\ x_1+\cdots+x_s\leq T\right\}\leq e^{T/e}$$
+where $e$ is the Napier constant.
+\end{Lemma}
+
+\noindent{\textbf{Proof of Lemma~\ref{max}}} Since the arithmetic mean always
+bounds the geometric mean, we have
+$$x_1\cdots x_s\leq \left(\frac{x_1+\cdots+x_s}{s}\right)^s\leq
+\left(\frac{T}{s}\right)^s.$$
+The real variable function on the right hand side above has a maximum for
+$s=T/e$. The result follows from the fact that for $T\geq3$,
+$$\max\{\left(\frac{T}{[T/e]}\right)^{[T/e]},\left(\frac{T}{[T/e]+1}\right)^{[T/e]+1}\}\leq e^{T/e}.\hfill_\Box$$\medskip
+
+\noindent\textbf{Proof of Theorem~\ref{Lucia}.} The proof will proceed as follows:
+We denote by $\mathcal V_k$ the projective variety in $\mathbb P^{k-2}$
+corresponding to $\mathcal A_k$.
+\begin{scriptsize}
+\begin{equation}\mathcal V_k:\label{secondeequazioni}
+\!\left\{\!\!\begin{array}{rl}
+X_0(X_0-X_1)+X_1(X_1-X_2)+\cdots +X_{k-3}(X_{k-3}-X_{k-2})+X_{k-2}^{2}&=0\\
+X_0^2(X_0-X_1)+X_1^2(X_1-X_2)+\cdots +X_{k-3}^2(X_{k-3}-X_{k-2})+X_{k-2}^{3}&=0\\
+& \vdots \\
+X_0^{k-2}(X_0-X_1)+X_1^{k-2}(X_1-X_2)+\cdots+ X_{k-3}^{k-2}(X_{k-3}-X_{k-2})+X_{k-2}^{k-1}&=0
+\end{array}\right.\end{equation}
+\end{scriptsize}
+
+To prove that $\mathcal V_k(\overline{\mathbf K})$ is
+$0$-dimensional. we will show that it has no points of
+intersection with the projective hyper-plane ``at infinity''
+$X_0=0$. Indeed note that if $\mathcal V_k(\overline{\mathbf K})$
+contains a positive dimensional sub-variety, then it has to have
+non empty intersection with any plane. In particular, if we
+substitute $X_0=0$ in (\ref{secondeequazioni}) we should obtain
+some nontrivial solutions. We will see that this is impossible and
+that the only solution is $(X_1,\ldots,X_{k-2})=(0,\ldots,0)$.
+
+Assume that $k>3$, otherwise the statement can be verified directly and also
+follows from the work of Wells \cite{W} (see (\ref{wello}) below) and let $n=k-2$.
+If $n=2$, then we have the equation
+$$\left\{\begin{array}{l}
+X_1^2-X_1X_2+X_2^2=0\\
+X_1^3-X_1^2X_2+X_2^3=0
+\end{array}\right.$$
+which is quickly seen to have as solutions only $(X_1,X_2)=(0,0)$ over
+any field.
+
+Assume $n\geq3$ and let $(X_1,\ldots,X_{n})\neq(0,\ldots,0)$ be
+a non trivial solution. We can assume that $X_1\neq0$ otherwise
+we would have a non trivial solution $(X_2,\ldots,X_{n})$
+that we rule out by induction. For the same reason we can assume that
+$X_n\neq0$ and that $X_i\neq X_{i+1}$ for $i=1,\ldots,n-1$.
+
+Let us rewrite the equations in the following way:
+
+$$\left(\begin{array}{cccc}
+X_1 & X_2 & \cdots & X_n\\
+X_1^2& X_2^2&\cdots & X_n^2\\
+\vdots & &\cdots & \vdots\\
+X_1^n & X_2^n & \cdots & X_n^n
+\end{array}\right)\cdot\left(
+\begin{array}{ccccc}1& -1 & 0 & \cdots & 0\\
+                   0& 1 & -1 & \cdots & 0\\
+                   \vdots & & \ddots  & \vdots & \vdots\\
+                   0& 0 &\cdots & 0 & 1\end{array}
+\right)\cdot\left(
+\begin{array}{c}X_1\\X_2\\\vdots\\X_n\end{array}
+\right)=
+\left(\begin{array}{c}0\\0\\\vdots\\0\end{array}\right).$$
+
+Note that the first matrix has determinant
+$$X_1\cdots X_n\cdot\prod_{i>j}(X_i-X_j)$$
+while the second has determinant $1$.
+
+This immediately implies that the first matrix has to have
+determinant equal to $0$ otherwise we would obtain the
+contradiction  that $(X_1,\ldots,X_{n})=(0,\ldots,0)$
+
+By setting $U_i=X_i-X_{i+1}$, if $i<n$ and $U_n=X_n$, and applying
+Lemma~\ref{luciachi}, we obtain that at least one
+of the $X_i=0$.
+
+Now let us relabel the set $\{X_1,X_2,\ldots,X_n\}\subseteq\mathbf K$
+as $\{y_1,y_2,\ldots,y_t,0\}$ in such a way that
+\begin{enumerate}
+\item $y_1,\ldots,y_t$ are all distinct;
+\item $y_1,\ldots,y_t$ are all not zero;
+\item For every $s\in\{1,\ldots,n\}$ there exists $i\in\{1,\ldots,t\}$ such
+that $X_s=y_i$.
+\end{enumerate}
+
+Let us also assume that $y_1=X_1$ and note that $t\leq n-1$.
+Now consider the first $t$ equations of (\ref{secondeequazioni})
+and replace $(X_1,\ldots,X_n)$ with
+ $(y_1,\ldots,y_t)$, so that
+
+\begin{equation}\label{newrels}\left\{\begin{array}{lcr}
+y_1L_1(y_1,\ldots,y_t)+\cdots+y_tL_t(y_1,\ldots,y_t) &=&0\\
+&\vdots&\\
+y_1^tL_1(y_1,\ldots,y_t)+\cdots+y_t^tL_t(y_1,\ldots,y_t) &=&0\\
+\end{array}
+\right.\end{equation}
+where for $i=1,\ldots,t$,
+$$L_i(y_1,\ldots,y_t)=\sum_{j=1}^t a_{ij}y_j$$
+and
+\begin{equation}\label{idea}
+a_{ij}=\left\{
+\begin{array}{lr}
+ \#\{s\in\{1,\ldots,n\}\ |\ X_s=y_i\} & \text{if } i=j;\\
+\\
+-  \#\{s\in\{1,\ldots,n-1\}\ |\ X_s=y_i, X_{s+1}=y_j\} & \text{if } i\neq j.
+\end{array}
+\right.
+\end{equation}
+Let $A=(a_{ij})$ be the $t\times t$ matrix with integer entries defined by
+(\ref{idea}) and $\hat{A}$ be the matrix obtained by $A$ and reducing
+the entries in $\mathbf K$ where we assume that either $\operatorname{char}(\mathbf K)=0$ or $\operatorname{char}(\mathbf K)>e^{(k-3)/e}$.
+
+Note that $a_{ii}\geq2$ otherwise one
+row of $A$ would contain only one $1$ and possibly one $-1$ and this
+would imply the contradiction that either two $y_i's$ are equal
+or one $y_i$ is zero.
+
+The relations (\ref{newrels}) can be written
+as
+$$\left(\begin{array}{ccc}
+y_1 &  \cdots & y_t\\
+y_1^2& \cdots & y_t^2\\
+\vdots  &\cdots & \vdots\\
+y_1^t & \cdots & y_t^t
+\end{array}\right)\cdot
+\hat{A}\cdot
+\left(
+\begin{array}{c}y_1\\y_2\\\vdots\\y_t\end{array}
+\right)=
+\left(\begin{array}{c}0\\0\\\vdots\\0\end{array}\right).$$
+Since the first matrix has determinant
+$$y_1\cdots y_t\prod_{i>j}(y_i-y_j)\neq0,$$
+we deduce that
+$$\hat{A}\cdot
+\left(
+\begin{array}{c}y_1\\y_2\\\vdots\\y_t\end{array}
+\right)=
+\left(\begin{array}{c}0\\0\\\vdots\\0\end{array}\right).$$
+we want to obtain a contradiction by showing that $\det(\hat{A})\neq 0$.
+We will do this by applying Lemma~\ref{topo} to $A$ which will give
+$$0<\det A\leq a_{11}\cdots a_{tt}$$
+and since
+$$\sum_{i=1}^ta_{ii}=\#\{s\in\{1,\ldots,n\}\ |\ X_s\neq0\}\leq n-1=k-3,$$
+we have by Lemma~\ref{max} that
+$$0<\det A \leq e^{(k-3)/e}< \operatorname{char}(\mathbf K).$$
+Therefore $\det(\hat{A})\neq0$ which implies the claim.
+
+The only thing left to show is that $A$ satisfies the hypothesis
+of Lemma~\ref{topo}: the first hypothesis is immediately verified
+by the definition of the matrix $A$ in (\ref{idea}). Similarly the
+second hypothesis follows from the fact that if all the elements
+outside the diagonal were $0$ this would imply that
+$a_{ii}y_i=0\in\mathbf K$ and since
+$a_{ii}<n<\operatorname{char}(\mathbf K)$, $a_{ii}\neq0$ would
+give a contradiction.
+
+Let us check that the third hypothesis holds. Indeed by (\ref{idea}),
+$${\sum_{i=1}^t a_{ij}}=\#\{s\in[2,\ldots,n]\ |\ X_{s}=y_j, X_{s-1}=0\}+\epsilon_j\geq0.$$
+where $\epsilon_j=1$ if $j=1$ and $0$ otherwise. It follows that the sum
+of the elements in the first column is strictly positive.
+This concludes the proof of the Theorem.\hfill$_\Box$\medskip
+
+\noindent\textbf{Proof of Theorem~\ref{geometrico}.}
+Apply the Corollary to Theorem~\ref{Lucia} with
+$\mathbf K=\overline{\mathbb F}_q$.
+For char($\mathbb F_q)>e^{(k-3)/e}$, we have the bound
+$$\#\mathcal A_k(\mathbb F_q)\leq \#\mathcal A_k(\overline{\mathbb F}_q)= (k-1)!$$
+
+Finally, from (\ref{citato}) and from Proposition~\ref{normal} we obtain
+$$m_{[k]}(q)= \frac{q(q-1)}{k}n_{[k]}(q)
+\leq \frac{q(q-1)}{k}\#\mathcal A_k({\mathbb F}_q)
+\leq \frac{(k-1)!}{k}q(q-1).$$
+and this concludes the proof of Theorem~\ref{geometrico}.\hfill$_\Box$\medskip
+
+
+\section{Cyclotomic permutation polynomials. Proof of Theorem~\ref{ciclotomico}}
+
+We want to prove Theorem~\ref{ciclotomico} by producing, in the
+case $q\equiv1\pmod k$, $\varphi(k)$ distinct normalized
+$k$--cycles in $N_{[k]}(\mathbb F_q)$.
+
+Let us start noticing that the condition $q\equiv1\pmod k$ implies
+that $\mathbb F_q$ contains all the $k$-th roots of unity and that
+they are all distinct. Denote by $\zeta$ a primitive $k$-th root
+of unity in ${\mathbb F}_q$. Consider the normalized $k$-cycle:
+$$\sigma_\zeta=\left(0,\ 1,\ \ (1+\zeta),\ \ \cdots,
+ \ \  (1+\zeta+\cdots +\zeta^{k-2})\right).$$
+Clearly as $\zeta$ varies among the $\varphi(k)$ primitive
+$k$--roots of unity, we obtain distinct normalized $k$--cycles. We
+want to check that $\partial(f_{\sigma_\zeta}) =q-k$ (i.e.
+$\sigma_\zeta\in N_{[k]}(\mathbb F_q)$).
+
+Let us compute,  for $i=1,\ldots,k-2$,
+$$\begin{array}{rl}
+A_i(\sigma_\zeta)=& G_{i}((1+\zeta),\ldots,(1+\zeta+\cdots +\zeta^{k-2})) \\
+&\\
+=&-\left({\sum_{j=0}^{k-3}}\zeta^{j+1}
+(1+\zeta+\cdots+\zeta^{j})^i\right)+\left(1+\zeta+\cdots+\zeta^{k-2}\right)^{i+1}\\
+&\\
+  =& \frac{-1}{(\zeta-1)^i}\left(\displaystyle{\sum_{j=0}^{k-3}}
+\zeta^{j+1}(\zeta^{j+1}-1)^i-\frac{(\zeta^{k-1}-1)^{i+1}}{\zeta-1}\right)\\
+&\\
+ =& \frac{-1}{(\zeta-1)^i}\left(\displaystyle{\sum_{j=0}^{k-3}} \zeta^{j+1}\sum_{t=0}^i
+\binom{i}{t}(-1)^{i-t}\zeta^{(j+1)t}\ -\frac{(\zeta^{k-1}-1)^{i+1}}{\zeta-1}\right).
+\end{array}$$
+Interchange the two sums of the last equation and observe that, since $t+1\leq i+1\leq k-1$
+and $\zeta$ is primitive, we have
+$$\sum_{j=0}^{k-3} (\zeta^{t+1})^j=\frac{\zeta^{(k-2)(t+1)}-1}{\zeta^{t+1}-1}.$$
+Therefore
+$$\begin{array}{rl}
+A_i(\sigma_\zeta)=&
+\frac{-1}{(\zeta-1)^i}\left(\displaystyle{\sum_{t=0}^i}\binom{i}{t}(-1)^{i-t}\zeta^{t+1}
+\frac{\zeta^{(k-2)(t+1)}-1}{\zeta^{t+1}-1}\ \ \ - \frac{(\zeta^{k-1}-1)^{i+1}}{\zeta-1}\right)
+\end{array}$$
+Now use the fact that $\zeta^{k-1}=\zeta^{-1}$. The above becomes
+$$\begin{array}{rl}
+A_i(\sigma_\zeta)=&
+\frac{-1}{(\zeta-1)^i}\left(\displaystyle{\sum_{t=0}^i}\binom{i}{t}(-1)^{i-t}\zeta^{1+t}\frac{\zeta^{-2(t+1)}-1}{
+\zeta^{t+1}-1}\ \ \ - \frac{(\zeta^{-1}-1)^{i+1}}{\zeta-1}\right)\\
+& \\
+=&\frac{-1}{(\zeta-1)^i}\left(\displaystyle{-\left(\sum_{t=0}^i\binom{i}{t}(-1)^{i-t}\zeta^{-t}\right)}\zeta^{-1}
+\ \ \ + \zeta^{-1}(\zeta^{-1}-1)^{i}\right)\\
+& \\
+=& \frac{1}{\zeta(\zeta-1)^i}\left(\displaystyle{\sum_{t=0}^i}\binom{i}{t}(-1)^{i-t}\zeta^{-t}\ \ \
+ -(\zeta^{-1}-1)^{i}\right)\\
+&  \\
+=& 0.
+\end{array}$$
+
+Finally, recalling that $\partial(f_\sigma)\geq q-c(\cal C)$, we have
+$\sigma_\zeta\in N_{[k]}(\mathbb F_q)$ for all primitive $\zeta$. Therefore
+$n_{[k]}(q)\geq \varphi(k)$ and by Proposition~\ref{normal},
+this concludes the proof of Theorem~\ref{ciclotomico}.\hfill$_\Box$\bigskip
+
+\noindent\textbf{Remark.} We will call the permutations
+$\sigma_\zeta$ \textit{cyclotomic permutations}. In the case
+$k=3$, Theorem~\ref{geometrico} gives that $N_{[3]}(\mathbb
+F_q)\leq \frac{2}{3}q(q-1)$ while Theorem~\ref{ciclotomico} gives
+that if $q\equiv1\pmod 3$, then $N_{[3]}(\mathbb
+F_q)\geq\frac{2}{3}q(q-1)$. Therefore all normalized $3$-cycles
+are cyclotomic permutations if $q\equiv1\pmod3$. On the other hand
+in 1969, C. Wells \cite{W} proved the formula
+\begin{equation}\label{wello}
+N_{[3]}(\mathbb F_q)=
+\left\{\begin{array}{lr}
+\frac{2}{3}q(q-1) & \textrm{if\ } q\equiv1\pmod3\\
+& \\
+0 & \textrm{if\ } q\equiv2\pmod3\\
+& \\
+\frac{1}{3}q(q-1) & \textrm{if\ } q\equiv0\pmod3\\
+\end{array}\right..
+\end{equation}
+Our results can be seen as generalizations of the above. Note that
+in \cite[page 50]{W}  there is a missprint in the case
+$q\equiv0\pmod3$ where the claim that $N_{[3]}(3^n)=3^n(3^n-1)$
+should be corrected into $N_{[3]}(3^n)=3^{n-1}(3^n-1)$ as all
+possible $3$-cycles permutations are
+$$(a,\ a+b,\ a-b)$$
+which for all choices of $a, b\in\mathbb F_{3^n}$ give rise to the
+above amount of permutations.
+
+\section{Numerical examples: the number of $k$--cycles with minimal degree for $k\leq 6$}
+
+In this Section we consider the specific examples of $4$, $5$ and
+$6$--cycles. The case of $3$--cycles has been analyzed with by
+Wells \cite{W} (see the Remark in the previous section).
+
+\subsection{Computation of $m_{[4]}(q)$}
+
+We will prove the following:
+
+\begin{Theorem}\label{uno4} Let $m_{[4]}(\mathbb F_q)$ be the number of $4$--cycle permutations
+of $\mathbb F_q$ such that their permutation polynomial has minimal degree $q-4$.
+Then, if $(q,10)=1$,
+$$m_{[4]}(\mathbb F_q)=\frac{1}{4}q(q-1)K_q$$
+where
+$$K_q=\left\{
+\begin{array}{rrll}
+6 & \textrm{if } q\equiv &1 &\pmod{20}\\
+4 & \textrm{if } q\equiv &11 &\pmod{20}\\
+2 & \textrm{if } q\equiv &9,13,17&\pmod{20}\\
+0 & \textrm{if } q\equiv & 3,7,19&\pmod{20}\\
+\end{array}\right.$$
+while
+$$m_{[4]}(\mathbb F_{5^n})=\frac{1}{2}{5^n}({5^n-1})$$
+and
+$$m_{[4]}(\mathbb F_{2^n})=\left\{\begin{array}{rl}
+{2^n}({2^n-1}) & \text{if $4|n$}\\
+0 & \text{otherwise.}\end{array}\right.
+$$
+\end{Theorem}
+
+\noindent\textbf{Remark.} {From} (\ref{degfund}) it follows that the degree of a $4$--cycle permutation polynomial
+can either be $q-2$, $q-3$
+or $q-4$. In \cite{CP} we proved that the number of $4$--cycle permutation polynomials over $\mathbb F_q$ with
+degree strictly less then $q-3$ is
+$$\frac{1}{4}q(q-1)t_q
+\ \ \text{ where }\ \
+t_q=\left\{\begin{array}{rl}
+q-11 & \text{if } q\equiv 1\pmod{12}\\
+q-3  & \text{if } q\equiv 5\pmod{12}\\
+q-7 & \text{if } q\equiv 7\pmod{12}\\
+q+1 1 & \text{if } q\equiv 11\pmod{12}\\
+(q-4)(1+(-1)^n) &  \text{if } q=2^n\\
+q-5-2(-1)^n &  \text{if } q=3^n
+\end{array}\right.$$
+
+This result together with Theorem~\ref{uno4} provides complete
+information of the number of $4$--cycles of each given
+degree.\bigskip
+
+\noindent\textbf{Proof of Theorem~\ref{uno4}.}
+{From} Proposition~\ref{normal}, we have that
+$$m_{[4]}(\mathbb F_q)=\frac{q(q-1)}{4}n_{[4]}(\mathbb F_q)$$
+and from (\ref{citato}) it follows that
+$$n_{[4]}(\mathbb F_q)
+\#\left\{(x,y)\in(\mathbb F_q\setminus\{0,1\})^2\ \left| {x\neq y},
+(x,y)\in\mathcal A_4(\mathbb F_q)\right.\right\}$$
+where
+$$\mathcal A_4:\left\{
+\begin{array}{r}
+(1-x)+x(x-y)+y^2=0\\
+\\
+(1-x)+x^2(x-y)+y^3=0\\
+\end{array}
+\right.$$
+
+The resultant $R$ with respect to the variable $y$ of the two
+equations defining $\mathcal A_4$ is
+$$\begin{array}{rl}
+R= &10\,{x}^{4}-4\,{x}^{5}+{x}^{6}+15\,{x}^{2}-15\,{x}^{3}-8\,x+2=\\
+= & \left ({x}^{2}-2\,x+2\right )\left
+({x}^{4}-2\,{x}^{3}+4\,{x}^{2}-3\,x +1\right ).\end{array}
+$$
+Now denote by $h_1(x)$ the first factor and by $h_2(x)$ the second. The resultant
+of $h_1$ and $h_2$ is equal to  $5$. Therefore, if $(q,5)=1$, $h_1$ and $h_2$
+will never have common roots.
+
+The number of roots of $h_1(x)$ is
+\begin{equation}\label{one}
+\left\{\begin{array}{rl}
+$0$ & \text{if $q\equiv 3\pmod 4$}\\
+$2$ & \text{if $q\equiv 1\pmod 4$}\\
+$1$ & \text{if $q$ is even}.\end{array}\right.\end{equation}
+Furthermore, if $q\equiv1\pmod4$ and $\iota=\sqrt{-1}$ is a
+primitive 4---th root of unity in $\mathbb F_q^*$, from the roots
+of $h_1$ we can construct the two points of $\mathcal A_4(\mathbb
+F_q)$
+\begin{equation}\label{ciclo4}
+(x_1,y_1)=(1+\iota,1+\iota+\iota^2),\ \ (x_2,y_2)=(1-\iota,1-\iota+\iota^2).
+\end{equation}
+These points give rise to the two distinct (normalized) cyclotomic
+permutations:
+$$
+(0,\ \ 1,\ \ (1+\iota),\ \ (1+\iota+\iota^2));\ \ \ (0,\ \ 1,\ \
+(1-\iota),\ \ (1-\iota+\iota^2)).$$ If $q$ is even, then the root
+$x=0$ of $h_1$ gives the point $(0,1)\in\mathbb F_{2^n}$ that
+leads to no permutation polynomials.
+
+Let us now deal with $h_2$. We claim that the number of roots of $h_2$ is
+\begin{equation}\left\{\label{two}\begin{array}{rl}
+$4$ & \text{if $q\equiv 1\pmod 5$}\\
+$1$ & \text{if $q\equiv 0\pmod 5$}\\
+$0$ & \text{otherwise.}\end{array}\right.\end{equation} Indeed a
+calculation shows that if $\zeta$ is a primitive $5$--th root of
+unity in $\mathbb F_q$, then
+$$h_2(x)=\prod_{i=1}^4\left (x-1-\zeta^i-{\zeta}^{2i}\right )$$
+while
+$$h_2(x)\equiv (x+2)^4\pmod5.$$
+Hence (\ref{two}) follows.
+
+If $q\equiv 1\pmod 5$  and $x_i$ is a root of $h_2$ then a
+computation shows that
+$y_i=1-2\,x_{{i}}+{x_{{i}}}^{2}-{x_{{i}}}^{3}$ is the only value
+for which $(x_i,y_i)\in\mathcal A_4(\mathbb F_q)$.
+
+The conditions $x_i=0$ or $x_i=1$ are never satisfied since
+$h_2(0)=1$ and $h_2(1)=1$ and the other conditions
+$$x_i=y_i,\ y_i=0,\ y_i=1$$
+are also never satisfied. This is easily checked by some
+computation. For example the condition $y_i=0$ can be checked by
+calculating the resultant between $h_2(x)$ and
+$1-2\,x+x^{2}-x^{3}$. This resultant is equal to $1$.
+
+Putting together (\ref{one}) and (\ref{two}), and working out the
+various congruence relations modulo $20$, we obtain the claim for
+characteristic different from $2$ and $5$.
+
+Let us now deal with the case when $q=5^n$. The two roots of
+$h_1(y)$ will provide the two points of $\mathcal A_4(\mathbb
+F_{5^n})$ $(3,2)$ and $(4,3)$, while
+$$h_2(x)=(x+2)^4$$
+has only one root $x_1=3$ which gives $y_1=2$, but the point
+$(2,3)\in\mathcal A_4(\mathbb F_{5^n})$ has already been counted.
+Therefore $\#\mathcal A_4(\mathbb F_{5^n})=2$.
+
+Finally let us deal with the case when $q=2^n$. The root $x=0$ of $h_1(x)$ has to be excluded and
+$h_2(x)$ provides $4$ distinct points if $2^n\equiv 1\pmod 5$ (i.e. $n|4$).
+
+This concludes the proof of the Theorem.\hfill$_\Box$\bigskip
+
+\noindent\textbf{Remark.} We want to summarize the process that we
+used to construct all the points in $\mathbb A_4(\mathbb F_q)$
+since we will adopt the same approach in the following examples.
+\begin{enumerate}
+\item We have decomposed
+$$\mathcal A_4(\overline{\mathbb F_q}) = \mathcal A_4(\mathbb F_q(\sqrt{-1}))
+\cup \mathcal A_4(\mathbb F_q(\zeta_5))$$
+where the union is disjoint except in the case $5|q$;
+\item We have checked that the coordinates of each point of $\mathcal A_4(\overline{\mathbb F_q})$ were distinct
+and different from $0$ or $1$. This has always been the case except when $2|q$.
+\item If $(q,10)=1$, then the number $m_{[4]}(q)$ is $q(q-1)/4$ times $n_1+n_2$ where $n_1$ is the number
+of points in $\mathcal A_4(\mathbb F_q(\sqrt{-1}))$ and $n_2$ is the number
+of points in $\mathcal A_4(\mathbb F_q(\zeta_5))$.
+\end{enumerate}
+
+Note that for every prime $p\neq 2,5$, $n_1$ is the number of prime ideals of $\mathbb Q(\sqrt{-1})$ over $p$ and
+$n_2$ is the number of prime ideals of $\mathbb Q(\zeta_5)$ over $p$. This property suggests to first look
+at $\mathcal A_4(\overline{\mathbb Q})$ and then consider the reduction in the various finite fields. We will follow this approach in the sequel.
+
+\subsection{Computation of $m_{[5]}(q)$.}
+
+We will prove the following:
+
+\begin{Theorem} Let $q$ be a power of a prime $p$ which is not
+in the set
+$$\{2, 13, 61, 3719, 3100067\}.
+$$
+Then
+$$m_{[5]}(\mathbb F_q)=\frac{q(q-1)}{5}s_q.$$
+Where
+$$s_q=r_q+t_q+u_q,\ t_q=\left\{
+\begin{array}{rl}
+4 & \text{if $q\equiv1\pmod 5$}\\
+1& \text{if $q\equiv0\pmod 5$}\\
+0 & \text{otherwise,}\end{array}
+\right.
+\ \ u_q=\left\{
+\begin{array}{rl}
+-1 & \text{if $p=11,41$}\\
+0 & \text{otherwise}\end{array}
+\right.
+$$
+and $r_q$ is the number of roots in $\mathbb F_q$ of the
+polynomial
+$$\begin{array}{rl}
+g_2(x)=&
+2\,{x}^{20}-29\,{x}^{19}+229\,{x}^{18}-1249\,{x}^{17}+5187\,{x}^{16}-\\
+&17222\,{x}^{15}+47040\,{x}^{14}-107505\,{x}^{13}+207622\,{x}^{12}-\\
+&340496\,{x}^{11}+474638\,{x}^{10}-560999\,{x}^{9}+559052\,{x}^{8}-\\
+&465487\,{x}^{7}+319628\,{x}^{6}-177653\,{x}^{5}+77807\,{x}^{4}-25797\,{x}^{3}+\\
+&6074\,{x}^{2}-904\,x+64
+\end{array}.$$
+\end{Theorem}
+
+\noindent{\textbf{Proof.}} Again we start from the formula:
+$$m_{[5]}(\mathbb F_q)=\frac{q(q-1)}{5}\#\{(x,y,z)\in
+\mathcal A_5(\mathbb F_q), x,y,z\not\in\{0,1\}, x\neq y\neq z\neq
+x\},$$ where
+$$\mathcal A_5:\left\{
+\begin{array}{r}
+H_1=(1-x)+x(x-y)+y(y-z)+z^2=0\\
+\\
+H_2=(1-x)+x^2(x-y)+y^2(y-z)+z^3=0\\
+\\
+H_3=(1-x)+x^3(x-y)+y^3(y-z)+z^4=0.\\
+\end{array}
+\right.$$ Let us first compute $\mathcal A_5(\overline{\mathbb
+Q})$.
+
+{From} Theorem~\ref{Lucia} we know that $\#\mathcal A_5(\overline{\mathbb Q})=24$.
+Furthermore $4$ points of $\mathcal A_5(\overline{\mathbb Q})$ are the cyclotomic
+ones
+\begin{equation}
+\label{ciclo5}
+(1+\zeta^j,1+\zeta^j+\zeta^{2j},1+\zeta^j+\zeta^{2j}+\zeta^{3j}),\ \ \zeta=e^{2\pi i/5}, j=1,2,3,4.
+\end{equation}
+We solve the system of equations defining $\mathcal A_5$ in the
+following way. Consider  $H_2-(z+y)H_1=0$ and note that we can
+solve it for $z$ obtaining
+\begin{equation}\label{one5}z={\frac {{x}^{3}-2\,{x}^{2}y+x{y}^{2}+xy-x-y+1}{{x}^{2}-xy+{y}^{2}-x+1}
+}
+\end{equation}
+Similarly, consider  $H_3-zH_2-y^2H_1=0$. Also here we can solve it for $z$
+obtaining:
+\begin{equation}\label{two5}
+z=
+{\frac {{x}^{4}-{x}^{3}y-{x}^{2}{y}^{2}+x{y}^{3}+x{y}^{2}-{y}^{2}-x+1}
+{{x}^{3}-{x}^{2}y+{y}^{3}-x+1}}
+\end{equation}
+Now, subtracting $H_3-z^2H_1-yH_2=0$, we can solve it for $z^2$
+obtaining:
+\begin{equation}\label{three5}
+z^2=
+{\frac {{x}^{4}-2\,{x}^{3}y+{x}^{2}{y}^{2}+x y-x-y+1}{{x}^{2}-x y+{y}^{2}-x+1}}
+\end{equation}
+Replacing $z^2$ in $H_1$ with the right hand side of
+(\ref{three5}) and $z$ with the right hand side of (\ref{one5}) we
+obtain (after simplification):
+\begin{equation}\label{four5}\begin{array}{r}
+ ({{x}^{4}-2\,{x}^{3}y+{x}^{2}{y}^{2}+x y-x-y+1})-y({{x}^{3}-2\,{x}^{2}y+x{y}^{2}+x y-x-y+1})
+\\
+(1-x+x(x-y)+y^2)^2 =0\end{array}
+\end{equation}
+Finally consider the equation obtained replacing $z$ in
+(\ref{one5}) by the right hand side of (\ref{two5})
+\begin{equation}\label{five5}
+    \begin{array}{rl}
+\left({{x}^{4}-{x}^{3}y-{x}^{2}{y}^{2}+x{y}^{3}+x{y}^{2}-{y}^{2}-x+1}\right)
+\left({{x}^{2}-x y+{y}^{2}-x+1}\right)-&\\
+\left({{x}^{3}-{x}^{2}y+{y}^{3}-x+1}\right)\left({{x}^{3}-2\,{x}^{2}y+x{y}^{2}+x y-x-y+1}\right)=0
+    \end{array}
+\end{equation}
+In this way we have eliminated the variable $z$. We might have introduced new solutions but we
+will see later that this is not the case.
+
+We have used Maple V to compute the resultant $R$ of (\ref{four5}) and (\ref{five5}) with respect
+to $y$ and we obtained:
+$$R=g_1(x)\cdot g_2(x)$$
+where
+\begin{equation}\label{g1}
+g_1(x)={x}^{4}-3\,{x}^{3}+4\,{x}^{2}-2\,x+1
+\end{equation}
+and
+\begin{equation}\label{g2}
+\begin{array}{rl}
+g_2(x)=&
+2\,{x}^{20}-29\,{x}^{19}+229\,{x}^{18}-1249\,{x}^{17}+5187\,{x}^{16}-\\
+&17222\,{x}^{15}+47040\,{x}^{14}-107505\,{x}^{13}+207622\,{x}^{12}-\\
+&340496\,{x}^{11}+474638\,{x}^{10}-560999\,{x}^{9}+559052\,{x}^{8}-\\
+&465487\,{x}^{7}+319628\,{x}^{6}-177653\,{x}^{5}+77807\,{x}^{4}-25797\,{x}^{3}+\\
+&6074\,{x}^{2}-904\,x+64
+\end{array}\end{equation}
+
+Now the splitting field of $g_1(x)$ is $\mathbb Q(e^{2\pi i/5})$. Furthermore the roots of
+$g_1$ are
+$$x_j=(1+\zeta^i),\ \ \ j=1,2,3,4.$$
+We can also easily compute  $x$ and $y$ for each of the above.
+Hence $\mathcal A_5(\mathbb Q(\zeta_5))$ is exactly the set
+described in (\ref{ciclo5}).
+
+Let ${\mathbf M}_5$ be the splitting field of $g_2$. For each root
+$\alpha$ of $g_2(x)$, one can compute
+$(\alpha,y(\alpha),z(\alpha))\in A_5({\mathbf M}_5)$ where:
+
+\begin{small}
+$$\begin{array}{l}\mbox{\normalsize $y(x)=$}
+\frac{1}{2^{3}\cdot13\cdot61\cdot3719\cdot3100067}\left(6245340990732510-74275247020348477\,x\right.\\
++425897367479627411\,x^{2}-1556772755104088477\,x^{3}+4068122356423765520\,x^{4}\\
+-8092377944341897339\,x^{5}+12739155747072503154\,x^{6}-16281608694400072277\,x^{7}+\\
+17191467892889878476\,x^{8}-15176855331347725064\,x^{9}+11289210111615920188\,x^{10}\\
+-7103742513094855073\,x^{11}+3782081407301444460\,x^{12}-1696979431552752820\,x^{13}\\
++635807089991226023\,x^{14}-195705738631474759\,x^{15}+48121368022605621\,x^{16}\\
+\left.-9009616966592957\,x^{17}+1165803130533438\,x^{18}-82558295396232\,x^{19}\right)
+\end{array}
+$$
+\end{small}
+
+
+and from (\ref{one5}) and some computation
+\begin{small}
+$$\begin{array}{l}\mbox{\normalsize $z(x)=$}
+\displaystyle{{\frac {{x}^{3}-2\,{x}^{2}y(x)+x{y(x)}^{2}+x y(x)-
+x-y(x)+1}{{(x)}^{2}-x y(x)+{y(x)}^{2}-x+1}
+}}=\\
+\frac{1}{2^{3}\cdot13\cdot61\cdot3719\cdot3100067}\left(-292290150269490\,{x}^{19}+3950333490943181\,{x}^{18}\right.\\
+-29484664428617801\,{x}^{17}+152268243151302965\,{x}^{16}-599002775464475543\,{x}^{15}\\
++1880438345917167218\,{x}^{14}-4841135989461751552\,{x}^{13}+10378374551469856881\,{x}^{12}\\
+-18679878403151115130\,{x}^{11}+28303942873286020848\,{x}^{10}-36041151267474587782\,{x}^{9}\\
++38336702176933085823\,{x}^{8}-33711958096174593304\,{x}^{7}+24129466512539278343\,{x}^{6}\\
+-13742359416000756136\,{x}^{5}+6020424561116746133\,{x}^{4}-1925677501494324283\,{x}^{3}\\
+\left(+413273185040891961\,{x}^{2}-51203861193252214\,x+2593061963570136\right)
+\end{array}
+$$
+\end{small}
+
+Finally
+$$\mathcal A_5(\overline{\mathbb Q})=\mathcal A_5({\mathbb Q}(e^{2\pi i/5}))\cup
+\mathcal A_5({\mathbf M}_5)$$
+where the union is disjoint.
+
+We are now ready to investigate $\mathcal A(\mathbb F_q)$.
+
+The roots of $g_1(x)$ in $\mathcal A(\mathbb F_q)$ are $4$ if
+$q\equiv1\pmod 5$ and in this case the $4$ points give the
+cyclotomic permutation polynomials. If $q=5^n$, then $g_1(x)=
+(x+3)^4$ and the root $x_0=2$ leads to the point $(2,3,4)\in
+\mathcal A(\mathbb F_{5^n})$ and therefore to the normalized
+$5$--cycle $(0,\ 1,\ 2,\ 3,\ 4)$.
+
+Let us deal with the roots of $g_2(x)$. The characteristics
+\begin{equation}\label{bad5}
+\{2, 13, 61, 3719, 3100067 \}\end{equation}
+appearing in the denominators of $y(x)$ and $z(x)$ will have to
+be treated separately and we have not done it here.
+
+For all other primes, note that $g_2(0)=2^6$, $g_2(1)=2$ and we have the following resultants:
+$$
+\begin{array}{rlrlrl}
+\operatorname{R}(y(x),g_2(x))=&2^{24} &
+\operatorname{R}(y(x)-1,g_2(x))=&2^{24} &
+\operatorname{R}(y(x)-x,g_2(x))=&2^{19}\\
+\operatorname{R}(z(x),g_2(x))=& 2^{19} &
+\operatorname{R}(z(x)-1,g_2(x))=&2^{24} &
+\operatorname{R}(z(x)-x,g_2(x))=&2^{24}\\
+\end{array}
+$$
+$$\operatorname{R}(y(x)-z(x),g_2(x)) = 2^{19}
+$$
+
+where $R(a,b)$ is the resultant of the univariate polynomials $a$
+and $b$. Therefore, for any finite field $\mathbb F_q$ (of
+characteristic distinct from those in (\ref{bad5})), if
+$g_2(x_0)=0$, then  $(x_0,y(x_0),z(x_0))\in\mathcal A(\mathbb
+F_q)$ and $\sigma=(0,\ 1,\ x_0,\ y(x_0),\ z(x_0))$ is a well
+defined normalized permutation in $n_{[5]}(\mathbb F_q)$.
+
+The characteristics $\{11, 41, 160591\}$ are those for which
+$g_1(x)$ and $g_2(x)$ have roots in common. These can be
+determined by computing the resultant $R(g_1,g_2)$.
+
+For $p=11$, the only common root is $x=6$ and the only point in
+$\mathcal A_5(\mathbb F_{11^n})$ that has such a value as first
+coordinate is $(6,9,2)$; for $p=41$, the only common root is
+$x=38$ and the only point in $\mathcal A_5(\mathbb F_{41^n})$ that
+has such an $x$ is $(38,13,31)$. Therefore in these two cases the
+number of normalized permutation should be one less. Finally for
+$p=160591$ the only common root is $x=93$ but there are two points
+in $\mathcal A_5(\mathbb F_{160591^n})$ with $x=93$ which are
+$(93,8557,144881)$ and $(93,36072,14312)$.
+
+This concludes the proof.\hfill$_\Box$\bigskip
+
+
+\subsection{Partial computation of $m_{[6]}(q)$.}
+
+Let us consider the affine algebraic set $\mathcal A_{6}$:
+$$\mathcal A_6:\left\{
+\begin{array}{r}
+H_1=(1-x)+x(x-y)+y(y-z)+z(z-t)+t^2=0\\
+\\
+H_2=(1-x)+x^2(x-y)+y^2(y-z)+z^2(z-t)+t^3=0\\
+\\
+H_3=(1-x)+x^3(x-y)+y^3(y-z)+z^3(z-t)+t^4=0\\
+\\
+H_4=(1-x)+x^4(x-y)+y^4(y-z)+z^4(z-t)+t^5=0.\\
+\end{array}
+\right.$$
+
+We know from Theorem~\ref{Lucia} that $\#\mathcal
+A_6(\overline{\mathbb Q})=120$. The problem can be solved along
+the same lines as in the last subsection. Here is the Maple V
+program that
+we used: %\bigskip
+
+\begin{tt}
+\begin{tabular}{l}
+restart:\\
+H[1]:=1-x+x*(x-y)+y*(y-z)+z*(z-t)+t\^{}2:\\
+H[2]:=1-x+x\^{}2*(x-y)+y\^{}2*(y-z)+z\^{}2*(z-t)+t\^{}3:\\
+H[3]:=1-x+x\^{}3*(x-y)+y\^{}3*(y-z)+z\^{}3*(z-t)+t\^{}4:\\
+H[4]:=1-x+x\^{}4*(x-y)+y\^{}4*(y-z)+z\^{}4*(z-t)+t\^{}5:\\
+F[1]:=solve(H[2]-(t+z)*H[1],t):\\
+F[2]:=solve(H[3]-t*H[2]-z\^{}2*H[1],t):\\
+F[3]:=solve(H[4]-t*H[3]-z\^{}3*H[1],t):\\
+F[4]:=solve(H[3]-z*H[2]-t\^{}2*H[1],t)[1]\^{}2:\\
+G[1]:=numer(F[1]-F[2]):\\
+G[2]:=numer(F[3]-F[1]):\\
+G[3]:=numer(F[4]-z*F[1]+1-x+x*(x-y)+y*(y-z)+z\^{}2):\\
+A[1]:=resultant(G[1],G[2],z):\\
+A[2]:=resultant(G[1],G[3],z):\\
+A[3]:=resultant(G[2],G[3],z):\\
+B[1]:=resultant(A[1],A[2],y):\\
+B[2]:=resultant(A[1],A[3],y):\\
+B[3]:=resultant(A[2],A[3],y):\\
+factor(gcd(B[1],gcd(B[2],B[3])));
+\end{tabular}
+\end{tt}
+%\bigskip
+
+It produces as output:
+$$f_1(x)\cdot f_2(x)\cdot f_3(x)\cdot f_4(x)\cdot g_2(x)^2 \cdot g_1(x)^2$$
+where $g_1$ and $g_2$ are the same polynomials of the previous
+subsection and do not yield any point in $\mathcal
+A_6(\overline{\mathbb Q})$,
+$$f_1(x)={x}^{2}-3\,x+3,\ f_2(x)={x}^{4}-3\,{x}^{3}+9\,{x}^{2}-9\,x
++3,$$
+$$f_3(x)={x}^{6}-4\,{x}^{5}+12\,{x}^{4}-22\,{x}^{3}+25\,{x}^{2}-14\,x+3$$
+and $f_4(x)$ is a degree 108 polynomial shown below. Very little
+can be done about it (e.g. we cannot factor its discriminant).
+However we know that given one of its 108 roots $x$, there exist
+rational functions $y(x)$, $z(x)$, $t(x)$ such that
+$(x,y(x),z(x),t(x))\in\mathcal A_6(\overline{\mathbb Q})$.
+
+\begin{tiny}
+$$
+\begin{array}{l}
+\mbox{$\displaystyle{f_4(x)=}$}\\
+2048\,{x}^{108}-165888\,{x}^{107}+6799872\,{x}^{106}-187752960\,{x}^{105}+3922763776\,{x}^{104}-66068319680\,{x}^{103}\\
++933320077408\,{x}^{102}-11363232453904\,{x}^{101}+121609445410488\,{x}^{100}-1161198732496436\,{x}^{99}\\
++10008850476882864\,{x}^{98}-78606667549447068\,{x}^{97}+566828548445747784\,{x}^{96}-3776776878293093668\,{x}^{95}\\
++23377338985281206132\,{x}^{94}-135038479362980318078\,{x}^{93}+730833294640515925896\,{x}^{92}\\
+-3718457594383449440377\,{x}^{91}+17839854280234088048504\,{x}^{90}-80918773915266921688911\,{x}^{89}\\
++347817829980603691940144\,{x}^{88}-1419720414224675767707558\,{x}^{87}+5513288219047478965908265\,{x}^{86}\\
+-20403343418466290909559217\,{x}^{85}+72065722093337704619789754\,{x}^{84}-243267380374046351368535386\,{x}^{83}\\
++785782176891688617129372777\,{x}^{82}-2431475137872624992934580357\,{x}^{81}+7214881866132247318290915548\,{x}^{80}\\
+-20548659512217571859089105859\,{x}^{79}+56221257258312886794846517663\,{x}^{78}\\
+-147882404554712812657831273826\,{x}^{77}+374230043847540583315597499959\,{x}^{76}\\
+-911691931385646228439986925230\,{x}^{75}+2139449841280212409103799322605\,{x}^{74}\\
+-4838781255382865924142092881113\,{x}^{73}+10552734185292011384044411424566\,{x}^{72}\\
+-22201680743797784367677070019329\,{x}^{71}+45079400421222501688611989232857\,{x}^{70}\\
+-88370131835128893374420804013985\,{x}^{69}+167308044867058677528870842347726\,{x}^{68}\\
+-306018091440642946312309370096773\,{x}^{67}+540901707766162203714093161026402\,{x}^{66}\\
+-924145503563203698506557364196092\,{x}^{65}+1526550997692643704549449565023087\,{x}^{64}\\
+-2438475861371766718260022687359403\,{x}^{63}+3767372156555906676771592362227252\,{x}^{62}\\
+-5630386387795750914878787596953278\,{x}^{61}+8140939139357659835287965640730513\,{x}^{60}\\
+-11389249472014526491272002805160961\,{x}^{59}+15418372730959804119154464592501925\,{x}^{58}\\
+-20199212963332568595992849480574793\,{x}^{57}+25609653568875523492121650783680523\,{x}^{56}\\
+-31423786674815287982856648211485665\,{x}^{55}+37316636201275774332720329351064002\,{x}^{54}\\
+-42887487674528678056202555216506600\,{x}^{53}+47701189936940459634356766395673379\,{x}^{52}\\
+-51342370723861934089578323730701241\,{x}^{51}+53473605808047948459645336373877904\,{x}^{50}\\
+-53886451035411447622870618958843743\,{x}^{49}+52534755181805885450898834956212846\,{x}^{48}\\
+-49542943308323803416607202273116258\,{x}^{47}+45187255671028388860208926229245651\,{x}^{46}\\
+-39853834776380146454538798283342894\,{x}^{45}+33982440027129229551505906960627180\,{x}^{44}\\
+-28007124276968506959166892217933313\,{x}^{43}+22304864978517515995360691909021985\,{x}^{42}\\
+-17160233130232486543207338901006740\,{x}^{41}+12749752732446670751318525720373287\,{x}^{40}\\
+-9145009691119593703082103400176233\,{x}^{39}+6330015056336126215839775082630388\,{x}^{38}\\
+-4226514548260823401239096740258288\,{x}^{37}+2720942861141654856875643560186175\,{x}^{36}\\
+-1688109362923362914905627143729438\,{x}^{35}+1008768415625546502227835131362059\,{x}^{34}\\
+-580279479672452851412256035043958\,{x}^{33}+321115048795909727104320629068345\,{x}^{32}\\
+-170828586279878576733366714859762\,{x}^{31}+87299009196449969872102046466464\,{x}^{30}\\
+-42820393799631399542004753630026\,{x}^{29}+20141728505903344673399260414668\,{x}^{28}\\
+-9076637830955551006671020183951\,{x}^{27}+3914484242526498208181639312379\,{x}^{26}\\
+-1613770892718885947479095327793\,{x}^{25}+635149654477638378211058318534\,{x}^{24}\\
+-238326908840088875601414025833\,{x}^{23}+85127356062476807845436220758\,{x}^{22}\\
+-28895680606614726658303804088\,{x}^{21}+9303712106309033749916140254\,{x}^{20}\\
+-2835587512930135705228988470\,{x}^{19}+816198705952614985217016076\,{x}^{18}-221309370680671620177529840\,{x}^{17}\\
++56364041482436139001235584\,{x}^{16}-13439641318120378785990472\,{x}^{15}+2989147250976033209662704\,{x}^{14}\\
+-617501175174317760066496\,{x}^{13}+117904318811134669800960\,{x}^{12}-20688959726700010283264\,{x}^{11}\\
++3313845039406468383232\,{x}^{10}-480619489043461936640\,{x}^{9}+62499665119858375680\,{x}^{8}\\
+-7198855775276720128\,{x}^{7}+723131989749039104\,{x}^{6}-62070327274504192\,{x}^{5}+4427182693416960\,{x}^{4}\\
+-251951884271616\,{x}^{3}+10728106885120\,{x}^{2}-303868936192\,x+4294967296
+\end{array}
+$$
+\end{tiny}
+We have named the above polynomial: ``\textit{The Devil's Hat}''.
+For every root $\zeta$ of the polynomial $f_1$, we have the
+cyclotomic points $$(\zeta,2\zeta-2,2\zeta-3,\zeta-2)\in\mathcal
+A_6(\overline{\mathbb Q}).$$
+
+For every root $\tau$ of the polynomial $f_2$, we have the points
+in $\mathcal A_6(\overline{\mathbb Q})$
+\begin{small}
+$$\left(\tau,
+\frac{1}{5}({11}- {19}\,\tau+{7}\,{\tau}^{2}-{3}\,{\tau}^{3}),
+\frac{1}{5}({9}-{11}\,\tau+{3}\,{\tau}^{2}-{2}\,{\tau}^{3}),
+\frac{1}{5}(-{7}+{13}\,\tau-{4}\,{\tau}^{2}+\,{\tau}^{3})\right).$$
+\end{small}
+Furthermore, for every root $\gamma$ of $f_3$,   we have the points of
+$\mathcal A_6(\mathbb Q)$
+$(\gamma,y_\gamma,z_\gamma,t_\gamma)$ where
+$$\begin{array}{rl}
+y_\gamma=&7-{\frac {61}{3}}\,\gamma+22\,{\gamma}^{2}-{\frac {41}{3}}\,{\gamma}^{
+3}+14/3\,{\gamma}^{4}-4/3\,{\gamma}^{5},\\
+z_\gamma=&6-{\frac {61}{3}}\,\gamma+22\,{\gamma}^{2}-{\frac {41}{3}}\,{\gamma}^{
+3}+14/3\,{\gamma}^{4}-4/3\,{\gamma}^{5},\\
+t_\gamma=&7-{\frac {64}{3}}\,\gamma+22\,{\gamma}^{2}-{\frac {41}{3}}\,{\gamma}^{
+3}+14/3\,{\gamma}^{4}-4/3\,{\gamma}^{5}.\end{array}.$$
+
+Finally
+$$\mathcal A_6(\overline{\mathbb Q})=
+\mathcal A_6({\mathbf K}_1)\cup\mathcal A_6({\mathbf
+K}_2)\cup\mathcal A_6({\mathbf K}_3)\cup\mathcal A_6({\mathbf
+K}_4),$$ where $\mathbf K_i$ is the splitting field of $f_i$. Note
+however that the union is not disjoint this time. Indeed $\mathbf
+K_1=\mathbb Q(\sqrt{-3})\subset\mathbf K_2=\mathbb Q(\sqrt
+{-18+2\,\sqrt {-3}})$.
+
+Furthermore
+$$\#\mathcal A_6({\mathbf K}_i)=\left\{
+\begin{array}{rl}
+2   & \text{if $i=1$}\\
+4   & \text{if $i=2$}\\
+6   & \text{if $i=3$}\\
+108 & \text{if $i=4$}
+\end{array}
+\right.
+$$
+
+
+Numerically if can be verified that all the coordinates of each
+point of $\mathcal A_6(\overline{\mathbb Q})$ are distinct and
+never in $\{0,1\}$. This allows us to conclude
+
+\begin{Theorem} For all but finitely many characteristics
+$$m_{[6]}(\mathbb F_q)=\frac{q(q-1)}{4}(s_1+s_2+s_3+s_4)$$
+where $s_i$ is the number of roots of $f_i$ in $\mathbb F_q$.\hfill$_\Box$
+\end{Theorem}
+
+\section{Conclusion}
+
+The complete computations of $\mathcal A_7$ is out of our reach
+at the present.
+
+It is natural to ask whether the construction of the present paper
+can be extended to more general classes of permutations. The
+answer is yes. Indeed if $\mathcal C$ is any partition with parts
+larger then $1$, then one can define an algebraic set $\mathcal
+A_{\mathcal C}$ analogue to $\mathcal A_k$. The connection with
+normalized permutation polynomials with minimal degree can be
+established also in this more general setting. However the
+extensions of Theorem~\ref{geometrico} and
+Theorem~\ref{ciclotomico} are not straightforward. We expect in
+some cases stronger estimates to hold. For example it can be shown
+that
+$$m_{[2\ 3]}(\mathbb F_q)\leq 2q(q-1).$$
+Numerical examples indicate interesting arithmetical properties.
+For these reasons we have decided to dedicate a future paper to
+general classes of permutation.
+\bigskip
+
+\noindent\textbf{Acknowledgements.} We would like to thank Lucia
+Caporaso for suggesting the idea that led us to prove
+Theorem~\ref{Lucia}, Furthermore we thank Igor Shparlinski for
+offering shelter at Macquarie University where this manuscript was
+finally written and revised.\bigskip
+
+\begin{thebibliography}{99}
+
+\bibitem{Das} \textsc{Das, P.}, \textit{The number of permutation polynomials
+of a given degree over a finite field}, Finite Fields and Their
+Applications \textbf{8} No. 4 (2002) 478--490.
+
+\bibitem{Har} \textsc{Harris J.}, \textit{Algebraic Geometry, A First Course},
+Springer-Verlag Graduate Texts in Math. 133, 1992.
+
+\bibitem{KP} \textsc{Konyagin S. \& Pappalardi F.},
+\textit{Enumerating Permutation Polynomials over Finite Fields by
+Degree}, Finite Fields and Their Applications \textbf{8} No. 4
+(2002) 548--553.
+
+\bibitem{LB} \textsc{Levine J. \& Brawley J. V.},
+\textit{Some Cryptographic Applications of Permutation Polynomials}, Cryptologia
+\textbf{1}, Number 1, (1977)  76--92.
+
+\bibitem{LMu} \textsc{Lidl. R. \& M\"uller W. B.}, \textit{A note on polynomials
+and functions in cryptography}, Ars Combin. \textbf{17}A (1984) 223-229.
+
+\bibitem{LM1} \textsc{Lidl R. \& Mullen G. L.},
+\textit{When does a polynomial over a finite field permute the
+elements of the field?} Amer. Math. Mon. \textbf{95} (1988)
+243--246.
+
+\bibitem{LM2} \textsc{Lidl R. \& Mullen G. L.},
+\textit{When does a polynomial over a finite field permute the
+elements of the field? II} Amer. Math. Mon. \textbf{100} (1993)
+71--74.
+
+\bibitem{LN} \textsc{Lidl R. \& Niederreiter, H.}, \textit{Finite Fields},
+Encyclo. Math. and Appls. V. 20, Addison--Wesley, Reading, MA 1983.
+
+\bibitem{CP} \textsc{Malvenuto C. \& Pappalardi F.},
+\textit{Enumerating Permutation Polynomials I: Permutations with
+Non-Maximal Degree}, Finite Fields and Their Applications
+\textbf{8} No. 4 (2002) 531--547.
+
+\bibitem{M} \textsc{Mullen G. L.}, \textit{Permutation Polynomials over finite fields},
+ Finite fields, coding theory, and advances in communications and computing
+ (Las Vegas, NV, 1991), 131--151, Lecture Notes in Pure and Appl. Math., 141, Dekker, New York, 1993.
+
+\bibitem{W} \textsc{Wells C.}, \textit{The degrees of permutation polynomials over finite
+fields}, J. Combinatorial Theory \textbf{7} (1969) 49--55.
+
+\bibitem{Maple} Maple V Release 5.1 (1999), Waterloo Maple Inc.
+
+\end{thebibliography}
+\bigskip
+
+\begin{footnotesize}
+\noindent Claudia Malvenuto\\
+Dipartimento di Informatica\\
+Universit\`a degli studi ``La Sapienza''\\
+Via Salaria, 113\\
+I--00198, Roma -- ITALY.\\
+\texttt{claudia@dsi.uniroma1.it}
+\bigskip
+
+\noindent Francesco Pappalardi\\
+Dipartimento di Matematica\\
+Universit\`a degli studi Roma Tre\\
+Largo S. L. Murialdo, 1\\
+I--00146, Roma -- ITALY.\\
+\texttt{pappa@mat.uniroma3.it}
+\end{footnotesize}
+
+\vfill
+
+\end{document}

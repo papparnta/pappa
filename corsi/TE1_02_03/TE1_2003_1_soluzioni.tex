@@ -1,0 +1,219 @@
+\magnification 900
+\hsize=19.5cm
+\vsize=27.58cm
+\hoffset=-1.6cm
+\voffset=0.5cm
+\parskip=1mm
+\noindent  TE1 AA02/03\ (Teoria delle
+Equazioni)\hfill Roma, 24 Aprile 2003. \hrule
+\medskip
+\smallskip
+
+\centerline{SOLUZIONI DELL' ESAME DI MET\`{A} SEMESTRE}\medskip
+
+ \hfill \hrule
+\medskip\medskip\medskip
+
+\item{1.} Data un estensione $E/F$, si dica cosa significa che
+$\alpha\in E$ \`{e} algebrico su $F$ e cosa \`{e} il polinomio
+minimo di $\alpha$ su $F$ dimostrando che \`{e} irriducibile.
+\medskip
+
+{\it $\alpha\in E$ si dice {\bf algebrico} su $F$ se l'omomorfismo di anelli $\varphi: F[x]\rightarrow
+ E, f(x) \mapsto f(\alpha)$ non \`{e} iniettivo.\smallskip
+
+  In tal caso, siccome $F[x]$ \`{e} un anello
+ a ideali principali, l'ideale Ker$\varphi\subset F[x]$ \`{e} principale.\smallskip
+
+ Pertanto esiste $f_\alpha\in F[x]$
+monico tale che Ker$\varphi = \langle f_\alpha \rangle$. Tale $f_\alpha$ si chiama {\bf polinomio minimo}
+di $\alpha$ su $F$.\smallskip
+
+ Infine, siccome $F(\alpha)\cong F[x]/\langle f_\alpha \rangle \hookrightarrow E$
+\`{e} un campo, $\langle f_\alpha \rangle$ risulta un ideale
+massimale e $f_\alpha$ irriducibile.}\medskip\hrule\medskip
+
+ \item{2.} Descrivere gli elementi del gruppo di Galois del
+polinomio $(x^2-2)(x^2+3)$ determinando anche tutti i sottocampi
+del campo di spezzamento.
+\medskip
+
+{\it Sia $f(x)=(x^2-2)(x^2+3)$. Allora il campo di spezzamento di
+$f$ su ${\bf Q}$ \`{e} ${\bf Q}_f={\bf Q}(\sqrt{2},
+\sqrt{-3})$.\smallskip
+
+Dal fatto che $[{\bf Q}_f:{\bf Q}]=4$ deduciamo che gli elementi del gruppo di Galois Gal$({\bf Q}_f/{\bf Q})$
+sono i seguenti:
+$$\left\{ {\sqrt{2}\mapsto \sqrt{2}\atop \sqrt{-3}\mapsto \sqrt{-3},}
+{\sqrt{2}\mapsto \sqrt{2}\atop \sqrt{-3}\mapsto -\sqrt{-3},}
+{\sqrt{2}\mapsto -\sqrt{2}\atop \sqrt{-3}\mapsto \sqrt{-3},}
+{\sqrt{2}\mapsto -\sqrt{2}\atop \sqrt{-3}\mapsto -\sqrt{-3},}
+\right\}.$$
+
+Ciascuno degli ultimi tre elementi del gruppo di Galois genera un sottogruppo con indice $2$ che corrisponde
+a uno dei tre sottocampi quadratici di ${\bf Q}_f$
+$${\bf Q}(\sqrt{-3}),\quad {\bf Q}(\sqrt{2}),\quad {\bf Q}(\sqrt{-6})$$
+
+che oltre a ${\bf Q}$ e ${\bf Q}_f$ sono tutti e soli i sottocampi
+di ${\bf Q}_f$. }\medskip\hrule\medskip
+
+\item{3.} Dopo aver verificato che \`{e} algebrico, calcolare il
+polinomio minimo di $\cos \pi/12$ su ${\bf Q}$.\medskip
+
+{\it Dal fatto $\cos
+\pi/12={1\over2}\left(\zeta_{24}+\overline{\zeta}_{24}\right)$ e
+dal fatto che $\zeta_{24}$ e $\overline{\zeta}_{24}$ entrambi
+soddisfano il polinomio $x^{24}-1$ deduciamo che $\cos \pi/12$
+\`{e} algebrico su ${\bf Q}$ in quanto somma di numeri
+algebrici.\medskip
+
+Si ha inoltre che
+
+$$\partial f_{\cos{\pi\over12}}=[{\bf Q}(\cos \pi/12):{\bf Q}]= {1\atop2} [{\bf Q}(\zeta_{24}):{\bf Q}]=
+\varphi(24)/2=4.$$
+
+Quindi $\cos \pi/12$ soddisfa un polinomio di grado $4$ in ${\bf Q}[x]$. Scriviamo $\zeta=\zeta_{24}$
+$$\cos^4 {\pi\over12}+A\cos^3{\pi\over12}+B\cos^2{\pi\over12}+C\cos{\pi\over12}+D=
+{\left((\zeta+\overline{\zeta})^4+2A(\zeta+\overline{\zeta})^3+
+4B(\zeta+\overline{\zeta})^2+8C(\zeta+\overline{\zeta})+16D\right)\over16}.$$
+
+Sfruttando le identit\`{a} $\zeta^8-\zeta^4+1=0$ e $\zeta^{12}=-1$
+e facendo i calcoli otteniamo che $A=C=0$, $B=-1$ e $D=1/16$.\medskip
+
+Quindi \quad\quad\quad$f_{\cos \pi/12}(x)=x^4-x^2+1/16.$
+}\medskip\hrule\medskip
+
+\item{4.} Quanti elementi ha il campo di spezzamento di
+$(x^2+x+1)(x^3+x^2+1)$ su ${\bf F}_2$?\smallskip
+
+{\it Ne ha $2^6$. Infatti $x^2+x+1$ e $x^3+x^2+1$ sono entrambi irriducibili
+e il campo di spezzamento $E$ ha come sottocampi ${\bf F}_2(\alpha),
+\alpha^2=\alpha+1$ e ${\bf F}_2(\beta), \beta^3=\beta^2$+1. Pertanto
+sia $2$ che $3$ dividono $[E:{\bf F}_2]$.\smallskip
+
+Infine ${\bf F}_2(\alpha,\beta)$ \`{e} il campo di spezzamento infatti
+$(x^2+x+1)(x^3+x^2+1)=(x+\alpha)(x+\alpha^2)(x+\beta)(x+\beta^2)(x+\beta^4).$\smallskip
+
+Quindi $6=[E:{\bf F}_2]$ e $|E|=2^6.$}\medskip\hrule\medskip
+
+\item{5.} Dimostrare che se $p$ \`{e} primo, $\cos 2\pi/p^2$
+soddisfa un polinomio di grado $p(p-1)/2$ su ${\bf Q}$ con gruppo
+di Galois ciclico.\medskip
+
+{\it \centerline{$[{\bf Q}(\cos{2\pi\over
+p^2}):{\bf Q}]={[{\bf Q}(\zeta_{p^2}:{\bf Q}(\cos{2\pi\over
+p^2})]\over [:{\bf Q}(\zeta_{p^2}):{\bf Q}(\cos{2\pi\over p^2})]}=
+{\varphi(p^2)\over 2}={p(p-1)\over 2}.$}\smallskip
+
+Infine $\cos 2\pi/p^2$ ha un polinomio minimo con grado
+${p(p-1)\over 2}$ il cui gruppo di Galois \`{e} ciclico in quanto
+sottogruppo del gruppo ciclico $U({\bf Z}/p^2{\bf
+Z}).$}\medskip\hrule\medskip
+
+ \item{6.} Mostrare che un estensione di campi \`{e}  finita se
+e solo se \`{e} algebrica e finitamente generata spiegando le
+nozioni di cui si parla.\medskip
+
+{\it Un estensione $E/F$ si dice {\bf algebrica} se ogni elemento
+di $E$ soddisfa un polinomio a coefficienti in $F$ non nullo; si
+dice {\bf finita} se $E$ \`{e} uno spazio vettoriale di dimensione
+finita e si dice finitamente generata se esistono
+$\alpha_1,\ldots,\alpha_h\in E$ tali che
+$E=F(\alpha_1,\ldots,\alpha_h)$.
+Se $E/F$ \`{e} finita, allora per ogni $\alpha\in E$, se $\alpha$ non fosse algebrico,
+la famiglia $1,\alpha,\alpha^2,\ldots$ darebbe luogo ad una famiglia infinita di vettori
+linearmente indipendenti. Se inoltre consideriamo la catena di sottocampi:
+$$F\subset F[\alpha_1] \subset F[\alpha_1,\alpha_2] \subset \ldots \subset E$$
+dove $\alpha_i$ \`{e} scelto in modo tale che $\alpha_i\in E\setminus F[\alpha_1,\ldots,\alpha_{i-1}]$,
+Allora la catena non pu\`{o} crescere all'infinito cio\`{e} $E=F[\alpha_1,\ldots,\alpha_h]$ \`{e}
+finitamente generato.\medskip
+
+Se invece $E/F$ \`{e} algebrica e finitamente generata, allora.
+$$E=F[\alpha_1,\ldots,\alpha_h]=F(\alpha_1,\ldots,\alpha_h)\quad\quad
+{\rm e}\quad\quad
+[E:F]=\prod_{j=1}^{h-1}[F[\alpha_1,\ldots,\alpha_{j-1}]:F[\alpha_1,\ldots,\alpha_j]].$$
+Ciascun fattore \`{e} finito perch\`{e} si tratta di un estensione semplice con un elemento algebrico.
+Quindi $[E:F]$ \`{e} finito.
+}\medskip\hrule\medskip
+
+\item{7.} Descrivere gli elementi del gruppo di Galois del campo
+di spezzamento di $x^n-1$.\medskip
+
+{\it Il campo di spezzamento del polinomio \`{e} il campo
+ciclotomico ${\bf Q}(\zeta_m)$. Inoltre se
+\quad $\sigma_j: {\bf Q}(\zeta_m) \rightarrow {\bf Q}(\zeta_m), \zeta_m
+\mapsto \zeta_m^j,$\smallskip
+
+Allora Gal$({\bf Q}(\zeta_m)/{\bf Q})=\{\sigma_j\ |\ j\in U({\bf
+Z}/m{\bf Z})\}$.}\medskip\hrule\medskip
+
+\item{8.} Si enunci nella completa generalit\`{a} il Teorema di
+corrispondenza di Galois.\medskip
+
+\noindent{\bf Teorema.} {\it Sia $E/F$ un estensione di Galois
+(cio\`{e} $E$ \`{e} il campo di spezzamento di un polinomio
+separabile in $F[x]$) e sia $G=$Gal$(E/F)$. Allora c'\`{e} una
+corrispondenza biunivoca tra ti sottogruppi di $G$ e i sottocampi
+di $E$ che contengono $F$. Se $H\leq G$ e $F\subseteq M\subseteq
+E$, allora la corrispondenza \`{e} data da:
+$$H\mapsto E^H,\quad M\mapsto {\rm Gal}(E/M).$$
+Inoltre \item{i} $G$ corrisponde a $F$ e $\{1\}$ corrisponde a
+$E$; \item{ii} $H_1\leq H_2 \Leftrightarrow E^{H_1}\supseteq
+E^{H_2}.$ \item{iii} Per ogni $\sigma\in G$,
+    \itemitem{-} $E^{\sigma H\sigma^{-1}}=\sigma E^H$;
+    \itemitem{-} $Gal(E/\sigma M)=\sigma Gal(E/M)\sigma^{-1}$.
+\item{iv} $H\triangleleft G \Leftrightarrow E^H/F$ \`{e} un
+estensione normale. In tal caso inoltre $Gal(E^H/F)\cong G/H.$}
+\medskip\hrule
+\medskip
+
+\item{9.} Calcolare la dimensione su ${\bf Q}$ del campo di
+spezzamento del seguente polinomio $x^3+x+10$.\medskip
+
+{\it La dimensione \`{e} $2$. Infatti $x^3+x+10=(x+2)(x^2-2x+5)$ e
+quindi il campo di spezzamento \`{e} ${\bf Q}(\sqrt{-1})$.}\medskip\hrule\medskip
+
+\item{10.} Dare un esempio di polinomio non separabile, un esempio
+de estensione algebrica normale e non separabile e di una
+separabile e non normale.\medskip
+
+{\it \itemitem{-} $x^p-t\in{\bf F}_p(t)[x]$ \`{e} un polinomio non
+separabile;\smallskip
+
+ \itemitem{-} ${\bf F}_p(t)/{\bf F}_p(t^p)$ \`{e} un
+estensione algebrica normale non separabile;\smallskip
+
+ \itemitem{-}
+${\bf Q}(2^{1/3})$ \`{e} un estensione normale non separabile.
+}\medskip\hrule\medskip
+
+ \item{11.} Descrivere gli ${\bf Q}(\sqrt{-1})$--omomorfismi di
+${\bf Q}(\sqrt{-3},\sqrt{3})$ in ${\bf C}$.\medskip
+
+{\it Sappiamo che
+$${\bf Q}(\sqrt{-3},\sqrt{3})={\bf Q}(\sqrt{3},\sqrt{-1})=
+{\bf Q}(\sqrt{-1})(\sqrt{3})$$ e che gli ${\bf
+Q}(\sqrt{-1})$--omomorfismi sono in numero pari al numero di
+radici del polinomio minimo di $\sqrt{3}$ in ${\bf C}$ cio\`{e}
+due.
+
+Si tratta quindi dell'identit\`{a} e l'omomorfismo: $$\sigma:{\bf
+Q}(\sqrt{-3},\sqrt{3})\rightarrow {\bf C}, \sqrt{-3}\mapsto
+-\sqrt{-3}, \sqrt{3}\mapsto -\sqrt{3}$$ che \`{e} un ${\bf
+Q}(\sqrt{-1})$--omomorfismo in quanto
+$$\sigma(\sqrt{-1})=\sigma({1\over3}\sqrt{3}\sqrt{-3})=\sqrt{-1}.$$
+ }\hrule\medskip
+
+\item{12.} Dimostrare che se $E_1$ e $E_2$ sono estensioni di
+Galois di $F$ con $E_1\subset L$ e $E_2\subset L$, allora $E_1\cap
+E_2$ e  $E_1E_2$ (il campo composto) sono estensioni di Galois. (
+Per ulteriore punteggio mostrare che ${\rm Gal}(E_1E_2/F)\cong
+{\rm Gal}(E_1/F)\times {\rm Gal}(E_2/F)$ se $E_1\cap E_2 = F$).
+\medskip
+{\it La soluzione \`{e} nelle dispense di Milne a pagina 37 nella
+Proposizione 3.20.}
+
+\medskip
+\hrule
+
+ \bye

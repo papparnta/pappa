@@ -1,0 +1,611 @@
+\documentclass[presentation]{beamer} %handout
+\usepackage{beamerthemeshadow}
+\usepackage{amsfonts,amsthm}
+\usepackage{graphicx}
+%\usepackage{sansmathaccent}
+%\pdfmapfile{+sansmathaccent.map}
+\usepackage{lmodern}
+%  \setbeamercolor{block body}{#2}
+\setbeamercolor{block title}{bg=green,fg=black}
+\setbeamercolor{frametitle}{bg=red}
+\setbeamercolor{frametitle right}{bg=gray!60!white}
+\vfuzz=6pt
+
+\title[One Day Symposium on Algebra \& Number Theory]
+{Egyptian fractions: from Rhind Mathematical Papyrus to Erd\H os and Tao}
+\institute{COMSATS University Islamabad, Lahore Campus}
+\author[Lahore, October 13, 2018]{Francesco Pappalardi}
+\date{October 10, 2018}
+
+\begin{document}
+\frame{\titlepage}
+
+\frame{\frametitle{The Rhind Mathematical Papyrus}
+    \begin{center}
+     \includegraphics[width=11cm]{images/Rhind_Mathematical_Papyrus.jpg}
+
+     British Museum
+     \end{center}}
+
+ \frame{\frametitle{Fractions in Egypt}
+    \begin{center}
+     \includegraphics[width=11cm]{images/e2.jpg}
+     \end{center}}
+     
+ \frame{\frametitle{Fractions in Egypt}
+    \begin{center}
+     \includegraphics[width=11cm]{images/e3.jpg}
+     \end{center}}
+
+ \frame{\frametitle{Fractions in Egypt}
+    \begin{center}
+     \includegraphics[width=11cm]{images/e4.jpg}
+     \end{center}}
+\frame{\frametitle{Fractions in Egypt}
+\framesubtitle{powers of two}
+    \begin{center}
+     \includegraphics[width=5cm]{images/e5.jpg}
+
+     \end{center}}
+     
+     \frame{\frametitle{Egyptian Fraction Expansion (EFE)}
+\begin{block}{EFE}
+     Given $a/b\in\mathbb Q^>$, an \emph{Egyptian Fraction Expansion} of $a/b$ with length $k$ 
+is the expression
+$$\frac ab=\frac1{x_1}+\frac1{x_2}+\cdots+\frac1{x_k}$$
+
+where $x_1,\ldots,x_k\in\mathbb N$\bigskip
+\end{block}\pause
+
+\textbf{Every $a/b\in\mathbb Q^>$ has an EFE with distinct $x_1,\ldots,x_n$!!}
+     }
+
+          \frame{\frametitle{The Greedy Algorithm}
+
+     \begin{block}{Fibonacci (1200's)}
+     \begin{columns}
+\begin{column}{0.4\textwidth}  %%<--- here
+\hspace*{1cm}     \includegraphics[width=0.8\textwidth]{images/Leonardo_Fibonacci.jpg}
+\end{column}
+\begin{column}{0.7\textwidth}
+     \begin{itemize}[<+->]
+      \item Given $0<a/b<1$, the identity:
+      $$\frac ab=\frac1{b_1}+\frac{a_1}{bb_1}$$
+      \item[]  can be found with \begin{enumerate}[<+->]
+       \item $b_1,a_1\in\mathbb N$
+      \item $1\le a_1<a$ 
+      \item  $b_1>1$,                   
+                  \end{enumerate}
+      \item Hence we can iterate the process to obtain EFE for $a/b$
+      \item $\frac ab=\frac1{b_1}+\frac1{b_2}+\frac{a_2}{bb_1b_2}=$\\ $=\frac1{b_1}+\frac1{b_2}+\frac1{b_3}+\frac{a_3}{bb_1b_2b_3}=\cdots$
+      \item it takes at most $a$ steps
+     \end{itemize}
+\end{column}
+\end{columns}
+     \end{block}
+}
+
+          \frame{\frametitle{The Greedy Algorithm}
+          \framesubtitle{Euclidean Division to find $a_1$ and $b_1$}
+     \begin{block}{Euclid ($\approx300$ BC )}
+     \begin{columns}
+\begin{column}{0.4\textwidth}  %%<--- here
+\hspace*{1cm}     \includegraphics[width=0.8\textwidth]{images/Euclid_3.jpeg}
+\end{column}
+\begin{column}{0.7\textwidth}
+     \begin{itemize}[<+->]
+      \item Given $a, b\in\mathbb N$,  $\exists q, r\in \mathbb N$ s.t.
+$$ b=aq+r,\qquad 0\le r< a$$
+%       \item indeed $q =\lfloor\frac{b}{a}\rfloor $ and $r:=b\bmod a$
+% \item       where $\lceil\alpha \rceil=\min\{n\in\mathbb Z: n\ge\alpha\}$
+      \item a quick computation shows 
+      $$\frac{a}{b}=\frac{1}{q+1}+\frac{a-r}{b(q+1)}$$
+      \item Hence
+      \begin{enumerate}
+       \item $b_1=q+1> 1$;
+       \item $0<a_1=a-r<a$ \\ since $\gcd(a,b)=1$
+      \end{enumerate}
+      \end{itemize}
+\end{column}
+\end{columns}
+     \end{block}
+          
+          }
+
+
+     \frame{\frametitle{The Greedy Algorithm}
+     
+\begin{block}{\textbf{Example: The Greedy Algorithm at work}}
+ \begin{align*}
+      \frac5{121}&=\frac{1}{25}+\frac{4}{3025}\\
+    &=\frac{1}{25}+\frac1{757}+\frac3{2289925}\\
+       &=\cdots\\
+       &=\frac{1}{25}+\frac{1}{757}+\frac{1}{763309}+\frac{1}{873960180913}+\\ & \hspace*{4cm} +\frac{1}{1527612795642093418846225}
+\end{align*}
+\end{block}\pause
+
+     However, $$\frac{5}{121}=\frac1{33}+\frac{1}{121}+\frac{1}{363}$$
+}
+
+     \frame{\frametitle{The Takenouchi Algorithm (1921)}
+\begin{block}{how Takenouchi Algorithm works}
+      \begin{enumerate}[<+->]
+ \item based on the identity:
+     $$\frac{1}{b}+\frac{1}{b}=\begin{cases}
+                                \frac1{b/2} & \text{if } 2\mid b\\
+                                \frac1{\frac{b+1}2}+\frac1{\frac{b(b+1)}2} & \text{otherwise}
+                               \end{cases}$$
+\item Write
+$\frac ab=\overbrace{\frac1b+\cdots+\frac1b}^{a-\text{times}}$
+\item Apply the above identity $[a/2]$ times
+$$\frac ab=\overbrace{\frac1{\frac{b+1}2}+\cdots+\frac1{\frac{b+1}2}}^{a/2-\text{times}}+\overbrace{\frac1{\frac{b(b+1)}2}+\cdots+\frac1{\frac{b(b+1)}2}}^{a/2-\text{times}}$$
+\item reiterate using the first identity
+                               \end{enumerate}
+                               
+\end{block}
+}
+
+\frame{\frametitle{The Takenouchi Algorithm (1921)}
+ \begin{block}{\textbf{Example:}}
+\begin{align*}
+\frac{5}{121}&=\frac{1}{121}+\frac{1}{121}+\frac{1}{121}+\frac{1}{121}+\frac{1}{121}\\
+&=\frac{1}{121}+\frac{1}{61}+\frac{1}{61}+\frac{1}{61\times121}+\frac{1}{61\times121}\\
+&=\frac{1}{121}+\frac{1}{31}+\frac1{1891}+\frac{1}{3691}+\frac{1}{27243271}
+\\
+\end{align*}
+\end{block}\pause
+
+     However it is still worse than, $$\frac{5}{121}=\frac1{33}+\frac{1}{121}+\frac{1}{363}$$
+
+ }
+ \frame{\frametitle{Minimizing length \& Denominators' sizes}
+
+ \centerline{
+ \includegraphics[width=0.4\textwidth]{images/Gerald_Tenenbaum.jpg}
+ \qquad
+\includegraphics[width=0.28\textwidth]{images/Hisashi_Yokota}}
+
+\begin{theorem}[\textbf{Tenenbaum -- Yokota (1990)}]
+ Given $a/b\in\mathbb Q\cap (0,1)$, $\exists$ EFE s.t.
+ \begin{itemize}[<+->]
+  \item it has length $O(\sqrt{\log b})$;
+  \item each denominator is $O\left(b\log b(\log\log b)^4(\log\log\log b)^2\right)$
+ \end{itemize}
+ \end{theorem}
+}
+
+ \frame{\frametitle{thinking at ESE-expansion as a Waring problem with negative exponent...}
+
+ \begin{theorem}[\textbf{Graham (1964)}]
+\begin{columns}
+\begin{column}{0.55\textwidth}
+ Given $a/b\in\mathbb Q^>$,
+ $$\frac ab=\frac{1}{y_1^2}+\cdots+\frac{1}{y_k^2}$$
+ admits a solution in distinct integers $y_1,\ldots,y_k$
+$$\Longleftrightarrow\quad a/b\in(0,\pi^2/6-1)\cup[1,\pi^2/6)$$
+ \end{column}
+\begin{column}{0.3\textwidth}  %%<--- here
+%\hspace*{1cm}     
+\includegraphics[width=0.8\textwidth]{images/Ronald_Graham.jpg}
+\end{column}
+\end{columns}
+
+ \end{theorem}\pause
+ 
+
+\begin{block}{\textbf{Note: Graham result is quite general ... for example}}\pause  \emph{$\frac ab=\frac{1}{y_1^2}+\cdots+\frac{1}{y_k^2}$ with $y_j^2\equiv4\bmod5$ distinct $\Leftrightarrow$   $5\nmid b$  and\\ $\qquad\qquad a/b\in(0,\alpha-\frac{13}{36})\cap[\frac1{9},\alpha-\frac14)\cap[\frac14,\alpha-\frac19)\cap[\alpha,\frac{13}{36})$\\ where $\alpha=  2(5 -\sqrt5)\pi^2/125$}
+ \end{block}
+} 
+
+\frame{\frametitle{The Erd\H{o}s-Strau\ss\ Conjecture}
+
+\begin{block}{\textbf{Erd\H{o}s-Strau\ss\ Conjecture (ESC) (1950):}}
+\begin{columns}
+ \begin{column}{0.4\textwidth}
+$\forall n>2$,
+$$\frac4n=\frac1x+\frac1y+\frac1z$$
+admits a solution in positive distinct integers $x, y, z$  
+ \end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=0.45\textwidth]{images/Paul_Erdos.jpg} 
+\includegraphics[width=0.45\textwidth]{images/Hernst_Strauss.jpeg}
+\end{column}
+\end{columns}
+\end{block}\pause
+
+\begin{block}{\textbf{Note:}}\begin{itemize}[<+->]
+                        \item enough to consider (for prime $p\ge3$),
+$\frac4p=\frac1x+\frac1y+\frac1z$
+\item many computations. Record (2012) 
+(Bello--Hern\'andez, Benito and Fern\'andez): ESC holds for $n\le 2\times 10^{14}$
+%\item \textbf{Schinzel Conjecture:} given $a\in\mathbb N$, $\exists N_a$ s.t. if $n>N_a$,
+% $\frac an=\frac1x+\frac1y+\frac1z$ admits a solution in distinct integers $x, y, z$
+\end{itemize}
+ \end{block}
+
+}
+
+
+\frame{\frametitle{The  Schinzel\ Conjecture}
+
+\begin{block}{\textbf{Schinzel Conjecture:}}
+\begin{columns}
+ \begin{column}{0.7\textwidth}
+given $a\in\mathbb N$, $\exists N_a$ s.t. if $n>N_a$,
+ $$\frac an=\frac1x+\frac1y+\frac1z$$ admits a solution in 
+ distinct integers $x, y, z$ \end{column}
+\begin{column}{0.25\textwidth}
+\includegraphics[width=0.9\textwidth]{images/Andrzej_Schinzel.jpg} 
+\end{column}
+\end{columns}
+\end{block}\pause
+
+\begin{theorem}[\textbf{Vaughan (1970):}]
+\begin{columns}
+ \begin{column}{0.7\textwidth}
+$$\#\left\{n\le T: \genfrac{}{}{0pt}{0}{\frac an=\frac1x+\frac1y+\frac1z}
+ {\text{ has no solution}}\right\}\ll \frac T{e^{c\log^{2/3}T}}$$
+\end{column}
+\begin{column}{0.25\textwidth}
+\includegraphics[width=0.9\textwidth]{images/Robert_Charles_Vaughan.jpg} 
+\end{column}
+\end{columns}
+\end{theorem}\pause
+
+\begin{block}{\textbf{Elsholtz -- Tao (2013):} new results about ESC ... later}
+\end{block}
+
+ 
+}
+
+\frame{\frametitle{Fixing the denominator}
+
+\begin{definition}[Enumerating functions for fixed denominator]
+Fix $n\in\mathbb N$ and set
+\begin{enumerate}[<+->]
+ \item $\mathcal A_k(n)=\left\{a\in\mathbb N:
+\frac an=\frac1{x_1}+\cdots+\frac1{x_k}, \exists x_1,\ldots,x_k\in\mathbb N\right\}
+$
+\item $\mathcal A_k^*(n)=\left\{a\in\mathcal A_k(n): \gcd(a,n)=1\right\}$
+\item 
+$A_k(n)=\#\mathcal A_k(n)$
+\item $A_k^*(n)=\#\mathcal A_k^*(n)$
+\end{enumerate}
+
+
+\end{definition}
+
+Note that:
+$$A_k(n)=\sum_{d\mid n}A_k^*(d)$$
+
+
+}
+
+\frame{\frametitle{Fixing the denominator}
+
+\begin{block}{Numerics:}
+{\tiny
+\begin{tabular}{|c|l|l||c|l|l||c|l|l||c|l|l|}
+\hline
+$n$ & $A_2(n)$ & $A_3(n)$  & $n$ & $A_2(n)$ & $A_3(n)$ & $n$ & $A_2(n)$ & $A_3(n)$ & $n$ & $A_2(n)$ & $A_3(n)$ \\
+\hline
+2&4&6&27&18&41&52&27&68&77&25&75\\
+3&5&8&28&23&49&53&10&36&78&39&101\\
+4&7&11&29&10&26&54&35&82&79&12&45\\
+5&6&11&30&29&58&55&24&65&80&49&118\\
+6&10&16&31&8&27&56&36&85&81&28&81\\
+7&6&13&32&23&51&57&21&62&82&18&59\\
+8&11&19&33&18&44&58&18&53&83&14&50\\
+9&10&19&34&17&42&59&14&41&84&60&139\\
+10&12&22&35&20&49&60&51&109&85&22&78\\
+11&8&16&36&34&69&61&6&28&86&19&62\\
+12&17&29&37&6&27&62&18&56&87&25&77\\
+13&6&18&38&17&45&63&33&86&88&39&105\\
+14&13&26&39&20&51&64&32&81&89&14&48\\
+15&14&29&40&33&71&65&22&69&90&58&138\\
+16&16&31&41&10&29&66&36&89&91&20&79\\
+17&8&21&42&34&74&67&8&39&92&29&86\\
+18&20&38&43&8&30&68&30&79&93&21&75\\
+19&8&22&44&25&61&69&25&70&94&21&69\\
+20&21&41&45&28&69&70&39&98&95&24&82\\
+21&17&37&46&17&47&71&14&42&96&59&143\\
+22&14&32&47&12&36&72&54&121&97&8&47\\
+23&10&25&48&41&87&73&6&36&98&32&94\\
+24&27&51&49&14&46&74&17&57&99&36&107\\
+25&12&33&50&27&67&75&33&91&100&48&126\\
+\hline
+\end{tabular} }
+\end{block}
+
+}
+
+\frame{\frametitle{Fixing the denominator - the binary case}
+
+\begin{block}{\textbf{Croot, Dobbs, Friedlander, Hetzel, F\!\!P (2000)}:}
+\begin{columns}
+ \begin{column}{0.6\textwidth}
+\begin{enumerate}[<+->]
+ \item $\forall\varepsilon>0,$ $$A_2(n)\ll n^{\epsilon}$$
+ \item $\displaystyle T\log^3 T\ll \sum_{n\le T}A_2(n)\ll T\log^3T$
+\end{enumerate}
+\end{column}
+\begin{column}{0.35\textwidth}
+\includegraphics[width=0.4\textwidth]{images/Ernest_S_Croot.jpg} 
+\includegraphics[width=0.4\textwidth]{images/David_Dobbs.jpg} 
+
+\includegraphics[width=0.4\textwidth]{images/Andrew_Hetzel.JPG} 
+\includegraphics[width=0.4\textwidth]{images/John_Friedlander.jpg} 
+\end{column}
+\end{columns}
+\end{block}}
+
+\frame{\frametitle{Fixing the denominator - the binary case}
+\begin{lemma}[Rav Criterion (1966)] 
+\begin{columns}
+ \begin{column}{0.75\textwidth}
+Let $a$, $n\in\mathbb N$ 
+s.t. $(a,n)=1$. 
+$$\frac an=  \frac{1}{x}+ \frac{1}{y}$$ has solution $x, y\in\mathbb N\quad\Leftrightarrow\quad\exists (u_1,u_2)\in{\bf N}^2$
+with\\ \hfill $(u_1,u_2)=1$,\\ \hfill $u_1u_2|n$ and $a\left| {u_1+u_2} \right.$
+\end{column}
+\begin{column}{0.2\textwidth}
+\includegraphics[width=0.8\textwidth]{images/Yehuda_Rav.jpg} 
+\end{column}
+\end{columns}
+\end{lemma}\pause
+
+\begin{block}{\textbf{Consequence:} let $\tau(n)$ be number of divisors of $n$ and $[m,n]$ be the lowest common multiple of $n$ and $m$}
+$$A_2^*(p^k)=\tau([p^k+1,p^{k-1}+1,\ldots,p+1])$$
+\end{block}
+}
+
+\frame{\frametitle{Fixing the denominator - the general case}
+
+\begin{theorem}[\textbf{Croot, Dobbs, Friedlander, Hetzel, F\!\!P (2000)}]
+\begin{columns}
+ \begin{column}{0.6\textwidth}
+\begin{itemize}[<+->]
+ \item $\forall\varepsilon>0$,
+$\qquad A_3(n)\ll_\epsilon n^{1/2+\epsilon}$
+ \item by an induction argument, $\forall\varepsilon>0$,
+ $$A_k(n)\ll_\epsilon n^{\alpha_k+\epsilon}$$
+where $\alpha_k=1-2/(3^{k-2}+1)$
+\end{itemize}
+\end{column}
+\begin{column}{0.35\textwidth}
+\includegraphics[width=0.3\textwidth]{images/Ernest_S_Croot.jpg} 
+\includegraphics[width=0.3\textwidth]{images/David_Dobbs.jpg} 
+
+\includegraphics[width=0.3\textwidth]{images/Andrew_Hetzel.JPG} 
+\includegraphics[width=0.3\textwidth]{images/John_Friedlander.jpg} 
+\end{column}
+\end{columns}
+\end{theorem}\pause
+
+\begin{theorem}[\textbf{Banderier, Luca, F\!\!P (2018)}]
+\begin{columns}
+ \begin{column}{0.6\textwidth}
+  \begin{itemize}[<+->]
+ \item $\forall\varepsilon>0$,
+ $\qquad A_3(n)\ll_\epsilon n^{1/3+\epsilon}$
+ \item by an induction argument, $\forall\varepsilon>0$,
+ $$A_k(n)\ll_\epsilon n^{\beta_k+\epsilon}$$
+where $\beta_k=1-2/(2\cdot3^{k-3}+1)$
+\end{itemize}
+\end{column}
+\begin{column}{0.35\textwidth}
+\includegraphics[width=0.45\textwidth]{images/Cyril_Banderier.jpeg} 
+\includegraphics[width=0.45\textwidth]{images/Florian_Luca.jpeg} 
+\end{column}
+\end{columns}
+\end{theorem}
+
+}
+
+\frame{\frametitle{Fixing the denominator - the general case}
+\framesubtitle{generalizing Rav criterion}
+\begin{lemma}
+Let $a/n\in\mathbb Q^>$. 
+$a/n=1/x+1/y+1/z$ for some $x,y,z\in\mathbb N$ $\quad \Leftrightarrow \exists$ six positive integers $D_1,D_2,D_3,v_1,v_2,v_3$ with 
+\begin{itemize}[<+->]
+\item[(i)] $[D_1,D_2,D_3]\mid n$;
+\item[(ii)]   $v_1v_2v_3\mid D_1v_1+D_2v_2+D_3v_3$; 
+\item[(iii)] $a\mid (D_1v_1+D_2v_2+D_3v_3)/(v_1v_2v_3)$
+\end{itemize}\medskip \pause
+Conversely, if there are such integers, then  by putting $E=[{D_1,D_2,D_3}]$, 
+$f_1:=n/E$, $f_2=(D_1v_1+D_2v_2+D_3v_3)/(av_1v_2v_3)$ and $f=f_1f_2$, a representation is 
+$$
+\frac{a}{n}=\frac{1}{(E/D_1)v_2v_3f}+\frac{1}{(E/D_2)v_1v_3f}+\frac{1}{(E/D_3)v_1v_2f}
+$$
+\end{lemma}
+
+}
+
+\frame{\frametitle{back to Erd\H{o}s-Strau\ss\ Conjecture}
+\framesubtitle{the polynomial families of solution}
+
+\begin{block}{Polynomial families of solutions}
+\begin{itemize}[<+->]
+ \item $\displaystyle\frac {4}{n}=
+\frac {1}{n}+\frac {1}{(n+1)/3}+\frac {1}{n(n+1)/3}$
+\item[] $\qquad\qquad\Longrightarrow$ if $n\equiv2\bmod 3$, ESC holds for $n$
+\item $\displaystyle\frac {4}{n}=\frac{1}{n/3}+\frac{1}{4n/3}+\frac{1}{4n}$
+\item[] $\qquad\qquad\Longrightarrow$ if $n\equiv0\bmod 3$, ESC holds for $n$
+\item Need to solve ESC for $n\equiv 1\bmod3$
+\item \textbf{idea can be pushed:} $4/n$ requires four terms with the \emph{greedy algorithm} if and only if $n\equiv 1$ or $17 (\bmod 24)$
+\item \textbf{example} if $n=5+24t$
+$$\frac{4}{n}=
+\frac{1}{6t+1}+\frac{1}{(2+8t)(6t+1)}+\frac{1}{(5+24t)(6t+1)(2+8t)}$$
+\end{itemize}
+\end{block}
+}
+
+\frame{
+\frametitle{back to Erd\H{o}s-Strau\ss\ Conjecture $4/n=1/x+1/y+1/z$}
+\begin{block}{(Another) example ($n\equiv 7\bmod 24$)}
+$$\frac{4}{7+24t}=
+\frac{1}{6t+2}+\frac{1}{(8+24t)(6t+2)}+\frac{1}{(7+24t)(8+24t)(6t+2)}$$
+\end{block}\pause
+
+\begin{definition}[solvable congruences] We say that $r(\bmod q)\in\mathbb Z/q\mathbb Z^*$ is \emph{solvable by polynomials}
+if $\exists P_1, P_2, P_3\in\mathbb Q[x]$ which take 
+positive integer values for sufficiently large integer argument and such that for all $n\equiv r(\bmod q)$:
+$$\frac4n=\frac1{P_1(n)}+\frac1{P_2(n)}+\frac1{P_3(n)}$$ 
+\end{definition}\pause
+
+}
+
+\frame{
+\frametitle{back to Erd\H{o}s-Strau\ss\ Conjecture $4/n=1/x+1/y+1/z$}
+
+\begin{theorem} [\textbf{Elsholtz--Tao (2013)}] 
+\begin{columns}
+ \begin{column}{0.4\textwidth}
+There is a classification of solvable conguences by polynomials 
+\end{column}
+\begin{column}{0.55\textwidth}
+\includegraphics[width=0.4\textwidth]{images/Christian_Elsholtz.jpg}
+\includegraphics[width=0.4\textwidth]{images/Terrence_Tao.jpeg} 
+\end{column}
+\end{columns}
+\end{theorem}\pause
+
+\begin{theorem}[\textbf{Mordell (1969)}]
+\begin{columns}
+ \begin{column}{0.7\textwidth}
+ All (primitive) congruence classes $r(\bmod 840)$ are solvable by polynomials unless $r$ is a perfect square\medskip
+ 
+ (i.e. $r=1^2,11^2,13^2,17^2,19^2,23^2$)
+\end{column}
+\begin{column}{0.25\textwidth}
+\includegraphics[width=0.9\textwidth]{images/Louis_Mordell.jpeg} 
+\end{column}
+\end{columns}
+\end{theorem}
+}
+
+\frame{\frametitle{back to Erd\H{o}s-Strau\ss\ Conjecture $4/n=1/x+1/y+1/z$}
+\begin{block}{\textbf{Remarks \& Definitions:}}
+\begin{itemize}[<+->]
+  \item Up to reordering, solutions of $\frac4p=\frac1x+\frac1y+\frac1z$ are of two types:
+ \begin{itemize}[<+->]
+  \item[I.] $p\mid x$ \& $p\nmid yz$
+  \item[II.] $p\mid \gcd(x,y)$ \& $p\nmid z$
+ \end{itemize}
+\item in analogy, we say that, up to reordering, a solutions of $\frac4n=\frac1x+\frac1y+\frac1z$ is of type:
+ \begin{itemize}[<+->]
+  \item[I.] if $n\mid x$ \& $\gcd(n, yz)=1$
+  \item[II.] $n\mid \gcd(x,y)$ \& $\gcd(n,z)=1$
+\end{itemize}
+\item $f(n)$ be the number of solutions of $4/n=1/x+1/y+1/z$
+\item Set $f_I(n)$ (resp $f_{II}(n)$) be the number of solutions of type I (resp II) of $4/n=1/x+1/y+1/z$
+\item $f(p)=3f_I(p)+3f_{II}(p)$
+\item $f(n)\geq 3f_I(n)+3f_{II}(n)$
+\end{itemize}
+\end{block}
+
+
+}
+
+\frame{\frametitle{back to Erd\H{o}s-Strau\ss\ Conjecture $4/n=1/x+1/y+1/z$}
+\framesubtitle{Elsholtz -- Tao paper}
+
+\begin{theorem}[some of Elsholtz -- Tao's results]
+\begin{columns}
+ \begin{column}{0.7\textwidth}
+\begin{itemize}[<+->]
+ \item $f_I(n)\ll n^{3/5+\varepsilon}$,\quad $f_{II}(n)\ll n^{2/5+\varepsilon}$
+ \item $N\log^3 N\ll \displaystyle\sum_{n\le N}f_I(n)\ll N\log^3 N$
+ \item $N\log^3 N\ll \displaystyle\sum_{n\le N}f_{II}(n)\ll N\log^3 N$
+ \item $N\log^2 N\ll\!\! \displaystyle\sum_{p\le N}f_I(p)\ll\!\! \scriptsize{N\log^2 N\log\log N}$
+ \item $N\log^2 N\ll \displaystyle\sum_{p\le N}f_{II}(p)\ll N\log^2 N$
+ \item $f(n)\gg e^{\left((\log3+o(1))\frac{\log n}{\log\log n}\right)}$ for $\infty$ $n$
+ \item $f(n)\gg(\log n)^{0.54}$ for almost all $n$
+ \item $f(p)\gg(\log p)^{0.54}$ for almost all $p$
+\end{itemize}
+\end{column}
+\begin{column}{0.25\textwidth}
+\includegraphics[width=0.8\textwidth]{images/Christian_Elsholtz.jpg}
+\bigskip
+
+\includegraphics[width=0.8\textwidth]{images/Terrence_Tao.jpeg} 
+\end{column}
+\end{columns}
+ \end{theorem}
+
+}
+
+\frame{\frametitle{back to Erd\H{o}s-Strau\ss\ Conjecture $4/n=1/x+1/y+1/z$}
+\framesubtitle{A key idea on the Elsholtz -- Tao paper}
+Let
+$S_{m,n}=\{(x,y,z)\in\mathbb C^3: mxyz=nyz+nxy+nxz\}\subset\mathbb C^3.$
+
+$A_3(n)$ equals the number of $m\in\mathbb N$ s.t. $S_{m,n}\cap\mathbb N^3\ne\emptyset$. Set
+
+$$\Sigma^\mathrm{I}_{m,n}=\left\{(a,b,c,d,e,f)\in\mathbb C^6:\begin{array}{l}
+                                mabd=ne+1, ce=a+b
+                                                     \\ mabcd=n(a+b)+c\\
+                                macde=ne+ma^2d+1\\
+                                                     mbcde=ne+mb^2d+1\\
+                                     macd=n+f,     ef=ma^2d+1\\
+                                                     bf=na+c\\
+                                                     n^2+mc^2d=f(mbcd-n)
+                                                    \end{array}
+ \right\}$$
+ 
+ which is a 3-dimensional algebraic variety. The map
+ $$\pi^\mathrm{I}_{m,n}: \Sigma^\mathrm{I}_{m,n}
+ \longrightarrow S_{m,n}, (a,b,c,d,e)\mapsto (abdn,acd,bcd)$$
+ is well defined after quotienting by the dilation symmetry
+ $(a,b,c,d,e,f)\mapsto(\lambda a,\lambda b,\lambda c,\lambda^{-2} d,e,f) $ this map is bijective
+}
+
+\frame{\frametitle{back to $A_3(p)$}
+\framesubtitle{Adapting Elsholtz -- Tao construction}
+
+\begin{theorem}[\textbf{Banderier, Luca, F\!\!P (2018)}]
+\begin{columns}
+ \begin{column}{0.6\textwidth}
+$$\sum_{p\le N}A_{II,3}(p)\ll N\log^2N\log\log N$$
+where $A_{II,3}(p)$ is the number of $a\in\mathbb N$ s.t. 
+$$\frac ap=\frac1{px}+\frac1{py}+\frac1z$$
+admits a solution $x, y, z\in \mathbb N$
+\end{column}
+\begin{column}{0.35\textwidth}
+\includegraphics[width=0.45\textwidth]{images/Cyril_Banderier.jpeg} 
+\includegraphics[width=0.45\textwidth]{images/Florian_Luca.jpeg} 
+\end{column}
+\end{columns}
+\end{theorem}
+}
+
+\frame{\frametitle{back to $A_3(p)$}
+\framesubtitle{what goes into the proof...}
+
+these are classical \emph{elementary analytic number theory}
+proof:\bigskip\pause
+
+\begin{columns}
+ \begin{column}{0.65\textwidth}
+\begin{itemize}[<+->]
+ \item Dirichlet average divisor in special sparse sequences
+ \item Prime in arithmetic progression
+ \item Brun Titchmarsh estimates
+ \item Bombieri--Vinogradov Theorem
+\end{itemize}
+ \end{column}
+\begin{column}{0.33\textwidth}
+\includegraphics[width=0.4\textwidth]{images/Johann_Peter_Gustav_Lejeune_Dirichlet.png} 
+\quad
+\includegraphics[width=0.4\textwidth]{images/Titchmarsh.jpeg} 
+\bigskip
+
+\includegraphics[width=0.4\textwidth]{images/Enrico_Bombieri.jpeg} 
+\quad
+\includegraphics[width=0.4\textwidth]{images/Ivan_Vinogradov.jpg} 
+ \end{column}
+\end{columns}
+}
+
+
+\end{document}

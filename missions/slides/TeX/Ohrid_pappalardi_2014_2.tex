@@ -1,0 +1,1022 @@
+\documentclass[10pt,handout]{beamer} %,hyperref={pdfpagelabels=false},draft,handout,handout
+%\let\Tiny=\tiny
+\hfuzz=3pt
+\vfuzz=3pt
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+%\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{colortbl}
+\usepackage{yfonts}
+\usepackage{pifont}
+\usepackage{translator} % comment this, if not available
+\mode<article>
+{
+  \usepackage{times}
+  \usepackage{mathptmx}
+  \usepackage[left=1.5cm,right=6cm,top=1.5cm,bottom=3cm]{geometry}
+}
+
+ \newcommand{\Q}{\mathbb Q}
+ \newcommand{\Z}{\mathbb Z}
+ \newcommand{\N}{\mathbb N}
+ \newcommand{\F}{\mathbb F}
+ \newcommand{\C}{\mathbb C}
+ \newcommand{\R}{\mathbb R}
+% Common theorem-like environments
+
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{\translate{Exercise}}
+\newtheorem{rem}[theorem]{\translate{Remark}}
+\newtheorem{conj}[theorem]{\translate{Conjecture}}
+\newtheorem{proposition}[theorem]{\translate{Proposition}}
+\newtheorem{notation}[theorem]{\translate{Notation}}
+\newtheorem{Note}[theorem]{\translate{Note}}
+\newtheorem{Block}[theorem]{\translate{}}
+
+
+% New useful definitions:
+
+\lecture[1]{Introduction to Galois Representations\\
+\small{Applications}}
+{Galois Representations}
+\date{September 2$^\textrm{nd}$, 2014}
+\title[{Dipartim. Mat. \& Fis.}]{\insertlecture}
+\subtitle{\ }
+\author[\ \hspace{-2mm} Universit\`a Roma Tre]{Francesco Pappalardi}
+\institute{Dipartimento di Matematica e Fisica\\
+  Universit\`a Roma Tre}
+
+% Beamer version theme settings
+
+\useoutertheme[height=0pt,width=2cm,right]{sidebar}
+\usecolortheme{rose,sidebartab}
+\useinnertheme{circles}
+\usefonttheme[only large]{structurebold}
+
+\setbeamercolor{formul}{fg=black,bg=pink}
+\setbeamercolor{sidebar right}{bg=black!15}
+\setbeamercolor{structure}{fg=green!50!black}
+\setbeamercolor{author}{parent=structure}
+\setbeamercolor{postit}{fg=black,bg=yellow}
+\setbeamercolor{greys}{fg=black,bg==black!25}
+\setbeamerfont{title}{series=\normalfont,size=\LARGE}
+\setbeamerfont{title in sidebar}{series=\bfseries}
+\setbeamerfont{author in sidebar}{series=\bfseries}
+\setbeamerfont*{item}{series=}
+\setbeamerfont{frametitle}{size=}
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[book]
+\setbeamertemplate{sidebar right}
+{
+  {\usebeamerfont{title in sidebar}%
+    \vskip1.5em%
+    \hskip3pt%
+    \usebeamercolor[fg]{title in sidebar}%
+    \insertshorttitle[width=2.1cm,respectlinebreaks]\par%   left,
+    \vskip1.25em%
+  }%
+  {%
+    \hskip3pt%
+    \usebeamercolor[fg]{author in sidebar}%
+    \usebeamerfont{author in sidebar}%
+    \insertshortauthor[width=2cm,center,respectlinebreaks]\par%
+    \vskip1em%
+  }%
+  \hbox to2cm{\hss\insertlogo\hss}
+  \vskip1em%
+  \insertverticalnavigation{2cm}%
+  \vfill
+  \hbox to 2cm{\hfill\usebeamerfont{subsection in
+      sidebar}\strut\usebeamercolor[fg]{subsection in
+      sidebar}\insertframenumber\hskip5pt}%
+  \vskip3pt%
+}%
+
+\setbeamertemplate{title page}
+{
+  \vbox{}
+  \vskip1em
+  %{\huge Lecture \insertshortlecture\par}
+  {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle\par}%
+  \ifx\insertsubtitle\@empty%
+  \else%
+    \vskip0.25em%
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+  \fi%
+  \vskip1em\par
+   \textbf{\Large{NATO ASI, Ohrid 2014}}\\
+\textsl{Arithmetic of Hyperelliptic Curves}\\ August 25 - September 5, 2014\\ 
+\emph{Ohrid, the former Yugoslav Republic of Macedonia},\par
+  \vskip0pt plus1filll
+  \leftskip=0pt plus1fill\insertauthor\par
+  \insertinstitute\vskip1em
+}
+
+\logo{\includegraphics[width=1cm]{images/roma3.pdf}}
+
+% Article version layout settings
+
+\mode<article>
+
+\makeatletter
+\def\@listI{\leftmargin\leftmargini
+  \parsep 0pt
+  \topsep 5\p@   \@plus3\p@ \@minus5\p@
+  \itemsep0pt}
+\let\@listi=\@listI
+
+
+\setbeamertemplate{frametitle}{\paragraph*{\insertframetitle\
+    \ \small\insertframesubtitle}\ \par
+}
+\setbeamertemplate{frame end}{%
+  \marginpar{\scriptsize\hbox to 1cm{\sffamily%
+      \hfill\strut\insertframenumber}\hrule height .2pt}}
+\setlength{\marginparwidth}{1cm}
+\setlength{\marginparsep}{4.5cm}
+
+\def\@maketitle{\makechapter}
+
+\def\makechapter{
+  \newpage
+  \null
+  \vskip 2em%
+  {%
+    \parindent=0pt
+    \raggedright
+    \sffamily
+    \vskip8pt
+    {\fontsize{36pt}{36pt}\selectfont Kapitel \insertshortlecture \par\vskip2pt}
+    {\fontsize{24pt}{28pt}\selectfont \color{blue!50!black} \insertlecture\par\vskip4pt}
+    {\Large\selectfont \color{blue!50!black} \insertsubtitle\par}
+    \vskip10pt
+  }
+  \par
+  \vskip 1.5em%
+}
+
+\let\origstartsection=\@startsection
+\def\@startsection#1#2#3#4#5#6{%
+  \origstartsection{#1}{#2}{#3}{#4}{#5}{#6\normalfont\sffamily\color{blue!50!black}\selectfont}}
+
+\makeatother
+
+\mode
+<all>
+
+% Typesetting Listings
+
+\usepackage{listings}
+\lstset{language=Java}
+
+\alt<presentation>
+{\lstset{%
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\slshape\color{green!50!black},
+  keywordstyle=\bfseries\color{blue!50!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  escapechar=\#,
+  emphstyle=\color{red}}
+}
+{
+  \lstset{%
+    basicstyle=\ttfamily,
+    keywordstyle=\bfseries,
+    commentstyle=\itshape,
+    escapechar=\#,
+    emphstyle=\bfseries\color{red}
+  }
+}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Plan for today}
+\begin{frame}
+\frametitle{Plan for today}\pause
+
+\begin{block}{Topics}\pause
+\begin{itemize}[<+-| alert@+>]
+ \item Short summery of Tuesday's Lecture
+ \item Facts about Elliptic curves over finite fields
+ \item Serre's Cyclicity Conjecture
+ \item Lang--Trotter Conjecture for fixed traces
+ \item Lang--Trotter Conjecture for primitive points
+ \item Artin primitive roots Conjecture
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Elliptic curves}\pause
+
+\textsc{Weierstra\ss\ Equation:} \hfill \textcolor{blue}{$E: Y^2=X^3+aX+b$}, \quad  $a, b\in\Z$;\bigskip\pause
+
+
+\begin{block}{\textsc{Discriminant of $E$:}\hfill $\Delta_E=4a^3-27b^2$}\pause
+\begin{itemize}[<+-| alert@+>]
+\item $\Delta_E=(\alpha_1-\alpha_2)^2(\alpha_3-\alpha_2)^2(\alpha_3-\alpha_1)^2$ \\
+\hspace*{2cm} ($\alpha_1$, $\alpha_2$, $\alpha_3$ {roots of $X^3+aX+b$});
+\item $\Delta_E=0 \Longleftrightarrow X^3+aX+b$  has a double
+root!
+\end{itemize}
+\end{block}\pause
+
+\begin{definition}
+  if $\Delta_E\neq0\
+\Longrightarrow\ E$ is called \textcolor{red}{\textsc{Elliptic
+Curve}}
+\end{definition}\pause
+
+\begin{block}{Group of Rational Points}
+ If $K/\Q$ is an extension. Then
+ $$E(K)=\{(x,y)\in K^2: y^2=x^3+ax+b\}\cup\{\infty\}$$\pause
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The $n$-torsion subgroups}\pause
+
+\begin{block}
+{If $n\in\N$\hspace{2cm}$E[n]:=\{P\in E(\overline{\Q})\ |\ nP=\infty\}$ }\pause
+\begin{itemize}[<+-| alert@+>]
+\item $E[n]\subset E(\overline{\Q})\cong \overline{\Q}/\Z\times \overline{\Q}/\Z$ is a subgroup
+\item $E[n]\cong C_n\oplus C_n$
+%\item $E[2]=\left\{P\in E(\overline{\Q})\ |\ r(P,P)\bigcap E(\overline{\Q})=\{P,\infty\} \right\}$
+\item $E[2]=\{ (\alpha_1,0), (\alpha_2,0), (\alpha_3,0), \infty\}$\\
+($\alpha_1, \alpha_2, \alpha_3$ roots of $x^3+ax+b$)
+\item $E[3]$ is the set of inflection points
+\item If $n$ is odd, $P=(\alpha,\beta)\in E[n]\ \ \Longrightarrow \psi_n(\alpha)=0$,\\
+$\psi_n$ is $n$--division polynomials ($\partial \psi_n=(n^2-1)/2$ if $n$ odd)
+\item
+$E: y^3=x^3-2x\Longrightarrow E[2]=\{(0,0), (\sqrt{2},0), (-\sqrt{2},0), \infty\}$
+\end{itemize}\pause
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Representation on $n$-torsion points}
+
+
+\begin{block}{The $n$--\textcolor{blue}{torsion field}:
+\hfill $\Q(E[n])=\displaystyle{\bigcap_{K^2 \supset E[n]\setminus\{\infty\}}} K$}\pause
+\begin{itemize}[<+-| alert@+>]
+%\item $\Q(E[n])$ is the splitting field of $\_n$ (division polynomials)
+\item $\Q(E[n])$ is Galois over $\Q$
+\item $\operatorname{Gal}(\Q(E[n])/\Q)\subseteq\operatorname{Aut}(E[n])\cong \operatorname{GL}_2(\Z/n\Z)$
+$$\operatorname{Gal}(\Q(E[n])/\Q)\hookrightarrow \operatorname{GL}_2(\Z/n\Z)$$
+$$ \sigma\mapsto \{(x,y)\mapsto (\sigma(x),\sigma(y))\}$$
+\item[] Injective representation
+\end{itemize}
+\end{block}\pause
+
+\begin{theorem}[Serre]\pause If $E/\Q$ is not CM. Then
+$\operatorname{Gal}(\Q(E[\ell])/\Q)\neq \operatorname{GL}_2(\F_\ell)$
+only for finitely many $\ell$. 
+\end{theorem}\pause
+
+\begin{conj}[$\ell\le 37$]
+ \end{conj}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Reducing modulo primes}
+
+\begin{block}{Facts about elliptic curves over finite fields}\pause
+\begin{itemize}[<+-| alert@+>]
+\item $p$ prime, $p\nmid\Delta_E$
+
+\item $E(\F_p)=\{\!(X,Y)\in\F_p^2\ |\ Y^2=X^3+aX+b\}\!\cup\{\infty\}$
+ 
+%\item $E(\F_p)$ is a finite group (excellent for Cryptography)
+
+\item $E(\F_p)\cong C_k\oplus C_{nk}$ for some $k\mid p-1$
+
+\item $k=1$ above iff $E(\F_p)$ is cyclic
+
+\item $\#E(\F_p)=p+1-a_p$ ($a_p$ is the \textcolor{blue}{\textsc{Trace of Frobenius)}}
+
+\item \textcolor{blue}{\textsc{Hasse bound:}} \ \ \ \  $|a_p|\leq 2\sqrt{p}$;
+
+\item $\Psi_p: E(\overline{\F_p})\rightarrow E(\overline{\F_p}), (x,y)\mapsto (x^p,y^p)$ 
+\item[] it is an endomorphism of $E/\F_p$
+ 
+\item $\Psi_p\in\operatorname{End}(E)$ satisfies $T^2-a_pT+p$
+ 
+ \item $\Z[\Psi_p]\subset \operatorname{End}(E)$
+ 
+ \item If the equality hold above, we say that $E$ is \textit{ordinary} at $p$. Otherwise we say
+ that it is \textit{supersingular}
+
+ \item $E/\F_p$ is supersingular \hfill $\Longleftrightarrow$ $E[p]=\{\infty\}$
+ \item[] \hfill $\Longleftrightarrow$\qquad $a_p=0$
+ \end{itemize}\pause
+ \end{block}
+%\centerline{\small Prob$(a_p(E)=r)\approx \frac 1{2\sqrt{p}}\ \ \
+%=\!\!=\!\!=\!\!=\!\!\!> \  \ \ \pi_E^r(x)\approx \sum_{p\leq
+%x}\frac1{2\sqrt{p}} \sim{\sqrt{x}\over \log x}. $ }
+\end{frame}
+
+\section{Serre's Cyclicity Conjecture}
+
+\begin{frame}
+\frametitle{Serre's Cyclicity Conjecture}
+ Let $E/\Q$ and set\pause
+$$\pi_E^{\text{cyclic}}(x)=\#\{p\le x: E(\F_p)\text{ is cyclic}\}.$$\pause
+
+\begin{conj}[Serre]
+The following asymptotic formula holds
+$$\pi_E^{\text{cyclic}}(x)\sim\delta_E^{\text{cyclic}}\frac x{\log x}\qquad x\rightarrow\infty$$\pause
+where \vspace*{-3pt}
+$$\delta_E^{\text{cyclic}}=\sum_{n=1}^\infty\frac{\mu(n)}{\#\operatorname{Gal}(\Q(E[n])/\Q)}$$
+ \end{conj}\pause
+
+\begin{itemize}[<+-| alert@+>]
+ \item Since $E(\F_p)\cong C_k\oplus C_{kn}$
+ \item[] and $E[\ell]\cong C_\ell\oplus C_\ell$ for all $\ell\ne p$
+ \item[] $E(\F_p)$ is cyclic iff $E[\ell]\nsubseteq E(\F_p) \forall \ell$ prime  $\ell\ne p$
+ \item So we may rewrite \vspace*{-3pt}
+$$\pi_E^{\text{cyclic}}(x)=\#\{p\le x: E[\ell]\nsubseteq E(\F_p) \forall \ell\text{ prime }, \ell\ne p\}.$$
+ \end{itemize}\pause
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Serre's Cyclicity Conjecture}
+
+We can apply inclusion exclusion principle:\pause
+
+\begin{align*}
+ \pi_E^{\text{cyclic}}(x)&=&\#\{p\le x: E[\ell]\nsubseteq E(\F_p) \forall \ell\text{ prime }, \ell\ne p\}\\
+&=&\pi(x)-\sum_{\ell\text{ prime}}\pi_{E,\ell}(x)+\sum_{\ell_1,\ell_2\text{ primes}}\pi_{E,\ell_1\ell_2}(x)-\cdots
+ \end{align*}\pause
+ 
+where $\pi(x):=\#\{p\le x\}$ and if $k\in\N$,
+$$\pi_{E,k}(x):=\#\{p\le x: E[k]\subseteq E(\F_p)\}$$\pause
+
+Hence, if $\mu$ is the M\"obius function, then
+$$\pi_E^{\text{cyclic}}(x)=\sum_{k\in\N}\mu(k)\pi_{E,k}(x)$$\pause
+
+We will study $\pi_{E,k}(x)$ by mean of the Chebotarev density Theorem.
+\end{frame}
+
+\begin{frame}
+\frametitle{Chebotarev Density Theorem  (from tuesday)} 
+
+
+If $K/\Q$ be Galois and $p$ is prime unramified in $K$, the \emph{Artin Symbol}\pause
+$$\left[\frac{K/\Q}p\right]:=\left\{\sigma\in\operatorname{Gal}(K/\Q): 
+\begin{array}{l}
+\exists\mathfrak p\text{ prime of $K$ above $p$ s.t. }\\
+\sigma\alpha\equiv \alpha^{N\mathfrak p}\bmod \mathfrak p\ \forall \alpha\in\mathcal{O}
+\end{array}\right\}$$\pause
+
+Note that $\left[\frac{K/\Q}p\right]=\{id\}$ then $p$ splits completely in $K/\Q$ 
+\\ \pause (i.e $p\mathcal O\subset\mathcal O$ is the product of $[K:\Q]$ prime ideals)\pause
+
+
+\begin{theorem}[Chebotarev Density Theorem]
+Let $K/\Q$ be finite and Galois, and let 
+$\mathcal C\subset\operatorname{Gal}(K/\Q)$ be a union of conjugation classes. \pause
+Then the density of the primes $p$ such that 
+$\left[\frac{K/\Q}p\right]\subset \mathcal C$ equals $\frac{\#\mathcal C}{\#\operatorname{Gal}(K/\Q)}.$ \pause
+
+In particular, if $\mathcal{C}=\{\operatorname{id}\}$, then the density of the primes $p$ such that 
+$\left[\frac{K/\Q}p\right]=\{\operatorname{id}\}$ equals $\frac1{\#\operatorname{Gal}(K/\Q)}.$
+\end{theorem}\pause
+
+If $K=\Q(E[n])$, then
+$$E[n]\subset {E}(\F_p)\quad\Longleftrightarrow \quad \left[\frac{\Q(E[n])/\Q}p\right]=\{\operatorname{id}\}$$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Chebotarev Density Theorem and Serre's Cyclicity Conj.} 
+
+If $K=\Q(E[n])$, then
+$$E[n]\subset {E}(\F_p)\quad\Longleftrightarrow \quad \left[\frac{\Q(E[n])/\Q}p\right]=\{\operatorname{id}\}$$
+\pause
+Also recall that $\pi_{E,k}(x):=\#\{p\le x: E[k]\subseteq E(\F_p)\}$\pause
+\begin{eqnarray*}
+\pi_E^{\text{cyclic}}(x)&=&\sum_{k\in\N}\mu(k)\pi_{E,k}(x)\\
+                        &=&\sum_{k\in\N}\mu(k)\#\left\{p\le x: \left[\frac{\Q(E[n])/\Q}p\right]=\{\operatorname{id}\}\right\}
+\end{eqnarray*}
+\pause
+
+To proceed we need  a quantitative versions of the Chebotarev Density Theorem. Let
+$$\pi_{\mathcal C/\mathcal G}(x):=\#\left\{p\le x: \left[\frac{K/\Q}p\right]\subset \mathcal C\right\}.$$
+\end{frame}
+
+\begin{frame}
+\frametitle{The quantitative Chebotarev Density Theorem}
+
+ Let
+$$\pi_{\mathcal C/\mathcal G}(x):=\#\left\{p\le x: \left[\frac{K/\Q}p\right]\subset \mathcal C\right\}.$$
+\pause
+
+\begin{theorem}[Chebotarev, Lagarias, Odlyzko, Serre, Murty, Saradha]
+The Generalized Riemann Hypothesis implies
+$$\pi_{\mathcal C/\mathcal G}(x)=
+\frac{\#\mathcal C}{\#\mathcal G}\int_2^x\frac{dt}{\log t}+O\left(\sqrt{\#\mathcal C}\sqrt{x}\log(xM\#\mathcal G)\right)$$
+where $M$ is the product of primes numbers that ramify in $K/\Q$.
+\end{theorem}\pause
+
+In the case of $K=\Q(E[k])$ and $k$ is square free, the above specializes to 
+$$\pi_{E,k}(x)=\frac1{\#\operatorname{Gal}(\Q(E[k])/\Q)}\int_2^x\frac{dt}{\log t}+
+O\left(\sqrt{x}\log(xk)\right)$$
+\end{frame}
+
+\begin{frame}
+\frametitle{The quantitative Chebotarev Density Theorem and Serre's Conj}
+In the case of $K=\Q(E[k])$ and $k$ is square free, the above specializes to 
+$$\pi_{E,k}(x)=\frac1{\#\operatorname{Gal}(\Q(E[k])/\Q)}\int_2^x\frac{dt}{\log t}+
+O\left(\sqrt{x}\log(xk)\right)$$\pause
+Hence
+$$\pi_E^{\text{cyclic}}(x)=\sum_{k\in\N}\frac{\mu(k)}{\#\operatorname{Gal}(\Q(E[k])/\Q)}\int_2^x\frac{dt}{\log t}
++\operatorname{ERROR}$$\pause
+
+The error can be estimated by standard analytic number theory\pause
+
+Finally
+$$\delta_E^{\text{cyclic}}=\sum_{k=1}^\infty\frac{\mu(k)}{\#\operatorname{Gal}(\Q(E[k])/\Q)}.$$
+\end{frame}
+
+\begin{frame}
+\frametitle{The state of the Art on Serre's Cyclicity Conjecture}
+
+\begin{itemize}[<+-| alert@+>]
+\item Serre (1976): \emph{GRH }$\Rightarrow \pi_E^{\text{cyclic}}(x)\sim \delta_E^{\text{cyclic}}\frac{x}{\log x}$
+\item Murty (1979): \emph{$E/\Q$ CM} $\Rightarrow \pi_E^{\text{cyclic}}(x)\sim \delta_E^{\text{cyclic}}\frac{x}{\log x}$
+\item Gupta \& Murty (1990): $\pi_E^{\text{cyclic}}(x)\gg\frac{x}{(\log x)^2}$ iff $E[2]\nsubseteq E[\Q]$
+ \item Cojocaru (2003): \emph{Simple proof and explicit error term for CM curves}
+ \item Cojocaru \& Murty (2004): \emph{improved error terms depending on GRH}
+ \item Serre: $\delta_E^{\text{cyclic}}$ is a rational multiple of 
+ $$C=\prod_\ell\left(
+ 1-\frac1{\ell(\ell-1)^2(\ell+1)}\right)= 0.81375190610681571\cdots$$
+ \item Lenstra, Moree \& Stevenhagen (2013): \emph{If $E/\Q$ is a Serre curve then:}
+$$\delta_E^{\text{cyclic}}=
+C\times\left(1+\prod_{\ell\mid 2\operatorname{disc}(\Q(\sqrt{\Delta_E}))}\frac{-1}{(\ell^2-1)(\ell^2-\ell)-1}\right)$$
+ \end{itemize}\pause
+\end{frame}
+
+
+\section{Lang Trotter Conjecture for trace of Frobenius}
+
+\begin{frame}
+\frametitle{Lang Trotter Conjecture for trace of Frobenius} 
+ Let $E/\Q$, $r\in\Z$  and set\pause
+$$\pi_E^r(x)=\#\{p\le x: p\nmid\Delta_E\text{ and } \#\overline E(\F_p)=p+1-r\}\vspace*{-7pt}$$
+\pause
+\begin{conj}[Lang -- Trotter (1970)]
+If either $r\ne0$ or if $E$ has no CM, \pause then
+the following asymptotic formula holds
+$$\pi_E^r(x)\sim C_{E,r}\frac{\sqrt{x}}{\log x}\qquad x\rightarrow\infty$$\pause
+where $C_{E,r}$ is the  \emph{Lang--Trotter constant}
+$$C_{E,r}=\frac2\pi\frac{m_E\#\operatorname{Gal}(\Q(E[m_E])/\Q)_{\text{tr}=r}}{\#\operatorname{Gal}(\Q(E[m_E])/\Q)}
+\times\prod_{\ell\nmid m_E}\frac{\ell\#\operatorname{GL}_2(\F_\ell)_{\text{tr}=r}}{\#\operatorname{GL}_2(\F_\ell)}$$\pause
+and $m_E$ is the \emph{Serre's conductor} of $E$\pause
+ \end{conj}\pause
+
+\begin{itemize}[<+-| alert@+>]
+ \item If $E$ is a Serre's curve, then $m_E=[2,\operatorname{disc}(\Q(\sqrt{\Delta_E}))]$
+ \item $\#\operatorname{GL}_2(\F_\ell)_{\text{tr}=r}=\begin{cases}
+                   \ell^2(\ell-1) & \text{if } r=0\\
+                   \ell(\ell^2-\ell-1) & \text{otherwise.}
+                  \end{cases}
+$
+\end{itemize}\pause
+\end{frame}
+
+\subsection{state of the Art}
+
+\begin{frame}
+\frametitle{Lang Trotter Conjecture for trace of Frobenius} 
+\framesubtitle{An application of $\ell$--adic representations and of the Chebotarev density Theorem}\pause
+
+\begin{theorem}[Serre]
+Assume that $E/\Q$ is not CM or that $r\neq0$ and that the Generalized Riemann 
+Hypothesis holds. Then\pause
+$$\pi_E^r(x)\ll\begin{cases} x^{7/8}(\log x)^{-1/2}&\text{if}\ r\ne0\\ x^{3/4}&\text{if}\ r=0.\end{cases}$$  
+\end{theorem}\pause
+
+\begin{itemize}[<+-| alert@+>]
+ \item If $E/\Q$ is CM and $r=0$. It is classical
+ $$\pi_E^0(x)\sim\frac12\frac{x}{\log x}\qquad x\rightarrow\infty$$
+ \item Murty, Murty and Sharadha: If $r\ne0$, on GRH, $\pi_E^r(x)\ll x^{4/5}/(\log x)^{-1/5}$
+ \item Elkies $\pi_E^0(x)\rightarrow\infty\quad x\rightarrow\infty$
+ \item Elkies \& Murty: GRH $\Longrightarrow\pi_E^0(x)\gg\log\log x$
+ \item Average Versions later
+ \end{itemize}\pause
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Lang Trotter Conjecture for trace of Frobenius}
+
+\begin{block}{Unvonditional Stetements}\pause
+\begin{itemize}[<+-| alert@+>]
+\item \textcolor{blue}{\textit{J. P. Serre (1981)}},\pause  
+%\textcolor{blue}{\textit{Elkies, Kaneko, K. Murty, R. Murty, N. Saradha, Wan (1988):}}
+$$\pi_{E,r}(x) \ll \left\{ \begin{array}{ll}
+\frac{x(\log\log x)^2}{\log^2 x}& \mbox{if $r \neq 0$} \\  \\%x^{4/5}\log^{-1/5}{x}
+{x^{3/4}} & \text{if }r = 0\text{ and}\\ & \text{ $E$ not CM} \end{array} \right.$$\pause
+\item \textcolor{blue}{\textit{N. Elkies, E. Fouvry, R. Murty (1996)}}
+$$\pi_{E,0}(x)\gg \log\log\log x/(\log\log\log\log
+x)^{1+\epsilon}$$
+\end{itemize}\pause
+\end{block}
+\end{frame}
+
+
+\subsection{Serre's upperbound}
+
+\begin{frame}
+\frametitle{Chebotarev Density Theorem and Serre's Theorem on fixed traces} 
+
+Let $\ell$ be sufficiently large such that 
+$$\mathcal G=\operatorname{Gal}(\Q(E[\ell])/\Q)\cong\operatorname{GL}_2(\F_\ell)$$\pause
+
+Set
+$\mathcal C=\operatorname{GL}_2(\F_\ell)_{\text{tr}=r}=\{\sigma\in\operatorname{GL}_2(\F_\ell):\operatorname{tr}\sigma=t\}$
+\pause
+
+So that
+$$\#\operatorname{GL}_2(\F_\ell)=(\ell^2-1)(\ell^2-\ell)$$
+\pause
+and\pause
+$$\#\operatorname{GL}_2(\F_\ell)_{\text{tr}=r}=\begin{cases}
+                   \ell^2(\ell-1) & \text{if } r=0\\
+                   \ell(\ell^2-\ell-1) & \text{otherwise.}
+                  \end{cases}$$
+\pause
+
+Then by Chebotarev Density Theorem on GRH, 
+\begin{align*}
+ \pi_{\mathcal C/\mathcal G}(x)&=
+\frac{\#\mathcal C}{\#\mathcal G}\int_2^x\frac{dt}{\log t}+O\left(\sqrt{\#\mathcal C}\sqrt{x}\log(xM\#\mathcal G)\right)\\\pause
+&\ll \frac{1}{\ell}\frac{x}{\log x}+\ell^{3/2}\sqrt{x}\log(x\ell)   
+\end{align*}
+\end{frame}
+\begin{frame}
+\frametitle{Chebotarev Density Theorem and Serre's Theorem on fixed traces} 
+
+Finally recall (from tuesday) that if $\Phi_p$ is the Frobenius endomorphism,\pause
+$$\# E(\F_p)=p+1-r\quad\Longleftrightarrow\quad\operatorname{Tr}(\Phi_p)\equiv r$$\pause
+Hence for all $\ell$ sufficiently large,\pause
+\begin{align*}\pi_E^r(x)&=\#\{p\le x: p\nmid\Delta_E\text{ and } \# E(\F_p)=p+1-r\}\\
+ &\le \#\{p\le x: p\nmid\Delta_E\text{ and } \operatorname{Tr}(\Phi_p)\equiv r\bmod p\}\\
+ &=\pi_{\mathcal C/\mathcal G}(x)\\
+ &\ll  \frac{1}{\ell}\frac{x}{\log x}+\ell^{3/2}\sqrt{x}\log(x\ell)
+\end{align*}\pause
+
+It is enough to choose $\ell=x^{1/5}(\log x)^{-4/5}$\pause
+
+To conclude that
+$$\pi_E^r(x)\ll x^{4/5}(\log x)^{-1/5}$$
+\end{frame}
+
+\subsection{Average Lang Trotter Conjecture}
+
+\begin{frame}
+\frametitle{Average Lang Trotter Conjecture}\pause
+
+\begin{theorem}[David, F. P. (1997)]\pause
+Let
+$${\mathcal C}_{x}=\{E: Y^2=X^3+aX+b\ :4a^3+27b^2\ne0\text{ and }\ |a|,|b|\leq x\log x\}$$\pause
+Then\vspace*{-5pt}
+$$\frac{1}{|\mathcal C_x|}\sum_{E\in\mathcal C_x}\pi_{E,r}(x)\sim
+c_r\frac{\sqrt{x}}{\log x}\ \ \textrm{as}\ x\rightarrow\infty
+$$\pause
+where
+$$
+c_r 
+%\frac{2}{\pi}
+%\prod_{l|r}\left(1-\frac{1}{l^2}\right)^{-1} \prod_{l \nmid
+%r}\frac{l(l^2-l-1)}{(l-1)(l^2-1)}
+=\frac{2}{\pi}\prod_{l}
+\frac{\ell|\operatorname{GL}_2(\F_\ell)^{\operatorname{tr}=r}|}{|\operatorname{GL}_2(\F_\ell)|}.
+$$
+\end{theorem}\pause
+
+\begin{theorem}[N. Jones (2004)]
+Let \vspace*{-5pt}$$\mathcal C_x^{\text{Serre}}:=\{E\in \mathcal{C}_x: E\text{ is a Serre curve}\}$$\pause
+Then\vspace*{-5pt}
+$$\lim_{x\rightarrow\infty}\frac{|\mathcal C_x^{\text{Serre}}|}{|\mathcal C_x|}=1$$\pause
+In this sense \emph{almost all elliptic curves are Serre's curves}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{The General Lang--Trotter Conjecture}\pause
+
+\begin{definition}[\textit{General Lang--Trotter function}]\pause
+Let $K/\Q$ be a number field, Let $E/K$ be an elliptic curve and set $f\mid [K:\Q]$. Define
+$$\pi_E^{r,f}(x)=\#\left\{p\leq x\ |\ \deg_K(p)=f,\ \exists \mathfrak p|p, a_E(\mathfrak p)=r\right\}\vspace*{-13pt}$$
+ \end{definition}\pause
+
+
+\begin{conj}[The General Lang-Trotter Conjecture for Fixed Trace]\pause
+$\exists c_{E,r,f}\in\R^{\geq0}$ such that\vspace*{-5pt}
+$$\displaystyle{\pi_E^{r,f}(x)\sim c_{E,r,f} \begin{cases} \frac{x}{\log x}& \textrm{if}\ E\
+\textrm{has CM and } r=0\\ \\
+\frac{\sqrt{x}}{\log x}  & \textrm{if}\ f=1 \\ \\
+\log\log x & \textrm{if}\ f=2\\ \\
+1 & \textrm{otherwise.}
+\end{cases}}$$\vspace*{-5pt}
+ \end{conj}\pause
+ 
+
+{\bf Example.} $K=\Q(i)$: $\pi^{r,1}$ counts split primes $\equiv1\bmod4$;\\
+\hspace*{3.2cm}$\pi^{r,2}$ counts inert primes $\equiv3\bmod4$
+\end{frame}
+
+\begin{frame}
+\frametitle{Another Average result}
+
+\begin{theorem}[C. David \& F.P. (2004)]\pause Let
+$K=\Q(i)$, $r\in\mathbb Z,$ $r\neq 0$ and for $\alpha,\beta\in\Z[i]$, set
+$E_{\alpha,\beta}: Y^2=X^3+\alpha X+\beta$. \pause Further let
+$${\cal C}_x= \left\{ E_{\alpha,\beta}:  \ \left|\
+\begin{array}{l}\alpha=a_1+a_2i,\beta=b_1+b_2i\in{\bf Z}[i],\\
+ 4\alpha^3-27\beta^2\neq0 \\
+\max\{|a_1|,|a_2|,|b_1|,|b_2|\}<x\log x
+\end{array}
+    \right.\right\}$$ \pause    
+Then
+$$\frac1{|\textcolor{black}{{\cal
+C}_x}|}\sum_{{E\in{\cal C}_x}}
+\textcolor{black}{\pi_E^{r,2}(x)}{\sim}\textcolor{black}{
+c_{r}\log\log x}.$$\pause
+where
+$$c_{r}=\frac1{3\pi}
+\prod_{\ell>2}\frac{\ell(\ell-1-\left(\frac{-r^2}{\ell}\right))}{
+(\ell-1)(\ell-\left({-1}{\ell}\right))}$$
+\end{theorem}
+
+Extended to the Average of the General Lang-Trotter function by Kevin James and Ethan Smith in 2011
+
+
+\end{frame}
+
+\subsection{Some ideas on Average results proofs}
+
+\begin{frame}
+\frametitle{Sketch of proof. 1/4}
+
+\begin{definition}[Kronecker--Hurwitz class numbers] \pause
+Let $d\in\Z$, $d\equiv0,1\bmod 4$. Then 
+$$H(d)=2\sum_{f^2\mid d}\frac{h\left(\frac d{f^2}\right)}{w\left(\frac d{f^2}\right)}$$\pause
+where \begin{itemize}
+       \item $h(D)=$ class number
+       \item $w(D)$ is number of units in $\Z[D+\sqrt{D}]\subset{\Q}(\sqrt{d})$
+      \end{itemize}
+\end{definition}\pause
+
+\begin{theorem}[Deuring's Theorem]\pause
+Let $q=p^n$, $r$ odd (simplicity) with $r^2-4q<0$.\pause
+
+$$\#\left\{\begin{array}{l}
+            \F_q-\text{isomorphism classes of } E/\F_q \\
+            \text{ with }a_q(E)=r
+           \end{array}\right\}= H(r^2-4q).$$
+\end{theorem}
+ 
+\end{frame}
+
+\begin{frame}
+\frametitle{Sketch of proof.  2/4}
+
+\begin{block}{\textcolor{red}{\textit{Step 1:}} switch the order of summation}\pause
+\begin{eqnarray*}
+ \frac{1}{|\mathcal C_x|}\sum_{E\in\mathcal C_x}\pi_{E,r}(x) &=&\frac{1}{|\mathcal C_x|}\sum_{E\in\mathcal C_x}\sum_{\substack{ p\le x\\ a_p(E)=r}}1 \\
+ &=&\sum_{p\le x}\frac{|\{E\in\mathcal C_x: a_p(E)=r\}}{|\mathcal C_x|}\\
+ &=& \frac12 \sum_{\substack{p\leq x}}
+ \frac{H(r^2-4p)}{p}+O(1)
+\end{eqnarray*} 
+\end{block}\pause
+
+\begin{theorem}[Dirichlet Class Number Formula]\pause
+ Let  $\chi_d(n)=\left(\frac dn\right)$ and let $L(s,\chi_{d})$ be the \textcolor{blue}{Dirichlet $L$--function}. \pause Then the class
+ number
+$$h(d)=\frac{\omega(d)|d|^{1/2}}{2\pi}L(1,\chi_{d})\vspace*{-12pt}$$
+ \end{theorem}\pause
+
+Next we use the definition of the \alert{Kronecker--Hurwitz class number}
+ \end{frame}
+
+\begin{frame}
+\frametitle{Sketch of proof. 3/4}
+
+ \begin{block}
+ {\textcolor{red}{\textit{Step 2.}} applying the class number formula}\pause Let $d=(r^2-4p)/f^2$. Then \pause
+$$\frac12\!\!\sum_{p\leq x}
+\!\frac{H(r^2-4p)}{p}=\frac2\pi\sum_{\begin{subarray}{l} f\leq 2x\\ (f,2r)=1\end{subarray}}\!\frac 1f\!\!\!
+\sum_{\begin{subarray}{c}p\leq x\\
+4p\equiv r^2\bmod f^2
+\end{subarray}}\!\!\!\!\frac{L(1,\chi_{d})}{p}+O(1)$$
+ \end{block}\pause
+
+ So the problem is reduced to a special $L$--function value average. \pause Analytic tools become relevant!!\pause
+
+\begin{theorem}[Barban--Davenport--Harberstam Theorem]\pause
+Let $\varphi$ be the Euler function. Then for $1 \leq Q \leq x$ and $\forall c>0$,\pause
+$$\sum_{q \leq Q} \sum_{a \bmod q } \left|\sum_{\substack{p\leq x \\ p \equiv a \bmod q}} \log p - \frac{x}{\varphi(q)}\right|^2
+\ll Q x \log x + \frac{x^2}{ \log^c x}$$
+\end{theorem}\pause
+\end{frame}
+
+\begin{frame}
+\frametitle{Sketch of proof. 4/4}
+
+\begin{lemma}[Crucial analytic Lemma]\pause
+$\forall c>0$,\pause
+$$
+\sum_{\begin{subarray}{l} f\leq 2x\\ (f,2r)=1\end{subarray}}\!\frac 1f\!\!\!\sum_{\begin{subarray}{c}p\leq x\\
+4p\equiv r^2\bmod f^2
+\end{subarray}}\!\!\!\!L(1,\chi_{d})\log p=k_rx+O\left(\frac{x}{\log^cx}\right)$$
+where 
+$$k_{r}=\frac23
+\prod_{\ell>2}\frac{\ell-1-\left(\frac{-r^2}{\ell}\right)}{(\ell-1)(\ell-\left(\frac{-1}{\ell}\right))}$$
+ \end{lemma}\pause
+ 
+ The rest is classical analytic number theory...
+
+ \end{frame}
+
+
+\section{Lang Trotter Conjecture for Primitive points}
+
+\begin{frame}
+\frametitle{Lang Trotter Conjecture for Primitive points} \pause
+
+\begin{definition}
+   Let $E/\Q$ and let $P\in E(\Q)$ be of infinite order. 
+   $P$ is called \emph{primitive} for a prime $p$ if the reduction $P\bmod p$ is a generator for $E(\F_p)$.\\ \pause
+\centerline{\alert{$\langle P\bmod p\rangle =E(\F_p)$}}
+\end{definition}\pause
+Set \\
+\centerline{$\pi_{E,P}(x)=\#\{p\le x: p\nmid\Delta_E\text{ and } P\text{ is primitive for } p\}$}\pause
+
+\begin{conj}[Lang--Trotter for primitive points (1976)] The following asymptotic formula holds
+$$\pi_{E,P}(x)\sim \delta_{E,P}\frac x{\log x}\qquad x\rightarrow\infty.$$
+with\vspace*{-4pt}\pause
+$$\delta_{E,P}=\sum_{n=1}^\infty\mu(n)\frac{\#\mathcal C_{P,n}}{\#\operatorname{Gal}(\Q(E[n],n^{-1}P)/\Q)}$$\pause
+where $\Q(E[n],n^{-1}P)$ is the extension of $\Q(E[n])$ of the coordinates of the points
+$Q\in E(\bar{\Q})$ such that $nQ=P$ and $\mathcal C_{P,n}$ is a union of conjugacy classes in 
+$\operatorname{Gal}(\Q(E[n],n^{-1}P)/\Q)$.
+\end{conj}
+\end{frame}
+
+\section{{Artin Conjecture for primitive roots}}
+\begin{frame}
+\frametitle{Statement of the Artin Conjecture}
+
+
+\begin{conj}[\textcolor{red!70!black}{Artin Conjecture} (1927)]\pause Let $a\in\Q\setminus\{0,1,-1\}$ and set
+$$P_a(x):=\{p\le x:\ a\text{ is a primitive root }\bmod p\}.$$
+Then there exists $\delta_a\in\Q^{\ge0}$ such that
+$$P_a(x)\sim\delta_a\prod_\ell\left(
+1-\frac{1}{\ell(\ell-1)}\right)\times \pi(x)$$
+\end{conj}\pause
+
+\begin{theorem}[Hooley 1965] Let $a\in\Q\setminus\{-1,0,1\}$ and assume \emph{GRH} for all the Dedekind $\zeta$--functions
+$\Q[e^{2\pi i/m},a^{1/m}], m\in\N$. Then the Artin Conjecture holds:\pause
+$$P_a(x)=\delta_a\frac x{\log x}+O\left(\frac {x\log\log x}{\log^2 x}\right).$$
+\end{theorem}
+
+% \begin{Note}\pause
+% \begin{itemize}[<+-|alert@+>]
+%       \item the upper bound holds unconditionally
+%       \item Vinogradov: GRH the be relaxed to a \emph{zero density assumption}
+%       for the Dedekind $\zeta$--function of $\Q[a^{1/\ell}]$, $\ell$ prime
+% \end{itemize}
+% \end{Note}
+
+\end{frame}
+
+\section{Artin vs Lang Trotter}
+
+\begin{frame}
+\frametitle{Lang--Trotter Conjecture, Serre's Cyclicity \& Artin}
+\framesubtitle{three ``sister'' conjectures}\pause
+
+%Let $E/\Q$ be an elliptic curve without CM\pause
+
+\begin{conj}[\textcolor{red!70!black}{Lang Trotter primitive points Conjecture}(1977)]\pause Let $P\in E(\Q)\setminus \operatorname{Tors}(E(\Q))$.
+$\exists \alpha_{E,P}\in\Q^{\ge0}$ s.t.
+$$\!\!\!\frac{\#\{p\le x: p\nmid\Delta_E, E(\F_p^*)=\langle P\bmod p\rangle\}}{\pi(x)}\sim
+\alpha_{{E,P}}
+\scriptstyle{\prod_\ell\left(
+1-\frac{\ell^3-\ell-1}{\ell^2(\ell-1)^2(\ell+1)}\right)}\vspace*{-11pt}$$
+\end{conj}\pause
+
+% \begin{itemize}[<+-|alert@+>]
+%  \item $B=\prod_\ell\left(
+% 1-\frac{\ell^3-\ell-1}{\ell^2(\ell-1)^2(\ell+1)}\right)=0.440147366792057866\cdots$
+% \item If $E[2]\subset E(\Q)$ then $\alpha_{E,P}=0$
+% \item Similar conjecture also given for CM curves (more later)
+% \item if $P=kQ$, $Q\in E(\Q)$ and $d=\gcd(k,\#\operatorname{Tor}(E(\Q)))>1$, then $\alpha_{E,P}=0$
+% \ \hfill (since $\operatorname{ord}P\mid \frac{\#E(\F_p)}{d}$)
+% \end{itemize}
+% \end{frame}
+% 
+% 
+% \begin{frame} 
+
+\begin{conj}[\textcolor{red!70!black}{Serre's Cyclicity Conjecture} (1976)]\pause
+$\exists \gamma_{E,P}\in\Q^{\ge0}$ s.t.%, as $x\rightarrow\infty$,
+$$\frac{\#\{p\le x: p\nmid\Delta_E, E(\F_p^*)\text{ is cyclic}\}}{\pi(x)}\sim\gamma_{E,P}
+\prod_\ell{\scriptstyle{\left(
+1-\frac1{(\ell^2-1)(\ell^2-\ell)}\right)}}\vspace*{-11pt}$$
+\end{conj}\pause
+
+\begin{conj}[\textcolor{red!70!black}{Artin Conjecture} (1927)]\pause Let $a\in\Q\setminus\{0,1,-1\},
+\exists \delta_a\in\Q^{\ge0}$ s. t.
+$$\frac{\#\{p\le x:\ a\text{ primitive root }\bmod p\}}{\pi(x)}\sim\delta_a\prod_\ell\left(
+1-\frac{1}{\ell(\ell-1)}\right)$$
+\end{conj}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Naive Densities}\pause
+
+\begin{itemize}[<+-|alert@+>]
+\item \textcolor{red!70!black}{The Artin Constant} (primitive roots naive density)
+$$A=\prod_\ell\left(
+1-\frac1{\ell(\ell-1)}\right)=0.37395581361920228\cdots$$
+\item\textcolor{red!70!black}{The Lang Trotter first Constant} (LTC naive density)
+$$\hspace*{-14pt} B=\prod_\ell\left(
+1-\frac{\ell^3-\ell-1}{\ell^2(\ell-1)^2(\ell+1)}\right)=0.44014736679205786\cdots$$
+\item \textcolor{red!70!black}{The Serre's Constant} (EC cyclicity naive density)
+$C=\prod_\ell\left(
+ 1-\frac1{\ell(\ell-1)^2(\ell+1)}\right)= 0.81375190610681571\cdots$
+\end{itemize}
+% \pause
+% \begin{itemize}[<+-|alert@+>]
+%  \item $C=\prod_\ell\left(
+% 1-\frac1{\ell(\ell-1)^2(\ell+1)}\right)= 0.81375190610681571\cdots$
+% \item If $E[2]\subset E(\Q)$ then $\gamma_{E,P}=0$
+% \item 1983: Ram eliminated GRH for the analogue on CM curves
+% \item 1990: Rajiv \& Ram: if $E[2] \nsubseteq E(\Q)$, $\#\{p\le x: p\nmid\Delta_E, E(\F_p^*)\text{ is cyclic}\}\gg_E\frac{\pi(x)}{\log x}$ 
+% \item 2004: Alina \& Ram: significant improvements on the error terms both unconditional and on GRH
+% \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Comparison between empirical data: \textsc{\textcolor{red!70!black}{AC}} vs \textsc{LTC} vs \textsc{SCC}}
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=9cm]{postit}
+Artin Conjecture\end{beamercolorbox}}\pause\smallskip
+
+\begin{tiny}
+\begin{center}
+\begin{tabular}{|l|l|r|}
+\hline
+$q$& $P_q(2^{25})/\pi(2^{25})$ & $A-P_q(2^{25})/\pi(2^{25})$\\
+\hline         
+  2&$0.37395508\cdots$&   $0.0000007\cdots$\\
+  3&$0.37388094\cdots$&   $0.0000748\cdots$\\
+  7&$0.37409997\cdots$&  $-0.0001441\cdots$\\
+ 11&$0.37422450\cdots$&  $-0.0002686\cdots$\\
+ 19&$0.37400887\cdots$&  $-0.0000530\cdots$\\
+ 23&$0.37402147\cdots$&  $-0.0000656\cdots$\\
+ 31&$0.37422208\cdots$&  $-0.0002662\cdots$\\
+\hline
+\end{tabular}\end{center}
+\end{tiny}\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=9.5cm]{postit}
+Lang--Trotter Conjecture\qquad Serre Cyclicity Conjecture\end{beamercolorbox}}\pause\smallskip
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6.5cm]{formul}
+$\displaystyle{\pi_{E,P}(x)=\#\{p\le x: \langle P\bmod p\rangle=E(\mathbb F_p^*)\}}$
+\end{beamercolorbox}}\pause\smallskip
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+$\displaystyle{\pi_E^{\text{cycl}}(x)=\#\{p\le x: E(\mathbb F_p^*)\text{ is cyclic}\}}$
+\end{beamercolorbox}}\pause\smallskip
+
+\textsc{Serre's Curves of rank 1} (no torsion, Galois surjective $\forall\ell$)\pause
+
+\begin{tiny}\begin{columns}[c]
+\begin{column} {5cm}
+\begin{tabular}{|l|l|r|}
+\hline
+ $E$ &\!\! $\frac{\pi_{E,P}(2^{25})}{\pi(2^{25})}$\hspace*{-2mm}\!\!&\hspace*{-1.8mm}\!\! $\alpha_{E,P}B-\frac{\pi_{E,P}(2^{25})}{\pi(2^{25})}$\hspace*{-2mm}\!\!\\
+\hline
+37.a1 &$0.44017485\cdots$\hspace*{-2mm}&   $-0.000027\cdots$\\
+43.a1 &$0.44034784\cdots$\hspace*{-2mm}&   $-0.000200\cdots$\\
+53.a1 &$0.44020198\cdots$\hspace*{-2mm}&   $-0.000054\cdots$\\
+57.a1 &$0.44016176\cdots$\hspace*{-2mm}&   $-0.000014\cdots$\\
+58.a1 &$0.44012203\cdots$\hspace*{-2mm}&    $0.000025\cdots$\\
+61.a1 &$0.44034299\cdots$\hspace*{-2mm}&   $-0.000195\cdots$\\                       
+77.a1 &$0.43964812\cdots$\hspace*{-2mm}&    $0.000499\cdots$\\
+79.a1 &$0.44043021\cdots$\hspace*{-2mm}&  $ -0.000282\cdots$\\
+\hline
+\end{tabular}
+\end{column}\pause
+\begin{column}{5cm}
+\begin{tabular}{|l|l|r|}
+\hline
+ $E$ &\!\! $\frac{\pi_E^{\text{cycl}}(2^{25})}{\pi(2^{25})}$\hspace*{-2mm}\!\!&\hspace*{-1.5mm}\!\! $\gamma_EC-\frac{\pi_E^{\text{cycl}}(2^{25})}{\pi(2^{25})}$\hspace*{-2mm}\!\!\\
+\hline
+37.a1 &$0.81383047\cdots$&   $-0.000078\cdots$\\
+43.a1 &$0.81363907\cdots$&   $ 0.000112\cdots$\\
+53.a1 &$0.81389250\cdots$&   $-0.000140\cdots$\\
+57.a1 &$0.81387263\cdots$&   $-0.000120\cdots$\\
+58.a1 &$0.81374131\cdots$&   $ 0.000010\cdots$\\
+61.a1 &$0.81397584\cdots$&   $-0.000223\cdots$\\                       
+77.a1 &$0.81380285\cdots$&   $-0.000050\cdots$\\
+79.a1 &$0.81392157\cdots$&   $-0.000169\cdots$\\\hline
+\end{tabular}\end{column}\end{columns}
+\end{tiny}
+\end{frame}
+
+
+\section{Further reading}
+\begin{frame}
+\frametitle{Further Reading...}
+\begin{scriptsize}
+\begin{thebibliography}{99}
+\bibitem{C}
+\textsc{Cojocaru, Alina Carmen}, 
+\textit{Cyclicity pf CM Elliptic Curves modulo $p$}
+Trans. of the AMS \textbf{355}, 7, (2003) 2651--2662.
+
+\bibitem{DP}  
+\textsc{David, Chantal; Pappalardi, Francesco},
+\textit{Average Frobenius Distribution of Elliptic Curves}, 
+Internat. Math. Res. Notices \textbf{4} (1999) 165--183.
+
+\bibitem{GM}
+\textsc{Gupta, Rajiv; Murty M. Ram},
+\textit{Primitive points on elliptic curves},
+Compositio Mathematica \textbf{58}, n. 1 (1986), 13--44.
+
+\bibitem{GM2}
+\textsc{Gupta, Rajiv; Murty M. Ram},
+\textit{Cyclicity and generation of points mod $p$ on elliptic curves},
+Inventiones mathematicae \textbf{101} 1 (1990)  225--235
+
+\bibitem{LT1}
+\textsc{Lang, Serge; Trotter, Hale},
+Frobenius distributions in $\operatorname{GL}_{2}$-extensions.
+Lecture Notes in Mathematics, Vol. 504. \textit{Springer-Verlag}, Berlin--New York, 1976
+
+\bibitem{LT2}
+\textsc{Lang, Serge; Trotter, Hale},
+\textit{Primitive points on elliptic curves}. Bull. Amer. Math. Soc. 
+\textbf{83} (1977), no. 2, 289--292.
+
+\bibitem{MMS}
+\textsc{Murty, M. Ram; Murty, V. Kumar; Saradha, N.},
+\textit{Modular Forms and the Chebotarev Density Theorem,}
+American Journal of Mathematics, \textbf{110}, No. 2 (1988), 253--281
+
+\bibitem{S1}
+\textsc{Serre, Jean-Pierre}, 
+Abelian $\ell$-adic representations and elliptic curves. 
+With the collaboration of Willem Kuyk and John Labute. 
+Second edition. Advanced Book Classics. Addison-Wesley Publishing Company, 
+\textit{Advanced Book Program}, Redwood City, CA, 1989.
+
+\bibitem{S2}
+\textsc{Serre, Jean-Pierre},
+\textit{Propri\'et\'es galoisiennes des points d'ordre fini des courbes elliptiques}. 
+(French) Invent. Math. \textbf{15} (1972), no. 4, 259--331.
+
+\bibitem{S3}
+\textsc{Serre, Jean-Pierre},
+\textit{Quelques applications du th\'eor\`eme de densit\'e de Chebotarev}. (French) 
+Inst. Hautes \'Etudes Sci. Publ. Math. No. \textbf{54} (1981), 323--401. 
+
+\end{thebibliography}
+\end{scriptsize}
+\end{frame}
+
+
+
+
+\end{document}
+
+

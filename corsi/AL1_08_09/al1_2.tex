@@ -1,0 +1,150 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+
+\begin{document}
+
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2008/2009}\\
+
+\textbf{AL1 - Algebra 1: Fondamenti}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 2 - 16 Ottobre 2008}\\
+
+\textbf{Elisa Di Gloria, Luca Dell'Anna}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\vspace{0.5cm}
+
+
+
+
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Sia $f: \N \frecdl \N$ definita dalla legge $f(x)=\frac{x^2+x}{a}$ con $a\in \N$. Per quali valori di $a$ essa \'e un'applicazione? E in tali casi \'e iniettiva?
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Stabilire se le seguenti applicazioni sono iniettive e/o suriettive e calcolarne, quando possibile, l'inversa.
+\begin{itemize}
+	\item $f:\Q$ $\longrightarrow$ $\Q$\\
+			$x \longmapsto \frac{x-3}{2}$
+	\item $f:\N$ $\longrightarrow$ $\Z$\\ definita da 
+	$f(x)=\left\{ \begin{matrix} 
+	\frac{x}{2}-1, & x\text{ pari} \\ 
+	-\frac{x+1}{2}, & x\text{ dispari}
+	\end{matrix}\right.$ 
+	\item $f:\R_{>0}$ $\longrightarrow$ $\R_{>0}$\\
+			$x \longmapsto \frac{1}{\sqrt{x^2+x}}$
+        \item $f:\R$ $\longrightarrow$ $\Z$\\
+			$x \longmapsto [x]$	ove con  $[x]$ si indica la parte intera di $x$
+\end{itemize}
+Trovare in ognuno dei casi precedenti le controimmagini $f^{-1}(15)$.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Se $\varphi : A$ $\longrightarrow$ $B$ \'e un'applicazione ed $A_1,A_2$ sono sottoinsiemi di $A$, posto $\varphi(A_1)=B_1\supseteq B$ e $\varphi(A_2)=B_2\supseteq B$, provare che:
+\begin{description}
+	\item[i)] $\varphi(A_1 \cup A_2)=\varphi(A_1) \cup \varphi(A_2)$
+	\item[ii)] $\varphi(A_1 \cap A_2)\subseteq\varphi(A_1) \cap \varphi(A_2)$.
+   	\item[iii)] $\varphi^{-1}(B_1 \cup B_2)=\varphi^{-1}(B_1) \cup \varphi^{-1}(B_2)$
+	\item[iv)] $\varphi^{-1}(B_1 \cap B_2)=\varphi^{-1}(B_1) \cap \varphi^{-1}(B_2)$.
+\end{description}
+Portare un esempio che illustri come, in generale, in \textbf{ii)} non valga l'uguaglianza.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Dire quali delle seguenti leggi sono applicazioni ed, in caso affermativo, se esse sono iniettive e/o suriettive:
+\begin{itemize}
+	\item $f:\N$ $\longrightarrow$ $\N \cup \{0\}$\\
+			$x \longmapsto \frac{x^3-2x}{6}$
+	\item $f:\Z$ $\longrightarrow$ $\Q$\\
+			$x \longmapsto \frac{x^2-2}{x+2}$	
+	\item $f:\R^*$ $\longrightarrow$ $\R$\\
+			$x \longmapsto \frac{2}{x}$	
+	\item $f:\R$ $\longrightarrow$ $\R_{\geq 0}$\\
+			$x \longmapsto (x-1)^4$
+\end{itemize}
+Per ognuna delle precedenti applicazioni descrivere l'immagine e determinare la controimmagine $f^{-1}(1)$.
+\end{Ex}
+
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Provare per induzione che:
+\begin{itemize}
+	\item $\displaystyle \sum_{k=1}^n (-1)^k k^2 =\frac{(-1)^n n(n+1)}{2}$.
+	\item $\displaystyle \sum_{k=1}^n \frac{1}{4k^2-1} =\frac{n}{2n+1}$.
+	\item $n!>n^2$		$\forall n\geq 4$;	
+	\item $n!>n^3$		$\forall n\geq 6$;
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 6.}\\
+$Momento$ $relax$:\\
+Trovare l'errore nel seguente procedimento di induzione usato per provare l'affermazione: $\mathit{Tutti\ gli\ uomini\ hanno\ lo\ stesso\ nome}$.\\
+\'E chiaro che basta provare che in ogni insieme di $n$ uomini, con $n\in \N$, essi hanno lo stesso nome.\\
+La proposizione \'e vera per insiemi con un solo uomo; supponiamo allora che essa sia vera per insiemi con $n-1$ uomini e proviamola per un insieme con $n$ uomini. Sia allora $I_n=\{U_1,U_2,\dots,U_n\}$ un insieme costituito da $n$ uomini, allora $J=\{U_1,U_2,\dots,U_{n-1}\}$, essendo formato da $n-1$ uomini, per l'ipotesi induttiva, sar\'a tale che $U_1,U_2,\dots,U_{n-1}$ hanno lo stesso nome, diciamo \textbf{Franco}; d'altra parte, anche $K=\{U_1,U_2,\dots,U_{n-2}, U_n\}$ \'e formato da $n-1$ elementi, e per lo stesso motivo anche $U_1,U_2,\dots,U_{n-2}, U_n$ hanno lo stesso nome, ma essendo \textbf{Franco} il nome di $U_1$ ne segue anche che $U_n$ si chiama \textbf{Franco}. Allora tutti gli uomini in $I_n$ hanno lo stesso nome. Per il principio di induzione,allora, tutti gli uomini si chiamano \textbf{Franco}!!!!
+\end{Ex}
+
+\end{document}

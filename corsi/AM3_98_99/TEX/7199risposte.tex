@@ -1,0 +1,209 @@
+\documentclass[12pt,a4paper]{report}\pagenumbering{roman}
+\input{psfig.sty}
+\pagestyle{empty}
+\begin{document}
+\begin{center}
+\textbf{PRIMO COMPITO}\\
+\textbf{Analisi due (Primo modulo) - Corso di Laurea in FISICA}\\
+\textbf{Gioved\`\i\ 7 Gennaio, 1999}
+\end{center}
+
+\begin{enumerate}
+\item Si trovi la soluzione generale della seguente equazione:
+$$y''-y'-2y=2e^{-x}.$$
+
+{\bf SOLUZIONE:} {\it L'equazione omogenea associata $y''-y'-2y=0$ ha 
+polinomio caratteristico $\lambda^2-\lambda -2=(\lambda-2)(\lambda+1)$. Quindi la soluzione
+del sistema omogeneo associato \`e
+$y_o(x)=c_1e^{2x}+c_2e^{-x}$ e il Wronskiano $W(x)$ delle soluzioni \`e 
+$W=\left|\begin{array}{cc} e^{2x}&  e^{-x}\\ 2e^{2x}& -e^{-x}\end{array}\right|=-3e^x$
+Applichiamo il metodo della variazione dei coefficienti 
+per determinare una soluzione particolare:
+$$y_p(x)=-\left(\int_0^x{e^{-t}\cdot 2e^{-t}\over W(t)} dt\right)e^{2x}+\left(\int_0^x{e^{2t}\cdot
+2e^{-t}\over W(t)} dt\right)e^{-x}=$$
+$$= {2\over3}\left(\int_0^x e^{-3t}dt\right)e^{2x}-{2\over3}\left(\int_0^xdt\right)e^{-x}=
+{-2\over9}e^{-x}-{2\over3}xe^{-x}.$$
+Infine la soluzione generale \`e
+$$y_o(x)+y_p(x)=d_1e^{2x}+d_2e^{-x}-{2\over3}xe^{-x}.$$}
+
+\item Si risolva il seguente problema di Cauchy:
+$$\left\{\begin{array}{l} y'y''=2 \\ y(0)=1\\ y'(0)=2
+\end{array}\right.$$
+
+{\bf SOLUZIONE:} {\it Poniamo $u=y'$. Tramite questa trasformazione l'equa\-zio\-ne diventa
+$$\left\{\begin{array}{l} uu'=2 \\ u(0)=2
+\end{array}\right.$$
+Che \`e un equazione a variabili separabili e ammette soluzione generale ${1\over 2}u^2=2x+c$.
+La condizione $u(0)=2$ implica $c=2$. Quindi risostituendo $y'=u$, si ha l'equazione
+$$\left\{\begin{array}{l} y'(x)=2\sqrt{x+1} \\ y(0)=1
+\end{array}\right.$$
+Integrando otteniamo $y(x)={4\over 3}(x+1)^{3/2}+c$ e
+la condizione $y(0)=1$ implica $c=-1/3$. Infine la solzione del problema di Cauchy \`e
+$$y={4\over 3}(x+1)^{3/2}-{1\over3}.$$}
+
+\item Si calcoli $e^A$ dove 
+$$A=\left(\begin{array}{cc}
+-11 & -3 \\
+ 36 & 10
+\end{array}\right).$$
+
+{\bf SOLUZIONE:} {\it Il polinomio caratteristico di $A$ \`e 
+$$\lambda^2+\lambda-2=(\lambda-1)(\lambda+2).$$
+Per ciascuno degli autovalori $\lambda_1=1$ e $\lambda _2=-2$ gli autovettori $\underline{v}_1$ e
+$\underline{v}_2$ soddisfano $(A-\lambda_i)\cdot\underline{v}_i=0$. Cio\`e
+$$\left(\begin{array}{cc}
+-12 & -3 \\
+36 & 9
+\end{array}\right)\underline{v}_1=\left({0\atop0}\right),\ \ \ \
+\left(\begin{array}{cc}
+-9 & -3 \\
+36 & 12
+\end{array}\right)\underline{v}_2=\left({0\atop0}\right).$$
+Considerando solo le prime righe e facendo i calcoli possiamo scegliere:
+$$\underline{v}_1=\left({1\atop -4}\right)\ \ \ \mbox{e}\ \ \ \underline{v}_2=\left({1\atop-3}\right).$$
+Quindi se $B=\left(\begin{array}{cc}
+1 &  1\\
+-4 & -3
+\end{array}\right)$ con $B^{-1}=\left(\begin{array}{cc}
+-3 &  -1\\
+4 & 1
+\end{array}\right)$, allora possiamo scrivere $A=B\left(\begin{array}{cc}
+1 & 0 \\
+0 & -2
+\end{array}\right)B^{-1}$
+e quindi 
+$$e^A=Be^{\left(\begin{array}{cc}
+1 & 0 \\
+0 & -2
+\end{array}\right)}B^{-1}=\left(\begin{array}{cc}
+1 &  1\\
+-4 & -3
+\end{array}\right)\left(\begin{array}{cc}
+e & 0 \\
+0 & e^{-2}
+\end{array}\right)\left(\begin{array}{cc}
+-3 &  -1\\
+4 & 1
+\end{array}\right)=$$
+$$=\left(\begin{array}{cc}
+e &  e^{-2}\\
+-4e & -3e^{-2}
+\end{array}\right)\left(\begin{array}{cc}
+-3 &  -1\\
+4 & 1
+\end{array}\right)=\left(\begin{array}{ll}
+-3e+4e^{-2} &  -e+e^{-2}\\
+12(e-e^{-2}) & 4e-3e^{-2}
+\end{array}\right)$$}
+
+% TRE ESERCIZI DI TOPOLOGIA
+\item Sia 
+$$A=\left\{(x,y)\in{\mathbf R}^2\ \left|\ x\in[-1,1)\ y\in(-1,1]\right.\right\}\bigcap
+\left\{(x,y)\in{\mathbf R}^2\ \left|\ x^2+y^2\geq1\right.\right\}.$$ 
+Dopo aver tracciato la figura di $A$, se ne determini
+l'interno, la chiusura, la frontiera e il derivato.
+
+{\bf SOLUZIONE:} {\it La figura di $A$ \`e la seguente:
+
+%\centerline{\psfig{figure=fig7199.eps,height=2in,width=2.3in}}
+
+L'interno: $A^o=\{(x,y)|\ x^2+y^2>1,\ x,y\in(-1,1)\}.$
+
+La chiusura: $\overline{A}=\{(x,y)|\ x^2+y^2\geq1,\ x,y\in[-1,1]\}.$
+
+La frontiera: $\partial{A}=\{(x,y)|\ x^2+y^2=1\}\cup \left(\{1,-1\}\times [-1,1]\right)\cup
+\left([-1,1]\times\{1,-1\}\right).$
+
+Il derivato: $D(A)=A$.}
+
+\item Si dimostri che il seguente sottoinsieme di ${\mathbf R}^2$ \`e denso in ${\mathbf R}^2$
+$$S=\left\{(x,y)\in{\mathbf R}^2\ \mbox{t.c.}\ y+x\not\in{\mathbf Z}\right\}.$$
+Si dimostri che il complementare di $S$ non \`e discreto.
+
+{\bf SOLUZIONE:} {\it Per dimostrare la prima parte \`e equivalente fare vedere che
+ogni disco contiene elementi di $S$.
+
+Sia $D$ un disco e sia $p\in D$ un punto tale che $p=(\alpha,\beta)$ con $\alpha\in\mathbf Q$ e
+$\beta\in\mathbf R\setminus\mathbf Q$ (tale $p$ esiste per le propriet\`a dei numeri
+reali). \`E chiaro che $\alpha+\beta\not\in\mathbf Z$ e quindi $p\in S$ e $D\cap S\neq\emptyset$.
+
+Il complementare $S^c$ di $S$ contiene la retta $x+y=0$. $S^c$ non \`e discreto
+perch\`e (ad esempio) $(0,0)$ \`e di accumulazione per $S^c$ infatti per ogni
+$\epsilon>0$, il punto $(\epsilon/,-\epsilon/2)\in D_\epsilon((0,0))\cap S^c$. Quindi
+ogni intorno di $(0,0)$ contiene punti di $S^c\setminus\{(0,0)\}$ e $(0,0)$ non \`e
+isolato.}
+
+\item Si discuta la continuit\`a della seguente funzione $f:{\mathbf R}^2\longrightarrow
+{\mathbf R}$ su tutti i punti di ${\mathbf R}^2$:
+$$f(x,y)=\left\{\begin{array}{ll} {x|y|\over y^2+|x|} & 
+\mbox{se}\ \ (x,y)\neq (0,0)\\ \\0&\mbox{se}\ \ (x,y)=(0,0)\end{array}\right.$$
+{\bf SOLUZIONE:} {\it Osserviamo che la funzione \`e sicuramente continua in tutti i punti $(x,y)\neq(0,0)$
+in quanto espressione algebrica. Se $(x,y)=(0,0)$, allora si noti che (utilizzando la diseguaglianza
+$a/(a+b)\leq1$ per $a,b\geq0$)
+$$\left|{x\over y^2+|x|}\right|\leq 1.$$ 
+Quindi $|f(x,y)|\leq |y|$ e per il criterio del confronto, $f$ \`e continua anche in $(0,0)$.}
+
+% QUATTRO ESERCIZI SULLA DIFFERENZIABILITA`
+\item Si calcoli il differenziale nel punto $(1,1)$ della funzione 
+$$f(x,y)=\sin{\pi(x^2+y^2)\over8}.$$
+Si trovi un punto $(x_0,y_0)$ tale che $df_{(x_0,y_0)}=-{\pi\over\sqrt{2}}dx$?
+
+{\bf SOLUZIONE:} {\it Le derivate parziali sono:
+$${\partial f\over\partial x}={2x\pi\over8}\cos{\pi(x^2+y^2)\over8},\ \ \ 
+{\partial f\over\partial y}={2y\pi\over8}\cos{\pi(x^2+y^2)\over8}.$$
+Quindi $df_{(1,1)}={\pi\sqrt{2}\over8}(dx+dy)$.
+
+Per avere $df_{(x_0,y_0)}=-{\pi\over\sqrt{2}}dx$ bisogna porre ${\partial f\over\partial x}=-{\pi\over\sqrt{2}}$ e 
+${\partial f\over\partial y}=0$. La seconda condizione \`e soddisfatta
+ad esempio per $y_0=0$ e con questa scelta la prima condizione diventa:
+${x_0\pi\over4}\cos{\pi(x_0^2)\over8}=-{\pi\over\sqrt{2}}$. Scegliendo $x_0=\sqrt{8}$, otteniamo un 
+identit\`a. Infine $(x_0,y_0)=(\sqrt{8},0)$.}
+
+\item Si calcoli l'equazione della quadrica tangente nel punto $(0,{\pi\over2})$
+della funzione $f(x,y)=x\cos(y+x).$ 
+
+{\bf SOLUZIONE:} {\it L'equazione della quadrica tangente in $\underline{p}=(0,{\pi\over2})$ \`e la se\-guen\-te:
+$$Q(x,y)=
+f(\underline{p})+f_x(\underline{p})x+f_y(\underline{p})(y-\pi)+$$
+$$+{1\over2}\left\langle(x,(y-\pi)),\!\left(
+\begin{array}{ll}
+f_{xx}\!(\underline{p}) & f_{xy}\!(\underline{p}) \\
+f_{xy}\!(\underline{p}) & f_{yy}\!(\underline{p})
+\end{array}
+\right)\!(x,(y-\pi))\right\rangle$$
+I calcoli delle derivate sono:
+$$f_x=\cos(y+x)-x\sin(y+x),\ \ \ f_{xx}=-2\sin(y+x)-x\cos(y+x)$$
+$$f_y=-x\sin(y+x),\ \ \ f_{yy}=-x\cos(x+y),$$
+$$f_{xy}=-\sin(y+x)-x\cos(y+x).$$
+Sostituendo il punto $\underline{p}$, otteninamo
+$f_x(\underline{p})=0,$ $f_{xx}(\underline{p})=-2,$ $f_y(\underline{p})=0,$ $f_{yy}(\underline{p})=0,$
+$f_{xy}(\underline{p})=-1$ e quindi
+$$Q(x,y)=-2x^2-x(y-\pi/2).$$}
+
+\item Sia $f(x,y)=\arctan(y)\cdot\arctan(x-1)$. Determinare i punti critici di 
+$f$ e classificarli con il metodo della matrice Hessiania.
+
+{\bf SOLUZIONE:} {\it I punti critici soddisfano $\nabla(f)=(0,0)$. Il gradiente \`e 
+$$\nabla(f)=\left({(\arctan y)\over 1+(x-1)^2},{\arctan(x-1)\over 1+y^2}\right).$$
+Quindi l'unico punto critico  $(1,0)$. La matrice Hessiana \`e
+$$\left(\begin{array}{ll}
+{(\arctan y)2(1-x)\over (1+(x-1)^2)^2} &  {1\over (1+y^2)(1+(x-1)^2)}\\
+{1\over (1+y^2)(1+(x-1)^2)} & {-2y\arctan(x-1)\over (1+y^2)^2}
+\end{array}\right)
+$$
+Che nel punto $(1,0)$ \`e $\left(\begin{array}{ll}
+0 & 1 \\
+1 & 0
+\end{array}\right)$. Quindi, essendo l'Hessiana indefinita,  il punto $(1,0)$ \`e una sella.}
+
+\item Siano
+$$f(x,y)=\ln(x^2+3+\cos(y)),\ \ \ \ g(t)=\sqrt{t},\ \ \ \ h(t)=\arccos t$$
+e $F(t)=f(g(t),h(t))$. Utilizzare la regola di derivazione delle funzioni
+composte per calcolare 
+$${d\over dt}F(t).$$
+{\bf SOLUZIONE:} {\it La formula di derivazione delle funzioni composte afferma che
+$${d\over dt}F(t)={\partial f\over\partial x}(g(t),h(t))g'(t)+
+{\partial f\over\partial x}(g(t),h(t))h'(t)=$$
+$$={2\sqrt{t}\over 3+2t}{1\over 2\sqrt{t}}+{-\sin(\arccos t)\over 3+2t}{-1\over \sqrt{1-t^2}}={2\over3+2t}.$$}
+\end{enumerate}
+\end{document}

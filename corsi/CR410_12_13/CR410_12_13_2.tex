@@ -1,0 +1,103 @@
+\nopagenumbers \font\title=cmti12
+\def\ve{\vfill\eject}
+\def\vv{\vfill}
+\def\vs{\vskip-2cm}
+\def\vss{\vskip10cm}
+\def\vst{\vskip13.3cm}
+
+%\def\ve{\bigskip\bigskip}
+%\def\vv{\bigskip\bigskip}
+%\def\vs{}
+%\def\vss{}
+%\def\vst{\bigskip\bigskip}
+
+\hsize=19.5cm
+\vsize=27.58cm
+\hoffset=-1.6cm
+\voffset=0.5cm
+\parskip=-.1cm
+\ \vs \hskip -6mm CR410 AA12/13 (Crittografia a chiave pubblica)\hfill ESAME DI FINE SEMESTRE \hfill Roma, 28 Maggio, 2013. \hrule
+\bigskip\noindent
+{\title Cognome}\  \dotfill\ {\title Nome}\ \dotfill {\title
+Matricola}\ \dotfill\
+\smallskip  \noindent
+Risolvere il massimo numero di esercizi fornendo spiegazioni chiare e sintetiche. \it Inserire le risposte negli spazi
+predisposti. NON SI ACCETTANO RISPOSTE SCRITTE SU ALTRI FOGLI.
+\rm 1 Eesrcizio = 4.5 punti. Tempo previsto: 2 ore. Nessuna domanda durante le prima ora e durante gli ultimi 20 minuti.
+\smallskip
+\hrule\smallskip
+\centerline{\hskip 6pt\vbox{\tabskip=0pt \offinterlineskip
+\def \trl{\noalign{\hrule}}
+\halign to225pt{\strut#& \vrule#\tabskip=0.7em plus 1em& \hfil#&
+\vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil&
+\vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#&
+\hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#& \hfil#& \vrule#& \hfil#&
+\vrule#\tabskip=0pt\cr\trl && 1 && 2 && 3 && 4 &&
+5 && 6 && 7 && 8  && TOT. &\cr\trl  &&   &&
+&&     &&   &&     &&  &&    &&  && &\cr &&       &&   &&      &&   && && && &&
+ && &\cr\trl }}}
+\medskip
+
+\item{1.} Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:\bigskip\bigskip\bigskip
+
+
+\itemitem{a.} Fornire un esempio di un'equazione di Weierstrass singolare.\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{b.} E' vero che in alcuni gruppi ciclici il logaritmo discreto \`e particolarmente
+facile da calcolare?\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{c.} Fornire due esempi di campi finiti ${\bf F}_q$ in cui tutti gli elementi di ${\bf F}_q^*\setminus\{1\}$
+sono generatori.\medskip\bigskip\bigskip
+ 
+\ \dotfill\ \bigskip\bigskip\bigskip\vfil
+
+\itemitem{d.} Fornire un esempio di un polinomio primitivo in un campo con $9$ elementi.\medskip\bigskip\bigskip
+
+\ \dotfill\ \bigskip\bigskip\bigskip
+
+
+\vfil\eject
+
+
+\item{2.} Enunciare e dimostrare il Teorema di struttura dei sottocampi di ${\bf F}_{p^n}$. Lo si utilizzi per costruire
+un esempio di campo finito con esattamente $5$ sottocampi. \vv
+
+
+\item{3.} Supponiamo che $n,m$ siano interi, che $m\equiv 5\bmod 4n$, che $n\equiv7\bmod10$. Calcolare il simbolo di
+Jacobi $\left({n\atop m}\right)$.\ve\ \vs
+
+
+
+\item{4.} Spiegare il funzionamento di alcuni sistemi crittografici che basano la propria sicurezza sul problema del 
+logaritmo discreto.\vv
+
+
+\item{5.} Spiegare la rilevanza del metodo Baby-Steps-Giant-Steps nella teoria delle curve ellittiche su campi finiti.
+\ve\ \vs
+
+\item{6.} Sia $E: y^2=x^3-x$. Determinare la struttura del gruppo $E({\bf F}_5)$  e calcolare $\#E({\bf F}_{125})$. E' possibile
+determinare anche la struttura di $E({\bf F}_{125})$?\vskip8cm
+
+\item{7.} Dimostrare che se $E$ \`e una curva ellittica definita su un campo finito ${\bf F}_q$
+con caratteristica dispari da un'equazione $y^2=x^3+a_2x^2+a_4x+a_6$, allora i punti di ordine $2$ hanno la forma $(\alpha,0)$
+dove $\alpha^3+a_2\alpha^2+a_4\alpha+a_6=0$. Si forniscano esempi di curve ellittiche con $0$, $1$ e $3$ punti di ordine $2$ e
+si spieghi perc\`e non \`e possibilie che ve ne siano $2$.\vskip8cm
+
+
+%Prima calcoliamo $\#E({\bf F}_4)$. Se ${\bf F}_4=\{0,1,\xi,1+\xi\}$ allora per $x\in{\bf F}_4$, il valore di $x^3+\xi$ \`e 
+%$\xi, 1+\xi, 1+\xi, 1+\xi$ rispettivamente. Al variare di $y\in{\bf F}_4$, il valore di $y^2+y$ \`e 
+%$0, 0, 1, 1$ rispettivamente. Pertanto l'unico punto in $E({\bf F}_4)$ \`e $\infty$ e $\#E({\bf F}_4)=4+1-4=1$ . 
+%
+%Per calcolare $\#E({\bf F}_{4^3})$ usiamo le formule ricorsive $s_0=2, s_1=4, s_{n+1}=4s_{n}-4s_{n-1}$. Otteniamo che
+%$s_2= 16-8=8$ e $s_3= 8\cdot 4 -4 *4 =16$. Pertanto  $\#E({\bf F}_{4^3})=4^3+1-16=48.$
+
+\item{8.} Scrivere e dimostrare le formula per l'inverso $-P$ e per il punto $2P$ del punto $P(x,y)\in E({\bf F}_q)$ dove
+$E$ \`e una curva ellittica definita da una equazione di Weierstrass generale.
+
+\ \vst
+ \bye

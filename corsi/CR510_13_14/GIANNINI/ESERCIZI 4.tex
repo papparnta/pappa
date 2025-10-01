@@ -1,0 +1,220 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{latexsym}
+\usepackage{eucal}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bm}{ \begin{pmatrix} }
+\newcommand{\edm}{ \end{pmatrix} }  
+\newcommand{\sist}{\begin{cases}}
+\newcommand{\esist}{\end{cases}}
+\newcommand{\deter}{\left| \begin{array}}
+ \newcommand{\edet}{\end{array}\right|}
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+  \begin{center} 
+    \textbf{Universit\'a degli Studi Roma Tre - Corso di Laurea in Matematica\\
+     \begin{Huge}Esercizi CR510\end{Huge}\\
+Dario Giannini}\\
+  \end{center}
+  
+  \begin{tabular}{p{.6\textwidth}p{.4\textwidth}}
+    \begin{tabular}{l}
+      \textsc{3 Aprile 2014}
+    \end{tabular}
+  \end{tabular}
+\\\\
+\begin{enumerate}
+\item Sia $char(K)=3$ e sia $E:\; y^2=x^3+a_2x^2+a_4x+a_6$ curva ellittica con coefficienti in $K$.
+
+$$j(E):=\ds{\frac{a_2^6}{a_2^2a_4^2-a_2^3a_6-a_4^3}}$$
+\begin{enumerate}
+\item Supponiamo per assurdo che $a_2=a_4=0$, allora la curva ellittica sar\'a del tipo 
+$E:\;y^2=x^3+a_6$. In particolare si avr\'a che $x^3+a_6=x^3+\left(\sqrt[3]{a_6}\right)^3=(x+\sqrt[3]{a_6})^3$ in quanto in caratteristica $3$ vale la formula sbagliata. Avrei dunque una radice tripla in $x=\sqrt[3]{a_6}$ e
+ci\'o andrebbe contro la non singolarit\'a della curva ellittica $E$.
+\item Opero il seguente cambio di variabili:
+$$
+\sist
+x_1=x-\ds{\frac{a_4}{a_2}}\\
+y_1=y
+\esist
+\;\rightarrow
+\sist
+x=x_1+\ds{\frac{a_4}{a_2}}\\
+y=y_1
+\esist
+$$
+$\ds{y_1^2=\left(x_1+\frac{a_4}{a_2}\right)^3+a_2\left(x_1+\frac{a_4}{a_2}\right)^2+a_4\left(x+\frac{a_4}{a_2}\right)+a_6}$;\\
+$y_1^2=x_1^3+\frac{a_4^3}{a_2^3}+a_2x_1^2+\frac{a_4^2}{a_2}+2a_4 x+a_4 x+ \frac{a_4^2}{a_2}+a_6$\\
+Basta porre $a'_2=a_2$ e $a'_6=\frac{a_4^3}{a_2^3}+2\frac{a_4^2}{a_2}+a_6$ per ottenere:\\
+$y_1^2=x_1^3+a'_2x^2+a'_6$.
+
+
+
+
+
+\item Se $j(E)=j(E')\Rightarrow \ds{\frac{a_2^3}{a_6}=\frac{(a'_2)^3}{a'_6}\Rightarrow}$\\
+$a_2^3=\ds{\frac{a_6}{a'_6}(a'_2)^3}$. Se si pone $\frac{a_6}{a'_6}=\mu^6\;\Rightarrow\; a_2=\mu^2a'_2$,
+con $\mu\in\overline{K}^*$.\\
+Dalla relazione precedente si ha anche che $a_6=\left(\frac{a_2}{a'_2}\right)^3a'_6=\mu^6a'_6$.
+
+\item
+
+\item Se $a_2=0\;\Rightarrow\;j(E)=0$\\
+Se $a_4=0$ basta sostituire nella formula del $j-$invariante per avere $j(E)=-\ds{\frac{a_2^3}{a_6}}$.
+Per il punto $(b)$ se $a_2\neq 0$ posso fare un cambiamento di variabile che mi riporti al caso $a_4=0$.
+Sia $k\in \mathbb{K}$ considero la famiglia di curve ellittiche 
+$E_k:\; y^2=x^3+kx^2-k^2\;\Rightarrow\; j(E)=k$.
+
+\item Se $j(E)=0\;\Rightarrow\;a_2=0$ si ha che il cambiamento di variabile esiste per il punto \textbf{(b)}.\\
+Se $j(E)\neq 0\;\Rightarrow\;a_2\neq 0$ e posso sempre supporre $a_4=0$, il cambiamento esiste per il punto 
+\textbf{(c)}.  
+ 
+
+\end{enumerate}
+
+
+
+
+\item Sia $\alpha(x,y):=\ds{\left(\frac{p(x)}{q(x)},y\frac{s(x)}{t(x)}\right)}$ t.c. 
+$gcd(p(x),q(x))=gcd(s(x),t(x))=1$;\\
+$\alpha$ \'e un endomorfismo di $E:\;y^2=x^3+A x+B$.\\
+\begin{enumerate}
+\item Per ipotesi si ha che $\alpha(x,y)\in E$, quindi:
+$$y^2\ds{\frac{s^2(x)}{t^2(x)}=\left(\frac{p(x)}{q(x)}\right)^3+A\left(\frac{p(x)}{q(x)}\right)+B}$$
+Ora si fa il minimo comune multiplo e si sfrutta il fatto che anche $(x,y)\in E$:
+$$(x^3+Ax+B)\ds{\frac{s^2(x)}{t^2(x)}=\frac{p^3(x)+A p(x) q^2(x)+ B q^3(x)}{q^3(x)}}$$
+Basta porre $u(x)=p^3(x)+A p(x) q^2(x)+ B q^3(x)$ per ottenere l'identit\'a cercata.\\
+Mi rimane da mostrare che $gcd(u(x),q(x))=1$.\\
+Supponiamo per assurdo che esista $r\in K$, dove $K$ \'e il campo in cui \'e definito $E$, t.c. 
+$u(r)=q(r)=0$.\\ 
+Tuttavia si ha che $u(r)=p^3(r)=0\Leftrightarrow p(r)=0$ ma ci\'o contraddice l'ipotesi di coprimalit\'a dei polinomi $p(x)$ e $q(x)$ (avrebbero $r$ come radice in comune).
+\item Sia $t(x_0)=0$; dal punto precedente si ricava che:
+$$\ds{\frac{t^2(x_0)}{s^2(x_0)(x_0^3+Ax_0+B)}=\frac{q^3(x_0)}{u(x_0)}}$$
+Affinch\'e $q(x_0)$ sia uguale a $0$ mi basta che si annulli sempre il primo membro dell'equazione. 
+Ci\'o \'e sempre vero in quanto $gcd(s(x),t(x))=1$ per ipotesi e le radici di $t^2(x)$ sono tutte con molteplicit\'a almeno $2$, mentre quelle di $x^3+Ax+B$ sono semplici poich\'e $E$ curva ellittica. In particolare ci\'o vuol dire che lo zero del numeratore non potr\'a mai essere semplificato con un eventuale zero del denominatore.\\
+\end{enumerate}
+
+
+\item Sia $E:\;y^2=x^3+ax$, con $a\neq 0$ e $L:\;y=mx$.\\
+Vado a vedere qual \'e l'ordine di intersezione tra retta e curva:
+$$\sist
+y^2=x^3+ax\\
+y=mx
+\esist\;\;\Rightarrow\;\;x^2(x+a-m^2)=0$$
+Se $m\neq \pm\sqrt{a}$ si ha che $ord_{L,(0,0)}(E)=2$ in quanto $x=0$ \'e radice doppia del polinomio.\\
+Se $m=\pm\sqrt{a}$ si ha che $ord_{L,(0,0)}(E)=3$ in quanto $x=0$ \'e radice tripla del polinomio.
+
+
+
+\item 
+\begin{enumerate}
+\item Sia $C:\;u^2+v^2=1$ e sia $P=(-1,0)$.\\
+Considero la retta nel piano $(u,v)$ passante per $P$ e avente coefficiente angolare $m$, descritta dalle cordinate parametriche
+$$
+\sist
+u=-1+t \\
+v=mt
+\esist
+$$
+Per cercare una parametrizzazione della curva $C$ dipendente da un solo parametro considero il secondo punto di intersezione tra $C$ stessa e la retta dipendente da $m$.\\
+$(t-1)^2+m^2t^2=1\;\;\;\;t^2-2t+m^2t^2=0\;\;\;\;t(t(1+m^2)-2)=0\;\Leftrightarrow$\\
+$t=0\rightarrow P$,\\
+$t=\ds{\frac{2}{1+m^2}}$ che descrive il secondo punto di intersezione al variare di $m$. Andando a sostituire nell'equazione parametrica della retta si ottiene la parametrizzazione di $C$ cercata:
+$$u=\ds{\frac{1-m^2}{1+m^2}\;\;v=\frac{2m}{1+m^2}}$$
+
+\item Mi basta passare a coordinate proiettive per poter scrivere un punto generico della curva al variare di $m$ come $Q=\left[\ds{\frac{1-m^2}{1+m^2}:\frac{2m}{1+m^2}:1}\right]=[1-m^2:2m:1+m^2]$.
+$Q$ nella sua forma omogenea \'e equivalente a $[n^2-m^2:2mn:m^2+n^2]$.\\
+Se $x$ \'e pari per simmetria dell'equazione posso considerare il punto $[2mn:n^2-m^2:m^2+n^2]$. Si \'e dunque dimostrato che se $\exists x,y,z\in\mathbb{Z}$ t.c. $x^2+y^2=z^2$ e $x$ \'e pari al variare di $m,n$ in $\mathbb{Z}$ posso descrivere la soluzione dell'equazione come:
+$$x=2mn\;\;y=n^2-m^2\;\;z=m^2+n^2$$
+Ora, ipotizzando che $gcd(x,y,z)=1$, si vuole dimostrare che $gcd(m,n)=1$ e che $m\not\equiv n\;(mod\;2)$.\\
+Supponiamo per assurdo che $gcd(m,n)=d\neq 1$ allora $m=dm'$, $n=dn'$ e si ha che:
+$$x=2d^2m'n'\;\;y=d^2(n'^2-m'^2)\;\;z=d^2(n'^2+m'^2)$$
+da cui si ricava subito che $gcd(x,y,z)=d^2$ contro l'ipotesi iniziale.\\
+In maniera analoga si dimostra che $m\not\equiv n\;(mod\;2)$. Supponiamo per assurdo che non sia vero, allora $2|n-m$. Tuttavia poich\'e $y=n^2-m^2=(n-m)(n+m)\;\Rightarrow\;2|y$ e quindi $2$ divide anche $z$ in quanto $z^2=x^2+y^2$. Tutto ci\'o va contro l'ipotesi di coprimalit\'a di $x,y,z$.\\
+\end{enumerate}
+
+
+\item Siano $p(x),q(x)$ due polinomi t.c. $gcd(p(x),q(x))=1$, si vuole dimostrare che:
+$$\ds{\frac{d}{dx}\left(\frac{p(x)}{q(x)}\right)=0\;\Leftrightarrow\;p(x)\equiv q(x)\equiv 0}$$
+$\ds{\frac{p'(x)q(x)-p(x)q'(x)}{q^2(x)}=0\;\Leftrightarrow\;p'(x)q(x)=q'(x)p(x)}$\\
+Tuttavia ci\'o implica che $q(x)|q'(x)p(x)$. Basta applicare il lemma di Euclide sfruttando l'ipotesi $gcd(p(x),q(x))=1$ per ricavarne che $q(x)|q'(x)$. Tale configurazione risulta possibile se e solo se $q'(x)\equiv 0$, in quanto $q'(x)$ \'e un polinomio di un grado inferiore a $q(x)$. A questo punto se $q'(x)\equiv 0$ si deve avere che $p'(x)q(x) \equiv 0 \;\Leftrightarrow\; p'(x)\equiv 0$.\\ 
+
+
+\item Sia $E:\; x^3+Ax+B$ una curva ellittica definita su un campo $K$ e sia $d\in K^{*}$.\\
+Sia $E^d:=\; x^3+Ad^2x+Bd^3$.\\
+\begin{enumerate}
+\item Si vuole verificare che $j(E)=j(E^{d})$:
+$$\ds{j(E^d)=1728\frac{4d^6A^3}{4d^6A^3+27B^2d^6}=1728\frac{4A^3}{4A^3+27B^2}=j(E)}$$
+\item Basta fare il seguente cambiamento di variabile con coefficienti in $E[\sqrt{d}]$:
+$$\sist
+x\longmapsto dx\\
+y\longmapsto d\sqrt{d}y
+\esist$$
+Si ottiene infatti la seguente curva $d^3y^2=d^3x^3+Ad^3x+Bd^3$; a questo punto baster\'a dividere entrambi i 
+membri per $d^3$ (lo posso fare in quanto $K$ campo e $d\in K^{*}$, quindi ammette inverso) per ottenere $E^d$.
+\item Invece la curva $E$ pu\'o essere trasformata in $dy^2=x^3+Ax+B$ con il seguente cambiamento di variabile con coefficienti in $K$:
+$$\sist
+x\longmapsto dx\\
+y\longmapsto d^2y
+\esist$$
+\end{enumerate}
+
+
+\item Siano $\alpha,\beta\in \mathbb{Z}$ t.c. $gcd(\alpha, \beta) = 1$, con $\alpha\equiv -1\; (mod\; 4)$
+e $\beta\equiv 0\;(mod\;32)$. Sia $E$ la curva ellittica data da $y^2=x(x-\alpha)(x-\beta)$.\\
+\begin{enumerate}
+\item Si deve dimostrare che $\alpha\equiv 0\;(mod\;p)\;\Rightarrow\;\beta\not\equiv 0\;(mod\;p)$.\\
+Se $gcd(\alpha,\beta)=1\;\Rightarrow\; \exists a,b\in\mathbb{Z}:\; a\alpha+b\beta=1$.\\
+Se $\alpha\equiv 0\;(mod\;p)\;\Rightarrow\;a\alpha+b\beta\equiv b\beta\equiv 1\;{mod\;p}\;\Rightarrow
+\; \beta\not\equiv 0\;(mod\;p)$.
+\item Applico il cambiamento di variabile indicato:
+$$
+\sist
+x=4x_1\\
+y=8y_1+4x_1
+\esist$$
+$64y_1^2+64x_1y_1+16x_1^2=[4x_1(4x_1-\alpha)(4x_1-\beta)]$\\
+$64y_1^2+64x_1y_1+16x_1^2=64x_1^3-16x_1^2\beta-16x_1^2\alpha+4x_1\alpha\beta$\\
+Dividendo tutto per $64$ si ha che:\\
+$y_1^2+x_1y_1=x_1^3-\ds{\frac{1+\alpha+\beta}{4}x_1^2+\frac{\alpha\beta}{16}x_1}$
+ossia l'equazione di $E_1$ che si voleva ottenere.
+\item Poich\'e $\beta\equiv 0 \;(mod\;32)$ si ha che $32|\beta$, ossia $\beta=32t$, con $t\in\mathbb{Z}$.
+Inoltre $\alpha\equiv -1\;(mod\;4)$, quindi $\alpha=-1+4k$, con $k\in\mathbb{Z}$.\\
+L'equazione di $E_1$ diventa $y_1^2+x_1y_1=x_1^3-\frac{4k-32t}{4}x_1^2+2(-1+4k)t x_1$.\\
+Se si riduce questa equazione modulo $2$ si ha:
+$$y_1^2+x_1y_1=x_1^3-ex_1^2$$
+dove $k\equiv e\; (mod\;2)$.
+\item Sia $r:\;y_1=\gamma x_1$ con $\gamma= costante$. Si vuole calcolare l'ordine di intersezione della retta con la curva ellittica ridotta modulo $2$ del punto precedente nell'origine.\\
+$$
+\sist
+y_1=\gamma x_1\\
+y_1^2+x_1y_1=x_1^3+ex_1^2
+\esist
+\;\rightarrow\;
+\sist
+y_1=\gamma x_1\\
+\gamma^2x_1^2+\gamma x_1^2=x_1^3+ex_1^2
+\esist
+$$
+$x_1^3+(e-\gamma^2-\gamma)x^2=0\;\Rightarrow\;x^2(x+e-\gamma^2-\gamma)=0$.\\
+L'ordine d'intersezione in $(0,0)$ risulta quindi essere $3$ se $\gamma^2+\gamma=e$ e $2$ se $\gamma^2+\gamma\neq e$.
+
+\item Se $e=0$ ho due radici distinti in $\mathbb{F}_2$ (sia $1$, sia $0$ risolvono il polinomio). 
+Se $e=1$ per il teorema fondamentale dell'algebra $\exists$ due radici in $\overline{\mathbb{F}_2}$, quindi mi basta dimostrare che sono distinte facendo vedere che il massimo comune divisore fra il polinomio e la sua derivata \'e sempre $1$. In questo caso $\ds{\frac{d}{dx}(x^2+x+1)=2x+1=1}$, da cui si ricava banalmente che  
+$gcd(x^2+x+1,1)=1$ e quindi che le due radici sono distinte fra loro.
+
+ 
+\end{enumerate}
+
+
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,83 @@
+\magnification 1100 \nopagenumbers
+\def\frac#1#2{{#1\over#2}}
+\def\Q{{\bf Q}}
+\def\Z{{\bf Z}}
+\def\N{{\bf N}}
+\def\C{{\bf C}}
+\def\F{{\bf F}}
+\def\QQ{{\rm Q}}
+
+
+\centerline{{\bf Esercizi di Teoria di Galois 4.}}\medskip
+
+\centerline{Roma Tre, 12 Maggio 2003}\bigskip
+
+\item{1.} Si calcoli il gruppo di Galois (cio\`{e} il numero di
+elementi e la struttura di ciascuno dei seguenti):
+\itemitem{a.} $x^4 + 2x^3 + 15x^2 + 14x + 73$;  %[8, -1, 1]
+ \hfill{b.} $x^4 + 8x^3 + 26x^2 + 24x + 28$;   %[12, 1, 1]
+\itemitem{c.} $x^4 - 354*x^2 + 29929$;  %[4,1,1]
+\hfill{d.} $x^4 - 11x^3 + 41x^2 - 61x + 30$; %[1,1,1]
+\itemitem{e.} $x^4 + 8x^3 + 14x^2 - 8x - 23;$  %[4, 1, 1]
+\hfill{f.} $y^4 - 13y^3 + 64y^2 - 142y + 121$; %[4,1,1]
+\itemitem{g.} $x^4 + x^3 + 2x^2 + 4x + 2$  %[6,1,1]
+\hfill{h.} $X^4+25X^2+5$; %[24,1,1]
+\itemitem{i.} $X^4+3X^3+3$
+\hfill{l.} $ x^4 + x^3 + 4x^2 + 3x + 3$;
+\itemitem{m.} $x^4 + 60x^3 + 99x^2 + 60x + 1$ %[8,-1,1]
+\hfill{n.} $ x^4 - 356*x^2 + 29584$; %[4,1,1]
+\bigskip
+
+\item{2.} Sia $\Phi_p(x)=1+x+\cdots+x^{p-1}$ il polinomio ciclotomico. Mostrare che
+$${\rm disc}\ \Phi_p(x)=(-1)^{(p-1)/2}p^{p-1}.$$
+\bigskip
+
+\item{3.} Mostrare che $\Phi_{p^r}(x)=\Phi_{p}(x^{p^{r-1}})$ e dedurne una formula
+per il discriminante di $\Phi_{p^r}(X)$.
+
+\item{4.} Mostrare che se $n$ \`{e} dispari, allora $\Psi_{2n}(x)=\Psi_n(-x)$ e che
+$$\Psi_n(x)=\prod_{d\mid n}(x^d-1)^{\mu(n/d)}$$
+dove $\mu$ \`{e} la funzione di M\"{o}bius.
+
+\item{5.} Calcolare una fomula per il discriminante di $X^n+aX+b$.
+
+\item{6.} In ciascuno dei seguenti casi si calcoli il campo di spezzamento e il numero
+di campi intermedi tra il campo base e il campo di spezzamento.
+\itemitem{a.} $(x^4+x^2+x+1)(x^3+x+1)\in\F_2[x]$;\hfill b.
+$(x^3+x+1)(x^6+x+1)\in \F_3[x];$
+\itemitem{c.} $(x^4+x^2+1)(x^3+x+1)(x^3+1)\in\F_5[x]$; \hfill d. $(x^4+x^2+1)(x^3+x+1)(x^3+1)\in\F_7[7]$.
+
+\bigskip
+
+\item{7.} L'obbiettivo di questo esercizio \`{e} di scoprire
+per passi successivi del seguente:\hfill\break
+{\bf Teorema.} {\it Dato un gruppo {\bf abeliano} $G$, esiste
+sempre $f\in\Q[x]$ tale che $G\cong G_f$.}\smallskip
+\itemitem{i.} Il famoso Teorema di Dirichlet per primi in progressione
+aritmentica afferma (tra l'altro) che per ogni intero $m$, esiste sempre
+un numero primo congruente a $1$ modulo $m$. Dedurne che esiste un polinomio
+a coefficienti razionali il cui gruppo di Galois \`{e} isomorfo al gruppo ciclico $\Z/m\Z$;
+
+ \  \hfill {\it Suggerimento:} cercare tra i sottocampi di un opportuno
+campo ciclotomico.
+
+\itemitem{ii.} Dimostrare $f$ e $g$ sono polinomi $\in\Q[x]$ con campi di spezzamento {\it linearmente
+disgiunti} (i.e. $\Q_f\cap\Q_f=\Q$) allora $G_{fg}\cong G_f\times G_f.$
+
+\ \hfill {\it Suggerimento:} Utilizzare la propriet\`{a} (studiata in classe) che
+
+\ \hfill ${\rm Gal}(E_1E_2/F)\cong\{(\sigma_1,\sigma_2)\in{\rm Gal}(E_1/F)\times
+{\rm Gal}(E_2/F)\ |\ \sigma_1|_{E_1\cap E_2}=\sigma_2|_{E_1\cap E_2}\}.$
+
+\itemitem{iii.} Dedurre il teorema dal Teorema di classificazione dei gruppi abeliani finiti
+che dice che ogni gruppo abeliano \`{e} il prodotto di gruppi ciclici con ordini coprimi.
+\bigskip
+
+
+\item{8.} Mostrare che se $f$ \`{e} un polinomio irriducibile di grado tre a coefficienti
+in un campo $F$, $G_f$ \`{e} di tipo $S_3$ se e solo se $F_f$ non contiene sottocampi quadratici.
+
+\item{9.} Si calcoli il gruppo di Galois di $y^5 - 3*y^2 + 1$.
+
+\item{9.} Risolvere i problemi sulle note di Milne a pagina 51.
+\bye

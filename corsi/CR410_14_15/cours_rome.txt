@@ -1,0 +1,732 @@
+The RSA cryptosystem
+
+1. The RSA cryptosystem 
+
+1.1 Description 
+Def. A RSA modulus is an integer N of the form p.q, where p, q are two
+(usually large) prime numbers. 
+
+In the sequel, we shall often make the abuse of notation that x mod N
+is the remainder of the Euclidean division of x by N.
+
+Setup of the RSA system. 
+Alice : 
+(a) Pick two prime numbers p, q;
+(b) Compute N = p.q
+(c) Pick an e such that gcd(e, (p-1)(q-1)) = 1
+(d) Compute d = e^{-1} mod (p-1)(q-1)
+(e) sk_A = (N, d) ; pk_A = (N, e) ; publish pk_A. 
+
+One RSA session. 
+(a) Bob encodes his message under the form m_1, \dots, m_n, with each 
+m_i a nonnegative integer < N, seen as an element of Z/NZ ; 
+(b) for each i, Bob computes c_i := E(pk_A, m_i) := m_i^{e} \mod N and sends
+it to Alice
+(c) for each i, Alice computes m_i := D(sk_A, c_i) := c_i^{d} \mod N
+(d) Alice puts all the pieces together to get the whole message m. 
+
+I won't go into too much detail on (a), (d) of the RSA session -- the
+simplest way (but not the most efficient) to do things would be to
+write the initial message as a huge integer, and decompose it in base
+N :
+
+M = 100101010010101001001101... => M is an integer M0 in base 2 
+i = 0
+While M0 \neq 0 do 
+      m_i = M0 mod N
+      M0 = (M0 - m_i)/N
+      i = i+1
+Return [m_0, ...]
+
+Getting the other way round uses the formula M0 = \sum_i m_i N^{t-1-i},
+where t is the total number of message chunks. 
+
+2.2. Soundness and examples. 
+Let's first check that everything is ok. 
+
+Theorem. This cryptosystem is sound and gives back the message. 
+
+Proof. 
+Setup : d is defined, as we chose e coprime to (p-1)(q-1)
+Otherwise all the operations are obviously legitimate. 
+
+Now, we need to check that D(sk, E(pk, m)) = m. 
+
+We have D(sk, E(pk, m)) = D(sk, m^e mod N) = (m^e mod N)^d = m^{ed} mod N. 
+As we know that m has to be smaller than N (the domain of E, D is Z/NZ), 
+we just need to prove that m = m^{ed} mod N. 
+
+We'll actually prove the slightly stronger 
+
+Claim. Retaining the same notations, given c in Z/NZ, the congruence
+x^e = c mod N has the unique solution x = c^d mod N.
+Proof. 
+Let us first prove this with p instead of N. Assume that x^e = c mod p. 
+Then we must have x^{eu} = c^u mod p. Since we have 
+ed = 1 + k(p-1)(q-1) = 1 + k'(p-1), we get 
+x^{ed} = x . x^{k'(p-1)} = x.(x^{(p-1)})^{k'}. 
+
+Now we split into two cases. 
+* if x is prime to p (x nonzero mod p), then x^(p-1) = 1 mod p and we 
+get x^{ed} = x mod p.
+* if x is divisible by p, then x = 0 mod p and obviously x^{ed} = x mod p. 
+
+Overall, in all cases x^{ed} = x mod p and thus x^e = c mod p implies
+x = x^{ed} mod p = c^d mod p.
+
+By symmetry between (c, d) and (x, e), c^d mod p = x implies x^e = c mod p;
+hence the two statements are equivalent and we get existence + unicity of
+the solution. 
+
+Remark. We only used the fact that e.d = 1 mod (p-1) in the proof. 
+
+We now turn to the general case, which is going to be an easy consequence. 
+
+x^e = c mod N <=> x^e = c mod p, which in turn <=> that x = c^d mod p. 
+x^e = c mod N <=> x^e = c mod q, which in turn <=> that x = c^d mod q. 
+
+The Chinese remainder theorem then allows us to combine those two identities 
+to get that x^e = c mod N implies x = c^d mod N. 
+QED. 
+
+Exercise. The assumption that (e, (p-1)(q-1)) = 1 is key. Otherwise,
+the mapping x |-> x^e mod N is *not injective* -- we cannot decipher
+uniquely.
+
+Numerical examples. 
+
+* a prime congruence : 
+Consider the congruence x^{1583} = 4714 mod 7919 (is prime). 
+
+We have e = 1583. Given the proof above we need to compute d such that
+ed = 1 mod 7918. Either using the Extended Euclidean algorithm we get 
+d = 5277 mod 7918. Thus we compute x as 4714^5277 mod 7919 = 6059 mod
+7919. It is readily checked that 6059^1583 = 4717 mod 7919
+
+Exercise. Define Lambda(N) = lcm((p-1), (q-1)). Prove that if we take
+d' to be defined by d'.e = 1 mod Lambda(N), we retain all the same
+properties, with a possibly slightly smaller d'. 
+
+* an RSA example
+Take p = 1223 and q = 1987. Then we get N to be 1223 * 1987, which is
+2430101. 
+
+Bob picks e randomly, e = 948047. We check that gcd(e, (p-1)(q-1)) = 
+gcd(948047, 1222*1986) = 1. Bob publishes (N = 2430101, e = 948047)
+and computes d = 948047^(-1) mod 1222*1986 = 1051235
+
+Alice wants to send the message m = 4289542452947; she computes 
+m0 = m mod N = 1070777
+m' = (m - m0)/N = 1765170
+m1 = m' mod N = 1765170
+m'' = (m' - m1)/N = 0, so she stops there. 
+
+She computes c0 = m0^948047 mod 2430101 = 1473513 and 
+c1 = m1^948047 mod 2430101 = 793756 and sends [c0, c1] to Bob. 
+
+Bob computes m0 = c0^d mod N = 1070777, m1 = 1765170 and recovers M as
+m0 + N*m1 = 4289542452947. 
+
+1.2 Usage of RSA
+The main use of the public key world (including RSA) in practice is basically 
+
+* as a basic block in advanced protocols;
+
+* to establish a "session key" 
+  - either Diffie-Hellman (interactive process => TLS, SSL, https),
+  - or if you use GPG to encrypt a message (not interactive), GPG actually 
+picks an Sessk for a private-key cryptosystem E', and sends to 
+Alice E(pk_A, Sessk) || E'(Sessk, message).
+
+All further traffic is then encrypted with the fast, private key system.
+
+* for signature (overwhelmingly). Here, we use the fact that for RSA,
+D and E commute.
+
+A cryptographic signature is the equivalent of a handwritten one; it
+associates a message to a user; only this user can produce the
+signature but anyone should be able to check it. 
+
+Alice will sign the message m \in Z/NZ by appending sigma_Alice(m) :=
+D(sk_Alice, m) to it; Bob will verify the signature sigma by checking
+that E(pk_Alice, sigma(m)) = m. In this description the secret key is
+required to compute the signature, while any user may verify it (only
+the public key is required) and associate it to Alice (since the
+public key belongs to Alice).
+
+1.3. Algorithmic issues -- decryption / encryption
+ 
+Let's start with the encryption / decryption issue. 
+
+cost of (b) : O(log e) operations in Z/NZ (fast powering algorithm). 
+cost of (c) : O(log d) operations in Z/NZ (dito). 
+
+This analysis suggests an optimization : take e and/or d and/or N small. 
+
+* e and d small: not possible, because e.d = 1 mod (p-1)(q-1) so that e.d
+has to be either 1 or >= (p-1)(q-1) ~= N at least -- unless e = d = 1 which 
+is not a very good choice. 
+
+* altruistic policy: e small => works, but some risks (see later). It
+is better (and a common choice is) to take e = 257 or 65537, whose
+binary expansion contains few 1s -- hence the powering algorithm is
+especially fast as the number of operations it makes is the number of
+binary digits of e plus the number of ones in the binary expansion.
+
+* selfish policy: d small => never do this, this is highly risky. As a rule
+of thumb, d should be at least N^{1/2}. Attacks are known for d < N^{0.282}. 
+
+2. Setup
+
+For the setup, we have left a difficult task: finding the primes p, q.
+We want p, q to be _both_ large -- if one is small, it is easily
+detected by trial division or another factoring algorithm (p-1, rho)
+that will be studied later on.
+
+Generating primes is thus a fundamental task in the setup of an RSA
+cryptosystem. 
+
+As a rule of thumb in algorithmics, when trying to build an element
+with a given property in a set, we may choose between two approaches:
+
+* be smart and try to devise a construction which stumbles directly on 
+an element with the required property;
+* be stupid, take an element at random until we have one which does the 
+job. 
+
+Surprisingly the second strategy is often (much) better. It has the
+further advantage to produce out of the box a _uniform_ element with
+the desired property (which is often hard to get by the first approach). 
+However, we need two assumptions:
+
+(a) the elements are reasonably abundant; 
+(b) we have an efficient way to test the property that we want to obtain. 
+
+2.1 The distribution of primes
+(a): let us model the situation by a box full of white and black
+balls.  We draw a ball at each step; if the ball is black we put it
+back into the box, if the ball is while we stop and win. How many times
+are we going to draw a box if the proportion of white balls is alpha \in
+]0, 1] ?
+
+Obviously
+Probability(we make one try) = alpha
+Probability(we make two tries) = (1-alpha).alpha (failure at step 1, success
+at step 2, the two being independent)
+Probability(we make three tries) = (1-alpha)^2.alpha (failure at step 1 & 2,
+success at step 3, the two being independent)
+etc.
+
+Overall,
+E[number of tries] = \sum_{k \geq 1} k (1 - alpha)^{k-1} alpha.
+                   = \alpha \sum_{k \geq 1} k (1 - alpha)^{k-1}
+
+Let S_k = -(1 - alpha)^k / alpha ; then  (1 - alpha)^(k-1) = S_k - S_{k-1}.
+
+Now,
+\sum_{k \geq 1} k (S_k - S_{k-1})
+= \sum_{k\geq 1} kS_k - \sum_{k\geq 1} kS_{k-1}
+= \sum_{k\geq 1} kS_k - \sum_{k\geq 0} (k+1)S_k
+= -\sum_{k\geq 0} S_k
+= 1/alpha (\sum_{k \geq 0} (1 - alpha)^k + 1)
+= 1/alpha^2
+
+so, overall, E[number of tries] = 1/alpha.
+
+The same result could have been obtained (much faster) by using the
+fact that E(X) = \sum_{k >= 0} Pr(X > k) = \sum_{k >= 0} (1 -
+alpha)^k.
+
+So we want alpha to be not too small [(a)] and the time for each test to 
+be small [(b)]
+
+This raises two issues:
+* we have to find a way to test for primality; 
+* we need to understand, at least roughly, the number of primes <= n -- 
+if it is too small we will fail to produce primes efficiently this way. 
+
+For the second point, the best known answer is the following: 
+
+Prime Number Theorem (Hadamard, de la Vallée Poussin, 1896)
+pi(n) \sim \int_2^n dt / log t \sim n / log n
+
+A corollary of this is the "fact" that a random integer n is prime
+with probability 1/log n -- a more formal statement being that a
+random integer n uniformly picked from [1, N] is prime with
+probability O(1/log N) as N -> infty.
+
+The proof is long, very difficult, and was a culmination for the time.
+The equivalent x / log x looks is more tractable but much less precise,
+as shows the following comparison: 
+
+	pi(n)			n/log n			\int_2^n dt / log t
+10^6	78498			~72382			~78626
+10^9	50847534		~48254942		~50849233
+10^12	37607912018		~36191206825		~37607950279
+10^15	29844570422669		~28952965460216		~29844571475286
+10^16	279238341033925		~271434051189532	~279238344248555
+
+We seem to have 1 digit right with n/log n, vs half the digits right
+with the integral equivalent. The fact that the error term in the
+prime number theorem is indeed O(n^{1/2 + epsilon}) for all epsilon is
+(one of the many forms of) the celebrated Riemann hypothesis, probably
+one of the most important open questions of number theory and
+mathematics as a whole.
+
+We shall not prove the Prime Number Theorem, but instead the weaker
+but sufficient:
+
+Chebyshev theorem. There is a constant C such that for all sufficiently
+large x, pi(x) >= C x/log x.
+
+Proof. 
+(a) Lemma. Binomial(2m, m) >= 4^m / (2m + 1).
+
+Pf. Binomial(2m, k+1) = Binomial(2m, k) (2m - k) / (k+1).
+Hence Binomial(2m, k+1) > Binomial(2m, k) <=> 2m - k > k + 1
+<=> k < m, 
+which shows that the largest binomial coefficient is the middle one.
+
+As \sum Binomial(2m, m) = 4^m and there are 2m+1 coefficients, the
+lemma follows.
+
+(b) Lemma. v_p(x!) = \sum_{p\geq 2, k \geq 0} [x/p^k]. 
+Pf. 
+The number of j <= x such that p^t | j but p^{t+1} does not divide j 
+is [x/p^t] - [x/p^{t+1}].
+
+Now, v_p(x!) = \sum_{j <= x} v_p(j)
+             = \sum_t \sum_{j <= x / v_p(j) = t} j
+
+Hence, v_p(x!) = \sum [x/p^t] - [x/p^{t+1}]. 
+
+(c) If p | Binomial(2m, m), then p^{v_p(Binomial(2m, m))} <= 2m. 
+
+Pf. v_p(Binomial(2m, m)) = \sum_{p, k} [2m / p^k] - 2 [m/p^k]
+    	      <= log (2m) / log p as [2m / p^k] - 2 [m/p^k] \in {0, 1}
+	      and [2m/p^k] = [m / p^k] = 0 for k >= log(2m)/log p. 
+
+Using (c), we have Binomial(2m, m)
+      = \prod_{p <= 2m} p^v_p(Binomial(2m, m)) <= (2m)^pi(2m). 
+
+As Binomial(2m, m) >= 4^m / (2m + 1), we deduce 
+pi(2m) >= m log(4)/log(2m) - log(2m + 1)/log(2m) = 2m/log(2m) log 2 (1 + o(1)).
+
+Further, pi(2m+1) = pi(2m) + 1 = 1 + 2m/log(2m) log 2 (1 + o(1)).
+	 	    	       = (2m + 1)/log(2m+1) log 2 (1 + o(1)),
+from which the Theorem follows. 
+
+Remark. Note that Binomial(2m, m) <= 4^m and 
+\prod_{p <= 2m} p^v_p(Binomial(2m, m)) >= \prod_{m \leq p \leq 2m} p 
+	    		      	       >= m^{pi(2m) - pi(m)}
+yields a quick upper bound on pi(2m) - pi(m), from which an upper bound on 
+pi(m) is easily deduced. 
+
+Replacing Binomial(2m, m) by a suitable mix of factorials yields
+improved constants.
+
+As a consequence of Chebyshev theorem, the average number of tries to
+produce a prime of k binary digits is of the order of log(2^k)
+(the box is [2^{k-1}, 2^k[, the white balls are the prime, in
+number pi(2^k - 1) - pi(2^{k-1} - 1). For typical RSA sizes (2^2048),
+this means a few thousands of tries before getting an actual prime. 
+
+2.2 Primality testing
+
+Two different philosophies:
+
+(a) compositeness testing: if, looking closely but quickly, it doesn't
+look like a composite then it ought to be a prime.
+
+(b) primality testing: do the hard job of actually proving that N is prime
+(and, often, loop forever if it is not). 
+
+The general philosophy of (a) is : use a property of the kind : "if N
+is prime, then for all a <= N, P_a(N) holds"; thus if one can find
+some a such that P_a(N) does not hold, we have a proof that N is
+composite. We say that a is a _compositness witness_ for N.
+
+For the sake of completeness : Naive algorithm: trial division by all
+integers <= \sqrt{N}, yields O(\sqrt{N}) operations of integers
+<= N. 
+
+a. The Fermat test. 
+
+We'll first use "if N is prime, then for a <= N, we have a^N = a mod N".
+
+Example. N = 503, a = 2. Then 2^N = 2 mod 503. This is *** NOT A
+SUFFICIENT CONDITION ***
+
+Example: N = 561 : 2^561 = 2 mod 561... yet 3 | 561. 
+
+Definition. For (a, N) = 1, if a^N \neq a mod N, then a is a compositeness
+witness (CW) for N for the Fermat test. 
+
+Prop. If a is a CW for the FT for N, then N is composite. 
+
+The algorithm is thus: pick a bunch of small or random a's, and if none of
+them is a CW, then declare that a is likely prime. 
+
+How many a should we use ? It turns out that there is no good answer:
+An integer N is a Carmichael number if is has no CW for the FT. 
+
+Thm. (Alford, Granville, Pomerance). There are infinitely many Carmichael
+numbers. 
+
+The smallest is 561. For those numbers, there is very little chance to 
+find randomly a suitable a, and exploring all possible a means an algorithm
+with complexity at least O(N)... worse than the naive method in O(sqrt(N)). 
+
+Cost of the Fermat test: O(log N) operations mod N for each value of
+a.
+
+b. The strong pseudo-prime test
+
+This test is often credited to Miller and Rabin (mid 70s) in the
+literature, but this is strongly debatable. Selfridge seems to have at
+least proposed it earlier, and an old paper by Artjuhov (Acta
+Arithmetica, 1966, in Russian) describing it was rediscovered in the
+late 2000s.  
+
+We are going to refine slightly the Fermat test, to get a much better
+test.  Note that Fermat uses the condition a^N - a = 0 mod N, which is
+very close to a^{N-1} - 1 = 0 mod N -- actually equivalent if (a, N) =
+1.
+
+But as N-1 is even, we can factor the latter as 
+(a^{(N-1)/2} - 1)(a^{(N-1)/2} + 1) = 0 mod N ; since N is prime, this means
+that either a^{(N-1)/2} = 1 or a^{(N-1)/2} = -1 mod N. 
+
+But we can go further. Assume that v_2(N-1) = k, so that N-1 = 2^s t
+for some odd t. Then, factoring over and over again gives :
+
+Definition. Let N be an odd integer with N-1 = 2^s t; for an a such
+that (a, N) = 1, we'll say that a is a compositeness witness for N for
+the SPPT if
+
+* a^t \neq \pm 1 mod N ; 
+* a^{2^k t} \neq -1 mod N for all k \in [0, s-1].
+
+Theorem. If a is a compositeness witness for N for the SPPT, then N is
+composite. 
+Proof. (a^t - 1)(a^t + 1)(a^(2t) + 1)... (a^{2^(k-1)t} + 1) = 0 mod N, 
+but none of the factors of the left hand side is zero. 
+
+Cost: we start by computing a^t mod N, which costs O((log t))
+operations mod N, and then have <= s squaring steps, which cost O(s)
+operations mod N. overall, O(log(2^s t)) = O((log N)) -- the SPPT is
+not more expensive than the Fermat test (=> you should only use this
+one).
+
+Theorem (Monier, 1980). Let n be an odd composite number. Then at least
+3/4 of the integers between 1 and (n-1) are CW witnesses for the SPPT
+for n. 
+Proof. Ugly combinatorics + arithmetic, but not conceptually hard. 
+
+WARNING. This does not mean that if we pick a at random and N passes
+the SPPT, then N is prime with probability 3/4. Indeed, the event "N
+is prime" is deterministic once N has been chosen. The correct
+statement is : if N is composite and a is randomly chosen, the
+probability of incorrectly declaring N likely prime is <= 1/4.
+
+WARNING (2). It is a bit hard to combine such statements. One might
+get the feeling that if we pick k random values of a, the probability
+becomes <= (1/4)^k, but this is not exactly true, due to subtle
+interdependencies; still, this is a rough rule of thumb which is good
+to keep in mind. In practice, one uses a bunch (20, 50, 100 or so) of
+random values of a, and declares N prime if N passes the SPPT for all
+those a. 
+
+Let's do the example N = 561 again.
+N - 1 = 560 = 2x280 = 2^2 x 140 = 2^3 x 70 = 2^4 x 35, thus s = 4, t = 35.
+Let us try a = 2.
+2^t = 263 mod N
+2^{2t} = 166 mod N
+2^{4t} = 67 mod N
+2^{8t} = 1 mod N
+which shows that N cannot be prime as 67 \neq -1 mod N. 
+
+Example of the full "prime generation process":
+Let's look for a prime of size 6 digits. 
+
+We first draw N = 390641. N-1 = 2^4 x 24415
+2^24415 = 357928
+2^(2*24415) = 174670
+2^(4*24415) = 156159
+2^(8*24415) = 259497
+2^(16*24415) = 388070
+=> 2 is a CW for the SPPT (and for Fermat too), and N is composite. 
+
+We draw N = 246165. Obviously 3 and 5 divide N, we shall not do
+complicated stuff to see that N is NOT PRIME. In practice one should
+test divisibility by small primes before going into SPPT. 
+
+N = 176149; N-1 = 2^2 x 44037
+2^44037 = 18543
+2^(2*44037) = 1
+
+2 is a CW for the SPPT, and N is composite. 
+
+N = 726377; N-1 = 2^3 x 90797
+
+2^90797 = 1 mod 726377 => pass.
+
+3^90797 = 167932 mod N
+3^(4*90797) = -1 mod N => pass
+
+5^(4*90797) = -1 mod N => pass
+
+7^90797 = -1 mod N => pass
+... N really seems prime though we cannot be sure. 
+
+Remark.
+One can get a conditional, but rigorous, result using the following
+
+Theorem (Miller, 1975). If a suitable generalization of the RH holds,
+then for all integer N, if N has no CW a for the SPPT test with a <= 2
+(log^2 N), then N is prime.
+
+This gives, under the Extended Riemann Hypothesis (a slight
+generalization of the Riemann hypothesis mentioned earlier), a
+deterministic (no randomness is used) _primality test_ (we prove that
+the integer is prime) of cost O(log^3 N) operations mod N.
+
+The AKS theorem (Agrawal, Kayal, Saxena, 2002) is another such
+(unconditional) result, but useless in practice. In real life, the
+records are held by Atkin-Morain's ECPP test (using elliptic curves
+and deep ideas from number theory).
+
+3. Security issues
+We shall study a number of security issues before moving to a general
+study of security.
+
+a. Man in the middle
+In real life, a public key interaction goes the following way:
+
+Bob -> Alice "send me your public key"
+Alice -> Bob "pk_Alice"
+Bob -> Alice E(pk_Alice, m).
+
+It is not, a priori, possible to distinguish between this situation and the
+following one :
+
+Bob -> Alice "send me your public key" -- intercepted by Charlie and
+forwarded to Alice.
+
+Alice -> Charlie "pk_Alice"
+Charlie -> Bob "pk_Charlie" -- which Bob naively takes for Alice's public key. 
+
+Bob -> Charlie (but thinking that he's talking to Alice)
+    E(pk_Charlie, m).
+
+Charlie computes m and forwards to Alice E(pk_Alice, m); he can thus
+eavesdrop on the whole conversation, unnoticed.
+
+Certificates were invented to avoid this situation. Someone who wants
+a certificate goes to a Certificate Authority (CA). The CA has a pair
+PK_CA, SK_CA and delivers a pair
+
+message m = "I the undersigned certify that I have checked the
+identity of Alice and that pk_Alice is indeed her public key",
+signature D(SK_CA, m)
+
+Anyone knowing PK_CA can verify the signature; if one trusts the CA to be
+serious and verify thoroughly the identity before delivering the
+certificate, one can then believe that one is indeed using the real
+Alice's public key.
+
+However, one must know the correct PK for the CA again... the PK's of
+the most common CAs are preloaded in the standard browsers. When a
+browser receives a certificate issued by a CA it doesn't know, one
+gets a popup warning about this fact -- this means that one might be
+subject to a man in the middle attack (though this is not, usually,
+the most likely explanation -- many people do not understand the
+concept of certificate and some people do, actually, sign their
+own certificates... which tends to make the concept meaningless). 
+
+This problem is not restricted to RSA but is common to all public key
+cryptosystems. 
+
+b. Broadcast attack
+Small value of e may have a huge drawback. Imagine I am to broadcast a
+message to 20 people with pk_i = (N_i, 3). If I format my message with
+the same chunks m's, I am going to send m^3 mod N_i for all i.
+
+The CRT then allows a pirate to get either a factor of some N_i, or
+m^3 mod (\prod N_i). As m has to be <= min(N_i), we have \prod N_i >
+m^3, which means that we have m^3 *over the integers* (not mod N).
+
+And extracting cube roots over the reals is easy (eg use dichotomy,
+or better Newton iteration). 
+
+c. Shared modulus
+
+The idea was suggested long ago to avoid having to generate big primes
+by trusting a central authority to distribute keys. This authority
+would pick once and for all p, q, N and distribute distinct pairs
+(d, e) to various users.
+
+But this is unsecure: knowing d, e we can recover the factorisation of N.
+
+We shall use the very important following idea:
+   	 if x \neq \pm 1 mod N but x^2 = 1 mod N, then
+	  gcd(x \pm 1, N) are two nontrivial factors of N (hence p, q).
+
+Indeed, (x - 1)(x + 1) = 0 mod N; so if gcd(x - 1, N) = 1, we have x +
+1 = 0 mod N, contradition. If gcd(x - 1, N) = N, x = 1 mod N,
+contradiction again.
+
+By definition of RSA, we have de - 1 = k \varphi(N) for some k; hence
+for all a such that (a, N) = 1 we have a^{de - 1} = (a^\varphi(N))^k =
+1 mod N (FLT). 
+
+Now, write de - 1 = 2^s t, and pick a be a random integer \neq 0 mod N.
+
+(*) if (a, N) \neq 1, we have a factor of N ;
+
+(*) if a^t = 1 mod N, we pick another a ; hence we may assume that
+a^t \neq 1 mod N
+
+(*) We have a^{2^s t} = a^{de - 1} = 1 mod N.
+
+Hence, we can define j = max{k / a^{2^k t} \neq 1 mod N} < s. 
+If a^{2^j t} = -1 mod N, we pick another a; otherwise, we take
+x = a^{2^j t} mod N and use the remark above.
+
+The question is thus, how many a shall we need before getting success ?
+This is again a matter of white/black balls. 
+
+Proposition. The probability that a^t \neq 1 mod N and a^{2^j t} \neq -1
+mod N is >= 1/4.
+
+The proof is not very difficult, but a bit long. This proposition
+means that we have 1/4 of white balls, hence on average 4 different a
+will be required to get a factorization of N (which is cheap). The
+cost of the algorithm is of the order of O(log N) operations mod N
+(as de - 1 <= N^2, so log t and s are O(log N)). 
+
+d. Malleability of the signature
+
+The algebraic structure of RSA implies Signature(m)*Signature(m') =
+Signature(m m'). This is a weakness.
+
+Assumes that Bob wants Alice to sign m' \in Z/NZ which tells "I owe
+Bob 1M$"; instead, he asks for the signature of m meaning "the weather
+is nice today" and of m*m' which is meaningless (garbage). Assuming that
+Alice is tricked into signing those two messages, Bob can deduce the
+signature of m' and Alice owes him 1M$.
+
+The classical solution against this is to use padding: only sign
+messages with a given structure, as if m and m' have a certain
+structure most probably mm' won't have this same structure. A simple
+(and way too naive) example is to sign only messages repeating two
+times the same things as in m = "the weather is nice today the weather
+is nice today ". If m' = "I owe Bob 1M$ I owe Bob 1M$ " Alice will
+refuse to sign m*m' which will not have the right structure. 
+
+The crypto guys actually often do much fancier stuff to get actual,
+strong, "proved" (under a lot of assumptions) notions of security --
+check RSA-OAEP on the web or PKCS#1 if you want to get a hint of this.
+
+e. Small d -- not treated in class
+
+We have mentioned that the cryptosystem is weak of d < N^{0.282}. We
+present here a very simple attack which will disclose d, p, and q
+as soon as d < N^{1/4} (but we won't prove this fact).
+
+Do the extended Euclidean algorithm on e, N. We get identities
+u_i e + v_i N = r_i.
+
+Theorem. If 0 < d < N^{1/4}, there is an i such that |u_i| = d, |v_i| = k
+such that de = 1 + k \varphi(N).
+
+The proof is a consequence of the theory of continued fractions;
+roughly speaking, as N is close to \varphi(N), de - kN is small, thus
+|k / d - e / N| is very small -- it can be proved to be < 1/2d^2 as
+soon as d < N^{1/4}. The theory of continued fractions then implies
+that (k, d) have to appear in the EEA applied to (e, N), as claimed.
+
+Hence, for all i such that u_i < N^{1/4}, one should compute C_i =
+(u_i e - 1) / v_i; if this is an integer, a candidate value
+for phi(N) is N + 1 - (p + q); hence a candidate value for p + q
+is N + 1 - C_i. Now, if this is the right value of p + q, we recover p
+and q as the roots of x^2 - (N+1-C_i) x + N = 0.
+
+Example. e = 235, N = 391.
+
+Extended Euclidean algorith gives
+1x391 - 1x235 = 156 gives C_i = 234 
+-391 + 2x235 = 79 gives C_i = 117
+2x391 - 3x235 = 77 gives C_i = 352 for which we solve
+x^2 - 40x + 391 = 0, with roots 17, 23.
+
+Indeed 391 = 17 x 23.  
+
+f. General evaluation of security -- not treated in class
+
+Attack against the message
+--------------------------
+Attacking the message means : given pk and E(pk, m), find m. Here this
+means that we get access to c = m^e mod N and want to deduce m.
+
+* if we know how to factor N as p*q this is easy -- we just compute
+(p-1)(q-1), deduce d from e, and decrypt as c^d mod N. 
+
+* otherwise, understanding how to solve this is a rather open
+question. The consensus in the community is that it is probably
+somewhat easier than integer factoring, but no one knows how to 
+exploit this (except in very particular situations, eg we have a
+(big) hint on the message). 
+
+* if we could take e = 2, then the attack on the message would be
+equivalent to factoring. However this is not RSA (as 2 is not coprime
+to (p-1)(q-1)), but Rabin's cryptosystem, and it raises some
+technicalities as decryption is no longer unique...
+
+Indeed, assume that we have access to a "black box computer" taking as
+an argument y \in Z/NZ and returning either "No" if y has no square
+root mod N, or x \in Z/NZ such that x^2 = y mod N, and let us show
+how one can factor N using this computer.
+
+Lemma. If N = pq, p, q odd, and (y, N) = 1, then y has either 0 or
+4 square roots mod N.
+
+Proof. Z/pZ is a field; as y mod p is nonzero, either it has a nonzero
+square root x_p and a second one -x_p, or it has none.
+
+Similarly, y mod q has either two square roots x_q and -x_q, or none.
+
+By the CRT,
+(*) if y has no square root mod p or mod q, it has no square root mod N;
+because x^2 = y mod N would imply x^2 = y mod p and x^2 = y mod q.
+
+(*) if y has two square roots mod p and two square roots mod q, it has
+4 (pairwise distinct) square roots mod N :
+
+x_0 such that x_0 = x_p mod p, x_0 = x_q mod q
+x_1 such that x_1 = -x_p mod p, x_1 = x_q mod q
+x_2 = -x_1 such that x_2 = x_p mod p, x_2 = -x_q mod q
+x_3 = -x_0 such that x_3 = -x_p mod p, x_3 = -x_q mod q
+all of which exist thanks to the CRT.
+
+Now, we pick a random z. If (z, N) > 1, we are done. Otherwise, we
+compute t = z^2 mod N, and submit t to the black box computer.
+
+As the computer does not know z, the square root of t it returns can
+only be one of the four square roots of t with the same probability
+for all 4. With probability 1/2, it thus returns neither z nor -z;
+then we have x/z \neq \pm 1 mod N, and (x/z)^2 = 1 mod N, which means
+that (x/z - 1 mod N, N) is a nontrivial factor of N.
+
+If this fails, we repeat the process; on average, in 2 steps, we'll
+get a factor of N.
+
+Attack against the key
+----------------------
+Attack against the key is : given (e, N), find d. We have seen above
+(shared modulus) that this is equivalent to integer factoring. To
+understand the security of RSA, one thus needs to make a thorough
+study of integer factoring. Today's state of the art is that one can
+factor 768 bits (232 decimal digits) RSA moduli; the common agreement
+is that one should use 2048 bit RSA moduli as keys, so p and q should
+be of the order of 10^310.

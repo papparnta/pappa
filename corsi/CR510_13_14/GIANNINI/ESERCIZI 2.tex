@@ -1,0 +1,134 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{latexsym}
+\usepackage{eucal}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bm}{ \begin{pmatrix} }
+\newcommand{\edm}{ \end{pmatrix} }  
+\newcommand{\sist}{\begin{cases}}
+\newcommand{\esist}{\end{cases}}
+\newcommand{\deter}{\left| \begin{array}}
+ \newcommand{\edet}{\end{array}\right|}
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+  \begin{center} 
+    \textbf{Universit\'a degli Studi Roma Tre - Corso di Laurea in Matematica\\
+     \begin{Huge}Esercizi CR510\end{Huge}\\
+Dario Giannini}\\
+  \end{center}
+  
+  \begin{tabular}{p{.6\textwidth}p{.4\textwidth}}
+    \begin{tabular}{l}
+      \textsc{10 Marzo 2014}
+    \end{tabular}
+  \end{tabular}
+\\\\
+\begin{enumerate}
+\item \begin{enumerate}
+\item Sia $x^3+Ax^2+Bx+C$ polinomio di terzo grado monico e siano $x_1,x_2,x_3$ le sue tre radici $\Rightarrow$\\
+$x^3+Ax^2+Bx+C=(x-x_1)(x-x_2)(x-x_3)=$\\$=x^3-(x_1+x_2+x_3)x^2+(x_1x_2+x_1x_3+x_2x_3)x -x_1x_2x_3$.\\
+Affinch\'e l'uguaglianza sia soddisfatta \'e necessario che $C=-x_1x_2x_3$.\\
+
+
+\item Siano $P_1=(x_1,y_1)$ e $P_2=(x_2,y_2)$ con $x_1\neq 0$ e $x_2\neq 0$.\\
+Si vuole dimostrare che $P_3=(x_3,y_3)=P_1+P_2=$\\
+$=(m^2-x_1-x_2,m(x_1-x_3)-y_1)$ dove 
+$m=\ds{\left(\frac{y_2-y_1}{x_2-x_1}\right)}$\\
+sfruttando il punto precedente.\\
+Suppongo $x_1\neq x_2$ in quanto avrei il caso banale $P_1+P_2=\infty$.\\
+Metto a sistema la retta passante per i due punti $P_1$ e $P_2$ e la curva ellittica per trovare il terzo punto d'intersezione fra queste.
+$$\sist
+y = m(x-x_1) +y_1 \\
+y^2=x^3+Ax+B
+\esist$$
+$(m(x-x_1)+y_1)^2=x^3+Ax+B \;\;\Rightarrow\;\;$ \\
+$m^2x_1^2+m^2x^2-2m^2xx_1+y_1^2+2mxy_1-2mx_1y_1=x^3+Ax+B$\\ 
+$x^3-m^2x^2+(A+2m^2x_1-2my_1)x+B-m^2x_1^2-y_1^2+2mx_1y_1=0$ \\
+Da cui sfruttando il punto precedente si ha che\\
+$B-m^2x_1^2-y_1^2+2mx_1y_1=-x_1x_2x_3\;\;\Rightarrow\;\;x_3=\ds{\frac{m^2x_1^2+y_1^2-B-2mx_1y_1}{x_1x_2}}$\\
+\textbf{N.B.:} Posso dividere senza problemi per $x_1$ e $x_2$ in quanto li ho supposti non nulli per ipotesi.\\
+Sfruttando il fatto che $B=y_1^2-x_1^3-A x_1$ poich\'e $(x_1,y_1)\in E$ si ha che:\\
+$$x_3=\ds{\frac{m^2x_1+x_1^2+A-2my_1}{x_2}}$$\\
+A questo punto sostituisco A con la seguente espressione:\\
+$$A=x_1x_2+x_1x_3+x_2x_3-2m^2x_1+2my_1$$
+in quanto 
+$A+2m^2x_1-2my_1=x_1x_2+x_1x_3+x_2x_3$.\\
+Tale identit\'a \'e ottenuta dalla relazione tra le radici e il coefficiente del termine di primo grado trovata nel punto precedente.\\
+Sostituendo si ha che:\\
+$$x_3=\ds{\frac{m^2x_1+x_1^2-2my_1+x_1x_2+x_1x_3+x_2x_3-2m^2x_1+2my_1}{x_2}}$$
+$$x_3=\ds{\frac{-m^2x_1+x_1^2+x_1x_2+x_1x_3+}{x_2}+x_3}$$ \\
+A questo punto semplificando gli $x_3$ posso anche semplificare il denominatore ottenendo:\\
+$$-m^2x_1+x_1^2+x_1x_2=-x_1x_3\;\;\Rightarrow\;\;$$
+$$x_3=m^2-x_1-x_2$$
+Da ci\'o si ricava subito che anche la formula per calcolare $y_3$ \'e corretta in quanto riflessione rispetto l'asse delle $x$ del terzo punto di intersezione.
+\end{enumerate}
+
+
+
+\item $(3,5)\in E: y^2=x^3-2$ quindi per trovare un altro punto della curva ellittica sfrutto le formule di duplicazione del punto $(3,5)$.\\
+$2(3,5)=(m^2-6,m(m^2-9)-5)$ dove $m=\ds{\frac{3x^2}{2y}|_{(3,5)}=\frac{27}{10}}$.\\
+Basta sostituire $m$ all'interno dell'espressione per ottenere il seguente punto che verifica 
+l'equazione di $E$:\\
+$$P=\ds{\left(\frac{129}{100},\frac{383}{1000}\right)}$$
+
+
+
+\item Siano $P=(2,9)$,$Q=(3,10)$ e $R=(-4,-3)$ e \\
+sia $E:\;y^2=x^3+73$
+\begin{enumerate}
+\item $(P+Q)=(2,9)+(3,10)=(m^2-2-3,m(2-m^2+5)-9)=(-4,-3)$ in quanto in questo caso $m=1$.\\
+$(P+Q)+R=(-4,-3)+(-4,-3)=2(-4,-3)=$\\
+$=(m^2+8,m(-4-m^2-8)-3)$\\
+dove $m=\ds{\frac{3x^2}{2y}|_{(-4,-3)}=-8}$\\
+Sostituendo il valore di $m$ ottenuto si ha che:\\
+$$(P+Q)+R=(72,611)$$
+
+\item $(Q+R)=(3,10)+(-4,-3)=(m^2-3+4,m(3-m^2-1)-10)$\\ dove $m=\ds{\frac{13}{7}}\;\;\Rightarrow$\\
+$$(Q+R)=\ds{\left(\frac{218}{49},-\frac{4353}{343}\right)}$$.\\
+$P+(Q+R)=(2,9)+\ds{\left(\frac{218}{49},-\frac{4353}{343}\right)}=
+\ds{\left(m^2-2-\frac{218}{49},m\left(2-\left(m^2-2-\frac{218}{49}\right)\right)-9\right)}$\\
+dove $m=\ds{-\frac{62}{7}} \;\;\Rightarrow$\\
+Sostituendo il valore di $m$ ottenuto si ha che:\\
+$$P+(Q+R)=(72,611)$$
+
+\end{enumerate}
+\textbf{N.B.:} Si noti come i risultati di questo esercizio siano coerenti con il fatto che la somma sia associativa.
+
+
+
+\item Sia $E: y^2=x^3-34x+37$ e siano $P=(1,2),Q=(6,7)\in E$.\\
+\begin{itemize}
+\item $P+Q=(m^2-7,m(1-m^2+7)-2)=(-6,-5)$ in quanto m=1.
+\item $2P=2(1,2)=(m^2-2,m(1-m^2+2)-2)$\\
+dove $m=\ds{\frac{3x^2-34}{2y}|_{(1,2)}=-\frac{31}{4}}$\\
+Andando a sostituire il valore di $m$ otteniamo:\\
+$$2P=\ds{\left(\frac{929}{16},\frac{28175}{64}\right)}$$
+A questo punto \'e semplice notare che:\\
+$$\ds{\left(\frac{929}{16},\frac{28175}{64}\right)\equiv(-6,-5)\equiv(4,0)\;\;(mod\;5)}$$
+\end{itemize}
+
+
+
+
+\item Sia $E: \; y^2=x^3+Ax+B$ e sia $(u,0)\in E$.\\
+Supponiamo per assurdo che $3u^2+A=0\;\Rightarrow$\\
+Poich\'e $(u,0)\in E$ $u^3+Au+B=0$, quindi $u$ sarebbe una radice multipla di $x^3+Ax+B$. \\
+Infatti $(x^3+Ax+B)'=3x^2+A$ e $u$ \'e una radice con molteplicit\'a almeno $2$ in quanto annulla anche la derivata oltre al polinomio stesso. Tuttavia il fatto che $u$ sia una radice multipla costituisce un assurdo 
+poich\'e per ipotesi $E$ \'e una curva ellittica e per definizione $\Delta_E\neq 0$ ( le radici del polinomio di terzo grado sono distinte, al massimo ce ne sono due complesse).\\
+
+
+
+\item $P+Q+R=\infty \;\; \Leftrightarrow \;\; P+Q+R=\infty \;\; \Leftrightarrow \;\; (P+Q)=-R$\\
+ma per definizione di somma ci\'o \'e possibile se e soltanto se la retta che passa per $P$ e $Q$ interseca la curva ellittica in $R$, quindi se e soltanto se $P$,$Q$ e $R$ sono collineari.
+
+
+\end{enumerate}
+\end{document}

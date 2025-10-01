@@ -1,0 +1,578 @@
+\input macro_unix.sty
+%
+\pageno=375
+%
+\headline={\ifnum\pageno=375 \hfill \else \ifodd\pageno\rightheadline
+           \else\leftheadline\fi\fi}
+\def\rightheadline{{\ridsl On Hooley's Theorem with weights}
+\hfill{\normale\folio}} 
+\def\leftheadline{{\normale\folio}\hfill{\ridsl F. Pappalardi}}  
+%
+ { \baselineskip=10pt\halign{\uns{\hfil#\hfil}\cr
+Rend. Sem. Mat. Univ. Pol. Torino\cr
+Vol. 53, 4 (1995)\cr
+Number Theory\cr} }
+
+\font\msa msam10
+\def\lleq {\hbox{\thinspace\msa .\thinspace}}
+\def\ggeq {\hbox{\thinspace\msa \&\thinspace}}
+\def\nmid{\hbox{\thinspace\ms -\thinspace}}
+\def\pp{\hbox{\mms P}}
+\def\oo #1{\text{\normale o}\!\left(#1\right)\!}
+\def\OO #1{\text{\normale O}\!\left(#1\right)\!}
+\def\li{\text{\normale Li}(x)}
+\def\ppi{\pi(x)}
+\font\mini=ptmr at 8pt
+
+\beginarticle
+
+\ce{\bigbf ON HOOLEY'S THEOREM WITH WEIGHTS}
+
+\vskip20pt
+
+\ce{\bigbf F. Pappalardi 
+\footnote"$^*$"{\nota Supported by Human Capital and Mobility
+Program of the  European Community, under contract ERBCHBICT930706}}
+
+
+\vskip1cm
+
+\leftskip=1cm\rightskip=1cm
+{\noi \nota{\ridbf
+Abstract.} We adapt Hooley's proof that the Generalized Riemann Hypothesis 
+implies the Artin Conjecture for primitive roots to various other problems. We consider
+the sum $\sum_{p\leq x}f(i_p)$ where $i_p$ is the index of $2$ modulo $p$ and $f$ is a given
+function. In various cases we establish asymptotic formulas for such a sum and analyse the
+constants.  While we claim no originality, we outline the method to approach this problem
+in a fairly general case.}
+
+\leftskip=0cm\rightskip=0cm  
+
+
+\sec{1. Introduction}
+
+For a fixed prime number $p$, we denote by  $i_p$  the index of $2$ (mod $p$). 
+For a function
+$f:\N\rightarrow\C$,  we consider the sum
+$$\sum_{p\leq x}f(i_p).$$
+
+We will establish various estimates for such a sum.
+If $f(1)=1$ and $f(x)=0$ for $x\neq1$, then the famous Artin Conjecture 
+for primitive roots states that
+$$
+\#\left\{p\leq x\left|\ i_p=1\right.\right\}\sim\delta\ppi,\leqno(1)$$
+where $\delta$ is the Artin constant,
+$$
+\delta=\prod_{l\ \text{\piccola prime}}\left(1-{1\over l(l-1)}\right)= 0.373955813619202\ldots
+$$
+ 
+In 1967, C. Hooley (see [5]) proved the Artin Conjecture as a consequence of the
+Generalized  Riemann Hypothesis. 
+
+The weaker form of the Artin Conjecture states that {\normsl any fixed integer $b>1$ that is 
+not a perfect square is a primitive root for infinitely many primes.} Heath-Brown [4],
+Gupta and Murty [3] (see also [9]) solved this form of the Artin conjecture for a very large 
+class of numbers $b$ but the asymptotic formula in (1) is still to be proven. For a clear
+exposition on the Artin Conjecture and its ``quasi-resolution'' we refer to [8].
+
+Let us set
+$$
+\pi(x,n)=\#\left\{p\leq x\left|\ n|i_p\right.\right\}\!.
+$$ 
+The intuition of Artin and the subsequent proof of Hooley is based on the identity
+$$
+\#\left\{p\leq x\left|\ i_p=1\right.\right\}=\sum_{n=1}^\infty\mu(n)\pi(x,n),\leqno{(2)}
+$$
+which is just the inclusion--exclusion principle.
+
+A natural generalization of (2) is the identity
+$$\sum_{p\leq x}f(i_p)=\sum_{n=1}^\infty g(n)\pi(x,n),$$
+where, by M\"obius inversion, $g(n)=\sum_{d|n}\mu(n/d)f(d)$ and $f(m)=\sum_{n|m}g(n).$
+
+
+If $n$ is a positive integer, we set $K_n=\Q(\zeta_n,2^{1/n})$, so that
+$$k_n=[K_n:\Q]=\left\{\eqalign{ n\varphi(n) &\ \ \ \text{ if } 8\!\!\not| n\cr
+             n\varphi(n)/2 &\ \ \ \text{ if } 8| n.}\right.$$
+It is a
+criterion due to Dedekind that an odd prime $p$ splits completely in $K_n$ if and only $n$ divides
+$i_p$. Therefore $\pi(x,n)$ equals the number of primes up to $x$ that are unramified and split completely 
+in $K_n$.
+
+The Chebotarev Density Theorem provides us with an asymptotic formula for $\pi(x,n)
+$. The following
+result is due to Lagarias and Odlyzko [6].
+\teo{Chebotarev Density Theorem.} {\normsl
+Suppose that the Generalized Riemann
+Hypothesis (GRH) holds for the Dedekind zeta function of $K_n$. Then
+$$\pi(x,n)={1\over k_n}\li+\OO{x^{1/2}\log xn}.$$
+Unconditionally, there exists an absolute constant $A$ such that if  $n\leq(\log x)^{1/7}$ then
+$$\pi(x,n)={1\over k_n}\li+\OO{x\exp(-A\sqrt{\log x}/n)}.$$}\bigskip
+
+From now on we will suppose that  
+$$\sum_{n=1}^\infty {|g(n)|\over k_n}<\infty.\leqno(3)$$
+The generalized Artin problem is to establish the asymptotic
+formula
+$$\sum_{p\leq x}f(i_p)\sim\sum_{n=1}^\infty {g(n)\over k_n}\ppi.$$
+
+We adopt the following standard notation: $F(x)\lleq G(x)$ means that for every $\epsilon>0$
+there exists $x_\epsilon$ such that if $x>x_\epsilon$, then
+$F(x)\leq (1+\epsilon)G(x)$. 
+
+We have the following
+
+\teo{Theorem 1.} {\normsl 
+\item{\normale (a)} Suppose that $g(n)\geq0$. Then we have
+$$
+\sum_{n=1}^\infty g(n)\pi(x,n)\ggeq\sum_{n=1}^\infty {g(n)\over k_n}\ppi.
+$$
+\item{\normale (b)} Suppose that the series $\sum_{n=1}^\infty |g(n)|/\varphi(n)$ converges and
+that $\sum_{n>z} |g(n)|/n=\oo{\log^{-1} z}$. Then
+$$
+\sum_{n=1}^\infty g(n)\pi(x,n)\sim\sum_{n=1}^\infty {g(n)\over k_n}\ppi.
+$$}\bigskip
+
+\noindent Let us write $H_m(x)=\#\left\{p\leq x\left|\ i_p=m\right.\right\}\!,$ so that 
+$$\sum_{p\leq x}f(i_p)=\sum_{m=1}^\infty f(m)H_m(x).$$
+The function $H_m(x)$ has been studied by L. Murata in [7] where he proved 
+\teo{Theorem (Murata).} {\normsl
+GRH implies  that for every
+every $\epsilon>0$,
+$$H_m(x)=\delta_m\ppi+\OO{{m^\epsilon x\log\log x\over \log^2 x}}$$
+where the implied constant depends only on $\epsilon$. Furthermore
+$$\delta_m=\sum_{n=1}^\infty{\mu(n)\over k_{nm}}={r_m\over m^2}\ \delta\prod_{l\ \text{\piccola prime}\atop
+l| m}{l^2-1\over l^2-l-1}$$
+with $r_m=1$ if $4\!\!\not| m$, $r_m=2/3$ if $4|\!| m$, $r_m=2$ if
+$8| m$ and $\delta$ is the Artin constant.}\bigskip
+
+From now on we will also suppose that  
+$$\sum_{m=1}^\infty |f(m)|\delta_m<\infty.$$
+Note that since $\delta_m\ll(\log\log m)/m^2$ we may
+assume that $f(m)=\OO{m^2}$.  By exchanging the order of summation in
+absolutely convergent series, we have that
+$$\sum_{n=1}^\infty {g(n)\over k_n}= \sum_{m=1}^\infty f(m)\sum_{n=1}^\infty{\mu(n)\over k_{nm}}
+=\sum_{m=1}^\infty f(m)\delta_m.$$
+
+We have the following
+
+\teo{Theorem 2.} {\normsl 
+\item{\normale (a)} Suppose that the series $\sum_{m=1}^\infty |f(m)|/\varphi(m)$
+converges and that $\max_{m\leq y}{\left\{|f(m)|\right\}}\ll y^{1-\tau}$ for some $\tau>0$.
+Then 
+$$\sum_{m=1}^\infty f(m)H_m(x)\lleq\sum_{m=1}^\infty f(m)\delta_m\ppi.$$
+\item{\normale (b)}
+Assume GRH and suppose that $f(m)\geq0$. Then 
+$$\sum_{m=1}^\infty f(m)H_m(x)\ggeq\sum_{m=1}^\infty f(m)\delta_m\ppi.$$
+\item{\normale (c)} Assume GRH and suppose that $\max_{m\leq x}{\left\{|f(m)|\right\}}
+\ll(\log x)^C$. Then
+$$\sum_{m=1}^\infty f(m)H_m(x)=$$
+$$=\sum_{m=1}^\infty f(m)\delta_m\ppi+
+\OO{\sum_{\frac{\sqrt{x}}{\log^{C+5}x}\leq m\leq \sqrt{x}\log^{(C+1)/2}x}{|f(m)|\over\varphi(m)}\ppi}.$$}
+
+
+\sec{2. Proofs of Theorems 1 and 2}
+
+\pro{Proof of Theorem 1.} We start by the inequality $\sum_{n=1}^\infty g(n)\pi(x,n)
+\geq\sum_{n\leq (\log x)^{1/7}}g(n)\pi(x,n).$ Applying the unconditional version of the Chebotarev
+Density Theorem, we have that the previous sum equals
+$$
+\left(\sum_{n=1}^\infty g(n){\ppi\over k_n}\right)-\OO{\sum_{n>\log^{1/7}x}{\mid g(n)\mid\over
+n\varphi(n)}\ppi+(\log x)^{3/7}x\exp\left(-A(\log x)^{5/15}\right)}=$$
+$$=\left(\left(\sum_{n=1}^\infty {g(n)\over k_n}\right)-\oo{1}\right)\ppi$$
+since $g(n)\ll n^2$ by hypothesis (3).The statement in {(a)} follows immediately.\par
+To prove {(b)} it suffices to show that
+$$
+\sum_{n> (\log x)^{1/7}} g(n)\pi(x,n)=\oo{\ppi}.
+$$
+We split the above sum into the sum for $n> \sqrt{x}$ plus the sum for $n\leq \sqrt{x}$.
+Now
+$$\sum_{n> \sqrt{x}} g(n)\pi(x,n)\leq \sum_{n> \sqrt{x}} |g(n)|\#\left\{a\leq x\left|
+\ n| a-1\right.\right\}\ll \sum_{n> \sqrt{x}} |g(n)|{x\over n}=\oo{\ppi},$$
+while, by the Brun-Titchmarsh Theorem,
+$$
+\sum_{ (\log x)^{1/7}\leq n\leq \sqrt{x}} g(n)\pi(x,n)\ll\sum_{ (\log x)^{1/7}\leq n\leq \sqrt{x}} 
+|g(n)|{x\over\varphi(n)\log (x/n)}=\oo{\ppi}.
+$$
+This completes the proof.\quad\qed\bigskip
+
+
+The result of Murata of Section~1 gives a conditional asymptotic formula for $H_m$ uniform 
+in the range $m<(\log
+x)^{1/2-\epsilon},$ which is not enough for some of our applications. 
+We can easily prove the following 
+
+\teo{Lemma 3.} {\normsl Let $c<1/7$. For $m\leq \log^{c}x$ we have unconditionally the upper
+bound
+$$
+H_m(x)\leq\left(\delta_m+\oo{{1\over m\varphi(m)}}\right)\ppi.
+$$
+If we assume GRH, then
+$$
+H_m(x)\leq\delta_m\ppi+\OO{{x\over m\varphi(m)\log x\log\log x}+x^{1/2}\log^2 x\log m}.$$}
+
+\pro{Proof of Lemma 3.} 
+Let $z$ be a parameter to be chosen later and let $P(z)$ be
+the  product of the primes up to $z$. We start from the inequality
+$$H_m(x)\leq \sum_{n| P(z)} \mu(n)\pi(x,nm).$$
+
+Provided that $nm<\log^{1/7}x$, we can apply the Chebotarev Density Theorem. So the previous sum is
+$$
+\sum_{n| P(z)} \mu(n)\left\{{1\over k_{mn}}\li+\OO{x\exp(-A\sqrt{\log x}/nm}\right\}=
+$$
+$$=\sum_{n=1}^\infty{\mu(n)\over k_{nm}}\ppi+\OO{\sum_{n\geq z}{1\over
+k_{nm}}\ppi}+\OO{2^{\pi(z)}x\exp(-A\sqrt{\log x}/2^{z}m)}=$$ 
+$$= \delta_m\ppi+\OO{{x\over m\varphi(m)z\log x}+2^{\pi(z)}x\exp(-A\sqrt{\log x}/2^{z}m)}$$
+and the result follows by choosing
+$z=\log\log\log x$, say. The estimate assuming GRH is proven in a similar way,
+therefore we omit it.\quad\qed
+\bigskip
+
+\pro{Proof of Theorem 2.} 
+\noindent{(a)} We write 
+$$ \sum_{m=1}^\infty f(m)H_m(x)=\sum_{m\leq z} f(m)H_m(x)+\sum_{z< m< y} f(m)H_m(x)+\sum_{m\geq y}
+f(m)H_m(x).$$
+First note that since $H_m(x)=0$ if $m>0$,
+$$
+\sum_{m\geq y} f(m)H_m(x)\ll x^{1-\tau}\#\left\{p\mid {p-1\over i_p}\leq {x\over y}\right\}
+\ll x^{1-\tau}{x^2\over y^2\log (x/y)}
+$$
+by a similar argument as in the Theorem of  Hooley ([5], pages 211-212). So, if we choose $y=x^{1-\tau/3}$,
+we get that the above sum is $\ll x^{1-\tau/3}$.
+
+Further, if $z$ goes to infinity as $x$ goes to infinity,
+$$\sum_{z< m< y} f(m)H_m(x)\leq \sum_{z< m< y} |f(m)|\pi(x,m,1)\ll
+\sum_{m> z} |f(m)|{x\over \varphi(m)\log x}=\oo{\ppi}$$
+by the Brun-Titchmarsh Theorem and the hypothesis that $\sum |f(m)|/\varphi(m)$
+converges. Finally 
+$$\sum_{m\leq z} f(m)H_m(x)\leq \sum_{m\leq z}
+f(m)\left\{\delta_m\ppi+\oo{{\ppi\over m\varphi(m)}}\right\}=$$
+$$=\sum_{m=1}^\infty
+f(m)\delta_m\ppi+\oo{\ppi}$$ 
+by Lemma 1, choosing $z= \log^{1/8}x$. This completes the proof of (a).
+
+{(b)} Note that since $f(n)\geq0$,
+$$\sum_{m=1}^\infty f(m)H_m(x)\geq\sum_{m\leq(\log x)^{1/4}} f(m)H_m(x).$$
+Now we apply the result of Murata and deduce that the previous sum is 
+$$\sum_{m\leq(\log x)^{1/4}} f(m)\left(\delta_m-
+\OO{{m^\epsilon\log\log x\over \log x}}\right)\ppi$$
+$$=\left(\sum_{n=1}^\infty f(m)\delta_m -\oo{1}\right)\ppi-\OO{
+{x\log\log x\over \log^2x}\sum_{m\leq(\log x)^{1/4}}
+f(m)m^{\epsilon}}$$
+and this completes the proof since $\sum_{m\leq t}f(m)m^{\epsilon}\ll t^{3+2\epsilon}$.
+
+{(c)} As we did in the proof of (a) we split the sum
+$$ \sum_{m=1}^\infty f(m)H_m(x)=\sum_{m\leq z} f(m)H_m(x)+\sum_{z< m< y} f(m)H_m(x)+\sum_{m\geq y}
+f(m)H_m(x).\leqno(4)$$
+By Lemma 3
+$$\sum_{m\leq z} f(m)H_m(x)\leq$$
+$$\leq\sum_{m\leq z} f(m)\left(\delta_m\ppi+\OO{{x\over
+m\varphi(m)\log x\log\log x}+x^{1/2}\log^2 x\log m}\right)$$
+$$=\sum_{m=1}^\infty f(m)\delta_m\ppi+\oo{\ppi}+
+\OO{z\log^{C+1} z\ x^{1/2}\log^2x}.$$
+If we set $z=x^{1/2}/\log^{5+C}x$, the error term in the above sum is $\oo{\ppi}$.
+
+To deal with the last sum in (4) we proceed as we did in the proof of (a) and we get
+$$\sum_{m\geq y}
+f(m)H_m(x)\leq\max_{m\geq y}{\mid f(m)\mid}{x^2\over y^2\log (x/y)}\ll
+\log^Cx{x^2\over y^2\log (x/y)}$$
+which is $\oo{\ppi}$ if we set $y=x^{1/2}\log^{(C+1)/2}x$.
+
+Finally the middle sum in (4) is
+$$\sum_{z< m< y} f(m)H_m(x)\leq \sum_{z< m< y} |f(m)|\ 
+\pi(x,m,1)\ll\sum_{z< m< y} {|f(m)|\over\varphi(m)}\ \ppi$$
+by the hypothesis on  $f$ and the Brun-Titchmarsh Theorem. This completes the proof.
+\quad\qed\bigskip
+
+
+
+\sec{2. Applications}
+
+Suppose $S\subset{\N}$ and $\chi_S$ is the characteristic function of $S$. If we let
+$$
+\pi_S(x)=\#\left\{p\leq x\left|\ i_p\in S\right.\right\}=\sum_{m=1}^\infty\chi_S(m)H_m(x),
+$$
+then by the M\"obius inversion formula,
+$$\pi_S(x)=\sum_{n=1}^\infty\tilde{\chi}_S(n)\pi(x,n)$$
+where 
+$$\tilde{\chi}_S(n)=\sum_{m|n}\mu(n/m)\chi_S(m)=\sum_{m|n,\,m\in S}\mu(n/m).$$
+If we assume GRH then, by Theorem 2.b, we have the lower bound
+$$\pi_S(x)\ggeq \sum_{n=1}^\infty{\tilde{\chi}_S(n)\over k_n}\ppi.$$
+If the sum over $s\in S$ of $1/\varphi(s)$ converges, we have, by
+Theorem 2.a, the
+(unconditional) upper bound
+$$\pi_S(x)\lleq\sum_{n=1}^\infty{\tilde{\chi}_S(n)\over
+k_n} \ppi.$$\bigskip
+
+\teo{Example 1.} Suppose $S=\P$ is the {\normbf set of all rational primes}. Then, if $\nu(n)$ is
+the number of prime divisors of $n$, 
+$$\tilde{\chi}_{{\pp}}(n)=\sum_{l| n,\,l\ \text{\piccola prime}}\mu(n/l)=\left\{\eqalign{-\mu(n)\nu(n) &
+\ \ \ \text{ if } n \text{ is square free} \cr
+\mu(n) & \ \ \ \text{ if } \exists! p\in\P \text{ with } p^2|| n \cr
+0 & \ \ \ \text{ otherwise}}\right.$$
+Applying Theorem 2.b we get that (on GRH) 
+$$\pi_{{\pp}}(x)\geq \left(\delta_{\pp}+\oo{1}\right)\ppi,$$ 
+where a quick calculation shows that 
+$$\delta_{\pp}=\sum_{n=1}^\infty{\sum_{l| n}\mu(n/l)\over k_n}=
+\delta\sum_{l\ \text{\piccola prime}}{l^2-1\over l^4-l^3-l^2}.$$
+Furthermore, note that by Mertens' Theorem
+$$\sum_{\sqrt{x}(\log x)^{-C-5}\leq p\leq \sqrt{x}(\log x)^{(C+1)/2}}{1\over p-1}\ll 
+{\log\log x\over\log x}.$$
+Therefore, applying Theorem 2.c, we have the following
+
+\teo{Corollary 4.} {\normsl Assume GRH. Then $\pi_{{\pp}}(x)
+\sim\delta_{\pp}\ppi.$}\bigskip
+
+
+The PARI 1.37 command (see [2])\par
+\centerline{\tt
+A=0.;forprime(l=2,100000,q=l\^\ \hskip-2mm2;A=A+(q-1)/(q*(q-l-1)));A*0.3739558} 
+\noindent gives an approximation for $\delta_{\pp}$\par
+\centerline{\tt\%1 =  0.3870025833660499182018950757}
+\noindent while the PARI 1.37 command\par
+\centerline{\tt C=0;forprime(l=3,200000,if(isprime((l-1)/order(mod(2,l))),C=C+1,));C}
+\noindent calculates the number of odd primes up to 200000 such that $i_p$ is prime and its output
+is\par
+\centerline{\tt\%2 = 7019}
+Since $\pi(200000)=17984$, we have 
+$${\pi_{\pp}(200000)\over \pi(200000)}=0.3902913701067615658362989323$$
+
+\teo{Example 2.} Suppose that $S$ is a set of natural numbers such that $\chi_S(n)$ is a multiplicative
+function. Then 
+$$\tilde{\chi}_{S}(l^a)=\left\{\eqalign{
+1 \hskip2.5cm& \ \ \ \text{ if } a=0\cr 
+\chi_{S}(l^a)-\chi_{S}(l^{a-1}) & \ \ \ \text{ otherwise.}}\right.$$
+Applying Theorem 2.b we get that (on GRH) 
+$\pi_{S}(x)\ggeq\delta_{S}\ppi$, 
+where a quick calculation shows that 
+$$\delta_S=\sum_{n=1}^\infty{\tilde{\chi}_S(n)\over
+k_n}=$$
+$$=\left({1\over2}-{3\chi_S(2)+\chi_S(4)\over8}+3\sum_{i\geq1\atop 2^i\in S}
+{1\over2^{2i}}\right)\prod_{l\ \text{\piccola odd prime}}\left(1-{1\over l(l-1)}+{l+1\over l}
+\sum_{i\geq1\atop l^i\in S}{1\over l^{2i}}\right)\!.$$
+
+\item{i)}If $F_k$ is the set of {\normbf $k$-free numbers} then 
+$$\delta_{F_k}=\left(\rho_k+1-{1\over 4^{k-1}}\right)\prod_{l\ \text{\piccola odd prime}}\left(1-{1\over
+l^{2k-1}(l-1)}\right)\!,$$
+where 
+$$\rho_k=\left\{\eqalign{1/2 &\ \ \ \text{ if } k=1\cr
+ 1/8 &\ \ \ \text{ if } k=2\cr
+ 0 &\ \ \ \text{ if } k\geq 3.}
+\right.$$
+In this case we note that $\tilde{\chi}_{F_k}(n)=\mu(m)$ if $n=m^k$ and $0$ otherwise. 
+Hence the series
+$$\sum_{n=1}^\infty{\tilde{\chi}_{F_k}(n)\over n}=\sum_{m=1}^\infty{\mu(m)\over m^k}$$
+converges. Therefore, by Theorem 1.b, we have the following 
+
+\teo{Corollary 5.} {\normsl The asymptotic formula $\pi_{{F_k}}(x)\sim\delta_{F_k}\ppi$
+holds unconditionally.}\bigskip
+
+The PARI 1.37 command\par
+\centerline{\tt F=0.875;forprime(l=3,100000,F=F*(1-1/((l-1)*l\^\ \hskip-2mm3)));F}
+\noindent gives an approximation for $\delta_{F_2}$\par
+\centerline{\tt\%3 = 0.8565404448535421984682105482}
+\noindent while the PARI 1.37 command\par
+\centerline{\tt A=0;forprime(l=3,200000,if(issqfree((l-1)/order(mod(2,l))),A=A+1,));A}
+\noindent calculates the number of odd primes up to 200000 such that $i_p$ is square-free and 
+its output is\par
+\centerline{\tt\%4 = 15430}
+Since $\pi(200000)=17984$, we have 
+$${\pi_{F_2}(200000)\over \pi(200000)}=0.8579848754448398576512455515.$$
+
+\item{ii)} If $G_k$ is the set of {\normbf $k$-full numbers} then
+$$\delta_{G_k}=\left(\tau_k+{1\over 4^{k-1}}\right)
+\prod_{l\ \text{\piccola odd prime}}\left(1-{l^{2k-2}-1\over
+l^{2k-1}(l-1)}\right)\!,$$
+where 
+$$\tau_k=\left\{\eqalign{0 &\ \ \ \text{ if } k=1\cr
+ 3/8 &\ \ \ \text{ if } k=2\cr
+ 1/2 &\ \ \ \text{ if } k\geq 3.}\right.$$
+Since the sum of the reciprocals of $k$-full numbers converges (for $k\geq2$), by Theorem 2.a
+we have
+
+\teo{Corollary 6.} {\normsl We have
+$\pi_{{G_k}}(x)\ggeq\delta_{G_k}\ppi$ on GRH, and $\pi_{{G_k}}(x)\lleq\delta_{G_k}\ppi$ 
+unconditionally.}\bigskip
+
+\item{iii)}If $P_k$ is the set of {\normbf $k$-powers} ($k\geq1$) then
+$$\delta_{P_k}=\left(\tau_k+{3\over 4^{k}-1}\right)\prod_{l\ \text{\piccola odd prime}}\left(1-{l^{2k-1}-l\over
+(l^{2k}-1)(l-1)}\right)$$ where $\tau$ is as above. Since the sum of the reciprocals 
+of $k$-powers converges (for $k\geq2$), by Theorem 2.b we have
+
+\teo{Corollary 7.} {\normsl We have
+$\pi_{{P_k}}(x)\ggeq\delta_{P_k}\ppi$ on GRH, and $\pi_{{P_k}}(x)\lleq\delta_{P_k}\ppi$ 
+unconditionally.}\bigskip
+
+The PARI 1.37 command\par
+\noindent \centerline{\tt G=0.575;forprime(l=3,100000,G=G*(1-(l\^\ \hskip-2mm2+l)/(l\^\
+\hskip-2mm4-1)));G}
+\noindent  gives an approximation for $\delta_{G_2}$\par
+\centerline{\tt\%5 = 0.4398154555775779797707734332}
+\noindent  while the PARI 1.37 command\par
+\centerline{\tt B=0;forprime(l=3,200000,if(issquare((l-1)/order(mod(2,l))),B=B+1,));B}
+\noindent calculates the number of odd primes up to 200000 such that $i_p$ is a perfect square and its output
+is\par
+\centerline{\tt\%6 = 7898}
+Since $\pi(200000)=17984$, we have 
+$${\pi_{G_2}(200000)\over \pi(200000)}=0.4391681494661921708185053380.$$
+
+\teo{Example 3.} Suppose that $S(b,a)$ is the {\normbf arithmetic progression} $\{a, a+b, a+2b,
+\ldots \}$ where for simplicity we assume $a$ and $b$ coprime. 
+By Theorem 2.b, we have on GRH the lower bound
+$$\#\{p\leq x \mid i_p\equiv a\ (\text{\normale mod }b)\}\ggeq\delta_{a,b}\ppi$$
+where 
+$$\delta_{a,b}=
+\sum_{m=1,\atop m\equiv a\ (\text{\mini mod } b)}^\infty\delta_m.$$
+To deduce the upper bound it suffices to write
+$$\#\{p\leq x \mid i_p\equiv a\ (\text{\normale mod } b)\}$$
+$$=\ppi-1-\sum_{c\,(\text{\mini mod } b),\, (c,b)=1,\,
+c\neq b}\#\{p\leq x \mid i_p\equiv c\ (\text{\normale mod } b)\}-
+\sum_{d|b}\pi(x,d)$$
+and apply Theorem 2.b and the Chebotarev Density Theorem to the right hand
+side. Hence, performing the computation, we can deduce the following
+
+\teo{Corollary 8.} {\normsl
+On GRH we have the asymptotic formula
+$$\#\{p\leq x \mid i_p\equiv a\ (\text{\normale mod }b)\}\sim\delta_{a,b}\ppi\hskip1cm 
+\text{\normale with}\hskip1cm \delta_{a,b}={1\over\varphi(b)}\sum_{\chi\ 
+(\text{\mini mod }b)}\overline{\chi(a)}\cdot\delta_\chi,$$
+where the sum is extended to all the Dirichlet characters (mod $b$) and
+$$\delta_\chi=\left({1\over2}-{\chi(2)(\chi^2(2)-\chi(2)+12)\over 8(4-\chi(2))}
+\right)\prod_{l\ \text{\piccola odd prime}}\left(1-
+{l(1-\chi(l))\over (l-1)(l^2-\chi(l))}\right)\!.$$}\bigskip
+
+Note that if $\chi_0$ is the principal character (mod $b$), then 
+$$\delta_{\chi_0}=\prod_{l| b}\left(1-
+{1\over l(l-1)}\right)\!.$$
+If $b=3$ then $\delta_{\chi_0}=5/6$ and the non-principal character is
+$$\chi_1(n)=\left\{\eqalign{
+0& \ \ \ \text{ if } 3| n\cr 1 & \ \ \ \text{ if } n\equiv1
+(\text{\normale mod}3) \cr -1 & 
+\ \ \ \text{ if } n\equiv2(\text{\normale mod}3)}\right.$$
+so that 
+$$\delta_{\chi_1}={3\over 20}\prod_{l\ \text{\mini odd prime}\ l\equiv2 
+(\text{\mini mod } 3)}\left(1-
+{2l\over (l-1)(l^2+1)}\right)\!.$$
+Finally 
+$$\delta_{1,3}={5\over12}+{1\over 2}\delta_{\chi_1}\ \ \text{\normale and}
+\  \ \delta_{2,3}={5\over12}-{1\over2}\delta_{\chi_1}.$$
+
+Using PARI we get approximations
+$$\delta_{1,3}=0.4819\ \ \text{\normale and}
+\  \ \delta_{2,3}=0.3514$$
+while
+$${\pi_{S(3,1)}(200000)\over \pi(200000)}\sim 0.4693\ \ \text{\normale and}
+\  \ {\pi_{S(3,2)}(200000)\over \pi(200000)}\sim0.3645.$$
+
+\teo{Example 4.} Suppose that $f(n)=\log n$.  E. Bach, R. Lukes, J. Shallit and
+H. C. Williams in [1] consider the sum $\sum_{p\leq x}\log i_p.$
+
+Since $\sum_{d| n}\mu(d)\log(n/d)$ is the von Mangoldt function $\Lambda(n)$,
+by Theorem 1.a we have unconditionally the lower bound
+$$\sum_{p\leq x}\log i_p\ggeq\delta_{B}\ppi\leqno(5)$$
+where
+$$\delta_B=\sum_{n=1}^\infty{\Lambda(n)\over k_n}=\sum_{m=1}^\infty(\log m)\delta_m.$$
+Furthermore, note that
+$$\sum_{n=1}^\infty{\Lambda(n)\over k_n}=\sum_{q\ \text{\piccola prime}}{q\log q\over
+(q-1)(q^2-1)}+{1\over 24}\log2$$
+as predicted in [1]. 
+
+We are unable to deduce an upper bound of the type $c\ppi$ for the sum in (5)   
+even on GRH. However 
+
+\teo{Proposition 9.} {\normsl Assume
+GRH. Then
+$$\sum_{p\leq x}\log i_p\ll{x\log\log x\over\log x}.$$}
+
+\pro{Proof.} We have seen that
+$$\sum_{p\leq x}\log i_p=\sum_{n\leq x}\Lambda(n)\pi(x,n)=$$
+$$=\sum_{n\leq \sqrt{x}/\log^3x}\Lambda(n)\pi(x,n)+
+\sum_{\sqrt{x}/\log^3x\leq n\leq x}\Lambda(n)\pi(x,n).
+$$
+By the Chebotarev Density Theorem the first sum above is (on GRH)
+$$\ll\sum_{n\leq \sqrt{x}/\log^3x}\log n\left\{{x\over n^2\log x}+\OO{\sqrt{x}\log xn}\right\}
+\ll\ppi,$$
+while the second sum equals
+$$\sum_{q>\sqrt{x}/\log^3x}\log q\ \pi(x,q)+
+\sum_{q^\alpha>\sqrt{x}/\log^3x,\alpha>1}\log q\ \pi(x,q^\alpha).\leqno(6)$$
+The second sum in (6) is
+$$\leq \sum_{q^\alpha>\sqrt{x}/\log^3x,\alpha>1}\log q\ {x\over q^\alpha}\ll x
+\sum_{q>\sqrt{x}/\log^3x}{\log q\over q^2}\ll\ppi,$$
+while the first sum in (6) equals
+$$\sum_{\sqrt{x}/\log^3x<q\leq \sqrt{x}\log x}
+\log q\ \pi(x,q)+\sum_{q>\sqrt{x}\log x}\log q\ \pi(x,q).\leqno(7)$$
+We bound the second sum in (7) with 
+$$\#\!\left\{q\ \left|\ q\ \text{\normale divides} \
+\prod_{m\leq \sqrt{x}/\log x}(2^m-1)\right.\right\}\cdot\,\log x\ll\ppi.$$
+Finally the first sum in (7), by the Brun-Titchmarsh Theorem and the Mertens' 
+formula, is
+$$\leq \sum_{\sqrt{x}/\log^3x<q\leq \sqrt{x}\log x}
+\log q\ \pi(x,q,1)\ll {x\over\log x}\sum_{\sqrt{x}/\log^3x<q\leq \sqrt{x}\log x}
+{\log q\over q}\ll {x\log\log x\over\log x}$$
+and this ends the proof.\quad\qed
+
+We mention that Theorem 2.c implies that if
+$f(m)=\oo{\log^{-1}(m)}$, then (on GRH)
+$$\sum_{p\leq x}f(i_p)\sim\left(\sum_{m=1}^\infty f(m)\delta_m\right)\ppi.$$
+
+\sec{3. Conclusion}
+
+The results in the present paper can be generalized to the case where
+$i_p=ind_p(a)$ with $a$ any integer. The computation would be affected
+by the corresponding formula for $K_n=[\Q(\zeta_n,a^{1/n}),\Q]$.
+
+%This paper is dedicated to my back in pain hoping that the weights 
+%on the Artin Conjecture will help me to loose some of mine.  
+
+\refere
+
+
+\item{[1]} {\medcmc Bach E., Lukes R., Shallit J. and Williams H. C.}, 
+{\ridsl Results and estimates on  pseudopowers}, Math. Comp. 
+{\ridbf 65} (1996), 1737--1747.
+
+\item{[2]} {\medcmc Batut C., Bernardi D., Cohen H. and Olivier M.}, 
+{\ridsl GP/PARI CALCULATOR 1.37} (version 68020), Copyright 1989, 1992.
+
+\item{[3]} {\medcmc Gupta R. and Murty M. R.}, 
+{\ridsl A remark on Artin's Conjecture}, Inventiones 
+Math. {\ridbf 78} (1984), 127--130.
+
+\item{[4]} {\medcmc Heath--Brown D. R.}, {\ridsl Artin's conjecture 
+for primitive roots}, Quart. J. 
+Math. Oxford (2) {\ridbf 37} (1986), 27--38.
+
+\item{[5]} {\medcmc Hooley C.}, 
+{\ridsl On Artin's Conjectures}, J. Reine Angew. Math. {\ridbf 226} 
+(1967), 207--220.
+
+\item{[6]} {\medcmc Lagarias J. C. and  Odlyzko A. M.}, 
+{\ridsl Effective versions of the Chebotarev 
+Density Theorem in Algebraic Number Fields}, 
+Ed. A. Fr\"ohlich. Academic press, New York, 1977, 
+409--464.
+
+\item{[7]} {\medcmc Murata L.}, {\ridsl A problem analogous to 
+Artin's conjecture 
+for primitive roots
+and its applications}, Arch. Math. {\ridbf 57} (1991), 555--565.
+
+\item{[8]} {\medcmc Murty M. R.}, {\ridsl Artin's conjecture for 
+Primitive Roots}, Math. Intell. {\ridbf
+10}, 4 (1988), 59--67.
+
+\item{[9]} {\medcmc Murty M. R.}, {\ridsl Artin's conjecture and 
+elliptic analogues}, Proceedings in honour of C. Hooley (eds. 
+G. Harman, G. Greaves and M. Huxley), to appear.
+
+\vskip .5cm \normale \parindent=0pt
+
+Francesco PAPPALARDI
+
+Dipartimento di Matematica
+
+Universit\`a degli Studi di Roma Tre
+
+Via Corrado Segre, 4
+
+00146 Roma, Italy.
+\bye
+

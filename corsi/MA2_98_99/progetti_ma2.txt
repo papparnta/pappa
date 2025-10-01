@@ -1,0 +1,85 @@
+	Proposte di progetti per il corso MA2.
+
+
+(1)	Generare file con diverse distribuzione di probabilità dei
+	caratteri; calcolarne le entropie; comprimere i file, calcolare il
+	rapporto di compressione e correlarlo alle entropie. M/I
+	[St, cap. 2; linguaggio di programmazione suggerito: qualsiasi]
+
+(2)	Scrivere un programma che conta i caratteri contenuti in un file,
+	calcola la frequenza dei caratteri e delle coppie di caratteri. -/II
+	[linguaggio di programmazione suggerito: qualsiasi]
+
+(3)	Implementazione di RC4. -/II
+	[Sc, cap. 17; linguaggio di programmazione suggerito: qualsiasi]
+
+(4)	Implementazione del DES. -/III
+	[Sc, cap. 12; St, cap. 3; linguaggio di programmazione suggerito:
+	qualsiasi]
+(5)	Implementazione di una funzione di hash. 0/III
+	[Sc, cap. 18; linguaggio di programamzione suggerito: qualsiasi]
+
+(6)	Calcolare efficientemente l'esponenziale modulo N. M/II
+	[K, p. 19; linguaggio di programmazione suggerito: qualsiasi]
+
+(7)	Implementazione degli algoritmi per il calcolo dei simboli di
+	Legendre (Jacobi) usando la reciprocità quadratica. MM/I
+        [K, p. 43; linguaggio di programmazione suggerito: Mathematica o Pari]
+
+(8)	Implementare RSA. MM/I 	
+	[K, p. 92; linguaggio di programmazione suggerito: Mathematica o Pari]
+
+(9)	Algoritmi per calcolare logaritmi discreti. MM/II
+	[K, p. 92; linguaggio di programmazione suggerito: Mathematica o Pari]
+
+(10)	Implementazione del sistema crittografico basato su knapsack. M/II
+	[K, p. 111; linguaggio di programmazione suggerito: Mathematica o Pari]
+
+(11)	Test di primalità (Solovay-Strassen). M/II
+	[K, p. 129; linguaggio di programmazione suggerito: Mathematica o Pari]
+
+(12)	Test di primalità (Miller-Rabin). MM/II
+	[K, p. 130; linguaggio di programmazione suggerito: Mathematica o Pari]
+
+(13)	Algoritmo di Euclide, identità di Bezout. M/-
+	[K, p. 13; linguaggio di programmazione suggerito: qualsiasi]
+
+(14)	Algoritmo del resto cinese. M/I
+	[K, p. 21; linguaggio di programmazione suggerito: qualsiasi]
+
+(15)	Criteri di irriducibilità per polinomi su campi finiti. MMM/II
+	[LN; linguaggio di programmazione suggerito suggerito: Mathematica o Pari]
+
+(16)	Implementazione di Feige-Fiat-Shamir. MM/III
+	[Sc, cap. 21; linguaggio di programmazione suggerito: Mathematica o Pari]
+
+(17)	Implementazione delle operazioni di gruppo su curve ellittiche
+	definite su campi finiti. MMM/III
+	[K, p. 178; linguaggio di programmazione suggerito: Mathematica o Pari]
+
+(18)	Implementazione dell'aritmetica su campi finiti. MM/I
+	[K, p. 31; linguaggio di programmazione suggerito: qualsiasi]
+
+(18)	Implementazione del sistema crittografico di Vigenère. -/-
+	[St, cap. 1; linguaggio di programmazione suggerito: qualsiasi]
+
+(19)	Implementazione del metodo crittografico di Vernam. -/-
+	[St, cap. 1; linguaggio di programmazione suggerito: qualsiasi]
+
+(20)	Algoritmi per la determinazione di radici primitive in campi
+	finiti. MMM/II
+	[LN; linguaggio di programmazione suggerito: Mathematica o Pari]
+
+(21)	Algoritmi per la rottura di RSA nel caso di esponente di
+	decifrazione piccolo. MM/I
+
+(22)	Algoritmi per la rottura di RSA nel caso di modulo in comune. MM/I
+
+
+
+
+St: Stinson, Cryptography: Theory and Practice
+Sc: Schneier, Applied Cryptography
+K:  Koblitz, A Course in Number Theory and Cryptography
+LN: Lidl, Niederreiter, Finite Fields
+

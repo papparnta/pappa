@@ -1,0 +1,155 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2010/2011}\\
+
+\textbf{AL210 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 2 - 4 Ottobre 2010}\\
+
+\textbf{Tutore: Matteo Acclavio}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Dimostrare che se $G$ \acc e un gruppo privo di sottogruppi non banali allora \acc e finito ed ha ordine $p$ con $p$ primo.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Dimostrare che $\Z=\langle p, q \rangle$ con $p,q$ primi.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Dimostrare che i numeri primi generano $\Q^{\ast}$.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Sia $G$ un grppo finito di ordine $m$, dimostrare le seguenti propriet\acc a:
+\begin{itemize}
+	\item $H\leq G$ \acc e l'unico sottogruppo di ordine $n$ $\implica$ $H\triangleleft G$;
+	\item $(G:H)=2 $ $\implica$ $H\triangleleft G$.
+\end{itemize}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Sia $(G,\cdot)$ un gruppo. Dimostrare che se $\forall \ g \in G$ si ha che $g\cdot g=1$ allora $G$ \acc e abeliano.
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 6.}\\
+Verificare che l'insieme dei polinomi a coefficienti in $K$ campo e l'insieme dei polinomi a coefficenti in $\Z$ , con l'operazione di somma, sono e un gruppo. \\
+Stabilire se sono abeliani e dimostrare che non sono ciclici. \\
+Stabilire, inoltre, se $\langle2,X \rangle =\langle3,X \rangle = \langle 3X \rangle$ e descrivere esplicitamente gli elementi dei due sottogruppi.
+\end{Ex}
+
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 7.}\\
+Determinare tutti i sottogruppi, e le loro relative classi destre e sinistre, dei seguenti gruppi verificando il teoreama di Lagrange. Verificare, inoltre, che le classi laterali formano una partizione del gruppo.
+Siano:
+\begin{itemize}
+	\item $(\Z_{18}, +)$;
+	\item $(U(\Z_{15}), \cdot)$;
+	\item $(\mathcal{F}_{[0,1]}^*, \circ)$ dove $\mathcal{F}_{[0,1]}^*$ \acc e l'insieme delle funzioni $f: [0,1] \longrightarrow \R$ con $f(x)\neq 0 \; \forall x\in [0,1]$.
+\end{itemize}
+\end{Ex}
+
+
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 8.}\\
+Sia $G=GL_3(K)$ ove $K$ \acc e un campo con 5 elementi. Calcolare l'ordine di $G$ e dimostrare che:
+\begin{itemize}
+\item Il gruppo delle matrici diagonali \acc e un sottogruppo non normale di $G$ e se ne determini l'ordine;
+
+\item Il gruppo delle matrici scalari \acc e un sottogruppo
+normale di $G$ e se ne determini l'ordine;
+
+\item Il gruppo delle matrici triangolari (superiori o inferiori) \acc e un sottogruppo non normale di $G$ e se ne determini l'ordine;
+
+\item Il gruppo delle matrici triangolari con tutti 1 sulla
+diagonale \acc e un sottogruppo non normale di $G$ e se ne determini l'ordine;
+
+\item Il gruppo delle matrici con determinante 1 \acc e un sottogruppo
+normale di $G$ e se ne determini l'ordine.
+\end{itemize}
+In ciascuno dei casi sopra, si stabiliscano eventuali inclusioni dei gruppi
+presi in considerazione e si dica se essi sono normali negli eventuali gruppi
+contenenti.
+\\
+\textbf{Per chi soffre di insonnia:} Ripetere quanto fatto sopra per un generico $GL_n(\mathbb{F}_q)$.
+\end{Ex}
+
+
+\end{document}

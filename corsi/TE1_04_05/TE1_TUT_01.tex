@@ -1,0 +1,99 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{times}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\nopagenumbers
+\def\Q{{\mathbb Q}}
+\def\Z{{\mathbb Z}}
+\def\N{{\mathbb N}}
+\def\F{{\mathbb F}}
+\def\QQ{{\rm Q}}
+
+\title{Teoria di Galois 1 - Tutorato I}
+\author{\Large{Estensioni di campi}}
+\date{Venerdì 4 Marzo 2005}
+
+\begin{document}
+\maketitle
+
+\theoremstyle{definition}
+
+\newtheorem{es}{Esercizio}
+
+
+\begin{es}
+Sia $E/F$ un estensione di campi e $S\subseteq E$ un
+sottoinsieme: Dimostrare che
+$$Q(F[S])=F(S).$$
+\end{es}
+
+
+\begin{es} In ciascuno dei seguenti casi, determinare,
+l'inverso degli elementi assegnati nel campo assegnato:
+
+\item{a.} $\mathbb{Q}(\alpha)$\, con \, $\alpha^3-5\alpha-1=0$;
+$$\alpha+1 \hskip 2cm \alpha^2+\alpha+1 \hskip 2cm 2+\alpha ;$$
+
+\item{b.} $\Q(\lambda)$\, con \, $\lambda^3-2\lambda-2=0$;
+$$ 20\lambda \hskip 2cm \lambda+3 \hskip 2cm \lambda^5$$
+
+\item{c.} $\Q(\xi)$\, con \, $\xi^2+\xi+1=0$:
+$$ a+b\xi \ \ \ \ a,b\in\Q, \,\, ab\neq0;$$
+
+\item{d.} $\F_{13}(\zeta)$\, con \, $\zeta^4+\zeta^3+\zeta^2+\zeta+1=0$,
+$$\zeta^t \ \ \ \ t\in\N.$$
+\end{es}
+\medskip
+
+
+\begin{es}
+Determinare il polinomio minimo di $\mu$ su $F$ in ciascuno dei seguenti casi:
+
+\item{a.} $E=\Q(\sqrt{5})$,  \, $F=\Q$\ \hfill \ $\mu=\frac{1+\sqrt{5}}{4-3\sqrt{5}}$;\smallskip
+\item{b.} $E=\Q(3^{1/4})$,  \, $F=\Q$\ \hfill \ $\mu=3^{1/4}+5\cdot3^{3/4}$;\smallskip
+\item{c.} $E=\Q(5^{1/6})$,   \, $F=\Q(5^{1/2})$\ \hfill \ $\mu=1+5^{1/6}+3\cdot5^{5/6}$;\smallskip
+\item{d.} $E=\Q(\tau)$ \, con \, $\tau^3=3\tau+2$,   \, $F=\Q$\ \hfill \ $\mu=2\tau^2-\tau+2$;\smallskip
+\item{e.} $E=\F_{7}(\rho)$ \, con \, $\rho^3=\rho+2$,  \, $F=\F_7$ \ \hfill \ $\mu=1+\rho$.
+\end{es}
+\medskip
+
+\newpage
+\begin{es}
+Dire quali dei seguenti insiemi sono campi e quali no giustificando la risposta:
+\item{a.} $\Q[x]/(x^5+1);$\smallskip
+\item{b.} $\F_5[x]/(x^2+1);$\smallskip
+\item{c.} $\Z[x]/(x^3+x+1);$\smallskip
+\item{d.} $\Q(\sqrt{3})[x]/(x^2-3);$\smallskip
+\item{e.} $\Q[\pi][X]/(X+1)$.
+\end{es}
+\medskip
+
+\begin{es}
+In ciascuno dei seguenti casi calcolare $[E:F]$:
+
+\item{a.} $E=\Q(2^{1/2},2^{1/3})$,\ \ \  $F=\Q$; \smallskip
+\item{b.} $E=\Q(2^{1/2},2^{1/3},2^{1/4},\cdots,2^{1/20})$,\ \ \  $F=\Q$;  \smallskip
+\item{c.} $E=\Q(\sqrt{5},\zeta)$ \, dove \, $\zeta^3+\zeta-1=0$,\ \ \  $F=\Q$;  \smallskip
+\item{d.} $E=\F_3[\sqrt{-1}]$,\ \ \ $F=\F_3$; \smallskip
+\item{e.} $E=\F_5[\sqrt{-1}]$,\ \ \ $F=\F_5$; \smallskip
+\item{f.} $E=\F_{31}[\sqrt{2},\sqrt{3},\sqrt{5},\sqrt{6},\sqrt{15},\sqrt{10}]$,\ \ \ $F=\F_{31}(\sqrt{10})$.
+\end{es}
+\medskip
+
+
+\begin{es}
+Dimostrare (o dimostrare che sono sbagliate) le uguaglianze dei seguenti campi:
+\item{a.} $\Q(\sqrt{2},\sqrt{5},\sqrt{6})=\Q(3\sqrt{2}-\sqrt{5}+5\sqrt{3})$;   \smallskip
+\item{b.} $\Q(\sqrt{a^2-4b})=\Q(\sigma)$ \, dove  \, $\sigma^2+a\sigma+b=0$, $a,b\in\Q$; \smallskip
+\item{c.} $\Q(\sqrt{-3},\sqrt{3})\cap\Q(\sqrt{6},\sqrt{-6})=\Q(i)$;
+\end{es}
+\medskip
+
+
+\clearpage
+\nocite{*}
+\end{document}

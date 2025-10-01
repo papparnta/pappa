@@ -1,0 +1,82 @@
+\nopagenumbers
+\font\title=cmti12
+\hsize=20cm
+\vsize=28cm
+\hoffset=-2.2cm
+\voffset=-0.5cm
+\parskip=-.1cm
+\ \vskip -2cm \hskip -6mm CR1 AA01/02\ (Crittografia a chiave
+pubblica)\hfill ESAME DI MET\`{A} SEMESTRE \hfill Roma, 5 Aprile
+2002. \hrule
+\bigskip\noindent
+{\title COGNOME}\  \dotfill\  {\title NOME}\ \dotfill
+{\title MATRICOLA}\ \dotfill\
+\smallskip  \noindent
+Risolvere gli esercizi accompagnando le risposte con spiegazioni
+chiare ed essenziali. \it Inserire le risposte negli spazi
+predisposti.\hfill\break NON SI ACCETTANO RISPOSTE SCRITTE SU
+ALTRI FOGLI. Scrivere il proprio nome anche nell'ultima pagina\rm
+Ogni esercizio vale 3 punti.
+\smallskip
+\hrule
+\medskip
+\item{1.}
+Se $n\in{\bf N}$, sia $\sigma(n)$ la somma dei divisori di $n$. Supponiamo che sia nota
+la fattorizzazione (unica) di $n=p_1^{\alpha_1}\cdots p_s^{\alpha_s}$. Calcolare il
+numero di operazioni bit necessarie per calcolare $\sigma(n)$. (\it Suggerimento: Usare il
+fatto che $\sigma$ \`{e} una funzione moltiplicativa e calcolare una formula per $\sigma(p^\alpha)$ \rm)
+\vfill
+\item{2.} Mostrare che le moltiplicazioni nell'anello
+quoziente ${\bf Z}/n{\bf Z}[x]/(x^d)$ si possono calcolare in
+O($\log^2 n^d$) operazioni bit mentre le addizioni in O($\log
+n^d$) operazioni bit. \vfill \item{3.} Dato il numero binario
+$n=(10011100101)_2$, calcolare $[\sqrt{n}]$ usando l'algoritmo
+delle approssimazioni successive (Non passare a base 10 e  non
+usare la calcolatrice!) \vfill\eject \ \vskip-2cm \item{4.}
+Calcolare il massimo comun divisore tra $240$ e $180$ utilizzando
+sia l'algoritmo euclideo che quello binario. Calcolare anche
+l'identit\`{a} di Bezout. \vfill
+\item{5.} Dimostrare che se $n=p_1\cdots p_{20}$ \`{e} un intero privo di fattori quadratici, e $f(x)
+\in{\bf Z}/n{\bf Z}[x]$ ha grado 10, allora la congruenza $f(x)\equiv0\bmod n$ \`{e} risolvibile
+se e solo se lo sono le $20$ congruenze
+$\cases{f(x)\equiv0\bmod p_1\cr \vdots \cr f(x)\equiv0\bmod p_{20}.}$
+Dedurre che la prima congruenza $f(x)\equiv0\bmod n$ ha al pi\`{u} $10^{20}$ soluzioni. Sapreste dare
+un esempio in cui le soluzioni sono esattamente $10^{20}$?
+\vfill
+\item{6.} Illustrare l'algoritmo dei quadrati successivi in un gruppo analizzandone la complessit\`{a}. Fare anche
+un esempio.
+\vfill\eject
+\ \vskip-2cm
+\item{7.} Mettere in ordine di priorit\`{a} e spiegare il significato di ciascuna delle
+seguenti operazioni:
+$$x\!\sim\hskip1cm x\wedge y\hskip1cm x\& y\hskip1cm x\!+\!+\hskip1cm x\backslash y\hskip1cm
+ x=y\hskip1cm x\% y\hskip1cm x|y\hskip1cm x\ll n$$
+\vfill
+\item{8.} Si dia la definizione di pseudo primo forte in base $2$ e si mostri che
+se $n=2^\alpha+1$ \`{e} pseudo primo forte in base $2$, allora
+$2^{2^\beta}\equiv -1\bmod n$ per qualche $\beta<\alpha$. \vfill
+\item{9.} Scrivere un programma in Pari che produca due vettori $v$ e $w$. In cui
+$v$ contiene i primi $100$ {\it pseudo-primi composti} in base $2$ e il secondo i primi $100$
+{\it pseudo primi di Eulero composti} in base $2$.
+\vfill\eject
+\ \vskip-2cm
+\item{10.}
+Implementare RSA utilizzando il sistema Pari e creando tre funzioni distinte (una per
+generare le chiavi, una per cifrare e una per decifrare).
+\vfill\vfill
+\ \vskip 25cm
+\centerline{\hskip 8pt\vbox{\tabskip=0pt \offinterlineskip
+\def \trl{\noalign{\hrule}}
+\halign to580pt{\strut#& \vrule#\tabskip=1em plus 2em&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#&
+\hfil#& \vrule#\tabskip=0pt\cr\trl
+&& NOME E COGNOME && 1 && 2 && 3 && 4 && 5 && 6 && 7 && 8 && 9 && 10 && TOTALE &\cr\trl
+&& &&   &&   &&   &&   &&   &&   &&   &&   &&   &&    &&     &\cr
+&& \dotfill &&   &&   &&   &&   &&   &&   &&   &&   &&   &&    &&     &\cr\trl
+}}}
+ \bye

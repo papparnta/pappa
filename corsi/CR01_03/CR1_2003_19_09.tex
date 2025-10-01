@@ -1,0 +1,115 @@
+\nopagenumbers
+\font\title=cmti12
+%\def\ve{\vfill\eject}
+%\def\vv{\vfill}
+%\def\vs{\vskip-2cm}
+%\def\vss{\vskip10cm}
+%\def\vst{\vskip7cm}
+
+\def\ve{\bigskip\bigskip}
+\def\vv{\bigskip\bigskip}
+\def\vs{}
+\def\vss{}
+\def\vst{\bigskip\bigskip}
+
+\hsize=20cm
+\vsize=28cm
+\hoffset=-2.2cm
+\voffset=-0.5cm
+\parskip=-.1cm
+\ \vs \hskip -6mm CR1 AA02/03\ (Crittografia a chiave
+pubblica)\hfill ESAME SCRITTO \hfill Roma, 19 Settembre 2003.
+\hrule
+\bigskip\noindent
+{\title COGNOME}\  \dotfill\  {\title NOME}\ \dotfill
+{\title MATRICOLA}\ \dotfill\
+\smallskip  \noindent
+Risolvere il massimo numero di esercizi accompagnando le risposte
+con spiegazioni chiare ed essenziali. \it Inserire le risposte
+negli spazi predisposti. NON SI ACCETTANO RISPOSTE
+SCRITTE SU ALTRI FOGLI. Scrivere il proprio nome anche nell'ultima
+pagina. \rm 1 Esercizio = 3 punti. Tempo previsto: 2 ore. Nessuna
+domanda durante la prima ora e durante gli ultimi 20 minuti.
+\smallskip
+\hrule
+\medskip
+\item{1.} Dimostrare che il numero di operazioni bit necessarie a
+moltiplicare due interi con al pi\`{u} $k$ cifre binarie \`{e}
+$O(k^2)$ spiegando tutti i passaggi.
+
+\vv \item{2.} Dati due numeri primi distinti $p$ e $q$, si spieghi
+come risolvere il seguente sistema di equazioni di congruenze
+$$\cases{x^3\equiv 1\bmod p \cr x^4\equiv 1\bmod q}$$ fornendo un
+esempio in cui il sistema ammette $12$ soluzioni.
+
+%$p=13,q=5$
+
+\vv \item{3.} Supponiamo che $n$ sia una chiave RSA e che sia noto
+il valore di $\varphi(n)$. Descrivere un algoritmo con
+complessit\`{a} quadratica per fattorizzare $n$.
+
+ \ve \vs
+
+\item{4.} Si dimostri che se $m$ \`{e} un intero dispari composto,
+allora esiste sempre un base $a\in U({\bf Z}/m{\bf Z})$ rispetto a
+cui $m$ non \`{e} pseudo primo di Eulero. Quale \`{e}
+l'applicazione di questa propriet\`{a} nei test di primalit\`{a}?
+\vv
+
+\item{5.} Enunciare un algoritmo per calcolare il simbolo di
+Jacobi di due interi con tempo di esecuzione polinomiale. %%%%%%%%%%%%%
+
+\vv \item{6.} Descrivere in dettaglio il crittosistema El-Gamal
+facendo un esempio nel caso del gruppo moltiplicativo di un campo
+finito.
+
+\ve \ \vs \item{7.} Simulare uno scambio delle chiavi alla
+Diffie--Hellmann in un campo finito con $32$ elementi
+
+\vv \item{8.} Dimostrare che $x^{p^h}-x+1$ non ammette mai radici
+in un campo finito con ${\bf F}_{p^h}$ elementi. E' sempre
+irriducibile?
+%$$(x^2+x+1)(x^{6} + x^{5} + x^{3} +x^2 + 1)$$
+
+ \vv
+\item{9.} Calcolare la probabilit\`{a} che un polinomio
+irriducibile di grado 6 su ${\bf F}_{11}$ risulti primitivo. Dare
+un esempio di polinomio irriducibile e non primitivo.
+
+
+\ve\ \vs
+
+\item{10.} Enunciare l'algoritmo Pohlig--Hellmann per calcolare i
+logaritmi discreti in un gruppo ciclico finito dimostrandone la validit\`{a}.
+%%%%%%%%%%%
+
+\vv\vst
+
+\item{11.} Dopo aver dimostrato che \`{e} una curva ellittica si
+${\bf F}_7$, calcolare la struttura del gruppo dei punti razionali
+di $y^2=x^3+x$.%%%%%%%%%%%%%
+
+\vv\vst
+
+\item{12.} Enunciare le formule per la duplicazione di un punto
+razionale su una curva ellittica e spiegare come si ottengono. %%%%%%%%%%
+\vv\vst
+
+
+\centerline{\hskip 6pt\vbox{\tabskip=0pt \offinterlineskip
+\def \trl{\noalign{\hrule}}
+\halign to447pt{\strut#& \vrule#\tabskip=0.7em plus 1em&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#& \hfill#\hfil& \vrule#&
+\hfil#& \vrule#\tabskip=0pt\cr\trl
+&& NOME E COGNOME && 1 && 2 && 3 && 4 && 5 && 6 && 7 && 8 && 9 && 10 && 11 && 12 && TOT. &\cr\trl
+&& &&   &&   &&   &&   &&   &&   &&   &&   &&   &&    &&   &&   && &\cr
+&& \dotfill &&   &&   &&   &&   &&   &&   &&   &&   &&   &&    &&  &&   && &\cr\trl
+}}}
+ \bye

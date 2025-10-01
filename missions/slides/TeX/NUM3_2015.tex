@@ -1,0 +1,468 @@
+\documentclass[10pt,handout]{beamer} %,hyperref={pdfpagelabels=false},draft,handout,handout
+\usepackage[orientation=landscape,size=custom,width=16,height=9,scale=0.30,debug]{beamerposter} 
+\usepackage[english]{babel}
+\usepackage{lmodern}% http://ctan.org/pkg/lm
+\usepackage[latin1]{inputenc}
+\usepackage{times,hyperref,tikz,colortbl,yfonts,translator,marvosym,pifont}
+\usepackage[T1]{fontenc}
+ \newcommand{\Q}{\mathbb Q}
+ \newcommand{\Z}{\mathbb Z}
+ \newcommand{\N}{\mathbb N}
+ \newcommand{\F}{\mathbb F}
+ \newcommand{\C}{\mathbb C}
+ \newcommand{\R}{\mathbb R}
+\useoutertheme[height=0pt,width=2cm,right]{sidebar}
+\usecolortheme{rose,sidebartab}
+\useinnertheme{circles}
+\usefonttheme[only large]{structurebold}
+\theoremstyle{definition}
+\newtheorem{Proposition}[theorem]{\translate{Proposition}}
+\newtheorem{Note}[theorem]{\translate{Note}}
+\lecture[4]{Elliptic curves over finite fields}{First Lecture}
+\title[Elliptic curves over $\F_{q}$]{\insertlecture}
+\setbeamercolor{formul}{fg=black,bg=pink}
+\setbeamercolor{sidebar right}{bg=green!15}
+\setbeamercolor{structure}{fg=black!120}
+\setbeamercolor{postit}{fg=black,bg=yellow}
+\setbeamercolor{greys}{fg=black,bg==black!25}
+\setbeamerfont{title in sidebar}{series=\bfseries}
+\setbeamerfont*{item}{series=}
+\setbeamerfont{frametitle}{size=}
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
+\begin{document}
+
+\begin{frame}
+\includegraphics[width=1.6cm]{images/roma3.pdf}\hfill\includegraphics[width=1.9cm]{images/NUM2.jpeg}
+\vfill
+
+\begin{center}\begin{sc}
+\begin{Large}
+
+\textcolor{red}{Elliptic curves Cryptography}
+\end{Large}\bigskip
+
+\ {Francesco Pappalardi}\bigskip\bigskip
+
+\begin{large}\begin{bf}\#3 - Elliptic curves Attacks.
+\end{bf}\end{large}\medskip
+
+September $16^{\text{th}}$ 2015\medskip
+\vfill
+\end{sc}\end{center}
+
+%\includegraphics[width=1.6cm]{images/cimpalogo.pdf}\hfill
+\begin{minipage}[b]{9.3cm}
+\textbf{National University of Mongolia}\\  %Монгол Улсын Их Сургууль
+Ulan Baatar, Mongolia\\
+September 16, 2015
+\end{minipage}\hfill
+%\includegraphics[width=1.9cm]{images/seams.png}
+\end{frame}
+
+
+\section{Weil Pairing}
+\begin{frame}\frametitle{Weil Pairing}
+Let $E/K$ and $m\in\N$ s.t. $p\nmid m$. Then
+
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=3cm,center]{formul}
+$E[m]\cong C_m\oplus C_m$\end{beamercolorbox}}\pause
+
+We set
+\centerline{\begin{beamercolorbox}[rounded=true,shadow=true,wd=4cm,center]{postit}
+$\mu_m:=\{x\in\bar{K}: x^m=1\}$\end{beamercolorbox}}\pause
+
+$\mu_m$ is a cyclic group with $m$ elements(since $p\nmid m$)\pause
+\begin{theorem}[Existence of Weil Pairing]
+There exists a pairing \alert{$e_m:E[m]\times E[m]\rightarrow\mu_m$}
+called \emph{Weil Pairing}, s.t. $\forall P, Q\in E[m]$\pause
+\begin{enumerate}[<+-| alert@+>]
+  \item $e_m(P+_EQ,R)=e_m(P,R)e_m(Q,R)$ (bilinearity)
+  \item $e_m(P,R)=1\forall R\in E[m]\ \Rightarrow\ P=\infty$ (non degeneracy)
+  \item $e_m(P,P)=1$
+  \item $e_m(P,Q)=e_m(Q,P)^{-1}$
+  \item $e_m(\sigma P,\sigma Q)=\sigma e_m(P,Q)\ \forall \sigma\in\operatorname{Gal}(\bar{K}/K)$ %   ($\sigma(A)=A$, $\sigma(B)=B$)
+  \item $e_m(\alpha(P),\alpha(Q))=e_m(P,Q)^{\deg\alpha}\ \forall\alpha$ separable endomorphism
+\end{enumerate}
+\end{theorem}\vspace*{-4.2pt}\pause
+\alert{{\scriptsize{The last one needs to be discussed further!!!}}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Properties of Weil pairing}
+
+\centerline{
+\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{postit}
+$E[m]\cong C_m\oplus C_m\ \Rightarrow\  E[m]$ has a $\Z/m\Z$--\emph{basis}
+\end{beamercolorbox}}\pause
+
+i.e. 
+$$\exists P,Q\in E[m]: \forall R\in E[m], \exists!\alpha,\beta\in\Z/m\Z, R=\alpha P+\beta Q$$\pause
+
+
+\begin{Proposition}
+  If $(P, Q)$ is a $\Z/m\Z$--basis, then $\zeta=e_m(P,Q)\in\mu_m$ is \emph{primitive} \hfill \hfill (i.e. $\operatorname{ord}\zeta=m$)
+\end{Proposition}
+
+\begin{proof}
+ Let $d=\operatorname{ord}\zeta$. Then 
+ $$1=e_m(P, Q)^d=e_m(P, dQ).$$\pause
+ 
+$\forall R\in E[m]$ write $R=\alpha P+ \beta Q$. Hence\pause 
+
+$$e_m(R,dQ)=e_m(P,dQ)^\alpha e_m(Q,Q)^{d\beta}=1$$\pause
+
+So $dQ=\infty\ \Rightarrow\ m\mid d$.
+\end{proof}
+
+
+ \end{frame}
+
+\begin{frame}
+\frametitle{Properties of Weil pairing (continues)}\pause
+
+\begin{Proposition}
+   $$E[m]\subset E(K)\ \Rightarrow\ \mu_m\subset K$$ 
+\end{Proposition}\pause
+
+\begin{proof} 
+Let $\sigma\in\operatorname{Gal}(\bar{K}/K)$. %$\sigma(A)=A$, $\sigma(B)=B$
+Since the basis  $(P,Q)\subset E(K)$,
+\centerline{$\sigma(P)=P, \sigma(Q)=Q.$}\pause
+ 
+ Hence
+
+ \centerline{$\zeta= e_m(P,Q)=e_m(\sigma P,\sigma Q)=\sigma e_m(P,Q)=\sigma\zeta$}\pause
+
+So 
+\centerline{$\zeta\in \bar{K}^{\operatorname{Gal}(\bar{K}/K)}=K\ \Rightarrow\ \mu_n=\langle\zeta\rangle\subset K^*$}
+ \end{proof}\pause
+ 
+
+ \begin{Corollary}
+  $$E(\F_q)\cong C_n\oplus C_{kn}\ \Rightarrow q\equiv1\bmod n$$
+  \end{Corollary}\pause
+  
+\begin{proof} 
+ \centerline{$E[n]\subset E(\F_q)\Rightarrow \mu_n\subset\F_q^*\Rightarrow n\mid q-1$}
+\end{proof}\pause
+
+ \begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{postit}
+  If $E/\Q\ \Rightarrow\ E[m]\not\subseteq E(\Q)$ for $m\ge3$\end{beamercolorbox}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{The MOV attack}\pause
+ 
+First proposed by:
+\textsc{Menezes, Alfred J.; Okamato, Tatsuaki; Vanstone, Scott A.} (1993). 
+``\textit{Reducing Elliptic Curve Logarithms to Logarithms in a Finite Field}''. 
+IEEE Transactions On Information Theory \textbf{39} (5).\bigskip\pause
+
+ \begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{postit}
+  It allows to reduce the comutation of a DL in $E(\F_q)$ to a DL in $\F_{q^m}$ (for a suitable $m\in\N$).
+ \end{beamercolorbox}\bigskip\pause
+ 
+ \begin{itemize}[<+-| alert@+>]
+  \item  Hence if $m<5$, there is a problem!
+  \item we observed that DL in finite fields may be five times more unsafe then
+ DL in elliptic curves
+ \item  We shall discuss the case of supersingular curves where $m=2$
+ \item  Hence, supersingular curves are NOT idoneous for ECC.
+\item We assume that $E/\F_q$ is an elliptic curve
+\item We shall also assume that the Weil pairing can be computed quickly (which is not obvious)
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{The MOV attack}\pause
+ \begin{itemize}[<+-| alert@+>]
+  \item Assume that $P, Q\in E(\F_q)$ and that $N=\operatorname{ord}P$
+  \item Also assume that $\gcd(q,N)=1$ so that $E[N]\cong \Z/N\Z\oplus\Z/N\Z$.
+  \item We want to find $k$ such that
+  $$Q=kP$$
+  \item Such a $k$ may not exist!! However
+ \end{itemize}\pause
+
+ \begin{Proposition}
+  There exists $k$ such that $Q=kP$ if and only if
+  \begin{itemize}
+   \item $NQ=\infty$
+   \item $e_N(P,Q)=1$
+  \end{itemize}
+ \end{Proposition}\pause
+ 
+ \begin{proof} (if): if $NQ=\infty$, then $Q\in E[N]$. \pause We choose $R\in E[N]$ in such a way that $\{R,P\}$ is basis for $E[N]$.\pause
+ 
+ Then
+ $$Q=a P + b R,\hfill \exists a,b\in\Z/N\Z$$\pause
+ 
+ From basic properties of Weil pairing, $e_N(P,R)=\zeta$ is a primitive $N$--th root of unity.\pause Hence, if $e_N(P,Q)=1$, 
+  $$1=e_N(P,Q)=e_N(P,P)^ae_N(P,R)^b=\zeta^b.$$\pause
+ We deduce that $b\equiv 0\bmod N$. So $bR=\infty$ and $Q=aP$ as requested.\pause
+ 
+ (only if): just note that $NQ=NkP=\infty$ and $e_N(P,Q)=e_N(P,P)^k=1$.
+ \end{proof}
+\end{frame}
+
+\begin{frame}
+ \frametitle{The MOV attack}
+ \framesubtitle{the idea}\pause
+ 
+ \begin{beamercolorbox}[shadow=true,center,rounded=true,wd=\textwidth]{postit}
+ Given $E, P, Q$ and $N=\operatorname{ord}Q$, choose $m$ s.t. $E[N]\subset E(\F_{q^m})$.
+ \end{beamercolorbox}\bigskip\pause
+
+Note that 
+
+ \begin{itemize}[<+-| alert@+>]
+  \item such an $m$ exists since $E[N]\subset E(\overline{\F_q})$. So it is enough to choose $m$ such that $\F_{q^m}$ contains
+all coordinates of all point in $E[N]$.
+\item Since $\deg\phi_N=(N^2-1)/2$, we can find a suitable $m<((N^2-1)/2)!$ 
+\item We shall do all our computation in $\F_{q^m}$
+\end{itemize}\pause
+
+\noindent\textbf{ALGORITHM:}
+\texttt{
+ \begin{enumerate}[<+-| alert@+>]
+  \item Choose at random $T\in E(\F_{q^m})$
+  \item Compute the order $M$ of $T$
+  \item Let $d=\gcd(M,N)$, and let $T'=\frac{M}{d}T$. $T'$ has order $d$ which is a divisor of $N$. Hence $T'\in E[N]$
+  \item Compute $\zeta_1=e_N(P,T')$ and $\zeta_2=e_N(Q,T_1)$. Then $\zeta_1,\zeta_2\in\mu_d\subset \F_{q^m}^*$
+  \item Solve DL $\zeta_2=\zeta_1^k\in \F_{q^m}^*$. This will give $k\bmod d$.
+  \item Repeat with random points untill the lcm of the $d$'s obtained in $N$. This determines $k$ modulo $N$.
+  \end{enumerate}
+}
+\end{frame}
+
+\begin{frame}
+ \frametitle{The MOV attack}
+ \framesubtitle{why does it work?}\pause
+
+\noindent\textbf{ALGORITHM:}
+\texttt{
+ \begin{enumerate}
+  \item Choose at random $T\in E(\F_{q^m})$
+  \item Compute the order $M$ of $T$
+  \item Let $d=\gcd(M,N)$, and let $T'=\frac{M}{d}T$. $T'$ has order $d$ which is a divisor of $N$. Hence $T'\in E[N]$
+  \item Compute $\zeta_1=e_N(P,T')$ and $\zeta_2=e_N(Q,T_1)$. Then $\zeta_1,\zeta_2\in\mu_d\subset \F_{q^m}^*$
+  \item Solve DL $\zeta_2=\zeta_1^k\in \F_{q^m}^*$. This will give $k\bmod d$.
+  \item Repeat with random points untill the lcm of the $d$'s obtained in $N$. This determines $k$ modulo $N$.
+  \end{enumerate}
+}\pause
+
+Let $k_d:=k\bmod d$ and note
+$$\zeta_2=e_N(Q,T_1)=e_N(kP,T_1)=\zeta_1^k=\zeta_1^{k_d}$$
+since $\zeta_1$ and $\zeta_2$ have both order $d$\bigskip\pause
+
+If we compute $k_{d_1},\cdots,k_{d_s}$ with the property that 
+$$\operatorname{lcm}(d_1,\cdots,d_s)=N.$$\pause Then, by the General Chinese
+remainder Theorem, we can compute $k\bmod N$ which is the DL!\bigskip\pause
+
+Once can verify that the probability that $d=1$ is quite small.
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{The MOV attack}
+ \framesubtitle{Supersingular curves are unsuitable for EEC}\pause
+
+ \begin{Definition}
+  An elliptic curve is called \alert{supersingular} if, when we write
+  $$E(\F_q)=q+1-a_E,$$
+  we have
+  $$a_E\equiv0\bmod p.$$
+ \end{Definition}\pause
+ 
+ \begin{Theorem}
+  Suppose $E/\F_q$ is supersingular and that $a_E=0$. If $P\in E(\F_q)$ and $N=\operatorname{ord}P$.
+  Then
+  $$E[N]\subset E(\F_{q^2})$$
+ \end{Theorem}\pause
+ 
+ \begin{itemize}
+  \item We shall prove the theorem now
+  \item For other types of supersingular curves (i.e. with $a_E\equiv0\bmod p$ but $a_E\neq0$, it can be proven
+  that If $P\in E(\F_q)$ and $N=\operatorname{ord}P$.
+  Then
+  $$E[N]\subset E(\F_{q^m})\qquad \text{with }m=3,4,6.$$
+  \item Supersingular curves are not suitable for EEC
+  
+ \end{itemize}
+
+\end{frame}
+
+\subsection{Frobenius endomorphism}
+\begin{frame}
+\frametitle{The Frobenius endomorphism $\Phi_q$}\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,center,wd=8cm]{postit}
+$\Phi_q:\bar{\F}_q\rightarrow\bar{\F}_q, x\mapsto x^q$ is a field automorphism
+\end{beamercolorbox}}\pause
+
+Given $\alpha\in\bar{\F}_q$,
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,center,wd=6cm]{formul}
+$\alpha\in\F_{q^n}\ \Leftrightarrow\ \Phi_q^n(\alpha)=\alpha^{q^n}=\alpha$\pause
+\end{beamercolorbox}}\pause
+
+Fixed points of powers of $\Phi_q$ are exactly elements of $\F_{q^n}$\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,left,rounded=true,center,wd=8cm]{postit}
+$\Phi_q:E(\bar{\F}_q)\rightarrow E(\bar{\F}_q), (x,y)\mapsto(x^q,y^q),\infty\mapsto\infty$\end{beamercolorbox}}\pause
+
+\begin{block}{Properties of $\Phi_q$}
+\begin{itemize}[<+-|alert@+>]
+%\item $\Phi_q\in \operatorname{End}(E)$, it is not separable and has degree $q$
+\item $\Phi_q(x,y)=(x,y)\ \Longleftrightarrow\ (x,y)\in E(\F_q)$
+%\item $\operatorname{Ker}(\Phi_q-1)=E(\F_q)$
+%\item $\#\operatorname{Ker}(\Phi_q-1)=\deg(\Phi_q-1)$ (since $\Phi_q-1$ is separable)
+%\item if we can compute $\deg(\Phi_q-1)$, we can compute $\#E(\F_q)$
+\item $\Phi_{q}^n(x,y)=(x^{q^n},y^{q^n})$ so  \alert{$\Phi_{q}^n(x,y)=(x,y)\Leftrightarrow(x,y)\in\F_{q^n}$}
+%\item $\operatorname{Ker}(\Phi_q^n-1)=E(\F_{q^n})$
+\item $\Phi_q$ satisfies the Carachteristic polynomial $T^2-a_ET+q$\\
+i.e.
+$$\forall (x,y)\in E(\overline{F_q}), (x^{q^2},y^{q^2})+_Eq(x,y)=a_E(x^q,y^q)$$
+\item we write the above identity as 
+$$\Phi_q^2-a_E\Phi_q+q=0.$$
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}
+ \frametitle{The MOV attack}
+ \framesubtitle{Supersingular curves are unsuitable for EEC}\pause
+ 
+ \begin{Theorem}
+  Suppose $E/\F_q$ is supersingular and that $a_E=0$. If $P\in E(\F_q)$ and $N=\operatorname{ord}P$.
+  Then
+  $$E[N]\subset E(\F_{q^2})$$
+ \end{Theorem}\pause
+ 
+\begin{proof} Since $a_E=0$, the Frobenius $\Phi_q$ satisfies
+$$\Phi_q^2=-q$$\pause
+
+Suppose that $P\in E(\F_q)$ has order $N$. Then $N\mid q+1$ (i.e. $q\equiv -1\bmod N$).\pause
+
+Let $S\in E[N]$, Then
+$$\Phi_{q^2}(S)=\Phi_q^2(S)=-qS=S.$$
+
+This implies that $S\in E(\F_{q^2}).$ 
+\end{proof}
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Anomalous Curves}
+ 
+ \begin{Definition}
+  An elliptic curve is called \alert{anomalous} if, when we write
+  $$\#E(\F_q)=q$$
+ \end{Definition}\pause
+ 
+\begin{itemize}[<+-|alert@+>]
+\item In an anomalous curve points have order equal to a power of $p$. Hence the Weil pairing is not defined!!!
+ \item  One may think that they are suitable for Cryptography for this reason. But this is not true!!
+ \item There is an efficient algorithm to compute DL in anomalous curves
+ \item If $E$ is anomalous, then $a_E=-1$
+ \item The carachteristic polynomial of $E$ is $T^2-T+q$ with roots:
+ $$\frac{1+\sqrt{1-4q}}{2}\quad\frac{1-\sqrt{1-4q}}{2}$$
+ \item Hence \\
+ \centerline{$\#E(\F_{q^n})=q^2+1-\frac1{2^n}\left((1+\sqrt{1-4q})^n+(1-\sqrt{1-4q})^n\right)$}
+\item So $\#E(\F_{q^2})=q^2+2q$ and $E/\F_{q^2}$
+\item An anamalous curve is not necessarily anomalous over field extensions but it still satisfies
+$\Phi_q^2-\Phi_q+q=0$.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Anomalous Curves}
+ 
+ \begin{Definition}
+  An elliptic curve is called \alert{anomalous} if, when we write
+  $$\#E(\F_q)=q$$
+ \end{Definition}\pause
+
+ \begin{itemize}[<+-|alert@+>]
+  \item Examples:
+   \begin{enumerate}
+    \item  $E': y^2+xy=x^3+x^2+1$ is anomalous over $\F_2$
+    \item $E'': y^2=x^3 + x^2 - 1$ is anomalous over $\F_3$
+   \end{enumerate}
+ \item They are particularly suitable for Cryptography when considered over extensions
+  \begin{enumerate}
+   \item They group order can be computed very quickly
+   \begin{itemize}
+   \item $\#E'(\F_{2^{200}})=2^{200}+1-\frac{(1+\sqrt{-7})^{200}+(1-\sqrt{-7})^{00}}{2^{100}}=
+   1606938044258990275541962092343697546215565682541130425732128$
+   \item $\#E''(\F_{3^{150}})=3^{200}+1-\frac{(1+\sqrt{-11})^{150}+(1-\sqrt{-11})^{150}}{2^{150}}=
+   369988485035126972924700782451696645401107717195926015868067750551938000$
+   \end{itemize}
+   \item Computations are fast on them
+  \end{enumerate}
+ \item From $\Phi_q^2-\Phi_q+q=0$ we deduce
+ \item $\forall P=(x,y)\in E(\F_{q^n})$
+ $$q(x,y)=(x^q,y^q)+(x^{q^2},-y^{q^2})$$
+ \item Instead of computing $qP$ one can just compute $x^q,y^q, x^{q^2}, y^{q^2}$ which is fast in a finite field
+ \item Especially if one uses \alert{normal basis}
+ \end{itemize}
+ \end{frame}
+
+ \section{Normal basis on finite fields}
+ \begin{frame}
+  \frametitle{Normal basis on $\F_q$}
+  
+  \begin{Definition}
+   Let $\F_{q^m}$ be a finite field extension of $\F_q$ and let $\beta\in\F_{q^m}^*$. We say that $\beta$ is \alert{normal} if
+   $$ \mathcal B_\beta=\{ \beta, \beta^q, \beta^{q^2}, \ldots, \beta^{q^{m-1}} \} $$
+   is an $\F_q$--basis of $\F_{q^m}$.
+  \end{Definition}
+
+ \begin{itemize}[<+-|alert@+>] 
+\item $\mathcal B_\beta$ is called \alert{normal basis}
+ \item  It is a classical result that every finite field admits a normal basis.
+\item Given an  $\F_q$--normal basis of $\F_{q^m}$ and given $x\in\F_{q^m}^*$, we write
+$$x=x_0\beta+x_1\beta^q+\cdots+x_{m-2}\beta^{q^{m-1}}$$
+\item So 
+$$x^p=x_0\beta^q+x_1\beta^{q^2}+\cdots+x_{m-2}\beta$$
+\item Since $\beta^{q^m}=\beta$
+\item There is no calculation in computing $x^q$ but just a circular rotation of the coefficients
+\item Going back to anomalous curves:
+ $$q(x,y)=(x^q,y^q)+(x^{q^2},-y^{q^2})$$
+ \item implies that $q(x,y)$ can be computed in an anomalous curve at the cost of one addition in $E$
+\end{itemize}
+ \end{frame}
+
+ 
+ 
+\section{Further reading}
+\begin{frame}
+\frametitle{Further Reading...}
+\begin{scriptsize}
+\begin{thebibliography}{99}
+\bibitem{BSS} \textsc{Ian~F.~Blake,~Gadiel~Seroussi,~and~Nigel~P.~Smart},
+Advances in elliptic curve cryptography, London Mathematical Society Lecture Note Series, vol. 317, Cambridge University Press, Cambridge, 2005.
+ \bibitem{C} \textsc{J.~W.~S.~Cassels},
+Lectures on elliptic curves, London Mathematical Society Student Texts, vol. 24, Cambridge University Press, Cambridge, 1991.
+ \bibitem{CR} \textsc{John~E.~Cremona},
+Algorithms for modular elliptic curves, 2nd ed., Cambridge University Press, Cambridge, 1997.
+ \bibitem{Kn} \textsc{Anthony~W.~Knapp},
+Elliptic curves, Mathematical Notes, vol. 40, Princeton University Press, Princeton, NJ, 1992.
+ \bibitem{Ko} \textsc{Neal~Koblitz},
+Introduction to elliptic curves and modular forms, Graduate Texts in Mathematics, vol. 97, Springer-Verlag, New York, 1984.
+ %\bibitem{Po} \textsc{Poonen B} Elliptic curves (introduction)(19s) notes
+ \bibitem{Sil} \textsc{Joseph~H.~Silverman},
+The arithmetic of elliptic curves, Graduate Texts in Mathematics, vol. 106, Springer-Verlag, New York, 1986.
+\bibitem{ST} \textsc{Joseph~H.~Silverman~and~John~Tate},
+Rational points on elliptic curves, Undergraduate Texts in Mathematics, Springer-Verlag, New York, 1992.
+\bibitem{washington} \textsc{Lawrence~C.~Washington},
+Elliptic curves: Number theory and cryptography, 2nd ED. Discrete Mathematics and Its Applications, Chapman \& Hall/CRC, 2008.
+\bibitem{Zimm} \textsc{Horst~G.~Zimmer},
+Computational aspects of the theory of elliptic curves, Number theory and applications
+(Banff, AB, 1988) NATO Adv. Sci. Inst. Ser. C Math. Phys. Sci., vol. 265, Kluwer Acad. Publ., Dordrecht, 1989, pp. 279--324.
+\end{thebibliography}
+\end{scriptsize}
+\end{frame}
+
+\end{document}
+
+

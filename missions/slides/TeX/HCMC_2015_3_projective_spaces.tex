@@ -1,0 +1,260 @@
+\documentclass[10pt]{beamer} %,hyperref={pdfpagelabels=false},draft,handout,handout
+\usepackage[orientation=landscape,size=custom,width=16,height=9,scale=0.30,debug]{beamerposter} 
+\usepackage[english]{babel}
+\usepackage{lmodern}% http://ctan.org/pkg/lm
+\usepackage[latin1]{inputenc}
+\usepackage{times,hyperref,tikz,colortbl,yfonts,translator}
+\usepackage[T1]{fontenc}
+ \newcommand{\Q}{\mathbb Q}
+ \newcommand{\Z}{\mathbb Z}
+ \newcommand{\N}{\mathbb N}
+ \newcommand{\F}{\mathbb F}
+ \newcommand{\C}{\mathbb C}
+ \newcommand{\R}{\mathbb R}
+\useoutertheme[height=0pt,width=2cm,right]{sidebar}
+\usecolortheme{rose,sidebartab}
+\useinnertheme{circles}
+\usefonttheme[only large]{structurebold}
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{\translate{Exercise}}
+\newtheorem{Note}[theorem]{\translate{Note}}
+\lecture[4]{Elliptic curves over finite fields}{First Steps}
+\title[Elliptic curves over $\F_{q}$]{\insertlecture}
+\setbeamercolor{formul}{fg=black,bg=pink}
+\setbeamercolor{sidebar right}{bg=green!15}
+\setbeamercolor{structure}{fg=black!120}
+\setbeamercolor{postit}{fg=black,bg=yellow}
+\setbeamercolor{greys}{fg=black,bg==black!25}
+\setbeamerfont{title in sidebar}{series=\bfseries}
+\setbeamerfont*{item}{series=}
+\setbeamerfont{frametitle}{size=}
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{subtitle}{size=\normalsize,series=\normalfont}
+\begin{document}
+
+\begin{frame}
+\includegraphics[width=1.6cm]{images/roma3.pdf}\hfill\includegraphics[width=1.9cm]{images/HCMCUS.jpeg}
+\vfill
+
+\begin{center}\begin{sc}
+\begin{Large}
+
+\textcolor{red}{Elliptic curves over finite fields}
+\end{Large}\bigskip
+
+\ {Francesco Pappalardi}\bigskip\bigskip
+
+\begin{large}\begin{bf}\#4 - First Steps (Point at infinity of \texorpdfstring{$E$}{E}).
+\end{bf}\end{large}\medskip
+
+September $4^{\text{th}}$ 2015\medskip
+\vfill
+\end{sc}\end{center}
+
+\includegraphics[width=1.6cm]{images/cimpalogo.pdf}\hfill
+\begin{minipage}[b]{9.3cm}
+\textbf{SEAMS School 2015}\\
+\textit{Number Theory and Applications in Cryptography and Coding Theory}\\
+University of Science, Ho Chi Minh, Vietnam\\
+August 31 - September 08, 2015
+\end{minipage}\hfill
+\includegraphics[width=1.9cm]{images/seams.png}
+\end{frame}
+
+
+\section{Point at infinity of \texorpdfstring{$E$}{E}}
+\subsection{Projective Plane}
+\begin{frame}
+\frametitle{The projective Plane}
+
+\begin{Definition}[Projective plane]
+$$\mathbb P_2(\F_q)=(\F_q^3\setminus\{\mathbf{0}\})/\sim$$
+where $\mathbf{0}=(0,0,0)$ and
+\centerline{$\mathbf{x}=(x_1,x_2,x_3)\sim \mathbf{y}=(y_1,y_2,y_3)\quad\Leftrightarrow\quad\mathbf{x}=\lambda\mathbf{y}, \exists\lambda\in\F_q^*$}
+\end{Definition}\pause
+
+\begin{beamerboxesrounded}[upper=block title example,lower=block body example,shadow=true]{Basic properties of the projective plane}
+\begin{enumerate}[<+-| alert@+>]
+ \item $P\in\mathbb P_2(\F_q) \Rightarrow P=[\mathbf{x}]=\{\lambda\mathbf{x}:\lambda\in\F_q^*\}, \mathbf{x}\in\F_q^3, \textbf{x}\neq0$;
+ \item $\#[\mathbf{x}]=q-1$. Hence $\#\mathbb P_2(\F_q)=\frac{q^3-1}{q-1}=q^2+q+1;$
+ \item $P\in \mathbb P_2(\F_q)$, $P=:[x,y,z]$ with $(x,y,z)\in \F_q^3\setminus\{\mathbf{0}\}$;
+\item $[x,y,z]=[x',y',z']\ \Longleftrightarrow\ \text{rank}\begin{pmatrix}
+                                 x&y&z\\ x'&y'&z'
+                                \end{pmatrix}=1$
+\item $\mathbb P_2(\F_q) \longleftrightarrow \{\text{lines through }\mathbf{0}\text{ in }\F_q^3\}= \{V\subset \F_q^3: \dim V=1\}$
+\item $\mathbb P_2(\F_q) \longleftrightarrow \{\text{lines in }\F_q^2\}, [a,b,c]\mapsto aX+bY+cZ=0$
+\end{enumerate}
+\end{beamerboxesrounded}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{The projective Plane}
+
+\begin{beamerboxesrounded}[upper=block title example,lower=block body example,shadow=true]{Infinite and Affine points}
+ \begin{itemize}[<+-| alert@+>]
+\item $P=[x,y,0]$ \hfill \emph{is a point at infinity}
+\item $P=[x,y,1]$ \hfill \emph{is an affine point}
+\item $P\in\mathbb P_2(\F_q)$ is either affine or at infinity
+\item $\mathbb A_2(\F_q):=\{[x,y,1]: (x,y)\in\F_q^2\}$ \hfill \emph{set of affine points}\\
+\ \hfill\small{$\#\mathbb A_2(\F_q)=q^2$}
+\item $\mathbb P_1(\F_q):=\{[x,y,0]: (x,y)\in\F_q^2\setminus\{(0,0)\}\}$ \hfill \emph{line at infinity}\\
+\ \hfill\small{$\#\mathbb P_1(\F_q)=q+1$}
+\item $\mathbb P_2(\F_q)=\mathbb A_2(\F_q)\sqcup\mathbb P_1(\F_q)$ \hfill  disjoint union
+\item $\mathbb P_1(\F_q)$ can be thought as \emph{ set of directions of lines in $\F_q^2$}
+\end{itemize}
+\end{beamerboxesrounded}
+\pause
+
+\ \hfill
+\begin{beamerboxesrounded}[upper=block title,lower=block body,shadow=true]{General construction}
+  \begin{itemize}[<+-| alert@+>]
+   \item $\mathbb P_n(K)$, $K$ field, $n\ge3$ is similarly defined;
+   \item $\mathbb P_n(K)=\mathbb A_n(K)\sqcup\mathbb P_{n-1}(K)$
+   \item $\#\mathbb P_n(\F_q)=q^n+\cdots+q+1$
+   \item $\mathbb P_n(K)\ \longleftrightarrow\ \{\text{lines in }K^n\}$
+  \end{itemize}
+\end{beamerboxesrounded}
+\end{frame}
+
+\subsection{Homogeneous Polynomials}
+\begin{frame}
+\frametitle{Homogeneous Polynomials}
+
+\begin{Definition}[Homogeneous polynomials]
+$g(X_1,\ldots,X_m)\in\F_q[X_1,\ldots,X_m]$ is said \emph{homogeneous}
+if all its monomials have the same degree. {i.e.
+$$g(X_1,\ldots,X_m)=\sum_{j_1+\cdots+j_m=\partial g}a_{j_1,\cdots,j_m}X_1^{j_1}\cdots X_m^{j_m}, a_{j_1,\cdots,j_m}\in\F_q$$}\vspace*{-2.4pt}
+\end{Definition}\pause
+
+\begin{beamerboxesrounded}[upper=block title,lower=block example,shadow=true]{Properties of homogeneous polynomials - Projective Curves}
+\begin{itemize}[<+-| alert@+>]
+ \item $\forall\lambda, F(\lambda X,\lambda Y,\lambda Z)=\lambda^{\partial F}F(X,Y,Z)$
+ \item If $P=[X_0,Y_0,Z_0]\in\mathbb P_2(\F_q)$, then\\
+$F(X_0,Y_0,Z_0)=0$ depends only on $P$, not on $X_0,Y_0,Z_0$
+ \item $F(P)=0 \Leftrightarrow F(X_0,Y_0,Z_0)=0$ is well defined
+ \item \emph{Projective curve} $F(X,Y,Z)=0$ the set of $P\in\mathbb F_2(\F_q)$ s.t. $F(P)=0$
+\end{itemize}\pause
+\end{beamerboxesrounded}
+
+\begin{example}
+ Projective line $aX+bY+cZ=0$;  $Z=0$, line at infinity
+\end{example}
+\end{frame}
+
+\subsection{Points at infinity}
+\begin{frame}
+\frametitle{Points at infinity of a plane curve}
+
+\begin{Definition}[Homogenized polynomial]
+if $f(x,y)\in\F_q[x,y]$,
+$$F_f(X,Y,Z)=Z^{\partial f}f(\frac{X}{Z},\frac{Y}{Z})$$ \vspace*{-2pt}\pause
+\begin{itemize}[<+-| alert@+>]
+ \item $F_f$ is homogenoeus, \alert{the homogenized of $f$}
+ \item $\partial F_f=\partial f$
+\item if $f(x_0,y_0)=0$, then $F_f(x_0,y_0,1)=0$
+\item the points of the curve $f=0$ are the affine points of
+the projective curve $F_f=0$
+\end{itemize}
+\end{Definition}\pause
+
+\begin{example}[homogenized curves]\pause
+\begin{tabular}{|l|l|l|}
+\hline
+ curve & affine curve & homogenized (projective curve) \\
+line & $ax+by=c$ & $aX+bY=cZ$\\
+conic & $ax^2+by^2=1$& $aX^2+bY^2=Z^2$\\
+\hline
+\end{tabular}\\ \pause
+$Z=0$ (line at infinity)\hfill \pause
+Not the homogenized of anything
+\end{example}
+\end{frame}
+
+\subsection{Homogeneous Coordinates}
+\begin{frame}
+\frametitle{Points at infinity of a plane curve}
+\begin{Definition}
+If $f\in\F_q[x,y]$ then
+$$\{[\alpha,\beta,0]\in\mathbb P_2(\F_q): F_f(\alpha,\beta,0)=0\}$$
+is the set of \emph{points at infinity} of $f=0$.\\
+\alert{(i.e. the intersection of the curve and $Z=0$, the line at infinity)}
+\end{Definition}\pause
+\emph{The points of $Z=0$ are directions of lines in $\F_q^2$}\pause
+
+\begin{example}[point at infinity]\pause
+\begin{itemize}[<+-| alert@+>]
+ \item line: $ax+by+c=0$ \hfill $\rightsquigarrow$  \hfill $[b,-a,0]$
+ \item hyperbola: $x^2/a^2-y^2/b^2=1$ \hfill $\rightsquigarrow$  \hfill $[a,\pm b,0]$
+ \item parabola: $y=ax^2+bx+c$  \hfill $\rightsquigarrow$  \hfill  $[0,1,0]$
+ \item elliptic curve:\\ $y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$ \hfill $\rightsquigarrow$  \hfill $[0,1,0]$
+\end{itemize}
+\end{example}\pause
+
+\centerline{\begin{beamercolorbox}[shadow=true,center,rounded=true,wd=6cm]{formul}
+$E/\F_q$ elliptic curve, $\infty:=[0,1,0]$
+\end{beamercolorbox}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Projective lines}
+\framesubtitle{tangent lines to projective curves}
+
+\begin{Definition}
+If $P=[x_1,y_1,z_1], Q=[x_2,y_2,z_2]\in\mathbb P_2(\F_q)$, \emph{the projective
+line} through $P$, $Q$ is\\
+\centerline{$r_{P,Q}: \det\left|\begin{matrix}
+                      X & Y & Z \\ x_1&y_1&z_1\\ x_2&y_2&z_2
+                     \end{matrix}\right|=0$}
+\end{Definition}\pause
+
+\begin{Definition}
+The \emph{tangent line} to a projective curve $F(X,Y,Z)=0$ at a non singular point $P=[X_0,Y_0,Z_0]$
+($F(X_0,Y_0,Z_0)=0$) is
+\scriptsize{{\color[cmyk]{1,0,1,0.5}$\frac{\partial F}{\partial X}(X_0,Y_0,Z_0)X+\frac{\partial F}{\partial Y}(X_0,Y_0,Z_0)Y+
+\frac{\partial F}{\partial Z}(X_0,Y_0,Z_0)Z=0$}}
+\end{Definition}\pause
+
+\begin{exercise}[Prove that]
+\begin{enumerate}[<+-| alert@+>]
+ \item $P$ belongs to its (projective) tangent line
+ \item $P$ affine $\Rightarrow$ its tangent line is the homogenized of the affine tangent line
+ \item the tangent line to $E/\F_q$ at $\infty=[0,1,0]$ is $Z=0$ (line at infinity)\vspace*{-5.2pt}
+\end{enumerate}
+\end{exercise}
+\end{frame}
+
+
+
+%\subsection{Further reading.}
+\begin{frame}
+\frametitle{Further Reading...}
+\begin{scriptsize}
+\begin{thebibliography}{99}
+\bibitem{BSS} \textsc{Ian~F.~Blake,~Gadiel~Seroussi,~and~Nigel~P.~Smart},
+Advances in elliptic curve cryptography, London Mathematical Society Lecture Note Series, vol. 317, Cambridge University Press, Cambridge, 2005.
+ \bibitem{C} \textsc{J.~W.~S.~Cassels},
+Lectures on elliptic curves, London Mathematical Society Student Texts, vol. 24, Cambridge University Press, Cambridge, 1991.
+ \bibitem{CR} \textsc{John~E.~Cremona},
+Algorithms for modular elliptic curves, 2nd ed., Cambridge University Press, Cambridge, 1997.
+ \bibitem{Kn} \textsc{Anthony~W.~Knapp},
+Elliptic curves, Mathematical Notes, vol. 40, Princeton University Press, Princeton, NJ, 1992.
+ \bibitem{Ko} \textsc{Neal~Koblitz},
+Introduction to elliptic curves and modular forms, Graduate Texts in Mathematics, vol. 97, Springer-Verlag, New York, 1984.
+ %\bibitem{Po} \textsc{Poonen B} Elliptic curves (introduction)(19s) notes
+ \bibitem{Sil} \textsc{Joseph~H.~Silverman},
+The arithmetic of elliptic curves, Graduate Texts in Mathematics, vol. 106, Springer-Verlag, New York, 1986.
+\bibitem{ST} \textsc{Joseph~H.~Silverman~and~John~Tate},
+Rational points on elliptic curves, Undergraduate Texts in Mathematics, Springer-Verlag, New York, 1992.
+\bibitem{washington} \textsc{Lawrence~C.~Washington},
+Elliptic curves: Number theory and cryptography, 2nd ED. Discrete Mathematics and Its Applications, Chapman \& Hall/CRC, 2008.
+\bibitem{Zimm} \textsc{Horst~G.~Zimmer},
+Computational aspects of the theory of elliptic curves, Number theory and applications
+(Banff, AB, 1988) NATO Adv. Sci. Inst. Ser. C Math. Phys. Sci., vol. 265, Kluwer Acad. Publ., Dordrecht, 1989, pp. 279--324.
+\end{thebibliography}
+\end{scriptsize}
+\end{frame}
+
+\end{document}
+
+

@@ -1,0 +1,167 @@
+\magnification=1200
+\centerline{CR410 AA11/12\ (Crittografia 1)}\bigskip
+\centerline{\bf Raccolta dei Testi d'Esame}
+\bigskip
+
+\smallskip\hrule\smallskip
+\centerline{{\bf ESAME DI MET\`{A} SEMESTRE \hfill Roma, 4 Aprile 2012.}} \smallskip\hrule\smallskip
+
+\item{1.} Dato il numero binario
+$n=(1111110101)_2$, calcolare $[\sqrt{n}]$  usando l'algoritmo
+delle approssimazioni successive (Non passare a base 10 e  non
+usare la calcolatrice!)
+
+\item{2.} Determinare una stima per il numero di operazioni bit necessarie per calcolare\hfill\break $[{\sqrt{k^k\bmod T}}]$ dove
+$T\leq k^3$.  \footnote{*}{ESERCIZIO RELATIVO AL PROGRAMMA NON SVOLTO NELL'AA 2013/2014} 
+\item{3.} Trovare un valore di $n$ intero per cui la congruenza $X^6\equiv 1\bmod n$ ha esattamente $36$ soluzioni modulo $n$?
+\item{4.} Mostrare che le moltiplicazioni nell’anello quoziente ${\bf Z}/6{\bf Z}[x]/(x^d)$ si possono calcolare in $O(d^2)$ operazioni bit mentre le
+addizioni in $O(d)$ operazioni bit.*
+\item{5.} Dopo aver spiegato il funzionamento dell'algoritmo di Euclide per il calcolo dell'identi\-t\`a di Bezout
+tra due interi, lo si applichi per calcolare l'identit\`a di Bezout tra $27$ e $63$.
+\item{6.} Fornire una stima per probabilit\`{a} che un intero composto $n\leq 10^{50}$ privo di fattori primi minori di $101$ sia 
+dichiarato primo da $10$ iterazioni del test di Miller Rabin
+\item{7.} Dopo aver definito la nozione di numeri di Carmichael ed averne elencato alcune delle propriet\`a findamentali,
+si dimostri che $8911$ \`e un numero di Carmichael.
+\item{8.} Calcololare il seguente simbolo di Jacobi senza fattorizzare: $\left({232\over919}\right)$.
+\item{9.} Spiegare nei dettagli il funzionamento del crittosistema RSA e si dia un esempio di una sua implementazione.
+\bigskip
+
+\smallskip\hrule\smallskip
+\centerline{{\bf ESAME DI FINE SEMESTRE \hfill Roma, 28 Maggio, 2012.}}\smallskip\hrule\smallskip
+ 
+\item{1.} Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:\bigskip
+\itemitem{a.} E' vero che tutte le curve ellittiche sono non singolari?
+\itemitem{b.} Fornire un esempio di una curva ellittica su un campo finito con gruppo dei
+punti razionali non ciclico.
+\itemitem{c.} Determinare le radici primitive (i.e. generatori) in ${\bf F}_2[\alpha]$ dove $\alpha^4=1+\alpha$.
+\itemitem{d.} E' vero che in ${\bf F}_q[X]$ esistono polinomi irriducibili di ogni grado?
+\item{2.} Dopo aver definito la nozione di polinomio primitivo, calcolare la probabilit\`a che un polinomio irriducibile di grado $8$ su ${\bf F}_7$ sia 
+primitivo.
+\item{3.} Dimostrare che un polinomio monico, riducibile e senza fattori quadratici di grado $5$ in ${\bf F}_q[X]$ \`e un
+fattore di $X^{q^{12}}-X$. \item{4.} Spiegare il funzionamento del Crittosistema ElGamal fornendo un esempio esplicito su un campo con $13$ elementi.
+\item{5.} Dopo averne spiegato il funzionamento, implementare uno scambio chiavi Diffie--Hellmann in un campo finito
+con $32$ elementi.
+\item{6.} Spiegare la rilevanza del metodo Baby-Steps-Giant-Steps nella teoria delle curve ellittiche su campi finiti.
+\item{7.} Sia $E: y^2=x^3-x$. Determinare la struttura del gruppo $E({\bf F}_7)$ .
+\item{8.} Supponiamo ${\bf F}_4={\bf F}_2[\xi], \xi^2=1+\xi$. 
+Determinare il numero di punti su un campo con $2^{100}$ elementi della curva ellittica su ${\bf F}_4$ 
+$$E: y^2+y=x^3+\xi$$
+\item{9.} Scrivere e dimostrare le formule per la duplicazione di un punto (finito) su un curva ellittica in un campo
+finito con caratteristica maggiore di $3$.
+\bigskip
+
+\smallskip\hrule\smallskip
+\centerline{{\bf APPELLO A \hfill Roma, 5 Giugno, 2012.}}\smallskip\hrule\smallskip
+
+\item{1.} Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:
+\itemitem{a.} E' vero che l'algoritmo Pohlig--Hellman si applica a qualsiasi gruppo finito ciclico?
+\itemitem{b.} Quale \`e la probabilit\`a che dati $(x_1,\ldots,x_{100})\in({\bf Z}/500{\bf Z}^{100})$ 
+ci siano $i\neq j$ tali che $x_i= x_j$?
+\itemitem{c.} Che differenza c'\`e tra polinomi irriducibili e polinomi primitivi?
+\itemitem{d.} E' vero che in ${\bf F}_p[X]$ due polinomi di grado $30$ si moltiplicano in $O(\log^2p)$ operazioni bit? \footnote{*}{ESERCIZIO RELATIVO AL PROGRAMMA NON SVOLTO NELL'AA 2013/2014} 
+\item{2.} Descrivere due algoritmi per il calcolo del massimo comun divisore di interi, determinarne la complessit\`a e sfruttarli
+per calcolare con entrambi MCD$(75,42)$.
+\item{3.} Dopo aver definito i simboli di Jacobi e di Legendre dimostrare che se $p$ e $q$ sono numeri primi tali che $q\equiv5\bmod 4p$ e 
+$p\equiv2\bmod5$, allora il simbolo di Legendre $\left({p\over q}\right)=-1$.
+\item{4.} Mostrare che se $n$ \`e un modulo RSA di cui si conosce il valore di $\varphi(n)$, allora \`e possibile
+determinare efficientemente i fattori primi di $n$. Come si pu\`o utilizzare questa informazione
+per decifrare messaggi cifrati con RSA?
+\item{5.} Descritto l'algoritmo di Miller Rabin per verificare la primalit\`a di un intero, stimarne la probabilit\`a
+d'errore quando \`e applicato con 10 iterazioni su interi con 1000 cifre decimali.
+\item{6.} Descrivere brevemente tutti gli algoritmi crittografici che basano la propria sicurezza sul problema del logaritmo
+discreto.
+\item{7.} Determinare tutti i sottocampi di ${\bf F}_{7^{50}}$ che contengono un sottocampo con $49$ elementi.
+\item{8.} Supponiamo ${\bf F}_4={\bf F}_2[\xi], \xi^2=1+\xi$. 
+Determinare il numero di punti su un campo con $2^{12}$ elementi della curva ellittica su ${\bf F}_4$ 
+$$E: y^2+\xi y=x^3+\xi$$
+\item{9.} Descrivere il gruppo $E({\bf F}_5)$ dove $E$ \`e la curva ellittica definita da $y^2=x^3-x$.
+\bigskip\vfill\eject
+
+\smallskip\hrule\smallskip
+\centerline{{\bf APPELLO B \hfill Roma, 26 Giugno, 2012.}} \smallskip\hrule\smallskip
+
+\item{1.} Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:
+\itemitem{a.} E' vero che se $E$ \`e una curva ellittica definita su ${\bf F}_{3}$, allora
+si pu\`o agevolmente calcolare $E({\bf F}_{3^{100}})$?
+\itemitem{b.} E' vero che se $p-1$ ha soltanto fattori piccoli allora i logaritmi discreti in ${\bf F}_p$ si
+calcolano efficientemente?
+\itemitem{c.} Quanti sono i polinomi primitivi di grado minore di $5$ in ${\bf F}_2[X]$?
+\itemitem{d.} E' vero che in ${\bf F}_7[X]$ due polinomi di grado $n$ si moltiplicano in $O(n^3)$ operazioni bit?
+ \footnote{*}{ESERCIZIO RELATIVO AL PROGRAMMA NON SVOLTO NELL'AA 2013/2014} 
+\item{2} Dopo aver descritto e dimostrato l'algoritmo per determinare i coefficienti di Bezout di due interi, lo si applichi per
+calcolarli nel caso in cui i due interi sono $130$ e $78$.
+\item{3.} Dopo aver definito il simbolo di Legendre dimostrare che il numero di elementi in ${\bf F}_p^*$ che
+hanno simbolo di Legendre pari a 1 \`e $(p-1)/2$.
+\item{4.} Spiegare in tutti i dettagli il funzionamento del crittosistema RSA e in particolare spiegare le accortezze
+necessarie per scegliere le chiavi.
+\item{5.} Dato un intero dispari e composto $m$ si dimostri che l'insieme delle basi euleriane in $U({\bf Z}/m{\bf Z})$ \`e
+un sottogruppo mentre quello delle basi forti non lo \`e.
+\item{6.} Spiegare il funzionamento del crittosistema Massey--Omura e lo si illustri mediante un esempio esplicito.
+\item{7.} Enunciare e dimostrare il teorema di classificazione dei sottocampi di ${\bf F}_{p^m}$.
+\item{8.} Supponiamo ${\bf F}_8={\bf F}_2[\xi], \xi^3=1+\xi$. 
+Determinare il numero di punti di $E({\bf F}_8)$ dove 
+$$E: y^2+\xi y=x^3+\xi$$
+\item{9.} Supponiamo che $E$ sia un curva ellittica definita su ${\bf F}_{25}$, che $P\in E({\bf F}_{25})$ sia un punto di
+ordine $7$ e che $E$ abbia almeno due punti di ordine $2$. Calcolare $\#E({\bf F}_{25})$.
+\bigskip
+
+\smallskip\hrule\smallskip
+\centerline{{\bf APPELLO C \hfill Roma, 7 Gennaio, 2013.}}\smallskip\hrule\smallskip
+\item{1.} Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:
+\itemitem{a.} Determinare due fattori propri di $$10000000000000000000400000000000000000003$$
+\itemitem{b.} \`E vero che $X^{97}-X+3$ non ha radici monulo $97$?
+\itemitem{c.} Quanti sono i polinomi primitivi di grado $7$ su ${\bf F}_7$?
+\itemitem{d.} Perch\`e, se $M=p\cdot q$ \`e un modulo RSA, l'esponente
+di cifratura $e$ deve essere scelto in modo tale che $\gcd(e,\varphi(M))=1$?
+\item{2.} Descrivere due algoritmi per il calcolo del massimo comun divisore di interi, determinarne la complessit\`a e sfruttarli
+per calcolare con entrambi MCD$(36,63)$.
+\item{3.} Determinare una stima per il numero di operazioni bit necessarie a moltiplicare due matrici $n^2\times n^2$ 
+i cui coefficienti sono minori di $2^n$. \footnote{*}{ESERCIZIO RELATIVO AL PROGRAMMA NON SVOLTO NELL'AA 2013/2014} 
+\item{4.} Calcolare il seguente simbolo di Jacobi senza fattorizzare
+$\left({325893\over983832}\right)$.
+\item{5.} Si illustri il funzionamento del metodo di fattorizzazione $\rho$ di  Pollard.
+\item{6.} Dopo aver descritto il crittosistema ElGamal su ${\bf F}_p$, se ne illustri il funzionamento con un esempio con $p = 29$.
+\item{7.} Realizzare il campo ${\bf F}_{25}$ e determinare l'ordine di tutti i suoi elementi.
+\item{8.} Data una curva ellittica $E$, definita su ${\bf F}_p$, si spieghi il metodo per calcolare l'ordine
+del gruppo $E({\bf F}_{p^{100}})$.
+\item{9.} Dopo aver dimostrato che \`e una curva ellittica su ${\bf F}_7$, 
+calcolare la struttura del gruppo dei punti razionali di $y^2 = x^3 + x + 1$.
+\bigskip
+
+\smallskip\hrule\smallskip
+\centerline{{\bf APPELLO X \hfill Roma, 14 Settembre 2012.}}\smallskip\hrule\smallskip
+
+\item{1.} Rispondere alle seguenti domande che forniscono una giustificazione di 1 riga:
+\itemitem{a.} E' vero che se $E$ \`e una curva ellittica definita su ${\bf F}_{3^n}$, allora
+non ha mai un equazione della forma $y^2=x^3+ax+b$?
+\itemitem{b.} E' vero che se tutti i fattori primi di $n-1$ sono pi\`u piccoli di $\log n$, allora \`e
+possibile determinare un fattore non banale di $n$ in modo rapido? come?
+\itemitem{c.} E' vero che se $p>3$, il polinomio $X^2+1\in{\bf F}_p$ non \`e mai primitivo ma qualche volta \`e
+irriducibile?
+\itemitem{d.} E' vero che esistono modi per moltplicare interi con complessit\`a 
+inferiore a quella quadratica? \footnote{*}{ESERCIZIO RELATIVO AL PROGRAMMA NON SVOLTO NELL'AA 2013/2014} 
+\item{2} Se $n\in{\bf N}$, sia $\sigma(n)$ la somma dei divisori di $n$. Supponiamo che sia nota
+la fattorizzazione (unica) di $n=p_1^{\alpha_1}\cdots p_s^{\alpha_s}$. Calcolare il
+numero di operazioni bit necessarie per calcolare $\sigma(n)$.  
+(\it Suggerimento: Usare il
+fatto che $\sigma$ \`{e} una funzione moltiplicativa e calcolare una formula per $\sigma(p^\alpha)$ \rm).
+\item{3.} Siano $m,n$ interi tali che $m\equiv3\bmod4$,
+che $m\equiv2\bmod n$ e che $n\equiv1\bmod8$. Si calcoli il
+seguente simbolo di Jacobi: $\left({(5m+n)^3 \over m}\right)$.
+\item{4.}  Illustrare l'algoritmo dei quadrati successivi in un gruppo analizzandone la complessit\`{a}. Considerare
+la curva ellittica $E: y^2=x^3-x.$ Illustrare l'algoritmo appena descritto calcolando $[5](1,0)$ dove $(1,0)\in E({\bf F}_{13})$.
+\item{5.}  Si dia la definizione di pseudo primo forte in base $2$ e si mostri che
+se $n=2^\alpha+1$ \`{e} pseudo primo forte in base $2$, allora
+$2^{2^\beta}\equiv -1\bmod n$ per qualche $\beta<\alpha$.
+\item{6.} Fissare una radice primitiva di ${\bf F}_{3^3}$ ed
+ utilizzarla per simulare un scambio chiavi alla Diffie--Hellmann.
+\item{7.} Dopo aver definito la nozione di polinomio primitivo su un campo finito, si calcoli la probabilit\`{a} che un polinomio
+irriducibile $f$ di grado $8$ su ${\bf F}_{7}$ risulti primitivo?.
+\item{8.}  Fattorizzare
+$f(x)=(x^{12}+3x^{4}+1)(x^2+x+2)(x^{10}+x^2+1)$ su ${\bf
+  F}_2$ e determinare il numero di elementi del campo di spezzamento di $f$.
+\item{9.}  Dopo aver verificato che si tratta di una curva ellittica, determinare (giustificando la risposta)
+l'ordine e la struttura del gruppo dei punti razionali della curva ellittica su
+${\bf F}_7$
+$$y^2=x^3-x+5.$$.
+\bye

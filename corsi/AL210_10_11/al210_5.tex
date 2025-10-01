@@ -1,0 +1,155 @@
+\documentclass[italian,a4paper,11pt]
+{article}
+\usepackage{babel,amsmath,amssymb,amsbsy,amsfonts,latexsym,exscale,
+amsthm,epsf,colordvi,enumerate}
+
+\usepackage[latin1]{inputenc}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\I}{\mathcal{I}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Zeri}{\mathcal{Z}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ga}{\mathfrak{a}}
+\newcommand{\gb}{\mathfrak{b}}
+
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\X}{\mathbf{X}}
+
+\newcommand{\D}{\mbox{\rm{\textbf{Dom}}}}
+\newcommand{\Ze}{\mbox{\rm{\textbf{Rie}}}}
+
+\newcommand{\esse}{\mbox{\rm{\textbf{Spec}}}}
+\newcommand{\Ci}{\mathbf{C}}
+\newcommand{\Ex}{\textbf{Esercizio}}
+
+
+\newcommand{\Sse}{\Longleftrightarrow}
+\newcommand{\sse}{\Leftrightarrow}
+\newcommand{\implica}{\Rightarrow}
+
+\newcommand{\frecdl}{\longrightarrow}
+\newcommand{\frecd}{\rightarrow}
+\newcommand{\st}{\scriptstyle}
+\newcommand{\svol}{\textbf{Svolgimento:}}
+\newcommand{\cvd}{\begin{flushright} \qed \end{flushright}}
+\newcommand{\acc}{\`}
+\begin{document}
+\begin{center}
+
+\textbf{Universit\`a degli Studi Roma Tre}\\
+
+\textbf{Corso di Laurea in Matematica, a.a. 2010/2011}\\
+
+\textbf{AL210 - Algebra 2: Gruppi, Anelli e Campi}\\
+
+\textbf{Prof. F. Pappalardi}\\
+
+\textbf{Tutorato 5 - 25	 Ottobre 2010}\\
+
+\textbf{Tutore: Matteo Acclavio}\\
+
+www.matematica3.com\\
+\end{center}
+
+
+\vspace{1cm}
+\noindent
+\begin{Ex}\textbf{ 1.}\\
+Dire quale dei seguenti gruppi \`e esprimibile come prodotto diretto o\\
+semidiretto di due sottogruppi:\\
+\textsl{i)} $(\Z, +)$;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textsl{ii)}	 $(\Z_8, +)$;\\
+\textsl{iii)}	 $(D_4, \circ)$;\ \ \ \ \ \ \ \ \ \ \ \ \  \textsl{iv)}	 $(\Z_6, +)$;\\
+\textsl{v)} $(\C, +)$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \textsl{vi)} $(\C^{\ast}, \cdot)$.
+
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 2.}\\
+Sia $G$ un gruppo di ordine $o(G)=2p^2$, con $p\neq 2$ primo.
+Provare che:
+\begin{description}
+	\item[a)] Se $H$ \acc e un sottogruppo normale proprio di $G$ con $o(H)\neq p$, allora $G/H$ \acc e abeliano;
+	\item[b)] Se $o(H)=p$ e $G/H$ \acc e abeliano, allora $G/H$ \acc e ciclico;
+	\item[c)] Se $G'$ \acc e un gruppo con $o(G')=2p$, allora per ogni omomorfismo suriettivo $\varphi:G\frecdl G'$, $Ker \varphi$ risulta ciclico;
+	\item[d)] Nel caso particolare $G=(\Z_{50},+)$ e $G'=(\Z_{10},+)$, trovare gli omomorfismi suriettivi da $G$ su $G'$ e determinarne il nucleo.
+\end{description}
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 3.}\\
+Sia $G=G_1 \times G_2 \times \cdots \times G_k$, dimostrare che $ord((g_1,\dots,g_k))=m.c.m(ord(g_i))$. Derivare che $G$ \`e ciclico $\sse$ $G_i$ \`e ciclico $\forall i$ e M.C.D($|G_i|,|G_j|$)=1 $\forall i\neq j$.\\
+Dimostrare inoltre che $\forall \; H=H_1\times \dots \times H_k $ t.c. $ H_i \trianglelefteq G_i \forall k \Rightarrow H\trianglelefteq G$
+\end{Ex}
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 4.}\\
+Sia $G$ un gruppo abeliano di ordine dispari, dimostrare che la corrispondenza che manda ogni elemento nel suo quadrato \acc e un automorfismo
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Sia $G=\Z$, $H=6Z$, $N=4Z$ esibire un isomorfismo tra $\frac{\frac{G}{H\cap N}}{\frac{H}{H\cap N}}$ e $Z_6$. 
+\end{Ex}
+
+
+\vspace{0.4cm}
+\noindent
+\begin{Ex}\textbf{ 5.}\\
+Dimostrare che $A_4$ non ha sottogruppi di ordine 6.
+\end{Ex}
+
+\vspace{0.4 cm}
+\noindent
+\begin{Ex}\textbf{ 6.}\\
+Siano $(G, +)$ e $(G', +)$ due gruppi abeliani. Sia $Hom(G,G')$ l'insieme degli
+omomorfismi da $G$ in $G'$. Si consideri l'applicazione
+$$ + : Hom(G,G') \times Hom(G,G') \longrightarrow Hom(G,G') $$
+tale che $(\varphi + \psi )(x) := \varphi(x) + \psi(x)$.
+\begin{description}
+\item[a)] Dimostrare che $+$ \`e effettivamente un'operazione binaria.
+\item[b)] Dimostrare che $(Hom(G,G'), +)$ \`e un gruppo abeliano.
+\end{description}
+Si consideri ora l'applicazione $f : (Hom(Z_n,Z_m), +) \rightarrow (Z_m, +)$ definita
+come $f(\varphi) := \varphi([1]_n)$.
+\begin{description}
+\item[c)] Dimostrare che $f$ \`e un omomorfismo iniettivo di gruppi.
+\item[d)] Trovare l'immagine di $f$ e dire a quale gruppo \`e isomorfo $Hom(Z_n,Z_m)$.
+\end{description}
+Sia ora $Aut(\Z_n)$ l'insieme degli automorfismi di $\Z_n$. Mostrare che:
+\begin{description}
+\item[e)] $(Aut(\Z_n), +) \subseteq (Hom(\Z_n,\Z_n), +)$ non \`e un sottogruppo
+\item[f)] $(Aut(\Z_n), \circ)$ \`e un gruppo
+\item[g)] $(Aut(\Z_n), \circ)$ \`e isomorfo a $(U(\Z_n), \cdot)$.
+\item[h)] Trovare tutti gli automorfismi di $Z_{18}$
+\end{description}
+Si consideri infine il gruppo degli endomorfismi di $\Z$. Sia $\nu_a : \Z \rightarrow \Z$ la
+moltiplicazione per $a$, i.e. $\nu_a(x) = ax$.
+\begin{description}
+\item[i)] Dimostrare che per ogni $a \in \Z$, $\nu_a \in Hom(\Z,\Z)$
+\item[j)] Applicando il teorema di omomorfismo dire a cosa \`e isomorfo $Hom(\Z,\Z)$
+\end{description}
+\end{Ex}
+
+
+\end{document}

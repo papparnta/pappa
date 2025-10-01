@@ -1,0 +1,284 @@
+<html><head>
+<link rel="STYLESHEET" type="text/css" href="../../style.css">
+<title>AL311 - Istituzioni di Algebra Superiore - Teoria delle equazioni</title></head><body style="background: lightyellow none repeat scroll 0%; 
+-moz-background-clip: -moz-initial; 
+-moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+<center>
+<h1>
+AL310 - Istituzioni di Algebra Superiore: Teoria delle equazioni</h1>
+<h2>A.A. 2011/2012 - I Semestre - Crediti 7</h2>
+<a name="1"></a>
+<hr>
+<hr><h2><b>Informazioni Generali</b></h2></center>
+<table style="background: white none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" align="center" border="5" bordercolor="red" cellpadding="5">
+<tbody><tr><td bordercolor="white"><b>Docenti</b></td><td bordercolor="white">
+<a href="">Florida Girolami</a></td><td bordercolor="white"> <a href="http://www.mat.uniroma3.it/users/pappa/">Francesco Pappalardi</a>
+<tr><td bordercolor="white"><b>Ricevimento</b></td><td bordercolor="white"> mercoledì 14,30-16,30<dd>
+giovedì 11-13
+ </td><td bordercolor="white">Lunedì 11 - 13
+<tr><td bordercolor="white"><b>Ufficio</b></td><td bordercolor="white">205</td><td bordercolor="white">209
+<tr><td bordercolor="white"><b>Telefono</b></td><td bordercolor="white"> 06 5733 8240</td><td bordercolor="white"> 06 5733 8243
+<tr><td bordercolor="white"><b>E-mail</b>
+<td bordercolor="white">girolami at mat.uniroma3.it
+<td bordercolor="white">pappa at mat.uniroma3.it
+<tr><td><td bordercolor="green" style="background: lightgreen none repeat scroll 0%; " cellpadding="0" align="right"><b>TUTORE</b></td>
+<td bordercolor="green" style="background: lightgreen none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" cellpadding="0">
+TBA
+<tr><td style="background: lightblue none repeat scroll 0%;" bordercolor="blue" colspan="2"><b>Lezioni:</b><table><tbody>
+                                  <tr><td>Lunedì</td><td>09 - 11</td><td>(Aula G)
+                                  <tr><td>Mercoledì</td><td>11 - 12</td><td>(Aula G)
+                                  <tr><td>Giovedì</td><td>09 - 11</td><td>(Aula G)
+                                  <tr><td>Giovedì</td><td>16 - 18</td><td>(Aula F - TUTORATO)</tbody></table>
+<td style="background: lightyellow none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; 
+-moz-background-inline-policy: -moz-initial;" border="yellow"><a class="menu" target="_blank" 
+href="http://www.mat.uniroma3.it/corsi/offerta_didattica/programmi_corsi.php?corso=AL310&anno_accademico=2011_2012"><b>DESCRIZIONE
+DEL CORSO</b></a></td></tr></tbody></table><br> <hr align="center" size="7" width="50%">
+
+<a name="2"></a>
+<hr><center>
+<table style="background: red;" cellpadding="7">
+  <tbody><tr>
+    <td><a href="#1">Informazioni Generali</a>
+    <td><a href="#2">Avvisi</a>
+    <td><a href="#3">Diario delle Lezioni</a>
+    <td><a href="#4">Testi Consigliati</a>
+    <td><a href="te1.pdf">
+Programma</a>
+    <td><a href="#5">Tutorato/Esercizi proposti</a>
+    <td><a href="#6">Esoneri/Esami</a></tbody></table> <hr> <h2><b>Avvisi:</b></h2></center> 
+<font color=green>
+<font size=+1> 
+<li>
+<li>[17/11/11] L'esame di fine semestre è fissato per il 21 Dicembre alle ore 11 in aula F. Sono ammessi tutti gli 
+studenti che hanno superato l'esame di metà semestre con valutazione &ge; 12.
+ <hr noshade size="3" width="50%" align="center"> 
+</font><br>
+<li>[12/10/11] L'esame di metà semestre è fissato per Lunedì 31 Ottobre alle ore 14:00 in Aula F.
+<li>[19/09/11] Le lezioni sono iniziate il 19 Settembre alle ore 9 e per la prima settimana si
+sono tenute solo tre ore di lezione: due il 19/9 e una il 22/9. Per la seconda settimana
+sono previste 6 ore di lezione.
+</font><br>
+<hr> <a name="3"></a>
+<center>
+<table style="background: red; border="5"  bordercolor="pink" cellpadding="7">
+  <tbody><tr>
+    <td><a href="#1">Informazioni Generali</a>
+    <td><a href="#2">Avvisi</a>
+    <td><a href="#3">Diario delle Lezioni</a>
+    <td><a href="#4">Testi Consigliati</a>
+    <td><a href="te1.pdf">Programma</a>
+    <td><a href="#5">Tutorato/Esercizi proposti</a>
+    <td><a href="#6">Esoneri/Esami</a></tbody></table>
+<hr>
+<h2><b>Diario delle Lezioni:</b></h2></center>
+<ol>
+  <li> <b><i><font color=orange>Lezioni 1 e 2 </font> [19/09/11]</i></b> Presentazione del corso, 
+informazioni, equazioni di secondo grado, equazioni di terzo grado e formula di risoluzione di Cardano, L'idea della Teoria di 
+Galois. Generalità e Richiami su Anelli, sottoanelli,
+campi, omomorfismi.
+  <li> <b><i><font color=orange>Lezione 3</font> [22/09/11]</i></b> Ancora generalità sui campi,
+sottocampi, Anelli di polinomi, Fattorizzazione dei polinomi, radici razionali dei polinomi.
+  <li> <b><i><font color=orange>Lezioni 4 e 5</font> [26/09/11]</i></b> Algoritmo per la fattorizzazione 
+dei polinomi.  I coefficienti di un polinomio sono le funzioni simmetriche elementari nelle radici.
+Criterio di Eisenstein - irriducibilità del <i>p</i>-esimo polinomio ciclotomico. 
+Estensioni di campi. Esempi. Teorema della dimensione. Esempi. Estensioni algebriche semplici (inizio)
+<li> <b><i><font color=orange>Lezioni 6 e 7</font> [28/09/11]</i></b> continua Estensioni algebriche semplici, esempi. Calcoli nelle estensioni
+algebriche semplici. Sottoanelli e sottocampi generati da sottoinsiemi.
+<li> <b><i><font color=orange>Lezioni 8 e 9</font> [29/09/11]</i></b> Ancora sui sottoanelli e sottocampi generati e sulle estensioni algebriche 
+semplici. Elementi algebrici e trascendenti di una estensione. Polinomio minimo e sue caratterizzazioni. Esempi del calcolo del polinomio
+minimo. Campi ciclotomici.
+
+<li> <b><i><font color=orange>Lezioni 10 e 11</font> [03/10/11]</i></b> Campo del coseno. Estensioni algebriche e trascendenti. Un estenione
+è finita se e solo se è algebrica e finitamente generata. Esmpi e conseguenze. 
+<li> <b><i><font color=orange>Lezioni 12 e 13</font> [05/10/11]</i></b> Problemi e fatti sui numeri trascendenti, numerabilità dei
+numeri algebrici. Campi algebricamente chiusi (inizio).
+
+<li> <b><i><font color=orange>Lezioni 14 e 15</font> [06/10/11]</i></b> Campi Algebricamente chiusi continua. Soluzione degli esercizi proposti
+il 26/02/2010 nel corso di TE1
+
+<li> <b><i><font color=orange>Lezioni 16 e 17</font> [10/10/11]</i></b> Ancora sui campi algebricamente chiusi. Chiusura algebrica di un 
+campo in un estensione. F-Omomorfismi di campi. F-omomorfismi su estensioni semplici 
+<li> <b><i><font color=orange>Lezioni 18 e 19</font> [12/10/11]</i></b> Campi di Spezzamento. Esempi: campi di spezzamento
+di polinomi di grado 2, 3 e 4 e loro possibile grado. Esistenza del campo di 
+spezzamento. Correzione di alcuni esercizi di esonero.
+<li> <b><i><font color=orange>Lezioni 20 e 21</font> [13/10/11]</i></b> 
+Ancora propriet\`a, esempi ed esercizi sui campi di spezzamento. Radici multiple di polinomi 
+(inizio).
+
+<li> <b><i><font color=orange>Lezioni 22 e 23</font> [17/10/11]</i></b> Radici multiple di polinomi (continua). Polinomi irriducibili con 
+radici
+multiple. polinomi separabili. Campi perfetti. esempidi campi perfetti. Automorfismi di campi. Automorfismi del campo di spezzamento 
+di un polinomio separabile.
+<li> <b><i><font color=orange>Lezioni 24 e 25</font> [19/10/11]</i></b> Ancora sugli automorfismi. 
+Il Lemma di Artin. Campo degli invsrisnti. Prima forma del teorema di corrispondenza di Gaolis.
+Correzione esercizi sui polinomi minimi (secondo tutorato AA 09/10).
+<li> <b><i><font color=orange>Lezione 26</font> [20/10/11]</i></b>
+Soluzione degli esercizi proposti durante il secondo tutorato dell'AA 09/10.
+<li> <b><i><font color=orange>Lezioni 27 e 28</font> [24/10/11]</i></b> ESERCITAZIONI
+<li> <b><i><font color=orange>Lezioni 29 e 30</font> [26/10/11]</i></b> ESERCITAZIONI
+<li> <b><i><font color=orange>Lezioni 31 e 32</font> [27/10/11]</i></b> ESERCITAZIONI
+
+<li><b><font color=purple>ESAME DI META` SEMESTRE</font> [31/10/11]</i></b>
+
+<li> <b><i><font color=orange>Lezioni 33 e 34</font> [07/11/11]</i></b> Estensioni di Galois, Caratterizzazioni. Esempi: Campi ciclotomici, coniugati.
+<li> <b><i><font color=orange>Lezioni 35 e 36</font> [09/11/11]</i></b> Il Teorema fondamentale della corrispondenza di Galois. Inizio dimostrazione,
+esempi: Il polinomio <i>X</i><sup>3</sup>-2.
+<li> <b><i><font color=orange>Lezioni 37 e 38</font> [10/11/11]</i></b> Teorema fondamentale della corrispondenza di Galois. Continua
+la dimostrazione. Esempi: il reticolo dei sottocampi di <b>Q</b>(&zeta;<sub>7</sub>). Il polinomio <i>X</i><sup>4</sup>-2 (inizio):
+Il suo gruppo di Galois è diedrale, <a href="http://groupprops.subwiki.org/wiki/File:D8latticeofsubgroups.png">il reticolo dei sottogruppi di
+<i>D</i><sub>4</sub></a>.
+
+<li> <b><i><font color=orange>Lezioni 39 e 40</font> [14/11/11]</i></b> Teorema fondamentale della corrispondenza di Galois. Fine della dimostrazione.
+Esempi e Esercizi. Descrizione dei campi ciclotomici
+<li> <b><i><font color=orange>Lezioni 41 e 42</font> [16/11/11]</i></b> Sottocampi quadratici dei
+campi cislotomici. Sottogruppi transitivi di <i>S<sub>n</sub></i>
+<li> <b><i><font color=orange>Lezioni 43 e 44</font> [17/11/11]</i></b> ancora sui sottogruppi transitivi di <i>S<sub>n</sub></i>. Teoria del
+Discriminante. Esempi e proprietà. Gruppi di Galois di polinomi di grado 2 e 3. 
+
+<li> <b><i><font color=orange>Lezioni 45 e 46</font> [21/11/11]</i></b> ancora sulle proprietà del discriminante. Polinomi di grado 4: inizio. 
+Sottogruppi transitivi di <i>S<sub>4</sub></i>.
+<li> <b><i><font color=orange>Lezione 47 </font> [23/11/11]</i></b> polinomi di grado 4 (continua): risolvente cubica, esempi.
+<li> <b><i><font color=orange>Lezioni 48 e 49</font> [24/11/11]</i></b> fine polinomi di grado 4. Problema inverso di Galois (enunciato). Plinomi 
+aventi gruppo
+di Galois isomorfo a <i>S<sub>p</sub></i>. Campi finiti (inizio)
+
+<li> <b><i><font color=orange>Lezioni 50 e 51</font> [28/11/11]</i></b> campi finiti (continua): proprietà, esempi, enumerazione dei polinomi 
+irriducibili, gruppo di Galois di un campo finito, Costruzione delle chiusura algebrica di <b>F</b><sub><i>p</i></sub>.
+<li> <b><i><font color=orange>Lezioni 52 e 53</font> [30/11/11]</i></b> Teorema dell'elemento primitivo. Soluzione degli esercizi
+del Tutorato 6 (AA 2009/10).
+<li> <b><i><font color=orange>Lezioni 54 e 55</font> [01/12/11]</i></b> Ancora sulle estensioni semplici (esempio di un estensione
+non semplice), Dimostrazione del Teorema fondamentale dell'algebra usando la Teoria di Galois, Campi ciclotomici e dimostrazione
+dell'irriducibilità dei polinomi ciclotomici.
+<li> <b><i><font color=orange>Lezioni 56 e 57</font> [05/12/11]</i></b>
+<li> <b><i><font color=orange>Lezioni 58 e 59</font> [07/12/11]</i></b>
+<li> <b><i><font color=orange>Lezioni 60 e 61</font> [12/12/11]</i></b> Costruzioni con riga e compasso.
+<li> <b><i><font color=orange>Lezioni 62 e 63</font> [14/12/11]</i></b> ESERCITAZIONI
+<li> <b><i><font color=orange>Lezioni 64 e 65</font> [15/12/11]</i></b> ESERCITAZIONI
+
+<li><b><font color=purple>ESAME DI FINE SEMESTRE</font> [21/12/11]</i></b>
+
+
+<!--
+<li> <b><i><font color=orange>Lezione 41</font> [12/05/10]</i></b> Un esempio di un polinomio di grado $8$ avente come gruppo di Galois i
+Quaternioni. Enunciato del Teorema di Witt sulla caratterizzazione delle estensioni biquadratiche che ammettono un estensione quaternionica.
+Enunciato del Teorema dell'elemento primitivo.
+<li> <b><i><font color=orange>Lezione 48</font> [25/05/10]</i></b> Estensioni radicali pure e loro proprietè. Teorema di Kummer sulle estensioni
+radicali pure. Il Lemma di Dedekind.
+<li> <b><i><font color=orange>Lezione 49</font> [26/05/10]</i></b> Ancora sulle estensioni radicali. Dimostrazione del lemma di Dedekind. 
+Inizio della dimostrazione del Teorema di Galois.
+<li> <b><i><font color=orange>Lezioni 50 e 51</font> [28/05/10]</i></b> Fine della dimostrazione del Teorema di Galois sulla
+risoluzione per radicale dei polinomi a foefficienti razionali.
+<li> <b><i><font color=orange>ESERCITAZIONI</font> [1/06/10]</i></b> Svolgimento degli scritti degli appelli A e B 
+dell'esame scritto di TE1 tenuto nell' AA 2006/2007
+<li> <b><i><font color=red>Seconda prova in itinere</font> [04/06/10]</i></b>
+-->
+
+</ol>
+<a name="5"></a>
+<center>
+<table style="background: red; border="5"  bordercolor="pink" cellpadding="7">
+  <tbody><tr>
+    <td><a href="#1">Informazioni Generali</a>
+    <td><a href="#2">Avvisi</a>
+    <td><a href="#3">Diario delle Lezioni</a>
+    <td><a href="#4">Testi Consigliati</a>
+    <td><a href="te1.pdf">Programma</a>
+    <td><a href="#5">Tutorato/Esercizi proposti</a>
+    <td><a href="#6">Esoneri/Esami</a></tbody></table>
+<hr>
+<h2><b>Tutorato/Esercizi:</b></h2></center>
+
+<font color=red>
+Il concorso per l'assegnazione delle borse di tutorato è risultato deserto pertanto gli
+incontri di tutorato non verrano impartiti.
+</font>
+
+<br>
+<hr>
+<a name="6"></a><center>
+<table style="background: red; border="5"  bordercolor="pink" cellpadding="7">
+  <tbody><tr>
+    <td><a href="#1">Informazioni Generali</a>
+    <td><a href="#2">Avvisi</a>
+    <td><a href="#3">Diario delle Lezioni</a>
+    <td><a href="#4">Testi Consigliati</a>
+    <td><a href="te1.pdf">Programma</a>
+    <td><a href="#5">Tutorato/Esercizi proposti</a>
+    <td><a href="#6">Esoneri/Esami</a></tbody></table>
+<hr>
+
+<h2><b>Esoneri/Esami:</b></h2></center>
+<li><a href="AL310_11_12_1.pdf">Esame di metà semestre</a> <i>31 Ottobre 2011</i>
+<li><a href="AL310_11_12_2.pdf">Esame di fine semestre</a> <i>21 Dicembre 2011, ore 11</i>
+<center>
+<b>RISULTATI DELLE PROVE IN ITINERE:</b>
+<table border="3">
+
+
+</table></center>
+
+
+<li><a href="AL310_11_12_A.pdf">Appello A</a> <i>10 Gennaio 2012, ore 10</i>
+<li><a href="AL310_11_12_B.pdf">Appello B</a> <i>31 Gennaio 2012, ore 11</i>
+<li><a href="AL310_11_12_C.pdf">Appello C</a> <i>20 Giugno 2012, ore 11</i>
+<li><a href="AL310_11_12_X.pdf">Appello X</a> <i>14 Settembre 2012, ore 11</i>
+<hr>
+
+<center>
+<table style="background: red; border="5"  bordercolor="pink" cellpadding="7">
+  <tbody><tr>
+    <td><a href="#1">Informazioni Generali</a>
+    <td><a href="#2">Avvisi</a>
+    <td><a href="#3">Diario delle Lezioni</a>
+    <td><a href="#4">Testi Consigliati</a>
+    <td><a href="te1.pdf">Programma</a>
+    <td><a href="#5">Tutorato/Esercizi proposti</a>
+    <td><a href="#6">Esoneri/Esami</a></tbody></table>
+<hr>
+<h2><b>Testi consigliati:</b></h2></center><br>
+
+<li><i>J. S. Milne.</i><b>Fields and Galois Theory.</b>
+<a href="http://www.jmilne.org/math/CourseNotes/ft.html">Course Notes</a> v4.22 (March 30, 2011).
+
+
+<li><i>S. Gabelli.</i><b><a 
+href="http://books.google.it/books?id=42W9Lfh6KM0C&printsec=frontcover&dq=Stefania+Gabelli+Teoria+di+Galois&source=bl&ots=fic7-mYkva&sig=9IvU9hgoSzYlHflLA4HoEMJwmyI&hl=it&ei=liiFS7vgI8TfsAbR1KhL&sa=X&oi=book_result&ct=result&resnum=1&ved=0CAYQ6AEwAA#v=onepage&q=&f=false">
+Teoria delle Equazioni e Teoria di Galois.</a></b> Springer  UNITEXT (La Matematica per il 3+2) 2008, XVII, 410 pagg., ISBN: 978-88-470-0618-8
+
+<li><i>E. Artin.</i><b>Galois Theory</b>. NOTRE DAME MATHEMATICAL LECTURES
+Number 2.  1942.
+
+<li><i>C. Procesi.</i><b>Elementi di Teoria di Galois.</b> Decibel, Zanichelli, (Seconda ristampa, 1991). 
+<hr>
+<li><i>M. Artin</i>. <b>Algebra</b>. Prentice Hall, Inc., Englewood Cliffs, NJ 1991.
+
+<li><i>D. Dummit and R. Foote</i>. <b>Abstract algebra</b>. Prentice Hall, Inc., Englewood Cliffs, NJ 1991.
+
+<li><i>T. W. Hungerford</i>. <b>Algebra</b> Reprint of the 1974 original. Graduate Texts in
+Mathematics, 73. Springer-Verlag, New York-Berlin. 1980 .
+
+<li><i>N. Jacobson</i>. <b>Lectures in abstract algebra. III. Theory
+of fields and Galois theory</b>. Second corrected printing. Graduate Texts in Mathematics, No. 32.
+Springer-Verlag, New York-Heidelberg 1975.
+
+<li><i>S. Lang</i>. <b>Algebra.</b> Revised third edition. Graduate Texts in Mathematics, 211. Springer-Verlag, New
+York 2002.
+
+<li><i>J. Rotman</i>. <b>Galois theory</b>. Universitext. Springer-Verlag, New York 1998.
+
+<li><i>I. Stewart</i>. <b>Galois theory</b>. Second edition. Chapman and Hall, Ltd., London 1989.
+
+<li><i>J. Stillwell</i>. <b>Elements of algebra</b>. Undergraduate Texts in Mathematics. Springer-Verlag, New York.
+1994
+<center>
+<table style="background: red; border="5"  bordercolor="pink" cellpadding="7">
+  <tbody><tr>
+    <td><a href="#1">Informazioni Generali</a>
+    <td><a href="#2">Avvisi</a>
+    <td><a href="#3">Diario delle Lezioni</a>
+    <td><a href="#4">Testi Consigliati</a>
+    <td><a href="te1.pdf">Programma</a>
+    <td><a href="#5">Tutorato/Esercizi proposti</a>
+    <td><a href="#6">Esoneri/Esami</a></tbody></table>
+</center>
+</body></html> 

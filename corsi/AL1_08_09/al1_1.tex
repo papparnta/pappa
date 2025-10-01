@@ -1,0 +1,175 @@
+%&Latex
+
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage[latin1]{inputenc}
+%\usepackage{amsfonts}
+\begin{document}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Teorema}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\textheight = 47\baselineskip
+\newcounter{pippo}
+\def\stp{\stepcounter{pippo}}
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\renewcommand{\thetheorem}{\arabic{section}.\arabic{pippo}}
+\renewcommand{\theexample}{\arabic{section}.\arabic{pippo}}
+\renewcommand{\theremark}{\arabic{section}.\arabic{pippo}}
+\renewcommand{\thedefinition}{\arabic{section}.\arabic{pippo}}
+\renewcommand{\theproposition}{\arabic{section}.\arabic{pippo}}
+\renewcommand{\thelemma}{\arabic{section}.\arabic{pippo}}
+\renewcommand{\thecorollary}{\arabic{section}.\arabic{pippo}}
+\newcommand{\cvd}{$\hfill \sqcap \hskip-6.5pt \sqcup$} %(quadratino
+%bianco)
+\newcommand{\erre}{\mathop{{\rm I}\mskip -4.0mu{\rm R}}\nolimits}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\na}{\nabla}
+\newcommand{\ue}{u_\eps}
+\newcommand{\Om}{\Omega}
+\newcommand{\D}{\Delta}
+\newcommand{\dd}{{\displaystyle}}
+\newcommand{\lfr}{\longrightarrow}
+\newcommand{\fr}{\rightarrow}
+\newcommand{\vs}{\vskip0cm\noindent}
+\newcommand{\1}{\lambda_{1}}
+\newcommand{\2}{\lambda_{2}}
+\newcommand{\INT}{\int_{\Omega}}
+\newcommand{\un}{u_{n}}
+\newcommand{\en}{e_{n}}
+\newcommand{\acca}{H^{1}_{0}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\vn}{v_{n}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\centerline{Corso di Algebra I del Prof. Pappalardi}
+\vskip0,2cm
+\centerline{Tutorato I del $02-10-2008$}
+\vskip0,2cm
+\centerline{Tutori: Luca Dell'Anna, Elisa Di Gloria}
+\vskip0,2cm
+\centerline{http://www.matematica3.com}
+\vskip0,5cm
+
+\noindent {\bf{Esercizio $1$}}\\
+Siano $A$,$B$ e $C$ tre insiemi. Mostrare che:
+
+\begin{enumerate}
+
+\item $A \setminus B = A \setminus(A \cap B)=(A \cup B) \setminus B$
+
+\item $(A \setminus B)\cap (B \setminus A)= \emptyset $ 
+
+\item $A \cup B=(A \cap B) \cup (A \setminus B) \cup (B \setminus A)$
+
+\item $(A \setminus B) \setminus C=A \setminus (B \cup C)$
+
+\item $A \setminus (B \setminus C)=(A \setminus B) \cup (A \cap C)\supset (A \setminus B) \setminus C$
+
+\item $A\cup (B \setminus C)=(A \cup B)\setminus (C \setminus A)=((A\cup B)\setminus C)\cup A $
+
+\item $A\cap (B \setminus C)=(A \cap B) \setminus (A\cap C)$
+
+\end{enumerate}
+\vspace{0,2cm}
+\noindent {\bf{Esercizio $2$}}
+\\
+$\forall$ r $\in \mathbb{R}_+$ e $\forall$ n $\in \mathbb{N}\setminus \{0\}=\mathbb{N}_+$ Siano:\\
+$T_r$ :=\{$x\in \mathbb{R}|-\frac{1}{r} \leq x \leq \frac{1}{r}$\} \\$R_n :=\{x\in \mathbb{R}|-\frac{1}{n} \leq x \leq \frac{1}{n}\}$\\
+Determinare:
+\begin{itemize}
+	\item $\bigcup_{r \in \mathbb{R}_+}T_r$;
+	\item $\bigcap_{r \in \mathbb{R}_+}T_r$;
+	\item $\bigcup_{n \in \mathbb{N}_+}R_n$;
+	\item $\bigcap_{n \in \mathbb{N}_+}R_n$.
+
+\end{itemize}
+\vspace{0,2cm}
+\noindent {\bf{Esercizio $3$}}
+\\
+Per ogni intero positivo $n$, si consideri il seguente sottoinsieme dei numeri reali:
+\\
+\begin{center}
+$A_n :=\{x \, \, numero\, \, reale\,\, : \, \, x\leq 1/n \}$
+\end{center}
+
+Determinare:
+\begin{enumerate}
+\item$\cap (A_n : n\geq 1)  $
+\item$\cup (A_n : n\geq 1)$
+\end{enumerate}
+
+\vspace{0,2cm}
+\noindent {\bf{Esercizio $4$}}
+\\
+Determinare $A\cap B$ e $A\cup B$ nei seguenti casi:
+\begin{itemize}
+	\item $A=\{x\in \mathbb{Z} |x^2-4x-5\leq 0 \}$, $B=\{x\in \mathbb{Z} |x^2-12x+20\leq0\}$;
+	\item $A=\{x\in \mathbb{Z} |x^2-5x+6\geq 0\}$, $B=\{x\in \mathbb{Z} |x^2-4\leq 0\}$;
+	\item $A=\{x\in \mathbb{Z} |x^2-8x+7\geq 0\}$, $B=\{x\in \mathbb{Z} |x-3\leq 0\}$;
+	\item $A=\{x\in \mathbb{Z} |x=5n,\ n\in \mathbb{Z}\}$, $B=\{x\in \mathbb{Z} |x=12n,\ n\in \mathbb{Z}\}$;
+	
+\end{itemize}
+
+\vspace{0,2cm}
+\noindent {\bf{Esercizio $5$}}
+\\
+Determinare $A\cap B$, $A\cup B$, $B\setminus A$ e $A\setminus B$ nei seguenti casi:
+
+\begin{enumerate} 
+
+\item $A=\{x\in \mathbb{Z} |x^2 -3x+2\leq 0 \}$; $B=\{x\in \mathbb{Z} |x^2 -12x+20>0\}$
+\item $A=\{x\in \mathbb{Z} |\frac {5x-3}{2-x}\geq 0\}$; $B=\{x\in \mathbb{Z} |\frac {-7x+2}{3x-1}\leq 0\}$
+
+\end{enumerate}
+
+\vspace{0,2cm}
+\noindent {\bf{Esercizio $6$}}
+\\
+Supponiamo che gli studenti del secondo anno del Corso di Laurea in
+Matematica siano 200 e che essi abbiano superato almeno un esame.
+Supponiamo inoltre che 120 studenti abbiano superato Algebra 1 e
+130 Analisi 1.
+Quanti studenti hanno superato tutti e due gli esami?
+
+\vspace{0,2cm}
+\noindent {\bf{Esercizio $7$}}
+\\
+Sia $A=\{x\in \mathbb{N} |3\leq x\leq 28 \}$. Siano $B=\{x\in A|x=2n$ con$ \: n\in \mathbb{N} \}$
+$C=\{x\in A|x=5m \:$ con $  \: m\in \mathbb{N} \}$\\
+Determinare $B\cap C$, $B\cup C$, $B\setminus C$.
+
+\vspace{0,2cm}
+\noindent {\bf{Esercizio $8$}}
+\\
+Sia $A :=\{x\in \mathbb{Z}| x^2-1\leq 0\}$. Determinare:
+$\mathcal{P} (A)$, $\mathcal{P}(\mathcal{P}(A))$, $\mathcal{P}(A) \setminus A$.
+
+\vspace{0,2cm}
+\noindent {\bf{Esercizio $9$}}
+\\
+Date le seguenti funzioni, stabilire quali di esse sono iniettive e/o suriettive e quando possibile calcolarne esplicitamente l'inversa, definire il codominio, il dominio, l'immagine.
+
+Sia $f: \mathbb{R} \rightarrow \mathbb{R}$ definita come:
+\begin{itemize}
+	\item $f(x)=x^2$;
+	\item $f(x)=x+3$;
+	\item $f(x)=2x+6$;
+	\item $f(x)=x^3-2$;
+	\item $f(x)=6x^4+1$. 
+\end{itemize}
+
+Siano ora:
+\begin{itemize}
+	\item $f: \mathbb{Z} \rightarrow \mathbb{R} $\qquad $f(n)=3n$;
+	\item $f: \mathbb{R} \rightarrow [-1,1]$ \qquad $f(x)= \sin(\pi x) +2$;
+	\item $f: \mathbb{Q} \rightarrow \mathbb{Q}$ \qquad $f(n)=5n-2$.
+
+\end{itemize}
+
+\end{document}

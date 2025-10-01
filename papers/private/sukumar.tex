@@ -1,0 +1,516 @@
+% Below 6 pages - venerdì, novembre 23, 2001 at 14.05
+%%%%%%%%%%% With French abstract 9-8-2001 %%%%%%%%%%%%%%%%%%%%%%%%%%
+%I have just corrected a couple of other missprints.
+%Here is the latest version
+%From adhikari@mri.ernet.in Fri Jul 13 14:51:15 2001
+\documentclass{amsart}
+\usepackage{amssymb}
+\hfuzz=4pt
+\def\fq{\mathbb F_q} \def\fqx{\fq[x]}
+\newtheorem{Theorem}{Theorem} \newtheorem{Lemma}{Lemma}
+\title{Remarks on the visibility problem in the function field case}
+\author{Sukumar das Adhikari}
+\author{Francesco Pappalardi}
+\address[Adhikari]{
+ Harish-Chandra Research Institute,
+ (Former Mehta Research Institute )
+ Chhatnag Road, Jhusi,
+ Allahabad 211 019,
+ INDIA.}
+\email[Adhikari]{adhikari@mri.ernet.in}
+\address[Pappalardi]{Dipartimento di Matematica,
+Universit\`a Roma TRE, Largo S. L. Murialdo 1,
+I--00146 Rome, ITALY}
+\email[Pappalardi]{pappa@mat.uniroma3.it}
+\subjclass{Primary 11T55; Secondary 11N37}
+\keywords{function fields, visibility, Jacobsthal's function}
+\date{\today}
+
+\begin{document}
+\begin{abstract}
+%Let $P=(a,b)$ and $Q=(m,n)$ be
+%two distinct integer lattice points on the $xy$-plane with rectangular
+%Cartesian co-ordinates. $P$ and $Q$ are said to be visible from
+%each other if the line segment which joins them contains no other
+%lattice point between the end points $P$ and $Q$. It is easy to
+%see that $(a,b)$ is visible from $(0,0)$ if and only if
+%gcd$(a,b)=1$ and hence, $(a,b)$ and $(m,n)$ are mutually visible
+%from each other if and only if gcd$(a-m,b-n)=1$.
+%Defining
+%visibility as in the two dimensional case, $\alpha = (a_1, \cdots
+%, a_d)$ is visible from  $\beta = (b_1, \cdots , b_d)$ if and only
+%if gcd $(a_1-b_1, a_2-b_2, \cdots, a_d-b_d)=1$ and if $A$ and $B$
+%are sets of lattice points, one says that $A$ is visible from $B$
+%if each point of $A$ is visible from some point of $B$.
+%
+%Study of the order of the function $f_d(n)$ which is defined to be
+%smallest integer $l$ such that there is a subset $ S$ of cardinality $l$ of the cube
+%$\{(x_1,x_2, \cdots , x_d) :x_i$'s are integers and $1 \leq x_i
+%\leq n ~\forall i\}$ in $\mathbb R^d$ such that the cube is visible from $S$,  is one of the
+%problems in the list compiled by (L. \& W.) Moser and
+%is carried out in \cite{a,ab,ac}.
+%
+%These results are closely connected with the more important
+%questions regarding the nature of Jacobsthal's function $g(n)$.
+%
+We extend results of \cite{a,ab,ac} on the visibility problem for lattice
+points in $\mathbb Z^d$ to the case of function fields over finite
+fields which are related to important questions regarding the
+corresponding $q$-Jacobsthal function.
+\smallskip
+
+\noindent{\sc R\'esum\'e.}
+%Soint $P=(a,b)$ et $Q=(m,n)$ deux points distincts du r\'eseau entier
+%${\mathbb Z}^2$ de ${\mathbb R}^2$. On dit que $P$ et $Q$ sont visibles
+%l'un depuis l'autre si le segment $\overline{PQ}$ ne contient aucun autre
+%point du r\'eseau. Il est facile \`a voir que $(a,b)$ est visibles
+%depuis $(0,0)$ si et seulement si pgcd$(a,b)=1$; par suite, $(a,b)$ et
+%$(m,n)$ sont mutuellement visibles si et seulement si pgcd$(a-m,b-n)=1$.
+%En dimension sup\'erieur, on dit que $\alpha = (a_1, \cdots, a_d)$
+%est visibles depuis $\beta = (b_1, \cdots , b_d)$ si
+%pgcd$(a_1-b_1, a_2-b_2, \cdots, a_d-b_d)=1$. Pour $A$ et $B$
+%des parties de ${\mathbb Z}^d$, on dit que $A$ est visibles depuis $B$
+%si tout point de $A$ est visibles depuis un point au moins de $B$.
+%
+%L'\'etude de la fonction $f_d(n)$, d'efinie
+%comme le plus petit entier $l$ pour lequel il existe une partie \`a
+%$l$ \'el\'ements du cube
+%$$\{(x_1,x_2, \cdots , x_d) \in {\mathbb Z}^d | 1 \leq x_i
+%\leq n ~\forall i\}$$
+%depuis lequel ce cube est visible, figure parmi le
+%recuil de probl\`emes de L. et W. Moser; ce probl\`eme est \'etudi\'e dans
+%\cite{a,ab,ac}.
+%
+%Ces r\'esultat ont un rapport \'etroit avec l'\'etude de la fonction
+%$g(n)$ de Jacobsthal.
+%
+Nous \'etendons r\'esultats de \cite{a,ab,ac} sur le probleme de la
+visibilit\'e des points du r\'eseau entier
+${\mathbb Z}^d$ au cas des corps de fonctions sur un corps
+fini, en rapport avec la fonction de $q$-Jacobsthal.
+\end{abstract}
+
+\maketitle
+\section{Introduction}
+Denote by $\fqx$ the ring of polynomials with coefficients in the fixed finite
+field $\fq$. Furthermore for $n\in\mathbb N$ set
+$$\Delta_n=\Delta_n(q)= \left\{(f,g)\in\fqx^2,
+\textrm{ such that } \deg f\leq n
+\textrm{ and } \deg g\leq n\right\}.$$
+Clearly $|\Delta_n|=q^{2(n+1)}$. Given distinct
+$P_1=(f_1,g_1),P_2=(f_2, g_2)\in \Delta_n$, as in the classical
+case, we say that $P_1$ is \emph{visible} from $P_2$ if
+$(f_1-f_2,g_1-g_2)=1$. This is equivalent to say that there are no
+elements of $\Delta_n$ in the line
+connecting $P_1$ and $P_2$.
+Similarly, if $S\subseteq \Delta_n$, we say that $\Delta_n$ is visible
+from
+$S$ if for any $P\in\Delta_n$, there is $Q\in S$ such that $P$ is
+visible from
+$Q$. We are interested in the following function:
+\begin{equation}
+  \label{eq:def}
+  \mathcal F_q(n)=\min\left\{|S|, S\subseteq \Delta_n, \Delta_n \textrm{ is
+ visible from } S \right\}.
+\end{equation}
+
+We will prove the following result which is analogous to \cite[Theorem~1]{ab}:
+
+\begin{Theorem} \label{uppertwodimensional} Let $q$ be fixed and let
+$\beta_q>4q^2/(1-\alpha_q)^2$
+(where $\alpha_q=\alpha_q^3$ is defined in part (2) Lemma~\ref{ffdistr})
+be any number. Then for all $n$ large enough one
+can explicitly construct a subset $X_n(q)$ of $\Delta_n$ such that
+$\Delta_n$ is visible from $X_n(q)$ and
+$$|X_n(q)|\leq \beta_q \frac{n\log\log n}{\log_q n}.$$
+Therefore, in particular $\mathcal F_q(n)\leq \beta_q \frac{n\log\log
+n}{\log_q
+n}$,
+for all $n$ large enough.
+\end{Theorem}
+
+It is natural to generalize the concept of visibility to the $d$--dimensional
+space.  If we write
+$\Delta_n^d=\left\{(f_1,\ldots,f_d)\in (\fqx)^d, \deg f_i\leq n\right\},$
+then $|\Delta_n^d|=q^{d(n+1)}$. It is obvious what one means by saying that two points
+of $\Delta_n^d$ are  visible from each other.
+
+We will prove, as in the \cite[Theorem~3]{ac},
+that Theorem~\ref{uppertwodimensional} can be improved in the
+higher dimensional case:
+
+\begin{Theorem}\label{threedimensional}
+Let $q$ be fixed, $d\geq3$ and let
+$\gamma_q>q/(1-\alpha^d_q)$ be any number.
+Then for all $n$ large enough one
+can explicitly construct a subset $X_n^d(q)$ of $\Delta_n^d$ such that
+$\Delta_n^d$ is visible from $X_n^d(q)$ and
+$|X_n^d(q)|\leq \gamma_q \frac{n}{\log_q n}.$
+Therefore, if we define $\mathcal F^d_q(n)$ as the
+minimum number of elements in a subset of $\Delta_n^d$, from which
+$\Delta_n^d$ is visible, we
+have for $n$ large enough,
+$$\mathcal F_q^d(n)\leq \gamma_q \frac{n}{\log_q n}.$$
+Further, let
+$\delta_q<\frac{1}{q}$ be any positive number.
+Then for all $n$ large enough
+$$\mathcal F^d_q(n)\geq \delta_q\frac{n}{\log_q n}.$$
+\end{Theorem}
+
+%\noindent\textbf{Remark.} It will be easy to observe that our
+%proofs of Theorem~\ref{lowerbound} and Theorem~\ref{threedimensional}
+%give the same result for $\Delta_n^d$ with $d\geq 3$.
+%Therefore if $d\geq3$
+%$$\frac{n}{\log_q n}\ll \mathcal F_q^d(n)\ll \frac{n}{\log_q n}.$$ \bigskip
+
+We will need the following facts about distribution of polynomials in finite
+fields. The proofs can be found in the book of Lidl and Nieddereiter \cite{ln}.
+See also the book of Shparlinski \cite{sp}. The last statement can be found in
+\cite{h}:
+
+
+\begin{Lemma} \label{ffdistr}
+Let $q$ be a fixed power of a fixed prime and denote by
+$\mathcal I(q)$ the set of monic irreducible polynomials in $\fqx$, by $\mathcal I_k(q)$ the set
+of irreducible monic polynomials of degree $k$ and by $I_k(q)$ the order
+$|\mathcal I_k(q)|$. Then
+\begin{enumerate}
+\item $I_k(q)=\frac 1k\left(q^k+O(q^{k/2})\right)$;
+\item If $d\geq3$, the series $\alpha_q^d=\sum_{k=1}^\infty \frac{I_k(q)}{q^{(d-1)k}}$
+converges to a number less than $1$;
+\item $\sum_{k\leq m}\frac{I_k(q)}{q^k}=(1+o(1))\log m$;
+\item $\sum_{k\leq m}k I_k(q)=\frac{q}{q-1}q^m+O(q^{m/2}).$
+%\item $\sum_{k\leq m} I_k(q)\geq\frac{1}{m}\left(\frac{q}{q-1}q^m+O(q^{m/2})\right)$.
+\item Let $m\in\fqx$, and denote by $\omega_q(m)$
+the number of distinct monic irreducible
+polynomials which divide $m$. If the degree of $m$ is at most $n$,
+then if $n$ is large enough, we have
+$$\omega_q(m) \leq \frac{n}{\log_qn -3}.\hfill_\Box$$
+\end{enumerate}
+\end{Lemma}
+
+\begin{Lemma}\label{due}
+Given $a,b\in\fqx$, the number of polynomials with degree
+up to $s$ which are congruent to $a$ modulo $b$ is at most
+$q^{s+1 -\deg b}+1.\hfill_\Box$
+\end{Lemma}
+
+%\noindent\textbf{Proof of Lemma~\ref{due}.}
+%Indeed, if $\deg a>s$ there is at most one such polynomial
+%while if $\deg a \leq s$ and there exists $c_0$ with degree less than
+%the degree of $a$ with $c_0\equiv a\bmod b$ then for every polynomial $d$
+%(with degree less then $s-\deg b$), $c_0+db$ is congruent to $a$ modulo $b$.
+%Clearly, there are $q^{s+1 -\deg b}$ choices for such a $d$.\hfill$_\Box$
+%\bigskip
+\section{Proof of the lower bound in Theorem~\ref{threedimensional}}
+We follow the proof of Abbott \cite{a}.
+Suppose $S\subset\Delta_n^d$ is visible from every point of $\Delta_n^d$,
+assume that $|S|=r$ and
+$S=\{\underline{f}_1,\ldots,\underline{f}_r\}$
+where we write $\underline{f}_i=(f_{i1},\ldots,f_{id})$ ($i=1,\ldots,d$).
+Let $m$ be the least integer defined by the property that
+\begin{equation}\label{choice}\sum_{k\leq m}I_k(q)\geq r\end{equation}
+and let $p_1,\ldots,p_r$ be monic irreducible polynomials with degree less
+or equal than $m$. Next consider polynomials
+$f_{01},\ldots f_{0d}$ which are respectively the solutions of the system of equations
+$$\left\{\begin{array}{l} X\equiv f_{i1}\bmod p_i\\ i=1,\ldots,r\end{array}\right.\hspace{0.4cm}\ldots\hspace{0.4cm}
+\textrm{and}\hspace{1cm}\left\{\begin{array}{l} X\equiv f_{id}\bmod p_i\\ i=1,\ldots,r\end{array}\right.$$
+with the property that $\underline{f}_0=(f_{01},\ldots f_{0d})\not\in S$.
+Indeed, by the chinese remainder theorem one can find such a
+solution with
+$\deg f_{0j}\leq ([\log_q r]+1)+\sum_{i\leq r}\deg p_i, j=1,\ldots,d.$
+In fact if $\underline{\tilde{f}}_0=(\tilde{f}_{01},\ldots \tilde{f}_{0d})$
+is a fundamental solutions and $P=p_1\cdots p_r$, then the set of solutions
+$\{(\tilde{f}_{01}+hP ,\ldots,\tilde{f}_{0d}+hP)\ |\ \deg(h)
+\leq [\log_q r]+1\}$
+contains more then $r$ elements therefore it contains one at least outside $S$.
+Now from part (4) Lemma~\ref{ffdistr}
+and from the inequality (\ref{choice}) above we deduce
+$$ \sum_{i\leq r}\deg p_i \leq \sum_{k\leq m}kI_k(q)=(1+o(1))\frac{q}{q-1}q^m.$$
+Furthermore
+${r\geq \sum_{k\leq m-1}I_k(q)\geq \frac{1}{m-1} \sum_{k\leq m-1}kI_k(q)
+=(1+o(1))\frac{q^{m+1}}{q(q-1)(m-1)}}$\
+ implies that
+$([\log_q r]+1)+\sum_{i\leq r}\deg p_i \leq (q+o(1))r\log_qr.$
+Therefore all  $\deg f_{01}, \ldots,\\  \deg f_{0d}$ are less than or equal to
+$\left(q+o(1)\right)r\log_q r,$
+which is smaller than $n$ for $r\leq (\frac1q+o(1))\frac{n}{\log_qn}.$
+
+Finally if $r< \delta_q\frac{n}{\log_q n}$ and $n$ is large enough, $\underline{f}_0\in\Delta_n^d$.
+Therefore $r\geq \delta_q\frac{n}{\log_q n}$ and this completes the proof.\hfill$_\Box$
+
+\section{Proof of Theorem~\ref{uppertwodimensional}}
+We will need the following:
+
+\begin{Lemma}\label{keylemma} Suppose that $n$ is large enough, let
+$\beta>0$
+be any fixed number and let
+$t$ be the least integer such that $q^{t+1}\geq \beta\log\log n$.
+Then for every given $f\in\Delta_n$ there exists $g\in\fqx$
+with $\deg g\leq t$ such that
+\begin{equation}\label{lm1}\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{
+p|f-g}}\frac{1}{q^{\deg p}}<\alpha_q+\frac1\beta+o(1).\end{equation}
+\end{Lemma}
+
+\noindent\textbf{Proof of Lemma~\ref{keylemma}.} Consider the sum
+\begin{equation}\label{sig}
+\sum_{\genfrac{}{}{0pt}{}
+{\deg g\leq t}{g\neq f}}
+\sum_{
+\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{p|f-g}}
+\frac{1}{q^{\deg p}}.\end{equation}
+
+We split the sum in three sums $\Sigma_1$, $\Sigma_2$ and $\Sigma_3$
+where $\Sigma_1$ counts the irreducibles $p$  with $\deg p\leq t$,
+the second counts those with $t<\deg p\leq (\log n)\log\log n$ and the
+third counts those with $(\log n)\log\log n<\deg p\leq n$.
+\begin{eqnarray}\nonumber
+\hspace*{-1cm}\textrm{Now}\ \Sigma_1 & \leq & \sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{\deg p\leq t}}
+\sum_{
+\genfrac{}{}{0pt}{}
+{\deg g\leq t}{g\neq f, p|f-g}}
+\frac{1}{q^{\deg p}}\nonumber \\
+        & \leq & \sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{\deg p\leq t}} \frac{1}{q^{\deg p}}\left(\frac{q^{t+1}}{q^{\deg p}}+1\right) %\nonumber \\ & = &
+      =   \sum_{k\leq t} \left( q^{t+1}\frac{I_k(q)}{q^{2k}}+
+\frac{I_k(q)}{q^k}\right) \nonumber
+\end{eqnarray}
+by Lemma~\ref{due} and from Lemma~\ref{ffdistr} we obtain
+\begin{equation}\label{sig1}
+\Sigma_1\leq q^{t+1}(\alpha_q+o(1))+(1+o(1))\log t)=q^{t+1}(\alpha_q+o(1)).
+\end{equation}
+
+As for $\Sigma_2$, note that there are no irreducible dividing
+$f-g'$ and $f-g''$ with degree larger then $t$.
+Therefore, from part (3) of Lemma~\ref{ffdistr},
+\begin{equation}\Sigma_2\leq  \sum_{
+\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{\deg p\leq \log n \log\log n}}
+\frac{1}{q^{\deg p}}=(1+o(1))\log\log n.\label{sig2}\end{equation}
+Furthermore
+\begin{equation}\Sigma_3\leq
+\sum_{\genfrac{}{}{0pt}{}
+{\deg g\leq t}{g\neq f}}\frac{1}{q^{\log n \log\log n}}
+\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{p\mid f-g}}1
+\ll\frac{q^{t+1}}{q^{\log n \log\log n}}\frac{n}{\log n}=o(1)\label{sig3}\end{equation}
+
+Finally by (\ref{sig1}), (\ref{sig2}) and (\ref{sig3}) we deduce that
+the sum in (\ref{sig}) is
+$$\leq q^{t+1}(\alpha_q+o(1))+(\beta+o(1))\log\log n+o(1)
+\leq q^{t+1}(\alpha_q+\frac{1}{\beta}+o(1)).$$
+
+Hence, for some $g\in\fqx$ with $\deg g<t$, (\ref{lm1}) is
+satisfied.\hfill
+$_\Box$\bigskip
+
+We define the \emph{$q$--Jacobsthal function} of $m\in\fqx$ as follows
+\begin{equation}\label{jac}\mathcal J_q(m)=\min\{t\ |\ \forall a\in\fqx, \exists h\in\fqx, \deg h<t,
+\gcd(a+h,m)=1\}.\end{equation}
+It is immediate to see that $\mathcal J_q(m)$ is well defined and
+that $\mathcal J_q(m)<\deg m$. Indeed, for any $a\in\fqx$, if $r$ is the
+remainder of the division of $1-a$ by $m$, then it clear that $\deg r<\deg
+m$
+and $\gcd(a+r,m)=1$.
+We will need the following:
+
+\begin{Lemma}\label{keybis} Suppose $m\in\fqx$ and that
+$\gamma=\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{p|m}}\frac{1}{q^{\deg p}}<1.$
+Then for $n$ large enough,
+$q^{\mathcal J_q(m)+1} \leq \left(1-\gamma\right)^{-1}\omega_q(m).$
+\end{Lemma}
+
+\noindent\textbf{Proof of Lemma~\ref{keybis}.} For any $a\in\fqx$, consider the set
+$S=\{a+h\ |\ h\in\fqx, \deg h\leq k\}.$
+Then $|S|=q^{k+1}$. We want to estimate the size of the set
+$$S_m=\{y\in S\ |\ \gcd(y,m)\not=1\}.$$
+Note that by Lemma~\ref{due}
+$$\begin{array}{rcl} \#S_m &\leq &\displaystyle{\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{p|m}}
+\#\{h\in\fqx\ |\ \deg h<k, p| h+k\}}\\
+&\leq &\displaystyle{\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{p|m}}\left(
+q^{k+1-\deg p}+1\right)} \leq %\\&\leq &
+q^{k+1}\gamma+\omega(m).
+\end{array}$$
+which is smaller than $q^{k+1}$ if
+$q^{k+1}>(1-\gamma)^{-1}\omega(m).$
+Finally, there is an element of $S$ not in $S_m$ if $k$ satisfies
+the above, so that
+$$q^{\mathcal J_q(m)+1} \leq (1-\gamma)^{-1}\omega(m).\ \ _\Box$$
+
+We are now ready to prove Theorem~\ref{uppertwodimensional}.
+Consider the set
+$$X_n(q)=\left\{(f,g)\in\Delta_n, \deg f\leq t, \deg g\leq s\right\}$$
+where $t$ is the least integer such that
+$q^{t+1}>\frac{2}{1-\alpha_q}\log\log n$ and $s$ is the least
+integer such that $q^{s+1}> (\frac{1-\alpha_q}{2}+\epsilon)\frac{n}{\log_q n
+-3}$ where $\epsilon>0$ is small and will be chosen later.
+
+Then (if $\epsilon$ is small enough)
+$$|X_n(q)|=q^{s+1}q^{t+1}\leq
+\beta_q\frac{n\log\log
+n}{\log_q n}.$$
+
+We need to show that $\Delta_n$ is visible from $X_n$ for $n$ large
+enough. Indeed, for
+$(a,b)\in\Delta_n$, from Lemma~\ref{keylemma} we know
+that there exists $g\in\fqx$ with $\deg g\leq t$ such that
+$\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{p|a-g}}
+\frac{1}{q^{\deg g}}\leq (\alpha_q+1)/2+o(1).$
+Furthermore Lemma~\ref{keybis} implies that
+$q^{\mathcal J_q(a-g)+1}\leq
+(1-\alpha_q)/2+o(1))\omega_q(a-g).$
+Note that from the fifth part of Lemma~\ref{ffdistr}, for $n$ large enough
+$$\left(\frac{1-\alpha_q}{2}+o(1)\right)\omega_q(a-g)\leq
+\left(\frac{1-\alpha_q}{2}+\epsilon\right)\frac{n}{\log_qn}\leq q^{s+1}.$$
+Therefore $\mathcal J_q(a-g)\leq s$ and
+this implies that there exists $h\in\fqx$ with $\deg
+h\leq s$ such that
+$\gcd(a-g,b-h)=1.$
+So, $(a,b)$ and $(f,h)$
+are visible from each other and this concludes that
+proof.\hfill$_\Box$
+
+\section{Proof of the upper bound in Theorem~\ref{threedimensional}}
+In this section we follow the method of \cite{ac} to investigate the
+concept of visibility in higher dimensional space.
+For $d\geq3$, consider the set
+$$X_n^d=\left\{(g_1,\ldots,g_{d-1},g_d)\in (\fqx)^d, \deg g_i\leq s
+\textrm{ for } i<d \textrm{ and } \deg g_d=0\right\}.$$
+Clearly $|X_n^d|=q^{(d-1)*(s+1)+1}$.
+
+We want to show that for a suitable choice of $s$, $\Delta_n^d$ is visible
+from $X_n^d$. Clearly all the elements of  $\Delta_n^d$ which have a degree $0$
+polynomial in the last coordinate are visible from $X_n^d$.
+Therefore fix
+$(f_1,\ldots,f_d)\in\Delta_n^d$ such that $\deg f_d\geq1$.
+We want to estimate the
+size of the set
+$$\mathcal A=\left\{(g_1,\ldots,g_{d-1},g_d)\in X_n^d, \deg((f_1-g_1,
+f_2-g_2,\ldots,f_d-g_d))\geq 1\right\}.
+$$
+First of all, we observe that
+\begin{eqnarray}\nonumber
+|\mathcal A| &\leq& \sum_{\genfrac{}{}{0pt}{}{g_1,\ldots,g_{d-1}}{\deg g_i\leq s,\ g_d\in\fq}}
+\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)
+}{p|\gcd(f_1-g_1,
+f_2-g_2,\ldots,f_d-g_d)}}1\\
+\nonumber & = &
+\sum_{g_d\in\fq}\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)
+}{p| f_d-g_d}}\sum_{\genfrac{}{}{0pt}{}{g_1,\ldots,g_{d-1}}{\deg g_i\leq s, p|(f_i-g_i)}}1
+= %\\
+ %& = &
+\sum_{g_d\in\fq}\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)
+}{p| f_d-g_d}}
+\prod_{i=1}^{d-1} \left(\sum_{\deg g_i\leq s, p|(f_i-g_i)}1\right).
+\end{eqnarray}
+
+{From} Lemma~\ref{due} we deduce that
+
+$$|\mathcal A|\leq \sum_{g_d\in\fq}\sum_{\genfrac{}{}{0pt}{}
+{p\in\mathcal I(q)
+}{p| f_d-g_d}}\left(1+\frac{q^{s+1}}{q^{\deg p}}\right)^{d-1}.$$
+
+Now we have
+\begin{eqnarray} |\mathcal A|& \leq
+&\sum_{g_d\in\fq}\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}
+{p| f_d-g_d}}
+\sum_{j=0}^{d-1}\binom{d-1}{j}\left(\frac{q^{s+1}}{q^{\deg p}}\right)^j
+\nonumber\\ &\leq &
+\sum_{g_d\in\fq}\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{ p|
+f_d-g_d}}1+
+\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}
+{ \deg(p)\leq
+n}}
+\sum_{j=1}^{d-2}\binom{d-1}{j}\left(\frac{q^{s+1}}{q^{\deg p}}\right)^j
++
+|X_n^d|\sum_{p\in\mathcal I(q)}
+\frac{1}{q^{(d-1)\deg p}}.
+\nonumber\end{eqnarray}
+
+%\begin{eqnarray} |\mathcal A|& \leq
+%&\sum_{g_d\in\fq}\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}
+%{p| f_d-g_d}}\left(1+2\frac{q^{s+1}}{q^{\deg
+%p}}+\frac{q^{2(s+1)}}{q^{2\deg p}}\right)\nonumber\\ &\leq &
+%\sum_{g_d\in\fq}\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}{ p|
+%f_d-g_d}}1+2q^{s+1}\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}
+%{ \deg(p)\leq
+%n}}\frac{1}{q^{\deg p}}+|X_n^d|\sum_{p\in\mathcal I(q)}
+%\frac{1}{q^{2\deg p}}.
+%\nonumber\end{eqnarray}
+
+We evaluate each of the three terms
+separately. For the last one, we have to use part (2) of Lemma~\ref{ffdistr}.
+For the middle one just uses part (3) of Lemma~\ref{ffdistr} observing that
+\begin{eqnarray}\nonumber
+\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)}
+{ \deg(p)\leq n}}
+\sum_{j=1}^{d-2}\binom{d-1}{j}\left(\frac{q^{s+1}}{q^{\deg p}}\right)^j
+&\leq& 2^{d-1}q^{(s+1)(d-2)}
+\sum_{\genfrac{}{}{0pt}{}{p\in\mathcal I(q)
+}{\deg(p)\leq n}}\frac{1}{q^{\deg p}}\nonumber \\
+\leq  2^{d-1}q^{(s+1)(d-2)}
+\sum_{j\leq n}
+\frac{I_j(q)}{q^j}
+& \leq & (1+o(1))2^{d-1}\left(\frac{|X_n^d|}{q}\right)^{(d-2)/(d-1)}
+\log n,\nonumber\end{eqnarray}
+and for the first sum we use the fifth part of Lemma~\ref{ffdistr}.
+Putting all these together we obtain:
+$$|\mathcal A|\leq q\frac{n}{\log_qn -3}+\alpha_q^d|X_n^d|+(1+o(1))\log n
+\left(\frac{|X_n^d|}{q}\right)^{(d-2)/(d-1)}$$
+
+Finally, in order to have $|\mathcal A|<|X_n^d|$ for $n$ large enough, it is enough to choose $s$ in such
+a way that
+$(1-\alpha_q^d)|X_n^d|>q\frac{n}{\log_qn-3}.$
+and this gives the claim.\hfill$_\Box$
+
+\section{Final remarks. The order of the $q$-Jacobsthal function.}
+The classical Jacobsthal function has been investigated in
+\cite{e,i,i2,k,s,v}.
+We have already defined in (\ref{jac}) the natural analogue of the Jacobsthal
+function for $\fqx$.
+If we set
+$$\displaystyle{Y_n=\left\{(0,h)\in\Delta_n, \deg h\leq
+\max_{g \in\fqx, \deg g\leq n}
+\mathcal J_q(g)\right\},}$$
+then clearly $\Delta_n$ is visible from $Y_n$ as for every $(f,g)
+\in\Delta_n$ there is an $h\in Y_n$ (also $-h\in Y_n$) and
+$\gcd(f,g-h)=1$ so that $(f,g)$ is visible from $(0,h)$.
+
+It is conjectured (see \cite{ms}) that for any $m\in\fqx$,
+$\mathcal J_q(m)\leq \log_q\deg m$.
+This would imply that
+$\mathcal F_q(n)\leq n.$
+which is weaker than the upper bound in Theorem~\ref{uppertwodimensional}.
+\medskip
+
+\noindent \textbf{Acknowledgements.} The major part of the work
+had been done when the second author was visiting Harish-Chandra
+Research Institute, Allahabad, India. The work was completed when
+the first author came to Universit\`a Roma Tre. They are thankful to
+these institutes for hospitality. The authors would also like to thank
+Igor Shparlinski for some useful suggestions.
+\bigskip
+
+\begin{thebibliography}{99}
+
+
+\bibitem{a} H. L. Abbott, \emph{Some results in combinatorial Geometry}. Discrete Math. {\bf 9} (1974), 199--204.
+\bibitem{ab} S. D. Adhikari and R. Balasubramanian, \emph{On a question regarding visibility of lattice
+points}. Mathematika {\bf 43} (1996), no.~1, 155--158.
+\bibitem{ac} S. D. Adhikari and Y.-G. Chen, \emph{On a question regarding visibility of lattice
+points. II}. Acta Arith. {\bf 89} (1999), no.~3, 279--282.
+\bibitem{e} P. Erd\H os,\emph{On the integers relatively prime to $n$ and on a number-theoretic function considered by
+Jacobsthal}, Math. Scand. {\bf 10} (1962), 163--170.
+\bibitem{e2} P. Erd\"os, P. M. Gruber and J. Hammer, \emph{Lattice points}, Longman Sci. Tech., Harlow, 1989.
+\bibitem{h} M. Kaminski M. and N. M. Bshouty, \emph{Multiplicative complexity of polynomial
+multiplication over finite}.  J. ACM, (1989), v. 36, 150--170.
+%E. W. Howe, \emph{On the group orders of elliptic curves over finite fields}. Compositio Math. {\bf 85} (1993), no.~2, 229--247.
+\bibitem{i} H. Iwaniec, \emph{On the error term in the linear sieve}. Acta Arith. {\bf 19} (1971), 1--30.
+\bibitem{i2} H. Iwaniec,\emph{On the problem of Jacobsthal}. Demonstratio Math. {\bf 11} (1978), no.~1, 225--231.
+\bibitem{k} H.-J. Kanold, \emph{\"Uber eine zahlen\-theoretische Funktion von Jacobsthal} Math. Ann. {\bf 156} (1964), 393--395.
+\bibitem{ln} R. Lidl and H. Niederreiter, \emph{Finite fields}, Second edition, Cambridge Univ. Press, 1997.
+\bibitem{ms} T. Mulders and A. Storjohann, \emph{The Modulo $N$ Extended GCD Problem for Polynomials.} Proceedings of
+ISSAC'98, ACM Press, 1998, 105--112.
+\bibitem{sp} I. E. Shparlinski, {\it Finite fields: theory and computation}, Kluwer Acad. Publ., 1999.
+\bibitem{s} H. Stevens,\emph{On Jacobsthal's $g(n)$-function}. Math. Ann. {\bf 226} (1977), no.~1, 95--97.
+\bibitem{v} R. C. Vaughan,\emph{On the order of magnitude of Jacobsthal's function}. Proc. Edinburgh Math. Soc. (2) {\bf 20} (1976/77), no.~4, 329--331.
+
+\end{thebibliography}
+\end{document}

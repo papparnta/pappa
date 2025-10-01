@@ -1,0 +1,235 @@
+% 1) la macro gira in Plain (con vanilla.sty: se non si vuole usare vanilla 
+%    fare tutto in Plain puro) 
+%
+% 2) i caratteri sono per Macintosh 
+%    In breve: il carattere base è un Times a 10 punti (\normale per il testo,
+%    \normsl per il corsivo, \normbf per il neretto), il corpo piccolo 
+%    (note, references e abstract) è a 9 punti (\piccola, \ridsl, \ridbf... con 
+%    un comando \ninepoint se c'è matematico all'interno)
+%    il corpo del titolo è neretto a 11 punti (\bigbf)
+%    il tassello all'inizio degli articoli, così come le definizioni delle headline
+%    conviene copiarlo per ogni articolo (con gli opportuni cambiamenti...
+%    Si veda l'esempio fornito 
+%
+% Fondamentali comandi: 
+%
+% - \sec per i paragrafi, \subsec per le sotto-sezioni, 
+% - \teo{Theorem, Corollary,.. etc.} per teoremi, corollari, proposizioni etc.,
+%    (col nostro comando occorre aprire e chiudere il corsivo all'inizio e alla fine)
+%    se si vuole usare il tradizionale \proclaim va bene lo stesso 
+% - \pro{Proof.} per le dimostrazioni. se si usa il Q.E.D. si può usare il 
+%    comando \qed er il quadratino pieno, o \ruta{x} per il quadratino vuoto a "x" punti
+%
+% nota bene: \C, \R etc per numeri complessi e reali (e così via \N,\Z, etc. ma
+%            \rr, \cc se a apice o pedice....)
+%
+% lasciamo le nostre abbreviazioni per le lettere greche: potete toglierle se 
+% preferite usarne altre.
+%
+% Nota bene per le References (vedi esempio): prima dell'inizio il comando \refere
+% imposta le spaziature, il titoletto, le font etc. dopo di che ogni citazione 
+% ha numero, cognome e iniziali del nome (in maiuscoletto), vari autori separati da
+% virgole, titolo in corsivo, se articolo di rivista nome della rivista, con numero
+% volume in neretto, anno tra parentesi, pagine; se libro  città, editore, anno; se
+% proceedings: In: titolo in tondo (Ed. by ...), città, editore, anno, pagine.
+%
+% alla fine dell'articolo vedere bene l'esempio: gli indirizzi accademici vanno messi 
+% qui e non all'inizio dell'articolo nel modo indicato (non si mettono telefoni, e-mail
+% etc.)
+%
+% per chiarimenti scrivere a SLAVIERO@DM.UNITO.IT o telefonare al 011/542917 chiedendo
+% del Dott. Slaviero. Grazie e buon lavoro
+
+
+
+% ===============================================================================
+% inizio della macro (salvarla col nome che si vuole: "macro_rsm.sty" per noi)
+%
+
+\pretolerance=8000
+\tolerance=8000
+\input VANILLA.STY
+\baselineskip=13pt
+\vsize=19cm
+\hsize=13cm
+\parindent=1cm
+\parskip=2pt
+\topskip=20pt
+\hbadness=10000
+\footline={}
+\hoffset=2cm
+\voffset=2cm
+%
+   \font\normale=ptmr at 10pt
+   \font\normsl=ptmri at 10pt
+   \font\normbf=ptmb at 10pt
+   \font\piccola=ptmri at 9pt
+   \font\ridsl=ptmri at 9pt
+   \font\ridbf=ptmb at 9pt
+   \font\bigbf=ptmb at 11pt
+   \font\minima=ptmb at 8pt
+   \font\uns=ptmr at 8pt
+   \font\normslbx=cmbxsl10 at 11pt
+   \font\goth=eufm10 at 10truept 
+   \font\ms=msbm10 at 10truept 
+   \font\mms=msbm7   
+   \font\normcmc=cmcsc10 at 10truept
+   \font\medcmc=cmcsc10 at 9truept
+%
+\abovedisplayskip=6pt plus 3pt minus 1pt
+\abovedisplayshortskip=3pt plus 3pt
+\belowdisplayskip=6pt plus 3pt minus 1pt
+\belowdisplayshortskip=3pt plus 3pt minus 4pt
+%
+
+%%%%\ninepoint
+\font\ninerm=ptmr at 9pt
+\font\sevenrm=cmr7
+\font\sixrm=cmr6
+\font\fiverm=cmr5
+\font\ninei=cmmi9
+\font\sixi=cmmi6
+\font\fivei=cmmi6
+\font\ninesy=cmsy9
+\font\sixsy=cmsy6
+\font\fivesy=cmsy5
+\font\tenex=cmex10
+\font\nineit=cmti9
+\font\ninesl=cmsl9
+\font\ninett=cmtt9
+\font\ninebf=cmbx9
+\font\sixbf=cmbx6
+\font\fivebf=cmbx5
+%
+\def\ninepoint{\def\rm{\fam0\ninerm}% switch to 9-point type
+  \textfont0=\ninerm \scriptfont0=\sixrm \scriptscriptfont0=\fiverm
+  \textfont1=\ninei \scriptfont1=\sixi \scriptscriptfont0=\fivei
+  \textfont2=\ninesy \scriptfont2=\sixsy \scriptscriptfont2=\fivesy
+  \textfont3=\tenex \scriptfont3=\tenex \scriptscriptfont3=\tenex
+  \textfont\itfam=\nineit  \def\it{\fam\itfam\nineit}%
+  \textfont\slfam=\ninesl  \def\sl{\fam\slfam\ninesl}%
+  \textfont\ttfam=\ninett  \def\tt{\fam\ttfam\ninett}%
+  \textfont\bffam=\ninebf  \scriptfont\bffam=\sixbf
+   \scriptscriptfont\bffam=\fivebf  \def\bf{\fam\bffam\ninebf}%
+  \normalbaselineskip=11pt
+  \setbox\strutbox=\hbox{\vrule height8pt depth3pt width0pt}%
+  \let\sc=\sevenrm  \normalbaselines\rm}
+
+\overfullrule=0pt
+
+\def\C{\hbox{\ms C}}   %{\hbox{\kern5pt
+      % \vrule width.02em height1.4ex
+      % \kern-.29em \normale C}}
+\def\cc{\hbox{\mms C}} %{\hbox{\kern4pt
+       %\vrule width.02em height1.2ex
+       %\kern-.28em \piccola C}}
+\def\R{\hbox{\ms R}} %{\hbox{\normale I \kern-.48em R}}
+\def\P{\hbox{\ms P}} %{\hbox{\normale I \kern-.48em P}}
+\def\N{\hbox{\ms N}} %{\hbox{\normale I \kern-.48em N}}
+\def\ACCA{\hbox{\ms H}} 
+\def\M{\hbox{\ms M}}
+\def\E{\hbox{\ms E}}
+\def\K{\hbox{\normale I \kern-.48em K}}
+\def\Q{\hbox{\ms Q}} %{\hbox{\kern5pt \raise2pt\hbox{\vrule width.02em
+       %height1.2ex} \kern-.57em \normale Q}}
+\def\Z{\hbox{\ms Z}} %{\hbox{\normale Z\!\!Z} }
+\def\SS{\hbox{\ms S}}
+\def\rr{\hbox{\mms R}}%{\hbox{\piccola I \kern-.47em R} }
+\def\nn{\hbox{\mms N}}%{\hbox{\piccola I \kern-.44em N}}
+\def\pp{\hbox{\mms P}} %{\hbox{\piccola I \kern-.44em P} }
+\def\zz{\hbox{\mms Z}}%{\hbox{\piccola I \kern-.44em Z} }
+
+\def\nota{\piccola\baselineskip=9pt\ninepoint}
+
+\def\beginarticle{\baselineskip=14pt \vskip 1cm \normale }
+
+\long\def\refere{\piccola \baselineskip=10pt \vskip.5 cm \parindent=.5cm \goodbreak
+\ce{REFERENCES} \medskip \nobreak }
+
+\long\def\abstract#1{\vtop{\hsize=13cm\offinterlineskip\piccola
+\baselineskip=13pt\noi\ninepoint {\ridbf Abstract.}\kern 5pt #1}}
+%
+\def\ruta#1{\hbox{\vrule\vbox to#1pt{%
+	\hrule\hbox to#1pt{\hfill}\vfill\hrule}\vrule}}
+%
+\def\al{\alpha }
+\def\be{\beta}
+\def\del{\delta }
+\def\Del{\Delta }
+\def\gam{\gamma }
+\def\Gam{\Gamma }
+\def\sig{\sigma }
+\def\Sig{\Sigma }
+\def\lam{\lambda }
+\def\Lam{\Lambda }
+\def\vare{\varepsilon }
+\def\eps{\epsilon}
+\def\part{\partial}
+\def\th{\theta}
+\def\var{\varphi}
+\def\vart{\vartheta}
+\def\om{\omega }
+\def\Om{\Omega}
+%
+\def\noi{\noindent }
+\def\ce{\centerline}
+\def\blackbox{\hbox{\hskip 6pt\vrule width5pt height5pt depth1pt \hskip1pt}}
+\def\qed{\blackbox}
+
+%
+\def\sec#1{\vskip.3cm\goodbreak\noindent{\normbf #1}%
+	   \nobreak\ignorespaces\smallskip\nobreak}
+\def\subsec#1{\vskip.3cm\goodbreak\noindent{\normsl #1}%
+	   \nobreak\ignorespaces\smallskip\nobreak}
+%
+\def\teo #1{%
+	   \par \medskip \goodbreak%
+	   {\normcmc #1}\enskip
+	   \nobreak \ignorespaces \nobreak
+	   }
+%
+\def\pro #1{%
+	   \par \medskip \goodbreak
+	   {\normsl #1}\enskip
+	   \nobreak \ignorespaces \nobreak
+	   }
+
+
+\catcode`\@=11
+   \newdimen\@StrutBaseDimension
+   \newdimen\@StrutSkipTemp
+\def\ComputeStrut{%
+	\@StrutBaseDimension=\baselineskip
+	}
+\def\MyStrut{%
+	\vrule height 0.7\@StrutBaseDimension
+	       depth 0.3\@StrutBaseDimension
+	       width 0pt
+	}
+\ComputeStrut
+
+%  The following 13 lines establish the use of the Euler Fraktur font.
+%
+\font\teneuf=eufm10 at 11pt
+\font\seveneuf=eufm9
+\font\fiveeuf=eufm7
+\newfam\euffam
+\textfont\euffam=\teneuf
+\scriptfont\euffam=\seveneuf
+\scriptscriptfont\euffam=\fiveeuf
+\def\frak{\relaxnext@\ifmmode\let\next\frak@\else
+ \def\next{\Err@{Use \string\frak\space only in math mode}}\fi\next}
+\def\goth{\relaxnext@\ifmmode\let\next\frak\else
+ \def\next{\Err@{Use \string\goth\space only in math mode}}\fi\next}
+\def\frak#1{{\fam\euffam#1}}
+\def\frakk#1{\noaccents@\fam\euffam#1}
+%  End definition of Euler Fraktur font.
+
+\catcode`\@ = 12
+
+% fine della macro
+%
+% ===============================================================================
+%
+% inizio dell'esempio (salvare con un nome file qualunque e provare a compilare) 
+
